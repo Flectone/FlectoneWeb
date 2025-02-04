@@ -12,9 +12,9 @@
 <!--@include: @/parts/enable.md-->
 <!--@include: @/parts/cooldown.md-->
 
-### `type`
+### `variants`
 
-Список названий блоков и звуков стука
+Список стуков с их звуком
 
 Можно создавать свои стуки и название блока может быть неполным, а лишь содержать ключевое слово
 
@@ -22,12 +22,13 @@
 Я напишу название `GLASS`, потому что оно встречается во всех названиях стёкл
 
 ```yaml
-GLASS:
-  enable: true
-  volume: 1.0
-  pitch: 1.0
-  category: "BLOCK"
-  name: "minecraft:block.glass.place"
+- type: "GLASS"
+  sound:
+    enable: true
+    volume: 1.0
+    pitch: 1.0
+    category: "BLOCK"
+    name: "minecraft:block.glass.place"
 ```
 :::::
 
@@ -42,8 +43,8 @@ GLASS:
 
 <!--@include: @/parts/permission/permissionTier3.md-->
 
-### `types`
+### `variants`
 
-Список названий звуков для стука и их права
+Список стуков и их права
 
 <!--@include: @/parts/permission/cooldown.md-->

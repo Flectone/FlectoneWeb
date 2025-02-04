@@ -745,7 +745,7 @@ message:
     knock:
       name: "flectonepulse.module.message.contact.knock"
       type: TRUE
-      types:
+      variants:
         GLASS:
           name: "flectonepulse.module.message.contact.knock.glass.sound"
           type: TRUE

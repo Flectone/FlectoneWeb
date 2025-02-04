@@ -79,6 +79,8 @@ Flectone Web is a modern, fast, and responsive web solution built for **Flectone
 2. Install dependencies:
 ```bash
    bun install
+   cd pulse && npm install
+   cd en/pulse && npm install
 ```
 ### Development
 

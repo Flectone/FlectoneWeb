@@ -1,4 +1,4 @@
-import { h, onMounted } from 'vue';
+import { h } from 'vue';
 import type { Theme } from 'vitepress';
 import DefaultTheme from 'vitepress/theme';
 import './style.css';
@@ -16,7 +16,7 @@ const HIGHLIGHT_CLASS = 'hash-highlight';
 let isHandlerAttached = false;
 
 const postRenderTasks = () => {
-    if (import.meta.env.SSR) return; // Guard for SSR
+    if (import.meta.env.SSR) return;
 
     injectEmojis();
     highlightHashElement();

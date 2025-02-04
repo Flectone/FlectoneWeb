@@ -127,11 +127,21 @@ contact:
     enable: false
     cooldown:
       enable: false
-    types:
-      GLASS:
-        enable: false
-      DOOR:
-        enable: false
+    variants:
+      - type: "DOOR"
+        sound:
+          enable: true
+          volume: 1.0
+          pitch: 1.0
+          category: "BLOCK"
+          name: "minecraft:block.wood.place"
+      - type: "GLASS"
+        sound:
+          enable: true
+          volume: 1.0
+          pitch: 1.0
+          category: "BLOCK"
+          name: "minecraft:block.glass.place"
 #endregion knock
 #region mark
   mark:
