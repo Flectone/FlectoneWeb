@@ -6,8 +6,6 @@
   "pulse-button": "Подробнее",
   "mix-description": "Использовался для скачивания ресурсов",
   "chat-description": "Отец FlectonePulse, но проект был закрыт",
-  "about-header": "Flectone это...",
-  "about-description": "Проекты человека TheFaser",
   "fchat-description": "Упрощает и дополняет игру на сервере добавлением удобных фичей, но проект был закрыт",
   "use-pulse": "Используй",
   "why-use": "Почему? ФлектонЧат более не поддерживается",
@@ -17,5 +15,12 @@
   "fmix-description": "Был создан, чтобы облегчить поиск и установку вещей для Minecraft, но проект был закрыт",
   "download-count": "скачиваний в истории",
   "boosty-button": "Доступно на Boosty",
-  "things": "Все эти вещи доступны в"
+  "things": "Все эти вещи доступны в",
+  "team-header": "Команда Flectone",
+  "team-description": "Все эти люди внесли вклад в проект",
+  "first-person": "Инициатор проектов Flectone, по совместительству ютубер и разработчик",
+  "second-person": "Разработчик нового сайта на Astro",
+  "third-person": "Разработчик первых прототипов сайтов Flectone",
+  "fourth-person": "Контрибьютор всех проектов и создатель плагина CookieClicker",
+  "fifth-person": "Создатель плагина FlectoneChat и главный помощник"
 }

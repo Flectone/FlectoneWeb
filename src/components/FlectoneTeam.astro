@@ -1,0 +1,25 @@
+---
+import { useTranslations } from "@/utils/i18n";
+import UserCard from "./shared/UserCard";
+import flectone from "../assets/flectonemix.png";
+
+const currentLocale = Astro.currentLocale || "en";
+const { t } = useTranslations(currentLocale as "en" | "ru");
+const description = [
+  t("first-person").toString(),
+  t("second-person").toString(),
+  t("third-person").toString(),
+  t("fourth-person").toString(),
+  t("fifth-person").toString(),
+];
+---
+
+<div class="max-w-screen-xl mx-auto mt-10">
+  <div class="flex gap-3 mt-6">
+    <UserCard client:load name="TheFaser" about={description[0]} />
+    <UserCard client:load name="awalki" about={description[1]} />
+    <UserCard client:load name="plshchkv" about={description[2]} />
+    <UserCard client:load name="FunnyBars" about={description[3]} />
+    <UserCard client:load name="fxdsu" about={description[4]} />
+  </div>
+</div>

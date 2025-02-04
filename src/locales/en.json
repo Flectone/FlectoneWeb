@@ -6,8 +6,6 @@
   "pulse-button": "About",
   "mix-description": "Previously used to download stuff from videos",
   "chat-description": "Father of FlectonePulse, but it's closed",
-  "about-header": "Flectone is...",
-  "about-description": "The projects by TheFaser",
   "fchat-description": "Simplified and augmented the server game by adding convenient features, but it's closed",
   "use-pulse": "Better use",
   "why-use": "Why? Because FlectoneChat is no longer supported",
@@ -17,5 +15,12 @@
   "fmix-description": "Was created to make it easier to find and install things for minecraft, but the project has been shut down",
   "download-count": "downloads in history",
   "boosty-button": "Available on Boosty",
-  "things": "All these things available in"
+  "things": "All these things available in",
+  "team-header": "Flectone team",
+  "team-description": "All of these people contributed to the project",
+  "first-person": "Initiator of Flectone projects, also a YouTuber and developer",
+  "second-person": "Developer of the new website on Astro",
+  "third-person": "Developer of the first prototypes of Flectone websites",
+  "fourth-person": "Contributor to all projects and creator of the CookieClicker plugin",
+  "fifth-person": "Creator of the FlectoneChat plugin and main helper"
 }

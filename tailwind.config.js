@@ -11,6 +11,7 @@ export default {
       },
       fontFamily: {
         montserrat: "Montserrat",
+        inter: "Inter",
       },
       colors: {
         background: "hsl(var(--background))",
