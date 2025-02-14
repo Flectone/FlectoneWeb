@@ -1,13 +1,13 @@
-# Достижение
+# Advancement
 
-Сообщение от сервера, когда игрок получает достижение
+Server message when a player earns an advancement
 ![task](/task.png)
 
 [//]: # (localization)
-<!--@include: @/parts/words.md#localization--> 
-<!--@include: @/parts/words.md#path--> `localizations → язык.yml → message.advancement`
+<!--@include: @/parts/words.md#localization-->
+<!--@include: @/parts/words.md#path--> `localizations → language.yml → message.advancement`
 
-<!--@include: @/parts/words.md#default--> 
+<!--@include: @/parts/words.md#default-->
 
 ::: code-group
 <<< @/files/localizations/ru_ru.yml#advancement
@@ -16,26 +16,26 @@
 
 ### `task`
 
-Сообщение при получении обычного достижения
+Message when obtaining a regular advancement  
 ![task](/task.png)
 
 ### `goal`
 
-Сообщение при достижении цели
+Message when achieving a goal  
 ![goal](/goal.png)
 
 ### `challenge`
 
-Сообщение при завершении испытания
+Message when completing a challenge  
 ![challenge](/challenge.png)
 
 ### `revoke`
 
-Сообщение при использовании `/advancement revoke`
+Message when using `/advancement revoke`
 
 ### `grant`
 
-Сообщение при использовании `/advancement grant`
+Message when using `/advancement grant`
 
 [//]: # (message.yml)
 <!--@include: @/parts/words.md#setting-->
@@ -48,11 +48,11 @@
 
 ### `revoke`
 
-Включает изменение сообщения у комманды `/advancement revoke`
+Enables customizing the message for the `/advancement revoke` command
 
 ### `grant`
 
-Включает изменение сообщения у комманды `/advancement grant`
+Enables customizing the message for the `/advancement grant` command
 
 <!--@include: @/parts/range.md-->
 <!--@include: @/parts/destination.md-->
