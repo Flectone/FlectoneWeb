@@ -497,30 +497,6 @@ integration:
     message_channel:
       CHAT_GLOBAL:
         content: "<final_message>"
-        webhook:
-          enable: false
-          avatar: "https://mc-heads.net/avatar/<skin>/32.png"
-          content: ""
-        embed:
-          enable: false
-          color: ""
-          title: ""
-          url: ""
-          author:
-            name: ""
-            url: ""
-            icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
-          description: ""
-          thumbnail: ""
-          fields:
-          - name: ""
-            value: ""
-            inline: false
-          image: ""
-          timestamp: true
-          footer:
-            text: ""
-            icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
 #endregion discord
 #region telegram
   telegram:
@@ -537,30 +513,6 @@ integration:
 #region message
 message:
 #endregion message
-#region advancement
-  advancement:
-    format_task: "<fcolor:1>🌠 <display_name> получил достижение «<advancement>»"
-    format_goal: "<fcolor:1>🌠 <display_name> достиг цели «<advancement>»"
-    format_challenge: "<fcolor:1>🌠 <display_name> завершил испытание «<advancement>»"
-    format_taken: "<fcolor:1>🌠 <display_name> потерял достижение «<advancement>»"
-    tag:
-      task: "<color:#4eff52>[<hover:show_text:\"<color:#4eff52><advancement>\"><advancement></hover>]"
-      challenge: "<color:#834eff>[<hover:show_text:\"<color:#834eff><advancement>\"><advancement></hover>]"
-    revoke:
-      many_to_one: "<fcolor:1>🌠 Отозвано <fcolor:2><advancements> <fcolor:1>достижений у игрока <target>"
-      one_to_many: "<fcolor:1>🌠 Достижение «<advancement>» отозвано у <fcolor:2><players> <fcolor:1>игрокам"
-      many_to_many: "<fcolor:1>🌠 Отозвано <fcolor:2><advancements> <fcolor:1>достижений у <fcolor:2><players> <fcolor:1>игроков"
-      one_to_one: "<fcolor:1>🌠 Отозвано достижение «<advancement>» у игрока <target>"
-      criterion_to_many: "<fcolor:1>🌠 Отозвано условие «<fcolor:2><criterion><fcolor:1>» достижения <advancement> у <fcolor:2><players> <fcolor:1>игроков"
-      criterion_to_one: "<fcolor:1>🌠 Отозвано условие «<fcolor:2><criterion><fcolor:1>» достижения <advancement> у игрока <target>"
-    grant:
-      many_to_one: "<fcolor:1>🌠 Выдано <fcolor:2><advancements> <fcolor:1>достижений игроку <target>"
-      one_to_many: "<fcolor:1>🌠 Достижение «<advancement>» выдано <fcolor:2><players> <fcolor:1>игрокам"
-      many_to_many: "<fcolor:1>🌠 Выдано <fcolor:2><advancements> <fcolor:1>достижений <fcolor:2><players> <fcolor:1>игрокам"
-      one_to_one: "<fcolor:1>🌠 Достижение «<advancement>» выдано игроку <target>"
-      criterion_to_many: "<fcolor:1>🌠 Условие «<fcolor:2><criterion><fcolor:1>» достижения <advancement> зачтено <fcolor:2><players> <fcolor:1>игрокам"
-      criterion_to_one: "<fcolor:1>🌠 Условие «<fcolor:2><criterion><fcolor:1>» достижения <advancement> зачтено игроку <target>"
-#endregion advancement
 #region afk
   afk:
     suffix: " <color:#FFFF00>⌚</color>"
@@ -571,18 +523,6 @@ message:
       global: "<gradient:#ffd500:#FFFF00>⌚ <player> вернулся"
       local: "<gradient:#ffd500:#FFFF00>⌚ Ты вернулся в игру"
 #endregion afk
-#region attribute
-  attribute:
-    base_value:
-      get: "<fcolor:1>❤ Базовое значение атрибута «<fcolor:2><lang:'<attribute>'><fcolor:1>» у сущности <target> равно <fcolor:2><value>"
-      reset: "<fcolor:1>❤ Базовое значение атрибута «<fcolor:2><lang:'<attribute>'><fcolor:1>» у сущности <target> возвращено к <fcolor:2><value>"
-      set: "<fcolor:1>❤ Базовое значение атрибута «<fcolor:2><lang:'<attribute>'><fcolor:1>» у сущности <target> изменено на <fcolor:2><value>"
-    modifier:
-      add: "<fcolor:1>❤ Добавлен модификатор <fcolor:2><modifier> <fcolor:1>к атрибуту «<fcolor:2><lang:'<attribute>'><fcolor:1>» у сущности <target>"
-      remove: "<fcolor:1>❤ Удалён модификатор <fcolor:2><modifier> <fcolor:1>с атрибута «<fcolor:2><lang:'<attribute>'><fcolor:1>» у сущности <target>"
-      value_get: "<fcolor:1>❤ Значение модификатора <fcolor:2><modifier> <fcolor:1>атрибута «<fcolor:2><lang:'<attribute>'><fcolor:1>» у сущности <target> равно <fcolor:2><value>"
-    value_get: "<fcolor:1>❤ Значение атрибута «<fcolor:2><lang:'<attribute>'><fcolor:1>» у сущности <target> равно <fcolor:2><value>"
-#endregion attribute
 #region auto
   auto:
     types:
@@ -592,14 +532,6 @@ message:
       - "<br><fcolor:1>⚡ Поддержи <fcolor:2>FlectonePulse <fcolor:1>на Boosty <br><fcolor:1>⚡ <u><click:open_url:\"https://boosty.to/thefaser/\"><hover:show_text:\"<fcolor:2>https://boosty.to/thefaser/\">https://boosty.to/thefaser/</hover></click></u><br>"
       - "<br><fcolor:1>   ✉ Заходи в телеграм ✉ <br><fcolor:2>    <u><click:open_url:\"https://t.me/flectone\"><hover:show_text:\"<fcolor:2>https://t.me/flectone\">https://t.me/flectone</hover></click></u><br>"
 #endregion auto
-#region bed
-  bed:
-    no_sleep: "<fcolor:1>🛌 Вы можете спать только ночью или во время грозы"
-    not_safe: "<fcolor:1>🛌 Вы не можете уснуть, пока рядом есть монстры"
-    obstructed: "<fcolor:1>🛌 Эта кровать заблокирована"
-    occupied: "<fcolor:1>🛌 Эта кровать занята"
-    too_far_away: "<fcolor:1>🛌 Вы не можете уснуть, кровать слишком далеко"
-#endregion bed
 #region brand
   brand:
     values:
@@ -618,204 +550,6 @@ message:
       global: "<delete><display_name> <world_prefix>»<fcolor:4> <message><reset><translate>"
       local: "<delete><display_name><fcolor:3>: <message><reset><translate>"
 #endregion chat
-#region clear
-  clear:
-    single: "<fcolor:1>🌊 Удалено <fcolor:2><items> <fcolor:1>предметов у игрока <target>"
-    multiple: "<fcolor:1>🌊 Удалено <fcolor:2><items> <fcolor:1>предметов у <fcolor:2><players> <fcolor:1>игроков"
-#endregion clear
-#region clone
-  clone:
-    format: "<fcolor:1>⏹ Успешно скопировано <fcolor:2><blocks> <fcolor:1>блоков"
-#endregion clone
-#region commandblock
-  commandblock:
-    not_enabled: "<fcolor:1>🤖 На этом сервере командные блоки отключены"
-    format: "<fcolor:1>🤖 Команда задана: <fcolor:2><command>"
-#endregion commandblock
-#region damage
-  damage:
-    format: "<fcolor:1>🗡 Нанесено <fcolor:2><amount> <fcolor:1>урона <target>"
-#endregion damage
-#region death
-  death:
-    types:
-      death.attack.anvil: "<fcolor:1>☠ <target> раздавлен упавшей наковальней"
-      death.attack.anvil.player: "<fcolor:1>☠ <target> был раздавлен упавшей наковальней, пока боролся с <killer>"
-      death.attack.arrow: "<fcolor:1>☠ <target> застрелен <killer>"
-      death.attack.arrow.item: "<fcolor:1>☠ <target> застрелен <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.badRespawnPoint.message: "<fcolor:1>☠ <target> стал жертвой <fcolor:2>[<click:open_url:\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"><hover:show_text:\"<fcolor:2>MCPE-28723\">жестоких правил игры</hover></click>]"
-      death.attack.cactus: "<fcolor:1>☠ <target> исколот до смерти"
-      death.attack.cactus.player: "<fcolor:1>☠ <target> наткнулся на кактус, спасаясь от <killer>"
-      death.attack.cramming: "<fcolor:1>☠ <target> расплющен в лепёшку"
-      death.attack.cramming.player: "<fcolor:1>☠ <target> расплющен <killer>"
-      death.attack.dragonBreath: "<fcolor:1>☠ <target> испепелён дыханием дракона"
-      death.attack.dragonBreath.player: "<fcolor:1>☠ <target> сварился заживо в драконьем дыхании из-за <killer>"
-      death.attack.drown: "<fcolor:1>☠ <target> утонул"
-      death.attack.drown.player: "<fcolor:1>☠ <target> утонул, спасаясь от <killer>"
-      death.attack.dryout: "<fcolor:1>☠ <target> умер от обезвоживания"
-      death.attack.dryout.player: "<fcolor:1>☠ <target> умер от обезвоживания, спасаясь от <killer>"
-      death.attack.even_more_magic: "<fcolor:1>☠ <target> был убит неизведанной магией"
-      death.attack.explosion: "<fcolor:1>☠ <target> взорвался"
-      death.attack.explosion.player: "<fcolor:1>☠ <target> был взорван <killer>"
-      death.attack.explosion.item: "<fcolor:1>☠ <target> был взорван <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.explosion.player.item: "<fcolor:1>☠ <target> был взорван <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.fall: "<fcolor:1>☠ <target> разбился вдребезги"
-      death.attack.fall.player: "<fcolor:1>☠ <target> разбился вдребезги, спасаясь от <killer>"
-      death.attack.fallingBlock: "<fcolor:1>☠ <target> раздавлен упавшим блоком"
-      death.attack.fallingBlock.player: "<fcolor:1>☠ <target> был раздавлен упавшим блоком, пока боролся с <killer>"
-      death.attack.fallingStalactite: "<fcolor:1>☠ <target> был пронзён обрушившимся сталактитом"
-      death.attack.fallingStalactite.player: "<fcolor:1>☠ <target> был пронзён обрушившимся сталактитом, пока боролся с <killer>"
-      death.attack.fireball: "<fcolor:1>☠ <target> убит файерболом <killer>"
-      death.attack.fireball.item: "<fcolor:1>☠ <target> убит файерболом <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.fireworks: "<fcolor:1>☠ <target> с треском разлетелся"
-      death.attack.fireworks.item: "<fcolor:1>☠ <target> с треском разлетелся из-за фейерверка <killer>, выпущенного из <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.fireworks.player: "<fcolor:1>☠ <target> с треском разлетелся, пока боролся с <killer>"
-      death.attack.flyIntoWall: "<fcolor:1>☠ <target> преобразовал кинетическую энергию во внутреннюю"
-      death.attack.flyIntoWall.player: "<fcolor:1>☠ <target> преобразовал кинетическую энергию во внутреннюю, спасаясь от <killer>"
-      death.attack.freeze: "<fcolor:1>☠ <target> замёрз насмерть"
-      death.attack.freeze.player: "<fcolor:1>☠ <target> замёрз насмерть благодаря <killer>"
-      death.attack.generic: "<fcolor:1>☠ <target> умер"
-      death.attack.generic.player: "<fcolor:1>☠ <target> умер из-за <killer>"
-      death.attack.genericKill: "<fcolor:1>☠ <target> убит"
-      death.attack.genericKill.player: "<fcolor:1>☠ <target> был убит, сражаясь с <killer>"
-      death.attack.hotFloor: "<fcolor:1>☠ <target> обнаружил, что пол — это лава"
-      death.attack.hotFloor.player: "<fcolor:1>☠ <target> зашёл в опасную зону из-за <killer>"
-      death.attack.inFire: "<fcolor:1>☠ <target> умер в огне"
-      death.attack.inFire.player: "<fcolor:1>☠ <target> сгорел в огне, пока боролся с <killer>"
-      death.attack.inWall: "<fcolor:1>☠ <target> погребён заживо"
-      death.attack.inWall.player: "<fcolor:1>☠ <target> был погребён заживо, пока боролся с <killer>"
-      death.attack.indirectMagic: "<fcolor:1>☠ <target> был убит <killer> с помощью магии"
-      death.attack.indirectMagic.item: "<fcolor:1>☠ <target> был убит <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.lava: "<fcolor:1>☠ <target> решил поплавать в лаве"
-      death.attack.lava.player: "<fcolor:1>☠ <target> упал в лаву, убегая от <killer>"
-      death.attack.lightningBolt: "<fcolor:1>☠ <target> был поражён молнией"
-      death.attack.lightningBolt.player: "<fcolor:1>☠ <target> был поражён молнией, пока боролся с <killer>"
-      death.attack.mace_smash: "<fcolor:1>☠ <target> был сокрушён <killer>"
-      death.attack.mace_smash.item: "<fcolor:1>☠ <target> был сокрушён <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.magic: "<fcolor:1>☠ <target> был убит магией"
-      death.attack.magic.player: "<fcolor:1>☠ <target> был убит магией, убегая от <killer>"
-      death.attack.mob: "<fcolor:1>☠ <target> был убит <killer>"
-      death.attack.mob.item: "<fcolor:1>☠ <target> был убит <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.onFire: "<fcolor:1>☠ <target> сгорел заживо"
-      death.attack.onFire.item: "<fcolor:1>☠ <target> был сожжён дотла, пока боролся с <killer>, держащим <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.onFire.player: "<fcolor:1>☠ <target> был сожжён дотла, пока боролся с <killer>"
-      death.attack.outOfWorld: "<fcolor:1>☠ <target> выпал из мира"
-      death.attack.outOfWorld.player: "<fcolor:1>☠ <target> не захотел жить в том же мире, что и <killer>"
-      death.attack.outsideBorder: "<fcolor:1>☠ <target> покинул пределы этого мира"
-      death.attack.outsideBorder.player: "<fcolor:1>☠ <target> покинул пределы этого мира, пока боролся с <killer>"
-      death.attack.player: "<fcolor:1>☠ <target> был убит <killer>"
-      death.attack.player.item: "<fcolor:1>☠ <target> был убит <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.sonic_boom: "<fcolor:1>☠ <target> был уничтожен звуковым зарядом"
-      death.attack.sonic_boom.item: "<fcolor:1>☠ <target> был уничтожен звуковым зарядом, спасаясь от <killer>, держащего <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.sonic_boom.player: "<fcolor:1>☠ <target> был уничтожен звуковым зарядом, спасаясь от <killer>"
-      death.attack.stalagmite: "<fcolor:1>☠ <target> пронзён сталагмитом"
-      death.attack.stalagmite.player: "<fcolor:1>☠ <target> был пронзён сталагмитом, пока боролся с <killer>"
-      death.attack.starve: "<fcolor:1>☠ <target> умер от голода"
-      death.attack.starve.player: "<fcolor:1>☠ <target> умер от голода, пока боролся с <killer>"
-      death.attack.sting: "<fcolor:1>☠ <target> изжален до смерти"
-      death.attack.sting.item: "<fcolor:1>☠ <target> был изжален до смерти <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.sting.player: "<fcolor:1>☠ <target> изжален до смерти <killer>"
-      death.attack.sweetBerryBush: "<fcolor:1>☠ <target> искололся до смерти в кустах сладких ягод"
-      death.attack.sweetBerryBush.player: "<fcolor:1>☠ <target> искололся до смерти в кустах сладких ягод, спасаясь от <killer>"
-      death.attack.thorns: "<fcolor:1>☠ <target> был убит, пытаясь навредить <killer>"
-      death.attack.thorns.item: "<fcolor:1>☠ <target> был убит <fcolor:2>[<killer_item>]<fcolor:1>, пытаясь навредить <killer>"
-      death.attack.thrown: "<fcolor:1>☠ <target> был избит <killer>"
-      death.attack.thrown.item: "<fcolor:1>☠ <target> был избит <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.trident: "<fcolor:1>☠ <target> был пронзён <killer>"
-      death.attack.trident.item: "<fcolor:1>☠ <target> пронзён <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.wither: "<fcolor:1>☠ <target> иссушён"
-      death.attack.wither.player: "<fcolor:1>☠ <target> был иссушён, пока боролся с <killer>"
-      death.attack.witherSkull: "<fcolor:1>☠ <target> был поражён черепом из <killer>"
-      death.attack.witherSkull.item: "<fcolor:1>☠ <target> был поражён черепом из <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.fell.accident.generic: "<fcolor:1>☠ <target> разбился насмерть"
-      death.fell.accident.ladder: "<fcolor:1>☠ <target> свалился с лестницы"
-      death.fell.accident.other_climbable: "<fcolor:1>☠ <target> сорвался"
-      death.fell.accident.scaffolding: "<fcolor:1>☠ <target> сорвался с подмосток"
-      death.fell.accident.twisting_vines: "<fcolor:1>☠ <target> сорвался с вьющейся лозы"
-      death.fell.accident.vines: "<fcolor:1>☠ <target> сорвался с лианы"
-      death.fell.accident.weeping_vines: "<fcolor:1>☠ <target> сорвался с плакучей лозы"
-      death.fell.assist: "<fcolor:1>☠ <target> свалился благодаря <killer>"
-      death.fell.assist.item: "<fcolor:1>☠ <target> был обречён на падение <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.fell.finish: "<fcolor:1>☠ <target> упал с высоты и был добит <killer>"
-      death.fell.finish.item: "<fcolor:1>☠ <target> упал с высоты и был добит <killer> с помощью <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.fell.killer: "<fcolor:1>☠ <target> был обречён на падение"
-#endregion death
-#region debugstick
-  debugstick:
-    empty: "<fcolor:1>🔧 Свойства объекта <fcolor:2><property> <fcolor:1>не заданы"
-    select: "<fcolor:1>🔧 выбрано «<fcolor:2><property><fcolor:1>» (<fcolor:2><value><fcolor:1>)"
-    update: "<fcolor:1>🔧 «<fcolor:2><property><fcolor:1>»: <fcolor:2><value>"
-#endregion debugstick
-#region deop
-  deop:
-    format: "<fcolor:1>🤖 <target> больше не является оператором сервера"
-#endregion deop
-#region dialog
-  dialog:
-    clear:
-      single: "<fcolor:1>🗔 Убран диалог у игрока «<target>»"
-      multiple: "<fcolor:1>🗔 Убран диалог у <fcolor:2><players> <fcolor:1>игроков"
-    show:
-      single: "<fcolor:1>🗔 Отображён диалог игроку «<target>»"
-      multiple: "<fcolor:1>🗔 Отображён диалог <fcolor:2><players> <fcolor:1>игрокам"
-#endregion dialog
-#region difficulty
-  difficulty:
-    query: "<fcolor:1>⚔ Сложность игры: <fcolor:2><lang:'<difficulty>'>"
-    success: "<fcolor:1>⚔ Установлена сложность игры: <fcolor:2><lang:'<difficulty>'>"
-#endregion difficulty
-#region effect
-  effect:
-    clear:
-      everything:
-        single: "<fcolor:1>⚗ Убраны все эффекты с <target>"
-        multiple: "<fcolor:1>⚗ Убраны все эффекты с <fcolor:2><players> <fcolor:1>целей"
-      specific:
-        single: "<fcolor:1>⚗ Убран эффект «<fcolor:2><lang:'<effect>'><fcolor:1>» с <target>"
-        multiple: "<fcolor:1>⚗ Убран эффект «<fcolor:2><lang:'<effect>'><fcolor:1>» с <fcolor:2><players> <fcolor:1>целей"
-    give:
-      single: "<fcolor:1>⚗ Применён эффект «<fcolor:2><lang:'<effect>'><fcolor:1>» к <target>"
-      multiple: "<fcolor:1>⚗ Применён эффект <fcolor:2><lang:'<effect>'><fcolor:1>» к <fcolor:2><players> <fcolor:1>целям"
-#endregion effect
-#region enchant
-  enchant:
-    single: "<fcolor:1>📖 Наложены чары «<fcolor:2><enchantment><fcolor:1>» на предмет <target>"
-    multiple: "<fcolor:1>📖 Наложены чары «<fcolor:2><enchantment><fcolor:1>» на предмет <fcolor:2><players><fcolor:1> сущностей"
-#endregion enchant
-#region execute
-  execute:
-    pass: "<fcolor:1>⚡ Условие выполнено"
-    pass_count: "<fcolor:1>⚡ Условие выполнено; счётчик: <fcolor:2><count>"
-#endregion execute
-#region experience
-  experience:
-    add:
-      levels:
-        single: "<fcolor:1>⏺ Выдано <fcolor:2><amount> <fcolor:1>уровней игроку <target>"
-        multiple: "<fcolor:1>⏺ Выдано <fcolor:2><amount> <fcolor:1>уровней <fcolor:2><players> <fcolor:1>игрокам"
-      points:
-        single: "<fcolor:1>⏺ Выдано <fcolor:2><amount> <fcolor:1>единиц опыта игроку <target>"
-        multiple: "<fcolor:1>⏺ Выдано <fcolor:2><amount> <fcolor:1>единиц опыта <fcolor:2><players> <fcolor:1>игрокам"
-    query:
-      levels: "<fcolor:1>⏺ <target> имеет <fcolor:2><amount> <fcolor:1>уровней"
-      points: "<fcolor:1>⏺ <target> имеет <fcolor:2><amount> <fcolor:1>ед. опыта"
-    set:
-      levels:
-        single: "<fcolor:1>⏺ Установлено <fcolor:2><amount> <fcolor:1>уровней игроку <target>"
-        multiple: "<fcolor:1>⏺ Установлено <fcolor:2><amount> <fcolor:1>уровней <fcolor:2><players> <fcolor:1>игрокам"
-      points:
-        single: "<fcolor:1>⏺ Установлено <fcolor:2><amount> <fcolor:1>единиц опыта игроку <target>"
-        multiple: "<fcolor:1>⏺ Установлено <fcolor:2><amount> <fcolor:1>единиц опыта <fcolor:2><players> <fcolor:1>игрокам"
-#endregion experience
-#region fill
-  fill:
-    format: "<fcolor:1>⏹ Успешно заполнено <fcolor:2><blocks> <fcolor:1>блоков"
-#endregion fill
-#region fillbiome
-  fillbiome:
-    format: "<fcolor:1>⏹ Заменены биомы между точками <fcolor:2><x1><fcolor:1>, <fcolor:2><y1><fcolor:1>, <fcolor:2><z1> <fcolor:1>и <fcolor:2><x2><fcolor:1>, <fcolor:2><y2><fcolor:1>, <fcolor:2><z2>"
-    format_count: "<fcolor:1>⏹ Биом был заменён у <fcolor:2><blocks> <fcolor:1>блоков между точками <fcolor:2><x1><fcolor:1>, <fcolor:2><y1><fcolor:1>, <fcolor:2><z1> <fcolor:1>и <fcolor:2><x2><fcolor:1>, <fcolor:2><y2><fcolor:1>, <fcolor:2><z2>"
-#endregion fillbiome
 #region format
   format:
 #endregion format
@@ -877,14 +611,14 @@ message:
       swear:
         symbol: "❤"
 #endregion swear
-#region name_
-    name_:
+#region names
+    names:
       constant: ""
-      display: "<click:suggest_command:\"/msg <player> \"><hover:show_text:\"<fcolor:2>Написать <player>\"><vault_prefix><stream_prefix><fcolor:2><player><afk_suffix><vault_suffix></hover></click>"
-      entity: "<fcolor:2><hover:show_text:\"<fcolor:2><name> <br><fcolor:1>Тип <fcolor:2><lang:'<type>'> <br><fcolor:1>Айди <fcolor:2><uuid>\"><name></hover>"
+      display: "<click:suggest_command:\"/msg <player> \"><hover:show_text:\"<fcolor:2>Написать <player_head><player>\"><player_head><vault_prefix><stream_prefix><fcolor:2><player><afk_suffix><vault_suffix></hover></click>"
+      entity: "<fcolor:2><hover:show_text:\"<fcolor:2><name> <br><fcolor:1>Тип <fcolor:2><lang:'<type>'> <br><fcolor:1>Айди <fcolor:2><uuid>\"><sprite:gui:icon/accessibility><name></hover>"
       unknown: "<fcolor:2><name>"
       invisible: "<fcolor:2>👻 Невидимка"
-#endregion name_
+#endregion names
 #region questionanswer
     question_answer:
       questions:
@@ -895,22 +629,6 @@ message:
     translate:
       action: " <click:run_command:\"/translateto <language> <language> <message>\"><hover:show_text:\"<fcolor:2>Перевести сообщение\"><fcolor:1>⇄"
 #endregion translate
-#region gamemode
-  gamemode:
-    set_default: "<fcolor:1>🗘 Новый режим игры по умолчанию: <fcolor:2><lang:'<gamemode>'>"
-    self: "<fcolor:1>🗘 Твой режим игры изменён на <fcolor:2><lang:'<gamemode>'>"
-    other: "<fcolor:1>🗘 Режим игры игрока <target> изменён на <fcolor:2><lang:'<gamemode>'>"
-#endregion gamemode
-#region gamerule
-  gamerule:
-    query: "<fcolor:1>🗐 Значение игрового правила <fcolor:2><gamerule><fcolor:1>: <fcolor:2><value>"
-    set: "<fcolor:1>🗐 Установлено значение игрового правила <fcolor:2><gamerule><fcolor:1>: <fcolor:2><value>"
-#endregion gamerule
-#region give
-  give:
-    single: "<fcolor:1>⛏ Выдано <fcolor:2><items> <fcolor:1>[<fcolor:2><hover:show_text:\"<fcolor:2><give_item>\"><give_item></hover><fcolor:1>] игроку <target>"
-    multiple: "<fcolor:1>⛏ Выдано <fcolor:2><items> <fcolor:1>[<fcolor:2><hover:show_text:\"<fcolor:2><give_item>\"><give_item></hover><fcolor:1>] <fcolor:2><players> <fcolor:1>игрокам"
-#endregion give
 #region greeting
   greeting:
     format: "<br>[#][#][#][#][#][#][#][#]<br>[#][#][#][#][#][#][#][#]<br>[#][#][#][#][#][#][#][#]<br>[#][#][#][#][#][#][#][#]<br>[#][#][#][#][#][#][#][#]  <fcolor:1>Привет,<br>[#][#][#][#][#][#][#][#]  <player><br>[#][#][#][#][#][#][#][#]<br>[#][#][#][#][#][#][#][#]<br>"
@@ -920,17 +638,6 @@ message:
     format: "<color:#4eff52>→ <display_name>"
     format_first_time: "<color:#4eff52>→ <display_name> <fcolor:1>впервые тут!"
 #endregion join
-#region kill
-  kill:
-    single: "<fcolor:1>☠ <fcolor:1><target> был убит"
-    multiple: "<fcolor:1>☠ <fcolor:1>Уничтожено <fcolor:2><entities> <fcolor:1>сущностей"
-#endregion kill
-#region locate
-  locate:
-    biome: "<fcolor:1>🗺 Ближайший биом с типом <fcolor:2><value> <fcolor:1>находится по координатам <fcolor:2><hover:show_text:\"<fcolor:2>Нажми для телепортации\"><click:suggest_command:\"/tp @s <x> <y> <z>\">[<x>, <y>, <z>]</click></hover> <fcolor:1>(в <fcolor:2><blocks> <fcolor:1>блоках отсюда)"
-    poi: "<fcolor:1>🗺 Ближайшая точка интереса с типом <fcolor:2><value> <fcolor:1>находится по координатам <fcolor:2><fcolor:2><hover:show_text:\"<fcolor:2>Нажми для телепортации\"><click:suggest_command:\"/tp @s <x> <y> <z>\">[<x>, <y>, <z>]</click></hover> <fcolor:1>(в <fcolor:2><blocks> <fcolor:1>блоках отсюда)"
-    structure: "<fcolor:1>🗺 Ближайшее строение типа <fcolor:2><value> <fcolor:1>находится по координатам <fcolor:2><fcolor:2><hover:show_text:\"<fcolor:2>Нажми для телепортации\"><click:suggest_command:\"/tp @s <x> <y> <z>\">[<x>, <y>, <z>]</click></hover> <fcolor:1>(в <fcolor:2><blocks> <fcolor:1>блоках отсюда)"
-#endregion locate
 #region objective
   objective:
 #endregion objective
@@ -938,59 +645,14 @@ message:
     belowname:
       format: "<fcolor:1>мс"
 #endregion belowname
-#region op
-  op:
-    format: "<fcolor:1>🤖 <target> назначен оператором сервера"
-#endregion op
-#region particle
-  particle:
-    format: "<fcolor:1>❄ Отображена частица «<fcolor:2><particle><fcolor:1>»"
-#endregion particle
 #region quit
   quit:
     format: "<color:#ff4e4e>← <display_name>"
 #endregion quit
-#region recipe
-  recipe:
-    give:
-      single: "<fcolor:1>💡 Выдано <fcolor:2><recipes> <fcolor:1>рецептов игроку <target>"
-      multiple: "<fcolor:1>💡 Выдан(о) <fcolor:2><recipes> <fcolor:1>рецепт(ов) <fcolor:2><players> <fcolor:1>игрокам"
-    take:
-      single: "<fcolor:1>💡 Изъято <fcolor:2><recipes> <fcolor:1>рецептов у игрока <target>"
-      multiple: "<fcolor:1>💡 Изъято <fcolor:2><recipes> <fcolor:1>рецептов у <fcolor:2><players> <fcolor:1>игроков"
-#endregion recipe
-#region reload
-  reload:
-    format: "<fcolor:1>🛈 Перезагрузка!"
-#endregion reload
-#region ride
-  ride:
-    dismount: "<fcolor:1>🏇 <target> больше не сидит на <second_target>"
-    mount: "<fcolor:1>🏇 <target> теперь сидит на <second_target>"
-#endregion ride
 #region rightclick
   rightclick:
     format: "<fcolor:1>◁ <display_name> ▷"
 #endregion rightclick
-#region rotate
-  rotate:
-    format: "<fcolor:1>🤸 <target> повёрнут"
-#endregion rotate
-#region save
-  save:
-    disabled: "<fcolor:1>🛈 Автосохранение отключено"
-    enabled: "<fcolor:1>🛈 Автосохранение включено"
-    saving: "<fcolor:1>🛈 Сохранение мира (может занять некоторое время!)"
-    success: "<fcolor:1>🛈 Игра сохранена"
-#endregion save
-#region seed
-  seed:
-    format: "<fcolor:1>🔑 Ключ генератора: [<fcolor:2><hover:show_text:'<fcolor:2>Нажми, чтобы скопировать в буфер обмена'><click:copy_to_clipboard:<seed>><seed></click></hover><fcolor:1>]"
-#endregion seed
-#region setblock
-  setblock:
-    format: "<fcolor:1>⏹ Изменён блок в точке <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1>"
-#endregion setblock
 #region sidebar
   sidebar:
     values:
@@ -1003,31 +665,6 @@ message:
       - " "
       - "<fcolor:2>FlectonePulse"
 #endregion sidebar
-#region sleep
-  sleep:
-    not_possible: "<fcolor:1>🛌 Никакой отдых не поможет пропустить эту ночь"
-    players_sleeping: "<fcolor:1>🛌 <fcolor:2><players_sleeping> <fcolor:1>из <fcolor:2><players> <fcolor:1>игроков спят"
-    skipping_night: "<fcolor:1>🛌 Вы проспите всю ночь"
-#endregion sleep
-#region sound
-  sound:
-    play:
-      multiple: "<fcolor:1>🔊 Воспроизведён звук «<fcolor:2><sound><fcolor:1>» <fcolor:2><players> <fcolor:1>игрокам"
-      single: "<fcolor:1>🔊 Воспроизведён звук «<fcolor:2><sound><fcolor:1>» игроку <target>"
-    stop:
-      source_any: "<fcolor:1>🔇 Отключены все звуки от источника «<fcolor:2><source><fcolor:1>»"
-      source_sound: "<fcolor:1>🔇 Отключён звук «<fcolor:2><sound><fcolor:1>» от источника «<fcolor:2><source><fcolor:1>»"
-      sourceless_any: "<fcolor:1>🔇 Отключены все звуки"
-      sourceless_sound: "<fcolor:1>🔇 Отключён звук «<fcolor:2><sound><fcolor:1>»"
-#endregion sound
-#region spawn
-  spawn:
-    not_valid: "<fcolor:1>🛌 У вас нет кровати или заряженного якоря возрождения, либо доступ к ним затруднён"
-    set: "<fcolor:1>🛌 Точка возрождения установлена"
-    set_world: "<fcolor:1>🛌 Установлена точка возрождения мира <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1> [<fcolor:2><angle><fcolor:1>]"
-    single: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1> [<fcolor:2><angle><fcolor:1>] в <fcolor:2><world> <fcolor:1>для <target>"
-    multiple: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1> [<fcolor:2><angle><fcolor:1>] в <fcolor:2><world> <fcolor:1>для <fcolor:2><players><fcolor:1> игроков"
-#endregion spawn
 #region status
   status:
 #endregion status
@@ -1049,14 +686,6 @@ message:
     version:
       name: "Майнкрафт сервер"
 #endregion version
-#region stop
-  stop:
-    format: "<fcolor:1>🛈 Выключение сервера"
-#endregion stop
-#region summon
-  summon:
-    format: "<fcolor:1>🐺 Сущность «<target>» создана"
-#endregion summon
 #region tab
   tab:
 #endregion tab
@@ -1082,45 +711,293 @@ message:
 #endregion footer
 #region playerlistname
     playerlistname:
-      format: "<world_prefix>▋ <reset><vault_prefix><stream_prefix><fcolor:2><player><afk_suffix><vault_suffix>"
+      format: "<!shadow><player_head></!shadow><world_prefix>▋ <reset><vault_prefix><stream_prefix><fcolor:2><player><afk_suffix><vault_suffix>"
 #endregion playerlistname
-#region teleport
-  teleport:
-    entity:
-      single: "<fcolor:1>🌀 <target> телепортирован к <second_target>"
-      multiple: "<fcolor:1>🌀 <fcolor:2><entities> <fcolor:1>сущностей телепортированы к <second_target>"
-    location:
-      single: "<fcolor:1>🌀 <target> телепортирован в точку <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1>"
-      multiple: "<fcolor:1>🌀 <fcolor:2><entities> <fcolor:1>сущностей телепортированы в точку <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1>"
-#endregion teleport
-#region time
-  time:
-    query: "<fcolor:1>☽ Время: <fcolor:2><time>"
-    set: "<fcolor:1>☽ Установлено время: <fcolor:2><time>"
-#endregion time
 #region update
   update:
     format_player: "<fcolor:1><fcolor:2>(FlectonePulse) <fcolor:1>Твоя версия <fcolor:2><current_version> <fcolor:1>устарела! Обновись до <fcolor:2><latest_version> <fcolor:1>с помощью <url:https://modrinth.com/plugin/flectonepulse>, чтобы получить новые возможности!"
     format_console: "<fcolor:1>Твоя версия <fcolor:2><current_version> <fcolor:1>устарела! Обновись до <fcolor:2><latest_version> <fcolor:1>с помощью <click:open_url:https://modrinth.com/plugin/flectonepulse>https://modrinth.com/plugin/flectonepulse"
 #endregion update
-#region weather
-  weather:
-    clear: "<fcolor:1>☀ Установлена <fcolor:2>ясная <fcolor:1>погода"
-    rain: "<fcolor:1>🌧 Установлена <fcolor:2>дождливая <fcolor:1>погода"
-    thunder: "<fcolor:1>⛈ Установлена <fcolor:2>грозовая <fcolor:1>погода"
-#endregion weather
-#region worldborder
-  worldborder:
-    center: "<fcolor:1>🚫 Установлен центр границ мира: <fcolor:2><value><fcolor:1>, <fcolor:2><second_value>"
-    damage:
-      amount: "<fcolor:1>🚫 Установлено значение урона, ежесекундно наносимого за границами мира: <fcolor:2><value> <fcolor:1>за блок"
-      buffer: "<fcolor:1>🚫 Установлен предел нанесения урона за границами мира: <fcolor:2><value> <fcolor:1>блоков"
-    get: "<fcolor:1>🚫 Ширина границы мира: <fcolor:2><value> <fcolor:1>блоков"
-    set:
-      grow: "<fcolor:1>🚫 Через <fcolor:2><second_value> <fcolor:1>секунд ширина границы мира увеличится до <fcolor:2><value> <fcolor:1>блоков"
-      immediate: "<fcolor:1>🚫 Установлена граница мира шириной <fcolor:2><value> <fcolor:1>блоков"
-      shrink: "<fcolor:1>🚫 Через <fcolor:2><second_value> <fcolor:1>секунд ширина границы мира уменьшится до <fcolor:2><value> <fcolor:1>блоков"
-    warning:
-      distance: "<fcolor:1>🚫 Установлено расстояние предупреждения о пересечении границы мира: <fcolor:2><value> <fcolor:1>блоков"
-      time: "<fcolor:1>🚫 Установлено время предупреждения о столкновении с границей мира: <fcolor:2><value> <fcolor:1>секунд"
-#endregion worldborder
+#region vanilla
+  vanilla:
+    types:
+      advMode.notEnabled: "<fcolor:1>🤖 На этом сервере командные блоки отключены"
+      advMode.setCommand.success: "<fcolor:1>🤖 Команда задана: <fcolor:2><arg_0>"
+      block.minecraft.bed.no_sleep: "<fcolor:1>🛌 Вы можете спать только ночью или во время грозы"
+      block.minecraft.bed.not_safe: "<fcolor:1>🛌 Вы не можете уснуть, пока рядом есть монстры"
+      block.minecraft.bed.obstructed: "<fcolor:1>🛌 Эта кровать заблокирована"
+      block.minecraft.bed.occupied: "<fcolor:1>🛌 Эта кровать занята"
+      block.minecraft.bed.too_far_away: "<fcolor:1>🛌 Вы не можете уснуть, кровать слишком далеко"
+      tile.bed.noSleep: "<fcolor:1>🛌 Вы можете спать только ночью или во время грозы"
+      tile.bed.notSafe: "<fcolor:1>🛌 Вы не можете уснуть, пока рядом есть монстры"
+      tile.bed.notValid: "<fcolor:1>🛌 Эта кровать заблокирована"
+      tile.bed.occupied: "<fcolor:1>🛌 Эта кровать занята"
+      block.minecraft.spawn.not_valid: "<fcolor:1>🛌 У вас нет кровати или заряженного якоря возрождения, либо доступ к ним затруднён"
+      block.minecraft.bed.not_valid: "<fcolor:1>🛌 У вас нет кровати, либо доступ к ней затруднён"
+      block.minecraft.set_spawn: "<fcolor:1>🛌 Точка возрождения установлена"
+      chat.type.advancement.challenge: "<fcolor:1>🌠 <arg_0> завершил испытание «<arg_1>»"
+      chat.type.advancement.goal: "<fcolor:1>🌠 <arg_0> достиг цели «<arg_1>»"
+      chat.type.advancement.task: "<fcolor:1>🌠 <arg_0> получил достижение «<arg_1>»"
+      chat.type.achievement: "<fcolor:1>🌠 <arg_0> получил достижение «<arg_1>»"
+      chat.type.achievement.taken: "<fcolor:1>🌠 <arg_0> потерял достижение «<arg_1>»"
+      sleep.not_possible: "<fcolor:1>🛌 Никакой отдых не поможет пропустить эту ночь"
+      sleep.players_sleeping: "<fcolor:1>🛌 <fcolor:2><arg_0> <fcolor:1>из <fcolor:2><arg_1> <fcolor:1>игроков спят"
+      sleep.skipping_night: "<fcolor:1>🛌 Вы проспите всю ночь"
+      item.minecraft.debug_stick.empty: "<fcolor:1>🔧 Свойства объекта <fcolor:2><arg_0> <fcolor:1>не заданы"
+      item.minecraft.debug_stick.select: "<fcolor:1>🔧 выбрано «<fcolor:2><arg_0><fcolor:1>» (<fcolor:2><arg_1><fcolor:1>)"
+      item.minecraft.debug_stick.update: "<fcolor:1>🔧 «<fcolor:2><arg_0><fcolor:1>»: <fcolor:2><arg_1>"
+      commands.advancement.grant.criterion.to.many.success: "<fcolor:1>🌠 Условие «<fcolor:2><arg_0><fcolor:1>» достижения <arg_1> зачтено <fcolor:2><arg_2> <fcolor:1>игрокам"
+      commands.advancement.revoke.criterion.to.many.success: "<fcolor:1>🌠 Отозвано условие «<fcolor:2><arg_0><fcolor:1>» достижения <arg_1> у <fcolor:2><arg_2> <fcolor:1>игроков"
+      commands.advancement.grant.criterion.to.one.success: "<fcolor:1>🌠 Условие «<fcolor:2><arg_0><fcolor:1>» достижения <arg_1> зачтено игроку <arg_2>"
+      commands.advancement.revoke.criterion.to.one.success: "<fcolor:1>🌠 Отозвано условие «<fcolor:2><arg_0><fcolor:1>» достижения <arg_1> у игрока <arg_2>"
+      commands.achievement.give.success.all: "<fcolor:1>🌠 Выданы все достижения игроку <arg_0>"
+      commands.achievement.take.success.all: "<fcolor:1>🌠 Отозваны все достижения у игрока <arg_0>"
+      commands.advancement.grant.many.to.many.success: "<fcolor:1>🌠 Выдано <fcolor:2><arg_0> <fcolor:1>достижений <fcolor:2><arg_1> <fcolor:1>игрокам"
+      commands.advancement.revoke.many.to.many.success: "<fcolor:1>🌠 Отозвано <fcolor:2><arg_0> <fcolor:1>достижений у <fcolor:2><arg_1> <fcolor:1>игроков"
+      commands.advancement.grant.many.to.one.success: "<fcolor:1>🌠 Выдано <fcolor:2><arg_0> <fcolor:1>достижений игроку <arg_1>"
+      commands.advancement.revoke.many.to.one.success: "<fcolor:1>🌠 Отозвано <fcolor:2><arg_0> <fcolor:1>достижений у игрока <arg_1>"
+      commands.advancement.grant.one.to.many.success: "<fcolor:1>🌠 Достижение «<arg_0>» выдано <fcolor:2><arg_1> <fcolor:1>игрокам"
+      commands.advancement.revoke.one.to.many.success: "<fcolor:1>🌠 Достижение «<arg_0>» отозвано у <fcolor:2><arg_1> <fcolor:1>игрокам"
+      commands.advancement.grant.one.to.one.success: "<fcolor:1>🌠 Достижение «<arg_0>» выдано игроку <arg_1>"
+      commands.advancement.revoke.one.to.one.success: "<fcolor:1>🌠 Отозвано достижение «<arg_0>» у игрока <arg_1>"
+      commands.achievement.give.success.one: "<fcolor:1>🌠 Достижение «<arg_0>» выдано игроку <arg_1>"
+      commands.achievement.take.success.one: "<fcolor:1>🌠 Отозвано достижение «<arg_0>» у игрока <arg_1>"
+      commands.attribute.base_value.get.success: "<fcolor:1>❤ Базовое значение атрибута «<fcolor:2><arg_0><fcolor:1>» у сущности <arg_1> равно <fcolor:2><arg_2>"
+      commands.attribute.base_value.reset.success: "<fcolor:1>❤ Базовое значение атрибута «<fcolor:2><arg_0><fcolor:1>» у сущности <arg_1> возвращено к <fcolor:2><arg_2>"
+      commands.attribute.base_value.set.success: "<fcolor:1>❤ Базовое значение атрибута «<fcolor:2><arg_0><fcolor:1>» у сущности <arg_1> изменено на <fcolor:2><arg_2>"
+      commands.attribute.value.get.success: "<fcolor:1>❤ Значение атрибута «<fcolor:2><arg_0><fcolor:1>» у сущности <arg_1> равно <fcolor:2><arg_2>"
+      commands.attribute.modifier.add.success: "<fcolor:1>❤ Добавлен модификатор <fcolor:2><arg_0> <fcolor:1>к атрибуту «<fcolor:2><arg_1><fcolor:1>» у сущности <arg_2>"
+      commands.attribute.modifier.remove.success: "<fcolor:1>❤ Удалён модификатор <fcolor:2><arg_0> <fcolor:1>с атрибута «<fcolor:2><arg_1><fcolor:1>» у сущности <arg_2>"
+      commands.attribute.modifier.value.get.success: "<fcolor:1>❤ Значение модификатора <fcolor:2><arg_0> <fcolor:1>атрибута «<fcolor:2><arg_1><fcolor:1>» у сущности <arg_2> равно <fcolor:2><arg_3>"
+      commands.clear.success.multiple: "<fcolor:1>🌊 Удалено <fcolor:2><arg_0> <fcolor:1>предметов у <fcolor:2><arg_1> <fcolor:1>игроков"
+      commands.clear.success.single: "<fcolor:1>🌊 Удалено <fcolor:2><arg_0> <fcolor:1>предметов у игрока <arg_1>"
+      commands.clear.success: "<fcolor:1>🌊 Удалено <fcolor:2><arg_1> <fcolor:1>предметов у игрока <arg_0>"
+      commands.clone.success: "<fcolor:1>⏹ Успешно скопировано <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.damage.success: "<fcolor:1>🗡 Нанесено <fcolor:2><arg_0> <fcolor:1>урона <arg_1>"
+      commands.deop.success: "<fcolor:1>🤖 <arg_0> больше не является оператором сервера"
+      commands.dialog.clear.multiple: "<fcolor:1>🗔 Убран диалог у <fcolor:2><arg_0> <fcolor:1>игроков"
+      commands.dialog.clear.single: "<fcolor:1>🗔 Убран диалог у игрока «<arg_0>»"
+      commands.dialog.show.multiple: "<fcolor:1>🗔 Отображён диалог <fcolor:2><arg_0> <fcolor:1>игрокам"
+      commands.dialog.show.single: "<fcolor:1>🗔 Отображён диалог игроку «<arg_0>»"
+      commands.difficulty.query: "<fcolor:1>⚔ Сложность игры: <fcolor:2><arg_0>"
+      commands.difficulty.success: "<fcolor:1>⚔ Установлена сложность игры: <fcolor:2><arg_0>"
+      commands.effect.clear.everything.success.multiple: "<fcolor:1>⚗ Убраны все эффекты с <fcolor:2><arg_0> <fcolor:1>целей"
+      commands.effect.clear.everything.success.single: "<fcolor:1>⚗ Убраны все эффекты с <arg_0>"
+      commands.effect.clear.specific.success.multiple: "<fcolor:1>⚗ Убран эффект «<fcolor:2><arg_0><fcolor:1>» с <fcolor:2><arg_1> <fcolor:1>целей"
+      commands.effect.clear.specific.success.single: "<fcolor:1>⚗ Убран эффект «<fcolor:2><arg_0><fcolor:1>» с <arg_1>"
+      commands.effect.give.success.multiple: "<fcolor:1>⚗ Применён эффект <fcolor:2><arg_0><fcolor:1>» к <fcolor:2><arg_1> <fcolor:1>целям"
+      commands.effect.give.success.single: "<fcolor:1>⚗ Применён эффект «<fcolor:2><arg_0><fcolor:1>» к <arg_1>"
+      commands.effect.success: "<fcolor:1>⚗ Применён эффект «<fcolor:2><arg_0><fcolor:1>» к <arg_3>"
+      commands.effect.success.removed: "<fcolor:1>⚗ Убран эффект «<fcolor:2><arg_0><fcolor:1>» с <arg_1>"
+      commands.effect.success.removed.all: "<fcolor:1>⚗ Убраны все эффекты с <arg_0>"
+      commands.enchant.success.multiple: "<fcolor:1>📖 Наложены чары «<fcolor:2><arg_0><fcolor:1>» на предмет <fcolor:2><arg_1><fcolor:1> сущностей"
+      commands.enchant.success.single: "<fcolor:1>📖 Наложены чары «<fcolor:2><arg_0><fcolor:1>» на предмет <arg_1>"
+      commands.enchant.success: "<fcolor:1>📖 Наложены чары на предмет"
+      commands.execute.conditional.pass: "<fcolor:1>⚡ Условие выполнено"
+      commands.execute.conditional.pass_count: "<fcolor:1>⚡ Условие выполнено; счётчик: <fcolor:2><arg_0>"
+      commands.experience.query.levels: "<fcolor:1>⏺ <arg_0> имеет <fcolor:2><arg_1> <fcolor:1>уровней"
+      commands.experience.query.points: "<fcolor:1>⏺ <arg_0> имеет <fcolor:2><arg_1> <fcolor:1>ед. опыта"
+      commands.experience.add.levels.success.multiple: "<fcolor:1>⏺ Выдано <fcolor:2><arg_0> <fcolor:1>уровней <fcolor:2><arg_1> <fcolor:1>игрокам"
+      commands.experience.add.points.success.multiple: "<fcolor:1>⏺ Выдано <fcolor:2><arg_0> <fcolor:1>единиц опыта <fcolor:2><arg_1> <fcolor:1>игрокам"
+      commands.experience.set.levels.success.multiple: "<fcolor:1>⏺ Установлено <fcolor:2><arg_0> <fcolor:1>уровней <fcolor:2><arg_1> <fcolor:1>игрокам"
+      commands.experience.set.points.success.multiple: "<fcolor:1>⏺ Установлено <fcolor:2><arg_0> <fcolor:1>единиц опыта <fcolor:2><arg_1> <fcolor:1>игрокам"
+      commands.experience.add.levels.success.single: "<fcolor:1>⏺ Выдано <fcolor:2><arg_0> <fcolor:1>уровней игроку <arg_1>"
+      commands.experience.add.points.success.single: "<fcolor:1>⏺ Выдано <fcolor:2><arg_0> <fcolor:1>единиц опыта игроку <arg_1>"
+      commands.experience.set.levels.success.single: "<fcolor:1>⏺ Установлено <fcolor:2><arg_0> <fcolor:1>уровней игроку <arg_1>"
+      commands.experience.set.points.success.single: "<fcolor:1>⏺ Установлено <fcolor:2><arg_0> <fcolor:1>единиц опыта игроку <arg_1>"
+      commands.xp.success: "<fcolor:1>⏺ Выдано <fcolor:2><arg_0> <fcolor:1>единиц опыта игроку <arg_1>"
+      commands.xp.success.levels: "<fcolor:1>⏺ Выдано <fcolor:2><arg_0> <fcolor:1>уровней игроку <arg_1>"
+      commands.xp.success.negative.levels: "<fcolor:1>⏺ <arg_0> потерял <fcolor:2><arg_1> <fcolor:1>уровней"
+      commands.fill.success: "<fcolor:1>⏹ Успешно заполнено <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.fillbiome.success: "<fcolor:1>⏹ Заменены биомы между точками <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2> <fcolor:1>и <fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>, <fcolor:2><arg_5>"
+      commands.fillbiome.success.count: "<fcolor:1>⏹ Биом был заменён у <fcolor:2><arg_0> <fcolor:1>блоков между точками <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>, <fcolor:2><arg_3> <fcolor:1>и <fcolor:2><arg_4><fcolor:1>, <fcolor:2><arg_5><fcolor:1>, <fcolor:2><arg_6>"
+      gameMode.changed: "<fcolor:1>🗘 Ваш игровой режим изменён на <fcolor:2><arg_0>"
+      commands.gamemode.success.other: "<fcolor:1>🗘 Режим игры игрока <arg_0> изменён на <fcolor:2><arg_1>"
+      commands.gamemode.success.self: "<fcolor:1>🗘 Твой режим игры изменён на <fcolor:2><arg_0>"
+      commands.defaultgamemode.success: "<fcolor:1>🗘 Новый режим игры по умолчанию: <fcolor:2><arg_0>"
+      commands.gamerule.query: "<fcolor:1>🗐 Значение игрового правила <fcolor:2><arg_0><fcolor:1>: <fcolor:2><arg_1>"
+      commands.gamerule.set: "<fcolor:1>🗐 Установлено значение игрового правила <fcolor:2><arg_0><fcolor:1>: <fcolor:2><arg_1>"
+      commands.gamerule.success: "<fcolor:1>🗐 Игровое правило изменено"
+      commands.give.successcommands.give.success.multiple: "<fcolor:1>⛏ Выдано <fcolor:2><arg_0> <fcolor:2><arg_1><fcolor:1> <fcolor:2><arg_2> <fcolor:1>игрокам"
+      commands.give.success.single: "<fcolor:1>⛏ Выдано <fcolor:2><arg_0> <fcolor:2><arg_1><fcolor:1> игроку <arg_2>"
+      commands.give.success: "<fcolor:1>⛏ Выдано <fcolor:2><arg_1><fcolor:1> * <fcolor:2><arg_0><fcolor:1> игроку <arg_2>"
+      commands.kill.success.multiple: "<fcolor:1>☠ Уничтожено <fcolor:2><arg_0> <fcolor:1>сущностей"
+      commands.kill.success.single: "<fcolor:1>☠ <arg_0> был убит"
+      commands.kill.successful: "<fcolor:1>☠ <fcolor:1><arg_0> был убит"
+      commands.locate.biome.success: "<fcolor:1>🗺 Ближайший биом с типом <fcolor:2><arg_0><fcolor:1> находится по координатам <fcolor:2><arg_1><fcolor:1> (в <fcolor:2><arg_2> <fcolor:1>блоках отсюда)"
+      commands.locate.poi.success: "<fcolor:1>🗺 Ближайшая точка интереса с типом <fcolor:2><arg_0><fcolor:1> находится по координатам <fcolor:2><arg_1><fcolor:1> (в <fcolor:2><arg_2> <fcolor:1>блоках отсюда)"
+      commands.locate.structure.success: "<fcolor:1>🗺 Ближайшее строение типа <fcolor:2><arg_0><fcolor:1> находится по координатам <fcolor:2><arg_1><fcolor:1> (в <fcolor:2><arg_2> <fcolor:1>блоках отсюда)"
+      commands.locate.success: "<fcolor:1>🗺 Ближайшее строение типа <fcolor:2><arg_0><fcolor:1> находится по координатам <fcolor:2><arg_1><fcolor:1> (в <fcolor:2><arg_2> <fcolor:1>блоках отсюда)"
+      commands.locatebiome.success: "<fcolor:1>🗺 Ближайший биом с типом <fcolor:2><arg_0><fcolor:1> находится по координатам <fcolor:2><arg_1><fcolor:1> (в <fcolor:2><arg_2> <fcolor:1>блоках отсюда)"
+      commands.op.success: "<fcolor:1>🤖 <arg_0> назначен оператором сервера"
+      commands.particle.success: "<fcolor:1>❄ Отображена частица «<fcolor:2><arg_0><fcolor:1>»"
+      commands.recipe.give.success.multiple: "<fcolor:1>💡 Выдан(о) <fcolor:2><arg_0> <fcolor:1>рецепт(ов) <fcolor:2><arg_1> <fcolor:1>игрокам"
+      commands.recipe.give.success.single: "<fcolor:1>💡 Выдано <fcolor:2><arg_0> <fcolor:1>рецептов игроку <arg_1>"
+      commands.recipe.take.success.multiple: "<fcolor:1>💡 Изъято <fcolor:2><arg_0> <fcolor:1>рецептов у <fcolor:2><arg_1> <fcolor:1>игроков"
+      commands.recipe.take.success.single: "<fcolor:1>💡 Изъято <fcolor:2><arg_0> <fcolor:1>рецептов у игрока <arg_1>"
+      commands.reload.success: "<fcolor:1>🛈 Перезагрузка!"
+      commands.ride.dismount.success: "<fcolor:1>🏇 <arg_0> больше не сидит на <arg_1>"
+      commands.ride.mount.success: "<fcolor:1>🏇 <arg_0> теперь сидит на <arg_1>"
+      commands.rotate.success: "<fcolor:1>🤸 <arg_0> повёрнут"
+      commands.save.disabled: "<fcolor:1>🛈 Автосохранение отключено"
+      commands.save.enabled: "<fcolor:1>🛈 Автосохранение включено"
+      commands.save.start: "<fcolor:1>🛈 Сохранение мира (может занять некоторое время!)"
+      commands.save.saving: "<fcolor:1>🛈 Сохранение мира (может занять некоторое время!)"
+      commands.save.success: "<fcolor:1>🛈 Игра сохранена"
+      commands.seed.success: "<fcolor:1>🔑 Ключ генератора: <arg_0>"
+      commands.setblock.success.1_19_4: "<fcolor:1>⏹ Изменён блок"
+      commands.setblock.success: "<fcolor:1>⏹ Изменён блок в точке <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>"
+      commands.playsound.success.multiple: "<fcolor:1>🔊 Воспроизведён звук «<fcolor:2><arg_0><fcolor:1>» <fcolor:2><arg_1> <fcolor:1>игрокам"
+      commands.playsound.success.single: "<fcolor:1>🔊 Воспроизведён звук «<fcolor:2><arg_0><fcolor:1>» игроку <arg_1>"
+      commands.stopsound.success.all: "<fcolor:1>🔇 Отключены все звуки от источника «<fcolor:2><arg_0><fcolor:1>»"
+      commands.stopsound.success.soundSource: "<fcolor:1>🔇 Отключены все звуки"
+      commands.stopsound.success.individualSound: "<fcolor:1>🔇 Отключён звук «<fcolor:2><arg_0><fcolor:1>» от источника «<fcolor:2><arg_1><fcolor:1>»"
+      commands.playsound.success: "<fcolor:1>🔊 Воспроизведён звук «<fcolor:2><arg_0><fcolor:1>» игроку <arg_1>"
+      commands.stopsound.success.source.any: "<fcolor:1>🔇 Отключены все звуки от источника «<fcolor:2><arg_0><fcolor:1>»"
+      commands.stopsound.success.source.sound: "<fcolor:1>🔇 Отключён звук «<fcolor:2><arg_0><fcolor:1>» от источника «<fcolor:2><arg_1><fcolor:1>»"
+      commands.stopsound.success.sourceless.any: "<fcolor:1>🔇 Отключены все звуки"
+      commands.stopsound.success.sourceless.sound: "<fcolor:1>🔇 Отключён звук «<fcolor:2><arg_0><fcolor:1>»"
+      commands.spawnpoint.success: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> <fcolor:1>для <arg_3>"
+      commands.setworldspawn.success.1_16: "<fcolor:1>🛌 Установлена точка возрождения мира <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>"
+      commands.setworldspawn.success.1_21_8: "<fcolor:1>🛌 Установлена точка возрождения мира <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>]"
+      commands.setworldspawn.success: "<fcolor:1>🛌 Установлена точка возрождения мира <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] в <fcolor:2><arg_5>"
+      commands.setworldspawn.success.new: "<fcolor:1>🛌 Установлена точка возрождения мира <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] в <fcolor:2><arg_5>"
+      commands.spawnpoint.success.multiple.1_14_2: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> для <fcolor:2><arg_3><fcolor:1> игроков"
+      commands.spawnpoint.success.multiple.1_21.8: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>] в <fcolor:2><arg_4> <fcolor:1>для <fcolor:2><arg_5><fcolor:1> игроков"
+      commands.spawnpoint.success.multiple: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] в <fcolor:2><arg_5> <fcolor:1>для <fcolor:2><arg_6><fcolor:1> игроков"
+      commands.spawnpoint.success.multiple.new: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] в <fcolor:2><arg_5> <fcolor:1>для <fcolor:2><arg_6><fcolor:1> игроков"
+      commands.spawnpoint.success.single.1_14_2: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> <fcolor:1>для <arg_3>"
+      commands.spawnpoint.success.single.1_21_8: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>] в <fcolor:2><arg_4> <fcolor:1>для <arg_5>"
+      commands.spawnpoint.success.single: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] в <fcolor:2><arg_5> <fcolor:1>для <arg_6>"
+      commands.spawnpoint.success.single.new: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] в <fcolor:2><arg_5> <fcolor:1>для <arg_6>"
+      commands.stop.stopping: "<fcolor:1>🛈 Выключение сервера"
+      commands.stop.start: "<fcolor:1>🛈 Выключение сервера"
+      commands.summon.success: "<fcolor:1>🐺 Сущность «<arg_0>» создана"
+      commands.teleport.success.entity.multiple: "<fcolor:1>🌀 <fcolor:2><arg_0> <fcolor:1>сущностей телепортированы к <arg_1>"
+      commands.teleport.success.entity.single: "<fcolor:1>🌀 <arg_0> телепортирован к <arg_1>"
+      commands.tp.success: "<fcolor:1>🌀 <arg_0> телепортирован к <arg_1>"
+      commands.teleport.success.location.multiple: "<fcolor:1>🌀 <fcolor:2><arg_0> <fcolor:1>сущностей телепортированы в точку <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>, <fcolor:2><arg_3><fcolor:1>"
+      commands.teleport.success.location.single: "<fcolor:1>🌀 <arg_0> телепортирован в точку <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>, <fcolor:2><arg_3><fcolor:1>"
+      commands.tp.success.coordinates: "<fcolor:1>🌀 <arg_0> телепортирован в точку <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>, <fcolor:2><arg_3><fcolor:1>"
+      commands.time.query: "<fcolor:1>☽ Время: <fcolor:2><arg_0>"
+      commands.time.set: "<fcolor:1>☽ Установлено время: <fcolor:2><arg_0>"
+      commands.weather.set.clear: "<fcolor:1>☀ Установлена <fcolor:2>ясная <fcolor:1>погода"
+      commands.weather.clear: "<fcolor:1>☀ Установлена <fcolor:2>ясная <fcolor:1>погода"
+      commands.weather.set.rain: "<fcolor:1>🌧 Установлена <fcolor:2>дождливая <fcolor:1>погода"
+      commands.weather.rain: "<fcolor:1>🌧 Установлена <fcolor:2>дождливая <fcolor:1>погода"
+      commands.weather.set.thunder: "<fcolor:1>⛈ Установлена <fcolor:2>грозовая <fcolor:1>погода"
+      commands.weather.thunder: "<fcolor:1>⛈ Установлена <fcolor:2>грозовая <fcolor:1>погода"
+      commands.worldborder.center.success: "<fcolor:1>🚫 Установлен центр границ мира: <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1>"
+      commands.worldborder.damage.amount.success: "<fcolor:1>🚫 Установлено значение урона, ежесекундно наносимого за границами мира: <fcolor:2><arg_0> <fcolor:1>за блок"
+      commands.worldborder.damage.buffer.success: "<fcolor:1>🚫 Установлен предел нанесения урона за границами мира: <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.worldborder.get.success: "<fcolor:1>🚫 Ширина границы мира: <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.worldborder.get: "<fcolor:1>🚫 Ширина границы мира: <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.worldborder.set.success: "<fcolor:1>🚫 Установлена граница мира шириной <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.worldborder.setSlowly.grow.success: "<fcolor:1>🚫 Через <fcolor:2><arg_2> <fcolor:1>секунд ширина границы мира увеличится до <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.worldborder.set.grow: "<fcolor:1>🚫 Через <fcolor:2><arg_1> <fcolor:1>секунд ширина границы мира увеличится до <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.worldborder.set.immediate: "<fcolor:1>🚫 Установлена граница мира шириной <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.worldborder.setSlowly.shrink.success: "<fcolor:1>🚫 Через <fcolor:2><arg_2> <fcolor:1>секунд ширина границы мира уменьшится до <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.worldborder.set.shrink: "<fcolor:1>🚫 Через <fcolor:2><arg_1> <fcolor:1>секунд ширина границы мира уменьшится до <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.worldborder.warning.distance.success: "<fcolor:1>🚫 Установлено расстояние предупреждения о пересечении границы мира: <fcolor:2><arg_0> <fcolor:1>блоков"
+      commands.worldborder.warning.time.success: "<fcolor:1>🚫 Установлено время предупреждения о столкновении с границей мира: <fcolor:2><arg_0> <fcolor:1>секунд"
+      death.attack.anvil: "<fcolor:1>☠ <arg_0> раздавлен упавшей наковальней"
+      death.attack.anvil.player: "<fcolor:1>☠ <arg_0> был раздавлен упавшей наковальней, пока боролся с <arg_1>"
+      death.attack.arrow: "<fcolor:1>☠ <arg_0> застрелен <arg_1>"
+      death.attack.arrow.item: "<fcolor:1>☠ <arg_0> застрелен <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.badRespawnPoint.message: "<fcolor:1>☠ <arg_0> стал жертвой <fcolor:2>[<click:open_url:\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"><hover:show_text:\"<fcolor:2>MCPE-28723\">жестоких правил игры</hover></click>]"
+      death.attack.cactus: "<fcolor:1>☠ <arg_0> исколот до смерти"
+      death.attack.cactus.player: "<fcolor:1>☠ <arg_0> наткнулся на кактус, спасаясь от <arg_1>"
+      death.attack.cramming: "<fcolor:1>☠ <arg_0> расплющен в лепёшку"
+      death.attack.cramming.player: "<fcolor:1>☠ <arg_0> расплющен <arg_1>"
+      death.attack.dragonBreath: "<fcolor:1>☠ <arg_0> испепелён дыханием дракона"
+      death.attack.dragonBreath.player: "<fcolor:1>☠ <arg_0> сварился заживо в драконьем дыхании из-за <arg_1>"
+      death.attack.drown: "<fcolor:1>☠ <arg_0> утонул"
+      death.attack.drown.player: "<fcolor:1>☠ <arg_0> утонул, спасаясь от <arg_1>"
+      death.attack.dryout: "<fcolor:1>☠ <arg_0> умер от обезвоживания"
+      death.attack.dryout.player: "<fcolor:1>☠ <arg_0> умер от обезвоживания, спасаясь от <arg_1>"
+      death.attack.even_more_magic: "<fcolor:1>☠ <arg_0> был убит неизведанной магией"
+      death.attack.explosion: "<fcolor:1>☠ <arg_0> взорвался"
+      death.attack.explosion.player: "<fcolor:1>☠ <arg_0> был взорван <arg_1>"
+      death.attack.explosion.item: "<fcolor:1>☠ <arg_0> был взорван <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.explosion.player.item: "<fcolor:1>☠ <arg_0> был взорван <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.fall: "<fcolor:1>☠ <arg_0> разбился вдребезги"
+      death.attack.fall.player: "<fcolor:1>☠ <arg_0> разбился вдребезги, спасаясь от <arg_1>"
+      death.attack.fallingBlock: "<fcolor:1>☠ <arg_0> раздавлен упавшим блоком"
+      death.attack.fallingBlock.player: "<fcolor:1>☠ <arg_0> был раздавлен упавшим блоком, пока боролся с <arg_1>"
+      death.attack.fallingStalactite: "<fcolor:1>☠ <arg_0> был пронзён обрушившимся сталактитом"
+      death.attack.fallingStalactite.player: "<fcolor:1>☠ <arg_0> был пронзён обрушившимся сталактитом, пока боролся с <arg_1>"
+      death.attack.fireball: "<fcolor:1>☠ <arg_0> убит файерболом <arg_1>"
+      death.attack.fireball.item: "<fcolor:1>☠ <arg_0> убит файерболом <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.fireworks: "<fcolor:1>☠ <arg_0> с треском разлетелся"
+      death.attack.fireworks.item: "<fcolor:1>☠ <arg_0> с треском разлетелся из-за фейерверка <arg_1>, выпущенного из <fcolor:2><arg_2><fcolor:1>"
+      death.attack.fireworks.player: "<fcolor:1>☠ <arg_0> с треском разлетелся, пока боролся с <arg_1>"
+      death.attack.flyIntoWall: "<fcolor:1>☠ <arg_0> преобразовал кинетическую энергию во внутреннюю"
+      death.attack.flyIntoWall.player: "<fcolor:1>☠ <arg_0> преобразовал кинетическую энергию во внутреннюю, спасаясь от <arg_1>"
+      death.attack.freeze: "<fcolor:1>☠ <arg_0> замёрз насмерть"
+      death.attack.freeze.player: "<fcolor:1>☠ <arg_0> замёрз насмерть благодаря <arg_1>"
+      death.attack.generic: "<fcolor:1>☠ <arg_0> умер"
+      death.attack.generic.player: "<fcolor:1>☠ <arg_0> умер из-за <arg_1>"
+      death.attack.genericKill: "<fcolor:1>☠ <arg_0> убит"
+      death.attack.genericKill.player: "<fcolor:1>☠ <arg_0> был убит, сражаясь с <arg_1>"
+      death.attack.hotFloor: "<fcolor:1>☠ <arg_0> обнаружил, что пол — это лава"
+      death.attack.hotFloor.player: "<fcolor:1>☠ <arg_0> зашёл в опасную зону из-за <arg_1>"
+      death.attack.inFire: "<fcolor:1>☠ <arg_0> умер в огне"
+      death.attack.inFire.player: "<fcolor:1>☠ <arg_0> сгорел в огне, пока боролся с <arg_1>"
+      death.attack.inWall: "<fcolor:1>☠ <arg_0> погребён заживо"
+      death.attack.inWall.player: "<fcolor:1>☠ <arg_0> был погребён заживо, пока боролся с <arg_1>"
+      death.attack.indirectMagic: "<fcolor:1>☠ <arg_0> был убит <arg_1> с помощью магии"
+      death.attack.indirectMagic.item: "<fcolor:1>☠ <arg_0> был убит <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.lava: "<fcolor:1>☠ <arg_0> решил поплавать в лаве"
+      death.attack.lava.player: "<fcolor:1>☠ <arg_0> упал в лаву, убегая от <arg_1>"
+      death.attack.lightningBolt: "<fcolor:1>☠ <arg_0> был поражён молнией"
+      death.attack.lightningBolt.player: "<fcolor:1>☠ <arg_0> был поражён молнией, пока боролся с <arg_1>"
+      death.attack.mace_smash: "<fcolor:1>☠ <arg_0> был сокрушён <arg_1>"
+      death.attack.mace_smash.item: "<fcolor:1>☠ <arg_0> был сокрушён <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.magic: "<fcolor:1>☠ <arg_0> был убит магией"
+      death.attack.magic.player: "<fcolor:1>☠ <arg_0> был убит магией, убегая от <arg_1>"
+      death.attack.mob: "<fcolor:1>☠ <arg_0> был убит <arg_1>"
+      death.attack.mob.item: "<fcolor:1>☠ <arg_0> был убит <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.onFire: "<fcolor:1>☠ <arg_0> сгорел заживо"
+      death.attack.onFire.item: "<fcolor:1>☠ <arg_0> был сожжён дотла, пока боролся с <arg_1>, держащим <fcolor:2><arg_2><fcolor:1>"
+      death.attack.onFire.player: "<fcolor:1>☠ <arg_0> был сожжён дотла, пока боролся с <arg_1>"
+      death.attack.outOfWorld: "<fcolor:1>☠ <arg_0> выпал из мира"
+      death.attack.outOfWorld.player: "<fcolor:1>☠ <arg_0> не захотел жить в том же мире, что и <arg_1>"
+      death.attack.outsideBorder: "<fcolor:1>☠ <arg_0> покинул пределы этого мира"
+      death.attack.outsideBorder.player: "<fcolor:1>☠ <arg_0> покинул пределы этого мира, пока боролся с <arg_1>"
+      death.attack.player: "<fcolor:1>☠ <arg_0> был убит <arg_1>"
+      death.attack.player.item: "<fcolor:1>☠ <arg_0> был убит <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.sonic_boom: "<fcolor:1>☠ <arg_0> был уничтожен звуковым зарядом"
+      death.attack.sonic_boom.item: "<fcolor:1>☠ <arg_0> был уничтожен звуковым зарядом, спасаясь от <arg_1>, держащего <fcolor:2><arg_2><fcolor:1>"
+      death.attack.sonic_boom.player: "<fcolor:1>☠ <arg_0> был уничтожен звуковым зарядом, спасаясь от <arg_1>"
+      death.attack.stalagmite: "<fcolor:1>☠ <arg_0> пронзён сталагмитом"
+      death.attack.stalagmite.player: "<fcolor:1>☠ <arg_0> был пронзён сталагмитом, пока боролся с <arg_1>"
+      death.attack.starve: "<fcolor:1>☠ <arg_0> умер от голода"
+      death.attack.starve.player: "<fcolor:1>☠ <arg_0> умер от голода, пока боролся с <arg_1>"
+      death.attack.sting: "<fcolor:1>☠ <arg_0> изжален до смерти"
+      death.attack.sting.item: "<fcolor:1>☠ <arg_0> был изжален до смерти <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.sting.player: "<fcolor:1>☠ <arg_0> изжален до смерти <arg_1>"
+      death.attack.sweetBerryBush: "<fcolor:1>☠ <arg_0> искололся до смерти в кустах сладких ягод"
+      death.attack.sweetBerryBush.player: "<fcolor:1>☠ <arg_0> искололся до смерти в кустах сладких ягод, спасаясь от <arg_1>"
+      death.attack.thorns: "<fcolor:1>☠ <arg_0> был убит, пытаясь навредить <arg_1>"
+      death.attack.thorns.item: "<fcolor:1>☠ <arg_0> был убит <fcolor:2><arg_2><fcolor:1>, пытаясь навредить <arg_1>"
+      death.attack.thrown: "<fcolor:1>☠ <arg_0> был избит <arg_1>"
+      death.attack.thrown.item: "<fcolor:1>☠ <arg_0> был избит <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.trident: "<fcolor:1>☠ <arg_0> был пронзён <arg_1>"
+      death.attack.trident.item: "<fcolor:1>☠ <arg_0> пронзён <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.attack.wither: "<fcolor:1>☠ <arg_0> иссушён"
+      death.attack.wither.player: "<fcolor:1>☠ <arg_0> был иссушён, пока боролся с <arg_1>"
+      death.attack.witherSkull: "<fcolor:1>☠ <arg_0> был поражён черепом из <arg_1>"
+      death.attack.witherSkull.item: "<fcolor:1>☠ <arg_0> был поражён черепом из <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.fell.accident.generic: "<fcolor:1>☠ <arg_0> разбился насмерть"
+      death.fell.accident.ladder: "<fcolor:1>☠ <arg_0> свалился с лестницы"
+      death.fell.accident.other_climbable: "<fcolor:1>☠ <arg_0> сорвался"
+      death.fell.accident.scaffolding: "<fcolor:1>☠ <arg_0> сорвался с подмосток"
+      death.fell.accident.twisting_vines: "<fcolor:1>☠ <arg_0> сорвался с вьющейся лозы"
+      death.fell.accident.vines: "<fcolor:1>☠ <arg_0> сорвался с лианы"
+      death.fell.accident.weeping_vines: "<fcolor:1>☠ <arg_0> сорвался с плакучей лозы"
+      death.fell.assist: "<fcolor:1>☠ <arg_0> свалился благодаря <arg_1>"
+      death.fell.assist.item: "<fcolor:1>☠ <arg_0> был обречён на падение <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.fell.finish: "<fcolor:1>☠ <arg_0> упал с высоты и был добит <arg_1>"
+      death.fell.finish.item: "<fcolor:1>☠ <arg_0> упал с высоты и был добит <arg_1> с помощью <fcolor:2><arg_2><fcolor:1>"
+      death.fell.killer: "<fcolor:1>☠ <arg_0> был обречён на падение"
+#endregion vanilla

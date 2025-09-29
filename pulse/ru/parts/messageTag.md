@@ -29,8 +29,8 @@
 | `COMMAND_WARN`                | Сообщение комманды `/warn`                        |
 | `COMMAND_KICK`                | Сообщение комманды `/kick`                        |
 
-::: info NOTE
+::: info ПРИМЕЧАНИЕ
 
-If you have your own chats with custom names, for example `admin`, then you will need to specify `CHAT_ADMIN`
+Если у тебя есть собственные чаты со своими именами, например `admin`, тебе нужно будет указать `CHAT_ADMIN`. Если есть свои собственные группы из модуля `vanilla`, тебе нужно указать их название
 
 :::

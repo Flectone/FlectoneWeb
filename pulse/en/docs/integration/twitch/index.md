@@ -40,8 +40,7 @@ There are also placeholders that WILL DEFINITELY be replaced in any message
 - `<player>` player’s nickname who sent message
 - `<message>` raw message written by player
 - `<plain_message>` formatted message written by player
-
-Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
+- Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
 
 ### `for_minecraft`
 - By default `<fcolor:2><name> <fcolor:1>» <fcolor:4><message>`
@@ -97,7 +96,7 @@ message-channel:
     - "faseri4ka" // [!code highlight]
 ```
 
-There can be any number of channels, as long as the connected account has access to them
+There can be any number of channels, as long as the connected account has access to them. You don't need to configure localization, by default the message will be sent with the format `<final_message>`
 :::
 
 ### `follow_channel`
@@ -115,7 +114,7 @@ follow-channel:
 
 - Up to 10 channels can be tracked at once, as long as the connected account has access to them
 - There can be any number of commands to be executed when the stream starts
-  :::
+:::
 
 <!--@include: @/parts/destination.md-->
 

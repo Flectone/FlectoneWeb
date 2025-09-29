@@ -40,8 +40,7 @@ There are also placeholders that WILL DEFINITELY be replaced in any message:
 - `<player>` nickname of player who sent message
 - `<message>` raw message written by player
 - `<plain_message>` formatted message written by player
-
-Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work.
+- Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work.
 
 ### `for_minecraft`
 
@@ -90,10 +89,10 @@ If the bot is connected and added to the channel, you can use the `/id` command 
 ```yaml
 message-channel:
   COMMAND_BAN:
-    - "-1002341720267_49" // [!code highlight]
+    - "-1002341720267_49"
 ```
 
-There can be as many chats as you want, as long as the bot has access to them from [secrets](/docs/secrets/telegram/).
+There can be as many chats as you want, as long as the bot has access to them from [secrets](/docs/secrets/telegram/). You don't need to configure localization, by default the message will be sent with the format `<final_message>`
 :::
 
 ::: danger IMPORTANT

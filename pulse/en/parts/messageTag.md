@@ -29,3 +29,8 @@
 | `COMMAND_WARN`                | Message from the `/warn` command             |
 | `COMMAND_KICK`                | Message from the `/kick` command             |
 
+::: info NOTE
+
+If you have custom chats with their own names, for example `admin`, you will need to specify `CHAT_ADMIN`. If you have custom groups from the `vanilla` module, you need to specify their name
+
+:::

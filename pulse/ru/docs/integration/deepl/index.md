@@ -5,7 +5,7 @@ authors:
 
 # Deepl
 
-Интеграция с Deepl позволяет переводить сообщения с одного языка на другой
+Интеграция с Deepl позволяет переводить сообщения с одного языка на другой, используется модулем [перевода](/docs/command/translateto#service)
 
 [//]: # (integration.yml)
 <!--@include: @/parts/words.md#setting-->

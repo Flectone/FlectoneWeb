@@ -1,14 +1,13 @@
 ---
 authors:
-  - TheFaser
-  - Stokmenn
+- TheFaser
 ---
 
 # Discord
 
 Integration with Discord allows sending messages:
-- From Minecraft to Discord
-- From Discord to Minecraft
+- from Minecraft to Discord
+- from Discord to Minecraft
 
 ![discord message](/discordmessage.png)
 ![minecraft message](/discordminecraftmessage.png)
@@ -16,10 +15,10 @@ Integration with Discord allows sending messages:
 <!--@include: @/parts/messageTag.md-->
 
 [//]: # (localization)
-<!--@include: @/parts/words.md#localization--> 
+<!--@include: @/parts/words.md#localization-->
 <!--@include: @/parts/words.md#path--> `localizations → locale.yml → integration.discord`
 
-<!--@include: @/parts/words.md#default--> 
+<!--@include: @/parts/words.md#default-->
 
 ::: code-group
 <<< @/files/localizations/ru_ru.yml#discord
@@ -28,152 +27,138 @@ Integration with Discord allows sending messages:
 
 ### `Placeholders`
 
-You can use all the placeholders that are used in the initial Minecraft message
-::: info FOR EXAMPLE, FOR A BAN MESSAGE
-If there’s a placeholder `<reason>`, you can use `<reason>` in Discord messages as well
+You can use all placeholders used in the initial message for Minecraft
+::: info EXAMPLE FOR BAN MESSAGE
+There is a `<reason>` placeholder, so I can use `<reason>` inside Discord messages
 :::
 
-There are also placeholders that will ALWAYS be replaced in any message:
-- `<plain_message>`
+There are also placeholders that will DEFINITELY be replaced in any message
 - `<final_message>` message sent to Minecraft
-- `<final_clear_message>` message sent to Minecraft without Unicode emojis
-- `<player>` nickname of player who sent message
-- `<message>` raw message written by player
-- `<plain_message>` formatted message written by player
-
-Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work.
+- `<final_clear_message>` message sent to Minecraft without unicode emojis
+- `<player>` nickname of the player who sent the message
+- `<message>` raw message written by the player
+- `<plain_message>` formatted message written by the player
+- Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
 
 ### `for_minecraft`
 
-Message format that will be sent from Discord to Minecraft.
+Format of the message that will be sent from Discord to Minecraft
 
 ### `info_channel`
 
-List of channel IDs and their names.
+List of channel IDs and their names, for displaying some information, for example `TPS`
 
 ### `message_channel`
 
-List of messages and their configurations.
+List of messages with their settings
 
-::: details Message Configuration
+::::: details Message configuration
 
-![discord](https://docs.discord4j.com/img/embed-preview.png)
+::: tip INFO
 
-If the parameter is empty, it will not be used in the final message.
-
-#### `content`
-
-Content of a regular message from the Discord bot.
-![discord content](/discordcontent.png)
-
-#### `webhook`
-
-Discord webhook configuration.
-![discord webhook](/discordwebhook.png)
-
-##### `enable`
-
-If enabled, the message will be a webhook.
-
-##### `avatar`
-
-Link to create the player’s avatar. If you change it, the link should contain `<skin>`.
-
-##### `content`
-
-Content of the webhook message.
-
-#### `embed`
-
-Discord embed message configuration.
-![discord embed](/discordembed.png)
-
-##### `enable`
-
-If enabled, the message will include an embed.
-
-##### `color`
-
-Color of the embed message.
-
-##### `title`
-
-Title of the embed message.
-
-##### `url`
-
-URL for the embed message.
-
-##### `author`
-
-Author of the embed message.
-
-###### `name`
-
-Name of the embed message author.
-
-###### `url`
-
-URL of the embed message author.
-
-###### `icon_url`
-
-Link to the avatar of the embed message author. If you change it, the link should contain `<skin>`.
-
-##### `description`
-
-Description of the embed message.
-
-##### `thumbnail`
-
-Small image inside the embed message.
-
-###### `name`
-
-Field name inside the embed message.
-
-###### `value`
-
-Field value inside the embed message.
-
-###### `inline`
-
-If enabled, the field will be arranged vertically with other fields.
-
-##### `image`
-
-Main image inside the embed message.
-
-##### `timestamp`
-
-If enabled, the embed message will include the timestamp.
-
-##### `footer`
-
-Footer of the embed message.
-
-###### `text`
-
-Text in the footer of the embed message.
-
-###### `icon_url`
-
-Image in the footer of the embed message.
+If a parameter is empty or not written, it will not be used in the final message
 
 :::
 
-::: info IF YOU WANT TO ADD ANOTHER MESSAGE:
-1. Take the name from the "Message Types" list.
-2. Add it to `message_channel`.
+#### `content`
+
+Message content
+![discord content](/discordcontent.png)
+
+#### `webhook_avatar`
+
+Enable Discord webhook with player's avatar. Best to use `https://mc-heads.net/avatar/<skin>/32.png`
+![discord webhook](/discordwebhook.png)
+
+#### `embed`
+
+Discord embed message
+![discord embed](/discordembed.png)
+
+##### `color`
+
+Color of the `embed` message
+
+##### `title`
+
+Title of the `embed` message
+
+##### `url`
+
+URL for the `embed` message
+
+##### `author`
+
+Author of the `embed` message
+
+###### `name`
+
+Name of the `embed` message author
+
+###### `url`
+
+URL of the `embed` message author
+
+###### `icon_url`
+
+URL of the `embed` message author's avatar. If you change it to your own, the URL must contain `<skin>`
+
+##### `description`
+
+Description of the `embed` message
+
+##### `thumbnail`
+
+Small image inside the `embed` message
+
+##### `fields`
+
+Bottom fields inside the `embed` message
+
+###### `name`
+
+Name of the field inside the `embed` message
+
+###### `value`
+
+Value of the field inside the `embed` message
+
+###### `inline`
+
+If enabled, the field will be placed in a column with other fields
+
+##### `image`
+
+Main image of the `embed` message
+
+##### `timestamp`
+
+If enabled, the `embed` message will include creation time
+
+##### `footer`
+
+Bottom part of the `embed` message
+
+###### `text`
+
+Text in the bottom part of the `embed` message
+
+###### `icon_url`
+
+Image in the bottom part of the `embed` message
+
+:::::
+
+::: info INFO
+
+Message with all parameters
+![discord](https://docs.discord4j.com/img/embed-preview.png)
+
 ```yaml
 message_name:
   content: ""
-  webhook:
-    enable: false
-    avatar: "https://mc-heads.net/avatar/<skin>/32.png"
-    content: ""
+  webhook_avatar: "https://mc-heads.net/avatar/<skin>/32.png"
   embed:
-    enable: false
     color: ""
     title: ""
     url: ""
@@ -205,22 +190,22 @@ message_name:
 <!--@include: @/parts/enable.md-->
 
 ::: warning WARNING
-- Before enabling, insert the **Discord bot token**.
-- After enabling, **IT IS RECOMMENDED** to restart the server to avoid potential plugin issues.
-  :::
+- Before enabling, insert the Discord bot **token**
+- After enabling, it's **RECOMMENDED** to restart the server, otherwise the plugin may cause freezing
+:::
 
 ### `token`
 
-[Discord bot token](https://discordgsm.com/guide/how-to-get-a-discord-bot-token) for connection. You can use environment variables, for example `${VALUE}`.
+Discord bot [token](https://discordgsm.com/guide/how-to-get-a-discord-bot-token) for connection. You can use environment variables, for example `${VALUE}`
 
 ### `presence`
 
 ![discord presence](/discordpresence.png)
 
-::: details Bot Status Configuration
+::: details Bot status configuration
 #### `enable`
 
-Enables or disables the custom bot status.
+Enables or disables custom bot status
 
 #### `status`
 
@@ -235,30 +220,30 @@ Enables or disables the custom bot status.
 
 #### `activity`
 
-Bot activity in Discord.
+Bot activity in Discord
 
 ##### `enable`
 
-Enables or disables activity.
+Enables or disables activity
 
 ##### `type`
 
-| Type       | Explanation   |
-|------------|---------------|
-| `UNKNOWN`  | -             |
-| `STREAMING`| Streaming     |
-| `LISTENING`| Listening     |
-| `WATCHING` | Watching      |
-| `CUSTOM`   | -             |
-| `COMPETING`| Competing     |
+| Type        | Explanation |
+|-------------|-------------|
+| `UNKNOWN`   | -           |
+| `STREAMING` | Streaming   |
+| `LISTENING` | Listening   |
+| `WATCHING`  | Watching    |
+| `CUSTOM`    | -           |
+| `COMPETING` | Competing   |
 
 ##### `name`
 
-Name of the activity.
+Activity name
 
 ##### `url`
 
-Link for the activity.
+Activity URL
 
 :::
 
@@ -266,25 +251,27 @@ Link for the activity.
 
 ![discord channel info](/discordchannelinfo.png)
 
-::: details Channel Information Configuration
+::: details Information channels configuration
 #### `enable`
 
-Whether channel information is needed.
+Whether information channel is needed
 
 <!--@include: @/parts/ticker.md-->
 
 ### `message_channel`
 
-List of message types and [channel IDs](https://support.discord.com/hc/ru/articles/206346498-%D0%93%D0%94%D0%95-%D0%9C%D0%9D%D0%95-%D0%9D%D0%90%D0%99%D0%A2%D0%98-ID-%D0%9F%D0%9E%D0%9B%D0%AC%D0%97%D0%9E%D0%92%D0%90%D0%A2%D0%95%D0%9B%D0%AF-%D0%A1%D0%95%D0%A0%D0%92%D0%95%D0%A0%D0%90-%D0%A1%D0%9E%D0%9E%D0%91%D0%9A%D0%9E%D0%92) in Discord.
+List of message types and [channel IDs](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) in Discord
 
-::: info For example, if I want a `/ban` command message from Minecraft to be sent to Discord:
-1. Copy the channel ID in Discord `1286666844358316083`.
-2. Add `COMMAND_BAN: "1286666844358316083"`.
+::: info For example I want messages from Minecraft command `/ban` to be sent to Discord
+1. Copy the Discord channel ID `1286666844358316083`
+2. Write `COMMAND_BAN: "1286666844358316083"`
 
 ```yaml
 message-channel:
-  COMMAND_BAN: "1286666844358316083" // [!code highlight]
+COMMAND_BAN: "1286666844358316083"
 ```
+
+You don't need to configure localization, by default the message will be sent with the format `<final_message>`
 :::
 
 <!--@include: @/parts/destination.md-->

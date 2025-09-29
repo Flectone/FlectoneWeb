@@ -32,6 +32,17 @@ Message in the TAB list
 <<< @/files/message.yml#playerlistname
 
 <!--@include: @/parts/enable.md-->
+
+### `proxy_mode`
+
+If enabled, players on different servers will be synchronized in one TAB. This requires enabling proxy mode in `FlectonePulse`
+
+::: warning WARNING
+1. This works on versions 1.19.4 and above
+2. Between servers, players won't be able to see each other's ping in TAB (it will always be -1 if the player is on another server)
+3. For correct skin display, SkinsRestorer in proxy mode is required
+:::
+
 <!--@include: @/parts/ticker.md-->
 
 [//]: # (permission.yml)

@@ -14,14 +14,14 @@ export default defineConfig({
         enforce: 'pre',
 
         resolveId(id) {
-          if (/^\/api\//.test(id)) {
+          if (/^\/api\//.test(id) && !id.endsWith('.md')) {
             return id
           }
           return null
         },
 
         load(id) {
-          if (/^\/api\//.test(id)) {
+          if (/^\/api\//.test(id) && !id.endsWith('.md')) {
             return `export default ${JSON.stringify(id)};`
           }
           return null
@@ -88,7 +88,7 @@ export default defineConfig({
     nav: [
       { text: 'Документация', link: '/docs/' },
       { text: 'Аналитика', link: '/metrics/' },
-      { text: 'API', link: '/yapi/' },
+      { text: 'API', link: '/api/' },
       {
         text: 'Языки',
         items: [
@@ -158,7 +158,7 @@ export default defineConfig({
     },
 
     sidebar: generateSidebar({
-      collapseDepth: 4,
+      collapseDepth: 1,
       capitalizeFirst: true,
 
       useTitleFromFileHeading: true,

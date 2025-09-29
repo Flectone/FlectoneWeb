@@ -31,6 +31,11 @@ authors:
 <<< @/files/message.yml#rightclick
 
 <!--@include: @/parts/enable.md-->
+
+### `should_check_sneaking`
+
+Нужно ли проверять, что игрок нажимает шифт, во время ПКМ
+
 <!--@include: @/parts/destination.md-->
 <!--@include: @/parts/cooldown.md-->
 <!--@include: @/parts/sound.md-->

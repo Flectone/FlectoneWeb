@@ -8,10 +8,11 @@
 # __/\___  ____/\_____  ___/    \______
 #        \/           \/
 #
-# https://flectone.net/pulse/docs/message
+#region module
 module:
   name: "flectonepulse.module"
   type: "TRUE"
+#endregion module
 #region command
 command:
   name: "flectonepulse.module.command"
@@ -97,12 +98,12 @@ command:
       name: "flectonepulse.module.command.chatcolor.sound"
       type: "TRUE"
     colors:
-      OUT:
-        name: "flectonepulse.module.command.chatcolor.out"
-        type: "OP"
       SEE:
         name: "flectonepulse.module.command.chatcolor.see"
         type: "TRUE"
+      OUT:
+        name: "flectonepulse.module.command.chatcolor.out"
+        type: "OP"
 #endregion chatcolor
 #region chatsetting
   chatsetting:
@@ -723,14 +724,6 @@ message:
   name: "flectonepulse.module.message"
   type: "TRUE"
 #endregion message
-#region advancement
-  advancement:
-    name: "flectonepulse.module.message.advancement"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.advancement.sound"
-      type: "TRUE"
-#endregion advancement
 #region afk
   afk:
     name: "flectonepulse.module.message.afk"
@@ -741,14 +734,6 @@ message:
     name: "flectonepulse.module.message.anvil"
     type: "TRUE"
 #endregion anvil
-#region attribute
-  attribute:
-    name: "flectonepulse.module.message.attribute"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.attribute.sound"
-      type: "TRUE"
-#endregion attribute
 #region auto
   auto:
     name: "flectonepulse.module.message.auto"
@@ -758,14 +743,6 @@ message:
         name: "flectonepulse.module.message.auto.sound"
         type: "TRUE"
 #endregion auto
-#region bed
-  bed:
-    name: "flectonepulse.module.message.bed"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.bed.sound"
-      type: "TRUE"
-#endregion bed
 #region book
   book:
     name: "flectonepulse.module.message.book"
@@ -805,126 +782,6 @@ message:
           name: "flectonepulse.module.message.chat.global.sound"
           type: "TRUE"
 #endregion chat
-#region clear
-  clear:
-    name: "flectonepulse.module.message.clear"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.clear.sound"
-      type: "TRUE"
-#endregion clear
-#region clone
-  clone:
-    name: "flectonepulse.module.message.clone"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.clone.sound"
-      type: "TRUE"
-#endregion clone
-#region commandblock
-  commandblock:
-    name: "flectonepulse.module.message.commandblock"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.commandblock.sound"
-      type: "TRUE"
-#endregion commandblock
-#region damage
-  damage:
-    name: "flectonepulse.module.message.damage"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.damage.sound"
-      type: "TRUE"
-#endregion damage
-#region death
-  death:
-    name: "flectonepulse.module.message.death"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.death.sound"
-      type: "TRUE"
-#endregion death
-#region debugstick
-  debugstick:
-    name: "flectonepulse.module.message.debugstick"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.debugstick.sound"
-      type: "TRUE"
-#endregion debugstick
-#region deop
-  deop:
-    name: "flectonepulse.module.message.deop"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.deop.sound"
-      type: "TRUE"
-#endregion deop
-#region dialog
-  dialog:
-    name: "flectonepulse.module.message.dialog"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.dialog.sound"
-      type: "TRUE"
-#endregion dialog
-#region difficulty
-  difficulty:
-    name: "flectonepulse.module.message.difficulty"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.difficulty.sound"
-      type: "TRUE"
-#endregion difficulty
-#region effect
-  effect:
-    name: "flectonepulse.module.message.effect"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.effect.sound"
-      type: "TRUE"
-#endregion effect
-#region enchant
-  enchant:
-    name: "flectonepulse.module.message.enchant"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.enchant.sound"
-      type: "TRUE"
-#endregion enchant
-#region execute
-  execute:
-    name: "flectonepulse.module.message.execute"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.execute.sound"
-      type: "TRUE"
-#endregion execute
-#region experience
-  experience:
-    name: "flectonepulse.module.message.experience"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.experience.sound"
-      type: "TRUE"
-#endregion experience
-#region fill
-  fill:
-    name: "flectonepulse.module.message.fill"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.fill.sound"
-      type: "TRUE"
-#endregion fill
-#region fillbiome
-  fillbiome:
-    name: "flectonepulse.module.message.fillbiome"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.fillbiome.sound"
-      type: "TRUE"
-#endregion fillbiome
 #region format
   format:
     name: "flectonepulse.module.message.format"
@@ -1072,11 +929,22 @@ message:
           name: "flectonepulse.module.message.format.moderation.swear.see"
           type: "OP"
 #endregion swear
-#region name_
-    name_:
-      name: "flectonepulse.module.format.name"
+#region names
+    names:
+      name: "flectonepulse.module.message.format.names"
       type: "TRUE"
-#endregion name_
+#endregion names
+#region object
+    object:
+      name: "flectonepulse.module.message.format.object"
+      type: "TRUE"
+      player_head:
+        name: "flectonepulse.module.message.format.object.player_head"
+        type: "TRUE"
+      sprite:
+        name: "flectonepulse.module.message.format.object.sprite"
+        type: "TRUE"
+#endregion object
 #region questionanswer
     question_answer:
       name: "flectonepulse.module.message.format.questionanswer"
@@ -1225,30 +1093,6 @@ message:
       name: "flectonepulse.module.message.format.world"
       type: "TRUE"
 #endregion world
-#region gamemode
-  gamemode:
-    name: "flectonepulse.module.message.gamemode"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.gamemode.sound"
-      type: "TRUE"
-#endregion gamemode
-#region gamerule
-  gamerule:
-    name: "flectonepulse.module.message.gamerule"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.gamerule.sound"
-      type: "TRUE"
-#endregion gamerule
-#region give
-  give:
-    name: "flectonepulse.module.message.give"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.give.sound"
-      type: "TRUE"
-#endregion give
 #region greeting
   greeting:
     name: "flectonepulse.module.message.greeting"
@@ -1265,22 +1109,6 @@ message:
       name: "flectonepulse.module.message.join.sound"
       type: "TRUE"
 #endregion join
-#region kill
-  kill:
-    name: "flectonepulse.module.message.kill"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.kill.sound"
-      type: "TRUE"
-#endregion kill
-#region locate
-  locate:
-    name: "flectonepulse.module.message.locate"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.locate.sound"
-      type: "TRUE"
-#endregion locate
 #region objective
   objective:
     name: "flectonepulse.module.message.objective"
@@ -1296,22 +1124,6 @@ message:
       name: "flectonepulse.module.message.objective.tabname"
       type: "TRUE"
 #endregion tabname
-#region op
-  op:
-    name: "flectonepulse.module.message.op"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.op.sound"
-      type: "TRUE"
-#endregion op
-#region particle
-  particle:
-    name: "flectonepulse.module.message.particle"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.particle.sound"
-      type: "TRUE"
-#endregion particle
 #region quit
   quit:
     name: "flectonepulse.module.message.quit"
@@ -1320,30 +1132,6 @@ message:
       name: "flectonepulse.module.message.quit.sound"
       type: "TRUE"
 #endregion quit
-#region recipe
-  recipe:
-    name: "flectonepulse.module.message.recipe"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.recipe.sound"
-      type: "TRUE"
-#endregion recipe
-#region reload
-  reload:
-    name: "flectonepulse.module.message.reload"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.reload.sound"
-      type: "TRUE"
-#endregion reload
-#region ride
-  ride:
-    name: "flectonepulse.module.message.ride"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.ride.sound"
-      type: "TRUE"
-#endregion ride
 #region rightclick
   rightclick:
     name: "flectonepulse.module.message.rightclick"
@@ -1355,38 +1143,6 @@ message:
       name: "flectonepulse.module.message.rightclick.sound"
       type: "TRUE"
 #endregion rightclick
-#region rotate
-  rotate:
-    name: "flectonepulse.module.message.rotate"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.rotate.sound"
-      type: "TRUE"
-#endregion rotate
-#region save
-  save:
-    name: "flectonepulse.module.message.save"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.save.sound"
-      type: "TRUE"
-#endregion save
-#region seed
-  seed:
-    name: "flectonepulse.module.message.seed"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.seed.sound"
-      type: "TRUE"
-#endregion seed
-#region setblock
-  setblock:
-    name: "flectonepulse.module.message.setblock"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.setblock.sound"
-      type: "TRUE"
-#endregion setblock
 #region sidebar
   sidebar:
     name: "flectonepulse.module.message.sidebar"
@@ -1397,30 +1153,6 @@ message:
     name: "flectonepulse.module.message.sign"
     type: "TRUE"
 #endregion sign
-#region sleep
-  sleep:
-    name: "flectonepulse.module.message.sleep"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.sleep.sound"
-      type: "TRUE"
-#endregion sleep
-#region sound
-  sound:
-    name: "flectonepulse.module.message.sound"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.sound.sound"
-      type: "TRUE"
-#endregion sound
-#region spawn
-  spawn:
-    name: "flectonepulse.module.message.spawn"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.spawn.sound"
-      type: "TRUE"
-#endregion spawn
 #region status
   status:
     name: "flectonepulse.module.message.status"
@@ -1449,22 +1181,6 @@ message:
       name: "flectonepulse.module.message.status.version"
       type: "TRUE"
 #endregion version
-#region stop
-  stop:
-    name: "flectonepulse.module.message.stop"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.stop.sound"
-      type: "TRUE"
-#endregion stop
-#region summon
-  summon:
-    name: "flectonepulse.module.message.summon"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.summon.sound"
-      type: "TRUE"
-#endregion summon
 #region tab
   tab:
     name: "flectonepulse.module.message.tab"
@@ -1485,22 +1201,6 @@ message:
       name: "flectonepulse.module.message.tab.footer"
       type: "TRUE"
 #endregion playerlistname
-#region teleport
-  teleport:
-    name: "flectonepulse.module.message.teleport"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.teleport.sound"
-      type: "TRUE"
-#endregion teleport
-#region time
-  time:
-    name: "flectonepulse.module.message.time"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.time.sound"
-      type: "TRUE"
-#endregion time
 #region update
   update:
     name: "flectonepulse.module.message.update"
@@ -1509,19 +1209,8 @@ message:
       name: "flectonepulse.module.message.update.sound"
       type: "TRUE"
 #endregion update
-#region weather
-  weather:
-    name: "flectonepulse.module.message.weather"
+#region vanilla
+  vanilla:
+    name: "flectonepulse.module.message.vanilla"
     type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.weather.sound"
-      type: "TRUE"
-#endregion weather
-#region worldborder
-  worldborder:
-    name: "flectonepulse.module.message.worldborder"
-    type: "TRUE"
-    sound:
-      name: "flectonepulse.module.message.worldborder.sound"
-      type: "TRUE"
-#endregion worldborder
+#endregion vanilla

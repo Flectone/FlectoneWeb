@@ -8,17 +8,6 @@ authors:
 
 The module responsible for formatting sent messages
 
-[//]: # (localization)
-<!--@include: @/parts/words.md#localization-->
-<!--@include: @/parts/words.md#path--> `localizations → locale.yml → message.format`
-
-<!--@include: @/parts/words.md#default-->
-
-::: code-group
-<<< @/files/localizations/ru_ru.yml#format
-<<< @/files/localizations/en_us.yml#format
-:::
-
 [//]: # (message.yml)
 <!--@include: @/parts/words.md#setting-->
 <!--@include: @/parts/words.md#path--> `message.yml → format`

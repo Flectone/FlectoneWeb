@@ -32,6 +32,11 @@ The message that will be sent to the player who right-clicked on another player
 <<< @/files/message.yml#rightclick
 
 <!--@include: @/parts/enable.md-->
+
+### `should_check_sneaking`
+
+Whether to check if the player is pressing shift during right-click
+
 <!--@include: @/parts/destination.md-->
 <!--@include: @/parts/cooldown.md-->
 <!--@include: @/parts/sound.md-->

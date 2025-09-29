@@ -497,30 +497,6 @@ integration:
     message_channel:
       CHAT_GLOBAL:
         content: "<final_message>"
-        webhook:
-          enable: false
-          avatar: "https://mc-heads.net/avatar/<skin>/32.png"
-          content: ""
-        embed:
-          enable: false
-          color: ""
-          title: ""
-          url: ""
-          author:
-            name: ""
-            url: ""
-            icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
-          description: ""
-          thumbnail: ""
-          fields:
-          - name: ""
-            value: ""
-            inline: false
-          image: ""
-          timestamp: true
-          footer:
-            text: ""
-            icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
 #endregion discord
 #region telegram
   telegram:
@@ -537,30 +513,6 @@ integration:
 #region message
 message:
 #endregion message
-#region advancement
-  advancement:
-    format_task: "<fcolor:1>🌠 <display_name> has made the advancement <advancement>"
-    format_goal: "<fcolor:1>🌠 <display_name> has reached the goal <advancement>"
-    format_challenge: "<fcolor:1>🌠 <display_name> has completed the challenge <advancement>"
-    format_taken: "<fcolor:1>🌠 <display_name> has lost the achievement <advancement>"
-    tag:
-      task: "<color:#4eff52>[<hover:show_text:\"<color:#4eff52><advancement>\"><advancement></hover>]"
-      challenge: "<color:#834eff>[<hover:show_text:\"<color:#834eff><advancement>\"><advancement></hover>]"
-    revoke:
-      many_to_one: "<fcolor:1>🌠 Revoked <fcolor:2><advancements> <fcolor:1>advancements from <target>"
-      one_to_many: "<fcolor:1>🌠 Revoked the advancement <advancement> from <fcolor:2><players> <fcolor:1>players"
-      many_to_many: "<fcolor:1>🌠 Revoked <fcolor:2><advancements> <fcolor:1>advancements from <fcolor:2><players> <fcolor:1>players"
-      one_to_one: "<fcolor:1>🌠 Revoked the advancement <advancement> <fcolor:1>from <target>"
-      criterion_to_many: "<fcolor:1>🌠 Revoked criterion '<fcolor:2><criterion><fcolor:1>' of advancement <advancement> from <fcolor:2><players> <fcolor:1>players"
-      criterion_to_one: "<fcolor:1>🌠 Revoked criterion '<fcolor:2><criterion><fcolor:1>' of advancement <advancement> from <target>"
-    grant:
-      many_to_one: "<fcolor:1>🌠 Granted <fcolor:2><advancements> <fcolor:1>advancements to <target>"
-      one_to_many: "<fcolor:1>🌠 Granted the advancement <advancement> to <fcolor:2><players> <fcolor:1>players"
-      many_to_many: "<fcolor:1>🌠 Granted <fcolor:2><advancements> <fcolor:1>advancements to <fcolor:2><players> <fcolor:1>players"
-      one_to_one: "<fcolor:1>🌠 Granted the advancement <advancement> to <target>"
-      criterion_to_many: "<fcolor:1>🌠 Granted criterion '<fcolor:2><criterion><fcolor:1>' of advancement <advancement> to <fcolor:2><players> <fcolor:1>players"
-      criterion_to_one: "<fcolor:1>🌠 Granted criterion '<fcolor:2><criterion><fcolor:1>' of advancement <advancement> to <target>"
-#endregion advancement
 #region afk
   afk:
     suffix: " <color:#FFFF00>⌚</color>"
@@ -571,18 +523,6 @@ message:
       global: "<gradient:#ffd500:#FFFF00>⌚ <player> isn't afk now"
       local: "<gradient:#ffd500:#FFFF00>⌚ Now you're not afk"
 #endregion afk
-#region attribute
-  attribute:
-    base_value:
-      get: "<fcolor:1>❤ Base value of attribute <fcolor:2><lang:'<attribute>'> <fcolor:1>for entity <target> is <fcolor:2><value>"
-      reset: "<fcolor:1>❤ Base value for attribute <fcolor:2><lang:'<attribute>'> <fcolor:1>for entity <target> reset to default <fcolor:2><value>"
-      set: "<fcolor:1>❤ Base value for attribute <fcolor:2><lang:'<attribute>'> <fcolor:1>for entity <target> set to <fcolor:2><value>"
-    modifier:
-      add: "<fcolor:1>❤ Added modifier <fcolor:2><modifier> <fcolor:1>to attribute <fcolor:2><lang:'<attribute>'> <fcolor:1>for entity <target>"
-      remove: "<fcolor:1>❤ Removed modifier <fcolor:2><modifier> <fcolor:1>from attribute <fcolor:2><lang:'<attribute>'> <fcolor:1>for entity <target>"
-      value_get: "<fcolor:1>❤ Value of modifier <fcolor:2><modifier> <fcolor:1>on attribute <fcolor:2><lang:'<attribute>'> <fcolor:1>for entity <target> is <fcolor:2><value>"
-    value_get: "<fcolor:1>❤ Value of attribute <fcolor:2><lang:'<attribute>'> <fcolor:1>for entity <target> is <fcolor:2><value>"
-#endregion attribute
 #region auto
   auto:
     types:
@@ -592,14 +532,6 @@ message:
       - "<br><fcolor:1>⚡ Support <fcolor:2>FlectonePulse <fcolor:1>on Boosty <br><fcolor:1>⚡ <u><click:open_url:\"https://boosty.to/thefaser/\"><hover:show_text:\"<fcolor:2>https://boosty.to/thefaser/\">https://boosty.to/thefaser/</hover></click></u><br>"
       - "<br><fcolor:1>      ✉ Join our telegram ✉ <br><fcolor:2>    <u><click:open_url:\"https://t.me/flectone\"><hover:show_text:\"<fcolor:2>https://t.me/flectone\">https://t.me/flectone</hover></click></u><br>"
 #endregion auto
-#region bed
-  bed:
-    no_sleep: "<fcolor:1>🛌 You can sleep only at night or during thunderstorms"
-    not_safe: "<fcolor:1>🛌 You may not rest now; there are monsters nearby"
-    obstructed: "<fcolor:1>🛌 This bed is obstructed"
-    occupied: "<fcolor:1>🛌 This bed is occupied"
-    too_far_away: "<fcolor:1>🛌 You may not rest now; the bed is too far away"
-#endregion bed
 #region brand
   brand:
     values:
@@ -618,204 +550,6 @@ message:
       global: "<delete><display_name> <world_prefix>»<fcolor:4> <message><reset><translate>"
       local: "<delete><display_name><fcolor:3>: <message><reset><translate>"
 #endregion chat
-#region clear
-  clear:
-    single: "<fcolor:1>🌊 Removed <fcolor:2><items> <fcolor:1>item(s) from player <target>"
-    multiple: "<fcolor:1>🌊 Removed <fcolor:2><items> <fcolor:1>item(s) from <fcolor:2><players> <fcolor:1>players"
-#endregion clear
-#region clone
-  clone:
-    format: "<fcolor:1>⏹ Successfully cloned <fcolor:2><blocks> <fcolor:1>block(s)"
-#endregion clone
-#region commandblock
-  commandblock:
-    not_enabled: "<fcolor:1>🤖 Command blocks are not enabled on this server"
-    format: "<fcolor:1>🤖 Command set: <fcolor:2><command>"
-#endregion commandblock
-#region damage
-  damage:
-    format: "<fcolor:1>🗡 Applied <fcolor:2><amount> <fcolor:1>damage to <target>"
-#endregion damage
-#region death
-  death:
-    types:
-      death.attack.anvil: "<fcolor:1>☠ <target> was squashed by a falling anvil"
-      death.attack.anvil.player: "<fcolor:1>☠ <target> was squashed by a falling anvil while fighting <killer>"
-      death.attack.arrow: "<fcolor:1>☠ <fcolor:1><target> was shot by <killer>"
-      death.attack.arrow.item: "<fcolor:1>☠ <target> was shot by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.badRespawnPoint.message: "<fcolor:1>☠ <target> was killed by <fcolor:2>[<click:open_url:\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"><hover:show_text:\"<fcolor:2>MCPE-28723\">Intentional Game Design</hover></click>]"
-      death.attack.cactus: "<fcolor:1>☠ <target> was pricked to death"
-      death.attack.cactus.player: "<fcolor:1>☠ <target> walked into a cactus while trying to escape <killer>"
-      death.attack.cramming: "<fcolor:1>☠ <target> was squished too much"
-      death.attack.cramming.player: "<fcolor:1>☠ <target> was squashed by <killer>"
-      death.attack.dragonBreath: "<fcolor:1>☠ <target> was roasted in dragon's breath"
-      death.attack.dragonBreath.player: "<fcolor:1>☠ <target> was roasted in dragon's breath by <killer>"
-      death.attack.drown: "<fcolor:1>☠ <target> drowned"
-      death.attack.drown.player: "<fcolor:1>☠ <target> drowned while trying to escape <killer>"
-      death.attack.dryout: "<fcolor:1>☠ <target> died from dehydration"
-      death.attack.dryout.player: "<fcolor:1>☠ <target> died from dehydration while trying to escape <killer>"
-      death.attack.even_more_magic: "<fcolor:1>☠ <target> was killed by even more magic"
-      death.attack.explosion: "<fcolor:1>☠ <target> blew up"
-      death.attack.explosion.player: "<fcolor:1>☠ <target> was blown up by <killer>"
-      death.attack.explosion.item: "<fcolor:1>☠ <target> was blown up by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.explosion.player.item: "<fcolor:1>☠ <target> was blown up by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.fall: "<fcolor:1>☠ <target> hit the ground too hard"
-      death.attack.fall.player: "<fcolor:1>☠ <target> hit the ground too hard while trying to escape <killer>"
-      death.attack.fallingBlock: "<fcolor:1>☠ <target> was squashed by a falling block"
-      death.attack.fallingBlock.player: "<fcolor:1>☠ <target> was squashed by a falling block while fighting <killer>"
-      death.attack.fallingStalactite: "<fcolor:1>☠ <target> was skewered by a falling stalactite"
-      death.attack.fallingStalactite.player: "<fcolor:1>☠ <target> was skewered by a falling stalactite while fighting <killer>"
-      death.attack.fireball: "<fcolor:1>☠ <target> was fireballed by <killer>"
-      death.attack.fireball.item: "<fcolor:1>☠ <target> was fireballed by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.fireworks: "<fcolor:1>☠ <target> went off with a bang"
-      death.attack.fireworks.item: "<fcolor:1>☠ <target> went off with a bang due to a firework fired from <fcolor:2>[<killer_item>]<fcolor:1> by <killer>"
-      death.attack.fireworks.player: "<fcolor:1>☠ <target> went off with a bang while fighting <killer>"
-      death.attack.flyIntoWall: "<fcolor:1>☠ <target> experienced kinetic energy"
-      death.attack.flyIntoWall.player: "<fcolor:1>☠ <target> experienced kinetic energy while trying to escape <killer>"
-      death.attack.freeze: "<fcolor:1>☠ <target> froze to death"
-      death.attack.freeze.player: "<fcolor:1>☠ <target> was frozen to death by <killer>"
-      death.attack.generic: "<fcolor:1>☠ <target> died"
-      death.attack.generic.player: "<fcolor:1>☠ <target> died because of <killer>"
-      death.attack.genericKill: "<fcolor:1>☠ <target> was killed"
-      death.attack.genericKill.player: "<fcolor:1>☠ <target> was killed while fighting <killer>"
-      death.attack.hotFloor: "<fcolor:1>☠ <target> discovered the floor was lava"
-      death.attack.hotFloor.player: "<fcolor:1>☠ <target> walked into the danger zone due to <killer>"
-      death.attack.indirectMagic: "<fcolor:1>☠ <target> was killed by <killer> using magic"
-      death.attack.indirectMagic.item: "<fcolor:1>☠ <target> was killed by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.inFire: "<fcolor:1>☠ <target> went up in flames"
-      death.attack.inFire.player: "<fcolor:1>☠ <target> walked into fire while fighting <killer>"
-      death.attack.inWall: "<fcolor:1>☠ <target> suffocated in a wall"
-      death.attack.inWall.player: "<fcolor:1>☠ <target> suffocated in a wall while fighting <killer>"
-      death.attack.lava: "<fcolor:1>☠ <target> tried to swim in lava"
-      death.attack.lava.player: "<fcolor:1>☠ <target> tried to swim in lava to escape <killer>"
-      death.attack.lightningBolt: "<fcolor:1>☠ <target> was struck by lightning"
-      death.attack.lightningBolt.player: "<fcolor:1☠ <target> was struck by lightning while fighting <killer>"
-      death.attack.mace_smash: "<fcolor:1>☠ <target> was smashed by <killer>"
-      death.attack.mace_smash.item: "<fcolor:1>☠ <target> was smashed by <killer> with <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.magic: "<fcolor:1>☠ <target> was killed by magic"
-      death.attack.magic.player: "<fcolor:1>☠ <target> was killed by magic while trying to escape <killer>"
-      death.attack.mob: "<fcolor:1>☠ <target> was slain by <killer>"
-      death.attack.mob.item: "<fcolor:1>☠ <target> was slain by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.onFire: "<fcolor:1>☠ <target> burned to death"
-      death.attack.onFire.item: "<fcolor:1>☠ <target> was burned to a crisp while fighting <killer> wielding <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.onFire.player: "<fcolor:1>☠ <target> was burned to a crisp while fighting <killer>"
-      death.attack.outOfWorld: "<fcolor:1>☠ <target> fell out of the world"
-      death.attack.outOfWorld.player: "<fcolor:1>☠ <target> didn't want to live in the same world as <killer>"
-      death.attack.outsideBorder: "<fcolor:1>☠ <target> left the confines of this world"
-      death.attack.outsideBorder.player: "<fcolor:1>☠ <target> left the confines of this world while fighting <killer>"
-      death.attack.player: "<fcolor:1>☠ <target> was slain by <killer>"
-      death.attack.player.item: "<fcolor:1>☠ <target> was slain by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.sonic_boom: "<fcolor:1>☠ <target> was obliterated by a sonically-charged shriek"
-      death.attack.sonic_boom.item: "<fcolor:1>☠ <target> was obliterated by a sonically-charged shriek while trying to escape <killer> wielding <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.sonic_boom.player: "<fcolor:1>☠ <target> was obliterated by a sonically-charged shriek while trying to escape <killer>"
-      death.attack.stalagmite: "<fcolor:1>☠ <target> was impaled on a stalagmite"
-      death.attack.stalagmite.player: "<fcolor:1>☠ <target> was impaled on a stalagmite while fighting <killer>"
-      death.attack.starve: "<fcolor:1>☠ <target> starved to death"
-      death.attack.starve.player: "<fcolor:1>☠ <target> starved to death while fighting <killer>"
-      death.attack.sting: "<fcolor:1>☠ <target> was stung to death"
-      death.attack.sting.item: "<fcolor:1>☠ <target> was stung to death by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.sting.player: "<fcolor:1>☠ <target> was stung to death by <killer>"
-      death.attack.sweetBerryBush: "<fcolor:1>☠ <target> was poked to death by a sweet berry bush"
-      death.attack.sweetBerryBush.player: "<fcolor:1>☠ <target> was poked to death by a sweet berry bush while trying to escape <killer>"
-      death.attack.thorns: "<fcolor:1>☠ <target> was killed while trying to hurt <killer>"
-      death.attack.thorns.item: "<fcolor:1>☠ <target> was killed by <fcolor:2>[<killer_item>]<fcolor:1> while trying to hurt <killer>"
-      death.attack.thrown: "<fcolor:1>☠ <target> was pummeled by <killer>"
-      death.attack.thrown.item: "<fcolor:1>☠ <target> was pummeled by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.trident: "<fcolor:1>☠ <target> was impaled by <killer>"
-      death.attack.trident.item: "<fcolor:1>☠ <target> was impaled by <killer> with <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.attack.wither: "<fcolor:1>☠ <target> withered away"
-      death.attack.wither.player: "<fcolor:1>☠ <target> withered away while fighting <killer>"
-      death.attack.witherSkull: "<fcolor:1>☠ <target> was shot by a skull from <killer>"
-      death.attack.witherSkull.item: "<fcolor:1>☠ <target> was shot by a skull from <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.fell.accident.generic: "<fcolor:1>☠ <target> fell from a high place"
-      death.fell.accident.ladder: "<fcolor:1>☠ <target> fell off a ladder"
-      death.fell.accident.other_climbable: "<fcolor:1>☠ <target> fell while climbing"
-      death.fell.accident.scaffolding: "<fcolor:1>☠ <target> fell off scaffolding"
-      death.fell.accident.twisting_vines: "<fcolor:1>☠ <target> fell off some twisting vines"
-      death.fell.accident.vines: "<fcolor:1>☠ <target> fell off some vines"
-      death.fell.accident.weeping_vines: "<fcolor:1>☠ <target> fell off some weeping vines"
-      death.fell.assist: "<fcolor:1>☠ <target> was doomed to fall by <killer>"
-      death.fell.assist.item: "<fcolor:1>☠ <target> was doomed to fall by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.fell.finish: "<fcolor:1>☠ <target> fell too far and was finished by <killer>"
-      death.fell.finish.item: "<fcolor:1>☠ <target> fell too far and was finished by <killer> using <fcolor:2>[<killer_item>]<fcolor:1>"
-      death.fell.killer: "<fcolor:1>☠ <target> was doomed to fall"
-#endregion death
-#region debugstick
-  debugstick:
-    empty: "<fcolor:1>🔧 <fcolor:2><property> <fcolor:1>has no properties"
-    select: "<fcolor:1>🔧 selected \"<fcolor:2><property><fcolor:1>\" (<fcolor:2><value><fcolor:1>)"
-    update: "<fcolor:1>🔧 \"<fcolor:2><property><fcolor:1>\" to <fcolor:2><value>"
-#endregion debugstick
-#region deop
-  deop:
-    format: "<fcolor:1>🤖 Made <target> no longer a server operator"
-#endregion deop
-#region dialog
-  dialog:
-    clear:
-      single: "<fcolor:1>🗔 Cleared dialog for <target>"
-      multiple: "<fcolor:1>🗔 Cleared dialog for <fcolor:2><players> <fcolor:1>players"
-    show:
-      single: "<fcolor:1>🗔 Displayed dialog to <target>"
-      multiple: "<fcolor:1>🗔 Displayed dialog to <fcolor:2><players> <fcolor:1>players"
-#endregion dialog
-#region difficulty
-  difficulty:
-    query: "<fcolor:1>⚔ The difficulty is <fcolor:2><lang:'<difficulty>'>"
-    success: "<fcolor:1>⚔ The difficulty has been set to <fcolor:2><lang:'<difficulty>'>"
-#endregion difficulty
-#region effect
-  effect:
-    clear:
-      everything:
-        single: "<fcolor:1>⚗ Removed every effect from <target>"
-        multiple: "<fcolor:1>⚗ Removed every effect from <fcolor:2><players> <fcolor:1>targets"
-      specific:
-        single: "<fcolor:1>⚗ Removed effect <fcolor:2><lang:'<effect>'> <fcolor:1>from <target>"
-        multiple: "<fcolor:1>⚗ Removed effect <fcolor:2><lang:'<effect>'> <fcolor:1>from <fcolor:2><players> <fcolor:1>targets"
-    give:
-      single: "<fcolor:1>⚗ Applied effect <fcolor:2><lang:'<effect>'> <fcolor:1>to <target>"
-      multiple: "<fcolor:1>⚗ Applied effect <fcolor:2><lang:'<effect>'> <fcolor:1>to <fcolor:2><players> <fcolor:1>targets"
-#endregion effect
-#region enchant
-  enchant:
-    single: "<fcolor:1>📖 Applied enchantment <fcolor:2><enchantment><fcolor:1> to <target>'s item"
-    multiple: "<fcolor:1>📖 Applied enchantment <fcolor:2><enchantment><fcolor:1> to <fcolor:2><players><fcolor:1> entities"
-#endregion enchant
-#region execute
-  execute:
-    pass: "<fcolor:1>⚡ Test passed"
-    pass_count: "<fcolor:1>⚡ Test passed, count: <fcolor:2><count>"
-#endregion execute
-#region experience
-  experience:
-    add:
-      levels:
-        single: "<fcolor:1>⏺ Gave <fcolor:2><amount> <fcolor:1>experience levels to <target>"
-        multiple: "<fcolor:1>⏺ Gave <fcolor:2><amount> <fcolor:1>experience levels to <fcolor:2><players> <fcolor:1>players"
-      points:
-        single: "<fcolor:1>⏺ Gave <fcolor:2><amount> <fcolor:1>experience points to <target>"
-        multiple: "<fcolor:1>⏺ Gave <fcolor:2><amount> <fcolor:1>experience points to <fcolor:2><players> <fcolor:1>players"
-    query:
-      levels: "<fcolor:1>⏺ <target> has <fcolor:2><amount> <fcolor:1>experience levels"
-      points: "<fcolor:1>⏺ <target> has <fcolor:2><amount> <fcolor:1>experience points"
-    set:
-      levels:
-        single: "<fcolor:1>⏺ Set <fcolor:2><amount> <fcolor:1>experience levels to <target>"
-        multiple: "<fcolor:1>⏺ Set <fcolor:2><amount> <fcolor:1>experience levels to <fcolor:2><players> <fcolor:1>players"
-      points:
-        single: "<fcolor:1>⏺ Set <fcolor:2><amount> <fcolor:1>experience points to <target>"
-        multiple: "<fcolor:1>⏺ Set <fcolor:2><amount> <fcolor:1>experience points to <fcolor:2><players> <fcolor:1>players"
-#endregion experience
-#region fill
-  fill:
-    format: "<fcolor:1>⏹ Successfully filled <fcolor:2><blocks> <fcolor:1>block(s)"
-#endregion fill
-#region fillbiome
-  fillbiome:
-    format: "<fcolor:1>⏹ Biomes set between <fcolor:2><x1><fcolor:1>, <fcolor:2><y1><fcolor:1>, <fcolor:2><z1> <fcolor:1>and <fcolor:2><x2><fcolor:1>, <fcolor:2><y2><fcolor:1>, <fcolor:2><z2>"
-    format_count: "<fcolor:1>⏹ <fcolor:2><blocks> <fcolor:1>biome entry/entries set between <fcolor:2><x1><fcolor:1>, <fcolor:2><y1><fcolor:1>, <fcolor:2><z1> <fcolor:1>and <fcolor:2><x2><fcolor:1>, <fcolor:2><y2><fcolor:1>, <fcolor:2><z2>"
-#endregion fillbiome
 #region format
   format:
 #endregion format
@@ -877,14 +611,14 @@ message:
       swear:
         symbol: "❤"
 #endregion swear
-#region name_
-    name_:
+#region names
+    names:
       constant: ""
-      display: "<click:suggest_command:\"/msg <player> \"><hover:show_text:\"<fcolor:2>Write to <player>\"><vault_prefix><stream_prefix><fcolor:2><player><afk_suffix><vault_suffix></hover></click>"
-      entity: "<fcolor:2><hover:show_text:\"<fcolor:2><name> <br><fcolor:1>Type <fcolor:2><lang:'<type>'> <br><fcolor:1>ID <fcolor:2><uuid>\"><name></hover>"
+      display: "<click:suggest_command:\"/msg <player> \"><hover:show_text:\"<fcolor:2>Write to <player_head><player>\"><player_head><vault_prefix><stream_prefix><fcolor:2><player><afk_suffix><vault_suffix></hover></click>"
+      entity: "<fcolor:2><hover:show_text:\"<fcolor:2><name> <br><fcolor:1>Type <fcolor:2><lang:'<type>'> <br><fcolor:1>ID <fcolor:2><uuid>\"><sprite:gui:icon/accessibility><name></hover>"
       unknown: "<fcolor:2><name>"
       invisible: "<fcolor:2>👻 Invisible"
-#endregion name_
+#endregion names
 #region questionanswer
     question_answer:
       questions:
@@ -895,22 +629,6 @@ message:
     translate:
       action: " <click:run_command:\"/translateto <language> <language> <message>\"><hover:show_text:\"<fcolor:2>Translate message\"><fcolor:1>⇄"
 #endregion translate
-#region gamemode
-  gamemode:
-    set_default: "<fcolor:1>🗘 The default game mode is now <fcolor:2><lang:'<gamemode>'>"
-    self: "<fcolor:1>🗘 Set own game mode to <fcolor:2><lang:'<gamemode>'>"
-    other: "<fcolor:1>🗘 Set <target>'s game mode to <fcolor:2><lang:'<gamemode>'>"
-#endregion gamemode
-#region gamerule
-  gamerule:
-    query: "<fcolor:1>🗐 Gamerule <fcolor:2><gamerule> <fcolor:1>is currently set to: <fcolor:2><value>"
-    set: "<fcolor:1>🗐 Gamerule <fcolor:2><gamerule> <fcolor:1>is now set to: <fcolor:2><value>"
-#endregion gamerule
-#region give
-  give:
-    single: "<fcolor:1>⛏ Gave <fcolor:2><items> <fcolor:1>[<fcolor:2><hover:show_text:\"<fcolor:2><give_item>\"><give_item></hover><fcolor:1>] to <target>"
-    multiple: "<fcolor:1>⛏ Gave <fcolor:2><items> <fcolor:1>[<fcolor:2><hover:show_text:\"<fcolor:2><give_item>\"><give_item></hover><fcolor:1>] to <players> players"
-#endregion give
 #region greeting
   greeting:
     format: "<br>[#][#][#][#][#][#][#][#]<br>[#][#][#][#][#][#][#][#]<br>[#][#][#][#][#][#][#][#]<br>[#][#][#][#][#][#][#][#]<br>[#][#][#][#][#][#][#][#]  <fcolor:1>Hello,<br>[#][#][#][#][#][#][#][#]  <player><br>[#][#][#][#][#][#][#][#]<br>[#][#][#][#][#][#][#][#]<br>"
@@ -920,17 +638,6 @@ message:
     format: "<color:#4eff52>→ <display_name>"
     format_first_time: "<color:#4eff52>→ <display_name> <fcolor:1>welcome!"
 #endregion join
-#region kill
-  kill:
-    single: "<color:#778899>☠ <fcolor:1>Killed <target>"
-    multiple: "<color:#778899>☠ <fcolor:1>Killed <fcolor:2><entities> <fcolor:1>entities"
-#endregion kill
-#region locate
-  locate:
-    biome: "<fcolor:1>🗺 The nearest <fcolor:2><value> <fcolor:1>is at <fcolor:2><hover:show_text:\"<fcolor:2>Click to teleport\"><click:suggest_command:\"/tp @s <x> <y> <z>\">[<x>, <y>, <z>]</click></hover> <fcolor:1>(<fcolor:2><blocks> <fcolor:1>blocks away)"
-    poi: "<fcolor:1>🗺 The nearest <fcolor:2><value> <fcolor:1>is at <fcolor:2><hover:show_text:\"<fcolor:2>Click to teleport\"><click:suggest_command:\"/tp @s <x> <y> <z>\">[<x>, <y>, <z>]</click></hover> <fcolor:1>(<fcolor:2><blocks> <fcolor:1>blocks away)"
-    structure: "<fcolor:1>🗺 The nearest <fcolor:2><value> <fcolor:1>is at <fcolor:2><hover:show_text:\"<fcolor:2>Click to teleport\"><click:suggest_command:\"/tp @s <x> <y> <z>\">[<x>, <y>, <z>]</click></hover> <fcolor:1>(<fcolor:2><blocks> <fcolor:1>blocks away)"
-#endregion locate
 #region objective
   objective:
 #endregion objective
@@ -938,59 +645,14 @@ message:
     belowname:
       format: "<fcolor:1>ms"
 #endregion belowname
-#region op
-  op:
-    format: "<fcolor:1>🤖 Made <target> a server operator"
-#endregion op
-#region particle
-  particle:
-    format: "<fcolor:1>❄ Displaying particle <fcolor:2><lang:'<particle>'>"
-#endregion particle
 #region quit
   quit:
     format: "<color:#ff4e4e>← <display_name>"
 #endregion quit
-#region recipe
-  recipe:
-    give:
-      single: "<fcolor:1>💡 Unlocked <fcolor:2><recipes> <fcolor:1>recipe(s) for <target>"
-      multiple: "<fcolor:1>💡 Unlocked <fcolor:2><recipes> <fcolor:1>recipe(s) for <fcolor:2><players> <fcolor:1>players"
-    take:
-      single: "<fcolor:1>💡 Took <fcolor:2><recipes> <fcolor:1>recipe(s) from <target>"
-      multiple: "<fcolor:1>💡 Took <fcolor:2><recipes> <fcolor:1>recipe(s) from <fcolor:2><players> <fcolor:1>players"
-#endregion recipe
-#region reload
-  reload:
-    format: "<fcolor:1>🛈 Reloading!"
-#endregion reload
-#region ride
-  ride:
-    dismount: "<fcolor:1>🏇 <target> stopped riding <second_target>"
-    mount: "<fcolor:1>🏇 <target> started riding <second_target>"
-#endregion ride
 #region rightclick
   rightclick:
     format: "<fcolor:1>◁ <display_name> ▷"
 #endregion rightclick
-#region rotate
-  rotate:
-    format: "<fcolor:1>🤸 Rotated <target>"
-#endregion rotate
-#region save
-  save:
-    disabled: "<fcolor:1>🛈 Automatic saving is now disabled"
-    enabled: "<fcolor:1>🛈 Automatic saving is now enabled"
-    saving: "<fcolor:1>🛈 Saving the game (this may take a moment!)"
-    success: "<fcolor:1>🛈 Saved the game"
-#endregion save
-#region seed
-  seed:
-    format: "<fcolor:1>🔑 Seed: [<fcolor:2><hover:show_text:'<fcolor:2>Click to Copy to Clipboard'><click:copy_to_clipboard:<seed>><seed></click></hover><fcolor:1>]"
-#endregion seed
-#region setblock
-  setblock:
-    format: "<fcolor:1>⏹ Changed the block at <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1>"
-#endregion setblock
 #region sidebar
   sidebar:
     values:
@@ -1003,31 +665,6 @@ message:
       - " "
       - "<fcolor:2>FlectonePulse"
 #endregion sidebar
-#region sleep
-  sleep:
-    not_possible: "<fcolor:1>🛌 No amount of rest can pass this night"
-    players_sleeping: "<fcolor:1>🛌 <fcolor:2><players_sleeping><fcolor:1>/<fcolor:2><players><fcolor:1> players sleeping"
-    skipping_night: "<fcolor:1>🛌 Sleeping through this night"
-#endregion sleep
-#region sound
-  sound:
-    play:
-      multiple: "<fcolor:1>🔊 Played sound <fcolor:2><sound> <fcolor:1>to <fcolor:2><players> <fcolor:1>players"
-      single: "<fcolor:1>🔊 Played sound <fcolor:2><sound> <fcolor:1>to <target>"
-    stop:
-      source_any: "<fcolor:1>🔇 Stopped all '<fcolor:2><source><fcolor:1>' sounds"
-      source_sound: "<fcolor:1>🔇 Stopped sound '<fcolor:2><sound><fcolor:1>' on source '<fcolor:2><source><fcolor:1>'"
-      sourceless_any: "<fcolor:1>🔇 Stopped all sounds"
-      sourceless_sound: "<fcolor:1>🔇 Stopped sound '<fcolor:2><sound><fcolor:1>'"
-#endregion sound
-#region spawn
-  spawn:
-    not_valid: "<fcolor:1>🛌 You have no home bed or charged respawn anchor, or it was obstructed"
-    set: "<fcolor:1>🛌 Respawn point set"
-    set_world: "<fcolor:1>🛌 Set the world spawn point to <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1> [<fcolor:2><angle><fcolor:1>]"
-    single: "<fcolor:1>🛌 Set spawn point to <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1> [<fcolor:2><angle><fcolor:1>] in <fcolor:2><world><fcolor:1> for <target>"
-    multiple: "<fcolor:1>🛌 Set spawn point to <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1> [<fcolor:2><angle><fcolor:1>] in <fcolor:2><world><fcolor:1> for <fcolor:2><players><fcolor:1> players"
-#endregion spawn
 #region status
   status:
 #endregion status
@@ -1049,14 +686,6 @@ message:
     version:
       name: "Minecraft server"
 #endregion version
-#region stop
-  stop:
-    format: "<fcolor:1>🛈 Stopping the server"
-#endregion stop
-#region summon
-  summon:
-    format: "<fcolor:1>🐺 Summoned new <target>"
-#endregion summon
 #region tab
   tab:
 #endregion tab
@@ -1082,45 +711,293 @@ message:
 #endregion footer
 #region playerlistname
     playerlistname:
-      format: "<world_prefix>▋ <reset><vault_prefix><stream_prefix><fcolor:2><player><afk_suffix><vault_suffix>"
+      format: "<!shadow><player_head></!shadow><world_prefix>▋ <reset><vault_prefix><stream_prefix><fcolor:2><player><afk_suffix><vault_suffix>"
 #endregion playerlistname
-#region teleport
-  teleport:
-    entity:
-      single: "<fcolor:1>🌀 Teleported <target> to <second_target>"
-      multiple: "<fcolor:1>🌀 Teleported <fcolor:2><entities> <fcolor:1>entities to <second_target>"
-    location:
-      single: "<fcolor:1>🌀 Teleported <target> to <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1>"
-      multiple: "<fcolor:1>🌀 Teleported <fcolor:2><entities> <fcolor:1>to <fcolor:2><x><fcolor:1>, <fcolor:2><y><fcolor:1>, <fcolor:2><z><fcolor:1>"
-#endregion teleport
-#region time
-  time:
-    query: "<fcolor:1>☽ The time is <fcolor:2><time>"
-    set: "<fcolor:1>☽ Set the time to <fcolor:2><time>"
-#endregion time
 #region update
   update:
     format_player: "<fcolor:1><fcolor:2>(FlectonePulse)<fcolor:1> Your version <fcolor:2><current_version><fcolor:1> is outdated! Update to <fcolor:2><latest_version><fcolor:1> at <url:https://modrinth.com/plugin/flectonepulse>, to get new opportunities!"
     format_console: "<fcolor:1>Your version <fcolor:2><current_version><fcolor:1> is outdated! Update to <fcolor:2><latest_version><fcolor:1> at <click:open_url:https://modrinth.com/plugin/flectonepulse>https://modrinth.com/plugin/flectonepulse"
 #endregion update
-#region weather
-  weather:
-    clear: "<fcolor:1>☀ Set the weather to <fcolor:2>clear"
-    rain: "<fcolor:1>🌧 Set the weather to <fcolor:2>rain"
-    thunder: "<fcolor:1>⛈ Set the weather to <fcolor:2>rain & thunder"
-#endregion weather
-#region worldborder
-  worldborder:
-    center: "<fcolor:1>🚫 Set the center of the world border to <fcolor:2><value><fcolor:1>, <fcolor:2><second_value>"
-    damage:
-      amount: "<fcolor:1>🚫 Set the world border damage to <fcolor:2><value> <fcolor:1>per block each second"
-      buffer: "<fcolor:1>🚫 Set the world border damage buffer to <fcolor:2><value> <fcolor:1>block(s)"
-    get: "<fcolor:1>🚫 The world border is currently <fcolor:2><value> <fcolor:1>block(s) wide"
-    set:
-      grow: "<fcolor:1>🚫 Growing the world border to <fcolor:2><value> <fcolor:1>blocks wide over <fcolor:2><second_value> <fcolor:1>seconds"
-      immediate: "<fcolor:1>🚫 Set the world border to <fcolor:2><value> <fcolor:1>block(s) wide"
-      shrink: "<fcolor:1>🚫 Shrinking the world border to <fcolor:2><value> <fcolor:1>block(s) wide over <fcolor:2><second_value> <fcolor:1>second(s)"
-    warning:
-      distance: "<fcolor:1>🚫 Set the world border warning distance to <fcolor:2><value> <fcolor:1>block(s)"
-      time: "<fcolor:1>🚫 Set the world border warning time to <fcolor:2><value> <fcolor:1>second(s)"
-#endregion worldborder
+#region vanilla
+  vanilla:
+    types:
+      advMode.notEnabled: "<fcolor:1>🤖 Command blocks are not enabled on this server"
+      advMode.setCommand.success: "<fcolor:1>🤖 Command set: <fcolor:2><arg_0>"
+      block.minecraft.bed.no_sleep: "<fcolor:1>🛌 You can sleep only at night or during thunderstorms"
+      block.minecraft.bed.not_safe: "<fcolor:1>🛌 You may not rest now; there are monsters nearby"
+      block.minecraft.bed.obstructed: "<fcolor:1>🛌 This bed is obstructed"
+      block.minecraft.bed.occupied: "<fcolor:1>🛌 This bed is occupied"
+      block.minecraft.bed.too_far_away: "<fcolor:1>🛌 You may not rest now; the bed is too far away"
+      tile.bed.noSleep: "<fcolor:1>🛌 You can sleep only at night or during thunderstorms"
+      tile.bed.notSafe: "<fcolor:1>🛌 You may not rest now; there are monsters nearby"
+      tile.bed.notValid: "<fcolor:1>🛌 This bed is obstructed"
+      tile.bed.occupied: "<fcolor:1>🛌 This bed is occupied"
+      block.minecraft.spawn.not_valid: "<fcolor:1>🛌 You have no home bed or charged respawn anchor, or it was obstructed"
+      block.minecraft.bed.not_valid: "<fcolor:1>🛌 You have no home bed or it was obstructed"
+      block.minecraft.set_spawn: "<fcolor:1>🛌 Respawn point set"
+      chat.type.advancement.challenge: "<fcolor:1>🌠 <arg_0> has made the advancement <arg_1>"
+      chat.type.advancement.goal: "<fcolor:1>🌠 <arg_0> has reached the goal <arg_1>"
+      chat.type.advancement.task: "<fcolor:1>🌠 <arg_0> has completed the challenge <arg_1>"
+      chat.type.achievement: "<fcolor:1>🌠 <arg_0> has completed the challenge <arg_1>"
+      chat.type.achievement.taken: "<fcolor:1>🌠 <arg_0> has lost the achievement '<arg_1>'"
+      sleep.not_possible: "<fcolor:1>🛌 No amount of rest can pass this night"
+      sleep.players_sleeping: "<fcolor:1>🛌 <fcolor:2><arg_0><fcolor:1>/<fcolor:2><arg_1><fcolor:1> players sleeping"
+      sleep.skipping_night: "<fcolor:1>🛌 Sleeping through this night"
+      item.minecraft.debug_stick.empty: "<fcolor:1>🔧 <fcolor:2><arg_0> <fcolor:1>has no properties"
+      item.minecraft.debug_stick.select: "<fcolor:1>🔧 selected \"<fcolor:2><arg_0><fcolor:1>\" (<fcolor:2><arg_1><fcolor:1>)"
+      item.minecraft.debug_stick.update: "<fcolor:1>🔧 \"<fcolor:2><arg_0><fcolor:1>\" to <fcolor:2><arg_1>"
+      commands.clear.success.multiple: "<fcolor:1>🌊 Removed <fcolor:2><arg_0> <fcolor:1>item(s) from <fcolor:2><arg_1> <fcolor:1>players"
+      commands.clear.success.single: "<fcolor:1>🌊 Removed <fcolor:2><arg_0> <fcolor:1>item(s) from player <arg_1>"
+      commands.clear.success: "<fcolor:1>🌊 Removed <fcolor:2><arg_1> <fcolor:1>item(s) from player <arg_0>"
+      commands.advancement.grant.criterion.to.many.success: "<fcolor:1>🌠 Granted criterion '<fcolor:2><arg_0><fcolor:1>' of advancement <arg_1> to <fcolor:2><arg_2> <fcolor:1>players"
+      commands.advancement.revoke.criterion.to.many.success: "<fcolor:1>🌠 Revoked criterion '<fcolor:2><arg_0><fcolor:1>' of advancement <arg_1> from <fcolor:2><arg_2> <fcolor:1>players"
+      commands.advancement.grant.criterion.to.one.success: "<fcolor:1>🌠 Granted criterion '<fcolor:2><arg_0><fcolor:1>' of advancement <arg_1> to <arg_2>"
+      commands.advancement.revoke.criterion.to.one.success: "<fcolor:1>🌠 Revoked criterion '<fcolor:2><arg_0><fcolor:1>' of advancement <arg_1> from <arg_2>"
+      commands.achievement.give.success.all: "<fcolor:1>🌠 Granted all advancements to <arg_0>"
+      commands.achievement.take.success.all: "<fcolor:1>🌠 Revoked all advancements from <arg_0>"
+      commands.advancement.grant.many.to.many.success: "<fcolor:1>🌠 Granted <fcolor:2><arg_0> <fcolor:1>advancements to <fcolor:2><arg_1> <fcolor:1>players"
+      commands.advancement.revoke.many.to.many.success: "<fcolor:1>🌠 Revoked <fcolor:2><arg_0> <fcolor:1>advancements from <fcolor:2><arg_1> <fcolor:1>players"
+      commands.advancement.grant.many.to.one.success: "<fcolor:1>🌠 Granted <fcolor:2><arg_0> <fcolor:1>advancements to <arg_1>"
+      commands.advancement.revoke.many.to.one.success: "<fcolor:1>🌠 Revoked <fcolor:2><arg_0> <fcolor:1>advancements from <arg_1>"
+      commands.advancement.grant.one.to.many.success: "<fcolor:1>🌠 Granted the advancement <arg_0> to <fcolor:2><arg_1> <fcolor:1>players"
+      commands.advancement.revoke.one.to.many.success: "<fcolor:1>🌠 Revoked the advancement <arg_0> from <fcolor:2><arg_1> <fcolor:1>players"
+      commands.advancement.grant.one.to.one.success: "<fcolor:1>🌠 Granted the advancement <arg_0> to <arg_1>"
+      commands.advancement.revoke.one.to.one.success: "<fcolor:1>🌠 Revoked the advancement <arg_0> from <arg_1>"
+      commands.achievement.give.success.one: "<fcolor:1>🌠 Granted the advancement <arg_0> to <arg_1>"
+      commands.achievement.take.success.one: "<fcolor:1>🌠 Revoked the advancement <arg_0> from <arg_1>"
+      commands.attribute.base_value.get.success: "<fcolor:1>❤ Base value of attribute <fcolor:2><arg_0> <fcolor:1>for entity <arg_1> is <fcolor:2><arg_2>"
+      commands.attribute.base_value.reset.success: "<fcolor:1>❤ Base value for attribute <fcolor:2><arg_0> <fcolor:1>for entity <arg_1> reset to default <fcolor:2><arg_2>"
+      commands.attribute.base_value.set.success: "<fcolor:1>❤ Base value for attribute <fcolor:2><arg_0> <fcolor:1>for entity <arg_1> set to <fcolor:2><arg_2>"
+      commands.attribute.value.get.success: "<fcolor:1>❤ Value of attribute <fcolor:2><arg_0> <fcolor:1>for entity <arg_1> is <fcolor:2><arg_2>"
+      commands.attribute.modifier.add.success: "<fcolor:1>❤ Added modifier <fcolor:2><arg_0> <fcolor:1>to attribute <fcolor:2><arg_1> <fcolor:1>for entity <arg_2>"
+      commands.attribute.modifier.remove.success: "<fcolor:1>❤ Removed modifier <fcolor:2><arg_0> <fcolor:1>from attribute <fcolor:2><arg_1> <fcolor:1>for entity <arg_2>"
+      commands.attribute.modifier.value.get.success: "<fcolor:1>❤ Value of modifier <fcolor:2><arg_0> <fcolor:1>on attribute <fcolor:2><arg_1> <fcolor:1>for entity <arg_2> is <fcolor:2><arg_3>"
+      commands.clone.success: "<fcolor:1>⏹ Successfully cloned <fcolor:2><arg_0> <fcolor:1>block(s)"
+      commands.damage.success: "<fcolor:1>🗡 Applied <fcolor:2><arg_0> <fcolor:1>damage to <arg_1>"
+      commands.deop.success: "<fcolor:1>🤖 Made <arg_0> no longer a server operator"
+      commands.dialog.clear.multiple: "<fcolor:1>🗔 Cleared dialog for <fcolor:2><arg_0> <fcolor:1>players"
+      commands.dialog.clear.single: "<fcolor:1>🗔 Cleared dialog for <arg_0>"
+      commands.dialog.show.multiple: "<fcolor:1>🗔 Displayed dialog to <fcolor:2><arg_0> <fcolor:1>players"
+      commands.dialog.show.single: "<fcolor:1>🗔 Displayed dialog to <arg_0>"
+      commands.difficulty.query: "<fcolor:1>⚔ The difficulty is <fcolor:2><arg_0>"
+      commands.difficulty.success: "<fcolor:1>⚔ The difficulty has been set to <fcolor:2><arg_0>"
+      commands.effect.clear.everything.success.multiple: "<fcolor:1>⚗ Removed every effect from <fcolor:2><arg_0> <fcolor:1>targets"
+      commands.effect.clear.everything.success.single: "<fcolor:1>⚗ Removed every effect from <arg_0>"
+      commands.effect.clear.specific.success.multiple: "<fcolor:1>⚗ Removed effect <fcolor:2><arg_0> <fcolor:1>from <fcolor:2><arg_1> <fcolor:1>targets"
+      commands.effect.clear.specific.success.single: "<fcolor:1>⚗ Removed effect <fcolor:2><arg_0> <fcolor:1>from <arg_1>"
+      commands.effect.give.success.multiple: "<fcolor:1>⚗ Applied effect <fcolor:2><arg_0> <fcolor:1>to <fcolor:2><arg_1> <fcolor:1>targets"
+      commands.effect.give.success.single: "<fcolor:1>⚗ Applied effect <fcolor:2><arg_0> <fcolor:1>to <arg_1>"
+      commands.effect.success: "<fcolor:1>⚗ Applied effect <fcolor:2><arg_0> <fcolor:1>to <arg_3>"
+      commands.effect.success.removed: "<fcolor:1>⚗ Removed effect <fcolor:2><arg_0> <fcolor:1>from <arg_1>"
+      commands.effect.success.removed.all: "<fcolor:1>⚗ Removed every effect from <arg_0>"
+      commands.enchant.success.multiple: "<fcolor:1>📖 Applied enchantment <fcolor:2><arg_0><fcolor:1> to <fcolor:2><arg_1><fcolor:1> entities"
+      commands.enchant.success.single: "<fcolor:1>📖 Applied enchantment <fcolor:2><arg_0><fcolor:1> to <arg_1>'s item"
+      commands.enchant.success: "<fcolor:1>📖 Applied enchantment"
+      commands.execute.conditional.pass: "<fcolor:1>⚡ Test passed"
+      commands.execute.conditional.pass_count: "<fcolor:1>⚡ Test passed, count: <fcolor:2><arg_0>"
+      commands.experience.query.levels: "<fcolor:1>⏺ <arg_0> has <fcolor:2><arg_1> <fcolor:1>experience levels"
+      commands.experience.query.points: "<fcolor:1>⏺ <arg_0> has <fcolor:2><arg_1> <fcolor:1>experience points"
+      commands.experience.add.levels.success.multiple: "<fcolor:1>⏺ Gave <fcolor:2><arg_0> <fcolor:1>experience levels to <fcolor:2><arg_1> <fcolor:1>players"
+      commands.experience.add.points.success.multiple: "<fcolor:1>⏺ Gave <fcolor:2><arg_0> <fcolor:1>experience points to <fcolor:2><arg_1> <fcolor:1>players"
+      commands.experience.set.levels.success.multiple: "<fcolor:1>⏺ Set <fcolor:2><arg_0> <fcolor:1>experience levels to <fcolor:2><arg_1> <fcolor:1>players"
+      commands.experience.set.points.success.multiple: "<fcolor:1>⏺ Set <fcolor:2><arg_0> <fcolor:1>experience points to <fcolor:2><arg_1> <fcolor:1>players"
+      commands.experience.add.levels.success.single: "<fcolor:1>⏺ Gave <fcolor:2><arg_0> <fcolor:1>experience levels to <arg_1>"
+      commands.experience.add.points.success.single: "<fcolor:1>⏺ Gave <fcolor:2><arg_0> <fcolor:1>experience points to <arg_1>"
+      commands.experience.set.levels.success.single: "<fcolor:1>⏺ Set <fcolor:2><arg_0> <fcolor:1>experience levels to <arg_1>"
+      commands.experience.set.points.success.single: "<fcolor:1>⏺ Set <fcolor:2><arg_0> <fcolor:1>experience points to <arg_1>"
+      commands.xp.success: "<fcolor:1>⏺ Gave <fcolor:2><arg_0> <fcolor:1>experience points to <arg_1>"
+      commands.xp.success.levels: "<fcolor:1>⏺ Gave <fcolor:2><arg_0> <fcolor:1>experience levels to <arg_1>"
+      commands.xp.success.negative.levels: "<fcolor:1>⏺ Taken <fcolor:2><arg_0> <fcolor:1>levels from <arg_1>"
+      commands.fill.success: "<fcolor:1>⏹ Successfully filled <fcolor:2><arg_0> <fcolor:1>block(s)"
+      commands.fillbiome.success: "<fcolor:1>⏹ Biomes set between <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2> <fcolor:1>and <fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>, <fcolor:2><arg_5>"
+      commands.fillbiome.success.count: "<fcolor:1>⏹ <fcolor:2><arg_0> <fcolor:1>biome entry/entries set between <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>, <fcolor:2><arg_3> <fcolor:1>and <fcolor:2><arg_4><fcolor:1>, <fcolor:2><arg_5><fcolor:1>, <fcolor:2><arg_6>"
+      gameMode.changed: "<fcolor:1>🗘 Your game mode has been updated to <fcolor:2><arg_0>"
+      commands.gamemode.success.other: "<fcolor:1>🗘 Set <arg_0>'s game mode to <fcolor:2><arg_1>"
+      commands.gamemode.success.self: "<fcolor:1>🗘 Set own game mode to <fcolor:2><arg_0>"
+      commands.defaultgamemode.success: "<fcolor:1>🗘 The default game mode is now <fcolor:2><arg_0>"
+      commands.gamerule.query: "<fcolor:1>🗐 Gamerule <fcolor:2><arg_0> <fcolor:1>is currently set to: <fcolor:2><arg_1>"
+      commands.gamerule.set: "<fcolor:1>🗐 Gamerule <fcolor:2><arg_0> <fcolor:1>is now set to: <fcolor:2><arg_1>"
+      commands.gamerule.success: "<fcolor:1>🗐 Game rule has been updated"
+      commands.give.success.multiple: "<fcolor:1>⛏ Gave <fcolor:2><arg_0> <fcolor:2><arg_1><fcolor:1> to <arg_2> players"
+      commands.give.success.single: "<fcolor:1>⛏ Gave <fcolor:2><arg_0> <fcolor:2><arg_1><fcolor:1> to <arg_2>"
+      commands.give.success: "<fcolor:1>⛏ Gave <fcolor:2><arg_0><fcolor:1> * <fcolor:2><arg_1><fcolor:1> to <arg_2>"
+      commands.kill.success.multiple: "<fcolor:1>☠ Killed <fcolor:2><arg_0> <fcolor:1>entities"
+      commands.kill.success.single: "<fcolor:1>☠ Killed <arg_0>"
+      commands.kill.successful: "<fcolor:1>☠ Killed <arg_0>"
+      commands.locate.biome.success: "<fcolor:1>🗺 The nearest <fcolor:2><arg_0><fcolor:1> is at <fcolor:2><arg_1><fcolor:1> (<fcolor:2><arg_2> <fcolor:1>blocks away)"
+      commands.locate.poi.success: "<fcolor:1>🗺 The nearest <fcolor:2><arg_0><fcolor:1> is at <fcolor:2><arg_1><fcolor:1> (<fcolor:2><arg_2> <fcolor:1>blocks away)"
+      commands.locate.structure.success: "<fcolor:1>🗺 The nearest <fcolor:2><arg_0><fcolor:1> is at <fcolor:2><arg_1><fcolor:1> (<fcolor:2><arg_2> <fcolor:1>blocks away)"
+      commands.locate.success: "<fcolor:1>🗺 The nearest <fcolor:2><arg_0><fcolor:1> is at <fcolor:2><arg_1><fcolor:1> (<fcolor:2><arg_2> <fcolor:1>blocks away)"
+      commands.locatebiome.success: "<fcolor:1>🗺 The nearest <fcolor:2><arg_0><fcolor:1> is at <fcolor:2><arg_1><fcolor:1> (<fcolor:2><arg_2> <fcolor:1>blocks away)"
+      commands.op.success: "<fcolor:1>🤖 Made <arg_0> a server operator"
+      commands.particle.success: "<fcolor:1>❄ Displaying particle <fcolor:2><arg_0>"
+      commands.recipe.give.success.multiple: "<fcolor:1>💡 Unlocked <fcolor:2><arg_0> <fcolor:1>recipe(s) for <fcolor:2><arg_1> <fcolor:1>players"
+      commands.recipe.give.success.single: "<fcolor:1>💡 Unlocked <fcolor:2><arg_0> <fcolor:1>recipe(s) for <arg_1>"
+      commands.recipe.take.success.multiple: "<fcolor:1>💡 Took <fcolor:2><arg_0> <fcolor:1>recipe(s) from <fcolor:2><arg_1> <fcolor:1>players"
+      commands.recipe.take.success.single: "<fcolor:1>💡 Took <fcolor:2><arg_0> <fcolor:1>recipe(s) from <arg_1>"
+      commands.reload.success: "<fcolor:1>🛈 Reloading!"
+      commands.ride.dismount.success: "<fcolor:1>🏇 <arg_0> stopped riding <arg_1>"
+      commands.ride.mount.success: "<fcolor:1>🏇 <arg_0> started riding <arg_1>"
+      commands.rotate.success: "<fcolor:1>🤸 Rotated <arg_0>"
+      commands.save.disabled: "<fcolor:1>🛈 Automatic saving is now disabled"
+      commands.save.enabled: "<fcolor:1>🛈 Automatic saving is now enabled"
+      commands.save.start: "<fcolor:1>🛈 Saving the game (this may take a moment!)"
+      commands.save.saving: "<fcolor:1>🛈 Saving the game (this may take a moment!)"
+      commands.save.success: "<fcolor:1>🛈 Saved the game"
+      commands.seed.success: "<fcolor:1>🔑 Seed: <arg_0>"
+      commands.setblock.success.1_19_4: "<fcolor:1>⏹ Changed the block"
+      commands.setblock.success: "<fcolor:1>⏹ Changed the block at <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>"
+      commands.playsound.success.multiple: "<fcolor:1>🔊 Played sound <fcolor:2><arg_0> <fcolor:1>to <fcolor:2><arg_1> <fcolor:1>players"
+      commands.playsound.success.single: "<fcolor:1>🔊 Played sound <fcolor:2><arg_0> <fcolor:1>to <arg_1>"
+      commands.stopsound.success.all: "<fcolor:1>🔇 Stopped all '<fcolor:2><arg_0><fcolor:1>' sounds"
+      commands.stopsound.success.soundSource: "<fcolor:1>🔇 Stopped all sounds"
+      commands.stopsound.success.individualSound: "<fcolor:1>🔇 Stopped sound '<fcolor:2><arg_0><fcolor:1>' on source '<fcolor:2><arg_1><fcolor:1>'"
+      commands.playsound.success: "<fcolor:1>🔊 Played sound <fcolor:2><arg_0> <fcolor:1>to <arg_1>"
+      commands.stopsound.success.source.any: "<fcolor:1>🔇 Stopped all '<fcolor:2><arg_0><fcolor:1>' sounds"
+      commands.stopsound.success.source.sound: "<fcolor:1>🔇 Stopped sound '<fcolor:2><arg_0><fcolor:1>' on source '<fcolor:2><arg_1><fcolor:1>'"
+      commands.stopsound.success.sourceless.any: "<fcolor:1>🔇 Stopped all sounds"
+      commands.stopsound.success.sourceless.sound: "<fcolor:1>🔇 Stopped sound '<fcolor:2><arg_0><fcolor:1>'"
+      commands.spawnpoint.success: "<fcolor:1>🛌 Set spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> <fcolor:1>for <arg_3>"
+      commands.setworldspawn.success.1_16: "<fcolor:1>🛌 Set the world spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>"
+      commands.setworldspawn.success.1_21_8: "<fcolor:1>🛌 Set the world spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>]"
+      commands.setworldspawn.success: "<fcolor:1>🛌 Set the world spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] in <fcolor:2><arg_5>"
+      commands.setworldspawn.success.new: "<fcolor:1>🛌 Set the world spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] in <fcolor:2><arg_5>"
+      commands.spawnpoint.success.multiple.1_14_2: "<fcolor:1>🛌 Set spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> for <fcolor:2><arg_3><fcolor:1> players"
+      commands.spawnpoint.success.multiple.1_21.8: "<fcolor:1>🛌 Set spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>] in <fcolor:2><arg_4> <fcolor:1>for <fcolor:2><arg_5><fcolor:1> players"
+      commands.spawnpoint.success.multiple: "<fcolor:1>🛌 Set spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] in <fcolor:2><arg_5> <fcolor:1>for <fcolor:2><arg_6><fcolor:1> players"
+      commands.spawnpoint.success.multiple.new: "<fcolor:1>🛌 Set spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] in <fcolor:2><arg_5> <fcolor:1>for <fcolor:2><arg_6><fcolor:1> players"
+      commands.spawnpoint.success.single.1_14_2: "<fcolor:1>🛌 Set spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> <fcolor:1>for <arg_3>"
+      commands.spawnpoint.success.single.1_21_8: "<fcolor:1>🛌 Set spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>] in <fcolor:2><arg_4> <fcolor:1>for <arg_5>"
+      commands.spawnpoint.success.single: "<fcolor:1>🛌 Set spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] in <fcolor:2><arg_5> <fcolor:1>for <arg_6>"
+      commands.spawnpoint.success.single.new: "<fcolor:1>🛌 Set spawn point to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] in <fcolor:2><arg_5> <fcolor:1>for <arg_6>"
+      commands.stop.stopping: "<fcolor:1>🛈 Stopping the server"
+      commands.stop.start: "<fcolor:1>🛈 Stopping the server"
+      commands.summon.success: "<fcolor:1>🐺 Summoned new <arg_0>"
+      commands.teleport.success.entity.multiple: "<fcolor:1>🌀 Teleported <fcolor:2><arg_0> <fcolor:1>entities to <arg_1>"
+      commands.teleport.success.entity.single: "<fcolor:1>🌀 Teleported <arg_0> to <arg_1>"
+      commands.tp.success: "<fcolor:1>🌀 Teleported <arg_0> to <arg_1>"
+      commands.teleport.success.location.multiple: "<fcolor:1>🌀 Teleported <fcolor:2><arg_0> <fcolor:1>to <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>, <fcolor:2><arg_3><fcolor:1>"
+      commands.teleport.success.location.single: "<fcolor:1>🌀 Teleported <fcolor:2><arg_0> <fcolor:1>to <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>, <fcolor:2><arg_3><fcolor:1>"
+      commands.tp.success.coordinates: "<fcolor:1>🌀 Teleported <fcolor:2><arg_0> <fcolor:1>to <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1>, <fcolor:2><arg_3><fcolor:1>"
+      commands.time.query: "<fcolor:1>☽ The time is <fcolor:2><arg_0>"
+      commands.time.set: "<fcolor:1>☽ Set the time to <fcolor:2><arg_0>"
+      commands.weather.set.clear: "<fcolor:1>☀ Set the weather to <fcolor:2>clear"
+      commands.weather.clear: "<fcolor:1>☀ Set the weather to <fcolor:2>clear"
+      commands.weather.set.rain: "<fcolor:1>🌧 Set the weather to <fcolor:2>rain"
+      commands.weather.rain: "<fcolor:1>🌧 Set the weather to <fcolor:2>rain"
+      commands.weather.set.thunder: "<fcolor:1>⛈ Set the weather to <fcolor:2>rain & thunder"
+      commands.weather.thunder: "<fcolor:1>⛈ Set the weather to <fcolor:2>rain & thunder"
+      commands.worldborder.center.success: "<fcolor:1>🚫 Set the center of the world border to <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1>"
+      commands.worldborder.damage.amount.success: "<fcolor:1>🚫 Set the world border damage to <fcolor:2><arg_0> <fcolor:1>per block each second"
+      commands.worldborder.damage.buffer.success: "<fcolor:1>🚫 Set the world border damage buffer to <fcolor:2><arg_0> <fcolor:1>block(s)"
+      commands.worldborder.get.success: "<fcolor:1>🚫 The world border is currently <fcolor:2><arg_0> <fcolor:1>block(s) wide"
+      commands.worldborder.get: "<fcolor:1>🚫 The world border is currently <fcolor:2><arg_0> <fcolor:1>block(s) wide"
+      commands.worldborder.set.success: "<fcolor:1>🚫 Set the world border to <fcolor:2><arg_0> <fcolor:1>block(s) wide"
+      commands.worldborder.setSlowly.grow.success: "<fcolor:1>🚫 Growing the world border to <fcolor:2><arg_0> <fcolor:1>blocks wide over <fcolor:2><arg_2> <fcolor:1>seconds"
+      commands.worldborder.set.grow: "<fcolor:1>🚫 Growing the world border to <fcolor:2><arg_0> <fcolor:1>blocks wide over <fcolor:2><arg_1> <fcolor:1>seconds"
+      commands.worldborder.set.immediate: "<fcolor:1>🚫 Set the world border to <fcolor:2><arg_0> <fcolor:1>block(s) wide"
+      commands.worldborder.setSlowly.shrink.success: "<fcolor:1>🚫 Shrinking the world border to <fcolor:2><arg_0> <fcolor:1>block(s) wide over <fcolor:2><arg_2> <fcolor:1>second(s)"
+      commands.worldborder.set.shrink: "<fcolor:1>🚫 Shrinking the world border to <fcolor:2><arg_0> <fcolor:1>block(s) wide over <fcolor:2><arg_1> <fcolor:1>second(s)"
+      commands.worldborder.warning.distance.success: "<fcolor:1>🚫 Set the world border warning distance to <fcolor:2><arg_0> <fcolor:1>block(s)"
+      commands.worldborder.warning.time.success: "<fcolor:1>🚫 Set the world border warning time to <fcolor:2><arg_0> <fcolor:1>second(s)"
+      death.attack.anvil: "<fcolor:1>☠ <arg_0> was squashed by a falling anvil"
+      death.attack.anvil.player: "<fcolor:1>☠ <arg_0> was squashed by a falling anvil while fighting <arg_1>"
+      death.attack.arrow: "<fcolor:1>☠ <arg_0> was shot by <arg_1>"
+      death.attack.arrow.item: "<fcolor:1>☠ <arg_0> was shot by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.attack.badRespawnPoint.message: "<fcolor:1>☠ <arg_0> was killed by <fcolor:2>[<click:open_url:\"https://www.youtube.com/watch?v=dQw4w9WgXcQ\"><hover:show_text:\"<fcolor:2>MCPE-28723\">Intentional Game Design</hover></click>]"
+      death.attack.cactus: "<fcolor:1>☠ <arg_0> was pricked to death"
+      death.attack.cactus.player: "<fcolor:1>☠ <arg_0> walked into a cactus while trying to escape <arg_1>"
+      death.attack.cramming: "<fcolor:1>☠ <arg_0> was squished too much"
+      death.attack.cramming.player: "<fcolor:1>☠ <arg_0> was squashed by <arg_1>"
+      death.attack.dragonBreath: "<fcolor:1>☠ <arg_0> was roasted in dragon's breath"
+      death.attack.dragonBreath.player: "<fcolor:1>☠ <arg_0> was roasted in dragon's breath by <arg_1>"
+      death.attack.drown: "<fcolor:1>☠ <arg_0> drowned"
+      death.attack.drown.player: "<fcolor:1>☠ <arg_0> drowned while trying to escape <arg_1>"
+      death.attack.dryout: "<fcolor:1>☠ <arg_0> died from dehydration"
+      death.attack.dryout.player: "<fcolor:1>☠ <arg_0> died from dehydration while trying to escape <arg_1>"
+      death.attack.even_more_magic: "<fcolor:1>☠ <arg_0> was killed by even more magic"
+      death.attack.explosion: "<fcolor:1>☠ <arg_0> blew up"
+      death.attack.explosion.player: "<fcolor:1>☠ <arg_0> was blown up by <arg_1>"
+      death.attack.explosion.item: "<fcolor:1>☠ <arg_0> was blown up by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.attack.explosion.player.item: "<fcolor:1>☠ <arg_0> was blown up by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.attack.fall: "<fcolor:1>☠ <arg_0> hit the ground too hard"
+      death.attack.fall.player: "<fcolor:1>☠ <arg_0> hit the ground too hard while trying to escape <arg_1>"
+      death.attack.fallingBlock: "<fcolor:1>☠ <arg_0> was squashed by a falling block"
+      death.attack.fallingBlock.player: "<fcolor:1>☠ <arg_0> was squashed by a falling block while fighting <arg_1>"
+      death.attack.fallingStalactite: "<fcolor:1>☠ <arg_0> was skewered by a falling stalactite"
+      death.attack.fallingStalactite.player: "<fcolor:1>☠ <arg_0> was skewered by a falling stalactite while fighting <arg_1>"
+      death.attack.fireball: "<fcolor:1>☠ <arg_0> was fireballed by <arg_1>"
+      death.attack.fireball.item: "<fcolor:1>☠ <arg_0> was fireballed by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.attack.fireworks: "<fcolor:1>☠ <arg_0> went off with a bang"
+      death.attack.fireworks.item: "<fcolor:1>☠ <arg_0> went off with a bang due to a firework fired from <fcolor:2><arg_2><fcolor:1> by <arg_1>"
+      death.attack.fireworks.player: "<fcolor:1>☠ <arg_0> went off with a bang while fighting <arg_1>"
+      death.attack.flyIntoWall: "<fcolor:1>☠ <arg_0> experienced kinetic energy"
+      death.attack.flyIntoWall.player: "<fcolor:1>☠ <arg_0> experienced kinetic energy while trying to escape <arg_1>"
+      death.attack.freeze: "<fcolor:1>☠ <arg_0> froze to death"
+      death.attack.freeze.player: "<fcolor:1>☠ <arg_0> was frozen to death by <arg_1>"
+      death.attack.generic: "<fcolor:1>☠ <arg_0> died"
+      death.attack.generic.player: "<fcolor:1>☠ <arg_0> died because of <arg_1>"
+      death.attack.genericKill: "<fcolor:1>☠ <arg_0> was killed"
+      death.attack.genericKill.player: "<fcolor:1>☠ <arg_0> was killed while fighting <arg_1>"
+      death.attack.hotFloor: "<fcolor:1>☠ <arg_0> discovered the floor was lava"
+      death.attack.hotFloor.player: "<fcolor:1>☠ <arg_0> walked into the danger zone due to <arg_1>"
+      death.attack.indirectMagic: "<fcolor:1>☠ <arg_0> was killed by <arg_1> using magic"
+      death.attack.indirectMagic.item: "<fcolor:1>☠ <arg_0> was killed by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.attack.inFire: "<fcolor:1>☠ <arg_0> went up in flames"
+      death.attack.inFire.player: "<fcolor:1>☠ <arg_0> walked into fire while fighting <arg_1>"
+      death.attack.inWall: "<fcolor:1>☠ <arg_0> suffocated in a wall"
+      death.attack.inWall.player: "<fcolor:1>☠ <arg_0> suffocated in a wall while fighting <arg_1>"
+      death.attack.lava: "<fcolor:1>☠ <arg_0> tried to swim in lava"
+      death.attack.lava.player: "<fcolor:1>☠ <arg_0> tried to swim in lava to escape <arg_1>"
+      death.attack.lightningBolt: "<fcolor:1>☠ <arg_0> was struck by lightning"
+      death.attack.lightningBolt.player: "<fcolor:1>☠ <arg_0> was struck by lightning while fighting <arg_1>"
+      death.attack.mace_smash: "<fcolor:1>☠ <arg_0> was smashed by <arg_1>"
+      death.attack.mace_smash.item: "<fcolor:1>☠ <arg_0> was smashed by <arg_1> with <fcolor:2><arg_2><fcolor:1>"
+      death.attack.magic: "<fcolor:1>☠ <arg_0> was killed by magic"
+      death.attack.magic.player: "<fcolor:1>☠ <arg_0> was killed by magic while trying to escape <arg_1>"
+      death.attack.mob: "<fcolor:1>☠ <arg_0> was slain by <arg_1>"
+      death.attack.mob.item: "<fcolor:1>☠ <arg_0> was slain by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.attack.onFire: "<fcolor:1>☠ <arg_0> burned to death"
+      death.attack.onFire.item: "<fcolor:1>☠ <arg_0> was burned to a crisp while fighting <arg_1> wielding <fcolor:2><arg_2><fcolor:1>"
+      death.attack.onFire.player: "<fcolor:1>☠ <arg_0> was burned to a crisp while fighting <arg_1>"
+      death.attack.outOfWorld: "<fcolor:1>☠ <arg_0> fell out of the world"
+      death.attack.outOfWorld.player: "<fcolor:1>☠ <arg_0> didn't want to live in the same world as <arg_1>"
+      death.attack.outsideBorder: "<fcolor:1>☠ <arg_0> left the confines of this world"
+      death.attack.outsideBorder.player: "<fcolor:1>☠ <arg_0> left the confines of this world while fighting <arg_1>"
+      death.attack.player: "<fcolor:1>☠ <arg_0> was slain by <arg_1>"
+      death.attack.player.item: "<fcolor:1>☠ <arg_0> was slain by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.attack.sonic_boom: "<fcolor:1>☠ <arg_0> was obliterated by a sonically-charged shriek"
+      death.attack.sonic_boom.item: "<fcolor:1>☠ <arg_0> was obliterated by a sonically-charged shriek while trying to escape <arg_1> wielding <fcolor:2><arg_2><fcolor:1>"
+      death.attack.sonic_boom.player: "<fcolor:1>☠ <arg_0> was obliterated by a sonically-charged shriek while trying to escape <arg_1>"
+      death.attack.stalagmite: "<fcolor:1>☠ <arg_0> was impaled on a stalagmite"
+      death.attack.stalagmite.player: "<fcolor:1>☠ <arg_0> was impaled on a stalagmite while fighting <arg_1>"
+      death.attack.starve: "<fcolor:1>☠ <arg_0> starved to death"
+      death.attack.starve.player: "<fcolor:1>☠ <arg_0> starved to death while fighting <arg_1>"
+      death.attack.sting: "<fcolor:1>☠ <arg_0> was stung to death"
+      death.attack.sting.item: "<fcolor:1>☠ <arg_0> was stung to death by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.attack.sting.player: "<fcolor:1>☠ <arg_0> was stung to death by <arg_1>"
+      death.attack.sweetBerryBush: "<fcolor:1>☠ <arg_0> was poked to death by a sweet berry bush"
+      death.attack.sweetBerryBush.player: "<fcolor:1>☠ <arg_0> was poked to death by a sweet berry bush while trying to escape <arg_1>"
+      death.attack.thorns: "<fcolor:1>☠ <arg_0> was killed while trying to hurt <arg_1>"
+      death.attack.thorns.item: "<fcolor:1>☠ <arg_0> was killed by <fcolor:2><arg_2><fcolor:1> while trying to hurt <arg_1>"
+      death.attack.thrown: "<fcolor:1>☠ <arg_0> was pummeled by <arg_1>"
+      death.attack.thrown.item: "<fcolor:1>☠ <arg_0> was pummeled by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.attack.trident: "<fcolor:1>☠ <arg_0> was impaled by <arg_1>"
+      death.attack.trident.item: "<fcolor:1>☠ <arg_0> was impaled by <arg_1> with <fcolor:2><arg_2><fcolor:1>"
+      death.attack.wither: "<fcolor:1>☠ <arg_0> withered away"
+      death.attack.wither.player: "<fcolor:1>☠ <arg_0> withered away while fighting <arg_1>"
+      death.attack.witherSkull: "<fcolor:1>☠ <arg_0> was shot by a skull from <arg_1>"
+      death.attack.witherSkull.item: "<fcolor:1>☠ <arg_0> was shot by a skull from <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.fell.accident.generic: "<fcolor:1>☠ <arg_0> fell from a high place"
+      death.fell.accident.ladder: "<fcolor:1>☠ <arg_0> fell off a ladder"
+      death.fell.accident.other_climbable: "<fcolor:1>☠ <arg_0> fell while climbing"
+      death.fell.accident.scaffolding: "<fcolor:1>☠ <arg_0> fell off scaffolding"
+      death.fell.accident.twisting_vines: "<fcolor:1>☠ <arg_0> fell off some twisting vines"
+      death.fell.accident.vines: "<fcolor:1>☠ <arg_0> fell off some vines"
+      death.fell.accident.weeping_vines: "<fcolor:1>☠ <arg_0> fell off some weeping vines"
+      death.fell.assist: "<fcolor:1>☠ <arg_0> was doomed to fall by <arg_1>"
+      death.fell.assist.item: "<fcolor:1>☠ <arg_0> was doomed to fall by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.fell.finish: "<fcolor:1>☠ <arg_0> fell too far and was finished by <arg_1>"
+      death.fell.finish.item: "<fcolor:1>☠ <arg_0> fell too far and was finished by <arg_1> using <fcolor:2><arg_2><fcolor:1>"
+      death.fell.killer: "<fcolor:1>☠ <arg_0> was doomed to fall"
+#endregion vanilla

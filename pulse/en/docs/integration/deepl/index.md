@@ -6,7 +6,7 @@ authors:
 
 # Deepl
 
-Integration with Deepl allows translating messages from one language to another.
+Integration with Deepl allows translating messages from one language to another, used by the [translation](/docs/command/translateto#service) module
 
 [//]: # (integration.yml)
 <!--@include: @/parts/words.md#setting-->

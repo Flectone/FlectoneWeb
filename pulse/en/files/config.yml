@@ -8,52 +8,129 @@
 # __/\___  ____/\_____  ___/    \______
 #        \/           \/
 #
-#region config
-console: "Console"
-version: "1.6.0-SNAPSHOT"
-language: "en_us"
-language_player: true
-unregister_own_commands: false
-metrics: true
-bungeecord: false
-velocity: false
-clusters: []
-fabric_disabled_commands:
-- "msg"
-- "kick"
-- "banlist"
-- "tell"
-- "w"
-- "me"
-- "pardon"
-- "ban"
-log_filter:
-- "Paper Async Command Builder"
-- "Caught previously unhandled exception :"
-- "Error received from Telegram GetUpdates Request"
-- "OkHttp TaskRunner"
-- "Exception in thread \"ForkJoinPool"
-- "FlectonePulseDatabase - "
-# https://flectone.net/pulse/docs/config/#database
+# Don't change it if you don't know what it is
+version: "1.6.0"
+#region language
+language:
+  type: "en_us"
+  by_player: true
+#endregion language
+#region database
 database:
-  type: "SQLITE"
+  type: "H2"
   name: "flectonepulse"
   host: "127.0.0.1"
   port: "3306"
   user: "root"
   password: "1234"
   parameters: "?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+#endregion database
+#region proxy
+proxy:
+  clusters: []
+  bungeecord: false
+  velocity: false
+  # https://flectone.net/pulse/docs/config/#redis
+  redis:
+    enable: false
+    host: "127.0.0.1"
+    port: 6379
+    ssl: false
+    user: ""
+    password: ""
+#endregion proxy
+#region command
+command:
+  unregister_on_reload: false
+  disabled_fabric:
+  - "msg"
+  - "banlist"
+  - "kick"
+  - "tell"
+  - "w"
+  - "me"
+  - "pardon"
+  - "ban"
+#endregion command
+#region module
 module:
   enable: true
-redis:
-  enable: false
-  host: "127.0.0.1"
-  port: 6379
-  ssl: false
-  user: ""
-  password: ""
+#endregion module
+#region editor
 editor:
   host: ""
   https: false
   port: 25566
-#endregion config
+#endregion editor
+#region logger
+logger:
+  console: "Console"
+  prefix: "\e[0;34m(FlectonePulse) \e[0m"
+  description:
+  - " \e[0;34m ___       ___  __  ___  __        ___ \e[0m"
+  - " \e[0;34m|__  |    |__  /  `  |  /  \\ |\\ | |__  \e[0m"
+  - " \e[0;34m|    |___ |___ \\__,  |  \\__/ | \\| |___ \e[0m"
+  - " \e[0;34m __             __   ___ \e[0;96m                       \e[0m"
+  - " \e[0;34m|__) |  | |    /__` |__  \e[0;96m                   \e[0m"
+  - " \e[0;34m|    \\__/ |___ .__/ |___\e[0;96m   /\\         \e[0m"
+  - " \e[0;96m                          /  \\ v<version>               \e[0m"
+  - " \e[0;96m__/\\___  ____/\\_____  ___/    \\______ \e[0m"
+  - " \e[0;96m       \\/           \\/  \e[0m"
+  warn: "\e[0;93m"
+  info: "\e[0;96m"
+  filter:
+  - "Paper Async Command Builder"
+  - "Caught previously unhandled exception :"
+  - "Error received from Telegram GetUpdates Request"
+  - "OkHttp TaskRunner"
+  - "Exception in thread \"ForkJoinPool"
+  - "FlectonePulseDatabase - "
+#endregion logger
+#region cache
+cache:
+  types:
+    DIALOG_CLICK:
+      duration: 1
+      time_unit: "SECONDS"
+      size: 100
+    OFFLINE_PLAYERS:
+      duration: 1
+      time_unit: "HOURS"
+      size: 1000
+    MODERATION:
+      duration: 1
+      time_unit: "HOURS"
+      size: 5000
+    LEGACY_COLOR_MESSAGE:
+      duration: 10
+      time_unit: "MINUTES"
+      size: 100000
+    MENTION_MESSAGE:
+      duration: 10
+      time_unit: "MINUTES"
+      size: 1000
+    SWEAR_MESSAGE:
+      duration: 10
+      time_unit: "MINUTES"
+      size: 100000
+    REPLACEMENT_MESSAGE:
+      duration: 10
+      time_unit: "MINUTES"
+      size: 100000
+    REPLACEMENT_IMAGE:
+      duration: 10
+      time_unit: "MINUTES"
+      size: 100
+    TRANSLATE_MESSAGE:
+      duration: 1
+      time_unit: "HOURS"
+      size: 5000
+    PROFILE_PROPERTY:
+      duration: 1
+      time_unit: "HOURS"
+      size: 1000
+#endregion cache
+#region metrics
+metrics:
+  enable: true
+#endregion metrics

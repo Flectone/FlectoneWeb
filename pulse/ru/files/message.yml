@@ -11,20 +11,6 @@
 #region message
 enable: true
 #endregion message
-#region advancement
-advancement:
-  enable: true
-  range: "SERVER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-  command:
-    enable: true
-    range: "PLAYER"
-    destination:
-      type: "CHAT"
-#endregion advancement
 #region afk
 afk:
   enable: true
@@ -42,15 +28,6 @@ afk:
 anvil:
   enable: false
 #endregion anvil
-#region attribute
-attribute:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion attribute
 #region auto
 auto:
   enable: false
@@ -65,17 +42,6 @@ auto:
       sound:
         enable: false
 #endregion auto
-#region bed
-bed:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "ACTION_BAR"
-    times:
-      stay: 60
-  sound:
-    enable: false
-#endregion bed
 #region book
 book:
   enable: false
@@ -154,143 +120,6 @@ chat:
       sound:
         enable: false
 #endregion chat
-#region clear
-clear:
-  enable: true
-  range: "PLAYER"
-  sound:
-    enable: false
-  destination:
-    type: "CHAT"
-#endregion clear
-#region clone
-clone:
-  enable: true
-  range: "PLAYER"
-  sound:
-    enable: false
-  destination:
-    type: "CHAT"
-#endregion clone
-#region commandblock
-commandblock:
-  enable: true
-  range: "PLAYER"
-  sound:
-    enable: false
-  destination:
-    type: "CHAT"
-#endregion commandblock
-#region damage
-damage:
-  enable: true
-  range: "PLAYER"
-  sound:
-    enable: false
-  destination:
-    type: "CHAT"
-#endregion damage
-#region death
-death:
-  enable: true
-  range: "SERVER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion death
-#region debugstick
-debugstick:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "ACTION_BAR"
-    times:
-      stay: 20
-  sound:
-    enable: false
-#endregion debugstick
-#region deop
-deop:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion deop
-#region dialog
-dialog:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion dialog
-#region difficulty
-difficulty:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion difficulty
-#region effect
-effect:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion effect
-#region enchant
-enchant:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion enchant
-#region execute
-execute:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion execute
-#region experience
-experience:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion experience
-#region fill
-fill:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion fill
-#region fillbiome
-fillbiome:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion fillbiome
 #region format
 format:
   enable: true
@@ -392,11 +221,17 @@ format:
       - "((у|[нз]а|(хитро|не)?вз?[ыьъ]|с[ьъ]|(и|ра)[зс]ъ?|(о[тб]|под)[ьъ]?|(.\\B)+?[оаеи])?-?([её]б(?!о[рй])|и[пб][ае][тц]).*?|(н[иеа]|([дп]|верт)о|ра[зс]|з?а|с(ме)?|о(т|дно)?|апч)?-?ху([яйиеёю]|ли(?!ган)).*?|(в[зы]|(три|два|четыре)жды|(н|сук)а)?-?бл(я(?!(х|ш[кн]|мб)[ауеыио]).*?|[еэ][дт]ь?)|(ра[сз]|[зн]а|[со]|вы?|п(ере|р[оие]|од)|и[зс]ъ?|[ао]т)?п[иеё]зд.*?|(за)?п[ие]д[аое]?р([оа]м|(ас)?(ну.*?|и(ли)?[нщктл]ь?)?|(о(ч[еи])?|ас)?к(ой)|юг)[ауеы]?|манд([ауеыи](л(и[сзщ])?[ауеиы])?|ой|[ао]вошь?(е?к[ауе])?|юк(ов|[ауи])?)|муд([яаио].*?|е?н([ьюия]|ей))|мля([тд]ь)?|лять|([нз]а|по|пи)х|м[ао]л[ао]фь([яию]|[еёо]й))(?=[\\s,.:;\"']|$)"
       - "(([уyu]|[нзnz3][аa]|(хитро|не)?[вvwb][зz3]?[ыьъi]|[сsc][ьъ']|(и|[рpr][аa4])[зсzs]ъ?|([оo0][тбtb6]|[пp][оo0][дd9])[ьъ']?|(.\\B)+?[оаеиeo])?-?([еёe][бb6](?!о[рй])|и[пб][ае][тц]).*?|([нn][иеаaie]|([дпdp]|[вv][еe3][рpr][тt])[оo0]|[рpr][аa][зсzc3]|[з3z]?[аa]|с(ме)?|[оo0]([тt]|дно)?|апч)?-?[хxh][уuy]([яйиеёюuie]|ли(?!ган)).*?|([вvw][зы3z]|(три|два|четыре)жды|(н|[сc][уuy][кk])[аa])?-?[бb6][лl]([яy](?!(х|ш[кн]|мб)[ауеыио]).*?|[еэe][дтdt][ь']?)|([рp][аa][сзc3z]|[знzn][аa]|[соsc]|[вv][ыi]?|[пp]([еe][рpr][еe]|[рrp][оиioеe]|[оo0][дd])|и[зс]ъ?|[аоao][тt])?[пpn][иеёieu][зz3][дd9].*?|([зz3][аa])?[пp][иеieu][дd][аоеaoe]?[рrp](ну.*?|[оаoa][мm]|([аa][сcs])?([иiu]([лl][иiu])?[нщктлtlsn]ь?)?|([оo](ч[еиei])?|[аa][сcs])?[кk]([оo]й)?|[юu][гg])[ауеыauyei]?|[мm][аa][нnh][дd]([ауеыayueiи]([лl]([иi][сзc3щ])?[ауеыauyei])?|[оo][йi]|[аоao][вvwb][оo](ш|sh)[ь']?([e]?[кk][ауеayue])?|юк(ов|[ауи])?)|[мm][уuy][дd6]([яyаиоaiuo0].*?|[еe]?[нhn]([ьюия'uiya]|ей))|мля([тд]ь)?|лять|([нз]а|по|пи)х|м[ао]л[ао]фь([яию]|[её]й))(?=[\\s,.:;\"']|$)"
 #endregion swear
-#region name_
-  name_:
+#region names
+  names:
     enable: true
     should_check_invisibility: false
-#endregion name_
+#endregion names
+#region object
+  object:
+    enable: true
+    player_head: true
+    sprite: true
+#endregion object
 #region questionanswer
   question_answer:
     enable: false
@@ -488,33 +323,6 @@ format:
       the_end: "<color:#9370DB>"
       world_the_end: "<color:#9370DB>"
 #endregion world
-#region gamemode
-gamemode:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion gamemode
-#region gamerule
-gamerule:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion gamerule
-#region give
-give:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion give
 #region greeting
 greeting:
   enable: false
@@ -533,24 +341,6 @@ join:
   sound:
     enable: false
 #endregion join
-#region kill
-kill:
-  enable: true
-  range: "PLAYER"
-  sound:
-    enable: false
-  destination:
-    type: "CHAT"
-#endregion kill
-#region locate
-locate:
-  enable: true
-  range: "PLAYER"
-  sound:
-    enable: false
-  destination:
-    type: "CHAT"
-#endregion locate
 #region objective
 objective:
   enable: true
@@ -571,24 +361,6 @@ objective:
       enable: true
       period: 100
 #endregion tabname
-#region op
-op:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion op
-#region particle
-particle:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion particle
 #region quit
 quit:
   enable: true
@@ -598,36 +370,10 @@ quit:
   sound:
     enable: false
 #endregion quit
-#region recipe
-recipe:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion recipe
-#region reload
-reload:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion reload
-#region ride
-ride:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion ride
 #region rightclick
 rightclick:
   enable: true
+  should_check_sneaking: false
   range: "PLAYER"
   destination:
     type: "ACTION_BAR"
@@ -638,42 +384,6 @@ rightclick:
   sound:
     enable: false
 #endregion rightclick
-#region rotate
-rotate:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion rotate
-#region save
-save:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion save
-#region seed
-seed:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion seed
-#region setblock
-setblock:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion setblock
 #region sidebar
 sidebar:
   enable: false
@@ -686,35 +396,6 @@ sidebar:
 sign:
   enable: false
 #endregion sign
-#region sleep
-sleep:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "ACTION_BAR"
-    times:
-      stay: 60
-  sound:
-    enable: false
-#endregion sleep
-#region sound
-sound:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion sound
-#region spawn
-spawn:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion spawn
 #region status
 status:
   enable: true
@@ -744,24 +425,6 @@ status:
     enable: false
     protocol: -1
 #endregion version
-#region stop
-stop:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion stop
-#region summon
-summon:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion summon
 #region tab
 tab:
   enable: true
@@ -789,28 +452,11 @@ tab:
 #region playerlistname
   playerlistname:
     enable: true
+    proxy_mode: true
     ticker:
       enable: true
       period: 100
 #endregion playerlistname
-#region teleport
-teleport:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion teleport
-#region time
-time:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion time
 #region update
 update:
   enable: true
@@ -819,21 +465,149 @@ update:
   sound:
     enable: false
 #endregion update
-#region weather
-weather:
+#region vanilla
+vanilla:
   enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion weather
-#region worldborder
-worldborder:
-  enable: true
-  range: "PLAYER"
-  destination:
-    type: "CHAT"
-  sound:
-    enable: false
-#endregion worldborder
+  types:
+  - destination:
+      type: "ACTION_BAR"
+      times:
+        stay: 20
+    translation_keys:
+    - "block.minecraft.bed.no_sleep"
+    - "block.minecraft.bed.not_safe"
+    - "block.minecraft.bed.obstructed"
+    - "block.minecraft.bed.occupied"
+    - "block.minecraft.bed.too_far_away"
+    - "tile.bed.noSleep"
+    - "tile.bed.notSafe"
+    - "tile.bed.notValid"
+    - "tile.bed.occupied"
+    - "block.minecraft.spawn.not_valid"
+    - "block.minecraft.bed.not_valid"
+    - "item.minecraft.debug_stick.empty"
+    - "item.minecraft.debug_stick.select"
+    - "item.minecraft.debug_stick.update"
+  - name: "SLEEP"
+    destination:
+      type: "ACTION_BAR"
+      times:
+        stay: 20
+    translation_keys:
+    - "sleep.not_possible"
+    - "sleep.players_sleeping"
+    - "sleep.skipping_night"
+  - name: "ADVANCEMENT"
+    multi_message: true
+    range: "SERVER"
+    translation_keys:
+    - "chat.type.advancement.challenge"
+    - "chat.type.advancement.goal"
+    - "chat.type.advancement.task"
+    - "chat.type.achievement"
+    - "chat.type.achievement.taken"
+  - name: "DEATH"
+    multi_message: true
+    range: "SERVER"
+    translation_keys:
+    - "death.attack.anvil"
+    - "death.attack.anvil.player"
+    - "death.attack.arrow"
+    - "death.attack.arrow.item"
+    - "death.attack.badRespawnPoint.message"
+    - "death.attack.cactus"
+    - "death.attack.cactus.player"
+    - "death.attack.cramming"
+    - "death.attack.cramming.player"
+    - "death.attack.dragonBreath"
+    - "death.attack.dragonBreath.player"
+    - "death.attack.drown"
+    - "death.attack.drown.player"
+    - "death.attack.dryout"
+    - "death.attack.dryout.player"
+    - "death.attack.even_more_magic"
+    - "death.attack.explosion"
+    - "death.attack.explosion.player"
+    - "death.attack.explosion.item"
+    - "death.attack.explosion.player.item"
+    - "death.attack.fall"
+    - "death.attack.fall.player"
+    - "death.attack.fallingBlock"
+    - "death.attack.fallingBlock.player"
+    - "death.attack.fallingStalactite"
+    - "death.attack.fallingStalactite.player"
+    - "death.attack.fireball"
+    - "death.attack.fireball.item"
+    - "death.attack.fireworks"
+    - "death.attack.fireworks.item"
+    - "death.attack.fireworks.player"
+    - "death.attack.flyIntoWall"
+    - "death.attack.flyIntoWall.player"
+    - "death.attack.freeze"
+    - "death.attack.freeze.player"
+    - "death.attack.generic"
+    - "death.attack.generic.player"
+    - "death.attack.genericKill"
+    - "death.attack.genericKill.player"
+    - "death.attack.hotFloor"
+    - "death.attack.hotFloor.player"
+    - "death.attack.inFire"
+    - "death.attack.inFire.player"
+    - "death.attack.inWall"
+    - "death.attack.inWall.player"
+    - "death.attack.indirectMagic"
+    - "death.attack.indirectMagic.item"
+    - "death.attack.lava"
+    - "death.attack.lava.player"
+    - "death.attack.lightningBolt"
+    - "death.attack.lightningBolt.player"
+    - "death.attack.mace_smash"
+    - "death.attack.mace_smash.item"
+    - "death.attack.magic"
+    - "death.attack.magic.player"
+    - "death.attack.mob"
+    - "death.attack.mob.item"
+    - "death.attack.onFire"
+    - "death.attack.onFire.item"
+    - "death.attack.onFire.player"
+    - "death.attack.outOfWorld"
+    - "death.attack.outOfWorld.player"
+    - "death.attack.outsideBorder"
+    - "death.attack.outsideBorder.player"
+    - "death.attack.player"
+    - "death.attack.player.item"
+    - "death.attack.sonic_boom"
+    - "death.attack.sonic_boom.item"
+    - "death.attack.sonic_boom.player"
+    - "death.attack.stalagmite"
+    - "death.attack.stalagmite.player"
+    - "death.attack.starve"
+    - "death.attack.starve.player"
+    - "death.attack.sting"
+    - "death.attack.sting.item"
+    - "death.attack.sting.player"
+    - "death.attack.sweetBerryBush"
+    - "death.attack.sweetBerryBush.player"
+    - "death.attack.thorns"
+    - "death.attack.thorns.item"
+    - "death.attack.thrown"
+    - "death.attack.thrown.item"
+    - "death.attack.trident"
+    - "death.attack.trident.item"
+    - "death.attack.wither"
+    - "death.attack.wither.player"
+    - "death.attack.witherSkull"
+    - "death.attack.witherSkull.item"
+    - "death.fell.accident.generic"
+    - "death.fell.accident.ladder"
+    - "death.fell.accident.other_climbable"
+    - "death.fell.accident.scaffolding"
+    - "death.fell.accident.twisting_vines"
+    - "death.fell.accident.vines"
+    - "death.fell.accident.weeping_vines"
+    - "death.fell.assist"
+    - "death.fell.assist.item"
+    - "death.fell.finish"
+    - "death.fell.finish.item"
+    - "death.fell.killer"
+#endregion vanilla

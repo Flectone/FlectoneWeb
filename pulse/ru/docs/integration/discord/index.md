@@ -38,8 +38,7 @@ authors:
 - `<player>` ник игрока, который отправил сообщение
 - `<message>` сырое сообщение, которое написал игрок
 - `<plain_message>` отформатированное сообщение, которое написал игрок
-
-Очевидно, что все плейсхолдеры из `PlaceholderAPI` и `FlectonePulse` тоже будут работать
+- Очевидно, что все плейсхолдеры из `PlaceholderAPI` и `FlectonePulse` тоже будут работать
 
 ### `for_minecraft`
 
@@ -47,49 +46,34 @@ authors:
 
 ### `info_channel`
 
-Список айди каналов и их названий
+Список айди каналов и их названий, для отображения какой-нибудь информации, например `TPS`
 
 ### `message_channel`
 
 Список сообщений с их настройкой
 
-::: details Настройка сообщения
+::::: details Настройка сообщения
 
-![discord](https://docs.discord4j.com/img/embed-preview.png)
+::: tip ИНФОРМАЦИЯ
 
-Если параметр пустой, то он не будет использован в итоговом сообщении
+Если параметр пустой или он не написан, то он не будет использован в итоговом сообщении
+
+:::
 
 #### `content`
 
-Содержание обычного сообщения от лица бота дискорда
+Содержание сообщения
 ![discord content](/discordcontent.png)
 
-#### `webhook`
+#### `webhook_avatar`
 
-Дискорд вебхук
+Включение дискорд вебхука с аватаром игрока. Лучше всего использовать `https://mc-heads.net/avatar/<skin>/32.png`
 ![discord webhook](/discordwebhook.png)
-
-
-##### `enable`
-
-Если включено, то сообщение будет являться вебхуком
-
-##### `avatar`
-
-Ссылка для создания аватарки игрока. Если будешь менять на свою, то ссылка должна содержать `<skin>`
-
-##### `content`
-
-Содержание сообщения вебхука
 
 #### `embed`
 
 Дискорд эмбед сообщение
 ![discord embed](/discordembed.png)
-
-##### `enable`
-
-Если включено, то сообщение будет содержать `embed`
 
 ##### `color`
 
@@ -163,20 +147,18 @@ authors:
 
 Изображение в нижней части `embed` сообщения
 
-:::
+:::::
 
-::: info ЕСЛИ ХОЧЕШЬ ДОБАВИТЬ ДРУГОЕ СООБЩЕНИЕ:
-1. Возьми название из списка `типы сообщений`
-2. Вставь в `message_channel`
+::: info ИНФОРМАЦИЯ
+
+Сообщение со всеми параметрами
+![discord](https://docs.discord4j.com/img/embed-preview.png)
+
 ```yaml
 название_сообщения:
   content: ""
-  webhook:
-    enable: false
-    avatar: "https://mc-heads.net/avatar/<skin>/32.png"
-    content: ""
+  webhook_avatar: "https://mc-heads.net/avatar/<skin>/32.png"
   embed:
-    enable: false
     color: ""
     title: ""
     url: ""
@@ -286,8 +268,10 @@ authors:
 
 ```yaml
 message-channel:
-  COMMAND_BAN: "1286666844358316083" // [!code highlight]
+  COMMAND_BAN: "1286666844358316083"
 ```
+
+Локализацию можно не настраивать, по умолчанию сообщение будет отправляться с форматом `<final_message>`
 :::
 
 <!--@include: @/parts/destination.md-->
