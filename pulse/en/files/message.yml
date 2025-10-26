@@ -374,6 +374,7 @@ quit:
 rightclick:
   enable: true
   should_check_sneaking: false
+  hide_name_when_invisible: true
   range: "PLAYER"
   destination:
     type: "ACTION_BAR"

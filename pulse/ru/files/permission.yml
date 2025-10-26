@@ -618,6 +618,11 @@ integration:
     name: "flectonepulse.module.integration.discord"
     type: "TRUE"
 #endregion discord
+#region geyser
+  geyser:
+    name: "flectonepulse.module.integration.geyser"
+    type: "TRUE"
+#endregion geyser
 #region interactivechat
   interactivechat:
     name: "flectonepulse.module.integration.interactivechat"

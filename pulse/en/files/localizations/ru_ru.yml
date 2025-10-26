@@ -367,7 +367,7 @@ command:
     wrong_move: "<color:#ff7171><b>⁉</b> Такой ход невозможен"
     already: "<color:#ff7171><b>⁉</b> Ты уже сходил"
     myself: "<color:#ff7171><b>⁉</b> Ты не можешь играть с самим собой"
-    sender: "<fcolor:2>✂ <fcolor:1>Теперь ходит <display_name>"
+    sender: "<fcolor:2>✂ <fcolor:1>Теперь ходит <target>"
     receiver: "<fcolor:2>✂ <display_name> <fcolor:1>предложил сыграть в камень-ножницы-бумага"
     format_move: "<fcolor:2>✂ <fcolor:1>Выбери свой ход <fcolor:2><click:run_command:\"/rps <target> rock <uuid>\">[🪨 камень]</click> <click:run_command:\"/rps <target> scissors <uuid>\">[✂ ножницы]</click> <click:run_command:\"/rps <target> paper <uuid>\">[🧻 бумага]</click>"
     format_win: "<color:#98FB98>✂ Выиграл <display_name>! <b><sender_move></b> на <b><receiver_move></b>"
@@ -501,6 +501,8 @@ integration:
 #region telegram
   telegram:
     for_minecraft: "<fcolor:2><name> <fcolor:1>» <fcolor:4><message>"
+    info_channel:
+      айди: "ТПС <tps>"
     message_channel:
       CHAT_GLOBAL: "<final_message>"
 #endregion telegram
@@ -863,7 +865,7 @@ message:
       commands.setworldspawn.success: "<fcolor:1>🛌 Установлена точка возрождения мира <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] в <fcolor:2><arg_5>"
       commands.setworldspawn.success.new: "<fcolor:1>🛌 Установлена точка возрождения мира <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] в <fcolor:2><arg_5>"
       commands.spawnpoint.success.multiple.1_14_2: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> для <fcolor:2><arg_3><fcolor:1> игроков"
-      commands.spawnpoint.success.multiple.1_21.8: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>] в <fcolor:2><arg_4> <fcolor:1>для <fcolor:2><arg_5><fcolor:1> игроков"
+      commands.spawnpoint.success.multiple.1_21_8: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>] в <fcolor:2><arg_4> <fcolor:1>для <fcolor:2><arg_5><fcolor:1> игроков"
       commands.spawnpoint.success.multiple: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] в <fcolor:2><arg_5> <fcolor:1>для <fcolor:2><arg_6><fcolor:1> игроков"
       commands.spawnpoint.success.multiple.new: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> [<fcolor:2><arg_3><fcolor:1>, <fcolor:2><arg_4><fcolor:1>] в <fcolor:2><arg_5> <fcolor:1>для <fcolor:2><arg_6><fcolor:1> игроков"
       commands.spawnpoint.success.single.1_14_2: "<fcolor:1>🛌 Установлена точка возрождения <fcolor:2><arg_0><fcolor:1>, <fcolor:2><arg_1><fcolor:1>, <fcolor:2><arg_2><fcolor:1> <fcolor:1>для <arg_3>"

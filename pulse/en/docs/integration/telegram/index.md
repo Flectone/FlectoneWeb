@@ -46,6 +46,10 @@ There are also placeholders that WILL DEFINITELY be replaced in any message:
 
 The format of the message that will be sent from Telegram to Minecraft.
 
+### `info_channel`
+
+List of channel IDs and their names, for displaying certain information, for example `TPS`
+
 ### `message_channel`
 
 A list of messages with the format of the final message.
@@ -75,6 +79,15 @@ message_name: "<final_message>"
 ### `token`
 
 The [token](https://core.telegram.org/bots/faq#how-do-i-create-a-bot) of the bot for connection. You can use environment variables, for example `${VALUE}`.
+
+### `channel_info`
+
+::: details Channel information settings
+#### `enable`
+
+Whether the information channel is needed
+
+<!--@include: @/parts/ticker.md-->
 
 ### `message_channel`
 

@@ -23,12 +23,13 @@ You can use environment variables in database fields, for example `${VALUE}`
 
 Type of database used, currently supported:
 
-| Type          | Explanation                       |
-|--------------|-----------------------------------|
-| `SQLite`     | Local, file-based                 |
-| `MySQL`      | Server, requires connection       |
-| `H2`         | Local, file-based                 |
-| `PostgreSQL` | Server, requires connection       |
+| Type            | Explanation                   |
+|-----------------|-------------------------------|
+| `SQLite`        | Local, file-based             |
+| `MySQL`         | Server, requires connection   |
+| `MariaDB`       | Server, requires connection   |
+| `H2`            | Local, file-based             |
+| `PostgreSQL`    | Server, requires connection   |
 
 ### `name`
 
@@ -53,3 +54,13 @@ Password for connecting to the database
 ### `parameters`
 
 Database connection parameters
+
+### `prefix`
+
+::: warning WARNING
+
+If you change the prefix, it means new tables will be created and previous player data will not be used
+
+:::
+
+Database table prefix, if empty, the `fp_` prefix will be used

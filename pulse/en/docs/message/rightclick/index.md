@@ -37,6 +37,10 @@ The message that will be sent to the player who right-clicked on another player
 
 Whether to check if the player is pressing shift during right-click
 
+### `hide_name_when_invisible`
+
+Whether to hide the nickname of a player who is invisible
+
 <!--@include: @/parts/destination.md-->
 <!--@include: @/parts/cooldown.md-->
 <!--@include: @/parts/sound.md-->

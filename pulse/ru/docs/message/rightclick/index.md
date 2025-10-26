@@ -36,6 +36,10 @@ authors:
 
 Нужно ли проверять, что игрок нажимает шифт, во время ПКМ
 
+### `hide_name_when_invisible`
+
+Нужно ли скрывать ник игрока, который находится в невидимости
+
 <!--@include: @/parts/destination.md-->
 <!--@include: @/parts/cooldown.md-->
 <!--@include: @/parts/sound.md-->

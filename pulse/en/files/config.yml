@@ -9,7 +9,7 @@
 #        \/           \/
 #
 # Don't change it if you don't know what it is
-version: "1.6.0"
+version: "1.6.1"
 #region language
 language:
   type: "en_us"
@@ -24,13 +24,13 @@ database:
   user: "root"
   password: "1234"
   parameters: "?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
+  prefix: ""
 #endregion database
 #region proxy
 proxy:
   clusters: []
   bungeecord: false
   velocity: false
-  # https://flectone.net/pulse/docs/config/#redis
   redis:
     enable: false
     host: "127.0.0.1"

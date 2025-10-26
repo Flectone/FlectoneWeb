@@ -45,6 +45,10 @@ authors:
 
 Формат сообщения, которое будет отправлено из Телеграма в Майнкрафт
 
+### `info_channel`
+
+Список айди каналов и их названий, для отображения какой-нибудь информации, например `TPS`
+
 ### `message_channel`
 
 Список сообщений с форматом итогового сообщения
@@ -74,6 +78,15 @@ authors:
 ### `token`
 
 [Токен](https://core.telegram.org/bots/faq#how-do-i-create-a-bot) бота для подключения. Можно использовать environment variables, например `${VALUE}`
+
+### `channel_info`
+
+::: details Настройка каналов с информацией
+#### `enable`
+
+Нужен ли канал информации
+
+<!--@include: @/parts/ticker.md-->
 
 ### `message_channel`
 
