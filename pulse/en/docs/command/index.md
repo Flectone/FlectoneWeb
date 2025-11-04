@@ -141,6 +141,10 @@ Prompt for commands where a VALUE is entered
 
 <!--@include: @/parts/enable.md-->
 
+### `suggest_invisible_players`
+
+If enabled, all players will see all other players. But if disabled, a player needs a specific permission to see other players under the invisibility potion effect in commands
+
 [//]: # (permission.yml)
 <!--@include: @/parts/words.md#permission-->
 <!--@include: @/parts/words.md#path--> `permission.yml → command`
@@ -149,3 +153,7 @@ Prompt for commands where a VALUE is entered
 <<< @/files/permission.yml#command
 
 <!--@include: @/parts/permission/permissionTier3.md-->
+
+### `see_invisible_players_in_suggest`
+
+Permission to see players under the invisibility potion effect in command suggestions

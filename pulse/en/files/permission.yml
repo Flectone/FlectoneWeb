@@ -17,6 +17,9 @@ module:
 command:
   name: "flectonepulse.module.command"
   type: "TRUE"
+  see_invisible_players_in_suggest:
+    name: "flectonepulse.module.command.see_invisible_players_in_suggest"
+    type: "OP"
 #endregion command
 #region afk
   afk:
@@ -633,6 +636,11 @@ integration:
     name: "flectonepulse.module.integration.itemsadder"
     type: "TRUE"
 #endregion itemsadder
+#region libertybans
+  libertybans:
+    name: "flectonepulse.module.integration.libertybans"
+    type: "TRUE"
+#endregion libertybans
 #region litebans
   litebans:
     name: "flectonepulse.module.integration.litebans"

@@ -5,6 +5,12 @@ authors:
 
 # Упоминание
 
+::: warning ПРЕДУПРЕЖДЕНИЕ
+
+По умолчанию администраторов сервера нельзя упоминать из-за права `bypass`
+
+:::
+
 Это форматирование позволяет упоминать (пинговать) человека в сообщении. Также можно упоминать и донатные группы, например `@default`
 ![mention](/mention.png)
 
@@ -44,6 +50,10 @@ authors:
 ![mention](/mention.png)
 :::
 
+### `everyone_tag`
+
+Слово, которое в сочетании с `trigger` будет упоминать всех игроков на сервере. Чтобы это использовать, необходимо иметь право `flectonepulse.module.message.format.mention.group.default`
+
 <!--@include: @/parts/destination.md-->
 <!--@include: @/parts/sound.md-->
 
@@ -59,6 +69,12 @@ authors:
 ### `group`
 
 Право для упоминания донатной группы, например `@default`
+
+::: tip ИНФОРМАЦИЯ
+
+Для каждой группы проверяется своё право `flectonepulse.module.message.format.mention.group.название_группы`
+
+:::
 
 ### `bypass`
 

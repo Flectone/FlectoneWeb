@@ -139,6 +139,10 @@ authors:
 
 <!--@include: @/parts/enable.md-->
 
+### `suggest_invisible_players`
+
+Если включено, то всем игрокам будут показываться все другие игроки. Но если выключено, то игроку нужно отдельное право, чтобы видеть других игроков под зельем невидимости в коммандах
+
 [//]: # (permission.yml)
 <!--@include: @/parts/words.md#permission-->
 <!--@include: @/parts/words.md#path--> `permission.yml → command`
@@ -147,4 +151,8 @@ authors:
 <<< @/files/permission.yml#command
 
 <!--@include: @/parts/permission/permissionTier3.md-->
+
+### `see_invisible_players_in_suggest`
+
+Право для того, чтобы видеть игроков под зельем невидимости в подсказках комманд
 

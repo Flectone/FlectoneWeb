@@ -6,6 +6,12 @@ authors:
 
 # Mention
 
+::: warning WARNING
+
+By default, server administrators cannot be mentioned due to the `bypass` permission
+
+:::
+
 This formatting allows mentioning (pinging) a user in a message. Donation groups can also be mentioned, for example `@default`
 ![mention](/mention.png)
 
@@ -45,6 +51,10 @@ If I want to mention `Flectone`, I should write `@Flectone`
 ![mention](/mention.png)
 :::
 
+### `everyone_tag`
+
+The word that, when combined with the `trigger`, will mention all players on the server. To use this, you must have the `flectonepulse.module.message.format.mention.group.default` permission
+
 <!--@include: @/parts/destination.md-->
 <!--@include: @/parts/sound.md-->
 
@@ -60,6 +70,12 @@ If I want to mention `Flectone`, I should write `@Flectone`
 ### `group`
 
 Permission for mentioning a donation group, for example `@default`
+
+::: tip INFO
+
+Each group checks for its own permission `flectonepulse.module.message.format.mention.group.group_name`
+
+:::
 
 ### `bypass`
 

@@ -491,7 +491,7 @@ integration:
 #endregion integration
 #region discord
   discord:
-    for_minecraft: "<fcolor:2><name> <fcolor:1>» <fcolor:4><message>"
+    for_minecraft: "<fcolor:2><global_name> <fcolor:1>» <fcolor:4><message>"
     info_channel:
       id: "TPS <tps>"
     message_channel:
@@ -500,7 +500,7 @@ integration:
 #endregion discord
 #region telegram
   telegram:
-    for_minecraft: "<fcolor:2><name> <fcolor:1>» <fcolor:4><message>"
+    for_minecraft: "<fcolor:2><user_name> <fcolor:1>» <fcolor:4><message>"
     info_channel:
       id: "TPS <tps>"
     message_channel:

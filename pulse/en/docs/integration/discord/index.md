@@ -44,6 +44,14 @@ There are also placeholders that will DEFINITELY be replaced in any message
 
 Format of the message that will be sent from Discord to Minecraft
 
+| Placeholder       | Returns                      |
+|-------------------|------------------------------|
+| `<name>`          | User global name in Discord  |
+| `<global_name>`   | User global name in Discord  |
+| `<nickname>`      | User nickname in Discord     |
+| `<display_name>`  | User display name in Discord |
+| `<user_name>`     | User tag in Discord          |
+
 ### `info_channel`
 
 List of channel IDs and their names, for displaying some information, for example `TPS`

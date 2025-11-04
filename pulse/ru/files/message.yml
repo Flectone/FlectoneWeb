@@ -173,6 +173,7 @@ format:
   mention:
     enable: true
     trigger: "@"
+    everyone_tag: "here"
     destination:
       type: "TOAST"
       icon: "minecraft:bell"

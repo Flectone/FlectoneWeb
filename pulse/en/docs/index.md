@@ -30,14 +30,14 @@ FlectonePulse is a plugin for Minecraft servers that allows full customization o
 3. Restart the server
 4. Configure the settings in the files
 
-| File                | Documentation Link                                                         | Explanation                                                                                                                                                                                    |
-|---------------------|--------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `config.yml`        | [Configuration](/docs/config/)                                                  | Main FlectonePulse configuration, essential for proper operation. This is where the database, plugin language, proxy mode, etc., are configured.                                              |
-| `command.yml`       | [Commands](/docs/command/)                                                      | Configuration of all **custom** commands. They can be used by typing `/flectonepulse:command_name` in Minecraft.                                                                                     |
-| `integration.yml`   | [Integrations](/docs/integration/)                                               | Configuration of interactions with external plugins and services.                                                                                                                                     |
-| `message.yml`       | [Messages](/docs/message/)                                                    | Configuration of FlectonePulse messages (conditions for their appearance and content).<br/> **Do not confuse with message format configuration**, which is done in the `/localizations/...` files.                     |
-| `localizations/...` | Specified in each section of the commands and messages documentation                        | This folder contains files with settings for each player language ([see language](/docs/config/#language)). This is where the **format** of messages, i.e., the text, is configured.                              |
-| `permission.yml`    | Specified in each section of the commands, messages, and integrations documentation            | Configuration of access permissions. By default, permissions are set so that most functions are available to all players without additional configuration.                                     |
+| File                | Documentation Link                                                         | Explanation                                                                                                                                                                                        |
+|---------------------|--------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `config.yml`        | [Configuration](/docs/config/)                                                  | Main FlectonePulse configuration, essential for proper operation. This is where the database, plugin language, proxy mode, etc., are configured.                                                   |
+| `command.yml`       | [Commands](/docs/command/)                                                      | Configuration of all **custom** commands. They can be used by typing `/flectonepulse:command_name` in Minecraft.                                                                                   |
+| `integration.yml`   | [Integrations](/docs/integration/)                                               | Configuration of interactions with external plugins and services.                                                                                                                                  |
+| `message.yml`       | [Messages](/docs/message/)                                                    | Configuration of FlectonePulse messages (conditions for their appearance and content).<br/> **Do not confuse with message format configuration**, which is done in the `/localizations/...` files. |
+| `localizations/...` | Specified in each section of the commands and messages documentation                        | This folder contains files with settings for each player language ([see language](/docs/config/language/)). This is where the **format** of messages, i.e., the text, is configured.               |
+| `permission.yml`    | Specified in each section of the commands, messages, and integrations documentation            | Configuration of access permissions. By default, permissions are set so that most functions are available to all players without additional configuration.                                         |
 
 ### 3. How to configure message formatting?
 FlectonePulse has a versatile text formatting system supporting various color formats, from classic codes to modern gradients.
@@ -56,7 +56,7 @@ welcome-message: "<gradient:#FF0000:#00FF00>&lHello</gradient> <rainbow><player>
 Yes, FlectonePulse uses a modular system. Any feature (commands, messages, or integrations) can be disabled in the `command.yml`, `message.yml`, or `integration.yml` files, respectively. After making changes, restart the plugin with the `/flectonepulse reload` command.
 
 ### 5. How does automatic language detection work?
-If the `language_player` option is enabled in `config.yml`, the plugin automatically detects the player's Minecraft language and displays messages from the `localizations/...` folder in that language. If the localization is unavailable, the default language from the configuration is used. Details in the [localization documentation](/docs/config/#language).
+If the `language_player` option is enabled in `config.yml`, the plugin automatically detects the player's Minecraft language and displays messages from the `localizations/...` folder in that language. If the localization is unavailable, the default language from the configuration is used. Details in the [localization documentation](/docs/config/language/).
 
 ### 6. What integrations does FlectonePulse support?
 The plugin integrates with Discord, Telegram, and Twitch, allowing players to communicate across different platforms. It also supports third-party Minecraft plugins, such as preventing muted players from speaking in PlasmoVoice and SimpleVoice. Integration settings are configured in the `integration.yml` file. Details in the [integrations documentation](/docs/integration/).
@@ -95,11 +95,11 @@ After making changes, run the `/flectonepulse reload` command. Details in the [c
 Player name (`display`) configuration is done in the `localizations/...` files:
 
 ::: code-group
-<<< @/files/localizations/ru_ru.yml#name_
-<<< @/files/localizations/en_us.yml#name_
+<<< @/files/localizations/ru_ru.yml#names
+<<< @/files/localizations/en_us.yml#names
 :::
 
-After changes, run `/flectonepulse reload`. Details in the [localization documentation](/docs/message/format/name_/).
+After changes, run `/flectonepulse reload`. Details in the [localization documentation](/docs/message/format/names/).
 
 ### 14. How to configure colors in messages and the interface?
 Color configuration is done in the `message.yml` file using the `fcolor` module:
@@ -172,7 +172,7 @@ Use test versions at your own risk. These versions are often not intended for pr
 :::
 
 ### 19. Does FlectonePulse work with proxies, and how to configure it?
-FlectonePulse supports proxy servers, including BungeeCord and Velocity. The same plugin file must be installed on both the proxy and the server. Configuration files are not created on the proxy—it acts as a bridge. All settings are configured in the server files. A MySQL database connection must be set up in the `config.yml` file on the servers. Additionally, enable either the `velocity` or `bungeecord` mode. Details in the [configuration documentation](/docs/config/#bungeecord).
+FlectonePulse supports proxy servers, including BungeeCord and Velocity. The same plugin file must be installed on both the proxy and the server. Configuration files are not created on the proxy—it acts as a bridge. All settings are configured in the server files. A MySQL database connection must be set up in the `config.yml` file on the servers. Additionally, enable either the `velocity` or `bungeecord` mode. Details in the [configuration documentation](/docs/config/proxy/).
 
 ### 20. Does FlectonePulse support servers that run mods and plugins simultaneously, like Arclight or Mohist, and does it work on Fabric?
 

@@ -46,6 +46,14 @@ There are also placeholders that WILL DEFINITELY be replaced in any message:
 
 The format of the message that will be sent from Telegram to Minecraft.
 
+| Placeholder     | Returns                                              |
+|-----------------|------------------------------------------------------|
+| `<name>`        | User tag in Telegram                                 |
+| `<user_name>`   | User tag in Telegram                                 |
+| `<first_name>`  | User first name in Telegram                          |
+| `<last_name>`   | User last name in Telegram                           |
+| `<chat>`        | Telegram chat name (where the message was sent from) |
+
 ### `info_channel`
 
 List of channel IDs and their names, for displaying certain information, for example `TPS`
