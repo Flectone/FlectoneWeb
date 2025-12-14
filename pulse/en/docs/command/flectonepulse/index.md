@@ -50,6 +50,17 @@ Message format sent when the web server has successfully started
 <<< @/files/command.yml#flectonepulse
 
 <!--@include: @/parts/enable.md-->
+
+### `execute_in_main_thread`
+
+Whether the entire reload will be executed in the server's main thread
+
+::: info INFORMATION
+
+This can resolve issues on `Bukkit`, `Spigot`, `Mohist`, or other older/non-standard cores during reload
+
+:::
+
 <!--@include: @/parts/aliases.md-->
 <!--@include: @/parts/destination.md-->
 <!--@include: @/parts/cooldown.md-->

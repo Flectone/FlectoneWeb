@@ -14,6 +14,12 @@ With a large number of players, it may cause slightly higher memory usage due to
 
 :::
 
+::: warning WARNING
+
+This module is incompatible with the InteractiveChat plugin
+
+:::
+
 [//]: # (localization)
 <!--@include: @/parts/words.md#localization--> 
 <!--@include: @/parts/words.md#path--> `localizations → locale.yml → message.format.moderation.delete`

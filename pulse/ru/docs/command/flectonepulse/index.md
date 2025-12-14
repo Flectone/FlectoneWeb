@@ -49,6 +49,17 @@ authors:
 <<< @/files/command.yml#flectonepulse
 
 <!--@include: @/parts/enable.md-->
+
+### `execute_in_main_thread`
+
+Будет ли выполняться вся перезагрузка в главном потоке сервера
+
+::: info ИНФОРМАЦИЯ
+
+Это может решить проблемы на `Bukkit`, `Spigot`, `Mohist` или других старых/нестандартных ядрах при перезагрузке
+
+:::
+
 <!--@include: @/parts/aliases.md-->
 <!--@include: @/parts/destination.md-->
 <!--@include: @/parts/cooldown.md-->

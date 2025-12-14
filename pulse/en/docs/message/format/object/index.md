@@ -57,6 +57,10 @@ As a result, we get `<sprite:gui:container/slot>`
 
 :::
 
+### `need_extra_space`
+
+Enables adding extra space for `<player_head>` and `<sprite>` written in config files. No space is added in player messages
+
 [//]: # (permission.yml)
 <!--@include: @/parts/words.md#permission-->
 <!--@include: @/parts/words.md#path--> `permission.yml → message.format.object`

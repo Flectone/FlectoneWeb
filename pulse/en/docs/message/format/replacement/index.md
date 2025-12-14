@@ -28,6 +28,12 @@ Used to replace triggers with specific values
 
 ![item](/item.png)
 
+::: warning WARNING
+
+`PacketEvents` currently does not support properly displaying detailed item information on hover. The item will have an "empty" description without enchantments. To solve this issue, you can enable [use_paper_message_sender](/docs/config/module/#use_paper_message_sender), but this is a workaround
+
+:::
+
 
 ![url](/url.png)
 

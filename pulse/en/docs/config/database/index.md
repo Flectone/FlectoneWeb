@@ -19,6 +19,16 @@ You can use environment variables in database fields, for example `${VALUE}`
 <!--@include: @/parts/words.md#default-->
 <<< @/files/config.yml#database
 
+### `ignore_existing_driver`
+
+Whether to download the database library even if this library already exists on the server
+
+::: info INFORMATION
+
+This can solve the issue when other plugins use an outdated library and `FlectonePulse` cannot start properly
+
+:::
+
 ### `type`
 
 Type of database used, currently supported:

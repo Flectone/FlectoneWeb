@@ -40,6 +40,14 @@ Check and enable the game rule for sending command feedback using `/gamerule sen
 <<< @/files/localizations/en_us.yml#vanilla
 :::
 
+### `format_player`
+
+Format for displaying players in arguments
+
+### `format_entity`
+
+Format for displaying mobs in arguments
+
 ### `types`
 
 List of messages where the key is the translation key
@@ -53,11 +61,11 @@ List of messages where the key is the translation key
 
 ![roll 2](/roll_2.png)
 
-3. Write this key in `types`, replacing each `%s` argument with `<arg_0>`, `<arg_1>`, etc.
+3. Write this key in `types`, replacing each `%s` argument with `<argument:0>`, `<argument:1>`, etc.
 
 ```yaml
 types:
-  commands.random.roll: "<fcolor:1> <arg_0> rolled <arg_1> (from <arg_2> to <arg_3>)"
+  commands.random.roll: "<fcolor:1> <argument:0> rolled <argument:1> (from <argument:2> to <argument:3>)"
 ```
 
 4. After reloading with `/flectonepuse reload`, the message will be changed as we made it
@@ -68,9 +76,19 @@ types:
 
 ::: info INFO
 
-- If the message has no arguments, you don't need to write `<arg_number>`
-- If the message doesn't have an argument that is written, for example `<arg_100>`, it will be replaced with empty
-- Arguments always go in the order specified in the English Minecraft localization. If adding another localization, you need to use the same argument order as in English, but you can rearrange them. For example `<arg_1>` can come before `<arg_0>`, this is not a problem
+- `<argument:number:text>` returns the argument's internal text
+- `<argument:number:inner_text>` returns the argument's internal text without the `[]` brackets
+- `<argument:number:style>` returns the argument's internal style
+- `<argument:number:hover_text>` returns the main internal hover text component
+- `<argument:number:hover_text:another_number>` returns the `another_number` internal hover text component
+- `<argument:number:hover_style>` returns the hover component's style
+- If the message has no arguments, `<argument:number>` does not need to be written
+- If the message does not have the argument specified, for example `<argument:100>`, it will be replaced with an empty string
+- Arguments always follow the order specified in Minecraft's English localization. When adding another localization, the same argument order as in English must be used, but they can be rearranged. For example, `<argument:1>` can come before `<argument:0>`, this is not a problem
+
+For example, to configure an advancement message you can do this: `<fcolor:1>🌠 <argument:0> -> «<argument:1:inner_text>» - <argument:1:hover_text:1>`
+
+![advancement showcase](/argument_showcase.png)
 
 :::
 

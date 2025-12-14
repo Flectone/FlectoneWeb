@@ -27,6 +27,30 @@ Integration with Telegram allows sending messages:
 <<< @/files/localizations/en_us.yml#telegram
 :::
 
+### `null_player`
+
+Message if the entered player via `custom_command` is not found
+
+### `format_reply`
+
+Message format for the `<reply>` tag when the message is a reply to another one
+
+### `custom_command`
+
+List of custom integration commands, where the key is the command name and the value is its message format
+
+::: info EXAMPLE
+
+```yaml
+custom_command:
+  tps:
+    content: "<tps>"
+```
+
+A command to get the `tps` value on the server. **Don't forget to create it in integration.yml**
+
+:::
+
 ### `Placeholders`
 
 You can use all placeholders that are used in the initial message for Minecraft
@@ -40,11 +64,11 @@ There are also placeholders that WILL DEFINITELY be replaced in any message:
 - `<player>` nickname of player who sent message
 - `<message>` raw message written by player
 - `<plain_message>` formatted message written by player
-- Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work.
+- `<reply>` formatted reply message, it will be empty if the main message is not a reply
+- Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
 
-### `for_minecraft`
-
-The format of the message that will be sent from Telegram to Minecraft.
+<br>
+The message that will be sent from Telegram to Minecraft has its own placeholders:
 
 | Placeholder     | Returns                                              |
 |-----------------|------------------------------------------------------|
@@ -60,10 +84,10 @@ List of channel IDs and their names, for displaying certain information, for exa
 
 ### `message_channel`
 
-A list of messages with the format of the final message.
+A list of messages with the format of the final message
 
 ::: info IF YOU WANT TO ADD ANOTHER MESSAGE:
-1. Take the name from the list of `message types`.
+1. Take the name from the list of `message types`
 2. Insert it into `message_channel`:
 ```yaml
 message_name: "<final_message>"
@@ -80,13 +104,48 @@ message_name: "<final_message>"
 <!--@include: @/parts/enable.md-->
 
 ::: warning WARNING
-- Before enabling, insert the **token** of the Telegram bot.
-- After enabling, it is **HIGHLY RECOMMENDED** to restart the server.
+- Before enabling, insert the **token** of the Telegram bot
+- After enabling, it is **HIGHLY RECOMMENDED** to restart the server
   :::
+
+### `parse_mode`
+
+In which mode the message will be sent to Telegram
+
+| Mode           | What will happen?                                                          |
+|----------------|----------------------------------------------------------------------------|
+| `MARKDOWN`     | The message will be formatted according to the outdated Markdown format    |
+| `MARKDOWN_V2`  | The message will be formatted according to the new Markdown format         |
+| `HTML`         | The message will be formatted according to the HTML format                 |
+| `NONE`         | The message will not be formatted at all                                   |
 
 ### `token`
 
-The [token](https://core.telegram.org/bots/faq#how-do-i-create-a-bot) of the bot for connection. You can use environment variables, for example `${VALUE}`.
+The [token](https://core.telegram.org/bots/faq#how-do-i-create-a-bot) of the bot for connection. You can use environment variables, for example `${VALUE}`
+
+### `custom_command`
+
+List of custom integration commands, the key is the command name and it can be anything. Commands can ONLY be informational, they do not execute anything on the server and will not perform any actions
+
+| Parameter     | Explanation                                                                      |
+|---------------|----------------------------------------------------------------------------------|
+| `need_player` | Whether to check the first command argument for a player name, e.g., `!ping TheFaser` |
+| `aliases`     | List of aliases for using the command                                            |
+
+::: info EXAMPLE
+
+```yaml
+custom_command:
+  tps:
+    need_player: false
+    aliases:
+      - "!tps"
+      - "!tickpersecond"
+```
+
+A command to get the `tps` value on the server using `!tps` or `!tickpersecond`. **Don't forget to create the message in localization**
+
+:::
 
 ### `channel_info`
 
@@ -104,7 +163,7 @@ A list of message types and chat IDs in Telegram.
 ::: info For example, I want messages from the `/ban` command in Minecraft to be sent to Telegram:
 1. Copy the chat ID where the message should be sent (`-1002341720267_49`).
 
-If the bot is connected and added to the channel, you can use the `/id` command in Telegram to find out the channel ID.
+If the bot is connected and added to the channel, you can use the `/id` command in Telegram to find out the channel ID
 
 2. Write:
 ```yaml
@@ -123,7 +182,7 @@ If your channel is a Forum (Topic), the ID of the **MAIN** channel should be spe
 1. The ID of my main channel (it always ends with `_1`) is `-1002341720267_1`.
 2. Therefore, you need to enter **ONLY** `-1002341720267`.
 
-For other chats in the forum, this rule does not apply, and you need to enter the **FULL** ID.
+For other chats in the forum, this rule does not apply, and you need to enter the **FULL** ID
 
 :::
 

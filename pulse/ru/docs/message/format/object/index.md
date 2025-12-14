@@ -57,6 +57,10 @@ authors:
 
 :::
 
+### `need_extra_space`
+
+Включает добавление дополнительного пробела для `<player_head>` и `<sprite>`, которые написаны в конфиг файлах. В сообщения игроков пробел не добавляется
+
 [//]: # (permission.yml)
 <!--@include: @/parts/words.md#permission-->
 <!--@include: @/parts/words.md#path--> `permission.yml → message.format.object`

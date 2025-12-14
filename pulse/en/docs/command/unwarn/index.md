@@ -28,6 +28,10 @@ Message when the player cannot be found
 
 Message when the player does not have a warning
 
+### `lower_weight_group`
+
+Message if the command is executed by a player with a group weight lower than the player being moderated
+
 ### `format`
 
 Message when the warning is removed
@@ -40,6 +44,11 @@ Message when the warning is removed
 <<< @/files/command.yml#unwarn
 
 <!--@include: @/parts/enable.md-->
+
+### `check_group_weight`
+
+Whether to check players' group weights. If the player being moderated has a higher role than the command sender, the command will not execute and the `lower_weight_group` error will be shown
+
 <!--@include: @/parts/range.md-->
 <!--@include: @/parts/aliases.md-->
 <!--@include: @/parts/destination.md-->

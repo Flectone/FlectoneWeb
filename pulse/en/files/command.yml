@@ -53,7 +53,10 @@ ban:
   enable: true
   suggest_offline_players: true
   show_connection_attempts: true
+  check_group_weight: true
   range: "PROXY"
+  time_limits:
+    0: -1
   aliases:
   - "ban"
   - "tempban"
@@ -464,9 +467,20 @@ dice:
   sound:
     enable: false
 #endregion dice
+#region emit
+emit:
+  enable: true
+  aliases:
+  - "emit"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion emit
 #region flectonepulse
 flectonepulse:
   enable: true
+  execute_in_main_thread: false
   aliases:
   - "flectonepulse"
   - "fp"
@@ -583,7 +597,10 @@ me:
 mute:
   enable: true
   suggest_offline_players: true
+  check_group_weight: true
   range: "PROXY"
+  time_limits:
+    0: -1
   aliases:
   - "mute"
   destination:
@@ -681,6 +698,11 @@ spy:
   categories:
     command:
     - "tell"
+    - "msg"
+    - "w"
+    - "message"
+    - "send"
+    - "m"
     - "anon"
     action:
     - "anvil"
@@ -802,6 +824,7 @@ translateto:
 #region unban
 unban:
   enable: true
+  check_group_weight: true
   range: "PROXY"
   aliases:
   - "unban"
@@ -816,6 +839,7 @@ unban:
 #region unmute
 unmute:
   enable: true
+  check_group_weight: true
   range: "PROXY"
   aliases:
   - "unmute"
@@ -829,6 +853,7 @@ unmute:
 #region unwarn
 unwarn:
   enable: true
+  check_group_weight: true
   range: "PROXY"
   aliases:
   - "unwarn"
@@ -843,7 +868,10 @@ unwarn:
 warn:
   enable: true
   suggest_offline_players: true
+  check_group_weight: true
   range: "PROXY"
+  time_limits:
+    0: -1
   aliases:
   - "warn"
   actions:

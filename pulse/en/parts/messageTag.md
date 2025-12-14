@@ -28,6 +28,8 @@
 | `COMMAND_TRY`                 | Message from the `/try` command              |
 | `COMMAND_WARN`                | Message from the `/warn` command             |
 | `COMMAND_KICK`                | Message from the `/kick` command             |
+| `SERVER_ENABLE`               | Message when the server starts               |
+| `SERVER_DISABLE`              | Message when the server shuts down           |
 
 ::: info NOTE
 

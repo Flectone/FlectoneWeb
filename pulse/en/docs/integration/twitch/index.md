@@ -27,6 +27,30 @@ Integration with Twitch allows:
 <<< @/files/localizations/en_us.yml#twitch
 :::
 
+### `null_player`
+
+Message if the entered player via `custom_command` is not found
+
+### `format_reply`
+
+Message format for the `<reply>` tag when the message is a reply to another one
+
+### `custom_command`
+
+List of custom integration commands, where the key is the command name and the value is its message format
+
+::: info EXAMPLE
+
+```yaml
+custom_command:
+  tps:
+    content: "<tps>"
+```
+
+A command to get the `tps` value on the server. **Don't forget to create it in integration.yml**
+
+:::
+
 ### `Placeholders`
 
 You can use all the placeholders that are used in the initial Minecraft message
@@ -40,12 +64,15 @@ There are also placeholders that WILL DEFINITELY be replaced in any message
 - `<player>` player’s nickname who sent message
 - `<message>` raw message written by player
 - `<plain_message>` formatted message written by player
+- `<reply>` formatted reply message, it will be empty if the main message is not a reply
 - Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
 
-### `for_minecraft`
-- By default `<fcolor:2><name> <fcolor:1>» <fcolor:4><message>`
+<br>
+The message that will be sent from Twitch to Minecraft has its own placeholders:
 
-The format of the message that will be sent from Twitch to Minecraft
+| Placeholder    | What it returns                                           |
+|----------------|-----------------------------------------------------------|
+| `<name>`       | The user's nickname on Twitch                             |
 
 ### `message_channel`
 
@@ -82,6 +109,30 @@ message_name: "<final_message>"
 
 [User token](https://twitchtokengenerator.com/) for connecting. You can use environment variables, for example `${VALUE}`
 ![token](/twitchtoken.png)
+
+### `custom_command`
+
+List of custom integration commands, the key is the command name and it can be anything. Commands can ONLY be informational, they do not execute anything on the server and will not perform any actions
+
+| Parameter     | Explanation                                                                      |
+|---------------|----------------------------------------------------------------------------------|
+| `need_player` | Whether to check the first command argument for a player name, e.g., `!ping TheFaser` |
+| `aliases`     | List of aliases for using the command                                            |
+
+::: info EXAMPLE
+
+```yaml
+custom_command:
+  tps:
+    need_player: false
+    aliases:
+      - "!tps"
+      - "!tickpersecond"
+```
+
+A command to get the `tps` value on the server using `!tps` or `!tickpersecond`. **Don't forget to create the message in localization**
+
+:::
 
 ### `message_channel`
 

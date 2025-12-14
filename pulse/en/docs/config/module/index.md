@@ -46,6 +46,16 @@ house:
 `house` is disabled, so regardless of whether `door` and `chair` are enabled - they will also be disabled
 :::
 
+### `use_paper_message_sender`
+
+If enabled, `FlectonePulse` will use `Paper` as a tool to send a message to the player's chat. How does it work? First, the plugin creates a message internally and obtains a `FlectonePulse.Component`, this object is converted into a regular `String`. Then, `Paper` itself is used to get a `Paper.Component` from this string and send it to the player
+
+::: warning WARNING
+
+For this to work, `PacketEvents` must be installed on the server as a separate plugin and the server core must be `Paper` or a fork of it
+
+:::
+
 [//]: # (permission.yml)
 <!--@include: @/parts/words.md#permission-->
 <!--@include: @/parts/words.md#path--> `permission.yml`

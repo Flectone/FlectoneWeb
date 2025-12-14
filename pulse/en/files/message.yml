@@ -46,6 +46,21 @@ auto:
 book:
   enable: false
 #endregion book
+#region bossbar
+bossbar:
+  enable: true
+  announce:
+    key:
+      destination:
+        type: "TITLE"
+        subtext: ""
+        times:
+          stay: 60
+          fade_in: 20
+          fade_out: 20
+      sound:
+        enable: false
+#endregion bossbar
 #region brand
 brand:
   enable: true
@@ -61,7 +76,7 @@ bubble:
   enable: true
   max_count: 3
   max_length: 30
-  elevation: 1
+  elevation: 0.4
   distance: 30.0
   read_speed: 90.0
   handicap_chars: 10.0
@@ -232,6 +247,7 @@ format:
     enable: true
     player_head: true
     sprite: true
+    need_extra_space: true
 #endregion object
 #region questionanswer
   question_answer:
@@ -260,38 +276,38 @@ format:
   replacement:
     enable: true
     triggers:
-      smile: "(?<!\\\\{2,})(?<=\\s|^)(:-?\\))(?=\\s|$|\\p{Punct})"
-      big_smile: "(?<!\\\\{2,})(?<=\\s|^)(:-?D)(?=\\s|$|\\p{Punct})"
-      sad: "(?<!\\\\{2,})(?<=\\s|^)(:-?\\()(?=\\s|$|\\p{Punct})"
-      ok_hand: "(?<!\\\\{2,})(?<=\\s|^)((?i):ok:)(?=\\s|$|\\p{Punct})"
-      thumbs_up: "(?<!\\\\{2,})(?<=\\s|^)(:\\+1:)(?=\\s|$|\\p{Punct})"
-      thumbs_down: "(?<!\\\\{2,})(?<=\\s|^)(:-1:)(?=\\s|$|\\p{Punct})"
-      cool_smile: "(?<!\\\\{2,})(?<=\\s|^)((?i):cool:)(?=\\s|$|\\p{Punct})"
-      cool_glasses: "(?<!\\\\{2,})(?<=\\s|^)(B-?\\))(?=\\s|$|\\p{Punct})"
-      clown: "(?<!\\\\{2,})(?<=\\s|^)((?i):clown:)(?=\\s|$|\\p{Punct})"
-      heart: "(?<!\\\\{2,})(?<=\\s|^)(<3)(?=\\s|$|\\p{Punct})"
-      laughing: "(?<!\\\\{2,})(?<=\\s|^)((?i)xd)(?=\\s|$|\\p{Punct})"
-      confused: "(?<!\\\\{2,})(?<=\\s|^)(%-?\\))(?=\\s|$|\\p{Punct})"
-      happy: "(?<!\\\\{2,})(?<=\\s|^)(=D)(?=\\s|$|\\p{Punct})"
-      angry: "(?<!\\\\{2,})(?<=\\s|^)(>:-?\\()(?=\\s|$|\\p{Punct})"
-      ascii_idk: "(?<!\\\\{2,})(?<=\\s|^)((?i):idk:)(?=\\s|$|\\p{Punct})"
-      ascii_angry: "(?<!\\\\{2,})(?<=\\s|^)((?i):angry:)(?=\\s|$|\\p{Punct})"
-      ascii_happy: "(?<!\\\\{2,})(?<=\\s|^)((?i):happy:)(?=\\s|$|\\p{Punct})"
-      ping: "(?<!\\\\{2,})(?<=\\s|^)(%ping%)(?=\\s|$|\\p{Punct})"
-      tps: "(?<!\\\\{2,})(?<=\\s|^)(%tps%)(?=\\s|$|\\p{Punct})"
-      online: "(?<!\\\\{2,})(?<=\\s|^)(%online%)(?=\\s|$|\\p{Punct})"
-      coords: "(?<!\\\\{2,})(?<=\\s|^)(%coords%)(?=\\s|$|\\p{Punct})"
-      stats: "(?<!\\\\{2,})(?<=\\s|^)(%stats%)(?=\\s|$|\\p{Punct})"
-      skin: "(?<!\\\\{2,})(?<=\\s|^)(%skin%)(?=\\s|$|\\p{Punct})"
-      item: "(?<!\\\\{2,})(?<=\\s|^)(%item%)(?=\\s|$|\\p{Punct})"
+      smile: "(?<!\\\\)(?<!\\S):-?\\)(?!\\S)"
+      big_smile: "(?<!\\\\)(?<!\\S):-?D(?!\\S)"
+      sad: "(?<!\\\\)(?<!\\S):-?\\((?!\\S)"
+      ok_hand: "(?<!\\\\)(?<!\\S)(?i):ok:(?!\\S)"
+      thumbs_up: "(?<!\\\\)(?<!\\S):\\+1:(?!\\S)"
+      thumbs_down: "(?<!\\\\)(?<!\\S):-1:(?!\\S)"
+      cool_smile: "(?<!\\\\)(?<!\\S)(?i):cool:(?!\\S)"
+      cool_glasses: "(?<!\\\\)(?<!\\S)B-?\\)(?!\\S)"
+      clown: "(?<!\\\\)(?<!\\S)(?i):clown:(?!\\S)"
+      heart: "(?<!\\\\)(?<!\\S)<3(?!\\S)"
+      laughing: "(?<!\\\\)(?<!\\S)(?i)xd(?!\\S)"
+      confused: "(?<!\\\\)(?<!\\S)%-?\\)(?!\\S)"
+      happy: "(?<!\\\\)(?<!\\S)=D(?!\\S)"
+      angry: "(?<!\\\\)(?<!\\S)>:-?\\((?!\\S)"
+      ascii_idk: "(?<!\\\\)(?<!\\S)(?i):idk:(?!\\S)"
+      ascii_angry: "(?<!\\\\)(?<!\\S)(?i):angry:(?!\\S)"
+      ascii_happy: "(?<!\\\\)(?<!\\S)(?i):happy:(?!\\S)"
+      ping: "(?<!\\\\)(?<!\\S)%ping%(?!\\S)"
+      tps: "(?<!\\\\)(?<!\\S)%tps%(?!\\S)"
+      online: "(?<!\\\\)(?<!\\S)%online%(?!\\S)"
+      coords: "(?<!\\\\)(?<!\\S)%coords%(?!\\S)"
+      stats: "(?<!\\\\)(?<!\\S)%stats%(?!\\S)"
+      skin: "(?<!\\\\)(?<!\\S)%skin%(?!\\S)"
+      item: "(?<!\\\\)(?<!\\S)%item%(?!\\S)"
       image: "(?<!\\\\{2,})(?<=\\s|^)((?:https?|HTTPS?)://(?:[a-zA-Z0-9-]{1,63}\\.)*(?:imgur\\.com|discordapp\\.net|cdn\\.discordapp\\.com)/[\\w\\-./?=&%]*\\.(?:jpg|jpeg|png|gif|webp|bmp))(?!\\S)"
       url: "(?<!\\\\{2,})(?<=\\s|^)((?:https?|ftp|HTTPS?)://(?:[\\p{L}a-zA-Z0-9-]{1,63}\\.)+[\\p{L}a-zA-Z]{2,6}(?::\\d{1,5})?(?:/[\\w\\-./?=&%]*)?)(?!\\S)"
-      spoiler: "(?<!\\\\{2,})(?<=\\s|^)\\|\\|([^\\n]*?)\\|\\|(?=\\s|$|\\p{Punct})"
-      bold: "(?<!\\\\{2,})(?<=\\s|^)\\*\\*([^\\n]*?)\\*\\*(?=\\s|$|\\p{Punct})"
-      italic: "(?<!\\\\{2,})(?<=\\s|^)\\*([^\\n]*?)\\*(?=\\s|$|\\p{Punct})"
-      underline: "(?<!\\\\{2,})(?<=\\s|^)__([^\\n]*?)__(?=\\s|$|\\p{Punct})"
-      obfuscated: "(?<!\\\\{2,})(?<=\\s|^)\\?\\?([^\\n]*?)\\?\\?(?=\\s|$|\\p{Punct})"
-      strikethrough: "(?<!\\\\{2,})(?<=\\s|^)~~([^\\n]*?)~~(?=\\s|$|\\p{Punct})"
+      spoiler: "(?<!\\S)\\|\\|([^\\|\\|\\n]+)\\|\\|(?!\\S)"
+      bold: "(?<!\\S)\\*\\*([^\\*\\*\\n]+)\\*\\*(?!\\S)"
+      italic: "(?<!\\S)\\*([^\\*\\n]+)\\*(?!\\S)"
+      underline: "(?<!\\S)__([^__\\n]+)__(?!\\S)"
+      obfuscated: "(?<!\\S)\\?\\?([^\\?\\?\\n]+)\\?\\?(?!\\S)"
+      strikethrough: "(?<!\\S)~~([^~~\\n]+)~~(?!\\S)"
 #endregion replacement
 #region scoreboard
   scoreboard:

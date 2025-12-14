@@ -25,6 +25,30 @@ Integration with Discord allows sending messages:
 <<< @/files/localizations/en_us.yml#discord
 :::
 
+### `null_player`
+
+Message if the entered player via `custom_command` is not found
+
+### `format_reply`
+
+Message format for the `<reply>` tag when the message is a reply to another one
+
+### `custom_command`
+
+List of custom integration commands, where the key is the command name and the value is its message format
+
+::: info EXAMPLE
+
+```yaml
+custom_command:
+  tps:
+    content: "<tps>"
+```
+
+A command to get the `tps` value on the server. **Don't forget to create it in inegration.yml**
+
+:::
+
 ### `Placeholders`
 
 You can use all placeholders used in the initial message for Minecraft
@@ -38,11 +62,11 @@ There are also placeholders that will DEFINITELY be replaced in any message
 - `<player>` nickname of the player who sent the message
 - `<message>` raw message written by the player
 - `<plain_message>` formatted message written by the player
+- `<reply>` formatted reply message, it will be empty if the main message is not a reply
 - Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
 
-### `for_minecraft`
-
-Format of the message that will be sent from Discord to Minecraft
+<br>
+The message that will be sent from Discord to Minecraft has its own placeholders:
 
 | Placeholder       | Returns                      |
 |-------------------|------------------------------|
@@ -206,6 +230,30 @@ message_name:
 
 Discord bot [token](https://discordgsm.com/guide/how-to-get-a-discord-bot-token) for connection. You can use environment variables, for example `${VALUE}`
 
+### `custom_command`
+
+List of custom integration commands, the key is the command name and it can be anything. Commands can ONLY be informational, they do not execute anything on the server and will not perform any actions
+
+| Parameter     | Explanation                                                                      |
+|---------------|----------------------------------------------------------------------------------|
+| `need_player` | Whether to check the first command argument for a player name, e.g., `!ping TheFaser` |
+| `aliases`     | List of aliases for using the command                                            |
+
+::: info EXAMPLE
+
+```yaml
+custom_command:
+  tps:
+    need_player: false
+    aliases:
+      - "!tps"
+      - "!tickpersecond"
+```
+
+A command to get the `tps` value on the server using `!tps` or `!tickpersecond`. **Don't forget to create the message in localization**
+
+:::
+
 ### `presence`
 
 ![discord presence](/discordpresence.png)
@@ -276,7 +324,8 @@ List of message types and [channel IDs](https://support.discord.com/hc/en-us/art
 
 ```yaml
 message-channel:
-COMMAND_BAN: "1286666844358316083"
+  COMMAND_BAN:
+    - "1286666844358316083"
 ```
 
 You don't need to configure localization, by default the message will be sent with the format `<final_message>`

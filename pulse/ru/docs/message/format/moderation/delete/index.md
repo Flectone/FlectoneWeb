@@ -14,6 +14,12 @@ authors:
 
 :::
 
+::: warning ПРЕДУПРЕЖДЕНИЕ
+
+Этот модуль несовместим с плагином InteractiveChat
+
+:::
+
 [//]: # (localization)
 <!--@include: @/parts/words.md#localization--> 
 <!--@include: @/parts/words.md#path--> `localizations → язык.yml → message.format.moderation.delete`

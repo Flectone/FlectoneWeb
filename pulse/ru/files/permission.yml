@@ -262,6 +262,17 @@ command:
       name: "flectonepulse.module.command.dice.sound"
       type: "TRUE"
 #endregion dice
+#region emit
+  emit:
+    name: "flectonepulse.module.command.emit"
+    type: "OP"
+    cooldown_bypass:
+      name: "flectonepulse.module.command.emit.cooldown.bypass"
+      type: "OP"
+    sound:
+      name: "flectonepulse.module.command.emit.sound"
+      type: "TRUE"
+#endregion emit
 #region flectonepulse
   flectonepulse:
     name: "flectonepulse.module.command.flectonepulse"
@@ -761,6 +772,11 @@ message:
     name: "flectonepulse.module.message.book"
     type: "TRUE"
 #endregion book
+#region bossbar
+  bossbar:
+    name: "flectonepulse.module.message.bossbar"
+    type: "TRUE"
+#endregion bossbar
 #region brand
   brand:
     name: "flectonepulse.module.message.brand"

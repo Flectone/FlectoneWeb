@@ -9,7 +9,7 @@
 #        \/           \/
 #
 # Don't change it if you don't know what it is
-version: "1.6.2"
+version: "1.7.0"
 #region language
 language:
   type: "en_us"
@@ -17,6 +17,7 @@ language:
 #endregion language
 #region database
 database:
+  ignore_existing_driver: false
   type: "H2"
   name: "flectonepulse"
   host: "127.0.0.1"
@@ -55,6 +56,7 @@ command:
 #region module
 module:
   enable: true
+  use_paper_message_sender: false
 #endregion module
 #region editor
 editor:

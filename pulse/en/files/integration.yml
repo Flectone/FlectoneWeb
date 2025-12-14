@@ -30,6 +30,11 @@ deepl:
 discord:
   enable: false
   token: ""
+  custom_command:
+    ping:
+      need_player: true
+      aliases:
+      - "!ping"
   presence:
     enable: true
     status: "ONLINE"
@@ -44,8 +49,10 @@ discord:
       enable: true
       period: 1200
   message_channel:
-    FROM_DISCORD_TO_MINECRAFT: ""
-    CHAT_GLOBAL: ""
+    FROM_DISCORD_TO_MINECRAFT:
+    - "123456"
+    CHAT_GLOBAL:
+    - "123456"
   destination:
     type: "CHAT"
 #endregion discord
@@ -124,7 +131,17 @@ supervanish:
 #region telegram
 telegram:
   enable: false
+  parse_mode: "NONE"
   token: ""
+  custom_command:
+    id:
+      need_player: false
+      aliases:
+      - "!id"
+    ping:
+      need_player: true
+      aliases:
+      - "!ping"
   channel_info:
     enable: false
     ticker:
@@ -147,6 +164,11 @@ twitch:
   enable: false
   client_id: ""
   token: ""
+  custom_command:
+    ping:
+      need_player: true
+      aliases:
+      - "!ping"
   message_channel:
     FROM_TWITCH_TO_MINECRAFT:
     - "faseri4ka"
