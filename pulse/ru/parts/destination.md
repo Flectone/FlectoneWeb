@@ -113,6 +113,7 @@ destination:
   type: "TEXT_SCREEN"
   background: "#00000040"
   has_shadow: false
+  see_through: true
   animation_time: 2
   live_time: 10
   width: 100000
@@ -129,6 +130,10 @@ destination:
 #### - `has_shadow`
 
 Включает тень у текста
+
+#### `see_through`
+
+Включает прозрачность текста на фоне воды и облаков (чтобы нельзя было смотреть сквозь воду)
 
 #### - `animation_time`
 

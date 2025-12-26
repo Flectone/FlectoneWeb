@@ -104,6 +104,10 @@ Enables functionality
 
 Enables text shadow
 
+#### `see_through`
+
+Enables text transparency against water and clouds (so you cannot see through water)
+
 #### `scale`
 
 Scales the size of the message

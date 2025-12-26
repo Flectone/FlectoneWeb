@@ -128,7 +128,11 @@ The background color of the message, which includes transparency (alpha channel)
 
 #### - `has_shadow`
 
-Enables text shadow.
+Enables text shadow
+
+#### `see_through`
+
+Enables text transparency against water and clouds (so you cannot see through water)
 
 #### - `animation_time`
 
