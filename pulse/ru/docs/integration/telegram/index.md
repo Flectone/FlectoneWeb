@@ -167,7 +167,7 @@ custom_command:
 
 2. Прописываю:
 ```yaml
-message-channel:
+message_channel:
   COMMAND_BAN:
     - "-1002341720267_49"
 ```

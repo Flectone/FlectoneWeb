@@ -18,7 +18,7 @@ FlectonePulse доступен в Maven Central. Ниже приведены к�
 <dependency>
     <groupId>net.flectone.pulse</groupId>
     <artifactId>core</artifactId>
-    <version>1.6.2</version> <!-- Замените на актуальную версию -->
+    <version>1.7.1</version> <!-- Замените на актуальную версию -->
     <scope>provided</scope>
 </dependency>
 ```
@@ -29,7 +29,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'net.flectone.pulse:core:1.6.2' // Замените на актуальную версию
+    compileOnly 'net.flectone.pulse:core:1.7.1' // Замените на актуальную версию
 }
 ```
 
@@ -39,7 +39,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("net.flectone.pulse:core:1.6.2") // Замените на актуальную версию
+    compileOnly("net.flectone.pulse:core:1.7.1") // Замените на актуальную версию
 }
 ```
 
@@ -53,7 +53,7 @@ dependencies {
 <dependency>
     <groupId>net.flectone.pulse</groupId>
     <artifactId>core</artifactId>
-    <version>1.6.3-SNAPSHOT</version> <!-- Замените на актуальную версию -->
+    <version>1.7.2-SNAPSHOT</version> <!-- Замените на актуальную версию -->
     <scope>provided</scope>
 </dependency>
 ```
@@ -64,7 +64,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly 'net.flectone.pulse:core:1.6.3-SNAPSHOT' // Замените на актуальную версию
+    compileOnly 'net.flectone.pulse:core:1.7.2-SNAPSHOT' // Замените на актуальную версию
 }
 ```
 
@@ -74,7 +74,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("net.flectone.pulse:core:1.6.3-SNAPSHOT") // Замените на актуальную версию
+    compileOnly("net.flectone.pulse:core:1.7.2-SNAPSHOT") // Замените на актуальную версию
 }
 ```
 
@@ -139,3 +139,4 @@ flectonePulse.reload();
 
 - Убедитесь, что FlectonePulse установлен на сервере и указан как softdepend в `plugin.yml`
 - Используйте `isReady()`, чтобы проверить готовность инжектора перед вызовом `get()`
+- Для регистрации слушателей, используйте `ListenerRegistry.class` и метод `registerPermanent()`

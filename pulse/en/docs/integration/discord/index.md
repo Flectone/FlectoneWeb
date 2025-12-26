@@ -12,6 +12,16 @@ Integration with Discord allows sending messages:
 ![discord message](/discordmessage.png)
 ![minecraft message](/discordminecraftmessage.png)
 
+::: info INFORMATION
+
+For the bot to work correctly, enable three settings for your bot in the [Discord Developer Portal](https://discord.com/developers/applications/):
+
+![develop](/discorddevelopers.png)
+
+Also grant the bot the following permissions: `read messages`, `send messages`, and `use webhooks`
+
+:::
+
 <!--@include: @/parts/messageTag.md-->
 
 [//]: # (localization)
@@ -197,7 +207,7 @@ message_name:
     author:
       name: ""
       url: ""
-      icon-url: "https://mc-heads.net/avatar/<skin>/16.png"
+      icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
     description: ""
     thumbnail: ""
     fields:
@@ -208,7 +218,7 @@ message_name:
     timestamp: true
     footer:
       text: ""
-      icon-url: "https://mc-heads.net/avatar/<skin>/16.png"
+      icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
 ```
 :::
 
@@ -323,7 +333,7 @@ List of message types and [channel IDs](https://support.discord.com/hc/en-us/art
 2. Write `COMMAND_BAN: "1286666844358316083"`
 
 ```yaml
-message-channel:
+message_channel:
   COMMAND_BAN:
     - "1286666844358316083"
 ```

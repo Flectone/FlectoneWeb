@@ -23,6 +23,8 @@ afk:
   ticker:
     enable: true
     period: 20
+  sound:
+    enable: false
 #endregion afk
 #region anvil
 anvil:
@@ -197,7 +199,7 @@ format:
       enable: true
       volume: 0.1
       pitch: 0.1
-      category: "NEUTRAL"
+      category: "BLOCK"
       name: "minecraft:entity.experience_orb.pickup"
 #endregion mention
 #region moderation
@@ -594,6 +596,8 @@ vanilla:
     - "death.attack.outsideBorder.player"
     - "death.attack.player"
     - "death.attack.player.item"
+    - "death.attack.spear"
+    - "death.attack.spear.item"
     - "death.attack.sonic_boom"
     - "death.attack.sonic_boom.item"
     - "death.attack.sonic_boom.player"

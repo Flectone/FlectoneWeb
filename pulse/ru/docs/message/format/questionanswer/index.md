@@ -37,11 +37,11 @@ authors:
 
 Список вопросов с их настройкой
 
-- <!--@include: @/parts/range.md-->
-- <!--@include: @/parts/destination.md-->
-- <!--@include: @/parts/cooldown.md-->
-- <!--@include: @/parts/sound.md-->
-- ### `target`
+<!--@include: @/parts/range.md-->
+<!--@include: @/parts/destination.md-->
+<!--@include: @/parts/cooldown.md-->
+<!--@include: @/parts/sound.md-->
+### `target`
 
 [Регулярное выражение](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) для поиска вопроса
 
@@ -58,9 +58,5 @@ authors:
 
 Список вопросов с правами
 
-- ### `ask`
-
-Право на этот вопрос
-
-- <!--@include: @/parts/permission/sound.md-->
-- <!--@include: @/parts/permission/cooldown.md-->
+<!--@include: @/parts/permission/sound.md-->
+<!--@include: @/parts/permission/cooldown.md-->

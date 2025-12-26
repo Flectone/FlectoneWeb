@@ -1,5 +1,5 @@
 <!-- #region path -->
-📂 Path
+**Path**
 <!-- #endregion path -->
 
 <!-- #region localization -->
@@ -15,5 +15,5 @@
 <!-- #endregion permission -->
 
 <!-- #region default -->
-### ⚖️ `Default`
+### `Default`
 <!-- #endregion default -->

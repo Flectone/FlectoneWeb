@@ -65,6 +65,7 @@ authors:
 
 <!--@include: @/parts/destination.md-->
 <!--@include: @/parts/ticker.md-->
+<!--@include: @/parts/sound.md-->
 
 [//]: # (permission.yml)
 <!--@include: @/parts/words.md#permission-->

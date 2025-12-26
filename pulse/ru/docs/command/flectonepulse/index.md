@@ -25,6 +25,14 @@ authors:
 <<< @/files/localizations/en_us.yml#flectonepulse
 :::
 
+### `null_host_editor`
+
+Сообщение, когда поле `host` в config.yml пустое
+
+### `null_port_editor`
+
+Сообщение, когда `port`, который указан в config.yml, занят или недоступен
+
 ### `format_false`
 
 Сообщение при возникновении ошибки

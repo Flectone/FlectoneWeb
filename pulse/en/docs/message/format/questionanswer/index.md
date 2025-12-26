@@ -38,10 +38,11 @@ List of questions and their corresponding answers
 
 List of questions with their settings
 
-- <!--@include: @/parts/range.md-->
-- <!--@include: @/parts/destination.md-->
-- <!--@include: @/parts/cooldown.md-->
-- <!--@include: @/parts/sound.md-->
+<!--@include: @/parts/range.md-->
+<!--@include: @/parts/destination.md-->
+<!--@include: @/parts/cooldown.md-->
+<!--@include: @/parts/sound.md-->
+
 - ### `target`
 
 [Regular expression](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) to match the question
@@ -59,9 +60,5 @@ List of questions with their settings
 
 List of questions with permissions
 
-- ### `ask`
-
-Permission to ask this question
-
-- <!--@include: @/parts/permission/sound.md-->
-- <!--@include: @/parts/permission/cooldown.md-->
+<!--@include: @/parts/permission/sound.md-->
+<!--@include: @/parts/permission/cooldown.md-->

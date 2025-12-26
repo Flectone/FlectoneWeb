@@ -167,7 +167,7 @@ If the bot is connected and added to the channel, you can use the `/id` command 
 
 2. Write:
 ```yaml
-message-channel:
+message_channel:
   COMMAND_BAN:
     - "-1002341720267_49"
 ```

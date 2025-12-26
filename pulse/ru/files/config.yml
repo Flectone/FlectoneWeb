@@ -9,7 +9,9 @@
 #        \/           \/
 #
 # Don't change it if you don't know what it is
-version: "1.7.0"
+# region version
+version: "1.7.1"
+# endregion version
 #region language
 language:
   type: "en_us"
@@ -47,8 +49,8 @@ command:
   - "msg"
   - "banlist"
   - "kick"
-  - "tell"
   - "w"
+  - "tell"
   - "me"
   - "pardon"
   - "ban"
@@ -91,6 +93,10 @@ logger:
 #region cache
 cache:
   types:
+    COOLDOWN:
+      duration: 5
+      time_unit: "HOURS"
+      size: 5000
     DIALOG_CLICK:
       duration: 1
       time_unit: "SECONDS"

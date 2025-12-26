@@ -239,6 +239,7 @@ command:
 #region flectonepulse
   flectonepulse:
     null_host_editor: "<color:#ff7171><b>⁉</b> Параметр host должен быть настроен в <u>config.yml"
+    null_port_editor: "<color:#ff7171><b>⁉</b> Порт <port> недоступен, выбери другой в <u>config.yml"
     format_false: "<color:#ff7171>★ Возникла проблема при перезагрузке <br>Ошибка: <message>"
     format_true: "<fcolor:2>★ <u>FlectonePulse</u> успешно перезагружен! (<i><time></i>)"
     format_web_starting: "<fcolor:2>★ Запуск веб-сервера, подождите..."
@@ -624,7 +625,7 @@ message:
         stats: "<color:#ff7171><hp>♥</color> <color:#3de0d8><armor>🛡 <color:#e33059><attack>🗡 <color:#4eff52><exp>⏺ <color:#f0a01f><food>🍖"
         skin: "<click:open_url:\"<message_1>\"><hover:show_text:\"<fcolor:2><pixels>\"><fcolor:2><u>👨 Skin</u></hover></click>"
         item: "<fcolor:2>[<message_1>]"
-        url: "<click:open_url:\"<message_1>\"><hover:show_text:\"<fcolor:2>Open url <br><u><message_1>\"><fcolor:2><u>🗗 Url</u></hover></click>"
+        url: "<click:open_url:\"<message_1>\"><hover:show_text:\"<fcolor:2>Открыть ссылку <br><u><message_1>\"><fcolor:2><u>🗗 Ссылка</u></hover></click>"
         image: "<click:open_url:\"<message_1>\"><hover:show_text:\"<fcolor:2><pixels>\"><fcolor:2><u>🖃 Image</u></hover></click>"
         spoiler: "<hover:show_text:\"<fcolor:2><message_1>\"><fcolor:2><symbols></hover>"
         bold: "<b><message_1></b>"

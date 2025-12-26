@@ -26,6 +26,12 @@ On older versions (1.9 and 1.10 for sure) it was noticed that players might get 
 <<< @/files/localizations/en_us.yml#flectonepulse
 :::
 
+## `null_host_editor`
+Message when the `host` field in config.yml is empty
+
+## `null_port_editor`
+Message when the `port` specified in config.yml is already in use or unavailable
+
 ### `format_false`
 
 Message displayed when an error occurs

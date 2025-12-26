@@ -41,7 +41,7 @@ clusters:
 ::: tip КАК ЭТО НАСТРОИТЬ?
 1. Файл `FlectonePulse-bukkit.jar` нужно поставить на `BungeeCord` в папку `plugins`. Даже если у вас Fabric сервер, на `BungeeCord` нужно ставить именно `FlectonePulse-bukkit.jar`
 2. На всех серверах, где должна быть связь с `BungeeCord`, должен быть включен `bungeecord: true` в FlectonePulse
-3. Выбранная датабаза должна быть `MySQL` или `PostgreSQL` (т.е. серверная)
+3. Выбранная датабаза должна быть `MySQL` или `MariaDB` или `PostgreSQL` (т.е. серверная)
 :::
 
 ### `velocity`
@@ -51,7 +51,7 @@ clusters:
 ::: tip КАК ЭТО НАСТРОИТЬ?
 1. Файл `FlectonePulse-bukkit.jar` нужно поставить на `Velocity` в папку `plugins`. Даже если у вас Fabric сервер, на `Velocity` нужно ставить именно `FlectonePulse-bukkit.jar`
 2. На всех серверах, где должна быть связь с `Velocity`, должен быть включен `velocity: true` в FlectonePulse
-3. Выбранная датабаза должна быть `MySQL` или `PostgreSQL` (т.е. серверная)
+3. Выбранная датабаза должна быть `MySQL` или `MariaDB` или `PostgreSQL` (т.е. серверная)
 :::
 
 ### `redis`

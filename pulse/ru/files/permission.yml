@@ -262,6 +262,17 @@ command:
       name: "flectonepulse.module.command.dice.sound"
       type: "TRUE"
 #endregion dice
+#region do
+  do:
+    name: "flectonepulse.module.command.do"
+    type: "TRUE"
+    cooldown_bypass:
+      name: "flectonepulse.module.command.do.cooldown.bypass"
+      type: "OP"
+    sound:
+      name: "flectonepulse.module.command.do.sound"
+      type: "TRUE"
+#endregion do
 #region emit
   emit:
     name: "flectonepulse.module.command.emit"
@@ -535,6 +546,17 @@ command:
       name: "flectonepulse.module.command.translateto.sound"
       type: "TRUE"
 #endregion translateto
+#region try
+  try:
+    name: "flectonepulse.module.command.try"
+    type: "TRUE"
+    cooldown_bypass:
+      name: "flectonepulse.module.command.try.cooldown.bypass"
+      type: "OP"
+    sound:
+      name: "flectonepulse.module.command.try.sound"
+      type: "TRUE"
+#endregion try
 #region unban
   unban:
     name: "flectonepulse.module.command.unban"
@@ -590,28 +612,6 @@ command:
       name: "flectonepulse.module.command.warnlist.sound"
       type: "TRUE"
 #endregion warnlist
-#region do
-  do:
-    name: "flectonepulse.module.command.do"
-    type: "TRUE"
-    cooldown_bypass:
-      name: "flectonepulse.module.command.do.cooldown.bypass"
-      type: "OP"
-    sound:
-      name: "flectonepulse.module.command.do.sound"
-      type: "TRUE"
-#endregion do
-#region try
-  try:
-    name: "flectonepulse.module.command.try"
-    type: "TRUE"
-    cooldown_bypass:
-      name: "flectonepulse.module.command.try.cooldown.bypass"
-      type: "OP"
-    sound:
-      name: "flectonepulse.module.command.try.sound"
-      type: "TRUE"
-#endregion try
 #region integration
 integration:
   name: "flectonepulse.module.integration"
@@ -632,6 +632,11 @@ integration:
     name: "flectonepulse.module.integration.discord"
     type: "TRUE"
 #endregion discord
+#region floodgate
+  floodgate:
+    name: "flectonepulse.module.integration.floodgate"
+    type: "TRUE"
+#endregion floodgate
 #region geyser
   geyser:
     name: "flectonepulse.module.integration.geyser"
@@ -713,6 +718,11 @@ integration:
     name: "flectonepulse.module.integration.supervanish"
     type: "TRUE"
 #endregion supervanish
+#region integrationtab
+  tab:
+    name: "flectonepulse.module.integration.tab"
+    type: "TRUE"
+#endregion integrationtab
 #region telegram
   telegram:
     name: "flectonepulse.module.integration.telegram"
@@ -738,11 +748,6 @@ integration:
     name: "flectonepulse.module.integration.yandex"
     type: "TRUE"
 #endregion yandex
-#region tab
-  tab:
-    name: "flectonepulse.module.integration.tab"
-    type: "TRUE"
-#endregion tab
 #region message
 message:
   name: "flectonepulse.module.message"
@@ -752,6 +757,9 @@ message:
   afk:
     name: "flectonepulse.module.message.afk"
     type: "TRUE"
+    sound:
+      name: "flectonepulse.module.message.afk.sound"
+      type: "TRUE"
 #endregion afk
 #region anvil
   anvil:
@@ -776,6 +784,7 @@ message:
   bossbar:
     name: "flectonepulse.module.message.bossbar"
     type: "TRUE"
+    types: {}
 #endregion bossbar
 #region brand
   brand:
@@ -882,11 +891,11 @@ message:
       name: "flectonepulse.module.message.format.fcolor"
       type: "TRUE"
       colors:
-        OUT:
-          name: "flectonepulse.module.message.format.fcolor.out"
-          type: "TRUE"
         SEE:
           name: "flectonepulse.module.message.format.fcolor.see"
+          type: "TRUE"
+        OUT:
+          name: "flectonepulse.module.message.format.fcolor.out"
           type: "TRUE"
 #endregion fcolor
 #region fixation
@@ -980,9 +989,8 @@ message:
       type: "TRUE"
       questions:
         server:
-          ask:
-            name: "flectonepulse.module.message.format.questionanswer.server"
-            type: "TRUE"
+          name: "flectonepulse.module.message.format.questionanswer.server"
+          type: "TRUE"
           sound:
             name: "flectonepulse.module.message.format.questionanswer.sound.server"
             type: "TRUE"
@@ -990,9 +998,8 @@ message:
             name: "flectonepulse.module.message.format.questionanswer.cooldown.bypass.server"
             type: "TRUE"
         flectone:
-          ask:
-            name: "flectonepulse.module.message.format.questionanswer.flectone"
-            type: "TRUE"
+          name: "flectonepulse.module.message.format.questionanswer.flectone"
+          type: "TRUE"
           sound:
             name: "flectonepulse.module.message.format.questionanswer.sound.flectone"
             type: "TRUE"

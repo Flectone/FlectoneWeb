@@ -467,6 +467,19 @@ dice:
   sound:
     enable: false
 #endregion dice
+#region do
+do:
+  enable: true
+  range: "PROXY"
+  aliases:
+  - "do"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion do
 #region emit
 emit:
   enable: true
@@ -651,8 +664,8 @@ ping:
 poll:
   enable: true
   enable_gui: true
-  range: "PROXY"
   last_id: 1
+  range: "PROXY"
   aliases:
   - "poll"
   cooldown:
@@ -821,6 +834,22 @@ translateto:
   sound:
     enable: false
 #endregion translateto
+#region try
+try:
+  enable: true
+  range: "PROXY"
+  min: 0
+  max: 100
+  good: 50
+  aliases:
+  - "try"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion try
 #region unban
 unban:
   enable: true
@@ -896,32 +925,3 @@ warnlist:
   sound:
     enable: false
 #endregion warnlist
-#region do
-do:
-  enable: true
-  range: "PROXY"
-  aliases:
-  - "do"
-  destination:
-    type: "CHAT"
-  cooldown:
-    enable: false
-  sound:
-    enable: false
-#endregion do
-#region try
-try:
-  enable: true
-  range: "PROXY"
-  min: 0
-  max: 100
-  good: 50
-  aliases:
-  - "try"
-  destination:
-    type: "CHAT"
-  cooldown:
-    enable: false
-  sound:
-    enable: false
-#endregion try

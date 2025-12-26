@@ -1,5 +1,5 @@
 <!-- #region path -->
-📂 Путь
+**Путь**
 <!-- #endregion path -->
 
 <!-- #region localization -->
@@ -15,5 +15,5 @@
 <!-- #endregion permission -->
 
 <!-- #region default -->
-### ⚖️ `По умолчанию`
+### `По умолчанию`
 <!-- #endregion default -->

@@ -142,7 +142,7 @@ A list of message types and Twitch channel names
 1. Copy the names of the Twitch channels to send the message to (`faseri4ka`)
 2. Write:
 ```yaml
-message-channel:
+message_channel:
   COMMAND_BAN:
     - "faseri4ka" // [!code highlight]
 ```
@@ -158,7 +158,7 @@ A list where the key is the channel name, and the value is a list of commands to
 1. Copy the channel name `faseri4ka`
 2. Write:
 ```yaml
-follow-channel:
+follow_channel:
   faseri4ka:
     - "stream start https://twitch.tv/faseri4ka"
 ```

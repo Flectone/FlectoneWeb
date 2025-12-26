@@ -41,7 +41,7 @@ Enables connection with `BungeeCord`
 ::: tip HOW TO SET UP?
 1. Place the `FlectonePulse-bukkit.jar` file in the `plugins` folder on `BungeeCord`. Even if you have a Fabric server, you need to use `FlectonePulse-bukkit.jar` on `BungeeCord`
 2. On all servers that should connect with `BungeeCord`, enable `bungeecord: true` in FlectonePulse
-3. The selected database must be `MySQL` or `PostgreSQL` (i.e., server-based)
+3. The selected database must be `MySQL`, `MariaDB`, or `PostgreSQL` (server-based)
 :::
 
 ### `velocity`
@@ -51,7 +51,7 @@ Enables connection with `Velocity`
 ::: tip HOW TO SET UP?
 1. Place the `FlectonePulse-bukkit.jar` file in the `plugins` folder on `Velocity`. Even if you have a Fabric server, you need to use `FlectonePulse-bukkit.jar` on `Velocity`
 2. On all servers that should connect with `Velocity`, enable `velocity: true` in FlectonePulse
-3. The selected database must be `MySQL` or `PostgreSQL` (i.e., server-based)
+3. The selected database must be `MySQL`, `MariaDB`, or `PostgreSQL` (server-based)
 :::
 
 ### `redis`

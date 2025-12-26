@@ -142,7 +142,7 @@ custom_command:
 1. Копирую названия каналов Twitch, в которые нужно отправить сообщение (`faseri4ka`)
 2. Прописываю:
 ```yaml
-message-channel:
+message_channel:
   COMMAND_BAN:
     - "faseri4ka"
 ```
@@ -158,7 +158,7 @@ message-channel:
 1. Копирую названия канала `faseri4ka`
 2. Прописываю:
 ```yaml
-follow-channel:
+follow_channel:
   faseri4ka:
     - "stream start https://twitch.tv/faseri4ka"
 ```

@@ -56,6 +56,10 @@ discord:
   destination:
     type: "CHAT"
 #endregion discord
+#region floodgate
+floodgate:
+  enable: true
+#endregion floodgate
 #region geyser
 geyser:
   enable: true
@@ -128,6 +132,14 @@ skinsrestorer:
 supervanish:
   enable: true
 #endregion supervanish
+#region tab
+tab:
+  enable: true
+  disable_flectonepulse_scoreboard: true
+  disable_flectonepulse_header: true
+  disable_flectonepulse_footer: true
+  disable_flectonepulse_playerlistname: false
+#endregion tab
 #region telegram
 telegram:
   enable: false
@@ -190,11 +202,3 @@ yandex:
   token: ""
   folder_id: ""
 #endregion yandex
-#region tab
-tab:
-  enable: true
-  disable_flectonepulse_scoreboard: true
-  disable_flectonepulse_header: true
-  disable_flectonepulse_footer: true
-  disable_flectonepulse_playerlistname: false
-#endregion tab

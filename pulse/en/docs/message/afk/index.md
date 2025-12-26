@@ -66,6 +66,7 @@ If I add the command `tell` to the list and a player is AFK, they can use the `t
 
 <!--@include: @/parts/destination.md-->  
 <!--@include: @/parts/ticker.md-->  
+<!--@include: @/parts/sound.md-->
 
 [//]: # (permission.yml)  
 <!--@include: @/parts/words.md#permission-->  

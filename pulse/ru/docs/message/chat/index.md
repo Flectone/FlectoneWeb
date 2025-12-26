@@ -9,6 +9,41 @@ authors:
 Модуль, отвечающий за отправленные сообщения игроком в чат
 ![chat](/chat.png)
 
+
+::: info КАК ОТКЛЮЧИТЬ ЛОКАЛЬНЫЙ ЧАТ?
+
+Внутри `message.yml` выключи `local` с помощью `enable: false`, а также сделай пустой `trigger: ""` для `global`
+
+```yaml
+chat:
+  enable: true
+  mode: "BUKKIT"
+  priority: "NORMAL"
+  types:
+    local:
+      enable: false # поставь false
+    global:
+      enable: true
+      cancel: false
+      range: "PROXY"
+      priority: 5
+      trigger: "" # сделай пусто
+      null_receiver:
+        enable: true
+        destination:
+          type: "ACTION_BAR"
+          times:
+            stay: 20
+      destination:
+        type: "CHAT"
+      cooldown:
+        enable: false
+      sound:
+        enable: false
+```
+
+:::
+
 [//]: # (localization)
 <!--@include: @/parts/words.md#localization--> 
 <!--@include: @/parts/words.md#path--> `localizations → язык.yml → message.chat`
@@ -172,5 +207,5 @@ helper:
 
 Список чатов и их прав
 
-- <!--@include: @/parts/permission/cooldown.md-->
-- <!--@include: @/parts/permission/sound.md-->
+<!--@include: @/parts/permission/cooldown.md-->
+<!--@include: @/parts/permission/sound.md-->

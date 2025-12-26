@@ -48,9 +48,9 @@ destination:
   health: 1.0
   overlay: "PROGRESS"
   color: "BLUE"
-  play-boos-music: false
-  create-world-fog: false
-  darken-screen: false
+  play_boos_music: false
+  create_world_fog: false
+  darken_screen: false
 ```
 
 #### - `duration`
@@ -168,9 +168,9 @@ destination:
   type: "TITLE" (or "SUBTITLE")
   subtext: ""
   times:
-    fade-in: 20
+    fade_in: 20
     stay: 60
-    fade-out: 20
+    fade_out: 20
 ```
 
 #### - `subtext`

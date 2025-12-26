@@ -12,6 +12,17 @@ authors:
 ![discord message](/discordmessage.png)
 ![minecraft message](/discordminecraftmessage.png)
 
+::: info ИНФОРМАЦИЯ
+
+Для корректной работы бота, включи три настройки для твоего бота в [Discord Developer Portal](https://discord.com/developers/applications/)
+
+
+![develop](/discorddevelopers.png)
+
+А также выдай права боту на `чтение сообщений`, `создание сообщений` и `использование webhooks`
+
+:::
+
 <!--@include: @/parts/messageTag.md-->
 
 [//]: # (localization)
@@ -197,7 +208,7 @@ custom_command:
     author:
       name: ""
       url: ""
-      icon-url: "https://mc-heads.net/avatar/<skin>/16.png"
+      icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
     description: ""
     thumbnail: ""
     fields:
@@ -208,7 +219,7 @@ custom_command:
     timestamp: true
     footer:
       text: ""
-      icon-url: "https://mc-heads.net/avatar/<skin>/16.png"
+      icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
 ```
 :::
 
@@ -324,7 +335,7 @@ custom_command:
 2. Прописываю `COMMAND_BAN: "1286666844358316083"`
 
 ```yaml
-message-channel:
+message_channel:
   COMMAND_BAN: 
     - "1286666844358316083"
 ```

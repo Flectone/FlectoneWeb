@@ -42,7 +42,7 @@ authors:
     newauto:
       random: true
       destination:
-        type: CHAT
+        type: "CHAT"
       ticker:
         enable: true
         period: 9000

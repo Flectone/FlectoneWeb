@@ -56,7 +56,7 @@ welcome-message: "<gradient:#FF0000:#00FF00>&lHello</gradient> <rainbow><player>
 Yes, FlectonePulse uses a modular system. Any feature (commands, messages, or integrations) can be disabled in the `command.yml`, `message.yml`, or `integration.yml` files, respectively. After making changes, restart the plugin with the `/flectonepulse reload` command.
 
 ### 5. How does automatic language detection work?
-If the `language_player` option is enabled in `config.yml`, the plugin automatically detects the player's Minecraft language and displays messages from the `localizations/...` folder in that language. If the localization is unavailable, the default language from the configuration is used. Details in the [localization documentation](/docs/config/language/).
+If the `by_player` option is enabled in `config.yml`, the plugin automatically detects the player's Minecraft language and displays messages from the `localizations/...` folder in that language. If the localization is unavailable, the default language from the configuration is used. Details in the [localization documentation](/docs/config/language/).
 
 ### 6. What integrations does FlectonePulse support?
 The plugin integrates with Discord, Telegram, and Twitch, allowing players to communicate across different platforms. It also supports third-party Minecraft plugins, such as preventing muted players from speaking in PlasmoVoice and SimpleVoice. Integration settings are configured in the `integration.yml` file. Details in the [integrations documentation](/docs/integration/).

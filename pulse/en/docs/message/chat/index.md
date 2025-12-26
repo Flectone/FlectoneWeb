@@ -10,6 +10,40 @@ authors:
 A module responsible for messages sent by players in chat  
 ![chat](/chat.png)
 
+::: info HOW TO DISABLE LOCAL CHAT?
+
+In `message.yml`, disable `local` by setting `enable: false`, and also set an empty `trigger: ""` for `global`
+
+```yaml
+chat:
+  enable: true
+  mode: "BUKKIT"
+  priority: "NORMAL"
+  types:
+    local:
+      enable: false # set to false
+    global:
+      enable: true
+      cancel: false
+      range: "PROXY"
+      priority: 5
+      trigger: "" # make it empty
+      null_receiver:
+        enable: true
+        destination:
+          type: "ACTION_BAR"
+          times:
+            stay: 20
+      destination:
+        type: "CHAT"
+      cooldown:
+        enable: false
+      sound:
+        enable: false
+```
+
+:::
+
 [//]: # (localization)  
 <!--@include: @/parts/words.md#localization-->  
 <!--@include: @/parts/words.md#path--> `localizations → language.yml → message.chat`  
@@ -172,5 +206,5 @@ In the final message, `trigger` is removed. For example, if a player sends `!hel
 
 List of chats and their permissions  
 
-- <!--@include: @/parts/permission/cooldown.md-->  
-- <!--@include: @/parts/permission/sound.md-->  
+<!--@include: @/parts/permission/cooldown.md-->  
+<!--@include: @/parts/permission/sound.md-->  
