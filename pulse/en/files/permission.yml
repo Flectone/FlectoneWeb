@@ -469,6 +469,17 @@ command:
       name: "flectonepulse.module.command.rockpaperscissors.sound"
       type: "TRUE"
 #endregion rockpaperscissors
+#region sprite
+  sprite:
+    name: "flectonepulse.module.command.sprite"
+    type: "TRUE"
+    cooldown_bypass:
+      name: "flectonepulse.module.command.spy.cooldown.bypass"
+      type: "OP"
+    sound:
+      name: "flectonepulse.module.command.spy.sound"
+      type: "TRUE"
+#endregion sprite
 #region spy
   spy:
     name: "flectonepulse.module.command.spy"
@@ -631,6 +642,9 @@ integration:
   discord:
     name: "flectonepulse.module.integration.discord"
     type: "TRUE"
+    sound:
+      name: "flectonepulse.module.integration.discord.sound"
+      type: "TRUE"
 #endregion discord
 #region floodgate
   floodgate:
@@ -727,6 +741,9 @@ integration:
   telegram:
     name: "flectonepulse.module.integration.telegram"
     type: "TRUE"
+    sound:
+      name: "flectonepulse.module.integration.telegram.sound"
+      type: "TRUE"
 #endregion telegram
 #region triton
   triton:
@@ -737,6 +754,9 @@ integration:
   twitch:
     name: "flectonepulse.module.integration.twitch"
     type: "TRUE"
+    sound:
+      name: "flectonepulse.module.integration.twitch.sound"
+      type: "TRUE"
 #endregion twitch
 #region vault
   vault:

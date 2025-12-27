@@ -21,9 +21,25 @@ authors:
 <<< @/files/localizations/en_us.yml#symbol
 :::
 
-### `format`
+### `null_category`
 
-Формат сообщения, которое будет отправлено
+Сообщение, если введённая категория не существует
+
+### `null_page`
+
+Сообщение, если введённая страница не существует
+
+### `header`
+
+Верхняя часть сообщения списка
+
+### `line_element`
+
+Формат для каждого компонента, они будут добавляться друг за другом
+
+#### `footer`
+
+Нижняя часть сообщения списка
 
 [//]: # (command.yml)
 <!--@include: @/parts/words.md#setting-->
@@ -33,6 +49,7 @@ authors:
 <<< @/files/command.yml#symbol
 
 <!--@include: @/parts/enable.md-->
+<!--@include: @/parts/perPage.md-->
 <!--@include: @/parts/aliases.md-->
 
 ### `categories`
@@ -44,7 +61,6 @@ authors:
 2. Переименовывать категории или добавлять свои
 :::
 
-<!--@include: @/parts/destination.md-->
 <!--@include: @/parts/cooldown.md-->
 <!--@include: @/parts/sound.md-->
 

@@ -22,9 +22,25 @@ Huge thanks to @replaceitem for allowing the use of [symbol lists](https://githu
 <<< @/files/localizations/en_us.yml#symbol
 :::
 
-### `format`
+### `null_category`
 
-Format of the message that will be sent
+Message if the entered category does not exist
+
+### `null_page`
+
+Message if the entered page does not exist
+
+### `header`
+
+The top part of the list message
+
+### `line_element`
+
+Format for each component, they will be added one after another
+
+#### `footer`
+
+The bottom part of the list message
 
 [//]: # (command.yml)
 <!--@include: @/parts/words.md#setting-->
@@ -34,6 +50,7 @@ Format of the message that will be sent
 <<< @/files/command.yml#symbol
 
 <!--@include: @/parts/enable.md-->
+<!--@include: @/parts/perPage.md-->
 <!--@include: @/parts/aliases.md-->
 
 ### `categories`
@@ -43,9 +60,8 @@ List of categories and symbols separated by spaces
 ::: info WHAT CAN YOU DO WITH THIS?
 1. Add your own symbols to the current ones, separated by spaces
 2. Rename categories or add your own
-   :::
+:::
 
-<!--@include: @/parts/destination.md-->
 <!--@include: @/parts/cooldown.md-->
 <!--@include: @/parts/sound.md-->
 

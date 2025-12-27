@@ -168,6 +168,7 @@ follow_channel:
 :::
 
 <!--@include: @/parts/destination.md-->
+<!--@include: @/parts/sound.md-->
 
 [//]: # (permission.yml)
 <!--@include: @/parts/words.md#permission-->
@@ -177,3 +178,4 @@ follow_channel:
 <<< @/files/permission.yml#twitch
 
 <!--@include: @/parts/permission/permissionTier3.md-->
+<!--@include: @/parts/permission/sound.md-->

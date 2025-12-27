@@ -342,6 +342,7 @@ You don't need to configure localization, by default the message will be sent wi
 :::
 
 <!--@include: @/parts/destination.md-->
+<!--@include: @/parts/sound.md-->
 
 [//]: # (permission.yml)
 <!--@include: @/parts/words.md#permission-->
@@ -351,3 +352,4 @@ You don't need to configure localization, by default the message will be sent wi
 <<< @/files/permission.yml#discord
 
 <!--@include: @/parts/permission/permissionTier3.md-->
+<!--@include: @/parts/permission/sound.md-->

@@ -702,6 +702,33 @@ rockpaperscissors:
   sound:
     enable: false
 #endregion rockpaperscissors
+#region sprite
+sprite:
+  enable: true
+  per_page: 16
+  aliases:
+  - "sprite"
+  categories:
+  - "armor_trims"
+  - "banner_patterns"
+  - "beds"
+  - "blocks"
+  - "celestials"
+  - "chest"
+  - "decorated_pot"
+  - "gui"
+  - "items"
+  - "map_decorations"
+  - "paintings"
+  - "particles"
+  - "shield_patterns"
+  - "shulker_boxes"
+  - "signs"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion sprite
 #region spy
 spy:
   enable: true
@@ -749,6 +776,7 @@ stream:
 #region symbol
 symbol:
   enable: true
+  per_page: 16
   aliases:
   - "symbol"
   categories:

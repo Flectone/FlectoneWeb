@@ -55,6 +55,8 @@ discord:
     - "123456"
   destination:
     type: "CHAT"
+  sound:
+    enable: false
 #endregion discord
 #region floodgate
 floodgate:
@@ -166,6 +168,8 @@ telegram:
     - "123456"
   destination:
     type: "CHAT"
+  sound:
+    enable: false
 #endregion telegram
 #region triton
 triton:
@@ -191,6 +195,8 @@ twitch:
     - "stream start https://twitch.tv/faseri4ka"
   destination:
     type: "CHAT"
+  sound:
+    enable: false
 #endregion twitch
 #region vault
 vault:

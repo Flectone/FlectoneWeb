@@ -187,6 +187,7 @@ message_channel:
 :::
 
 <!--@include: @/parts/destination.md-->
+<!--@include: @/parts/sound.md-->
 
 [//]: # (permission.yml)
 <!--@include: @/parts/words.md#permission-->
@@ -196,3 +197,4 @@ message_channel:
 <<< @/files/permission.yml#telegram
 
 <!--@include: @/parts/permission/permissionTier3.md-->
+<!--@include: @/parts/permission/sound.md-->

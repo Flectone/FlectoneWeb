@@ -187,6 +187,7 @@ For other chats in the forum, this rule does not apply, and you need to enter th
 :::
 
 <!--@include: @/parts/destination.md-->
+<!--@include: @/parts/sound.md-->
 
 [//]: # (permission.yml)
 <!--@include: @/parts/words.md#permission-->
@@ -196,3 +197,4 @@ For other chats in the forum, this rule does not apply, and you need to enter th
 <<< @/files/permission.yml#telegram
 
 <!--@include: @/parts/permission/permissionTier3.md-->
+<!--@include: @/parts/permission/sound.md-->

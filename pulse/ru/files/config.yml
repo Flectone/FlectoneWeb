@@ -9,9 +9,7 @@
 #        \/           \/
 #
 # Don't change it if you don't know what it is
-# region version
-version: "1.7.1"
-# endregion version
+version: "1.7.2"
 #region language
 language:
   type: "en_us"
