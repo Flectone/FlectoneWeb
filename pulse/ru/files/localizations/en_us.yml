@@ -707,6 +707,10 @@ message:
     belowname:
       format: "<fcolor:1>ms"
 #endregion belowname
+#region tabname
+    tabname:
+      format: "<fcolor:1><score> ms"
+#endregion tabname
 #region quit
   quit:
     format: "<color:#ff4e4e>← <display_name>"

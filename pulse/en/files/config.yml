@@ -8,8 +8,9 @@
 # __/\___  ____/\_____  ___/    \______
 #        \/           \/
 #
-# Don't change it if you don't know what it is
+# region version
 version: "1.7.2"
+# endregion version
 #region language
 language:
   type: "en_us"

@@ -5,6 +5,12 @@ authors:
 
 # Под ником
 
+::: warning ПРЕДУПРЕЖДЕНИЕ
+
+Если в модуле `scoreboard` отображение имени выключен (`name_visible: false`), то значение под ником не будет показываться
+
+:::
+
 [ScoreBoard значение](https://ru.minecraft.wiki/w/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%81%D1%87%D1%91%D1%82%D0%B0_%D0%B8%D0%B3%D1%80%D0%BE%D0%B2%D1%8B%D1%85_%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9) игрока под его ником
 ![below name](/belowname.png)
 
