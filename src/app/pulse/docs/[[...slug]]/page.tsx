@@ -18,9 +18,8 @@ export default async function Page(props: PageProps<'/pulse/docs/[[...slug]]'>) 
   const page = source.getPage(params.slug);
 
   if (!page) notFound();
-  const path = page.path;
   const MDX = page.data.body;
-  console.log(page.data.authors)
+
   return (
     <DocsPage toc={page.data.toc}
       tableOfContent={{
@@ -42,7 +41,7 @@ export default async function Page(props: PageProps<'/pulse/docs/[[...slug]]'>) 
             <PageLastUpdate date={page.data.lastModified} />
           )}
           <EditOnGitHub
-            href={`https://github.com/Flectone/FlectoneWeb/edit/master/src/content/docs/${page.path}`}
+            href={`https://github.com/Flectone/FlectoneWeb/edit/master/src/pulse/content/docs/${page.path}`}
           >
             Редактировать на GitHub
           </EditOnGitHub>
