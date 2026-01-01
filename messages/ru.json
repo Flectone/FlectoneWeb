@@ -58,12 +58,6 @@
             "description": "Инициатор проектов Flectone, ютубер и разработчик",
             "avatar": "https://github.com/bakinu.png",
             "link": "https://github.com/bakinu"
-        },
-        "awalki": {
-            "name": "awalki",
-            "description": "Разработчик старой версии сайта на Astro",
-            "avatar": "https://github.com/awalki.png",
-            "link": "https://github.com/awalki"
         }
     },
     "FlectoneMix": {
