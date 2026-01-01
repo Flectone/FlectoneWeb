@@ -1,0 +1,85 @@
+---
+title: /symbol
+description: Комманда для поиска unicode символа
+authors:
+  - TheFaser
+---
+![symbol](/pulse/commandsymbol.png)
+
+Огромное спасибо @replaceitem за право использования [списками](https://github.com/replaceitem/symbol-chat) символов
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.symbol`</span>
+
+ 
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#symbol</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#symbol</include></Tab>
+</Tabs>
+
+### `null_category`
+
+Сообщение, если введённая категория не существует
+
+### `null_page`
+
+Сообщение, если введённая страница не существует
+
+### `header`
+
+Верхняя часть сообщения списка
+
+### `line_element`
+
+Формат для каждого компонента, они будут добавляться друг за другом
+
+#### `footer`
+
+Нижняя часть сообщения списка
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → symbol`</span>
+
+
+<include>../../../files/command.yml#symbol</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<include>../../../parts/perPage.mdx</include>
+
+<include>../../../parts/range.mdx</include>
+
+
+### `categories`
+
+Список категорий и символов разделённых пробелами
+
+<Callout type="info" title="ЧТО МОЖНО С ЭТИМ ДЕЛАТЬ?">
+1. Добавлять свои символы к уже текущим через пробел
+2. Переименовывать категории или добавлять свои
+</Callout>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.symbol`</span>
+
+ 
+<include>../../../files/permission.yml#symbol</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>
+
+

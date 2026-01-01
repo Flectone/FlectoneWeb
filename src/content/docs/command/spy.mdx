@@ -1,0 +1,71 @@
+---
+title: /spy
+description: Комманда для отслеживания за действиями игроков
+authors:
+  - TheFaser
+---
+![command spy](/pulse/commandspy.gif)
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.spy`</span>
+
+ 
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#spy</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#spy</include></Tab>
+</Tabs>
+
+### `format_true`
+
+Сообщение при включении слежки
+
+### `format_false`
+
+Сообщение при выключении слежки
+
+### `format_log`
+
+Формат сообщения, которое будет отправлено при слежке за действием
+
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → spy`</span>
+
+
+<include>../../../files/command.yml#spy</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<include>../../../parts/range.mdx</include>
+
+<include>../../../parts/destination.mdx</include>
+
+
+### `categories`
+
+Список категорий с действиями, за которыми происходит слежка
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.spy`</span>
+
+ 
+<include>../../../files/permission.yml#spy</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>
+
+

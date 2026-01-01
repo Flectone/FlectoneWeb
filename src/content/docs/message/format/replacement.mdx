@@ -1,0 +1,95 @@
+---
+title: Замена
+description: Используется для замены триггеров на определённые значения
+authors:
+  - TheFaser
+---
+![ping](/pulse/ping.png)
+
+
+![tps](/pulse/tps.png)
+
+
+![online](/pulse/online.png)
+
+
+![coords](/pulse/coords.png)
+
+
+![stats](/pulse/stats.png)
+
+
+![skin](/pulse/skin.png)
+
+
+![item](/pulse/item.png)
+
+<Callout type="warn" title="Предупреждение">
+`PacketEvents` в данный момент не поддерживает при наведении правильное отображение подробной информации о предмете. Предмет будет иметь "пустое" описание без зачарований. Чтобы решить эту проблему, можно включить [use_paper_message_sender](/pulse/docs/config/module/#use_paper_message_sender), но это костыль  
+
+</Callout>
+
+![url](/pulse/url.png)
+
+
+![image](/pulse/image.png)
+
+
+![spoiler](/pulse/spoiler.png)
+
+
+![bold](/pulse/bold.png)
+
+
+![italic](/pulse/italic.png)
+
+
+![underline](/pulse/underline.png)
+
+
+![obfuscated](/pulse/obfuscated.png)
+
+
+![strikethrough](/pulse/strikethrough.png)
+
+# <include>../../../../parts/words.mdx#localization</include> 
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.replacement`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#replacement</include></Tab>
+<Tab value="en_us"><include>../../../../files/localizations/en_us.yml#replacement</include></Tab>
+</Tabs>
+
+### `spoiler_symbol`
+
+Символ, который будет заменять каждую букву слов у `spoiler`
+
+### `values`
+
+Список сообщений, где ключом является название, а значением, что будет показано вместо триггера
+
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → format.replacement`</span>
+
+<include>../../../../files/message.yml#replacement</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `triggers`
+
+Список всех доступных триггеров, где ключом является название, а значением сам `trigger` в формате регулярного выражения
+
+<Callout type="warn" title="Предупреждение">
+Если ты добавляшеь новый триггер, то обязательно добавь его также и в файл локализации, т.е. на что он будет заменяться
+
+</Callout>
+
+
+# <include>../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.format.replacement`</span>
+
+<include>../../../../files/permission.yml#replacement</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

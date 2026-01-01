@@ -1,0 +1,76 @@
+---
+title: /maintenance
+description: Комманда для включения технических работ
+authors:
+  - TheFaser
+---
+![command maintenance](/pulse/commandmaintenance.png)
+![command maintenance server](/pulse/commandmaintenanceserver.png)
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.maintenance`</span>
+
+ 
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#maintenance</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#maintenance</include></Tab>
+</Tabs>
+
+### `server_description`
+
+Сообщения при просмотре сервера, если включены технические работы
+
+### `server_version`
+
+Название версии сервера, если включены технические работы
+
+### `kick`
+
+Причина исключения с сервера при включении технических работ
+
+### `format_true`
+
+Сообщение при включении технических работ
+
+### `format_false`
+
+Сообщение при отключении технических работ
+
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → maintenance`</span>
+
+
+<include>../../../files/command.yml#maintenance</include>
+
+<include>../../../parts/range.mdx</include>
+
+<include>../../../parts/destination.mdx</include>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.maintenance`</span>
+
+ 
+<include>../../../files/permission.yml#maintenance</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+
+### `join`
+
+Право для подключения к серверу во время технических работ
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>

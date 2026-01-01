@@ -1,0 +1,53 @@
+---
+title: Ругательство
+description: Это форматирование скрывает ругательство игрока
+authors:
+  - TheFaser
+---
+![swear](/pulse/swear.png)
+
+# <include>../../../../../parts/words.mdx#localization</include> 
+<span><include>../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.moderation.swear`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../../../files/localizations/ru_ru.yml#swear</include></Tab>
+<Tab value="en_us"><include>../../../../../files/localizations/en_us.yml#swear</include></Tab>
+</Tabs>
+
+### `symbol`
+
+Символ, которым заменяется каждая буква ругательства
+
+
+# <include>../../../../../parts/words.mdx#setting</include>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.moderation.swear`</span>
+
+<include>../../../../../files/message.yml#swear</include>
+
+<include>../../../../../parts/enable.mdx</include>
+
+### `trigger`
+
+Список [регулярных выражений](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) для того, чтобы определять ругательство
+
+<Callout type="info" title="Например">
+- Для цифренного айпи `\\b((?:\\d{1,3}\\.){3}\\d{1,3})\\b`
+- Для буквенного айпи `(?i)\\b((https?:\\/\\/)?([\\w\\.а-яА-Я-]+\\.([a-z]{2,4}|[рР][фФ]|[уУ][кК][рР]))\\b(:\\d{2,7})?(\\/\\S+)?)`
+</Callout>
+
+
+# <include>../../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.moderation.swear`</span>
+
+<include>../../../../../files/permission.yml#swear</include>
+
+<include>../../../../../parts/permission/permissionTier3.mdx</include>
+
+### `bypass`
+
+Право для игнорирования форматирования
+
+### `see`
+
+Право для просмотра содержимого в запрещённом слове

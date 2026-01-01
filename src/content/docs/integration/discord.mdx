@@ -1,0 +1,348 @@
+---
+title: Дискорд
+description: Интеграция с Discord позволяет отправлять сообщения (Discord ↔ Minecraft) между сервером Minecraft и Discord сервером.
+authors:
+  - TheFaser
+---
+![discord message](/pulse/discordmessage.png)
+![minecraft message](/pulse/discordminecraftmessage.png)
+
+<Callout type="info" title="Информация">
+
+Для корректной работы бота, включи три настройки для твоего бота в [Discord Developer Portal](https://discord.com/developers/applications/)
+
+
+![develop](/pulse/discorddevelopers.png)
+
+А также выдай права боту на `чтение сообщений`, `создание сообщений` и `использование webhooks`
+
+</Callout>
+
+<include>../../../parts/messageTag.mdx</include>
+
+# <include>../../../parts/words.mdx#localization</include> 
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → integration.discord`</span>
+
+ 
+
+<Tabs items={['ru_ru', 'en_us']}>
+  <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#discord</include></Tab>
+  <Tab value="en_us"><include>../../../files/localizations/en_us.yml#discord</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Сообщение, если введённый игрок через `custom_command` не найден
+
+### `format_reply`
+
+Формат сообщения для тега `<reply>`, когда сообщение является ответом на другое
+
+### `custom_command`
+
+Список кастомных комманд интеграции, где ключом является название комманды, а значением её формат сообщения
+
+<Callout type="info" title="Пример">
+
+```yaml
+custom_command:
+  tps:
+    content: "<tps>"
+```
+
+Комманда, чтобы получить значение `tps` на сервере. **Не забудь сделать её в inegration.yml**
+
+</Callout>
+
+### `Плейсхолдеры`
+
+Ты можешь использовать все плейсхолдеры, которые используются в начальном сообщении для майнкрафта
+<Callout type="info" title="НАПример ДЛЯ СООБЩЕНИЯ О БЛОКИРОВКЕ">
+Там есть плейсхолдер `<reason>`, значит я могу использовать `<reason>` внутри дискорд сообщений
+</Callout>
+
+Также есть плейсхолдеры, которые ТОЧНО будут заменяться в любом сообщении
+- `<final_message>` сообщение, отправленное в майнкрафт
+- `<final_clear_message>` сообщение, отправленное в майнкрафт без unicode-смайлов
+- `<player>` ник игрока, который отправил сообщение
+- `<message>` сырое сообщение, которое написал игрок
+- `<plain_message>` отформатированное сообщение, которое написал игрок
+- `<reply>` отформатированное сообщение-ответ, оно будет пустым, если основное сообщение не ответ
+- Очевидно, что все плейсхолдеры из `PlaceholderAPI` и `FlectonePulse` тоже будут работать
+
+<br/>
+
+У сообщения, которое будет отправлено из Дискорда в Майнкрафт есть свои плейсхолдеры:
+
+| Плейсхолдер      | Что возвращает                       |
+|------------------|--------------------------------------|
+| `<name>`         | Глобальное имя участника в Discord   |
+| `<global_name>`  | Глобальное имя участника в Discord   |
+| `<nickname>`     | Никнейм участника в Discord          |
+| `<display_name>` | Отображаемое имя участника в Discord |
+| `<user_name>`    | Тег участника в Discord              |
+
+### `info_channel`
+
+Список айди каналов и их названий, для отображения какой-нибудь информации, например `TPS`
+
+### `message_channel`
+
+Список сообщений с их настройкой
+
+### Настройка сообщения
+<Callout type="info" title="Информация">
+
+Если параметр пустой или он не написан, то он не будет использован в итоговом сообщении
+
+</Callout>
+
+#### `content`
+
+Содержание сообщения
+![discord content](/pulse/discordcontent.png)
+
+#### `webhook_avatar`
+
+Включение дискорд вебхука с аватаром игрока. Лучше всего использовать `https://mc-heads.net/avatar/<skin>/32.png`
+![discord webhook](/pulse/discordwebhook.png)
+
+#### `embed`
+
+Дискорд эмбед сообщение
+![discord embed](/pulse/discordembed.png)
+
+##### `color`
+
+Цвет `embed` сообщения
+
+##### `title`
+
+Название `embed` сообщения
+
+##### `url`
+
+Ссылка для `embed` сообщения
+
+##### `author`
+
+Автор `embed` сообщения
+
+###### `name`
+
+Название автора `embed` сообщения
+
+###### `url`
+
+Ссылка на автора `embed` сообщения
+
+###### `icon_url`
+
+Ссылка на аватарку автора `embed` сообщения. Если будешь менять на свою, то ссылка должна содержать `<skin>`
+
+##### `description`
+
+Описание `embed` сообщения
+
+##### `thumbnail`
+
+Маленькое изображение внутри `embed` сообщения
+
+##### `fields`
+
+Нижние поля внутри `embed` сообщения
+
+###### `name`
+
+Название поля внутри `embed` сообщения
+
+###### `value`
+
+Значение поля внутри `embed` сообщения
+
+###### `inline`
+
+Если включено, то поле будет расположен в столбик с другими полями
+
+##### `image`
+
+Главное изображение `embed` сообщения
+
+##### `timestamp`
+
+Если включено, то `embed` сообщение будет включать время создания
+
+##### `footer`
+
+Нижняя часть `embed` сообщения
+
+###### `text`
+
+Текст в нижней части `embed` сообщения
+
+###### `icon_url`
+
+Изображение в нижней части `embed` сообщения
+
+
+<Callout type="info" title="Информация">
+
+Сообщение со всеми параметрами
+![discord](https://docs.discord4j.com/img/embed-preview.png)
+
+```yaml
+название_сообщения:
+  content: ""
+  webhook_avatar: "https://mc-heads.net/avatar/<skin>/32.png"
+  embed:
+    color: ""
+    title: ""
+    url: ""
+    author:
+      name: ""
+      url: ""
+      icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
+    description: ""
+    thumbnail: ""
+    fields:
+      - name: ""
+        value: ""
+        inline: false
+    image: ""
+    timestamp: true
+    footer:
+      text: ""
+      icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
+```
+</Callout>
+
+
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `integration.yml → discord`</span>
+
+
+<include>../../../files/integration.yml#discord</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<Callout type="warn" title="Предупреждение">
+- Перед включением, вставь **токен** бота Discord
+- После включения, **ЖЕЛАТЕЛЬНО** перезагрузить сервер, иначе плагин может вызвать зависание
+</Callout>
+
+### `token`
+
+[Токен](https://discordgsm.com/guide/how-to-get-a-discord-bot-token) дискорд бота для подключения. Можно использовать environment variables, например `${VALUE}`
+
+### `custom_command`
+
+Список кастомных комманд интеграции, ключом является название комманды и оно может быть любым. Комманды могут быть ТОЛЬКО информационными, на сервере они ничего не выполняют и не будут выполнять
+
+| Параметр      | Пояснение                                                                      |
+|---------------|--------------------------------------------------------------------------------|
+| `need_player` | Проверять ли первый аргумент комманды на имя игрока, например `!ping TheFaser` |
+| `aliases`     | Список псевдонимов для использования комманды                                  |
+
+
+<Callout type="info" title="Пример">
+
+```yaml
+custom_command:
+  tps:
+    need_player: false
+    aliases:
+      - "!tps"
+      - "!tickpersecond"
+```
+
+Комманда, чтобы получить значение `tps` на сервере с помощью `!tps` или `!tickpersecond`. **Не забудь сделать сообщение в локализации**
+
+</Callout>
+
+### `presence`
+
+![discord presence](/pulse/discordpresence.png)
+
+### Настройка статуса бота
+#### `enable`
+
+Включает или выключает кастомный статус бота
+
+#### `status`
+
+| Режим            | Пояснение                       |
+|------------------|---------------------------------|
+| `UNKNOWN`        | -                               |
+| `ONLINE`         | В сети                          |
+| `DO_NOT_DISTURB` | В сети, с режимом не беспокоить |
+| `IDLE`           | В сети, но отошёл               |
+| `INVISIBLE`      | Невидимый                       |
+| `OFFLINE`        | Не в сети                       |
+
+#### `activity`
+
+Активность бота в дискорде
+
+##### `enable`
+
+Включает или выключает активность
+
+##### `type`
+
+| Тип         | Пояснение   |
+|-------------|-------------|
+| `UNKNOWN`   | -           |
+| `STREAMING` | Стримит     |
+| `LISTENING` | Слушает     |
+| `WATCHING`  | Смотрит     |
+| `CUSTOM`    | -           |
+| `COMPETING` | Соревнуется |
+
+##### `name`
+
+Название активности
+
+##### `url`
+
+Ссылка на активности
+
+
+### `channel_info`
+
+![discord channel info](/pulse/discordchannelinfo.png)
+
+### Настройка каналов с информацией
+#### `enable`
+
+Нужен ли канал информации
+
+<include>../../../parts/ticker.mdx</include>
+
+### `message_channel`
+
+Список типов сообщений и [ID каналов](https://support.discord.com/hc/ru/articles/206346498-%D0%93%D0%B4%D0%B5-%D0%BC%D0%BD%D0%B5-%D0%BD%D0%B0%D0%B9%D1%82%D0%B8-ID-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F-%D1%81%D0%B5%D1%80%D0%B2%D0%B5%D1%80%D0%B0-%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D1%8F) в Discord
+
+<Callout type="info" title="Например я хочу, чтобы из Minecraft отправлялось сообщение комманды `/ban` в Discord">
+1. Копирую ID канала в дискорде `1286666844358316083`
+2. Прописываю `COMMAND_BAN: "1286666844358316083"`
+
+```yaml
+message_channel:
+  COMMAND_BAN: 
+    - "1286666844358316083"
+```
+</Callout>
+
+Локализацию можно не настраивать, по умолчанию сообщение будет отправляться с форматом `<final_message>`
+
+
+<include>../../../parts/destination.mdx</include>
+
+
+# <include>../../../parts/words.mdx#permission</include>
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → integration.discord`</span>
+
+
+<include>../../../files/permission.yml#discord</include>
+
+<include>../../../parts/permission/permissionTier3.mdx</include>

@@ -1,0 +1,79 @@
+{
+    "Header": {
+        "home": "Home",
+        "about": "About us"
+    },
+    "ThemeSwitcher": {
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+    },
+    "LanguageSwitcher": {
+        "ru": "Russian",
+        "en": "English"
+    },
+    "Projects": {
+        "title": "Projects by <b>Flectone</b>",
+        "Pulse": {
+            "description": "New project for easy server customization",
+            "button": "More",
+            "buttonPath": "https://flectone.net/en/pulse"
+        },
+        "Mix": {
+            "description": "Previously used to download stuff from videos"
+        },
+        "Chat": {
+            "description": "Father of FlectonePulse, but it's closed",
+            "imagePath": "/chat-en.svg"
+        }
+    },
+    "Members": {
+        "title": "The <b>Flectone</b> Team",
+        "TheFaser": {
+            "name": "TheFaser",
+            "description": "Initiator of Flectone projects, YouTuber, and developer",
+            "avatar": "https://github.com/TheFaser.png",
+            "link": "https://github.com/TheFaser"
+        },
+        "FunnyBars": {
+            "name": "FunnyBars",
+            "description": "Contributor to all projects and creator of the CookieClicker plugin",
+            "avatar": "https://github.com/FunnyBars.png",
+            "link": "https://github.com/FunnyBars"
+        },
+        "fxdsu": {
+            "name": "fxdsu",
+            "description": "Creator of the FlectoneChat plugin and main assistant",
+            "avatar": "https://github.com/fxdsu.png",
+            "link": "https://github.com/fxdsu"
+        },
+        "vplend": {
+            "name": "vplend",
+            "description": "Website developer",
+            "avatar": "https://github.com/vplend.png",
+            "link": "https://github.com/vplend"
+        },
+        "bakinu": {
+            "name": "bakinu",
+            "description": "Initiator of Flectone projects, YouTuber, and developer",
+            "avatar": "https://github.com/bakinu.png",
+            "link": "https://github.com/bakinu"
+        },
+        "awalki": {
+            "name": "awalki",
+            "description": "Developer of the old version of the website on Astro",
+            "avatar": "https://github.com/awalki.png",
+            "link": "https://github.com/awalki"
+        }
+    },
+    "FlectoneMix": {
+        "availableOnBoosty": "Available on Boosty",
+        "downloads": "downloads in history",
+        "description": "Was created to make it easier to find and install things for minecraft, but the project has been shut down"
+    },
+    "FlectoneChat": {
+        "description": "Simplified and augmented the server game by adding convenient features, but it's closed",
+        "usePulse": "Use <strong>FlectonePulse</strong>, as FlectoneChat is no longer supported.",
+        "imagePath": "/chat-en.svg"
+    }
+}

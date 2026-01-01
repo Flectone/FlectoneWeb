@@ -1,0 +1,81 @@
+---
+title: Прокси
+description: Используется для синхронизации нескольких серверов с помощью BungeeCord/Velocity или Redis
+authors:
+  - TheFaser
+---
+<Callout type="info" title="Информация">
+Это работает на любой платформе, где есть FlectonePulse. Для Bukkit и Fabric серверов.
+</Callout>
+
+
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `config.yml → proxy`</span>
+
+ 
+<include>../../../files/config.yml#proxy</include>
+
+### `clusters`
+
+Список кластеров, к которым должен быть подключён сервер. Используется только тогда, когда включен режим прокси.
+Если список пустой, то сервер получает все сообщения с других серверов
+
+<Callout type="info" title="Как использовать?">
+Нужно вписать название кластера на всех серверах, где сообщение будет получено и отправлено
+```yaml
+clusters: 
+   - "test_cluster"
+```
+
+Так сервера связываются между собой и сообщения будут только между этими серверами
+</Callout>
+
+### `bungeecord`
+
+Включает связь с `BungeeCord`
+
+<Callout type="idea" title="Как это настроить?">
+1. Файл `FlectonePulse-bukkit.jar` нужно поставить на `BungeeCord` в папку `plugins`. Даже если у вас Fabric сервер, на `BungeeCord` нужно ставить именно `FlectonePulse-bukkit.jar`
+2. На всех серверах, где должна быть связь с `BungeeCord`, должен быть включен `bungeecord: true` в FlectonePulse
+3. Выбранная датабаза должна быть `MySQL` или `MariaDB` или `PostgreSQL` (т.е. серверная)
+</Callout>
+
+### `velocity`
+
+Включает связь с `Velocity`
+
+<Callout type="idea" title="Как это настроить?">
+1. Файл `FlectonePulse-bukkit.jar` нужно поставить на `Velocity` в папку `plugins`. Даже если у вас Fabric сервер, на `Velocity` нужно ставить именно `FlectonePulse-bukkit.jar`
+2. На всех серверах, где должна быть связь с `Velocity`, должен быть включен `velocity: true` в FlectonePulse
+3. Выбранная датабаза должна быть `MySQL` или `MariaDB` или `PostgreSQL` (т.е. серверная)
+</Callout>
+
+### `redis`
+
+Используется в качестве коммуникаций между разными серверами. Для `user` и `password` можно использовать environment variables, например `${VALUE}`
+
+
+#### `enable`
+
+Включает работу `Redis`
+
+#### `host`
+
+Хост (айпи) сервера, на котором запущен `Redis`
+
+
+#### `port`
+
+Порт сервера, на котором запущен `Redis`
+
+#### `ssl`
+
+Включает использование `SSL`
+
+#### `user`
+
+Имя пользователя в `Redis`, если его нет, то можно оставить пустым
+
+#### `password`
+
+Пароль пользователя в `Redis`, если его нет, то можно оставить пустым

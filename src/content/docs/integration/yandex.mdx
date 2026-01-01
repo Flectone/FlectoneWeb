@@ -1,0 +1,34 @@
+---
+title: Яндекс
+description: Интеграция с Яндексом позволяет переводить сообщения с одного языка на другой
+authors:
+  - TheFaser
+---
+<Callout type="info">
+Используется модулем [перевода](/pulse/docs/command/translateto#service)
+</Callout>
+
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `integration.yml → yandex`</span>
+
+
+<include>../../../files/integration.yml#yandex</include>
+
+<include>../../../parts/enable.mdx</include>
+
+### `token`
+
+Токен авторизации для Яндекса [`iam_token`](https://yandex.cloud/ru/pulse/docs/translate/api-ref/authentication)
+
+### `folder_id`
+
+Идентификатор папки, к которой есть доступ
+
+
+# <include>../../../parts/words.mdx#permission</include>
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → integration.yandex`</span>
+
+
+<include>../../../files/permission.yml#yandex</include>
+
+<include>../../../parts/permission/permissionTier3.mdx</include>

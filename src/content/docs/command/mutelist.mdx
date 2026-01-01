@@ -1,0 +1,99 @@
+---
+title: /mutelist
+description: Комманда для того, чтобы посмотреть список мутов
+authors:
+  - TheFaser
+---
+![command mutelist](/pulse/commandmutelist.png)
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.mutelist`</span>
+
+ 
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#mutelist</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#mutelist</include></Tab>
+</Tabs>
+
+### `empty`
+
+Сообщение, если список игроков с мутами пуст
+
+### `null_page`
+
+Сообщение, если введённая страница не существует
+
+### `null_player`
+
+Сообщение, если введённый игрок не найден
+
+### `global`
+
+
+Сообщения для глобальных мутов
+
+#### `header`
+
+Верхняя часть сообщения списка
+
+#### `line`
+
+Формат каждого мута из списка
+
+#### `footer`
+
+Нижняя часть сообщения списка
+
+### `player`
+
+
+Сообщения для мутов игрока
+
+#### `header`
+
+Верхняя часть сообщения списка
+
+#### `line`
+
+Формат каждого мута из списка
+
+#### `footer`
+
+Нижняя часть сообщения списка
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → mutelist`</span>
+
+
+<include>../../../files/command.yml#mutelist</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<include>../../../parts/perPage.mdx</include>
+
+<include>../../../parts/range.mdx</include>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.mutelist`</span>
+
+ 
+<include>../../../files/permission.yml#mutelist</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>
+
+

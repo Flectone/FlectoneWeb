@@ -1,0 +1,91 @@
+---
+title: /flectonepulse
+description: Главная комманда плагина FlectonePulse
+authors:
+  - TheFaser
+---
+![command flectonepulse](/pulse/commandflectonepulse.png)
+
+<Callout type="warn" title="Предупреждение">
+
+На старых версиях (1.9 и 1.10 точно) было замечено, что игроков при перезагрузки может кикать с сервера, но на работу плагина это не влияет
+
+</Callout>
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.flectonepulse`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#flectonepulse</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#flectonepulse</include></Tab>
+</Tabs>
+
+### `null_host_editor`
+
+Сообщение, когда поле `host` в config.yml пустое
+
+### `null_port_editor`
+
+Сообщение, когда `port`, который указан в config.yml, занят или недоступен
+
+
+### `format_false`
+
+Сообщение при возникновении ошибки
+
+### `format_true`
+
+Формат сообщения, которое будет отправлено при перезагрузке всего `FlectonePulse`
+
+### `format_web_starting`
+
+Формат сообщения, которое будет отправлено при старте веб-сервера
+
+### `format_editor`
+
+Формат сообщения, которое будет отправлено при успешном запуске веб-сервера
+
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → flectonepulse`</span>
+
+
+<include>../../../files/command.yml#flectonepulse</include>
+
+<include>../../../parts/enable.mdx</include>
+
+
+### `execute_in_main_thread`
+
+Будет ли выполняться вся перезагрузка в главном потоке сервера
+
+<Callout type="info" title="Информация">
+
+Это может решить проблемы на `Bukkit`, `Spigot`, `Mohist` или других старых/нестандартных ядрах при перезагрузке
+
+</Callout>
+
+<include>../../../parts/range.mdx</include>
+
+<include>../../../parts/destination.mdx</include>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.flectonepulse`</span>
+
+ 
+<include>../../../files/permission.yml#flectonepulse</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>

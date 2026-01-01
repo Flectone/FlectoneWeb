@@ -1,0 +1,76 @@
+---
+title: Афк
+description: Игрок становится АФК, если ничего не делает какой-то промежуток времени
+authors:
+  - TheFaser
+---
+![afk global message](/pulse/afkglobalmessage.png)
+
+Если человек АФК, то ему выдаётся определённый суффикс
+![afk suffix](/pulse/afksuffix.png)
+
+# <include>../../../parts/words.mdx#localization</include> 
+<include>../../../parts/words.mdx#path</include> `localizations → язык.yml → message.afk`
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#afk</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#afk</include></Tab>
+</Tabs>
+
+### `suffix`
+
+Суффикс, который выдаётся игроку, если он встал в АФК
+![afksuffix](/pulse/afksuffix.png)
+
+### `format_true`
+
+Сообщение, если игрок отошёл
+
+### `format_false`
+
+Сообщение, если игрок вернулся
+
+
+# <include>../../../parts/words.mdx#setting</include>
+<include>../../../parts/words.mdx#path</include> `message.yml → afk`
+
+
+<include>../../../files/message.yml#afk</include>
+
+<include>../../../parts/enable.mdx</include>
+<include>../../../parts/range.mdx</include>
+
+### `delay`
+
+Сколько времени в [тиках](https://ru.minecraft.wiki/w/%D0%A2%D0%B0%D0%BA%D1%82) игрок ничего не должен делать, чтобы встать в АФК
+
+### `ignore`
+
+Список действий, которые игнорируются и не влияют на режим АФК
+
+| Действия, которые можно игнорировать |
+|--------------------------------------|
+| Любые названия комманд               |
+| `chat` - когда игрок пишет в чат     |
+| `quit` - когда игрок выходит         |
+
+<Callout type="info" title="Например">
+Если я впишу в список комманду `tell` и игрок будет в режиме АФК, то он сможет использовать комманду `tell` и его не выкинет с режима АФК
+</Callout>
+
+<include>../../../parts/destination.mdx</include>
+<include>../../../parts/ticker.mdx</include>
+<include>../../../parts/sound.mdx</include>
+
+
+
+# <include>../../../parts/words.mdx#permission</include> 
+<include>../../../parts/words.mdx#path</include> `permission.yml → message.afk`
+
+
+<include>../../../files/permission.yml#afk</include>
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+<include>../../../parts/permission/cooldown.mdx</include>
+<include>../../../parts/permission/sound.mdx</include>

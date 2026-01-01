@@ -1,0 +1,83 @@
+---
+title: PlaceholderAPI
+description: Интеграция с плагином PlaceholderAPI
+authors:
+  - TheFaser
+---
+- Позволяет использовать любые [плейсхолдеры](https://github.com/PlaceholderAPI/PlaceholderAPI/wiki/Placeholders)
+
+<Callout type="info" title="НАПример">
+`%server_tps%`, `%server_online%` и т.д., если установлен соответствующий модуль с помощью `/papi ecloud download модуль`
+</Callout>
+
+- Добавляет свои плейсхолдеры
+
+| Плейсхолдер                                 | Что возвращает                                                       |
+|---------------------------------------------|----------------------------------------------------------------------|
+| `%flectonepulse_advancement%`               | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_afk%`                       | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_afk_suffix%`                | Возвращает [AFK суффикс](/pulse/docs/command/afk/)                         |
+| `%flectonepulse_auto%`                      | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_chat_name%`                 | Возвращает тип выбранного чата, по умолчанию `default`               |
+| `%flectonepulse_death%`                     | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_discord%`                   | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_fcolor_number%`             | Возвращает [кастомный цвет](/pulse/docs/message/format/fcolor/) игрока     |
+| `%flectonepulse_fcolor_out_number%`         | Возвращает [кастомный цвет OUT](/pulse/docs/message/format/fcolor/) игрока |
+| `%flectonepulse_fcolor_see_number%`         | Возвращает [кастомный цвет SEE](/pulse/docs/message/format/fcolor/) игрока |
+| `%flectonepulse_greeting%`                  | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_ip%`                        | Возвращает IP-адрес игрока                                           |
+| `%flectonepulse_join%`                      | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_locale%`                    | Возвращает текущую локаль игрока                                     |
+| `%flectonepulse_online%`                    | Возвращает количество игроков на сервере                             |
+| `%flectonepulse_ping%`                      | Возвращает пинг игрока                                               |
+| `%flectonepulse_player%`                    | Возвращает обычное имя игрока                                        |
+| `%flectonepulse_quit%`                      | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_stream_prefix%`             | Возвращает [стрим префикс](/pulse/docs/message/command/stream/) игрока     |
+| `%flectonepulse_spy_status`                 | Возвращает строку, если включен режим слежки, иначе пусто            |
+| `%flectonepulse_telegram%`                  | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_tps%`                       | Возвращает TPS сервера                                               |
+| `%flectonepulse_twitch%`                    | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_world_prefix%`              | Возвращает [префикс мира](/pulse/docs/message/format/world/) игрока        |
+| `%flectonepulse_mute_suffix%`               | Возвращает [суффикс мута](/pulse/docs/command/mute/) игрока                |
+| `%flectonepulse_command_ball%`              | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_ban%`               | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_broadcast%`         | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_coin%`              | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_dice%`              | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_do%`                | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_kick%`              | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_mail%`              | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_me%`                | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_mute%`              | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_poll%`              | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_reply%`             | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_rockpaperscissors%` | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_spy%`               | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_stream%`            | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_tell%`              | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_tictactoe%`         | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_translateto%`       | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_try%`               | Возвращает `true` если отображение включено, иначе пусто             |
+| `%flectonepulse_command_warn%`              | Возвращает `true` если отображение включено, иначе пусто             |
+
+
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `integration.yml → placeholderapi`</span>
+
+
+<include>../../../files/integration.yml#placeholderapi</include>
+
+<include>../../../parts/enable.mdx</include>
+
+
+# <include>../../../parts/words.mdx#permission</include>
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → integration.placeholderapi`</span>
+
+
+<include>../../../files/permission.yml#placeholderapi</include>
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+### `use`
+
+Право для использования плейсхолдеров из PlaceholderAPI в сообщении

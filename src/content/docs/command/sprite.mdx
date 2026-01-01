@@ -1,0 +1,84 @@
+---
+title: "/sprite"
+description: Комманда для поиска спрайтов из атласов майнкрафта
+authors:
+  - TheFaser
+---
+
+![sprite](/pulse/commandsprite.png)
+
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.sprite`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#sprite</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#sprite</include></Tab>
+</Tabs>
+
+### `null_atlas`
+
+Сообщение, если введённый атлас не существует
+
+### `null_page`
+
+Сообщение, если введённая страница не существует
+
+### `download_error`
+
+Сообщение при неудачной загрузки файла атласа из интернета. На разных версиях атласы могут отличаться и не существовать, поэтому ошибку нужно воспринимать нормально
+
+### `atlas_downloading`
+
+Сообщение при начале загрузки файла атласа из интернета
+
+### `header`
+
+Верхняя часть сообщения списка
+
+### `line_element`
+
+Формат для каждого компонента, они будут добавляться друг за другом
+
+#### `footer`
+
+Нижняя часть сообщения списка
+
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → sprite`</span>
+
+<include>../../../files/command.yml#sprite</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<include>../../../parts/perPage.mdx</include>
+
+<include>../../../parts/aliases.mdx</include>
+
+### `categories`
+
+Список категорий т.е. доступных атласов
+
+<Callout type="info" title="Информация">
+- Каждый атлас скачивается только один раз, если он не существует в папке `FlectonePulse/minecraft/<version>/atlases/`
+- Каждый атлас имеет итоговый формат `minecraft_textures_atlas_<atlas>.png.txt`
+- Каждый атлас скачивается с собственного веб-сервера Flectone по ссылке `https://flectone.net/files/r/minecraft/<version>/atlases/minecraft_textures_atlas_<atlas>.png.txt`
+- Атласы необязательно скачивать с веб-сервера, ты можешь их поместить заранее сам в папку `FlectonePulse/minecraft/<version>/atlases/`, получив их с помощью комбинации `F3 + S` в майнкрафте
+</Callout>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.sprite`</span>
+
+ 
+<include>../../../files/permission.yml#sprite</include>
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>
+

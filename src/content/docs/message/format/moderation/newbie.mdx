@@ -1,0 +1,54 @@
+---
+title: Новичок
+description: Этот модуль запрещает новичкам сервера писать сообщение определённое время
+authors:
+  - TheFaser
+---
+<Callout type="warn" title="Предупреждение">
+Новичком сервера считается тот игрок, который никогда не был на сервере
+
+</Callout>
+
+# <include>../../../../../parts/words.mdx#localization</include> 
+<span><include>../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.moderation.newbie`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../../../files/localizations/ru_ru.yml#newbie</include></Tab>
+<Tab value="en_us"><include>../../../../../files/localizations/en_us.yml#newbie</include></Tab>
+</Tabs>
+
+### `reason`
+
+Причина, которая будет использована для сообщения в муте
+
+
+# <include>../../../../../parts/words.mdx#setting</include>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.moderation.newbie`</span>
+
+<include>../../../../../files/message.yml#newbie</include>
+
+<include>../../../../../parts/enable.mdx</include>
+
+### `mode`
+
+| Режим           | Объяснение                                                     |
+|-----------------|----------------------------------------------------------------|
+| `PLAYED_TIME`   | Сколько наиграно времени на сервере                            |
+| `SINCE_JOIN`    | Сколько прошло времени с момента первого подключения на сервер |
+
+### `timeout`
+
+Время в секундах, сколько новичку нельзя писать сообщение
+
+
+# <include>../../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.moderation.newbie`</span>
+
+<include>../../../../../files/permission.yml#newbie</include>
+
+<include>../../../../../parts/permission/permissionTier3.mdx</include>
+
+### `bypass`
+
+Право для игнорирования этого модуля

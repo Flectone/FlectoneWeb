@@ -1,0 +1,46 @@
+---
+title: Скорборд
+description: Модуль, отвечающий правильную работу team и модулей
+authors:
+  - TheFaser
+---
+- [Значения](/pulse/docs/message/objective/)
+- [Таб](/pulse/docs/message/tab/)
+
+<Callout type="warn" title="Предупреждение">
+Если возникают проблемы с `TAB` (например сортировка в ТАБе) или другим плагином, использующим `scoreboard`, нужно выключить этот модуль
+</Callout>
+
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → format.scoreboard`</span>
+
+<include>../../../../files/message.yml#scoreboard</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `name_visible`
+
+Включает отображение имени над игроком
+
+### `color`
+
+Цвет команды игрока, если включено `name_visible`, то имя будет такого же цвета
+
+### `prefix`
+
+Сообщение перед именем над головой
+
+### `suffix`
+
+Сообщение после имени над головой
+
+<include>../../../../parts/ticker.mdx</include>
+
+
+# <include>../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.format.scoreboard`</span>
+
+<include>../../../../files/permission.yml#scoreboard</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

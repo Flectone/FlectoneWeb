@@ -1,0 +1,40 @@
+---
+title: Флуд
+description: Это форматирование удаляет флуд в сообщении
+authors:
+  - TheFaser
+---
+![caps](/pulse/caps.png)
+
+
+# <include>../../../../../parts/words.mdx#setting</include>  
+<include>../../../../../parts/words.mdx#path</include> `message.yml → format.moderation.flood`  
+
+ 
+<include>../../../../../files/message.yml#flood</include>
+
+<include>../../../../../parts/enable.mdx</include>  
+
+### `trim_to_single`
+
+Заменять ли ВЕСЬ флуд на одну букву/слово или просто сокращать до лимита `max_repeated_symbols`/`max_repeated_words`
+
+### `max_repeated_symbols`
+
+Максимальное количество одинаковых букв подряд
+
+### `max_repeated_words`
+
+Максимальное количество одинаковых слов подряд
+
+
+# <include>../../../../../parts/words.mdx#permission</include>   
+<include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.moderation.flood`  
+
+ 
+<include>../../../../../files/permission.yml#flood</include>
+
+<include>../../../../../parts/permission/permissionTier3.mdx</include>  
+
+### `bypass`
+Право на обход данного форматирования

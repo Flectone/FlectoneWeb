@@ -1,0 +1,35 @@
+---
+title: Фиксация
+description: Модуль форматирует сообщение игрока так, что первая буква - заглавная, а в конце есть точка
+authors:
+  - TheFaser
+---
+![fixation](/pulse/fixation.png)
+
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → format.fixation`</span>
+
+<include>../../../../files/message.yml#fixation</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `end_dot`
+
+Будет ли в конце сообщения добавлена точка, если её нет
+
+### `first_letter_uppercase`
+
+Будет ли первая буква в сообщении всегда заглавной
+
+### `non_dot_symbols`
+
+Список символов (могут быть и слова), после которых не нужно ставить точку
+
+
+# <include>../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.format.fixation`</span>
+
+<include>../../../../files/permission.yml#fixation</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

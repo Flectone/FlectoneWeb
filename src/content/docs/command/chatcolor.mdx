@@ -1,0 +1,87 @@
+---
+title: /chatcolor
+description: Комманда для смены
+authors:
+  - TheFaser
+---
+# `/chatcolor`
+
+Комманда для смены [цветов](/pulse/docs/message/format/fcolor/)
+![command chatcolor](/pulse/commandchatcolor.png)
+
+<include>../../../parts/fcolor.mdx</include>
+
+<Callout type="info" title="Информация">
+
+Можно пропускать цвета с помощью `null`, чтобы их не заменять. Например `/chatcolor see null null <red> <red>` заменит только `<fcolor:3>` и `<fcolor:4>`, а первые два нет
+
+Если есть пермишен `other`, то можно изменять цвета других игроков, дописывая их ник в конце команды, например `/chatcolor see null <red> <red> <blue> TheFaser`. Нужно указывать все цвета и только после этого ник игрока, но вы можете пропускать цвета, как об этом написано выше
+
+</Callout>
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.chatcolor`</span>
+
+ 
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#chatcolor</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#chatcolor</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Сообщение, если введённый игрок не найден
+
+### `null_color`
+
+Сообщение, если неправильно введены цвета
+
+### `null_type`
+
+Сообщение, если неправильно введён тип
+
+### `format`
+
+Формат сообщения, которое будет отправлено
+
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → chatcolor`</span>
+
+
+<include>../../../files/command.yml#chatcolor</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<include>../../../parts/range.mdx</include>
+
+<include>../../../parts/destination.mdx</include>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.chatcolor`</span>
+
+ 
+<include>../../../files/permission.yml#chatcolor</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/other.mdx</include>
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>
+
+
+### `colors`
+
+Список прав для изменения конкретных видов цветов: `SEE` или `OUT`

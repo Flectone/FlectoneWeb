@@ -1,0 +1,122 @@
+---
+title: /rockpaperscissors
+description: Комманда для того, чтобы предложить поиграть в камень-ножницы-бумага
+authors:
+  - TheFaser
+---
+![command rockpaperscissors](/pulse/commandrockpaperscissors.png)
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.rockpaperscissors`</span>
+
+ 
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#rockpaperscissors</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#rockpaperscissors</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Сообщение, если введённый игрок не найден
+
+### `null_game`
+
+Сообщение, если игры не существует
+
+### `wrong_move`
+
+Сообщение при невозможном ходе
+
+### `already`
+
+Сообщение, если игрок уже сделал ход
+
+### `myself`
+
+Сообщение, если игрок решил поиграть с самим собой
+
+### `sender`
+
+Сообщение для отправителя
+
+### `receiver`
+
+Сообщение для получателя
+
+### `format_move`
+
+Сообщение при ходе
+
+### `format_win`
+
+Сообщение при победе
+
+### `forma_draw`
+
+Сообщение при ничье
+
+### `strategies`
+
+Список стратегий и их названий
+
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → rockpaperscissors`</span>
+
+
+<include>../../../files/command.yml#rockpaperscissors</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<include>../../../parts/range.mdx</include>
+
+
+### `strategy`
+
+Стратегии, где `ключом` является тот, кто побеждает `значение`
+
+<Callout type="info" title="Например я хочу, чтобы `ножницы` побеждали `paper`">
+Значит я должен написать
+```yaml
+scissors:
+  - "paper"
+```
+
+Значений может быть несколько т.е.
+```yaml
+scissors:
+  - "paper"
+  - "newitem"
+```
+
+Можно сделать свои ключи и значения
+```yaml
+customvalue:
+  - "customobject"
+```
+</Callout>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.rockpaperscissors`</span>
+
+ 
+<include>../../../files/permission.yml#rockpaperscissors</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>
+
+

@@ -1,0 +1,41 @@
+---
+title: Иконка
+description: Модуль отвечающий за изображение сервера
+authors:
+  - TheFaser
+---
+![server icon](/pulse/servericon.png)
+
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → status.icon`</span>
+
+<include>../../../../files/message.yml#icon</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `random`
+
+Если включено, то изображение будет выбираться случайным образом, иначе по порядку
+
+### `values`
+
+`server-icon-1.png` ![server icon 1](/pulse/server-icon-1.png)
+
+
+`server-icon-2.png` ![server icon 2](/pulse/server-icon-2.png)
+
+Список названий изображений, которые должны отображаться
+
+<Callout type="error" title="ИЗОБРАЖЕНИЕ ДОЛЖНО">
+1. Находиться внутри папки `/FlectonePulse/images/`
+2. Иметь размер **ТОЛЬКО** `64x64`   
+</Callout>
+
+
+# <include>../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.status.icon`</span>
+
+<include>../../../../files/permission.yml#icon</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

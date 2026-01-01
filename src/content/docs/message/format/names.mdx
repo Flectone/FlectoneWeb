@@ -1,0 +1,69 @@
+---
+title: Имя
+description: Модуль, отвечающий за имя игрока
+authors:
+  - TheFaser
+---
+![name tab](/pulse/nametab.png)  
+![name display](/pulse/namedisplay.png)  
+
+# <include>../../../../parts/words.mdx#localization</include> 
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.names`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#names</include></Tab>
+<Tab value="en_us"><include>../../../../files/localizations/en_us.yml#names</include></Tab>
+</Tabs>
+
+### `constant`
+
+Сообщение, которое будет форматироваться от отправителя на сервере, откуда было отправлено. Его можно использовать в любом сообщении с помощью `<constant>`
+
+<Callout type="info" title="ПРИМЕЧАНИЕ">
+Если у тебя возникают проблемы в сообщениях для `Velocity` или `BungeeCord`, то это решение твоей проблемы:
+
+```yaml
+constant: "%player_name%"
+display: "<constant>"
+```
+
+</Callout>
+
+
+### `display`
+
+Отвечает за имя игрока
+![name display](/pulse/namedisplay.png)
+
+### `entity`
+
+Отвечает за имя сущности
+
+### `unknown`
+
+Отвечает за имя сущности, если его не удалось узнать
+
+### `invisible`
+
+Отвечает за имя игрока, если он под зельем невидимости
+
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → format.names`</span>
+
+<include>../../../../files/message.yml#names</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `should_check_invisibility`
+
+Нужно ли проверять, что игрок под зельем невидимости. Если да, то будет использовано имя `invisible`
+
+
+# <include>../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.format.names`</span>
+
+<include>../../../../files/permission.yml#names</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

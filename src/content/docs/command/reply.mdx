@@ -1,0 +1,59 @@
+---
+title: /reply
+description: Комманда для того, чтобы написать личное сообщение последнему написавшему игроку
+authors:
+  - TheFaser
+---
+![command reply](/pulse/commandreply.png)
+
+<Callout type="error" title="Внимательно">
+Комманда не будет работать, если модуль [`Tell`](/pulse/docs/command/tell/) выключен
+</Callout>
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.reply`</span>
+
+ 
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#reply</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#reply</include></Tab>
+</Tabs>
+
+### `null_receiver`
+
+Сообщение, если получатель не найден
+
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → reply`</span>
+
+
+<include>../../../files/command.yml#reply</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<include>../../../parts/range.mdx</include>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.reply`</span>
+
+ 
+<include>../../../files/permission.yml#reply</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>
+
+

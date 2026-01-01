@@ -1,0 +1,191 @@
+---
+title: Телеграм
+description: Интеграция с Telegram позволяет отправлять сообщения (Telegram ↔ Minecraft) между сервером Minecraft и Telegram.
+authors:
+  - TheFaser
+---
+![telegram message 1](/pulse/telegrammessage1.png)
+![telegram message 2](/pulse/telegrammessage2.png)
+![minecraft message](/pulse/telegramminecraftmessage.png)
+
+<include>../../../parts/messageTag.mdx</include>
+
+# <include>../../../parts/words.mdx#localization</include> 
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → integration.telegram`</span>
+
+ 
+
+<Tabs items={['ru_ru', 'en_us']}>
+  <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#telegram</include></Tab>
+  <Tab value="en_us"><include>../../../files/localizations/en_us.yml#telegram</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Сообщение, если введённый игрок через `custom_command` не найден
+
+### `format_reply`
+
+Формат сообщения для тега `<reply>`, когда сообщение является ответом на другое
+
+### `custom_command`
+
+Список кастомных комманд интеграции, где ключом является название комманды, а значением её формат сообщения
+
+<Callout type="info" title="Пример">
+
+```yaml
+custom_command:
+  tps:
+    content: "<tps>"
+```
+
+Комманда, чтобы получить значение `tps` на сервере. **Не забудь сделать её в inegration.yml**
+
+</Callout>
+
+### `Плейсхолдеры`
+
+Ты можешь использовать все плейсхолдеры, которые используются в начальном сообщении для майнкрафта
+<Callout type="info" title="НАПример ДЛЯ СООБЩЕНИЯ О БЛОКИРОВКЕ">
+Там есть плейсхолдер `<reason>`, значит я могу использовать `<reason>` внутри телеграм сообщений
+</Callout>
+
+Также есть плейсхолдеры, которые ТОЧНО будут заменяться в любом сообщении
+- `<final_message>` сообщение, отправленное в майнкрафт
+- `<final_clear_message>` сообщение, отправленное в майнкрафт без unicode-смайлов
+- `<player>` ник игрока, который отправил сообщение
+- `<message>` сырое сообщение, которое написал игрок
+- `<plain_message>` отформатированное сообщение, которое написал игрок
+- `<reply>` отформатированное сообщение-ответ, оно будет пустым, если основное сообщение не ответ
+- Очевидно, что все плейсхолдеры из `PlaceholderAPI` и `FlectonePulse` тоже будут работать
+
+<br/>
+У сообщения, которое будет отправлено из Телеграма в Майнкрафт есть свои плейсхолдеры:
+
+| Плейсхолдер    | Что возвращает                                            |
+|----------------|-----------------------------------------------------------|
+| `<name>`       | Тег пользователя в Telegram                               |
+| `<user_name>`  | Тег пользователя в Telegram                               |
+| `<first_name>` | Имя пользователя в Telegram                               |
+| `<last_name>`  | Фамилия пользователя в Telegram                           |
+| `<chat>`       | Названия чата Telegram (откуда было отправлено сообщение) |
+
+### `info_channel`
+
+Список айди каналов и их названий, для отображения какой-нибудь информации, например `TPS`
+
+### `message_channel`
+
+Список сообщений с форматом итогового сообщения
+
+<Callout type="info" title="ЕСЛИ ХОЧЕШЬ ДОБАВИТЬ ДРУГОЕ СООБЩЕНИЕ:">
+1. Возьми название из списка `типы сообщений`
+2. Вставь в `message_channel`
+```yaml
+название_сообщения: "<final_message>"
+```
+</Callout>
+
+
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `integration.yml → telegram`</span>
+
+
+<include>../../../files/integration.yml#telegram</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<Callout type="warn" title="Предупреждение">
+- Перед включением, вставь **токен** бота Telegram
+- После включения, **ЖЕЛАТЕЛЬНО** перезагрузить сервер
+</Callout>
+
+### `parse_mode`
+
+В каком режиме будет отправляться сообщение в телеграм
+
+| Режим         | Что будет?                                                                |
+|---------------|---------------------------------------------------------------------------|
+| `MARKDOWN`    | Сообщение будет отформатировано относительно устаревшего формата Markdown |
+| `MARKDOWN_V2` | Сообщение будет отформатировано относительно нового формата Markdown      |
+| `HTML`        | Сообщение будет отформатировано относительно формата HTML                 |
+| `NONE`        | Сообщение никак не будет отформатировано                                  |
+
+### `token`
+
+[Токен](https://core.telegram.org/bots/faq#how-do-i-create-a-bot) бота для подключения. Можно использовать environment variables, например `${VALUE}`
+
+### `custom_command`
+
+Список кастомных комманд интеграции, ключом является название комманды и оно может быть любым. Комманды могут быть ТОЛЬКО информационными, на сервере они ничего не выполняют и не будут выполнять
+
+| Параметр      | Пояснение                                                                      |
+|---------------|--------------------------------------------------------------------------------|
+| `need_player` | Проверять ли первый аргумент комманды на имя игрока, например `!ping TheFaser` |
+| `aliases`     | Список псевдонимов для использования комманды                                  |
+
+
+<Callout type="info" title="Пример">
+
+```yaml
+custom_command:
+  tps:
+    need_player: false
+    aliases:
+      - "!tps"
+      - "!tickpersecond"
+```
+
+Комманда, чтобы получить значение `tps` на сервере с помощью `!tps` или `!tickpersecond`. **Не забудь сделать сообщение в локализации**
+
+</Callout>
+
+### `channel_info`
+
+Настройка каналов с информацией
+
+#### `enable`
+
+Нужен ли канал информации
+
+<include>../../../parts/ticker.mdx</include>
+
+### `message_channel`
+
+Список типов сообщений и айди чатов в Telegram
+
+<Callout type="info" title="Например я хочу, чтобы из Minecraft отправлялось сообщение комманды `/ban` в Telegram">
+1. Копирую айди чата, в которое нужно отправить сообщение (`-1002341720267_49`)
+
+Если бот подключён и добавлен в канал, то можно использовать команду `/id` в телеграме, чтобы узнать айди канала
+
+2. Прописываю:
+```yaml
+message_channel:
+  COMMAND_BAN:
+    - "-1002341720267_49"
+```
+
+Чатов может быть сколько угодно, главное, чтобы к ним был доступ у бота из [секреты](/pulse/docs/secrets/telegram/). Локализацию можно не настраивать, по умолчанию сообщение будет отправляться с форматом `<final_message>`
+</Callout>
+
+<Callout type="warn" title="Важно">
+Если ваш канал является Форумом (Топиком), то айди **ГЛАВНОГО** канала нужно указывать без `_`
+
+1. Айди моего главного канала (он всегда заканчивается на `_1`) это `-1002341720267_1`
+2. Значит вписывать нужно **ТОЛЬКО** `-1002341720267`
+
+Для других чатов из форума это правило не действует и нужно вписывать **ПОЛНЫЙ** айди
+</Callout>
+
+<include>../../../parts/destination.mdx</include>
+
+
+# <include>../../../parts/words.mdx#permission</include>
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → integration.telegram`</span>
+
+
+<include>../../../files/permission.yml#telegram</include>
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
