@@ -12,7 +12,6 @@ export default function Members() {
                 <GithubCard link={t('FunnyBars.link')} name={t('FunnyBars.name')} description={t('FunnyBars.description')} avatar={t('FunnyBars.avatar')} />
                 <GithubCard link={t('fxdsu.link')} name={t('fxdsu.name')} description={t('fxdsu.description')} avatar={t('fxdsu.avatar')} />
                 <GithubCard link={t('vplend.link')} name={t('vplend.name')} description={t('vplend.description')} avatar={t('vplend.avatar')} />
-                <GithubCard link={t('awalki.link')} name={t('awalki.name')} description={t('awalki.description')} avatar={t('awalki.avatar')} />
             </div>
         </div>
 
