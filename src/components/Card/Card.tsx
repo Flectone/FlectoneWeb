@@ -13,7 +13,7 @@ export default function Card({ className = '', children, path, target }: CardPro
 
   const base =
     `${className} duration-100 p-6 max-sm:p-4 backdrop-blur-3xl 
-     rounded-xl bg-fd-card overflow-hidden
+     rounded-xl bg-fd-card overflow-hidden border
      ${path ? 'hover:bg-fd-border cursor-pointer' : ''}`
 
   if (path) {
