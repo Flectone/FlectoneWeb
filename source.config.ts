@@ -3,7 +3,7 @@ import lastModified from 'fumadocs-mdx/plugins/last-modified';
 import { z } from 'zod';
 
 export const docs = defineDocs({
-  dir: './src/content/docs',
+  dir: './src/pulse/content/docs',
   docs: {
     schema: z.object({
       title: z.string(),
