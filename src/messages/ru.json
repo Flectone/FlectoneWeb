@@ -68,6 +68,6 @@
     "FlectoneChat": {
         "description": "Упрощает и дополняет игру на сервере добавлением удобных фичей, но проект был закрыт",
         "usePulse": "Используй <strong>FlectonePulse</strong>, так как FlectoneChat более не поддерживается",
-        "imagePath": "/chat-ru.svg"
+        "imagePath": "/chat/chat-ru.svg"
     }
 }
