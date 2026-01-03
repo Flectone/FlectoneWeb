@@ -42,9 +42,7 @@ export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slu
           )}
           <EditOnGitHub
             href={`https://github.com/Flectone/FlectoneWeb/edit/master/src/pulse/content/docs/${page.path}`}
-          >
-            Редактировать на GitHub
-          </EditOnGitHub>
+          />
         </div>
       </DocsBody>
     </DocsPage>
