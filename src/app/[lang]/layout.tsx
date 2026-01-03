@@ -1,7 +1,6 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
 import '../globals.css';
 import { Inter } from 'next/font/google';
-import { ReactNode } from "react";
 import {NextIntlClientProvider} from 'next-intl';
 import { defineI18nUI } from "fumadocs-ui/i18n";
 import {i18n} from "@/lib/i18n";

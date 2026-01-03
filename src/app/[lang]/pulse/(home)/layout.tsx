@@ -1,6 +1,5 @@
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { baseOptions } from '@/lib/layout.shared';
-import { BookText } from 'lucide-react';
 import { SiBoosty, SiDiscord, SiModrinth } from 'react-icons/si';
 import Image from "next/image";
 import LanguageButton from "@/components/Button/LanguageButton";
