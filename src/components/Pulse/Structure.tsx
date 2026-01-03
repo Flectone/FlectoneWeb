@@ -1,4 +1,3 @@
-import Card from "../Card/Card";
 import { File, Folder, Files } from 'fumadocs-ui/components/files';
 import {useTranslations} from "next-intl";
 
