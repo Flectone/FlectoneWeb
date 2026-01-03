@@ -36,12 +36,12 @@ FlectoneWeb/
 
 ## 🎯 Overview
 
-Flectone Web is a high-performance web solution for **Flectone Network**. It utilizes **Next.js 14+** with App Router for the core site and **Fumadocs** for a seamless, searchable documentation experience (Pulse).
+Flectone Web is a high-performance web solution for **Flectone Network**. It utilizes **Next.js 16+** with App Router for the core site and **Fumadocs** for a seamless, searchable documentation experience (Pulse).
 
 ## ✨ Key Features
 
 - **🌍 Multi-language Support**: Full i18n support for global reach.
-- **⚡️ Next.js 14 Power**: Server Components, Streaming, and Optimized Caching.
+- **⚡️ Next.js 16 Power**: Server Components, Streaming, and Optimized Caching.
 - **📚 Integrated Docs**: "Pulse" documentation built directly into the app.
 - **🎨 Modern UI**: Responsive design with Tailwind CSS.
 - **🚀 Fast Performance**: Optimized for Core Web Vitals.
