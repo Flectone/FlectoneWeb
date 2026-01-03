@@ -1,5 +1,3 @@
-import { maxHeaderSize } from "http";
-import RouteButton from "../Button/HeaderButton";
 import LinkButton from "../Button/LinkButton";
 import Card from "../Card/Card";
 import Image from "next/image";
@@ -30,7 +28,7 @@ export default function Projects() {
                             <h1 className="text-2xl font-bold">FlectonMix</h1>
                             <p>{t('Mix.description')}</p>
                         </div>
-                        <Image className="border-1 mt-2 border-neutral-600/20 rounded-sm invert-(--invert)" src={'/mix/mix.svg'} width={5000} height={128} alt="mix" />
+                        <Image className="border mt-2 border-neutral-600/20 rounded-sm invert-(--invert)" src={'/mix/mix.svg'} width={5000} height={128} alt="mix" />
                     </Card>
                     <Card path="/chat" className="max-md:w-2/2 w-1/2 flex flex-col justify-between">
                         <div>
@@ -39,7 +37,7 @@ export default function Projects() {
                         </div>
                         <div className="">
                             <div className="text-blue-500 hover:text-red-500">
-                                <Image className="border-1 mt-2 border-neutral-600/20 rounded-sm invert-(--invert)" src={t('Chat.imagePath')} width={5000} height={128} alt="mix" />
+                                <Image className="border mt-2 border-neutral-600/20 rounded-sm invert-(--invert)" src={t('Chat.imagePath')} width={5000} height={128} alt="mix" />
                             </div>
                         </div>
                     </Card>
