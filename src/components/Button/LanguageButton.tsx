@@ -1,35 +1,36 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
-import { useLocale } from 'next-intl'
-import { GrLanguage } from 'react-icons/gr'
+import { usePathname, useRouter, useParams } from 'next/navigation'
 
-interface LanguageButtonProps {
-  locales?: string[]
-}
-
-export default function LanguageButton({ locales = ['en', 'ru'] }: LanguageButtonProps) {
+export default function LanguageButton({ locales = ['en', 'ru'] }: { locales?: string[] }) {
   const router = useRouter()
-  const currentLocale = useLocale()
+  const pathname = usePathname()
+  const params = useParams()
+
+  const currentLocale = (params.lang as string) || 'en'
 
   const nextLocale = locales[(locales.indexOf(currentLocale) + 1) % locales.length]
 
   function changeLocale(targetLocale: string) {
-    if (targetLocale === currentLocale) return
+    if (!pathname) return
+
+    const segments = pathname.split('/')
+    segments[1] = targetLocale
+    const newPath = segments.join('/')
 
     document.cookie = `locale=${targetLocale}; path=/; max-age=31536000`
 
-    router.refresh()
+    router.push(newPath)
   }
 
   return (
-    <button
-      type="button"
-      onClick={() => changeLocale(nextLocale)}
-      className="flex items-center cursor-pointer px-2 py-1 rounded-full hover:bg-muted-primary transition-colors duration-100"
-    >
-      <GrLanguage size={16} className="mr-1" />
-      <span className="text-sm">{currentLocale}</span>
-    </button>
+      <button
+          type="button"
+          onClick={() => changeLocale(nextLocale)}
+          className="flex items-center rounded-full transition-colors text-[16px] text-fd-muted-foreground cursor-pointer hover:text-fd-foreground"
+      >
+        {/*<Languages size={16} />*/}
+        <span className="h-6 flex items-center font-medium uppercase">{currentLocale}</span>
+      </button>
   )
 }
