@@ -30,7 +30,7 @@ export default function Projects() {
                             <h1 className="text-2xl font-bold">FlectonMix</h1>
                             <p>{t('Mix.description')}</p>
                         </div>
-                        <Image className="border-1 mt-2 border-neutral-600/20 rounded-sm invert-(--invert)" src={'/mix.svg'} width={5000} height={128} alt="mix" />
+                        <Image className="border-1 mt-2 border-neutral-600/20 rounded-sm invert-(--invert)" src={'/mix/mix.svg'} width={5000} height={128} alt="mix" />
                     </Card>
                     <Card path="/chat" className="max-md:w-2/2 w-1/2 flex flex-col justify-between">
                         <div>
