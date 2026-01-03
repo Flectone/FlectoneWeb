@@ -2,7 +2,7 @@ import { RootProvider } from 'fumadocs-ui/provider/next';
 import './globals.css';
 import { Inter } from 'next/font/google';
 import { ReactNode } from "react";
-import {NextIntlClientProvider, hasLocale} from 'next-intl';
+import {NextIntlClientProvider} from 'next-intl';
 
 const inter = Inter({
   subsets: ['latin'],

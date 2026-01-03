@@ -1,7 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import { SiModrinth, SiDiscord, SiBoosty } from "react-icons/si";
-import Image from 'next/image';
-import LanguageButton from "@/components/Button/LanguageButton";
 
 export function baseOptions(): BaseLayoutProps {
     return {
