@@ -1,12 +1,18 @@
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { baseOptions } from '@/lib/layout.shared';
-import { BookText } from 'lucide-react';
 import { SiBoosty, SiDiscord, SiModrinth } from 'react-icons/si';
+import Image from "next/image";
+import LanguageButton from "@/components/Button/LanguageButton";
 
 export default function Layout({ children }: LayoutProps<'/'>) {
   return (
     <HomeLayout
       {...baseOptions()}
+        nav={{
+            title: <h1 className='flex justify-center items-center'><Image src="/logo.png" alt="Flectone Logo" width={64} height={64} className='w-6 h-6 mr-1' /> Flectone</h1>,
+            url: '/',
+            children: <LanguageButton />
+        }}
       links={[
         {
           text: 'О нас',

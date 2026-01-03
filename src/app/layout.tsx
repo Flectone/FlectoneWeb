@@ -1,5 +1,5 @@
 import { RootProvider } from 'fumadocs-ui/provider/next';
-import '@/styles/globals.css';
+import './globals.css';
 import { Inter } from 'next/font/google';
 import { ReactNode } from "react";
 import {NextIntlClientProvider, hasLocale} from 'next-intl';
@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export default function Layout({ children }: { children: ReactNode }) {
-  return (
+    return (
       <html className={inter.className} suppressHydrationWarning>
           <body className="flex flex-col min-h-screen">
               <NextIntlClientProvider>
@@ -19,5 +19,5 @@ export default function Layout({ children }: { children: ReactNode }) {
               </NextIntlClientProvider>
           </body>
       </html>
-  );
+    );
 }
