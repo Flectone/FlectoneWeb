@@ -1,8 +1,6 @@
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { baseOptions } from '@/lib/layout.shared';
 import { SiBoosty, SiDiscord, SiModrinth } from 'react-icons/si';
-import Image from "next/image";
-import LanguageButton from "@/components/Button/LanguageButton";
 
 export default function Layout({ children }: LayoutProps<'/[lang]'>) {
   return (
