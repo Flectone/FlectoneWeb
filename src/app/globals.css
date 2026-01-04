@@ -63,6 +63,23 @@ p {
   color: var(--color-fd-muted-foreground)
 }
 
+::selection {
+  background: var(--color-fd-primary);
+  color: var(--color-fd-primary-foreground);
+}
+
+div.z-50.flex.flex-col.overflow-x-hidden[data-state="open"] {
+  min-width: 10px;
+
+}
+div[data-radix-popper-content-wrapper=""]{
+  min-width: 10px;
+  margin: 4px;
+}
+span[data-radix-focus-guard=""]{
+  min-width: 10px;
+}
+
 /* @theme {
   --color-fd-background: hsl(0, 0%, 96%);
   --color-fd-foreground: hsl(0, 0%, 3.9%);
