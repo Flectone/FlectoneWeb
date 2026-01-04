@@ -25,8 +25,8 @@ export default function Structure() {
         </Files>
       </div>
       <div className="text-start w-2/3 py-4 max-[52rem]:w-full max-[52rem]:py-0">
-        <h1 className="text-xl font-bold">{t.rich('title', {b: (chunks) => <b>{chunks}</b>})}</h1><br />
-        <p style={{ whiteSpace: 'pre-line' }}>
+        <h1 className="text-2xl font-bold">{t.rich('title', {b: (chunks) => <b>{chunks}</b>})}</h1><br />
+        <p style={{ whiteSpace: 'pre-line' }} className="text-lg">
           {t.rich('description', {
             b: (chunks) => <b>{chunks}</b>,
             br: () => <br />
