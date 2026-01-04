@@ -10,14 +10,20 @@ const inter = Inter({
 });
 
 const { provider } = defineI18nUI(i18n, {
+
     translations: {
         ru: {
+            chooseLanguage: 'Выбрать язык',
+            displayName: 'Русский',
             toc: 'На этой странице',
             search: 'Поиск',
             lastUpdate: 'Последнее обновление',
             editOnGithub: 'Редактировать на GitHub',
             nextPage: 'Следующая страница',
             previousPage: 'Предыдущая страница'
+        },
+        en: {
+            displayName: 'English',
         }
     },
 });
