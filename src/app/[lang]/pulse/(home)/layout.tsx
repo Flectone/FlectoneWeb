@@ -7,6 +7,7 @@ export default function Layout({ children }: LayoutProps<'/[lang]/pulse'>) {
     <HomeLayout
       {...baseOptions()}
       links={[
+
         {
           text: 'Документация',
           url: '/pulse/docs',

@@ -27,7 +27,6 @@ export default function Layout({ children }: LayoutProps<'/[lang]'>) {
               url: '/mix',
               secondary: false,
           },
-
           {
           type: 'icon',
           icon: <SiBoosty />,
