@@ -16,6 +16,8 @@ const { provider } = defineI18nUI(i18n, {
             search: 'Поиск',
             lastUpdate: 'Последнее обновление',
             editOnGithub: 'Редактировать на GitHub',
+            nextPage: 'Следующая страница',
+            previousPage: 'Предыдущая страница'
         }
     },
 });
