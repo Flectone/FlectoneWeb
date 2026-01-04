@@ -1,12 +1,16 @@
 'use client';
 
+import {useTranslations} from "next-intl";
+
 export function Authors({ ids }: { ids: string[] }) {
+  const t = useTranslations('Pulse.Authors')
+
   if (ids.length === 0) return null;
 
   return (
     <div className="flex flex-col gap-3 pt-4 border-t mt-4">
       <p className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">
-        Авторы страницы
+          {t('title')}
       </p>
       <div className="flex flex-col gap-2">
         {ids.map((username) => (

@@ -71,6 +71,9 @@
         "imagePath": "/chat/chat-en.svg"
     },
     "Pulse": {
+        "Authors": {
+            "title": "Authors of page"
+        },
         "WelcomeCard": {
             "slogan": "Every message is under <b>your</b> control!"
         },
