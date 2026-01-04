@@ -107,4 +107,3 @@ This project is licensed under the **GPLv3 License**. See the [LICENSE](LICENSE)
 <div align="center">
   Made with ❤️ by <a href="https://github.com/Flectone">Flectone Team</a>
 </div>
-```
