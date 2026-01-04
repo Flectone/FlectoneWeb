@@ -1,0 +1,53 @@
+---
+title: Newbie
+description: This module prohibits server newcomers from sending messages for a certain period of time
+authors:
+  - TheFaser
+---
+<Callout type="warn" title="Warning">
+    A server newcomer is considered a player who has never been on the server before.
+</Callout>
+
+# <include>../../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.moderation.newbie`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../../files/localizations/ru_ru.yml#newbie</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/localizations/en_us.yml#newbie</include></Tab>
+</Tabs>
+
+### `reason`
+
+The reason that will be used for the mute message.
+
+
+# <include>../../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.moderation.newbie`</span>
+
+<include>../../../../../files/message.yml#newbie</include>
+
+<include>../../../../../parts/enable.en.mdx</include>
+
+### `mode`
+
+| Mode            | Explanation                                                    |
+|-----------------|----------------------------------------------------------------|
+| `PLAYED_TIME`   | Based on how much time has been played on the server           |
+| `SINCE_JOIN`    | Based on how much time has passed since the first connection  |
+
+### `timeout`
+
+Time in seconds during which a newcomer cannot send messages.
+
+
+# <include>../../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.moderation.newbie`</span>
+
+<include>../../../../../files/permission.yml#newbie</include>
+
+<include>../../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `bypass`
+
+Permission to ignore this module

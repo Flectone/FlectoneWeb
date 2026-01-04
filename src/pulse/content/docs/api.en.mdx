@@ -1,0 +1,141 @@
+---
+title: API
+description: FlectonePulse is a powerful Minecraft plugin that allows you to customize server messages, chat, commands, and integrations. It supports Bukkit, Spigot, Paper, Purpur, Folia, BungeeCord, Velocity, and Fabric platforms. It uses Google Guice for dependency injection, with most classes (except models) marked with the @Singleton annotation.
+icon: Cable
+---
+
+# Connecting Dependency
+
+FlectonePulse is available in Maven Central. Below are the configurations for connecting in a project via Maven, Gradle (Groovy), or Gradle (Kotlin DSL).
+
+<Tabs items={['xml', 'groovy', 'kotlin']}>
+    <Tab value="xml">
+        ```xml
+        <dependency>
+            <groupId>net.flectone.pulse</groupId>
+            <artifactId>core</artifactId>
+            <version>1.7.3</version> <scope>provided</scope>
+        </dependency>
+        ```
+    </Tab>
+    <Tab value="groovy">
+        ```groovy
+        repositories {
+        mavenCentral()
+    }
+
+        dependencies {
+        compileOnly 'net.flectone.pulse:core:1.7.3' // Replace with the current version
+    }
+        ```
+    </Tab>
+    <Tab value="kotlin">
+        ```kotlin
+        repositories {
+        mavenCentral()
+    }
+
+        dependencies {
+        compileOnly("net.flectone.pulse:core:1.7.3") // Replace with the current version
+    }
+        ```
+    </Tab>
+</Tabs>
+
+For snapshot versions:
+
+
+<Tabs items={['xml', 'groovy', 'kotlin']}>
+    <Tab value="xml">
+        ```xml
+        <dependency>
+            <groupId>net.flectone.pulse</groupId>
+            <artifactId>core</artifactId>
+            <version>1.7.4-SNAPSHOT</version> <scope>provided</scope>
+        </dependency>
+        ```
+    </Tab>
+    <Tab value="groovy">
+        ```groovy
+        repositories {
+        maven { url '[https://central.sonatype.com/repository/maven-snapshots/](https://central.sonatype.com/repository/maven-snapshots/)' }
+    }
+
+        dependencies {
+        compileOnly 'net.flectone.pulse:core:1.7.4-SNAPSHOT' // Replace with the current version
+    }
+        ```
+    </Tab>
+    <Tab value="kotlin">
+        ```kotlin
+        repositories {
+        maven { url = uri("[https://central.sonatype.com/repository/maven-snapshots/](https://central.sonatype.com/repository/maven-snapshots/)") }
+    }
+
+        dependencies {
+        compileOnly("net.flectone.pulse:core:1.7.4-SNAPSHOT") // Replace with the current version
+    }
+        ```
+    </Tab>
+</Tabs>
+
+
+# Example for Bukkit
+
+An example of a Bukkit plugin using FlectonePulse to output the message "Hello from FlectonePulse".
+
+### plugin.yml
+```yaml
+name: MyPlugin
+version: 1.0.0
+main: com.example.myplugin.MyPlugin
+api-version: 1.13
+softdepend:
+  - FlectonePulse
+```
+
+### Plugin Code Example
+```java
+package com.example.myplugin;
+
+import net.flectone.pulse.FlectonePulse;
+import net.flectone.pulse.FlectonePulseAPI;
+import net.flectone.pulse.util.logging.FLogger;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class MyPlugin extends JavaPlugin {
+
+    @Override
+    public void onEnable() {
+        if (Bukkit.getPluginManager().getPlugin("FlectonePulse") != null) {
+            FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
+
+            FLogger fLogger = flectonePulse.get(FLogger.class);
+            fLogger.info("Hello from FlectonePulse");
+        }
+    }
+}
+```
+
+# Key API Methods
+
+```java
+FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
+
+// Retrieve a singleton instance of the specified class via Guice dependency injection
+// Class<?> clazz = ...
+// flectonePulse.get(clazz);
+FLogger fLogger = flectonePulse.get(FLogger.class);
+
+// Check if the injector is ready for operation
+flectonePulse.isReady();
+
+// Reloads the plugin, throwing a `ReloadException` on errors
+flectonePulse.reload();
+```
+
+# Notes
+
+- Ensure that FlectonePulse is installed on the server and listed as a softdepend in `plugin.yml`.
+- Use `isReady()` to check the readiness of the injector before calling `get()`.

@@ -1,0 +1,76 @@
+---
+title: /translateto
+description: Command to translate a message from one language to another
+authors:
+  - TheFaser
+---
+![command translateto](/pulse/commandtranslateto.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.translateto`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#translateto</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#translateto</include></Tab>
+</Tabs>
+
+### `null_or_error`
+
+Message if an error occurred during translation
+
+### `format`
+
+Format of the message that will be sent
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → translateto`</span>
+
+
+<include>../../../files/command.yml#translateto</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+
+### `service`
+
+Type of API (`DEEPL`, `GOOGLE`, `YANDEX`) that will be used for translation
+
+<Callout type="error" title="Attention">
+    `DEEPL` and `YANDEX` require a **token** and separate configuration in `integration.yml`
+</Callout>
+
+<include>../../../parts/range.en.mdx</include>
+
+
+### `languages`
+
+List of languages used only for suggestions when using the command
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.translateto`</span>
+
+
+<include>../../../files/permission.yml#translateto</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

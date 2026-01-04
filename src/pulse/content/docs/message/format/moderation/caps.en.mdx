@@ -1,0 +1,35 @@
+---
+title: Caps
+description: This formatting removes caps in messages
+authors:
+  - TheFaser
+---
+![caps](/pulse/caps.png)
+
+
+# <include>../../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.moderation.caps`</span>
+
+<include>../../../../../files/message.yml#caps</include>
+
+<include>../../../../../parts/enable.en.mdx</include>
+
+### `trigger`
+
+The percentage of uppercase letters required for the message to be modified
+
+<Callout type="info" title="How to correctly write the percentage">
+    `0.7` is `70%`, and `1.0` is `100%` (the entire message)
+</Callout>
+
+
+# <include>../../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.moderation.caps`</span>
+
+<include>../../../../../files/permission.yml#caps</include>
+
+<include>../../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `bypass`
+
+Permission to ignore the formatting

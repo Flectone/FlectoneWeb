@@ -1,0 +1,72 @@
+---
+title: Database
+description: Storage location for important player information
+authors:
+  - TheFaser
+---
+<Callout type="info" title="Information">
+    You can use environment variables in the database fields, for example `${VALUE}`
+</Callout>
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `config.yml → database`</span>
+
+
+<include>../../../files/config.yml#database</include>
+
+### `ignore_existing_driver`
+
+Whether to download the database library even if it already exists on the server.
+
+<Callout type="info" title="Information">
+
+    This can solve issues where other plugins use an outdated library and `FlectonePulse` cannot start correctly.
+
+</Callout>
+
+### `type`
+
+The type of database used; currently supported types are:
+
+| Type         | Explanation                       |
+|--------------|-----------------------------------|
+| `SQLite`     | Local, stored as a file           |
+| `MySQL`      | Server-based, requires connection  |
+| `MariaDB`    | Server-based, requires connection  |
+| `H2`         | Local, stored as a file           |
+| `PostgreSQL` | Server-based, requires connection  |
+
+### `name`
+
+Database name
+
+### `host`
+
+Address of the server where the database is located
+
+### `port`
+
+Connection port for the database on the server
+
+### `user`
+
+Username to be used for connecting to the database
+
+### `password`
+
+Password for connecting to the database
+
+### `parameters`
+
+Database connection parameters
+
+### `prefix`
+
+<Callout type="warn" title="Warning">
+
+    If you change the prefix, the tables will be new and previous player data will not be used.
+
+</Callout>
+
+Prefix for database tables; if empty, the `fp_` prefix will be used.

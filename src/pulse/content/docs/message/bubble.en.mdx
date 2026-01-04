@@ -1,0 +1,131 @@
+---
+title: Bubble
+description: Module responsible for messages above the head
+authors:
+  - TheFaser
+---
+![bubble](/pulse/bubble.gif)
+
+Idea taken from [LightChatBubbles](https://github.com/atesin/LightChatBubbles)
+
+### Duration formula
+
+```java
+long duration = (countWords + handicapChars) / readSpeed * 60;
+```
+
+# <include>../../../parts/words.en.mdx#localization</include>
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.bubble`</span>
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#bubble</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#bubble</include></Tab>
+</Tabs>
+
+### `format`
+
+Format of the message above the head
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `message.yml → bubble`</span>
+
+<include>../../../files/message.yml#bubble</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+### `max_count`
+
+Maximum number of overhead messages simultaneously
+
+### `max_length`
+
+Maximum length of a single overhead message. If the text is longer, it will be split into several
+
+### `elevation`
+
+How high above the head the message will be
+
+### `distance`
+
+How far away a player's overhead message can be seen
+
+### `read_speed`
+
+Reading speed in words per minute
+
+### `handicap_chars`
+
+Extra time for short messages
+
+### `word_break_hint`
+
+A hint symbol placed when a word is broken into two lines
+
+### `interaction`
+
+Allows changing the distance between messages from each other, otherwise the legacy `area effect cloud` is used
+
+<Callout type="warn" title="Warning">
+    This will only be used for servers with version `1.21.3` and higher
+</Callout>
+
+#### SETTING
+
+##### `enable`
+
+Enables functionality
+
+##### `height`
+
+The distance between each message from one another
+
+
+### `modern`
+
+Overhead messages via Text Display
+
+<Callout type="warn" title="Warning">
+    This will only be used for servers with version `1.19.4` and higher
+</Callout>
+
+#### SETTING
+##### `enable`
+
+Enables functionality
+
+##### `has_shadow`
+
+Enables text shadow
+
+##### `see_through`
+
+Enables text transparency against water and clouds (so it cannot be seen through water)
+
+
+##### `scale`
+
+How large the message will be
+
+##### `background`
+
+Background color of the message, it has transparency i.e. an alpha channel. [Website for color selection](https://rgbacolorpicker.com/color-wheel-picker)
+
+##### `billboard`
+
+| Type           | Explanation                                               |
+|----------------|-----------------------------------------------------------|
+| `FIXED`        | Position does not change                                  |
+| `VERTICAL`     | Position changes relative to the vertical axis            |
+| `HORIZONTAL`   | Position changes relative to the horizontal axis          |
+| `CENTER`       | Position changes relative to horizontal and vertical axes |
+
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → message.bubble`</span>
+
+<include>../../../files/permission.yml#bubble</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>

@@ -1,0 +1,96 @@
+---
+title: /banlist
+description: Command to view the list of bans
+authors:
+  - TheFaser
+---
+![command banlist](/pulse/commandbanlist.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.banlist`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#banlist</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#banlist</include></Tab>
+</Tabs>
+
+### `empty`
+
+Message if the list of banned players is empty
+
+### `null_page`
+
+Message if the entered page does not exist
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `global`
+
+
+Messages for global bans
+
+#### `header`
+
+Top part of the list message
+
+#### `line`
+
+Format of each ban in the list
+
+#### `footer`
+
+Bottom part of the list message
+
+### `player`
+
+
+Messages for player bans
+
+#### `header`
+
+Top part of the list message
+
+#### `line`
+
+Format of each ban in the list
+
+#### `footer`
+
+Bottom part of the list message
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → banlist`</span>
+
+<include>../../../files/command.yml#banlist</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/perPage.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.banlist`</span>
+
+<include>../../../files/permission.yml#banlist</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

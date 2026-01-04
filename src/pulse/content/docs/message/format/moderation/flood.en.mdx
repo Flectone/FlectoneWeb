@@ -1,0 +1,40 @@
+---
+title: Flood
+description: This formatting removes flood from messages
+authors:
+  - TheFaser
+---
+![caps](/pulse/caps.png)
+
+
+# <include>../../../../../parts/words.en.mdx#setting</include>
+<include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.moderation.flood`
+
+
+<include>../../../../../files/message.yml#flood</include>
+
+<include>../../../../../parts/enable.en.mdx</include>
+
+### `trim_to_single`
+
+Whether to replace ALL flood with a single character/word or simply reduce it to the `max_repeated_symbols`/`max_repeated_words` limit
+
+### `max_repeated_symbols`
+
+The maximum number of identical characters in a row
+
+### `max_repeated_words`
+
+The maximum number of identical words in a row
+
+
+# <include>../../../../../parts/words.en.mdx#permission</include>
+<include>../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.moderation.flood`
+
+
+<include>../../../../../files/permission.yml#flood</include>
+
+<include>../../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `bypass`
+Permission to bypass this formatting

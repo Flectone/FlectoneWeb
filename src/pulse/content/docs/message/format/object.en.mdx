@@ -1,0 +1,83 @@
+---
+title: Object
+authors:
+  - TheFaser
+---
+<Callout type="warn" title="Warning">
+    The module will only work for players using version `1.21.9` or higher. It will not be displayed for others.
+</Callout>
+
+<Callout type="warn" title="Warning">
+    Heads and icons can be tinted by colors in config files. To prevent this, use a white color tag before them. For example: `<white><player_head></white>`
+</Callout>
+
+Module responsible for heads and symbols in chat
+![object](/pulse/object.png)
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.object`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#object</include></Tab>
+    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#object</include></Tab>
+</Tabs>
+
+### `default_symbol`
+
+The symbol for standard `<player_head>` and `<sprite>` tags if the recipient cannot see the resulting object (for `<player_head_or>` and `<sprite_or>`, this is specified manually).
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → format.object`</span>
+
+<include>../../../../files/message.yml#object</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `player_head`
+
+Enables formatting for the `<player_head>` placeholder. It can be used in several ways:
+- `<player_head>` returns the head of the player who sent the message.
+- `<player_head:Notch>` returns the head of the player whose nickname is specified inside.
+- `<player_head:Notch:false>` returns the head of the specified player with the second layer disabled.
+- If the specified nickname does not exist, the head will have a random default skin.
+- `<player_head_or:...>` returns the player's head or the text specified as the first argument if the recipient cannot see heads in chat. For example, `<player_head_or:hello:Notch>` returns Notch's head, but the word `hello` will appear in the console.
+
+<Callout type="idea" title="Note">
+    The `playerlistname` module already has `<player_head>` built-in by default, and it only works for players using unofficial game versions. For licensed versions, the tab list remains standard.
+</Callout>
+
+### `sprite`
+
+Enables formatting for the `<sprite:...>` placeholder. It can be used in several ways:
+- `<sprite:name>` returns an icon from the `blocks` atlas, e.g., `<sprite:block/oak_log>` (equivalent to `<sprite:blocks:block/oak_log>`).
+- `<sprite:atlas:name>` returns an icon from the specified atlas, e.g., `<sprite:gui:container/slot>`.
+- If the sprite is specified incorrectly, it will appear as an unknown texture. You can create your own sprites using a resource pack.
+- `<sprite_or:...>` returns the icon or the text specified as the first argument if the recipient cannot see icons in chat. For example, `<sprite_or:hello:block/oak_log>` returns the oak log icon, but the word `hello` will appear in the console.
+
+The easiest way to find atlas and icon names is by using the [/sprite command](/pulse/docs/command/sprite/).
+![command sprite](/pulse/commandsprite.png)
+
+You can also find these in the folder created using the `F3 + S` combination in Minecraft. There will be `minecraft_textures_atlas_...` files in `.txt` and `.png` formats, which can help you find the appropriate sprite.
+
+<Callout type="info" title="Example">
+    There is a `gui` atlas named `minecraft_textures_atlas_gui.png.txt`. Inside, you can find a line like `minecraft:container/slot  x=494  y=54   w=18   h=18`.
+
+    Using these coordinates, you can visually locate it in the `.png` atlas. To display it inside Minecraft, remove the `minecraft:` prefix.
+
+    The result is `<sprite:gui:container/slot>`.
+    ![object slot](/pulse/objectslot.png)
+
+</Callout>
+
+### `need_extra_space`
+
+Enables adding an extra space for `<player_head>` and `<sprite>` instances written in config files. Space is not added to player messages.
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.object`</span>
+
+<include>../../../../files/permission.yml#object</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

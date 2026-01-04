@@ -1,0 +1,180 @@
+---
+title: Twitch
+description: Integration with Twitch
+authors:
+  - TheFaser
+---
+Allows:
+
+- sending messages from Minecraft to Twitch
+- sending messages from Twitch to Minecraft
+- subscribing to the start of a Twitch broadcast
+
+![twitch message](/pulse/twitchmessage.png)
+![minecraft message](/pulse/twitchminecraftmessage.png)
+
+<include>../../../parts/messageTag.en.mdx</include>
+
+# <include>../../../parts/words.en.mdx#localization</include>
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → integration.twitch`</span>
+
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#twitch</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#twitch</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Message shown if the player entered via `custom_command` is not found
+
+### `format_reply`
+
+The message format for the `<reply>` tag when a message is a reply to another one
+
+### `custom_command`
+
+A list of custom integration commands, where the key is the command name and the value is its message format
+
+<Callout type="info" title="Example">
+
+    ```yaml
+    custom_command:
+    tps:
+    content: "<tps>"
+    ```
+
+    A command to get the `tps` value on the server. **Don't forget to define it in integration.yml**
+
+</Callout>
+
+### `Placeholders`
+
+You can use all the placeholders that are used in the initial Minecraft message.
+<Callout type="info" title="Example for a ban message">
+    There is a `<reason>` placeholder there, which means I can use `<reason>` inside Twitch messages.
+</Callout>
+
+There are also placeholders that are GUARANTEED to be replaced in any message:
+- `<final_message>` the message sent to Minecraft
+    - `<final_clear_message>` the message sent to Minecraft without unicode emojis
+        - `<player>` the nickname of the player who sent the message
+            - `<message>` the raw message written by the player
+                - `<plain_message>` the formatted message written by the player
+                    - `<reply>` the formatted reply message; it will be empty if the main message is not a reply
+                        - Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
+
+                        <br/>
+                        A message sent from Twitch to Minecraft has its own placeholders:
+
+                        | Placeholder    | What it returns                                            |
+                        |----------------|-----------------------------------------------------------|
+                        | `<name>`       | Twitch user's nickname                                    |
+
+                            ### `message_channel`
+
+                            A list of messages with the final message format
+
+                            <Callout type="info" title="If you want to add another message:">
+                                1. Take the name from the `message types` list
+                                2. Insert it into `message_channel`
+                                ```yaml
+                                message_name: "<final_message>"
+                                ```
+                            </Callout>
+
+
+                            # <include>../../../parts/words.en.mdx#setting</include>
+                            <span><include>../../../parts/words.en.mdx#path</include> `integration.yml → twitch`</span>
+
+
+                            <include>../../../files/integration.yml#twitch</include>
+
+                            <include>../../../parts/enable.en.mdx</include>
+
+                            <Callout type="warn" title="Warning">
+                                - Before enabling, insert your Twitch **token** and **client ID**
+                                - After enabling, it is **RECOMMENDED** to restart the server, otherwise the plugin may cause a hang
+                            </Callout>
+
+                            ### `client_id`
+
+                            User [ID](https://twitchtokengenerator.com/). Environment variables can be used, e.g., `${VALUE}`
+                            ![client id](/pulse/twitchclientid.png)
+
+                            ### `token`
+
+                            User [token](https://twitchtokengenerator.com/) for connection. Environment variables can be used, e.g., `${VALUE}`
+                            ![token](/pulse/twitchtoken.png)
+
+                            ### `custom_command`
+
+                            A list of custom integration commands; the key is the command name and can be anything. Commands can ONLY be informational; they do not and will not execute anything on the server.
+
+                            | Parameter     | Explanation                                                                    |
+                            |---------------|--------------------------------------------------------------------------------|
+                            | `need_player` | Whether to check the first argument of the command for a player name, e.g., `!ping TheFaser` |
+                            | `aliases`     | A list of aliases for using the command                                        |
+
+
+                            <Callout type="info" title="Example">
+
+                                ```yaml
+                                custom_command:
+                                tps:
+                                need_player: false
+                                aliases:
+                                - "!tps"
+                                - "!tickpersecond"
+                                ```
+
+                                A command to get the `tps` value on the server using `!tps` or `!tickpersecond`. **Don't forget to create the message in the localization file**
+
+                            </Callout>
+
+                            ### `message_channel`
+
+                            A list of message types and Twitch channel names
+
+                            <Callout type="info" title="For example, I want Minecraft `/ban` command messages to be sent to Twitch">
+                                1. Copy the Twitch channel names where the message should be sent (`faseri4ka`)
+                                2. Configure it:
+                                ```yaml
+                                message_channel:
+                                COMMAND_BAN:
+                                - "faseri4ka"
+                                ```
+
+                                There can be any number of channels, as long as the connected account has access to them. Localization configuration is optional; by default, the message will be sent with the `<final_message>` format.
+                            </Callout>
+
+                            ### `follow_channel`
+
+                            A list where the key is the channel name and the value is a list of commands to be executed when the broadcast starts
+
+                            <Callout type="info" title="For example, I want to track the start of a stream for `faseri4ka` and write `stream start https://twitch.tv/faseri4ka`">
+                                1. Copy the channel name `faseri4ka`
+                                2. Configure it:
+                                ```yaml
+                                follow_channel:
+                                faseri4ka:
+                                - "stream start [https://twitch.tv/faseri4ka](https://twitch.tv/faseri4ka)"
+                                ```
+
+                                - Up to 10 channels can be tracked simultaneously, as long as the connected account has access to them
+                                - There can be any number of commands triggered at the start of the broadcast
+                            </Callout>
+
+                            <include>../../../parts/destination.en.mdx</include>
+
+
+                            # <include>../../../parts/words.en.mdx#permission</include>
+                            <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → integration.twitch`</span>
+
+
+                            <include>../../../files/permission.yml#twitch</include>
+
+                            <include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+                            <include>../../../parts/permission/sound.en.mdx</include>

@@ -1,0 +1,52 @@
+---
+title: Delete
+description: This formatting replaces <delete> and allows for deleting messages in chat
+authors:
+  - TheFaser
+---
+![delete](/pulse/delete.gif)
+
+<Callout type="warn" title="Warning">
+    With a large number of players, this may cause slightly higher memory consumption due to message storage. Based on rough calculations, 100 players = 5-10 MB.
+</Callout>
+
+<Callout type="warn" title="Warning">
+    This module is incompatible with the InteractiveChat plugin.
+</Callout>
+
+# <include>../../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.moderation.delete`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../../files/localizations/ru_ru.yml#delete</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/localizations/en_us.yml#delete</include></Tab>
+</Tabs>
+
+### `placeholder`
+
+The placeholder that replaces each `<delete>` if the player has permission to delete the message; otherwise, it will be empty.
+
+### `format`
+
+The format of the message that will be sent upon deletion.
+
+
+# <include>../../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.moderation.delete`</span>
+
+<include>../../../../../files/message.yml#delete</include>
+
+<include>../../../../../parts/enable.en.mdx</include>
+
+### `history_length`
+
+The maximum number of messages to be stored in the history for each player.
+
+
+# <include>../../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.moderation.delete`</span>
+
+<include>../../../../../files/permission.yml#delete</include>
+
+<include>../../../../../parts/permission/permissionTier3.en.mdx</include>

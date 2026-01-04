@@ -1,0 +1,36 @@
+---
+title: Translate
+description: The translate tag is used to translate a message into another language
+authors:
+  - TheFaser
+---
+![translate](/pulse/translate.png)
+
+# <include>../../../parts/words.en.mdx#localization</include>
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.translate`</span>
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#translate</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#translate</include></Tab>
+</Tabs>
+
+### `action`
+
+Message for translation, which includes a command execution upon clicking
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `message.yml → format.translate`</span>
+
+<include>../../../files/message.yml#translate</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → message.format.translate`</span>
+
+<include>../../../files/permission.yml#translate</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>

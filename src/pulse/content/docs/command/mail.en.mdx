@@ -1,0 +1,70 @@
+---
+title: /mail
+description: Command to write a mail to an offline player
+authors:
+  - TheFaser
+---
+![command mail](/pulse/commandmail.png)
+
+When the player who was sent a mail joins the server, they will see this
+![command mail player](/pulse/commandmailplayer.png)
+
+If the player is already on the server and the [Tell](/pulse/docs/command/tell/) module is enabled, it will be used instead
+![command tell](/pulse/commandtell.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.mail`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#mail</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#mail</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `sender`
+
+Message for the sender
+
+### `receiver`
+
+Message for the receiver
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → mail`</span>
+
+
+<include>../../../files/command.yml#mail</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.mail`</span>
+
+
+<include>../../../files/permission.yml#mail</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

@@ -1,0 +1,77 @@
+---
+title: Commands
+description: Category responsible for configuring all commands
+authors:
+  - TheFaser
+---
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#command</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#command</include></Tab>
+</Tabs>
+
+### `exception`
+Messages for incorrect command usage
+
+|Parameter     |Description                                                    |
+|-------------|------------------------------------------------------------|
+|`execution`    |Message if an error occurred during command execution|
+|`parse_unknown`|Message if an unknown argument was entered                 |
+|`parse_boolean`|Message if a `boolean` argument was expected                 |
+|`parse_number` |Message if a `number` argument was expected                  |
+|`parse_string` |Message if a `string` argument was expected                  |
+|`permission`   |Message if the player does not have permission for this command         |
+|`syntax`       |Message if an incomplete command was entered                   |
+
+![command syntax](/pulse/commandsyntax.png)
+
+
+
+### `prompt`
+Prompt formatting
+
+|Parameter        |Description                                                             |
+|----------------|---------------------------------------------------------------------|
+|`message`       |Prompt for commands where a message is entered                  |
+|`hard`          |Prompt for commands asking about difficulty          |
+|`accept`        |Prompt for commands where something is accepted or declined  |
+|`turn`          |Prompt for commands where something is turned on or off   |
+|`type`          |Prompt for commands where a type is entered                        |
+|`reason`        |Prompt for commands where a reason is entered                    |
+|`category`      |Prompt for commands where a category is selected                |
+|`id`            |Prompt for commands where an ID is entered                       |
+|`time`          |Prompt for commands where time is entered                      |
+|`repeat_time`   |Prompt for commands where repeat time is entered       |
+|`multiple_vote` |Prompt for commands asking about multiple voting |
+|`player`        |Prompt for commands where a player is entered                      |
+|`number`        |Prompt for commands where a number is entered                      |
+|`color`         |Prompt for commands where a color is entered                       |
+|`language`      |Prompt for commands where a language is entered                       |
+|`url`           |Prompt for commands where a link is entered                     |
+|`move`          |Prompt for commands where a move is selected                      |
+|`value`         |Prompt for commands where a value is selected                   |
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml`</span>
+
+<include>../../../files/command.yml#command</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+### `suggest_invisible_players`
+
+If enabled, all players will be shown all other players. But if disabled, a player needs a specific permission to see other players under an invisibility potion in commands
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command`</span>
+
+<include>../../../files/permission.yml#command</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `see_invisible_players_in_suggest`
+
+Permission to see players under an invisibility potion in command prompts

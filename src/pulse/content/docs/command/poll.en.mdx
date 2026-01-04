@@ -1,0 +1,176 @@
+---
+title: /poll
+description: Command for conducting polls
+authors:
+  - TheFaser
+---
+![command pollgui](/pulse/commandpollgui.gif)
+
+This can also be done via a chat command
+![command poll](/pulse/commandpoll.png)
+
+
+<Callout type="info" title="Information">
+
+    The interval is specified to resend a chat message about an existing poll
+
+</Callout>
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.poll`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#poll</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#poll</include></Tab>
+</Tabs>
+
+### `null_poll`
+
+Message if the poll is not found
+
+### `expired`
+
+Message if a player tries to vote in a poll that has ended
+
+### `already`
+
+Message if a player tries to vote in a poll more than once
+
+### `vote_true`
+
+Message if a player voted for an option
+
+### `vote_false`
+
+Message if a player removed their vote
+
+### `format`
+
+Format of the message that will be sent
+
+### `answer_template`
+
+Template for each answer
+
+### `status`
+
+
+Headers for each poll status
+
+#### `start`
+
+Header when the poll starts
+
+#### `run`
+
+Header for repeated poll messages
+
+#### `end`
+
+Header when the poll ends
+
+### `modern`
+
+
+Dialog system for creating a poll
+
+#### `header`
+
+Dialog name
+
+#### `input_name`
+
+Name for the "title" field
+
+#### `input_initial`
+
+Default text for the "title" field
+
+#### `multiple_name`
+
+Name for the "allow multiple answers" toggle field
+
+#### `end_time_name`
+
+Name for the duration field
+
+#### `repeat_time_name`
+
+Name for the interval field
+
+#### `new_answer_button_name`
+
+Name for the button that creates a new answer
+
+#### `remove_answer_button_name`
+
+Name for the button that removes the last answer
+
+#### `input_answer_name`
+
+Name for the new answer field
+
+#### `input_answers_initial`
+
+Default text for the answer field
+
+#### `create_button_name`
+
+Name for the button that creates the poll
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → poll`</span>
+
+
+<include>../../../files/command.yml#poll</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+
+### `enable_gui`
+
+<Callout type="warn" title="Warning">
+
+    Works only for versions `1.21.6` and newer; in older versions, the command will not be registered
+
+</Callout>
+
+Adds a new command `/pollgui` (depends on the name of the command itself, i.e., `/name` + `gui`)
+
+<include>../../../parts/range.en.mdx</include>
+
+
+### `last_id`
+
+The ID of the last created poll
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.poll`</span>
+
+
+<include>../../../files/permission.yml#poll</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+
+### `create`
+
+Permission to create polls
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

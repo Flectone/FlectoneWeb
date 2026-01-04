@@ -1,0 +1,83 @@
+---
+title: /stream
+description: Command to announce the start of a broadcast
+authors:
+  - TheFaser
+---
+![command stream](/pulse/commandstream.png)
+
+If a player has permission for the command, they are given a prefix when turning it on/off
+![command stream prefix](/pulse/commandstreamprefix.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.stream`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#stream</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#stream</include></Tab>
+</Tabs>
+
+### `already`
+
+Message if a player who is already broadcasting tries to start another broadcast
+
+### `not`
+
+Message if a player who is not broadcasting tries to end a broadcast
+
+### `prefix_true`
+
+Prefix of the player who is currently broadcasting
+
+### `prefix_false`
+
+Prefix of a player who has permission to broadcast but is not currently doing so
+
+### `url_tag`
+
+Format of each link in the announcement
+
+### `format_start`
+
+Announcement about the start of a broadcast
+
+### `format_end`
+
+Message when a player ends a broadcast
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → stream`</span>
+
+
+<include>../../../files/command.yml#stream</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.stream`</span>
+
+
+<include>../../../files/permission.yml#stream</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

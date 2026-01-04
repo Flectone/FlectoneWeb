@@ -1,0 +1,73 @@
+---
+title: /unwarn
+description: Command to remove a warning from a player
+authors:
+  - TheFaser
+---
+![command unwarn](/pulse/commandunwarn.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.unwarn`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#unwarn</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#unwarn</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `not_warned`
+
+Message if the entered player has no warnings
+
+### `lower_weight_group`
+
+Message if the command is executed by a player with a group lower than the player being moderated
+
+### `format`
+
+Message upon removing a warning
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → unwarn`</span>
+
+
+<include>../../../files/command.yml#unwarn</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+
+### `check_group_weight`
+
+Whether player groups will be checked. If the player being moderated has a higher role than the command sender, the command will not execute and a `lower_weight_group` error will occur
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.unwarn`</span>
+
+
+<include>../../../files/permission.yml#unwarn</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

@@ -1,0 +1,199 @@
+---
+title: Chat
+description: Module responsible for messages sent by the player to the chat
+authors:
+  - TheFaser
+  - Bakinu
+---
+
+![chat](/pulse/chat.png)
+
+<Callout type="info" title="How to disable local chat?">
+    Inside `message.yml` disable `local` using `enable: false`, and also set an empty `trigger: ""` for `global`
+
+    ```yaml
+    chat:
+    enable: true
+    mode: "BUKKIT"
+    priority: "NORMAL"
+    types:
+    local:
+    enable: false # set to false
+    global:
+    enable: true
+    cancel: false
+    range: "PROXY"
+    priority: 5
+    trigger: "" # make it empty
+    null_receiver:
+    enable: true
+    destination:
+    type: "ACTION_BAR"
+    times:
+    stay: 20
+    destination:
+    type: "CHAT"
+    cooldown:
+    enable: false
+    sound:
+    enable: false
+    ```
+</Callout>
+
+# <include>../../../parts/words.en.mdx#localization</include>
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.chat`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#chat</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#chat</include></Tab>
+</Tabs>
+
+### `null_chat`
+
+Message if nothing could be sent to the chat
+
+### `null_receiver`
+
+Message if no one saw the player's message
+
+### `types`
+
+List of chats and their format
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `message.yml → chat`</span>
+
+<include>../../../files/message.yml#chat</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+### `mode`
+
+Chat processing mode
+
+| Type      | Explanation                                                                              |
+|-----------|------------------------------------------------------------------------------------------|
+| `PACKET`  | Chat messages are processed via packets (fully asynchronous)                             |
+| `BUKKIT`  | Chat messages are processed via `Bukkit` (asynchronous, but only in one chat thread)     |
+| `PAPER`   | Chat messages are processed via `Paper` (asynchronous, but only in one chat thread)      |
+
+<Callout type="warn" title="Warning">
+    If you need another plugin to see chat messages, set `mode: "BUKKIT"`. In rare cases, if the plugin works through `Paper` listeners, you should set `mode: "PAPER"`
+</Callout>
+
+### `event_priority`
+
+Priority of the chat message event. Change this value if there is a conflict with other plugins using the chat.
+
+| Type      | Explanation                                                                     |
+|-----------|---------------------------------------------------------------------------------|
+| `LOWEST`  | The chat message will be processed before all other plugins                     |
+| `LOW`     | The chat message will be processed after plugins with `LOWEST` priority         |
+| `NORMAL`  | The chat message will be processed after plugins with `LOW` priority            |
+| `HIGH`    | The chat message will be processed after plugins with `NORMAL` priority         |
+| `HIGHEST` | The chat message will be processed after plugins with `HIGH` priority           |
+| `MONITOR` | The chat message will only be observed                                          |
+
+### `types`
+
+List of all chats with their settings. Any default chat looks like this, and you can add your own:
+
+```yaml
+chat_name:
+  enable: true
+  cancel: true
+  range: PROXY
+  priority: number
+  trigger: "trigger"
+  null-receiver:
+    enable: true
+    destination:
+      type: "ACTION_BAR"
+      times:
+        stay: 20
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+```
+
+### `enable`
+
+Enables chat functionality
+
+### `null_recipient`
+
+![null recipient](/pulse/nullrecipient.png)
+
+Enables a notification that no one saw the sent message
+
+#### SETTING
+
+##### `enable`
+
+Enables functionality
+
+##### `destination`
+
+Where the message will be sent
+
+
+
+### `cancel`
+
+- If `true`, the chat message event is cancelled for other plugins
+- If another chat-related plugin (e.g., DiscordSRV) needs to work, set this to `false`
+- If `false`, it also causes duplication in the console
+![chat console](/pulse/chatconsole.png)
+
+<include>../../../parts/range.en.mdx</include>
+
+### `priority`
+
+Chat priority used to choose when multiple chats have the same `trigger`. The one with the higher priority is selected.
+
+<Callout type="info" title="Example CHATS">
+    ```yaml
+    admin:
+    priority: 20
+    trigger: "!" // [!code highlight]
+    helper:
+    priority: 10
+    trigger: "!" // [!code highlight]
+    ```
+
+    If a player has permission for both chats, the `admin` chat will be selected because it has a higher `priority`
+</Callout>
+
+### `trigger`
+
+The message prefix that should trigger the chat type
+
+<Callout type="info" title="THE `trigger` VALUE CAN BE ANYTHING:">
+    - `!`, `admin`, `.f`, etc.
+    - Empty, i.e., `trigger: ""`, in which case any message fits this chat
+</Callout>
+
+In the final message, the `trigger` is removed; for example, if a player sends `!hello`, the result will be `hello` without the `!`
+
+<include>../../../parts/destination.en.mdx</include>
+<include>../../../parts/cooldown.en.mdx</include>
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → message.chat`</span>
+
+<include>../../../files/permission.yml#chat</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `types`
+
+List of chats and their permissions
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+<include>../../../parts/permission/sound.en.mdx</include>

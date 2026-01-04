@@ -1,0 +1,44 @@
+---
+title: Version
+description: Module responsible for the server version
+authors:
+  - TheFaser
+---
+![version](/pulse/version.png)
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.status.version`</span>
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#version</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#version</include></Tab>
+</Tabs>
+
+### `name`
+
+Server version name
+
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → status.version`</span>
+
+<include>../../../../files/message.yml#version</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `protocol`
+
+Server [Protocol](https://minecraft.wiki/w/Protocol_version)
+
+<Callout type="info" title="Information">
+    The number can be anything, but `-1` indicates the current protocol
+</Callout>
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.status.version`</span>
+
+<include>../../../../files/permission.yml#version</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

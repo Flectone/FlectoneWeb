@@ -1,0 +1,66 @@
+---
+title: /deletemessage
+description: Command for deleting a message in chat, used automatically when hovering over the delete icon
+authors:
+  - TheFaser
+---
+![command deletemessage](/pulse/commanddeletemessage.png)
+
+<Callout type="warn" title="Warning">
+
+    The command will be useless if the main module [`Delete`](/pulse/docs/message/format/moderation/delete/) is disabled
+
+</Callout>
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.deletemessage`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#deletemessage</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#deletemessage</include></Tab>
+</Tabs>
+
+### `null_message`
+
+Message if the message to be deleted does not exist
+
+### `format`
+
+The format of the message that will be sent
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → deletemessage`</span>
+
+
+<include>../../../files/command.yml#deletemessage</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.deletemessage`</span>
+
+
+<include>../../../files/permission.yml#deletemessage</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

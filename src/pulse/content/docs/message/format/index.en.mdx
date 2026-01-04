@@ -1,0 +1,66 @@
+---
+title: Format
+description: Module that formats sent messages
+authors:
+  - TheFaser
+---
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → format`</span>
+
+<include>../../../../files/message.yml#format</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `convert_legacy_color`
+
+Enables formatting of legacy color codes
+
+<include>../../../../parts/legacyColors.en.mdx</include>
+
+### `adventure_tags`
+
+These are [Kyori tags](https://docs.advntr.dev/minimessage/format.html#standard-tags) that can be used in messages
+
+| Tag                       | Usage                                                                        | Description                                                                                     |
+|---------------------------|------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| `<hover>`                 | [Hover](https://docs.advntr.dev/minimessage/format.html#hover)               | Text shown on hover                                                                             |
+| `<click>`                 | [Click](https://docs.advntr.dev/minimessage/format.html#click)               | Action on click                                                                                 |
+| `<color>`                 | [Color](https://docs.advntr.dev/minimessage/format.html#color)               | Color                                                                                           |
+| `<keybind>`               | [Keybind](https://docs.advntr.dev/minimessage/format.html#keybind)           | Key binding settings for the message                                                            |
+| `<translatable>`          | [Translatable](https://docs.advntr.dev/minimessage/format.html#translatable) | Message using the player's locale                                                               |
+| `<translatable_fallback>` | [Translatable](https://docs.advntr.dev/minimessage/format.html#translatable) | Message using the player's locale                                                               |
+| `<insertion>`             | [Insertion](https://docs.advntr.dev/minimessage/format.html#insertion)       | Inserting text into chat using SHIFT+Click                                                      |
+| `<font>`                  | [Font](https://docs.advntr.dev/minimessage/format.html#font)                 | Changing the text font                                                                          |
+| `<decoration>`            | [Decoration](https://docs.advntr.dev/minimessage/format.html#decoration)     | Standard Minecraft decorations: `bold`, `italic`, `underlined`, `strikethrough`, `obfuscated`  |
+| `<gradient>`              | [Gradient](https://docs.advntr.dev/minimessage/format.html#gradient)         | Gradient text color                                                                             |
+| `<rainbow>`               | [Rainbow](https://docs.advntr.dev/minimessage/format.html#rainbow)           | Rainbow text color                                                                              |
+| `<reset>`                 | [Reset](https://docs.advntr.dev/minimessage/format.html#reset)               | Resets all tags and decorations                                                                 |
+| `<newline>`               | [Newline](https://docs.advntr.dev/minimessage/format.html#newline)           | Move to a new line, replaces `\n`                                                               |
+| `<transition>`            | [Transition](https://docs.advntr.dev/minimessage/format.html#transition)     | Transition between two colors                                                                   |
+| `<selector>`              | [Selector](https://docs.advntr.dev/minimessage/format.html#selector)         | Mob selector                                                                                    |
+| `<score>`                 | [Score](https://docs.advntr.dev/minimessage/format.html#score)               | Scoreboard value                                                                                |
+| `<nbt>`                   | [NBT](https://docs.advntr.dev/minimessage/format.html#nbt)                   | Inserting NBT components                                                                        |
+| ...                       | ...                                                                          | ...                                                                                             |
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.format`</span>
+
+<include>../../../../files/permission.yml#format</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `legacy_colors`
+
+This allows the player to use legacy color codes in their messages
+
+<include>../../../../parts/legacyColors.en.mdx</include>
+
+<Callout type="idea" title="NOTE">
+    If you need player chat colors to be formatted, use `flectonepulse.module.message.format.color`
+</Callout>
+
+### `adventure_tags`
+
+List of tags and their permissions for usage

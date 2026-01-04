@@ -1,0 +1,50 @@
+---
+title: Cache
+description: Configuring cache size and time-to-live
+authors:
+  - TheFaser
+---
+<Callout type="warn" title="Warning">
+
+    DO NOT delete any of the caches, even if you think it will not be used; the cache must be created as an object.
+
+</Callout>
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `config.yml → cache`</span>
+
+
+<include>../../../files/config.yml#cache</include>
+
+### `types`
+
+A list of all caches used in `FlectonePulse`
+
+| Type                   | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+|------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `COOLDOWN`             | For storing delays issued to players when using a module. For example, chat message delays or delays in the `/me` command. This is a place for storage, not for enabling the delay; each delay is enabled within the module separately.                                                                                                                                                                                                                                                   |
+| `DIALOG_CLICK`         | For tracking the number of clicks in custom dialogs, such as `/chatsetting`. This allows closing the dialog for people who click in them too frequently, i.e., spamming.                                                                                                                                                                                                                                                                                                                  |
+| `OFFLINE_PLAYERS`      | For storing offline players who have left the server but might return. It also stores nicknames that could potentially be players, e.g., `/tell Notch`. Obviously, `Notch` is not on the server, but to find such a player, `FlectonePulse` uses a series of operations and ultimately queries the database. If found, they will be saved with this data; otherwise, they will be an unknown player. For subsequent `/tell Notch` calls, the data will be taken directly from the cache. |
+| `MODERATION`           | For storing moderation results about players. Most commonly used to avoid querying the database every time a player joins the server.                                                                                                                                                                                                                                                                                                                                                      |
+| `LEGACY_COLOR_MESSAGE` | For storing results of string formatting for strings containing legacy formatting. For example, why replace `&c` with `<red>` every time if it can be taken from the cache? This is necessary because a unique message is formatted for each player, and these messages are often identical.                                                                                                                                                                                          |
+| `MENTION_MESSAGE`      | For storing message formatting results for the `mention` module. This is necessary because a unique message is formatted for each player, and these messages are often identical.                                                                                                                                                                                                                                                                                                         |
+| `SWEAR_MESSAGE`        | For storing message formatting results for the `swear` module. This is necessary because a unique message is formatted for each player, and these messages are often identical.                                                                                                                                                                                                                                                                                                           |
+| `REPLACEMENT_MESSAGE`  | For storing message formatting results for the `replacement` module. This is necessary because a unique message is formatted for each player, and these messages are often identical.                                                                                                                                                                                                                                                                                                     |
+| `REPLACEMENT_IMAGE`    | For storing formatted images for the `replacement` module.                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `TRANSLATE_MESSAGE`    | For storing messages that need to be translated.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| `PROFILE_PROPERTY`     | For storing player profiles along with their skins, to avoid contacting `SkinsRestorer` or creating them manually every time.                                                                                                                                                                                                                                                                                                                                                             |
+
+<Callout type="info" title="Parameters">
+    #### `duration`
+
+    The lifespan of an unused object in the cache, after which it will be deleted.
+
+    #### `time_unit`
+
+    The type of time unit for the unused cache object's lifespan.
+
+    #### `size`
+
+    The maximum size of the cache.
+
+</Callout>

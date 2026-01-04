@@ -1,0 +1,49 @@
+---
+title: Join
+description: Server message when a player connects
+authors:
+  - TheFaser
+---
+![join](/pulse/join.png)
+
+# <include>../../../parts/words.en.mdx#localization</include>
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.join`</span>
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#join</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#join</include></Tab>
+</Tabs>
+
+### `format`
+
+Message when connecting to the server
+
+### `format_first_time`
+
+Message upon the first connection to the server
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `message.yml → join`</span>
+
+<include>../../../files/message.yml#join</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+### `first`
+
+Enables a message for the very first connection of a player to the server
+
+<include>../../../parts/range.en.mdx</include>
+<include>../../../parts/destination.en.mdx</include>
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → message.join`</span>
+
+<include>../../../files/permission.yml#join</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+<include>../../../parts/permission/sound.en.mdx</include>

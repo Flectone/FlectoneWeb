@@ -75,9 +75,9 @@
             "slogan": "Every message is under <b>your</b> control!"
         },
         "Buttons": {
-            "support": "Technical Support",
+            "support": "Support",
             "documentation": "Documentation",
-            "metrics": "Analytics",
+            "metrics": "Metrics",
             "download": "Download"
         },
         "Features": {

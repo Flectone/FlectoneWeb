@@ -1,0 +1,69 @@
+---
+title: /spy
+description: Command for tracking player actions
+authors:
+  - TheFaser
+---
+![command spy](/pulse/commandspy.gif)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.spy`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#spy</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#spy</include></Tab>
+</Tabs>
+
+### `format_true`
+
+Message when spying is enabled
+
+### `format_false`
+
+Message when spying is disabled
+
+### `format_log`
+
+Format of the message that will be sent when an action is tracked
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → spy`</span>
+
+
+<include>../../../files/command.yml#spy</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+
+### `categories`
+
+List of action categories that are being tracked
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.spy`</span>
+
+
+<include>../../../files/permission.yml#spy</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

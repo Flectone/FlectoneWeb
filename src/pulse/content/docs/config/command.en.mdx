@@ -1,0 +1,28 @@
+---
+title: Command
+authors:
+  - TheFaser
+---
+<Callout type="warn" title="Warning">
+    This is not related to the command module; to configure them, you need to go to [command](/pulse/docs/command)
+</Callout>
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `config.yml → command`</span>
+
+
+<include>../../../files/config.yml#command</include>
+
+### `unregister_on_reload`
+
+<Callout type="warn" title="Warning">
+    It is not recommended to enable this on older Minecraft versions; otherwise, there may be errors/warnings in the server console, though they do not affect the plugin's operation.
+</Callout>
+
+- If enabled, `FlectonePulse` will remove and re-add its own commands during `/flectonepulse reload`. This can cause drops in `tps` and `mspt` due to a large number of packets, so it is better to disable this setting if you encounter such an issue.
+- If disabled, you will need to restart the server to correctly disable a command from `FlectonePulse` (in `commands.yml`).
+
+### `disabled_fabric`
+
+A list of commands **not** from `FlectonePulse` that should be disabled when the `Fabric` server starts. This provides the opportunity to replace already occupied commands on `Fabric`, such as `/me` or `/ban`.

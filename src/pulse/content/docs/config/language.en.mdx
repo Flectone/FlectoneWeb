@@ -1,0 +1,46 @@
+---
+title: Language
+description: Configuration of language and behavior
+authors:
+  - TheFaser
+---
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `config.yml → language`</span>
+
+
+<include>../../../files/config.yml#language</include>
+
+### `type`
+
+Localization used for all plugin messages
+
+<Callout type="warn" title="Warning">
+    The selected localization must be from the `localizations` folder
+</Callout>
+
+You can create and use your own localizations by following these steps:
+1. Copy one localization file, for example `ru_ru.yml`
+2. Rename it, preferably according to the [game's standards](https://minecraft.wiki/w/Language)
+3. Now you can modify any messages within this file
+
+<Callout type="info" title="Example">
+    I want to translate the plugin into Belarusian
+    1. Copy the file `ru_ru.yml`
+    2. Rename it to `be_by.yml`
+    ![locale](/pulse/locale.png)
+    3. Done!
+</Callout>
+
+### `by_player`
+
+If enabled, the Minecraft localization of each player will be checked, and a [message](/pulse/docs/message) will be displayed accordingly
+
+<Callout type="info" title="Information">
+
+    If you change messages with `by_player` enabled, remember to do so in ALL localization files
+
+</Callout>
+
+![locale](/pulse/locale.gif)
+
+If such a localization does not exist, the localization from `type` will be used

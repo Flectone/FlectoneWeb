@@ -1,0 +1,80 @@
+---
+title: /ignore
+description: Command to ignore all messages from a player
+authors:
+  - TheFaser
+---
+![command ignore](/pulse/commandignore.png)
+
+Ignoring is removed by using the command again
+![command unignore](/pulse/commandunignore.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.ignore`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#ignore</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#ignore</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `myself`
+
+Message if a player tries to ignore themselves
+
+### `he`
+
+Message if the recipient is ignoring the sender
+
+### `you`
+
+Message if the sender is ignoring the recipient
+
+### `format_true`
+
+Message upon successful ignoring
+
+### `format_false`
+
+Message upon removing ignoring
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → ignore`</span>
+
+
+<include>../../../files/command.yml#ignore</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/suggestOfflinePlayers.en.mdx</include>
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.ignore`</span>
+
+
+<include>../../../files/permission.yml#ignore</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

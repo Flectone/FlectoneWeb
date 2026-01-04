@@ -1,0 +1,83 @@
+---
+title: PlaceholderAPI
+description: Integration with the PlaceholderAPI plugin
+authors:
+  - TheFaser
+---
+- Allows using any [placeholders](https://github.com/PlaceholderAPI/PlaceholderAPI/wiki/Placeholders)
+
+<Callout type="info" title="Example">
+    `%server_tps%`, `%server_online%` etc., if the corresponding module is installed using `/papi ecloud download module`
+</Callout>
+
+- Adds its own placeholders
+
+| Placeholder                                 | What it returns                                                      |
+|---------------------------------------------|----------------------------------------------------------------------|
+| `%flectonepulse_advancement%`               | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_afk%`                       | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_afk_suffix%`                | Returns [AFK suffix](/pulse/docs/command/afk/)                         |
+| `%flectonepulse_auto%`                      | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_chat_name%`                 | Returns the selected chat type, `default` by default                 |
+| `%flectonepulse_death%`                     | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_discord%`                   | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_fcolor_number%`             | Returns the player's [custom color](/pulse/docs/message/format/fcolor/)     |
+| `%flectonepulse_fcolor_out_number%`         | Returns the player's [custom OUT color](/pulse/docs/message/format/fcolor/) |
+| `%flectonepulse_fcolor_see_number%`         | Returns the player's [custom SEE color](/pulse/docs/message/format/fcolor/) |
+| `%flectonepulse_greeting%`                  | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_ip%`                        | Returns the player's IP address                                      |
+| `%flectonepulse_join%`                      | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_locale%`                    | Returns the player's current locale                                  |
+| `%flectonepulse_online%`                    | Returns the number of players on the server                          |
+| `%flectonepulse_ping%`                      | Returns the player's ping                                            |
+| `%flectonepulse_player%`                    | Returns the player's regular name                                    |
+| `%flectonepulse_quit%`                      | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_stream_prefix%`             | Returns the player's [stream prefix](/pulse/docs/message/command/stream/)     |
+| `%flectonepulse_spy_status`                 | Returns a string if spy mode is enabled, otherwise empty             |
+| `%flectonepulse_telegram%`                  | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_tps%`                       | Returns the server TPS                                               |
+| `%flectonepulse_twitch%`                    | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_world_prefix%`              | Returns the player's [world prefix](/pulse/docs/message/format/world/)        |
+| `%flectonepulse_mute_suffix%`               | Returns the player's [mute suffix](/pulse/docs/command/mute/)                |
+| `%flectonepulse_command_ball%`              | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_ban%`               | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_broadcast%`         | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_coin%`              | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_dice%`              | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_do%`                | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_kick%`              | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_mail%`              | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_me%`                | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_mute%`              | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_poll%`              | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_reply%`             | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_rockpaperscissors%` | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_spy%`               | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_stream%`            | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_tell%`              | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_tictactoe%`         | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_translateto%`       | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_try%`               | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_command_warn%`              | Returns `true` if display is enabled, otherwise empty                |
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `integration.yml → placeholderapi`</span>
+
+
+<include>../../../files/integration.yml#placeholderapi</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → integration.placeholderapi`</span>
+
+
+<include>../../../files/permission.yml#placeholderapi</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `use`
+
+Permission to use placeholders from PlaceholderAPI in a message

@@ -1,0 +1,28 @@
+{
+    "title": "Messages",
+    "description": "Configuring FlectonePulse messages (what causes them and how)",
+    "pages": [
+        "afk",
+        "anvil",
+        "auto",
+        "book",
+        "bossbar",
+        "brand",
+        "bubble",
+        "chat",
+        "format",
+        "greeting",
+        "join",
+        "objective",
+        "quit",
+        "rightclick",
+        "sidebar",
+        "sing",
+        "status",
+        "tab",
+        "update",
+        "vanilla"
+    ],
+    "icon": "MessageSquare",
+    "defaultOpen": false
+}

@@ -1,0 +1,50 @@
+---
+title: Logger
+description: Configuration for everything related to the console and logs
+authors:
+  - TheFaser
+---
+<Callout type="warn" title="Warning">
+    `ANSI` colors are used here for messages; standard colors will not work.
+</Callout>
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `config.yml → logger`</span>
+
+
+<include>../../../files/config.yml#logger</include>
+
+### `console`
+
+Used to display the name when a message is created by the console.
+![console](/pulse/console.gif)
+
+### `prefix`
+
+The prefix for all messages that `FlectonePulse` writes to the console.
+
+### `description`
+
+The message displayed upon a successful start; `<version>` will be replaced with the current version of `FlectonePulse`.
+
+### `warn`
+
+The color for warning messages.
+
+### `info`
+
+The color for informational messages.
+
+### `filter`
+
+The idea is taken [from here](https://github.com/Whitescan/ConsoleFilter/blob/master/src/main/java/dev/whitescan/consolefilter/share/LogFilter.java), thanks to @Whitescan.
+
+A list of messages to hide, using keywords found within the message.
+
+<Callout type="info" title="For example, if I want to filter:">
+    ![filter](/pulse/filter.png)
+
+    Then you should enter:
+    `Unknown or incomplete command` or `command` or `Unknown`
+</Callout>

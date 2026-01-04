@@ -1,0 +1,15 @@
+{
+  "title": "FlectonePulse Documentation",
+  "description": "Detailed documentation on FlectonePulse",
+  "pages": [
+    "---Documentation---",
+    "[CircleQuestionMark][FAQs](/pulse/docs)",
+    "config",
+    "command",
+    "integration",
+    "message",
+    "---Additionally---",
+    "[Cable][API](/pulse/docs/api)",
+    "[ChartCandlestick][Metrics](/pulse/metrics)"
+  ]
+}

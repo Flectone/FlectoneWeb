@@ -1,0 +1,15 @@
+<Callout type="info" title="How does `<fcolor:...>` work?">
+    `<fcolor:...>` is a placeholder that is replaced by values from [`default_colors`](/pulse/docs/message/format/fcolor/en.mdx#default-colors) or, if the player has their own, by the player's custom colors.
+
+    The value of `<fcolor:...>` can be anything, but the command only allows writing colors of any format and `<gradient:...:...>`. There can be any number of these values; the maximum count is determined by the highest digit in [`default_colors`](/pulse/docs/message/format/fcolor/en.mdx#default-colors).
+
+        Each digit represents a specific color. By default: `<fcolor:1>` is used for the primary color, `<fcolor:2>` is used for the primary color with emphasis (e.g., a name), `<fcolor:3>` for local chat messages, and `<fcolor:4>` for global chat messages.
+
+            `<fcolor:...>` has several states. By default, it is `see` — colors that the player will see for ALL messages ONLY for themselves, unless replaced by `out` — colors that ALL players will see for messages from THIS specific player (i.e., that player's personal colors).
+
+                Confused? There is an explanation in the image below, or here is an example: A player enters the command `/chatcolor see red red red red`. This means the player sees all messages as red on their end, but other players see messages according to their own settings. Now, suppose the player enters `/chatcolor out green green green green`. This means all of this player's messages will appear green to them and to all other players as well. It's important to understand that `out` overrides colors from `see` if they exist, meaning the player will also see other messages as green.
+
+                In simple terms: `see` is for personalizing YOUR OWN view, while `out` is for colors that OTHER players will also see.
+
+                ![fcolor](/pulse/fcolor.png)
+</Callout>

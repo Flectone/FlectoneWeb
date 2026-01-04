@@ -1,0 +1,39 @@
+---
+title: Greeting
+description: A personal message from the server to the player when they connect
+authors:
+  - TheFaser
+---
+![greeting](/pulse/greeting.png)
+
+# <include>../../../parts/words.en.mdx#localization</include>
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.greeting`</span>
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#greeting</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#greeting</include></Tab>
+</Tabs>
+
+### `format`
+
+Personal message to the player upon connection
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `message.yml → greeting`</span>
+
+<include>../../../files/message.yml#greeting</include>
+
+<include>../../../parts/enable.en.mdx</include>
+<include>../../../parts/destination.en.mdx</include>
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → message.greeting`</span>
+
+<include>../../../files/permission.yml#greeting</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+<include>../../../parts/permission/sound.en.mdx</include>

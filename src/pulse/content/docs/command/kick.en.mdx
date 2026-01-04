@@ -1,0 +1,78 @@
+---
+title: /kick
+description: Command to kick a player from the server
+authors:
+  - TheFaser
+---
+![command kick](/pulse/commandkick.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.kick`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#kick</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#kick</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `reasons`
+
+A list with keys and values, where the key is a word and the value is a specific reason
+
+<Callout type="info" title="You can add your own reasons, for example">
+    ```yaml
+    random_kek: "Random reason"
+    ```
+    Then if I type `/kick player random_kek`, the reason will be `Random reason`
+
+    If no reason is specified, `default` will be used
+
+</Callout>
+
+### `server`
+
+Message for everyone
+
+### `person`
+
+Message for the player
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → kick`</span>
+
+
+<include>../../../files/command.yml#kick</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.kick`</span>
+
+
+<include>../../../files/permission.yml#kick</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

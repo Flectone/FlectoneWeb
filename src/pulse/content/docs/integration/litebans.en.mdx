@@ -1,0 +1,43 @@
+---
+title: LiteBans
+description: Integration with the LiteBans plugin checks a player's mute status and prevents them from sending messages, and also disables FlectonePulse moderation commands
+authors:
+  - TheFaser
+---
+<Callout type="warn" title="Warning">
+    It is better to disable the commands yourself in `command.yml`, because the commands do not always disable themselves
+</Callout>
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `integration.yml → litebans`</span>
+
+
+<include>../../../files/integration.yml#litebans</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+### `disable_flectonepulse_ban`
+
+Disables the `/ban`, `/banlist` and `/unban` commands in `FlectonePulse`
+
+### `disable_flectonepulse_mute`
+
+Disables the `/mute`, `/mutelist` and `/unmute` commands in `FlectonePulse`
+
+### `disable_flectonepulse_warn`
+
+Disables the `/warn`, `/warnlist` and `/unwarn` commands in `FlectonePulse`
+
+### `disable_flectonepulse_kick`
+
+Disables the `/kick` command in `FlectonePulse`
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → integration.litebans`</span>
+
+
+<include>../../../files/permission.yml#litebans</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>

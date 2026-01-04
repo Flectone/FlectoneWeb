@@ -1,0 +1,12 @@
+### `range`
+
+How far in blocks the message will be displayed
+
+| Value                                                  | Explanation                                                                                                                                                            |
+|--------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `WORLD_TYPE`                                           | The message will be sent only to players who have the permission `flectonepulse.world.type.dimension_name`                                                             |
+| `WORLD_NAME`                                           | The message will be sent only to players who have the permission `flectonepulse.world.name.world_folder_name`                                                           |
+| `PROXY`                                                | The message will be sent to all players on the server and on the [Proxy](/pulse/docs/config/en.mdx#bungeecord)                                                         |
+| `SERVER`                                               | The message will be sent to all players on the server                                                                                                                  |
+| `PLAYER`                                               | The message will be sent only to the sender                                                                                                                            |
+| any number greater than `0`, for example `range: 100` | The message will be sent to players whose distance between them and the sender is **less** than this number. Players must also be in the same world as the sender     |
