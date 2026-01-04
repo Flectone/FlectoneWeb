@@ -11,20 +11,21 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Step,
     img: (props) => {
       const { src, alt, ...rest } = props;
-      const imageSrc = typeof src === 'object' && src !== null ? (src as { src: string }).src : src;
+      const imageSrc = typeof src === 'object' && src !== null ? (src as {src: string}).src : src;
       if (!imageSrc) return null;
+
       return (
-        <span className="mt-2 flex justify-center items-center bg-linear-to-br from-fd-primary/10 rounded-xl border p-6">
-          <span className="relative max-w-250 w-full block">
-            <img
-              src={imageSrc}
-              alt={alt || 'image'}
-              {...rest}
-              className="rounded-lg shadow-md !m-0 w-full h-auto"
-              loading="lazy"
-            />
-          </span>
-        </span>
+          <span className="mt-2 flex justify-center items-center bg-linear-to-br from-fd-primary/10 rounded-xl border p-4">
+            <span className="relative block">
+        <img
+            src={imageSrc}
+            alt={alt || 'image'}
+            {...rest}
+            className="rounded-lg shadow-md max-w-full h-auto"
+            loading="lazy"
+        />
+      </span>
+    </span>
       );
     },
   };
