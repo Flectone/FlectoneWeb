@@ -8,11 +8,6 @@ export default function Layout({ children }: LayoutProps<'/[lang]'>) {
   return (
     <HomeLayout
       {...baseOptions()}
-        nav={{
-            title: <h1 className='flex justify-center items-center'><Image src="/logo.png" alt="Flectone Logo" width={64} height={64} className='w-6 h-6 mr-1' /> Flectone</h1>,
-            url: '/',
-            children: <LanguageButton />
-        }}
       links={[
         {
           text: 'О нас',
