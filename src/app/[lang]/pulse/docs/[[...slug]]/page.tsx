@@ -19,10 +19,11 @@ export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slu
 
   if (!page) notFound();
   const MDX = page.data.body;
-
+  const filteredToc = page.data.toc.filter((item) => item.depth <= 3);
   return (
-    <DocsPage toc={page.data.toc}
+    <DocsPage toc={filteredToc}
       tableOfContent={{
+
         footer: page.data.authors ? (
           <Authors ids={page.data.authors} />
         ) : null
