@@ -12,8 +12,8 @@ export default function WelcomeCard() {
             <div className='flex flex-col gap-4'>
                 <h1 className='text-4xl w-96 text-start font-bold'>{t.rich('WelcomeCard.slogan', {b: (chunks) => <b>{chunks}</b>})}</h1>
                 <div className='flex gap-4'>
-                    <LinkButton href='/pulse/docs' mode='blue' className='h-8'>{t('Buttons.support')}</LinkButton>
-                    <LinkButton href='/pulse/metrics' mode='gray' className='h-8'>{t('Buttons.documentation')}</LinkButton>
+                    <LinkButton href='https://boosty.to/thefaser' mode='blue' className='h-8'>{t('Buttons.support')}</LinkButton>
+                    <LinkButton href='/pulse/docs' mode='gray' className='h-8'>{t('Buttons.documentation')}</LinkButton>
                     <LinkButton href='https://modrinth.com/plugin/flectonepulse' mode='gray' className='h-8'>{t('Buttons.download')}</LinkButton>
                 </div>
             </div>
