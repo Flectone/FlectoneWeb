@@ -8,7 +8,6 @@ import {
   NavbarMenuLink,
   NavbarMenuTrigger,
 } from 'fumadocs-ui/layouts/home/navbar';
-import Svg from "@/components/Svg/Svg";
 
 export default function Layout({children}: LayoutProps<'/[lang]'>) {
 
@@ -70,7 +69,7 @@ export default function Layout({children}: LayoutProps<'/[lang]'>) {
       ]}
     >
       <div
-        className='bg-size-[3rem] bg- bg-[url(/square.svg)] not-dark:bg-[url(/squaredark.svg)] flex justify-center min-h-[calc(100vh-56px)] flex items-center max-xl:px-24 max-lg:px-12 max-sm:px-4'
+        className='bg-size-[3rem] bg- bg-[url(/square.svg)] not-dark:bg-[url(/squaredark.svg)] justify-center min-h-[calc(100vh-56px)] items-center max-xl:px-24 max-lg:px-12 max-sm:px-4'
       >
         {children}
       </div>
