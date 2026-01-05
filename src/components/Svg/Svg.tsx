@@ -21,7 +21,6 @@ const Svg: React.FC<SvgProps> = ({ src, ...props }) => {
         if (svgElement) {
           setSvgData({
             innerHTML: svgElement.innerHTML,
-            // Забираем viewBox, чтобы работало масштабирование
             viewBox: svgElement.getAttribute('viewBox') || undefined,
           });
         }
@@ -33,7 +32,7 @@ const Svg: React.FC<SvgProps> = ({ src, ...props }) => {
     <svg
       {...props}
       viewBox={props.viewBox || svgData.viewBox}
-      // Это позволяет классам типа w-full перебивать размеры
+      preserveAspectRatio="xMidYMid slice"
       dangerouslySetInnerHTML={{ __html: svgData.innerHTML }}
     />
   );
