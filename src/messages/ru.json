@@ -1,7 +1,9 @@
 {
     "Header": {
-        "home": "Главная",
-        "about": "Про нас"
+        "about": "Про нас",
+        "Projects": {
+            "title": "Проекты"
+        }
     },
     "ThemeSwitcher": {
         "light": "Светлая",
@@ -24,7 +26,7 @@
         },
         "Chat": {
             "description": "Отец FlectonePulse, но проект был закрыт",
-            "imagePath": "/chat-ru.svg"
+            "imagePath": "/chat/chat-ru.svg"
         }
     },
     "Members": {

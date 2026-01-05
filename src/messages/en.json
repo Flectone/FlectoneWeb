@@ -1,7 +1,9 @@
 {
     "Header": {
-        "home": "Home",
-        "about": "About us"
+        "about": "About us",
+        "Projects": {
+            "title": "Projects"
+        }
     },
     "ThemeSwitcher": {
         "light": "Light",
@@ -24,7 +26,7 @@
         },
         "Chat": {
             "description": "Father of FlectonePulse, but it's closed",
-            "imagePath": "/chat-en.svg"
+            "imagePath": "/chat/chat-en.svg"
         }
     },
     "Members": {
