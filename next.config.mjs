@@ -8,8 +8,17 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const config = {
   reactStrictMode: true,
   images: {
-    remotePatterns: [new URL('https://github.com/**')]
-  }
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'flectone.net',
+      }
+    ],
+  },
 };
 
 const withMDX = createMDX({
