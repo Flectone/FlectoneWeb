@@ -8,6 +8,7 @@ export const docs = defineDocs({
     schema: z.object({
       title: z.string(),
       description: z.string().optional(),
+      icon: z.string().optional(),
       authors: z.array(z.string()).optional(),
     }),
   },

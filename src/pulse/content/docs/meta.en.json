@@ -3,13 +3,13 @@
   "description": "Detailed documentation on FlectonePulse",
   "pages": [
     "---Documentation---",
-    "[CircleQuestionMark][FAQs](/pulse/docs)",
+    "index",
     "config",
     "command",
     "integration",
     "message",
     "---Additionally---",
-    "[Cable][API](/pulse/docs/api)",
+    "api",
     "[ChartCandlestick][Metrics](/pulse/metrics)"
   ]
 }
