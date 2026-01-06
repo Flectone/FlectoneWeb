@@ -22,8 +22,6 @@
   --color-fd-gray: hsl(212, 32%, 70%);
   --color-fd-muted-gray: hsl(212, 32%, 64%);
   --color-fd-gray-foreground: hsl(212, 32%, 15%);
-
-
 }
 
 .dark {
@@ -51,8 +49,6 @@
   --color-fd-gray: hsl(222, 12%, 22%);
   --color-fd-muted-gray: hsl(222, 12%, 32%);
   --color-fd-gray-foreground: hsl(222, 12%, 87%);
-
-
 }
 
 b {
@@ -80,6 +76,12 @@ span[data-radix-focus-guard=""]{
   min-width: 10px;
 }
 
+a.inline-flex.items-center.justify-center.rounded-md.text-sm.font-medium.transition-colors.duration-100  {
+  color: var(--color-fd-muted-foreground);
+}
+button[aria-haspopup="dialog"] {
+  color: var(--color-fd-muted-foreground);
+}
 /* @theme {
   --color-fd-background: hsl(0, 0%, 96%);
   --color-fd-foreground: hsl(0, 0%, 3.9%);
