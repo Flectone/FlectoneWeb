@@ -18,29 +18,6 @@ export default function Layout({children}: LayoutProps<'/[lang]'>) {
       {...baseOptions()}
       links={[
         {
-          type: 'custom',
-          on: 'nav',
-          children: (
-            <NavbarMenu>
-              <NavbarMenuTrigger>{t('Header.Projects.title')}</NavbarMenuTrigger>
-              <NavbarMenuContent>
-                <NavbarMenuLink href="/pulse" className='p-8'>
-                  <h1 className="font-medium text-xl">FlectonePulse</h1>
-                  <p>{t('Projects.Pulse.description')}</p>
-                </NavbarMenuLink>
-                <NavbarMenuLink href="/mix" className='p-8'>
-                  <h1 className="font-medium text-xl">FlectoneMix</h1>
-                  <p>{t('Projects.Mix.description')}</p>
-                </NavbarMenuLink>
-                <NavbarMenuLink href="/pulse" className='p-8'>
-                  <h1 className="font-medium text-xl">FlectonePulse</h1>
-                  <p>{t('Projects.Pulse.description')}</p>
-                </NavbarMenuLink>
-              </NavbarMenuContent>
-            </NavbarMenu>
-          ),
-        },
-        {
           text: t('Header.about'),
           url: '/about',
           secondary: false,
