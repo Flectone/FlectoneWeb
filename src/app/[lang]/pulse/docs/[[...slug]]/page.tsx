@@ -30,7 +30,7 @@ export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slu
       }}
     >
       <DocsTitle>{page.data.title}</DocsTitle>
-      <DocsDescription>{page.data.description}</DocsDescription>
+      <DocsDescription className='!mb-0'>{page.data.description}</DocsDescription>
       <DocsBody>
         <MDX
           components={getMDXComponents({
