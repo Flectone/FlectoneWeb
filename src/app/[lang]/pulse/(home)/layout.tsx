@@ -1,15 +1,19 @@
 import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { baseOptions } from '@/lib/layout.shared';
 import { SiBoosty, SiDiscord, SiModrinth } from 'react-icons/si';
+import {useTranslations} from "next-intl";
 
 export default function Layout({ children }: LayoutProps<'/[lang]/pulse'>) {
+
+  const t = useTranslations('Pulse')
+
   return (
     <HomeLayout
       {...baseOptions()}
       links={[
 
         {
-          text: 'Документация',
+          text: t('Buttons.documentation'),
           url: '/pulse/docs',
           secondary: false,
         },
@@ -19,7 +23,7 @@ export default function Layout({ children }: LayoutProps<'/[lang]/pulse'>) {
           secondary: false,
         },
         {
-          text: 'Аналитика',
+          text: t('Buttons.metrics'),
           url: '/pulse/metrics',
           secondary: false,
         },
