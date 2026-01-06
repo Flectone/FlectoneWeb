@@ -1,6 +1,7 @@
 import Structure from '@/components/Pulse/Structure';
 import Feautures from '@/components/Pulse/Features';
 import WelcomeCard from '@/components/Pulse/WelcomeCard';
+import Metrics from "@/components/Pulse/Metrics";
 
 export default function HomePage() {
   return (
@@ -8,9 +9,7 @@ export default function HomePage() {
       <WelcomeCard />
       <Feautures />
       <Structure />
-      <div className="w-full flex justify-center items-center bg-linear-to-br from-fd-primary/10 rounded-xl border p-4">
-        <img src="https://flectone.net/api/pulse/metrics/svg" alt="metrics" className="not-dark:invert" />
-      </div>
+      <Metrics />
     </div>
   );
 }

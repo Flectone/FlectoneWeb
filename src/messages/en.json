@@ -102,6 +102,9 @@
         "Structure": {
             "title": "<b>FlectonePulse</b> Plugin Structure",
             "description": " • The <b>images</b> folder contains all images used in the plugin, such as avatars and icons.\n          • The <b>libraries</b> folder contains third-party libraries required for the plugin to function.\n          • The <b>localizations</b> folder contains localization files for multi-language support. Includes <b>en_us.yml</b> and <b>ru_ru.yml</b>.\n          • The <b>commands.yml</b> file contains settings for all commands available in the plugin.\n          • The <b>config.yml</b> file contains the main plugin settings, including connection parameters and general options.\n          • The <b>integration.yml</b> file contains integration settings for other plugins and services.\n          • The <b>message.yml</b> file allows you to customize all messages displayed to players in-game.\n          • The <b>permission.yml</b> file contains permission settings for various plugin features."
+        },
+        "Metrics": {
+            "title": "Metrics"
         }
     }
 }
