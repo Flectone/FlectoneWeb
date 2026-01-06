@@ -36,10 +36,10 @@
 <rect x="76" y="219" width="183" height="24" rx="4" fill="currentColor" fill-opacity="0.18"/>
 <rect x="76" y="254" width="80" height="11" rx="5.5" fill="currentColor" fill-opacity="0.12"/>
 <rect x="76" y="271" width="183" height="24" rx="4" fill="currentColor" fill-opacity="0.18"/>
-<rect x="77" y="308" width="16" height="16" rx="2" stroke="currentColor" stroke-opacity="0.18" stroke-width="2"/>
-<rect x="77" y="334" width="16" height="16" rx="2" stroke="currentColor" stroke-opacity="0.18" stroke-width="2"/>
-<rect x="77" y="360" width="16" height="16" rx="2" stroke="currentColor" stroke-opacity="0.18" stroke-width="2"/>
-<rect x="77" y="386" width="16" height="16" rx="2" stroke="currentColor" stroke-opacity="0.18" stroke-width="2"/>
+<rect x="77" y="308" width="16" height="16" rx="2" stroke="currentColor" fill-opacity="0" stroke-opacity="0.18" stroke-width="2"/>
+<rect x="77" y="334" width="16" height="16" rx="2" stroke="currentColor" fill-opacity="0" stroke-opacity="0.18" stroke-width="2"/>
+<rect x="77" y="360" width="16" height="16" rx="2" stroke="currentColor" fill-opacity="0" stroke-opacity="0.18" stroke-width="2"/>
+<rect x="77" y="386" width="16" height="16" rx="2" stroke="currentColor" fill-opacity="0" stroke-opacity="0.18" stroke-width="2"/>
 <rect x="98" y="389" width="133" height="10" rx="5" fill="currentColor" fill-opacity="0.12"/>
 <rect x="98" y="363" width="158" height="10" rx="5" fill="currentColor" fill-opacity="0.12"/>
 <rect x="98" y="337" width="166" height="10" rx="5" fill="currentColor" fill-opacity="0.12"/>
