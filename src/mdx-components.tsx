@@ -21,7 +21,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
       >
         <a
           href={`#${id}`}
-          className="no-underline"
+          className="no-underline font-bold"
         >
           {children}
         </a>
