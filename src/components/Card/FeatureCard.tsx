@@ -35,9 +35,8 @@ export default function FeatureCard({ className, image, title, description, link
             <div className='text-start flex flex-col gap-2'>
               {typeof title === 'string' ? <h2 className='font-medium'>{title}</h2> : title}
               {typeof description === 'string' ? <p className=''>{description}</p> : description}
-
             </div>
-            {glow && (<div className={`${glowStyles[glow]} absolute ...`}></div>)}
+            {glow && (<div className={`${glowStyles[glow]} animate-pulse max-[52rem]:hidden [animation-duration:6s] absolute -z-1 bg-fd-primary/20 blur-2xl`}></div>)}
         </Card>
     )
 }
