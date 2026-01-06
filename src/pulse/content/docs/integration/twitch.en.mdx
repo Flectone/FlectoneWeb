@@ -77,8 +77,14 @@ A message sent from Twitch to Minecraft has its own placeholders:
 A list of messages with the final message format
 
 <Callout type="info" title="If you want to add another message:">
-1. Take the name from the `message types` list
-2. Insert it into `message_channel`
+<Steps>
+    <Step>
+        Take the name from the `message types` list
+    </Step>
+    <Step>
+        Insert it into `message_channel`
+    </Step>
+</Steps>
 ```yaml
 message_name: "<final_message>"
 ```
@@ -138,8 +144,14 @@ A command to get the `tps` value on the server using `!tps` or `!tickpersecond`.
 A list of message types and Twitch channel names
 
 <Callout type="info" title="For example, I want Minecraft `/ban` command messages to be sent to Twitch">
-1. Copy the Twitch channel names where the message should be sent (`faseri4ka`)
-2. Configure it:
+<Steps>
+    <Step>
+        Copy the Twitch channel names where the message should be sent (`faseri4ka`)
+    </Step>
+    <Step>
+        Configure it:
+    </Step>
+</Steps>
 ```yaml
 message_channel:
   COMMAND_BAN:
@@ -154,8 +166,14 @@ There can be any number of channels, as long as the connected account has access
 A list where the key is the channel name and the value is a list of commands to be executed when the broadcast starts
 
 <Callout type="info" title="For example, I want to track the start of a stream for `faseri4ka` and write `stream start https://twitch.tv/faseri4ka`">
-1. Copy the channel name `faseri4ka`
-2. Configure it:
+<Steps>
+    <Step>
+        Copy the channel name `faseri4ka`
+    </Step>
+    <Step>
+        Configure it:
+    </Step>
+</Steps>
 ```yaml
 follow_channel:
   faseri4ka:
