@@ -6,13 +6,14 @@ export default function Structure() {
   const t = useTranslations('Pulse.Structure')
 
   return (
-    <div className="w-full text-start flex flex-col gap-2 h-auto max-[52rem]:flex-col-reverse">
-      <p>Структура проекта</p>
-      <Files className="flex flex-col justify-start text-start">
-
-        <div className='flex h-fit w-full flex-wrap justify-between'>
+    <div className="w-full flex items-center flex-col gap-3 h-auto">
+      <h1 className='text-2xl text-center font-bold border-b border-fd-foreground w-fit px-4 pb-2'>{t.rich('title', {b: (chunks) => <b>{chunks}</b>})}</h1>
+      <Files className="flex flex-col justify-start text-start p-1 w-full">
+        <div className='flex h-fit w-full flex-wrap justify-around'>
           <Folder className='h-fit' name='backups'>
-            <Folder className='h-fit' name='version'></Folder>
+            <Folder className='h-fit' name='version'>
+              <File name='...'/>
+            </Folder>
           </Folder>
           <Folder className='h-fit' name='images'>
             <File name='...'/>
@@ -22,8 +23,8 @@ export default function Structure() {
           </Folder>
           <Folder className='h-fit' name='minecraft'>
             <Folder className='h-fit' name='version'>
-              <Folder className='h-fit' name='lang'></Folder>
-              <Folder className='h-fit' name='sprite'></Folder>
+              <Folder className='h-fit' name='lang'><File name='...'/></Folder>
+              <Folder className='h-fit' name='sprite'><File name='...'/></Folder>
             </Folder>
           </Folder>
           <Folder className='h-fit' name='localizations'>
@@ -37,15 +38,6 @@ export default function Structure() {
           <File className='h-fit' name='permission.yml'></File>
         </div>
       </Files>
-      {/*<div className="text-start w-2/3 max-[52rem]:w-full max-[52rem]:py-0 flex flex-col justify-center">*/}
-      {/*  <h1 className="text-2xl font-bold">{t.rich('title', {b: (chunks) => <b>{chunks}</b>})}</h1><br />*/}
-      {/*  <p style={{ whiteSpace: 'pre-line' }} className="text-lg m-0 p-0">*/}
-      {/*    {t.rich('description', {*/}
-      {/*      b: (chunks) => <b>{chunks}</b>,*/}
-      {/*      c: (chunks) => <b className='!text-fd-muted-primary'>{chunks}</b>*/}
-      {/*    })}*/}
-      {/*  </p>*/}
-      {/*</div>*/}
     </div>
   )
 }
