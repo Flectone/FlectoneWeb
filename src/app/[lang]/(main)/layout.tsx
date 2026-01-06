@@ -46,7 +46,7 @@ export default function Layout({children}: LayoutProps<'/[lang]'>) {
       ]}
     >
       <div
-        className='bg-size-[3rem] bg-[url(/square.svg)] not-dark:bg-[url(/squaredark.svg)] flex justify-center min-h-[calc(100vh-56px)] items-center max-xl:px-24 max-lg:px-12 max-sm:px-4'
+        className='flex justify-center min-h-[calc(100vh-56px)] items-center max-xl:px-24 max-lg:px-12 max-sm:px-4'
       >
         {children}
       </div>
