@@ -64,16 +64,8 @@ p {
   color: var(--color-fd-primary-foreground);
 }
 
-div.z-50.flex.flex-col.overflow-x-hidden[data-state="open"] {
-  min-width: 10px;
-
-}
 div[data-radix-popper-content-wrapper=""]{
-  min-width: 10px;
   margin: 4px;
-}
-span[data-radix-focus-guard=""]{
-  min-width: 10px;
 }
 
 a.inline-flex.items-center.justify-center.rounded-md.text-sm.font-medium.transition-colors.duration-100  {
