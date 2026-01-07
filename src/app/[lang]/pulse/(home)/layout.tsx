@@ -2,6 +2,7 @@ import { HomeLayout } from 'fumadocs-ui/layouts/home';
 import { baseOptions } from '@/lib/layout.shared';
 import { SiBoosty, SiDiscord, SiModrinth } from 'react-icons/si';
 import {useTranslations} from "next-intl";
+import Footer from "@/components/Footer/Footer";
 
 export default function Layout({ children }: LayoutProps<'/[lang]/pulse'>) {
 
@@ -50,8 +51,9 @@ export default function Layout({ children }: LayoutProps<'/[lang]/pulse'>) {
         }
       ]}
     >
-      <div className='not-dark:bg-[url(/square.svg)] bg-[url(/squaredark.svg)] flex justify-center max-xl:px-24 max-lg:px-12 max-sm:px-4'>
+      <div className='not-dark:bg-[url(/square.svg)] min-h-screen bg-[url(/squaredark.svg)] flex justify-center max-xl:px-24 max-lg:px-12 max-sm:px-4'>
         {children}
       </div>
+      <Footer />
     </ HomeLayout>)
 }
