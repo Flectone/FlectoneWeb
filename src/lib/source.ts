@@ -25,6 +25,6 @@ export function getPageImage(page: InferPageType<typeof source>) {
 
   return {
     segments,
-    url: `/og/docs/${segments.join('/')}`,
+    url: `https://flectone.net/og/docs/${segments.join('/')}`,
   };
 }
