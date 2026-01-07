@@ -33,7 +33,7 @@ export default function ZoomImage({ src }: ZoomImageProps) {
               transition={{ duration: 0.2, ease: "easeOut" }}
               src={src}
               alt=""
-              className="max-w-full max-h-[90vh] object-contain shadow-2xl"
+              className="max-w-full max-h-[90vh] object-contain"
             />
 
             <button
