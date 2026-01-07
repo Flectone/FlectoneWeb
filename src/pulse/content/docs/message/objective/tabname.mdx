@@ -1,0 +1,51 @@
+---
+title: В табе
+description: ScoreBoard значение игрока в ТАБе
+authors:
+  - TheFaser
+---
+Подробнее про это [ScoreBoard значение](https://ru.minecraft.wiki/w/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%81%D1%87%D1%91%D1%82%D0%B0_%D0%B8%D0%B3%D1%80%D0%BE%D0%B2%D1%8B%D1%85_%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9)
+
+![player list](/pulse/playerlist.png)
+
+# <include>../../../../parts/words.mdx#localization</include> 
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.tabname`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#tabname</include></Tab>
+<Tab value="en_us"><include>../../../../files/localizations/en_us.yml#tabname</include></Tab>
+</Tabs>
+
+### `format`
+
+Сообщение, которое будет показано под ником
+
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → objective.tabname`</span>
+
+<include>../../../../files/message.yml#tabname</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `mode`
+
+Режим цифрового отображения значения из доступных
+
+<include>../../../../parts/objective.mdx</include>
+
+<Callout type="info" title="Например РЕЖИМ `PING`">
+Значит будет возвращаться пинг игрока
+![player list](/pulse/playerlist.png)
+</Callout>
+
+<include>../../../../parts/ticker.mdx</include>
+
+
+# <include>../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.objective.tabname`</span>
+
+<include>../../../../files/permission.yml#tabname</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

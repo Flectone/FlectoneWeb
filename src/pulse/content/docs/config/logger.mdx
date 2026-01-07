@@ -1,0 +1,50 @@
+---
+title: Логгер
+description: Настройка всего, что связано с консолью и логами
+authors:
+  - TheFaser
+---
+<Callout type="warn" title="Предупреждение">
+Здесь используются `ANSI` цвета для сообщений, обычные цвета не будут работать
+</Callout>
+
+
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `config.yml → logger`</span>
+
+ 
+<include>../../../files/config.yml#logger</include>
+
+### `console`
+
+Используется для отображения имени, когда сообщения создано консолью
+![console](/pulse/console.gif)
+
+### `prefix`
+
+Префикс у всех сообщений, которые пишет `FlectonePulse` в консоль
+
+### `description`
+
+Сообщение при успешном старте, `<version>` заменится на текущую версию `FlectonePulse`
+
+### `warn`
+
+Цвет для сообщений с предупреждением
+
+### `info`
+
+Цвет для сообщений с информацией
+
+### `filter`
+
+Идея взята [отсюда](https://github.com/Whitescan/ConsoleFilter/blob/master/src/main/java/dev/whitescan/consolefilter/share/LogFilter.java), спасибо @Whitescan
+
+Списком указываются сообщения, которые нужно не показывать, используя ключевые слова, встречающиеся в сообщении
+
+<Callout type="info" title="Например я хочу отфильтровать">
+![filter](/pulse/filter.png)
+
+Значит нужно вписать:
+`Unknown or incomplete command` или `command` или `Unknown`
+</Callout>

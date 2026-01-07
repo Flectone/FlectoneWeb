@@ -1,0 +1,67 @@
+---
+title: Форматирование
+description: Модуль, форматирующий отправленные сообщения
+authors:
+  - TheFaser
+---
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → format`</span>
+
+<include>../../../../files/message.yml#format</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `convert_legacy_color`
+
+Включает форматирование устаревших цветов
+
+<include>../../../../parts/legacyColors.mdx</include>
+
+### `adventure_tags`
+
+Это [Kyori теги](https://docs.advntr.dev/minimessage/format.html#standard-tags), которые могут быть в сообщениях
+
+| Тег                       | Использование                                                                | Описание                                                                                        |
+|---------------------------|------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------|
+| `<hover>`                 | [Hover](https://docs.advntr.dev/minimessage/format.html#hover)               | Текст при наведении                                                                             |
+| `<click>`                 | [Click](https://docs.advntr.dev/minimessage/format.html#click)               | Действие при нажатии                                                                            |
+| `<color>`                 | [Color](https://docs.advntr.dev/minimessage/format.html#color)               | Цвет                                                                                            |
+| `<keybind>`               | [Keybind](https://docs.advntr.dev/minimessage/format.html#keybind)           | Настройка клавиш для сообщения                                                                  |
+| `<translatable>`          | [Translatable](https://docs.advntr.dev/minimessage/format.html#translatable) | Сообщение с использованием локали игрока                                                        |
+| `<translatable_fallback>` | [Translatable](https://docs.advntr.dev/minimessage/format.html#translatable) | Сообщение с использованием локали игрока                                                        |
+| `<insertion>`             | [Insertion](https://docs.advntr.dev/minimessage/format.html#insertion)       | Вставка текста в чат с помощью ШИФТ                                                             |
+| `<font>`                  | [Font](https://docs.advntr.dev/minimessage/format.html#font)                 | Изменение шрифта текста                                                                         |
+| `<decoration>`            | [Decoration](https://docs.advntr.dev/minimessage/format.html#decoration)     | Стандартные украшения майнкрафта `bold`, `italic`, `underlined`, `strikethrough`, `obfuscated`  |
+| `<gradient>`              | [Gradient](https://docs.advntr.dev/minimessage/format.html#gradient)         | Градиентный цвет текста                                                                         |
+| `<rainbow>`               | [Rainbow](https://docs.advntr.dev/minimessage/format.html#rainbow)           | Радужный цвет текста                                                                            |
+| `<reset>`                 | [Reset](https://docs.advntr.dev/minimessage/format.html#reset)               | Сброс всех тегов и декораций                                                                    |
+| `<newline>`               | [Newline](https://docs.advntr.dev/minimessage/format.html#newline)           | Переход на новую строку, замена `\n`                                                            |
+| `<transition>`            | [Transition](https://docs.advntr.dev/minimessage/format.html#transition)     | Переход между двумя цветами                                                                     |
+| `<selector>`              | [Selector](https://docs.advntr.dev/minimessage/format.html#selector)         | Селектор мобов                                                                                  |
+| `<score>`                 | [Score](https://docs.advntr.dev/minimessage/format.html#score)               | Значение у команды (scoreboard)                                                                 |
+| `<nbt>`                   | [NBT](https://docs.advntr.dev/minimessage/format.html#nbt)                   | Вставка NBT компонента                                                                          |
+| ...                       | ...                                                                          | ...                                                                                             |
+
+
+# <include>../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.format`</span>
+
+<include>../../../../files/permission.yml#format</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+### `legacy_colors`
+
+Это позволит игроку использовать устаревшие цвета в своих сообщениях
+
+<include>../../../../parts/legacyColors.mdx</include>
+
+<Callout type="idea" title=" ПРИМЕЧАНИЕ">
+Если тебе нужно, чтобы цвета игрока в чате форматировались, используй ``flectonepulse.module.message.format.color``
+
+</Callout>
+
+### `adventure_tags`
+
+Список тегов и их прав для использования

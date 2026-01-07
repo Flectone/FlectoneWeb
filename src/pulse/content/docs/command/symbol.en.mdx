@@ -1,0 +1,83 @@
+---
+title: /symbol
+description: Command to search for unicode symbols
+authors:
+  - TheFaser
+---
+![symbol](/pulse/commandsymbol.png)
+
+Huge thanks to @replaceitem for the right to use their symbol [lists](https://github.com/replaceitem/symbol-chat)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.symbol`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#symbol</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#symbol</include></Tab>
+</Tabs>
+
+### `null_category`
+
+Message if the entered category does not exist
+
+### `null_page`
+
+Message if the entered page does not exist
+
+### `header`
+
+Top part of the list message
+
+### `line_element`
+
+Format for each component; they will be added one after another
+
+#### `footer`
+
+Bottom part of the list message
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → symbol`</span>
+
+
+<include>../../../files/command.yml#symbol</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/perPage.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+
+### `categories`
+
+List of categories and symbols separated by spaces
+
+<Callout type="info" title="WHAT CAN YOU DO WITH THIS?">
+    1. Add your own symbols to current ones using a space
+    2. Rename categories or add your own
+</Callout>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.symbol`</span>
+
+
+<include>../../../files/permission.yml#symbol</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

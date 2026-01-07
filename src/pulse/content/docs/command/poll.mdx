@@ -1,0 +1,178 @@
+---
+title: /poll
+description: Комманда для проведения голосований
+authors:
+  - TheFaser
+---
+![command pollgui](/pulse/commandpollgui.gif)
+
+Это также можно делать через комманду в чате
+![command poll](/pulse/commandpoll.png)
+
+
+<Callout type="info" title="Информация">
+
+Интервал указывается для того, чтобы повторно отправить сообщение в чат о существующем голосовании
+
+</Callout>
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.poll`</span>
+
+ 
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#poll</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#poll</include></Tab>
+</Tabs>
+
+### `null_poll`
+
+Сообщение, если голосование не найдено
+
+### `expired`
+
+Сообщение, если игрок пытается проголосовать в голосовании, которое закончилось
+
+### `already`
+
+Сообщение, если игрок пытается проголосовать в голосовании ещё один раз
+
+### `vote_true`
+
+Сообщение, если игрок проголосовал за какой-то вариант
+
+### `vote_false`
+
+Сообщение, если игрок убрал свой голос
+
+### `format`
+
+Формат сообщения, которое будет отправлено
+
+### `answer_template`
+
+Шаблон для каждого ответа
+
+### `status`
+
+
+Заголовки для каждого статуса голосования
+
+#### `start`
+
+Заголовок при старте голосования
+
+#### `run`
+
+Заголовок при повторном сообщении голосования
+
+#### `end`
+
+Заголовок при конце голосования
+
+### `modern`
+
+
+Система диалогов для создания голосования
+
+#### `header`
+
+Имя диалога
+
+#### `input_name`
+
+Название для поля "название"
+
+#### `input_initial`
+
+Текст по умолчанию для поля "название"
+
+#### `multiple_name`
+
+Название для поля-переключателя "разрешить несколько ответов"
+
+#### `end_time_name`
+
+Название для поля с длительностью
+
+#### `repeat_time_name`
+
+Название для поля с интервалом
+
+#### `new_answer_button_name`
+
+Название для кнопки, которая создаёт новый ответ
+
+#### `remove_answer_button_name`
+
+Название для кнопки, которая удаляет последний ответ
+
+#### `input_answer_name`
+
+Название для нового поля с ответом
+
+#### `input_answers_initial`
+
+Текст по умолчанию для поля с ответом
+
+#### `create_button_name`
+
+Название для кнопки, которая создаёт голосование
+
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → poll`</span>
+
+
+<include>../../../files/command.yml#poll</include>
+
+<include>../../../parts/enable.mdx</include>
+
+
+### `enable_gui`
+
+<Callout type="warn" title="Предупреждение">
+
+Работает только для версий `1.21.6` и новее, в старых версиях команда не будет зарегистрирована
+
+</Callout>
+
+Добавляет новую команду `/pollgui` (зависит от названия самой команды, т.е. `/название` + `gui`)
+
+<include>../../../parts/range.mdx</include>
+
+
+### `last_id`
+
+Последний номер созданного голосования
+
+<include>../../../parts/range.mdx</include>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.poll`</span>
+
+ 
+<include>../../../files/permission.yml#poll</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+
+### `create`
+
+Право для создания голосований
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>
+
+

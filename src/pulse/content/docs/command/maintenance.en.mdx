@@ -1,0 +1,76 @@
+---
+title: /maintenance
+description: Command to enable maintenance mode
+authors:
+  - TheFaser
+---
+![command maintenance](/pulse/commandmaintenance.png)
+![command maintenance server](/pulse/commandmaintenanceserver.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.maintenance`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#maintenance</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#maintenance</include></Tab>
+</Tabs>
+
+### `server_description`
+
+Messages when viewing the server if maintenance mode is enabled
+
+### `server_version`
+
+Server version name if maintenance mode is enabled
+
+### `kick`
+
+Reason for being kicked from the server when maintenance mode is turned on
+
+### `format_true`
+
+Message when maintenance mode is enabled
+
+### `format_false`
+
+Message when maintenance mode is disabled
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → maintenance`</span>
+
+
+<include>../../../files/command.yml#maintenance</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.maintenance`</span>
+
+
+<include>../../../files/permission.yml#maintenance</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+
+### `join`
+
+Permission to connect to the server during maintenance
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

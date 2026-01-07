@@ -1,0 +1,35 @@
+---
+title: Капс
+description: Это форматирование убирает капс в сообщении
+authors:
+  - TheFaser
+---
+![caps](/pulse/caps.png)
+
+
+# <include>../../../../../parts/words.mdx#setting</include>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.moderation.caps`</span>
+
+<include>../../../../../files/message.yml#caps</include>
+
+<include>../../../../../parts/enable.mdx</include>
+
+### `trigger`
+
+Процент букв, которые должны быть в верхнем регистре, чтобы сообщение было изменено
+
+<Callout type="info" title="КАК ПРАВИЛЬНО НАПИСАТЬ ПРОЦЕНТ">
+`0.7` это `70%`, а `1.0` это `100%` т.е всё сообщение
+</Callout>
+
+
+# <include>../../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.moderation.caps`</span>
+
+<include>../../../../../files/permission.yml#caps</include>
+
+<include>../../../../../parts/permission/permissionTier3.mdx</include>
+
+### `bypass`
+
+Право для игнорирования форматирования

@@ -1,0 +1,119 @@
+---
+title: /mute
+description: Command to mute a player
+authors:
+  - TheFaser
+---
+![command mute](/pulse/commandmute.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.mute`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#mute</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#mute</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `null_time`
+
+Message if an impossible time is entered
+
+### `lower_weight_group`
+
+Message if the command is executed by a player with a group lower than the player being moderated
+
+### `suffix`
+
+Format of the suffix that will be displayed if the player has an active mute; otherwise, it will be empty
+
+### `reasons`
+
+A list with keys and values, where the key is a word and the value is a specific reason
+
+<Callout type="info" title="YOU CAN ADD YOUR OWN REASONS">
+    ```yaml
+    random_kek: "Random reason"
+    ```
+    Then if I type `/mute player 1d random_kek`, the reason will be `Random reason`
+
+    If no reason is specified, `default` will be used
+</Callout>
+
+### `server`
+
+Message for everyone
+
+### `person`
+
+Message for the player
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → mute`</span>
+
+
+<include>../../../files/command.yml#mute</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/suggestOfflinePlayers.en.mdx</include>
+
+### `check_group_weight`
+
+Whether player groups will be checked. If the player being moderated has a higher role than the command sender, the command will not execute and a `lower_weight_group` error will occur
+
+<include>../../../parts/range.en.mdx</include>
+
+
+### `time_limits`
+
+Time limits depending on the sender's group. The key is the group weight, and the value is the maximum moderation time in milliseconds (`1` second = `1000` milliseconds)
+
+<Callout type="info" title="Example">
+
+    ```yaml
+    time_limits:
+    20: 35000
+    50: 100000
+    ```
+
+    - If a player has a group weight of `10`, the command will NOT be executed
+    - If a player has a group weight of `20`, the maximum time will be `35000`
+    - If a player has a group weight of `40`, the maximum time will also be `35000`
+    - If a player has a group weight of `50` and above, it will be `100000`
+
+    For unlimited time, use the value `-1`
+
+</Callout>
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.mute`</span>
+
+
+<include>../../../files/permission.yml#mute</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

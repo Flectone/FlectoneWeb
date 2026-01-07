@@ -1,0 +1,72 @@
+---
+title: /tell
+description: Command to write a private message to a player
+authors:
+  - TheFaser
+---
+![command tell](/pulse/commandtell.png)
+
+Can be used for notes if you enter your own nickname
+![command tell myself](/pulse/commandtellmyself.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.tell`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#tell</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#tell</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `sender`
+
+Message for the sender
+
+### `receiver`
+
+Message for the receiver
+
+### `myself`
+
+Message for the sender if they are also the receiver, i.e., for yourself
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → tell`</span>
+
+
+<include>../../../files/command.yml#tell</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/suggestOfflinePlayers.en.mdx</include>
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.tell`</span>
+
+
+<include>../../../files/permission.yml#tell</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

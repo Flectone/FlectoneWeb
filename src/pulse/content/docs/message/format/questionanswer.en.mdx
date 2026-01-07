@@ -1,0 +1,56 @@
+---
+title: Question-Answer
+description: Module responsible for responding to player questions
+authors:
+  - TheFaser
+---
+![question](/pulse/questionanswer.png)
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.question_answer`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#questionanswer</include></Tab>
+    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#questionanswer</include></Tab>
+</Tabs>
+
+### `questions`
+
+A list of questions and their corresponding answers
+
+
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → format.questionanswer`</span>
+
+<include>../../../../files/message.yml#questionanswer</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `questions`
+
+A list of questions and their settings
+
+<include>../../../../parts/range.en.mdx</include>
+<include>../../../../parts/destination.en.mdx</include>
+<include>../../../../parts/cooldown.en.mdx</include>
+<include>../../../../parts/sound.en.mdx</include>
+### `target`
+
+A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) used to search for the question
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.question_answer`</span>
+
+<include>../../../../files/permission.yml#questionanswer</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `questions`
+
+A list of questions and their associated permissions
+
+<include>../../../../parts/permission/sound.en.mdx</include>
+<include>../../../../parts/permission/cooldown.en.mdx</include>

@@ -1,0 +1,147 @@
+---
+title: /tictactoe
+description: Комманда для того, чтобы предложить поиграть в крестики-нолики
+authors:
+  - TheFaser
+---
+![command tictactoe](/pulse/commandtictactoe.png)
+
+По умолчанию кидается запрос в [китайские крестики-нолики](#правила-китайских-крестиков-ноликов), если хочешь в обычные, то используй `/tictactoe ник false`
+![command tictactoe default](/pulse/commandtictactoedefault.png)
+
+### Правила китайских крестиков-ноликов
+
+1. Каждый игрок может поставить только `3` своих метки
+2. Если игра не закончилась, то первая метка, которая была поставлена игроком, убирается и ставится новая
+3. И так по кругу, пока игра не закончится
+
+В итоге игра становится сложной и со стратегией!
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.tictactoe`</span>
+
+ 
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#tictactoe</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#tictactoe</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Сообщение, если введённый игрок не найден
+
+### `myself`
+
+Сообщение, если введённый игрок пытается поиграть сам с собой
+
+### `wrong_game`
+
+Сообщение, если указанной игры не существует
+
+### `wrong_move`
+
+Сообщение, если такой ход невозможен
+
+### `wrong_by_player`
+
+Сообщение, если один из игроков, участвующий в игре, вышел
+
+### `symbol`
+
+
+Сообщения для символов
+#### `empty`
+
+Формат сообщения для пустой клетки
+
+#### `first`
+
+Формат сообщения для клетки первого игрока
+
+#### `first_remove`
+
+Формат сообщения для удаления клетки первого игрока
+
+#### `first_win`
+
+Формат сообщения для победной клетки первого игрока
+
+#### `second`
+
+Формат сообщения для клетки второго игрока
+
+#### `second_remove`
+
+Формат сообщения для удаления клетки второго игрока
+
+#### `second_win`
+
+Формат сообщения для победной клетки второго игрока
+
+### `field`
+
+Формат сообщения для игрового поля
+
+### `current_move`
+
+Формат сообщения для информации о текущем ходе
+
+### `last_move`
+
+Форма сообщения для информации о прошлом ходе
+
+### `format_move`
+
+Формат сообщения для оповещения о ходе
+
+### `format_win`
+
+Сообщение при победе
+
+### `format_draw`
+
+Сообщение при ничье
+
+### `sender`
+
+Сообщение для отправителя при запросе
+
+### `format_create`
+
+Сообщение для получателя при запросе
+
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → tictactoe`</span>
+
+
+<include>../../../files/command.yml#tictactoe</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<include>../../../parts/range.mdx</include>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.tictactoe`</span>
+
+ 
+<include>../../../files/permission.yml#tictactoe</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>
+
+

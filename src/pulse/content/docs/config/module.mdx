@@ -1,0 +1,62 @@
+---
+title: Модуль
+description: Настройка самого главного модуля FlectonePulse
+authors:
+  - TheFaser
+---
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `config.yml → module`</span>
+
+ 
+<include>../../../files/config.yml#module</include>
+
+### `enable`
+
+Включает или выключает работу всех модулей
+
+- Каждый модуль имеет родителя (тот, кто выше находится)
+
+<Callout type="info" title="Например">
+```yaml
+house:
+  door:
+  chair:
+```
+
+`house` является родителем для `door` и `chair`
+</Callout>
+
+- Каждый модуль зависит от `enable` родителя
+
+<Callout type="info" title="Например">
+```yaml
+house:
+  enable: false
+  door:
+    enable: true
+  chair:
+    enable: true
+```
+
+`house` выключен, значит внезависимости от того, включены ли `door` и `chair` - они тоже будут выключены
+</Callout>
+
+### `use_paper_message_sender`
+
+Если включено, `FlectonePulse` будет использовать `Paper`, как инструмент для отправки сообщения в чат игроку. Как это работает? Сначала плагин создаёт сообщение внутри себя и получает `FlectonePulse.Component`, этот объект преобразуется в обычную строчку `String`. Далее используется сам `Paper`, чтобы из этой строчки получить `Paper.Component` и отправить его игроку
+
+<Callout type="warn" title="Предупреждение">
+
+Чтобы это работало, на сервере должен быть установлен `PacketEvents` отдельным плагином и ядро сервера должно быть `Paper` или его форк
+
+</Callout>
+
+
+# <include>../../../parts/words.mdx#permission</include>
+<include>../../../parts/words.mdx#path</include> `permission.yml`
+
+ 
+<include>../../../files/permission.yml#module</include>
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>

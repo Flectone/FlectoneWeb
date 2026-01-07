@@ -1,0 +1,16 @@
+{
+  "title": "Configuration",
+  "description": "The basic configuration of FlectonePulse, without which operation is impossible",
+  "icon": "FileSliders",
+  "pages": [
+    "language",
+    "database",
+    "proxy",
+    "command",
+    "module",
+    "editor",
+    "logger",
+    "cache",
+    "metrics"
+  ]
+}

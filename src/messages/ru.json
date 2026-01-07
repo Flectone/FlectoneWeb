@@ -1,0 +1,143 @@
+{
+  "Metadata": {
+    "Root": {
+      "title": "Flectone",
+      "description": "Flectone — это бренд, который объединяет все проекты TheFaser",
+      "applicationName": "Flectone",
+      "keywords": "флектон, Флектон, Flectone, flectone",
+      "image": "/logo.png"
+    },
+    "Mix": {
+      "title": "FlectoneMix",
+      "description": "Был создан, чтобы облегчить поиск и установку вещей для Minecraft, но проект был закрыт",
+      "applicationName": "FlectoneMix",
+      "image": "/logo.png"
+    },
+    "Chat": {
+      "title": "FlectoneChat",
+      "description": "Упрощает и дополняет игру на сервере добавлением удобных фичей, но проект был закрыт",
+      "applicationName": "FlectoneChat",
+      "image": "/logo.png"
+    },
+    "About": {
+      "title": "Про нас | Flectone",
+      "description": "Все эти люди внесли вклад в проект",
+      "applicationName": "Flectone",
+      "image": "/logo.png"
+    },
+    "Pulse": {
+      "title": "FlectonePulse",
+      "description": "Каждое сообщение под вашим контролем!",
+      "applicationName": "Flectone",
+      "keywords": "флектон, Флектон, плагин, плагин майнкрафт, плагин на чат, плагин на чат майнкрафт, чат, майнкрафт, флектонпульс flectonepulse",
+      "image": "/logo.png"
+    }
+  },
+  "Footer": {
+    "answer": "Не является официальным сервисом Minecraft. Не одобрено и не связано с компанией Mojang или Microsoft.",
+    "date": "Существует с 2019 года",
+    "openSourse": "Весь код проекта имеет <a>открытый исходный код</a>"
+  },
+  "Header": {
+    "about": "Про нас",
+    "Projects": {
+      "title": "Проекты"
+    }
+  },
+  "ThemeSwitcher": {
+    "light": "Светлая",
+    "dark": "Темная",
+    "system": "Как в системе"
+  },
+  "LanguageSwitcher": {
+    "ru": "Русский",
+    "en": "Английский"
+  },
+  "Projects": {
+    "title": "Проекты <b>Flectone</b>",
+    "Pulse": {
+      "description": "Новый проект для легкой кастомизации сервера",
+      "button": "Подробрее",
+      "buttonPath": "https://flectone.net/pulse"
+    },
+    "Mix": {
+      "description": "Использовался для скачивания ресурсов"
+    },
+    "Chat": {
+      "description": "Отец FlectonePulse, но проект был закрыт",
+      "imagePath": "/chat/chat-ru.svg"
+    }
+  },
+  "Members": {
+    "title": "Команда <b>Flectone</b>",
+    "TheFaser": {
+      "name": "TheFaser",
+      "description": "Инициатор проектов Flectone, ютубер и разработчик",
+      "avatar": "https://github.com/TheFaser.png",
+      "link": "https://github.com/TheFaser"
+    },
+    "FunnyBars": {
+      "name": "FunnyBars",
+      "description": "Контрибьютор всех проектов и создатель плагина CookieClicker",
+      "avatar": "https://github.com/FunnyBars.png",
+      "link": "https://github.com/FunnyBars"
+    },
+    "fxdsu": {
+      "name": "fxdsu",
+      "description": "Создатель плагина FlectoneChat и главный помощник",
+      "avatar": "https://github.com/fxdsu.png",
+      "link": "https://github.com/fxdsu"
+    },
+    "vplend": {
+      "name": "vplend",
+      "description": "Разработчик сайта",
+      "avatar": "https://github.com/vplend.png",
+      "link": "https://github.com/vplend"
+    }
+  },
+  "FlectoneMix": {
+    "availableOnBoosty": "Доступно на Boosty",
+    "downloads": "скачиваний в истории",
+    "description": "Был создан, чтобы облегчить поиск и установку вещей для Minecraft, но проект был закрыт"
+  },
+  "FlectoneChat": {
+    "description": "Упрощает и дополняет игру на сервере добавлением удобных фичей, но проект был закрыт",
+    "usePulse": "Используй <strong>FlectonePulse</strong>, так как FlectoneChat более не поддерживается",
+    "imagePath": "/chat/chat-ru.svg"
+  },
+  "Pulse": {
+    "Authors": {
+      "title": "Авторы страницы"
+    },
+    "WelcomeCard": {
+      "slogan": "Каждое сообщение под <b>вашим</b> контролем!"
+    },
+    "Buttons": {
+      "support": "Поддержка",
+      "documentation": "Документация",
+      "metrics": "Аналитика",
+      "download": "Скачать"
+    },
+    "Features": {
+      "Message": {
+        "title": "Настройка множества сообщений",
+        "description": "Настрой почти любое сообщение, которое видит твой игрок. Любое действие FlectonePulse можно отключить"
+      },
+      "Command": {
+        "title": "Более 30 интересных комманд",
+        "description": "Сделай чат более удобным в использовании. Игроки также смогут использовать встроенные мини-игры"
+      },
+      "Integration": {
+        "title": "Интеграция с другими проектами",
+        "description": "Позволь игрокам общаться на разных платформах. Полноценные интеграции с Discord, Twitch и Telegram"
+      }
+    },
+    "Structure": {
+      "title": "Структура плагина",
+      "description": "├── <b>backups/</b>\n│  ├──<c>version/</c>\n├── <b>images/</b>\n├── <b>libaries/</b>\n├── <b>minecraft/</b>\n├── <b>localizations/</b>\n├── <b>commands.yml</b>\n├── <b>config.yml</b>\n├── <b>integration.yml</b>\n├── <b>message.yml</b>\n├── <b>permission.yml</b>"
+    },
+    "Metrics": {
+      "title": "Аналитика"
+    }
+  }
+}

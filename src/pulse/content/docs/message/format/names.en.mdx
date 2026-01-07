@@ -1,0 +1,69 @@
+---
+title: Name
+description: Module responsible for the player's name
+authors:
+  - TheFaser
+---
+![name tab](/pulse/nametab.png)
+![name display](/pulse/namedisplay.png)
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.names`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#names</include></Tab>
+    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#names</include></Tab>
+</Tabs>
+
+### `constant`
+
+The message that will be formatted by the sender on the server where it was sent. It can be used in any message using `<constant>`
+
+<Callout type="info" title="NOTE">
+    If you are having issues with messages for `Velocity` or `BungeeCord`, this is the solution to your problem:
+
+    ```yaml
+    constant: "%player_name%"
+    display: "<constant>"
+    ```
+
+</Callout>
+
+
+### `display`
+
+Responsible for the player's name
+![name display](/pulse/namedisplay.png)
+
+### `entity`
+
+Responsible for the entity's name
+
+### `unknown`
+
+Responsible for the entity's name if it could not be determined
+
+### `invisible`
+
+Responsible for the player's name if they are under an invisibility potion
+
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → format.names`</span>
+
+<include>../../../../files/message.yml#names</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `should_check_invisibility`
+
+Whether to check if the player is under an invisibility potion. If enabled, the `invisible` name will be used
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.names`</span>
+
+<include>../../../../files/permission.yml#names</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

@@ -1,0 +1,43 @@
+---
+title: Цвета
+description: Тег fcolor используется для индивидуальных настроек цвета у каждого игрока
+authors:
+  - TheFaser
+---
+Использование: `<fcolor:номер>`
+
+![color message](/pulse/colormessage.png)  
+
+<include>../../../../parts/fcolor.mdx</include> 
+
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → format.fcolor`</span>
+
+<include>../../../../files/message.yml#fcolor</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `default_colors`
+
+Список всех используемых цветов по умолчанию. Каждая цифра обозначает конкретный цвет, по умолчанию: `<fcolor:1>` используется для основного цвета, `<fcolor:2>` используется для основного цвета с выделением (например имени), `<fcolor:3>` для сообщений в локальном чате, `<fcolor:4>` для сообщений в глобальном чате.
+
+<Callout type="info" title="Например есть цвет">
+```yaml
+1: "<gradient:#A6D8FF:#8CC8FF>"
+```
+`1` - номер для цвета `<gradient:#A6D8FF:#8CC8FF>` <br/> <br/>
+Чтобы такой тег использовать, нужно писать `<fcolor:1>`
+</Callout>
+
+
+# <include>../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.format.fcolor`</span>
+
+<include>../../../../files/permission.yml#fcolor</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+### `colors`
+
+Варианты `<fcolor:...>` и их права

@@ -1,0 +1,235 @@
+---
+title: /chatsetting
+description: Комманда для настройки чата
+authors:
+  - TheFaser
+---
+![command chatsetting](/pulse/commandchatsetting.gif)
+
+<Callout type="info" title="ПРИМЕЧАНИЕ">
+
+Можно открыть чужие настройки с помощью `/chatsetting TheFaser`
+
+Если ты хочешь сделать своё меню через другой плагин, то ты можешь изменять значения с помощью `/chatsetting TheFaser ADVANCEMENT`. Это включит или выключит показ достижений в зависимости от состояния. Узнать состояние можно через плейсхолдер `%flectonepulse_advancement%`. 
+
+Некоторым настройкам можно назначать значения, например `/chatsetting TheFaser STREAM_PREFIX kek` поставит игроку префикс стримера `kek`.
+
+| Настройка           |
+|---------------------|
+| `ADVANCEMENT`       |
+| `AFK`               |
+| `AFK_SUFFIX`        |
+| `AUTO`              |
+| `BALL`              |
+| `BAN`               |
+| `BROADCAST`         |
+| `CHAT`              |
+| `COIN`              |
+| `DEATH`             |
+| `DICE`              |
+| `DISCORD`           |
+| `DO`                |
+| `GREETING`          |
+| `JOIN`              |
+| `KICK`              |
+| `LOCALE`            |
+| `MAIL`              |
+| `ME`                |
+| `MUTE`              |
+| `POLL`              |
+| `QUIT`              |
+| `REPLY`             |
+| `ROCKPAPERSCISSORS` |
+| `SPY`               |
+| `STREAM`            |
+| `STREAM_PREFIX`     |
+| `TELEGRAM`          |
+| `TELL`              |
+| `TICTACTOE`         |
+| `TRANSLATETO`       |
+| `TRY`               |
+| `TWITCH`            |
+| `WARN`              |
+| `WORLD_PREFIX`      |
+| `ANON`              |
+
+</Callout>
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.chatsetting`</span>
+
+ 
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#chatsetting</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#chatsetting</include></Tab>
+</Tabs>
+
+<Callout type="info" title="Примечание">
+Название и описание предметов находятся в одной строчке, переход на новую строчку осуществляется с помощью `<br>`
+</Callout>
+
+### `no_permission`
+
+Сообщение, если для изменения настройки требуется определённое право
+
+### `disable`
+
+
+Сообщения об отключении
+#### `you`
+
+Сообщение, если отправитель отключил комманду в `/chatsetting`
+
+#### `he`
+
+Сообщение, если получатель отключил комманду в `/chatsetting`
+
+#### `server`
+
+Сообщение, если сервер отключил комманду для `/chatsetting`
+
+### `inventory`
+
+Название для основного GUI
+
+### `checkbox`
+
+
+Настройка переключателей
+
+#### `enabled_color`
+
+Цвет, если настройка включена. Заменяет `<status_color>`
+
+#### `enabled_hover`
+
+Сообщение, если настройка включена
+
+#### `disabled_color`
+
+Цвет, если настройка выключена. Заменяет `<status_color>`
+
+#### `disabled_hover`
+
+Сообщение, если настройка выключена
+
+#### `types`
+
+Список типов настроек и их названий
+
+### `menu`
+
+Каждое дополнительное меню имеет:
+
+
+Настройка дополнительных меню
+
+#### `item`
+
+Название и описание предмета, который будет в основном меню
+
+#### `inventory`
+
+Название GUI в дополнительном меню
+
+#### `types`
+
+Список предметов с их названием и описанием
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → chatsetting`</span>
+
+
+<include>../../../files/command.yml#chatsetting</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<include>../../../parts/range.mdx</include>
+
+
+### `modern`
+
+<Callout type="warn" title="Предупреждение">
+
+Работает только для версий `1.21.6` и новее, в старых будет использоваться инвентарь
+
+</Callout>
+
+
+Настройка нового меню
+
+#### `enable`
+
+Включает использование диалгов, вместо инвентарей
+
+#### `button_width`
+
+Ширина каждой кнопки
+
+#### `columns`
+
+Количество кнопок на одной строчке
+
+### `checkbox`
+
+
+Настройка переключателей
+
+#### `disabled_material`
+
+Материал, если настройка выключена
+
+#### `enabled_material`
+
+Материал, если настройка включена
+
+#### `types`
+
+Список типов настроек и их слот в инвентаре
+
+### `menu`
+
+Дополнительные меню
+
+#### `material`
+
+Предмет который будет перекидывать в дополнительные меню
+
+
+Настройка дополнительных меню
+
+#### `slot`
+
+Какой слот будет в основном инвентаре
+
+#### `types`
+
+Список типов настроек с их параметрами
+
+| Вид              | Описание                                                                                                                                                                                                                                   |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| у `CHAT`         | Поле `name` является названием, а `material` тип предмета, который будет в инвентаре у этого чата                                                                                                                                          |
+| у `SEE` и `OUT`  | Поле `name` является названием, а `material` тип предмета, который будет в инвентаре у этого чата. Также имеет `colors`, где ключом является цифра, а значением цвет, который применится. Используй `""` для того, чтобы цвет не изменялся |
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.chatsetting`</span>
+
+ 
+<include>../../../files/permission.yml#chatsetting</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+
+### `settings`
+
+Список настроек и их прав
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>

@@ -1,0 +1,16 @@
+{
+  "title": "Конфигурация",
+  "description": "Основная конфигурация `FlectonePulse`, без которой невозможна работа",
+  "icon": "FileSliders",
+  "pages": [
+    "language",
+    "database",
+    "proxy",
+    "command",
+    "module",
+    "editor",
+    "logger",
+    "cache",
+    "metrics"
+  ]
+}

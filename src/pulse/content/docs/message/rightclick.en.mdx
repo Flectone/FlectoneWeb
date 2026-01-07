@@ -1,0 +1,50 @@
+---
+title: Right Click
+description: Module where Right-Clicking a player creates a message above the player's inventory
+authors:
+  - TheFaser
+---
+![right click](/pulse/rightclick.png)
+
+# <include>../../../parts/words.en.mdx#localization</include>
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.rightclick`</span>
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#rightclick</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#rightclick</include></Tab>
+</Tabs>
+
+### `format`
+
+Message that will be sent to the player who clicked on another player
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `message.yml → rightclick`</span>
+
+<include>../../../files/message.yml#rightclick</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+### `should_check_sneaking`
+
+Whether to check if the player is sneaking during the right-click
+
+### `hide_name_when_invisible`
+
+Whether to hide the name of a player who is invisible
+
+<include>../../../parts/destination.en.mdx</include>
+<include>../../../parts/cooldown.en.mdx</include>
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → message.rightclick`</span>
+
+<include>../../../files/permission.yml#rightclick</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+<include>../../../parts/permission/cooldown.en.mdx</include>
+<include>../../../parts/permission/sound.en.mdx</include>

@@ -1,0 +1,62 @@
+---
+title: Module
+description: Configuration for the core module of FlectonePulse
+authors:
+  - TheFaser
+---
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `config.yml → module`</span>
+
+
+<include>../../../files/config.yml#module</include>
+
+### `enable`
+
+Enables or disables the operation of all modules.
+
+- Every module has a parent (the one located above it).
+
+<Callout type="info" title="Example">
+    ```yaml
+    house:
+    door:
+    chair:
+    ```
+
+    `house` is the parent of `door` and `chair`.
+</Callout>
+
+- Every module depends on the parent's `enable` status.
+
+<Callout type="info" title="Example">
+    ```yaml
+    house:
+    enable: false
+    door:
+    enable: true
+    chair:
+    enable: true
+    ```
+
+    `house` is disabled, which means regardless of whether `door` and `chair` are enabled, they will also be disabled.
+</Callout>
+
+### `use_paper_message_sender`
+
+If enabled, `FlectonePulse` will use `Paper` as a tool for sending messages to a player's chat. How does it work? First, the plugin creates a message internally and obtains `FlectonePulse.Component`; this object is converted into a standard `String`. Then, `Paper` itself is used to derive a `Paper.Component` from this string and send it to the player.
+
+<Callout type="warn" title="Warning">
+
+    For this to work, `PacketEvents` must be installed on the server as a separate plugin, and the server core must be `Paper` or its fork.
+
+</Callout>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<include>../../../parts/words.en.mdx#path</include> `permission.yml`
+
+
+<include>../../../files/permission.yml#module</include>
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>

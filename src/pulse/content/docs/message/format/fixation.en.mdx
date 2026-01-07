@@ -1,0 +1,35 @@
+---
+title: Fixation
+description: This module formats player messages so that the first letter is capitalized and there is a period at the end
+authors:
+  - TheFaser
+---
+![fixation](/pulse/fixation.png)
+
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → format.fixation`</span>
+
+<include>../../../../files/message.yml#fixation</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `end_dot`
+
+Whether a period will be added to the end of the message if it is missing
+
+### `first_letter_uppercase`
+
+Whether the first letter of the message will always be capitalized
+
+### `non_dot_symbols`
+
+A list of symbols (or words) after which a period should not be placed
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.fixation`</span>
+
+<include>../../../../files/permission.yml#fixation</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

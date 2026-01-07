@@ -1,0 +1,83 @@
+---
+title: /emit
+description: Command to use any `destination` with text
+authors:
+  - TheFaser
+---
+![command emit](/pulse/commandemit.png)
+
+The command is available by default only to server admins and is created specifically for them.
+It should not be given to regular players.
+This command can be used through the console, another plugin, or a datapack, which is convenient if you want to use tools from FlectonePulse (any placeholders and tags will also work).
+
+To display text to all players at once, you can use `all`, for example `/emit all CHAT hello world`.
+Some `destination` types have arguments that can be modified via `{}`.
+These arguments are named exactly as they are in the configuration files.
+
+Examples
+- `/emit TheFaser ACTION_BAR{times={stay=40}} hello world`
+- `/emit TheFaser BOSS_BAR{color=RED} hello world`
+- `/emit TheFaser BRAND hello world`
+- `/emit TheFaser CHAT hello world`
+- `/emit TheFaser TITLE hello world`
+- `/emit TheFaser SUBTITLE hello world`
+- `/emit TheFaser TAB_FOOTER hello world`
+- `/emit TheFaser TAB_HEADER hello world`
+- `/emit TheFaser TEXT_SCREEN{offset_x=-0.3, offset_y=-0.2} hello world`
+- `/emit TheFaser TOAST{icon="minecraft:iron_ingot", style=CHALLENGE} hello world`
+
+Arguments that are omitted will use default values and do not all need to be entered. If the `destination` is entered incorrectly, the message will be sent to the regular chat.
+
+<include>../../../parts/destination.en.mdx</include>
+
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.emit`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#emit</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#emit</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `format`
+
+The format of the message that will be sent
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → emit`</span>
+
+
+<include>../../../files/command.yml#emit</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.emit`</span>
+
+
+<include>../../../files/permission.yml#emit</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

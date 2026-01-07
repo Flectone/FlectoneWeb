@@ -1,0 +1,74 @@
+---
+title: Mention
+authors:
+  - TheFaser
+---
+<Callout type="warn" title="Warning">
+    By default, server administrators cannot be mentioned due to the `bypass` permission.
+</Callout>
+
+This formatting allows mentioning (pinging) a person in a message. You can also mention donation groups, for example, `@default`.
+![mention](/pulse/mention.png)
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.mention`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#mention</include></Tab>
+    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#mention</include></Tab>
+</Tabs>
+
+### `person`
+
+The message shown to a player when they are mentioned.
+
+### `format`
+
+The message format if it is a player mention.
+
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → format.mention`</span>
+
+<include>../../../../files/message.yml#mention</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `trigger`
+
+The symbol that must start the mention message.
+
+<Callout type="info" title="Example">
+    If I want to mention `Flectone`, I should write `@Flectone`.
+    ![mention](/pulse/mention.png)
+</Callout>
+
+### `everyone_tag`
+
+The word that, in combination with the `trigger`, will mention all players on the server. To use this, the permission `flectonepulse.module.message.format.mention.group.default` is required.
+
+<include>../../../../parts/destination.en.mdx</include>
+<include>../../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.mention`</span>
+
+<include>../../../../files/permission.yml#mention</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `group`
+
+The permission to mention a donation group, for example, `@default`.
+
+<Callout type="idea" title="Information">
+    Each group checks its own permission: `flectonepulse.module.message.format.mention.group.group_name`.
+</Callout>
+
+### `bypass`
+
+Permission to ignore mentions (not be pinged).
+
+<include>../../../../parts/permission/sound.en.mdx</include>

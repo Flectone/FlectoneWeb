@@ -1,0 +1,91 @@
+---
+title: /flectonepulse
+description: Main command of the FlectonePulse plugin
+authors:
+  - TheFaser
+---
+![command flectonepulse](/pulse/commandflectonepulse.png)
+
+<Callout type="warn" title="Warning">
+
+    On older versions (1.9 and 1.10 specifically), it has been noticed that players might be kicked from the server during a reload, but this does not affect the plugin's operation.
+
+</Callout>
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.flectonepulse`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#flectonepulse</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#flectonepulse</include></Tab>
+</Tabs>
+
+### `null_host_editor`
+
+Message when the `host` field in config.yml is empty
+
+### `null_port_editor`
+
+Message when the `port` specified in config.yml is occupied or unavailable
+
+
+### `format_false`
+
+Message when an error occurs
+
+### `format_true`
+
+The format of the message that will be sent upon reloading the entire `FlectonePulse`
+
+### `format_web_starting`
+
+The format of the message that will be sent when the web server starts
+
+### `format_editor`
+
+The format of the message that will be sent upon a successful web server launch
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → flectonepulse`</span>
+
+
+<include>../../../files/command.yml#flectonepulse</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+
+### `execute_in_main_thread`
+
+Whether the entire reload will be executed in the server's main thread
+
+<Callout type="info" title="Information">
+
+    This may resolve reload issues on `Bukkit`, `Spigot`, `Mohist`, or other old/non-standard cores.
+
+</Callout>
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.flectonepulse`</span>
+
+
+<include>../../../files/permission.yml#flectonepulse</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

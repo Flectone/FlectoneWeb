@@ -1,0 +1,96 @@
+---
+title: /banlist
+description: Комманда для того, чтобы посмотреть список блокировок
+authors:
+  - TheFaser
+---
+![command banlist](/pulse/commandbanlist.png)
+
+  
+# <include>../../../parts/words.mdx#localization</include> 
+
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.banlist`</span>
+
+ 
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#banlist</include></Tab>
+<Tab value="en_us"><include>../../../files/localizations/en_us.yml#banlist</include></Tab>
+</Tabs>
+
+### `empty`
+
+Сообщение, если список заблокированных игроков пуст
+
+### `null_page`
+
+Сообщение, если введённая страница не существует
+
+### `null_player`
+
+Сообщение, если введённый игрок не найден
+
+### `global`
+
+
+Сообщения для глобальных блокировок
+
+#### `header`
+
+Верхняя часть сообщения списка
+
+#### `line`
+
+Формат каждого бана из списка
+
+#### `footer`
+
+Нижняя часть сообщения списка
+
+### `player`
+
+
+Сообщения для блокировок игрока
+
+#### `header`
+
+Верхняя часть сообщения списка
+
+#### `line`
+
+Формат каждого бана из списка
+
+#### `footer`
+
+Нижняя часть сообщения списка
+
+ 
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `command.yml → banlist`</span>
+
+<include>../../../files/command.yml#banlist</include>
+
+<include>../../../parts/enable.mdx</include>
+
+<include>../../../parts/perPage.mdx</include>
+
+<include>../../../parts/range.mdx</include>
+
+<include>../../../parts/cooldown.mdx</include>
+
+<include>../../../parts/sound.mdx</include>
+
+ 
+# <include>../../../parts/words.mdx#permission</include> 
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.banlist`</span>
+ 
+<include>../../../files/permission.yml#banlist</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>

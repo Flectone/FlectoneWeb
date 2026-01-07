@@ -1,0 +1,48 @@
+---
+title: TAB
+authors:
+  - TheFaser
+---
+<Callout type="warn" title="Внимательно">
+Это интеграция с другим плагином на `TAB`, настроить сам `TAB` можно [тут](/pulse/docs/message/tab/)
+</Callout>
+
+Интеграция с плагином `TAB` устраняет проблемы совместимости, выключая работу некоторых модулей в `FlectonePulse`:
+- [Скорборд](/pulse/docs/message/format/scoreboard/)
+- [Верхнее](/pulse/docs/message/tab/header/)
+- [Нижнее](/pulse/docs/message/tab/footer/)
+- [Имя в списке](/pulse/docs/message/tab/playerlistname/)
+
+
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `integration.yml → tab`</span>
+
+
+<include>../../../files/integration.yml#tab</include>
+
+<include>../../../parts/enable.mdx</include>
+
+### `disable_flectonepulse_scorebord`
+
+Выключает модуль [Скорборд](/pulse/docs/message/format/scoreboard/)
+
+### `disable_flectonepulse_header`
+
+Выключает модуль [Верхнее](/pulse/docs/message/tab/header/)
+
+### `disable_flectonepulse_footer`
+
+Выключает модуль [Нижнее](/pulse/docs/message/tab/footer/)
+
+### `disable_flectonepulse_playerlistname`
+
+Выключает модуль [Имя в списке](/pulse/docs/message/tab/playerlistname/)
+
+
+# <include>../../../parts/words.mdx#permission</include>
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → integration.tab`</span>
+
+
+<include>../../../files/permission.yml#tab</include>
+
+<include>../../../parts/permission/permissionTier3.mdx</include>

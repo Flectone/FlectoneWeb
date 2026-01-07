@@ -1,0 +1,66 @@
+---
+title: Automatic
+description: Server messages sent at specific intervals
+authors:
+  - TheFaser
+---
+![auto](/pulse/auto.png)
+
+# <include>../../../parts/words.en.mdx#localization</include>
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.auto`</span>
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#auto</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#auto</include></Tab>
+</Tabs>
+
+### `types`
+
+Types of automatic messages with a list
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `message.yml → auto`</span>
+
+<include>../../../files/message.yml#auto</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+### `types`
+
+Types of automatic messages
+
+<Callout type="info" title="YOU CAN CREATE YOUR OWN">
+    ```yaml
+    types:
+    newauto:
+    random: true
+    destination:
+    type: "CHAT"
+    ticker:
+    enable: true
+    period: 9000
+    sound:
+    enable: false
+    ```
+</Callout>
+
+- <include>../../../parts/random.en.mdx</include>
+- <include>../../../parts/destination.en.mdx</include>
+- <include>../../../parts/ticker.en.mdx</include>
+- <include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → message.auto`</span>
+
+<include>../../../files/permission.yml#auto</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `types`
+
+Types of automatic messages and their sound permissions
+
+- <include>../../../parts/permission/sound.en.mdx</include>

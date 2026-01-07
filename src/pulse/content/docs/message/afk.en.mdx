@@ -1,0 +1,76 @@
+---
+title: Afk
+description: A player becomes AFK if they do nothing for a certain period of time
+authors:
+  - TheFaser
+---
+![afk global message](/pulse/afkglobalmessage.png)
+
+If a person is AFK, they are given a specific suffix
+![afk suffix](/pulse/afksuffix.png)
+
+# <include>../../../parts/words.en.mdx#localization</include>
+<include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.afk`
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#afk</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#afk</include></Tab>
+</Tabs>
+
+### `suffix`
+
+The suffix given to a player if they go AFK
+![afksuffix](/pulse/afksuffix.png)
+
+### `format_true`
+
+Message if the player has stepped away
+
+### `format_false`
+
+Message if the player has returned
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<include>../../../parts/words.en.mdx#path</include> `message.yml → afk`
+
+
+<include>../../../files/message.yml#afk</include>
+
+<include>../../../parts/enable.en.mdx</include>
+<include>../../../parts/range.en.mdx</include>
+
+### `delay`
+
+How much time in [ticks](https://minecraft.wiki/w/Tick) a player must do nothing to go AFK
+
+### `ignore`
+
+List of actions that are ignored and do not affect AFK mode
+
+| Actions that can be ignored |
+|-----------------------------|
+| Any command names           |
+| `chat` - when a player writes in chat |
+| `quit` - when a player leaves |
+
+<Callout type="info" title="Example">
+    If I add the command `tell` to the list and a player is in AFK mode, they can use the `tell` command and it will not remove them from AFK mode
+</Callout>
+
+<include>../../../parts/destination.en.mdx</include>
+<include>../../../parts/ticker.en.mdx</include>
+<include>../../../parts/sound.en.mdx</include>
+
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<include>../../../parts/words.en.mdx#path</include> `permission.yml → message.afk`
+
+
+<include>../../../files/permission.yml#afk</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+<include>../../../parts/permission/cooldown.en.mdx</include>
+<include>../../../parts/permission/sound.en.mdx</include>

@@ -1,0 +1,71 @@
+---
+title: /dice
+description: Command for rolling dice for luck
+authors:
+  - TheFaser
+---
+![command dice](/pulse/commanddice.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.dice`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#dice</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#dice</include></Tab>
+</Tabs>
+
+### `symbols`
+
+A list of indices (the rolled number) and symbols (dice)
+
+### `format`
+
+The format of the message that will be sent
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → dice`</span>
+
+
+<include>../../../files/command.yml#dice</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+
+### `min`
+
+Minimum number of dice
+
+### `max`
+
+Maximum number of dice
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.dice`</span>
+
+
+<include>../../../files/permission.yml#dice</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

@@ -1,0 +1,75 @@
+---
+title: /try
+description: Command to display an action execution with a chance
+authors:
+  - TheFaser
+---
+![command try](/pulse/commandtry.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.try`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#try</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#try</include></Tab>
+</Tabs>
+
+### `format_true`
+
+Format of the message that will be sent if the action is successful
+
+### `format_false`
+
+Format of the message that will be sent if the action is unsuccessful
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → try`</span>
+
+
+<include>../../../files/command.yml#try</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/range.en.mdx</include>
+
+
+### `min`
+
+Minimum chance of action execution
+
+### `max`
+
+Maximum chance of action execution
+
+### `good`
+
+The chance threshold at which an action is considered successful
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.try`</span>
+
+
+<include>../../../files/permission.yml#try</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

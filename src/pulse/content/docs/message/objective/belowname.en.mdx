@@ -1,0 +1,55 @@
+---
+title: Below name
+description: ScoreBoard value displayed below a player's nickname
+authors:
+  - TheFaser
+---
+More details about this [ScoreBoard value](https://minecraft.wiki/w/Scoreboard)
+
+<Callout type="warn" title="Warning">
+    If the name display is disabled in the `scoreboard` module (`name_visible: false`), the value below the name will not be shown.
+</Callout>
+
+![below name](/pulse/belowname.png)
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.belowname`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#belowname</include></Tab>
+    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#belowname</include></Tab>
+</Tabs>
+
+### `format`
+
+The message that will be shown below the nickname
+
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → objective.belowname`</span>
+
+<include>../../../../files/message.yml#belowname</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `mode`
+
+The digital display mode for the value from those available
+
+<include>../../../../parts/objective.en.mdx</include>
+
+<Callout type="info" title="Example: `PING` MODE">
+    This means the player's ping will be returned.
+    ![below name](/pulse/belowname.png)
+</Callout>
+
+<include>../../../../parts/ticker.en.mdx</include>
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.objective.belowname`</span>
+
+<include>../../../../files/permission.yml#belowname</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

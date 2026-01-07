@@ -1,0 +1,73 @@
+---
+title: /coin
+description: Command for flipping a coin
+authors:
+  - TheFaser
+---
+![command coin](/pulse/commandcoin.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.coin`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#coin</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#coin</include></Tab>
+</Tabs>
+
+### `head`
+
+Name of the coin side (heads)
+
+### `tail`
+
+Name of the other coin side (tails)
+
+### `format`
+
+The format of the message that will be sent
+
+### `format_draw`
+
+Message if the coin lands on its edge
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → coin`</span>
+
+
+<include>../../../files/command.yml#coin</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+
+### `draw`
+
+Enables a chance (`1%`) of the coin landing on its edge
+
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.coin`</span>
+
+
+<include>../../../files/permission.yml#coin</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

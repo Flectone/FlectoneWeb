@@ -1,0 +1,15 @@
+{
+  "title": "FlectonePulse Документация",
+  "description": "Подробная документация по FlectonePulse",
+  "pages": [
+    "---Документация---",
+    "index",
+    "config",
+    "command",
+    "integration",
+    "message",
+    "---Дополнительно---",
+    "api",
+    "metrics"
+  ]
+}

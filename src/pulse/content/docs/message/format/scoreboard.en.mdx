@@ -1,0 +1,47 @@
+---
+title: Scoreboard
+description: Module responsible for the correct operation of teams and modules
+authors:
+  - TheFaser
+---
+
+[Objectives](/pulse/docs/message/objective/)
+[Tab](/pulse/docs/message/tab/)
+
+<Callout type="warn" title="Warning">
+    If you encounter issues with `TAB` (e.g., sorting in the TAB list) or another plugin using `scoreboard`, you should disable this module.
+</Callout>
+
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → format.scoreboard`</span>
+
+<include>../../../../files/message.yml#scoreboard</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `name_visible`
+
+Enables the display of the name above the player
+
+### `color`
+
+The color of the player's team; if `name_visible` is enabled, the name will be this color
+
+### `prefix`
+
+The message displayed before the name above the head
+
+### `suffix`
+
+The message displayed after the name above the head
+
+<include>../../../../parts/ticker.en.mdx</include>
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.scoreboard`</span>
+
+<include>../../../../files/permission.yml#scoreboard</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

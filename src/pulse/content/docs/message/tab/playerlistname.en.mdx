@@ -1,0 +1,48 @@
+---
+title: Player List Name
+description: Module responsible for the player's name in the TAB
+authors:
+  - TheFaser
+---
+![player list name](/pulse/playerlistname.png)
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.tab.playerlistname`</span>
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#playerlistname</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#playerlistname</include></Tab>
+</Tabs>
+
+### `format`
+
+Message in the TAB list
+
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → tab.playerlistname`</span>
+
+<include>../../../../files/message.yml#playerlistname</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `proxy_mode`
+
+If enabled, players on different servers will be synchronized in a single TAB. This requires enabling proxy mode in `FlectonePulse`
+
+<Callout type="warn" title="Warning">
+    1. This works on versions 1.19.4 and higher
+    2. Players between servers will not be able to see another player's ping via TAB (it will always be -1 if the player is on another server)
+    3. Correct skin display requires SkinsRestorer in proxy mode
+</Callout>
+
+<include>../../../../parts/ticker.en.mdx</include>
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.tab.playerlistname`</span>
+
+<include>../../../../files/permission.yml#playerlistname</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

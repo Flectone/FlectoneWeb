@@ -9,34 +9,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
 
-    - name: Install Bun
-      run: |
-        curl -fsSL https://bun.sh/install | bash
-        echo "$HOME/.bun/bin" >> $GITHUB_PATH
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Install dependencies
-      run: bun install && bun install:pulse-ru && bun install:pulse-en
+      - name: Build project
+        run: npm run build
 
-    - name: Build project
-      run: bun run build:all
+      - name: Copy static files
+        run: cp -r .next/static .next/standalone/.next/
 
-    - name: Deploy to server
-      uses: easingthemes/ssh-deploy@main
-      with:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ARGS: "-rlgoDzvc -i"
-        SOURCE: "dist/*"
-        REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
-        REMOTE_USER: ${{ secrets.REMOTE_USER }}
-        REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-        TARGET: ${{ secrets.REMOTE_TARGET }}
-        SCRIPT_BEFORE: |
-          rm -rf ${{ secrets.REMOTE_TARGET }}/*
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          ARGS: "-rlgoDzvc -i"
+          SOURCE: ".next/standalone/*"
+          REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
+          REMOTE_USER: ${{ secrets.REMOTE_USER }}
+          REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
+          TARGET: ${{ secrets.REMOTE_TARGET }}
+          SCRIPT_BEFORE: |
+            pm2 stop next-app 2>/dev/null || true
+            rm -rf ${{ secrets.REMOTE_TARGET }}/*
+          SCRIPT_AFTER: |
+            cd ${{ secrets.REMOTE_TARGET }}
+            pm2 start server.js --name "next-app"

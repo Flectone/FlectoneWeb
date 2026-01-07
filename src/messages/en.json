@@ -1,0 +1,143 @@
+{
+  "Metadata": {
+    "Root": {
+      "title": "Flectone",
+      "description": "Flectone is a brand that unites all TheFaser projects",
+      "applicationName": "Flectone",
+      "keywords": "flectone, Flectone",
+      "image": "/logo.png"
+    },
+    "Mix": {
+      "title": "FlectoneMix",
+      "description": "Was created to make it easier to find and install things for Minecraft, but the project was closed",
+      "applicationName": "FlectoneMix",
+      "image": "/logo.png"
+    },
+    "Chat": {
+      "title": "FlectoneChat",
+      "description": "Simplifies and complements the game on the server by adding convenient features, but the project was closed",
+      "applicationName": "FlectoneChat",
+      "image": "/logo.png"
+    },
+    "About": {
+      "title": "About us | Flectone",
+      "description": "All these people have contributed to the project",
+      "applicationName": "Flectone",
+      "image": "/logo.png"
+    },
+    "Pulse": {
+      "title": "FlectonePulse",
+      "description": "Every message under your control!",
+      "applicationName": "Flectone",
+      "keywords": "flectone, Flectone, plugin, minecraft plugin, chat plugin, minecraft chat plugin, chat, minecraft, flectonepulse",
+      "image": "/logo.png"
+    }
+  },
+  "Footer": {
+    "answer": "Not an official Minecraft service. Not approved by or associated with Mojang or Microsoft.",
+    "date": "Established in 2019",
+    "openSourse": "All project code is <a>open source</a>"
+  },
+  "Header": {
+    "about": "About us",
+    "Projects": {
+      "title": "Projects"
+    }
+  },
+  "ThemeSwitcher": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "LanguageSwitcher": {
+    "ru": "Russian",
+    "en": "English"
+  },
+  "Projects": {
+    "title": "Projects by <b>Flectone</b>",
+    "Pulse": {
+      "description": "New project for easy server customization",
+      "button": "More",
+      "buttonPath": "https://flectone.net/en/pulse"
+    },
+    "Mix": {
+      "description": "Previously used to download stuff from videos"
+    },
+    "Chat": {
+      "description": "Father of FlectonePulse, but it's closed",
+      "imagePath": "/chat/chat-en.svg"
+    }
+  },
+  "Members": {
+    "title": "The <b>Flectone</b> Team",
+    "TheFaser": {
+      "name": "TheFaser",
+      "description": "Initiator of Flectone projects, YouTuber, and developer",
+      "avatar": "https://github.com/TheFaser.png",
+      "link": "https://github.com/TheFaser"
+    },
+    "FunnyBars": {
+      "name": "FunnyBars",
+      "description": "Contributor to all projects and creator of the CookieClicker plugin",
+      "avatar": "https://github.com/FunnyBars.png",
+      "link": "https://github.com/FunnyBars"
+    },
+    "fxdsu": {
+      "name": "fxdsu",
+      "description": "Creator of the FlectoneChat plugin and main assistant",
+      "avatar": "https://github.com/fxdsu.png",
+      "link": "https://github.com/fxdsu"
+    },
+    "vplend": {
+      "name": "vplend",
+      "description": "Website developer",
+      "avatar": "https://github.com/vplend.png",
+      "link": "https://github.com/vplend"
+    }
+  },
+  "FlectoneMix": {
+    "availableOnBoosty": "Available on Boosty",
+    "downloads": "downloads in history",
+    "description": "Was created to make it easier to find and install things for minecraft, but the project has been shut down"
+  },
+  "FlectoneChat": {
+    "description": "Simplified and augmented the server game by adding convenient features, but it's closed",
+    "usePulse": "Use <strong>FlectonePulse</strong>, as FlectoneChat is no longer supported.",
+    "imagePath": "/chat/chat-en.svg"
+  },
+  "Pulse": {
+    "Authors": {
+      "title": "Authors of page"
+    },
+    "WelcomeCard": {
+      "slogan": "Every message is under <b>your</b> control!"
+    },
+    "Buttons": {
+      "support": "Support",
+      "documentation": "Documentation",
+      "metrics": "Metrics",
+      "download": "Download"
+    },
+    "Features": {
+      "Message": {
+        "title": "Multiple Message Setup",
+        "description": "Customize almost every message your player sees. Any FlectonePulse action can be disabled."
+      },
+      "Command": {
+        "title": "Over 30 Exciting Commands",
+        "description": "Make the chat more user-friendly. Players can also enjoy built-in mini-games."
+      },
+      "Integration": {
+        "title": "Integration with Other Projects",
+        "description": "Allow players to communicate across different platforms. Full integrations with Discord, Twitch, and Telegram."
+      }
+    },
+    "Structure": {
+      "title": "Plugin Structure",
+      "description": " • The <b>images</b> folder contains all images used in the plugin, such as avatars and icons.\n          • The <b>libraries</b> folder contains third-party libraries required for the plugin to function.\n          • The <b>localizations</b> folder contains localization files for multi-language support. Includes <b>en_us.yml</b> and <b>ru_ru.yml</b>.\n          • The <b>commands.yml</b> file contains settings for all commands available in the plugin.\n          • The <b>config.yml</b> file contains the main plugin settings, including connection parameters and general options.\n          • The <b>integration.yml</b> file contains integration settings for other plugins and services.\n          • The <b>message.yml</b> file allows you to customize all messages displayed to players in-game.\n          • The <b>permission.yml</b> file contains permission settings for various plugin features."
+    },
+    "Metrics": {
+      "title": "Metrics"
+    }
+  }
+}

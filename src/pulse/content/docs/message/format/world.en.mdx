@@ -1,0 +1,37 @@
+---
+title: Dimension
+description: Module responsible for the <world_prefix> tag, representing the dimension color
+authors:
+  - TheFaser
+---
+![world tab](/pulse/worldtab.png)
+![world chat](/pulse/worldchat.png)
+
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → format.world`</span>
+
+<include>../../../../files/message.yml#world</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `mode`
+
+The mode for determining the world from those available
+
+| Mode     | Description                                                                     |
+|----------|---------------------------------------------------------------------------------|
+| `TYPE`   | The world is determined by its type name; for example, a standard world is `normal` |
+| `NAME`   | The world is determined by its folder name                                      |
+
+### `values`
+
+A list of worlds and their corresponding `<world_prefix>`
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.world`</span>
+
+<include>../../../../files/permission.yml#world</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

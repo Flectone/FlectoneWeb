@@ -1,16 +1,14 @@
 <div align="center">
-  <img src="src/assets/favicons/favicon.ico" alt="Flectone Logo" width="120" />
+  <img src="public/logo.png" alt="Flectone Logo" width="120" />
 
 # ⚡️ Flectone Web
 
-🚀 Modern web solution for Flectone Network
+🚀 Modern web solution for Flectone Network built with Next.js
 
-[![Built with Astro](https://astro.badg.es/v2/built-with-astro/tiny.svg)](https://astro.build)
-[![Powered by Bun](https://img.shields.io/badge/Powered%20by-Bun-orange)](https://bun.sh)
+[![Built with Next.js](https://img.shields.io/badge/Built%20with-Next.js-black?logo=next.js)](https://nextjs.org)
 [![Website Status](https://img.shields.io/website?url=https%3A%2F%2Fflectone.net)](https://flectone.net)
 [![License](https://img.shields.io/badge/license-GPLv3-blue)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/Flectone/FlectoneWeb?style=social)](https://github.com/Flectone/FlectoneWeb/stargazers)
-[![GitHub Forks](https://img.shields.io/github/forks/Flectone/FlectoneWeb?style=social)](https://github.com/Flectone/FlectoneWeb/network/members)
 
 </div>
 
@@ -20,49 +18,49 @@ Here’s a quick overview of the project structure:
 
 ```bash
 FlectoneWeb/
-├── src/                  # Astro project source files
-│   ├── assets/           # Static assets (images, fonts, etc.)
-│   ├── components/       # Reusable UI components
-│   ├── layouts/          # Layout templates
-│   ├── pages/            # Application pages and routes
-│   └── styles/           # Global styles and CSS
+├── src/
+│   ├── app/                # Next.js App Router (Pages, API, Layouts)
+│   │   ├── (main)/         # Main website routes (about, chat, mix)
+│   │   └── pulse/          # Documentation routes
+│   ├── components/         # Reusable React components
+│   ├── i18n/               # Internationalization configuration
+│   ├── lib/                # Shared utilities and hooks
+│   ├── messages/           # Localization files (JSON)
+│   ├── pulse/              # Documentation content (MDX)
+│   └── styles/             # Global styles and Tailwind CSS
 │
-├── pulse/                # VitePress documentation
-│   ├── en/               # (EN)
-│   └── ru/               # (RU)
-│
-├── dist/                 # Production build output
-├── public/               # Public static files
-└── package.json          # Project dependencies and scripts
+├── public/                 # Static assets
+├── source.config.ts        # Fumadocs configuration
+└── package.json            # Project dependencies and scripts
 ```
 
 ## 🎯 Overview
 
-Flectone Web is a modern, fast, and responsive web solution built for **Flectone Network**. It combines the power of **Astro** for the main frontend and **VitePress** for documentation, providing an excellent developer and user experience.
+Flectone Web is a high-performance web solution for **Flectone Network**. It utilizes **Next.js 16+** with App Router for the core site and **Fumadocs** for a seamless, searchable documentation experience (Pulse).
 
 ## ✨ Key Features
 
-- **🌍 Multi-language Support**: Fully localized for RU and EN audiences.
-- **⚡️ Blazing Fast Performance**: Optimized for speed with Astro and Vite.
-- **🎨 Modern UI**: Clean, responsive design with dark/light themes.
-- **📚 Comprehensive Documentation**: Built with VitePress for easy maintenance.
-- **🚀 Easy Deployment**: Pre-configured build scripts for seamless deployment.
+- **Multi-language Support**: Full i18n support for global reach.
+- **Next.js 16 Power**: Server Components, Streaming, and Optimized Caching.
+- **Integrated Docs**: "Pulse" documentation built directly into the app.
+- **Modern UI**: Responsive design with Tailwind CSS.
+- **Fast Performance**: Optimized for Core Web Vitals.
 
 ## 🛠️ Tech Stack
 
 | Category       | Technologies                                                                 |
-|----------------|-----------------------------------------------------------------------------|
-| **Core**       | ![Astro](https://img.shields.io/badge/Astro-BC52EE?logo=astro&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) |
+|----------------|------------------------------------------------|
+| **Core**       | ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) |
 | **Styling**    | ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white) |
-| **Runtime**    | ![Bun](https://img.shields.io/badge/Bun-000000?logo=bun&logoColor=white)    |
-| **Docs**       | ![VitePress](https://img.shields.io/badge/VitePress-646CFF?logo=vite&logoColor=white) |
+| **Language**   | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) |
+| **Docs**       | ![Fumadocs](https://img.shields.io/badge/Fumadocs-blue?style=flat) |
 
 ## 🚀 Quick Start
 
 ### Prerequisites
 
-- **Node.js** (v18 or higher)
-- **Bun** (v1.0 or higher)
+- **Node.js** (v18.17 or higher)
+- **npm** or **yarn**
 
 ### Installation
 
@@ -74,85 +72,27 @@ Flectone Web is a modern, fast, and responsive web solution built for **Flectone
 
 2. Install dependencies:
 ```bash
-   bun install && bun install:pulse-ru && bun install:pulse-en
+   npm install
 ```
+
 ### Development
 
-- **Start Astro development server**:
+Start the development server:
 ```bash
-  bun run dev
-```
-
-- **Start VitePress development server (RU docs)**:
-```bash
-  bun run dev:pulse-ru
-```
-
-- **Start VitePress development server (EN docs)**:
-```bash
-  bun run dev:pulse-en
+  npm run dev
 ```
 
 ### Build
 
-- **Build Astro project**:
+Build for production:
 ```bash
-  bun run build
+  npm run build
 ```
 
-- **Build VitePress docs (RU)**:
+Preview production build:
 ```bash
-  bun run build:pulse-ru
+  npm run start
 ```
-
-- **Build VitePress docs (EN)**:
-```bash
-  bun run build:pulse-en
-```
-
-- **Copy built docs to Astro dist folder**:
-```bash
-  bun run copy:pulse
-```
-
-- **Build everything (Astro + VitePress docs)**:
-```bash
-  bun run build:all
-```
-
-### Preview
-
-- **Preview Astro build**:
-```bash
-  bun run preview
-```
-
-- **Preview VitePress docs (RU)**:
-```bash
-  bun run preview:pulse-ru
-```
-
-- **Preview VitePress docs (EN)**:
-```bash
-  bun run preview:pulse-en
-```
-
-## 📜 Scripts Reference
-
-| Script             | Description                                    |
-|--------------------|------------------------------------------------|
-| `dev`              | Start Astro development server                 |
-| `dev:pulse-ru`     | Start VitePress dev server for RU docs         |
-| `dev:pulse-en`     | Start VitePress dev server for EN docs         |
-| `build`            | Build Astro project                            |
-| `build:pulse-ru`   | Build RU VitePress docs                        |
-| `build:pulse-en`   | Build EN VitePress docs                        |
-| `build:all`        | Build everything (Astro + VitePress docs)      |
-| `copy:pulse`       | Copy built VitePress docs to Astro dist folder |
-| `preview`          | Preview Astro build                            |
-| `preview:pulse-ru` | Preview RU VitePress docs                      |
-| `preview:pulse-en` | Preview EN VitePress docs                      |
-
 
 ## 🤝 Contributing
 

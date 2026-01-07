@@ -1,0 +1,81 @@
+---
+title: Proxy
+description: Used for synchronizing multiple servers using BungeeCord/Velocity or Redis
+authors:
+  - TheFaser
+---
+<Callout type="info" title="Information">
+    This works on any platform where FlectonePulse is installed. For Bukkit and Fabric servers.
+</Callout>
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `config.yml → proxy`</span>
+
+
+<include>../../../files/config.yml#proxy</include>
+
+### `clusters`
+
+A list of clusters to which the server should be connected. Used only when proxy mode is enabled.
+If the list is empty, the server receives all messages from other servers.
+
+<Callout type="info" title="How to use?">
+    You need to enter the cluster name on all servers where messages will be received and sent.
+    ```yaml
+    clusters:
+    - "test_cluster"
+    ```
+
+    This way, servers are linked together and messages will only be exchanged between these servers.
+</Callout>
+
+### `bungeecord`
+
+Enables communication with `BungeeCord`.
+
+<Callout type="idea" title="How to configure this?">
+    1. The `FlectonePulse-bukkit.jar` file must be placed in the `plugins` folder on `BungeeCord`. Even if you have a Fabric server, you must place `FlectonePulse-bukkit.jar` on `BungeeCord`.
+    2. On all servers where communication with `BungeeCord` is required, `bungeecord: true` must be enabled in FlectonePulse.
+    3. The selected database must be `MySQL`, `MariaDB`, or `PostgreSQL` (i.e., server-based).
+</Callout>
+
+### `velocity`
+
+Enables communication with `Velocity`.
+
+<Callout type="idea" title="How to configure this?">
+    1. The `FlectonePulse-bukkit.jar` file must be placed in the `plugins` folder on `Velocity`. Even if you have a Fabric server, you must place `FlectonePulse-bukkit.jar` on `Velocity`.
+    2. On all servers where communication with `Velocity` is required, `velocity: true` must be enabled in FlectonePulse.
+    3. The selected database must be `MySQL`, `MariaDB`, or `PostgreSQL` (i.e., server-based).
+</Callout>
+
+### `redis`
+
+Used for communication between different servers. For `user` and `password`, you can use environment variables, such as `${VALUE}`.
+
+
+#### `enable`
+
+Enables `Redis` operation.
+
+#### `host`
+
+The host (IP) of the server where `Redis` is running.
+
+
+#### `port`
+
+The port of the server where `Redis` is running.
+
+#### `ssl`
+
+Enables the use of `SSL`.
+
+#### `user`
+
+The username in `Redis`; if none, it can be left empty.
+
+#### `password`
+
+The user password in `Redis`; if none, it can be left empty.

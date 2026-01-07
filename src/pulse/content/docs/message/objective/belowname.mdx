@@ -1,0 +1,57 @@
+---
+title: Под ником
+description: ScoreBoard значение игрока под его ником
+authors:
+  - TheFaser
+---
+Подробнее про это [ScoreBoard значение](https://ru.minecraft.wiki/w/%D0%A1%D0%B8%D1%81%D1%82%D0%B5%D0%BC%D0%B0_%D1%81%D1%87%D1%91%D1%82%D0%B0_%D0%B8%D0%B3%D1%80%D0%BE%D0%B2%D1%8B%D1%85_%D1%81%D0%BE%D0%B1%D1%8B%D1%82%D0%B8%D0%B9)
+
+<Callout type="warn" title="Предупреждение">
+
+Если в модуле `scoreboard` отображение имени выключен (`name_visible: false`), то значение под ником не будет показываться
+
+</Callout>
+
+![below name](/pulse/belowname.png)
+
+# <include>../../../../parts/words.mdx#localization</include> 
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.belowname`</span>
+
+
+<Tabs items={['ru_ru', 'en_us']}>
+<Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#belowname</include></Tab>
+<Tab value="en_us"><include>../../../../files/localizations/en_us.yml#belowname</include></Tab>
+</Tabs>
+
+### `format`
+
+Сообщение, которое будет показано под ником
+
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → objective.belowname`</span>
+
+<include>../../../../files/message.yml#belowname</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `mode`
+
+Режим цифрового отображения значения из доступных
+
+<include>../../../../parts/objective.mdx</include>
+
+<Callout type="info" title="Например РЕЖИМ `PING`">
+Значит будет возвращаться пинг игрока
+![below name](/pulse/belowname.png)
+</Callout>
+
+<include>../../../../parts/ticker.mdx</include>
+
+
+# <include>../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.objective.belowname`</span>
+
+<include>../../../../files/permission.yml#belowname</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

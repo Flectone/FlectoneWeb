@@ -1,0 +1,35 @@
+---
+title: MiniPlaceholders
+description: Интеграция с плагином MiniPlaceholders позволяет использовать любые мини-плейсхолдеры
+authors:
+  - TheFaser
+---
+Подробнее про [мини-плейсхолдеры](https://github.com/MiniPlaceholders/MiniPlaceholders/wiki/Placeholders)
+
+<Callout type="warn" title="Предупреждение">
+Чтобы использовать мини-плейсхолдер, его обязательно нужно обернуть в `{}` 
+
+Пример `{<server_name>}`
+</Callout>
+
+
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `integration.yml → miniplaceholders`</span>
+
+
+<include>../../../files/integration.yml#miniplaceholders</include>
+
+<include>../../../parts/enable.mdx</include>
+
+
+# <include>../../../parts/words.mdx#permission</include>
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → integration.miniplaceholders`</span>
+
+
+<include>../../../files/permission.yml#miniplaceholders</include>
+
+<include>../../../parts/permission/permissionTier3.mdx</include>
+
+### `use`
+
+Право для использования плейсхолдеров из MiniPlaceholders в сообщении

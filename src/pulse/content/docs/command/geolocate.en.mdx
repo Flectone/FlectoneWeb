@@ -1,0 +1,65 @@
+---
+title: /geolocate
+description: Command for tracking IP address and getting player information
+authors:
+  - TheFaser
+---
+![command geolocate](/pulse/commandgeolocate.png)
+
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.geolocate`</span>
+
+
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#geolocate</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#geolocate</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `null_or_error`
+
+Message if an error occurred while retrieving information
+
+### `format`
+
+The format of the message that will be sent
+
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → geolocate`</span>
+
+
+<include>../../../files/command.yml#geolocate</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/suggestOfflinePlayers.en.mdx</include>
+<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/destination.en.mdx</include>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.geolocate`</span>
+
+
+<include>../../../files/permission.yml#geolocate</include>
+
+
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

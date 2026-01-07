@@ -1,0 +1,83 @@
+---
+title: /sprite
+description: Command for searching sprites from Minecraft atlases
+authors:
+  - TheFaser
+---
+
+![sprite](/pulse/commandsprite.png)
+
+# <include>../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.sprite`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#sprite</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#sprite</include></Tab>
+</Tabs>
+
+### `null_atlas`
+
+Message if the entered atlas does not exist
+
+### `null_page`
+
+Message if the entered page does not exist
+
+### `download_error`
+
+Message when an atlas file fails to download from the internet. Atlases may vary or not exist on different versions, so this error should be treated as normal
+
+### `atlas_downloading`
+
+Message when the atlas file starts downloading from the internet
+
+### `header`
+
+Top part of the list message
+
+### `line_element`
+
+Format for each component; they will be added one after another
+
+#### `footer`
+
+Bottom part of the list message
+
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → sprite`</span>
+
+<include>../../../files/command.yml#sprite</include>
+
+<include>../../../parts/enable.en.mdx</include>
+
+<include>../../../parts/perPage.en.mdx</include>
+
+<include>../../../parts/aliases.en.mdx</include>
+
+### `categories`
+
+List of categories, i.e., available atlases
+
+<Callout type="info" title="Information">
+    - Each atlas is downloaded only once if it does not exist in the `FlectonePulse/minecraft/<version>/atlases/` folder
+    - Each atlas has the final format `minecraft_textures_atlas_<atlas>.png.txt`
+        - Each atlas is downloaded from Flectone's own web server via the link `https://flectone.net/files/r/minecraft/<version>/atlases/minecraft_textures_atlas_<atlas>.png.txt`
+            - Atlases do not necessarily have to be downloaded from the web server; you can place them in the `FlectonePulse/minecraft/<version>/atlases/` folder in advance yourself by obtaining them using the `F3 + S` combination in Minecraft
+</Callout>
+
+<include>../../../parts/cooldown.en.mdx</include>
+
+<include>../../../parts/sound.en.mdx</include>
+
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.sprite`</span>
+
+
+<include>../../../files/permission.yml#sprite</include>
+
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

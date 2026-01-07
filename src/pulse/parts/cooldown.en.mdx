@@ -1,0 +1,28 @@
+### `cooldown`
+
+Usage delay
+
+#### Usage
+<Steps>
+    <Step>
+        Replace `false` with `true`
+    </Step>
+    <Step>
+        Restart `FlectonePulse` using the `/flectonepulse reload` command
+    </Step>
+</Steps>
+
+<Callout type="info" title="">
+    Additional parameters for delay settings will appear automatically
+</Callout>
+
+```yaml
+cooldown:
+  enable: true
+  duration: 60
+```
+#### Parameters
+| Field      | Type      | Explanation                                                                                             |
+|------------|-----------|---------------------------------------------------------------------------------------------------------|
+| `enable`   | `boolean` | Enables the cooldown functionality                                                                      |
+| `duration` | `long`    | How many [ticks](https://minecraft.wiki/w/Tick) must pass between uses                                  |

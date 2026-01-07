@@ -1,0 +1,60 @@
+---
+title: Язык
+description: Настройка языка и поведени
+authors:
+  - TheFaser
+---
+# <include>../../../parts/words.mdx#setting</include>
+<span><include>../../../parts/words.mdx#path</include> `config.yml → language`</span>
+
+ 
+<include>../../../files/config.yml#language</include>
+
+### `type`
+
+Локализация, используемая для всех сообщений плагина
+
+<Callout type="warn" title="Предупреждение">
+Выбираемая локализация должна быть из папки `localizations`
+</Callout>
+
+Можно создавать и использовать свои локализации, для этого:
+<Steps>
+    <Step>
+        Скопируй один файл локализации, например `ru_ru.yml`
+    </Step>
+    <Step>
+        Переименуй его, желательно так, как в [игре](https://minecraft.wiki/w/Language)
+    </Step>
+    <Step>
+        Теперь можно изменять любые сообщения внутри этого файла
+    </Step>
+</Steps>
+
+<Callout type="info" title="Пример">
+Я хочу перевести плагин на Беларуский
+<Steps>
+    <Step>
+        Копирую файл `ru_ru.yml`
+    </Step>
+    <Step>
+        Переименовываю его в `be_by.yml`
+    </Step>
+</Steps>
+   ![locale](/pulse/locale.png)
+3. Готово!
+</Callout>
+
+### `by_player`
+
+Если включено, то у каждого игрока будет проверяться его локализация майнкрафта и взависимости от этого будет показываться [сообщение](/pulse/docs/message/)
+
+<Callout type="info" title="Информация">
+
+Если ты изменяешь сообщения с включенным `by_player`, то не забывай это делать ВО ВСЕХ файлах локализации
+
+</Callout>
+
+![locale](/pulse/locale.gif)
+
+Если такой локализации нет, то будет использована локализация из `type`

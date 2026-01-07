@@ -1,0 +1,87 @@
+---
+title: Players
+description: Module responsible for the number of players on the server
+authors:
+  - TheFaser
+---
+![player count](/pulse/playercount.png)
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.status.players`</span>
+
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#players</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#players</include></Tab>
+</Tabs>
+
+### `samples`
+
+List of server players. The `<players>` placeholder adds all server players to the list.
+
+<Callout type="info" title="USAGE EXAMPLES">
+    You can add any messages
+    ```yaml
+    samples:
+    - name: "<red>This is a Minecraft server!"
+    id: null
+    - name: "<players>"
+        id: null
+        ```
+        ![sample1](/pulse/sample1.png)
+
+        or create fake players
+        ```yaml
+        samples:
+        - name: "Notch"
+        id: null
+        - name: "<players>"
+            id: null
+            ```
+            ![sample2](/pulse/sample2.png)
+</Callout>
+
+<Callout type="warn" title="Warning">
+    Only available colors can be used
+    <include>../../../../parts/color.en.mdx</include>
+</Callout>
+
+### `full`
+
+Message when connecting to a full server
+
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → status.players`</span>
+
+<include>../../../../files/message.yml#players</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `control`
+
+If enabled, the player will not be allowed to join the server if there are more players than [specified](#max)
+
+### `max`
+
+Maximum number of players on the server
+
+### `online`
+
+A number that allows you to specify any online count on the server
+
+<Callout type="info" title="Information">
+    The number can be anything, but `-69` indicates the current online count
+</Callout>
+
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.status.players`</span>
+
+<include>../../../../files/permission.yml#players</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `bypass`
+
+Permission to connect to a full server
