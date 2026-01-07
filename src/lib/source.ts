@@ -19,8 +19,9 @@ export const source = loader({
   i18n
 });
 
+// lib/source.ts
 export function getPageImage(page: InferPageType<typeof source>) {
-  const segments = [...page.slugs, 'image.png'];
+  const segments = [page.locale, ...page.slugs, 'image.png'].filter(Boolean);
 
   return {
     segments,
