@@ -43,4 +43,4 @@ jobs:
           TARGET: "${{ secrets.REMOTE_TARGET }}"
           SCRIPT_AFTER: |
             cd ${{ secrets.REMOTE_TARGET }}
-            pm2 restart flectone-web || pm2 start server.js --name flectone-web
+            pm2 reload flectone-web --update-env || pm2 start server.js --name flectone-web
