@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps<'/[lang]/pulse'>) {
         },
         {
           text: t('Buttons.metrics'),
-          url: '/pulse/metrics',
+          url: '/pulse/docs/metrics',
           secondary: false,
         },
         {
