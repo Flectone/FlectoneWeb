@@ -29,16 +29,15 @@ jobs:
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
           ARGS: "-rlgoDzvc -i"
-          SOURCE: "./"
+          SOURCE: ".next/"
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_PORT: ${{ secrets.REMOTE_PORT }}
-          TARGET: ${{ secrets.REMOTE_TARGET }}
+          TARGET: "${{ secrets.REMOTE_TARGET }}/.next"
           SCRIPT_BEFORE: |
             cd ${{ secrets.REMOTE_TARGET }}
-            pm2 stop flectone-web 2>/dev/null || true
-            rm -rf ${{ secrets.REMOTE_TARGET }}/*
+            rm -rf .next
           SCRIPT_AFTER: |
             cd ${{ secrets.REMOTE_TARGET }}
             npm ci --production
-            pm2 start "npm start" --name "flectone-web"
+            pm2 reload flectone-web --update-env || pm2 start npm --name "flectone-web" -- start
