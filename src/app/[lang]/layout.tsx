@@ -2,6 +2,7 @@ import { RootProvider } from 'fumadocs-ui/provider/next';
 import '../globals.css';
 import { Inter } from 'next/font/google';
 import {NextIntlClientProvider} from 'next-intl';
+import {source} from "@/lib/source";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -29,6 +30,10 @@ const myTranslations = {
         previousPage: 'Предыдущая страница'
     }
 };
+
+export async function generateStaticParams() {
+    return source.generateParams();
+}
 
 export default async function Layout({ params, children }: {
     params: Promise<{ lang: string }>;
