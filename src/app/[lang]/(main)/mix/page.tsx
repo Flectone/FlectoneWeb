@@ -1,4 +1,25 @@
 import FlectoneMix from "@/components/Content/FlectoneMix";
+import { getTranslations } from 'next-intl/server';
+
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props) {
+  const { locale } = await params;
+
+  const t = await getTranslations({ locale, namespace: 'Metadata.Mix' });
+
+  return {
+    title: t('title'),
+    description: t('description'),
+    openGraph: {
+      title: t('title'),
+      description: t('description'),
+      locale: locale,
+    }
+  };
+}
 
 export default function Home() {
   return (

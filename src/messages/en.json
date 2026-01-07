@@ -1,4 +1,38 @@
 {
+    "Metadata": {
+        "Root": {
+            "title": "Flectone",
+            "description": "Flectone is a brand that unites all TheFaser projects",
+            "applicationName": "Flectone",
+            "keywords": "flectone, Flectone",
+            "image": "/logo.png"
+        },
+        "Mix": {
+            "title": "FlectoneMix",
+            "description": "Was created to make it easier to find and install things for Minecraft, but the project was closed",
+            "applicationName": "FlectoneMix",
+            "image": "/logo.png"
+        },
+        "Chat": {
+            "title": "FlectoneChat",
+            "description": "Simplifies and complements the game on the server by adding convenient features, but the project was closed",
+            "applicationName": "FlectoneChat",
+            "image": "/logo.png"
+        },
+        "About": {
+            "title": "About us | Flectone",
+            "description": "All these people have contributed to the project",
+            "applicationName": "Flectone",
+            "image": "/logo.png"
+        },
+        "Pulse": {
+            "title": "FlectonePulse",
+            "description": "Every message under your control!",
+            "applicationName": "Flectone",
+            "keywords": "flectone, Flectone, plugin, minecraft plugin, chat plugin, minecraft chat plugin, chat, minecraft, flectonepulse",
+            "image": "/logo.png"
+        }
+    },
     "Header": {
         "about": "About us",
         "Projects": {

@@ -1,4 +1,38 @@
 {
+    "Metadata": {
+        "Root": {
+            "title": "Flectone",
+            "description": "Flectone — это бренд, который объединяет все проекты TheFaser",
+            "applicationName": "Flectone",
+            "keywords": "флектон, Флектон, Flectone, flectone",
+            "image": "/logo.png"
+        },
+        "Mix": {
+            "title": "FlectoneMix",
+            "description": "Был создан, чтобы облегчить поиск и установку вещей для Minecraft, но проект был закрыт",
+            "applicationName": "FlectoneMix",
+            "image": "/logo.png"
+        },
+        "Chat": {
+            "title": "FlectoneChat",
+            "description": "Упрощает и дополняет игру на сервере добавлением удобных фичей, но проект был закрыт",
+            "applicationName": "FlectoneChat",
+            "image": "/logo.png"
+        },
+        "About": {
+            "title": "Про нас | Flectone",
+            "description": "Все эти люди внесли вклад в проект",
+            "applicationName": "Flectone",
+            "image": "/logo.png"
+        },
+        "Pulse": {
+            "title": "FlectonePulse",
+            "description": "Каждое сообщение под вашим контролем!",
+            "applicationName": "Flectone",
+            "keywords": "флектон, Флектон, плагин, плагин майнкрафт, плагин на чат, плагин на чат майнкрафт, чат, майнкрафт, флектонпульс flectonepulse",
+            "image": "/logo.png"
+        }
+    },
     "Header": {
         "about": "Про нас",
         "Projects": {
