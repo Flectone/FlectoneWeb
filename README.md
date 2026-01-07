@@ -59,7 +59,7 @@ Flectone Web is a high-performance web solution for **Flectone Network**. It uti
 
 ### Prerequisites
 
-- **Node.js** (v18.17 or higher)
+- **Node.js** (v20.9.0 or higher)
 - **npm** or **yarn**
 
 ### Installation
