@@ -205,7 +205,7 @@ FlectonePulse supports proxy servers, including BungeeCord and Velocity. To use 
 
 FlectonePulse has not been tested on cores that support both mods and plugins (e.g., Arclight or Mohist), and support for them is not intended. The main issue lies with the Libby library used for loading dependencies, which does not work on such cores. Theoretically, you could build FlectonePulse with all necessary dependencies to run on these cores, but there is no guarantee that PacketEvents will work correctly. FlectonePulse works on Fabric, but only on the very latest version of Minecraft due to the complexity of multi-version support.
 <Callout type="info" title="Information">
-    This can be changed to `mode: "BUKKIT"` so that other plugins can work with chat. In rare cases, you can use `mode: "PAPER"` if your plugin uses `Paper` listeners.
+    The main issue has been fixed in recent Mohist versions, so FlectonePulse works there without major problems
 </Callout>
 
 
