@@ -1,6 +1,4 @@
 'use client'
-import { ReactNode } from "react"
-import Image from "next/image";
 import Card from "./Card";
 
 interface GithubCarpProps {
@@ -21,7 +19,7 @@ export default function GithubCard({ className, link, name, description, avatar 
                     <p>{description}</p>
                 </div>
             </Card>
-            <Card path={link} target="blank" className={`${className} ${link ? 'hover:bg-(--muted-primary) cursor-pointer' : ''} gap-2 flex flex-col gitcard lg:hidden min-h-full duration-100 p-8 backdrop-blur-3xl bg-(--primary) w-full rounded-xl`}>
+            <Card path={link} target="blank" className={`${className} ${link ? 'hover:bg-(--muted-primary) cursor-pointer' : ''} gap-2 flex flex-col gitcard lg:hidden duration-100 p-8 backdrop-blur-3xl bg-(--primary) w-full rounded-xl`}>
                 <div className="flex items-center gap-2">
                     <img src={avatar} alt={name} className="max-lg:h-14 max-lg:w-14 max-sm:h-10 max-sm:w-10 rounded-sm" />
                     <h1 className="font-semibold">{name}</h1>
