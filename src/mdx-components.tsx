@@ -5,6 +5,7 @@ import * as TabsComponents from 'fumadocs-ui/components/tabs';
 import Callout from '@/components/Pulse/Callout/Callout'
 import { LinkIcon } from 'lucide-react';
 import ZoomImage from '@/components/Pulse/ZoomImage'
+import Metric from '@/components/Metric/Metric'
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -15,6 +16,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Step,
     Callout,
     ZoomImage,
+    Metric,
     h1: ({ id, children, ...props }) => (
       <h1
         id={id}
