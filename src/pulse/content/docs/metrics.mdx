@@ -11,7 +11,18 @@ authors:
 </Callout>
 
 # Активность (7 дней)
-<Metric legends={['Игроков', 'Серверов']}/>
+<TwoLineChart
+  data={{
+    first: {
+      name: 'Игроки',
+      apiPath: 'playerCount'
+    },
+    second: {
+      name: 'Сервера',
+      apiPath: 'serverCount'
+    }
+  }}
+/>
 
 # Версии серверов
 <ZoomImage src='https://flectone.net/api/pulse/metrics/svg/server-versions' alt="Server Versions"/>

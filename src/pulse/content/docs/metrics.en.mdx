@@ -13,7 +13,18 @@ authors:
 
 
 # Activity (7 days)
-<Metric legends={['Players', 'Servers']}/>
+<TwoLineChart
+  data={{
+    first: {
+      name: 'Players',
+      apiPath: 'playerCount'
+    },
+    second: {
+      name: 'Servers',
+      apiPath: 'serverCount'
+    }
+  }}
+/>
 
 # Server Versions
 <ZoomImage src='https://flectone.net/api/pulse/metrics/svg/server-versions' alt="Server Versions"/>

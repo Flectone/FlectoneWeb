@@ -22,12 +22,21 @@ interface ApiResponse {
 }
 
 interface MetricProps {
-  legends: [string, string]
+  data: {
+    first: {
+      name: string;
+      apiPath: string;
+    }
+    second: {
+      name: string;
+      apiPath: string;
+    }
+  }
 }
 
-function Metric({legends}: MetricProps) {
-  const [serverData, setServerData] = useState<MetricItem[]>([]);
-  const [playerData, setPlayerData] = useState<MetricItem[]>([]);
+function TwoLineChart({data}: MetricProps) {
+  const [firstData, setFirstData] = useState<MetricItem[]>([]);
+  const [secondData, setSecondData] = useState<MetricItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   const { resolvedTheme } = useTheme();
@@ -45,19 +54,17 @@ function Metric({legends}: MetricProps) {
     const fetchData = async () => {
       try {
         const baseUrl = '/api/pulse/metrics/json/';
-        const [serverRes, playerRes] = await Promise.all([
-          fetch(`${baseUrl}serverCount`),
-          fetch(`${baseUrl}playerCount`)
+        const [firstRes, secondRes] = await Promise.all([
+          fetch(baseUrl + data.first.apiPath),
+          fetch(baseUrl + data.second.apiPath)
         ]);
 
-        const serverJson: ApiResponse = await serverRes.json();
-        const playerJson: ApiResponse = await playerRes.json();
+        const firstJson: ApiResponse = await firstRes.json();
+        const secondJson: ApiResponse = await secondRes.json();
 
-        const slicedServer = (serverJson.values || []).slice(1, -1);
-        const slicedPlayer = (playerJson.values || []).slice(1, -1);
+        setFirstData((firstJson.values || []).slice(1, -1));
+        setSecondData((secondJson.values || []).slice(1, -1));
 
-        setServerData(slicedServer);
-        setPlayerData(slicedPlayer);
       } catch (error) {
         console.error('Ошибка при загрузке API:', error);
       } finally {
@@ -182,7 +189,7 @@ function Metric({legends}: MetricProps) {
         return res;
       }
     },
-    legend: { data: legends, bottom: '93%' },
+    legend: { data: [data.first.name, data.second.name], bottom: '93%' },
     grid: { left: '3%', right: '3%', bottom: '15%', top: '10%', containLabel: true },
     yAxis: {
       type: 'value',
@@ -193,7 +200,7 @@ function Metric({legends}: MetricProps) {
     },
     xAxis: {
       type: 'category',
-      data: serverData.map(item => item.value),
+      data: firstData.map(item => item.value),
       axisLabel: {
         formatter: (value: string) => {
           const date = new Date(value);
@@ -203,8 +210,8 @@ function Metric({legends}: MetricProps) {
       }
     },
     series: [
-      { name: legends[0], data: playerData.map(item => item.count), type: 'line', smooth: true },
-      { name: legends[1], data: serverData.map(item => item.count), type: 'line', smooth: true }
+      { name: data.first.name, data: firstData.map(item => item.count), type: 'line', smooth: true },
+      { name: data.second.name, data: secondData.map(item => item.count), type: 'line', smooth: true }
     ],
     dataZoom: [
       { type: 'inside', start: 0, end: 100 },
@@ -226,4 +233,4 @@ function Metric({legends}: MetricProps) {
   );
 }
 
-export default Metric;
+export default TwoLineChart;
