@@ -6,6 +6,14 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const config = {
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://flectone.net/api/:path*',
+      },
+    ]
+  },
   reactStrictMode: true,
   output: 'standalone',
   images: {
