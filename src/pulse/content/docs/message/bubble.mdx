@@ -14,19 +14,21 @@ authors:
 long duration = (countWords + handicapChars) / readSpeed * 60;
 ```
 
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → message.bubble`</span>
 
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#bubble</include></Tab>
-<Tab value="en_us"><include>../../../files/localizations/en_us.yml#bubble</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#bubble</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#bubble</include></Tab>
 </Tabs>
 
 ### `format`
 
 Формат сообщения над головой
 
+<br></br>
 
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `message.yml → bubble`</span>
@@ -72,62 +74,67 @@ long duration = (countWords + handicapChars) / readSpeed * 60;
 Позволяет изменять расстояние между сообщениями друг от друга, иначе используется устаревший `area effect cloud`
 
 <Callout type="warn" title="Предупреждение">
-Это будет использовано только для серверов, где версия `1.21.3` и выше
+    Это будет использовано только для серверов, где версия `1.21.3` и выше
 </Callout>
 
-#### НАСТРОЙКА
+<Accordions>
+    <Accordion title="Настройка">
+        ##### `enable`
 
-##### `enable`
+        Включает работоспособность
 
-Включает работоспособность
+        ##### `height`
 
-##### `height`
-
-Расстояние между каждым сообщением друг от друга
-
+        Расстояние между каждым сообщением друг от друга
+    </Accordion>
+</Accordions>
 
 ### `modern`
 
 Сообщения над головой через Text Display
 
 <Callout type="warn" title="Предупреждение">
-Это будет использовано только для серверов, где версия `1.19.4` и выше
+    Это будет использовано только для серверов, где версия `1.19.4` и выше
 </Callout>
 
-#### НАСТРОЙКА
-##### `enable`
+<Accordions>
+    <Accordion title="Настройка">
+        ##### `enable`
 
-Включает работоспособность
+        Включает работоспособность
 
-##### `has_shadow`
+        ##### `has_shadow`
 
-Включает тень у текста
+        Включает тень у текста
 
-##### `see_through`
+        ##### `see_through`
 
-Включает прозрачность текста на фоне воды и облаков (чтобы нельзя было смотреть сквозь воду)
+        Включает прозрачность текста на фоне воды и облаков (чтобы нельзя было смотреть сквозь воду)
 
+        ##### `scale`
 
-##### `scale`
+        Насколько большим будет сообщение
 
-Насколько большим будет сообщение
+        ##### `background`
 
-##### `background`
+        Цвет фона сообщения, он имеет прозрачность т.е. альфа-канал. [Сайт для выбора цвета](https://rgbacolorpicker.com/color-wheel-picker)
 
-Цвет фона сообщения, он имеет прозрачность т.е. альфа-канал. [Сайт для выбора цвета](https://rgbacolorpicker.com/color-wheel-picker)
+        ##### `billboard`
 
-##### `billboard`
-
-| Тип            | Пояснение                                                 |
-|----------------|-----------------------------------------------------------|
-| `FIXED`        | Положение не изменяется                                   |
-| `VERTICAL`     | Положение изменяется относительно вертикали               |
-| `HORIZONTAL`   | Положение изменяется относительно горизонтали             |
-| `CENTER`       | Положение изменяется относительно горизонтали и вертикали |
+        | Тип            | Объяснение                                                 |
+        |----------------|-----------------------------------------------------------|
+        | `FIXED`        | Положение не изменяется                                   |
+        | `VERTICAL`     | Положение изменяется относительно вертикали               |
+        | `HORIZONTAL`   | Положение изменяется относительно горизонтали             |
+        | `CENTER`       | Положение изменяется относительно горизонтали и вертикали |
+    </Accordion>
+</Accordions>
 
 <include>../../../parts/ticker.mdx</include>
 
-# <include>../../../parts/words.mdx#permission</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#permission</include>
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → message.bubble`</span>
 
 <include>../../../files/permission.yml#bubble</include>

@@ -11,7 +11,6 @@ authors:
 
 Для корректной работы бота, включи три настройки для твоего бота в [Discord Developer Portal](https://discord.com/developers/applications/)
 
-
 ![develop](/pulse/discorddevelopers.png)
 
 А также выдай права боту на `чтение сообщений`, `создание сообщений` и `использование webhooks`
@@ -20,10 +19,10 @@ authors:
 
 <include>../../../parts/messageTag.mdx</include>
 
-# <include>../../../parts/words.mdx#localization</include> 
-<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → integration.discord`</span>
+<br></br>
 
- 
+# <include>../../../parts/words.mdx#localization</include>
+<span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → integration.discord`</span>
 
 <Tabs items={['ru_ru', 'en_us']}>
   <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#discord</include></Tab>
@@ -54,7 +53,7 @@ custom_command:
 
 </Callout>
 
-### `Плейсхолдеры`
+#### `Плейсхолдеры`
 
 Ты можешь использовать все плейсхолдеры, которые используются в начальном сообщении для майнкрафта
 <Callout type="info" title="Например для сообщения о блокировке">
@@ -69,8 +68,6 @@ custom_command:
 - `<plain_message>` отформатированное сообщение, которое написал игрок
 - `<reply>` отформатированное сообщение-ответ, оно будет пустым, если основное сообщение не ответ
 - Очевидно, что все плейсхолдеры из `PlaceholderAPI` и `FlectonePulse` тоже будут работать
-
-<br/>
 
 У сообщения, которое будет отправлено из Дискорда в Майнкрафт есть свои плейсхолдеры:
 
@@ -90,111 +87,11 @@ custom_command:
 
 Список сообщений с их настройкой
 
-### Настройка сообщения
-<Callout type="info" title="Информация">
-
-Если параметр пустой или он не написан, то он не будет использован в итоговом сообщении
-
-</Callout>
-
-#### `content`
-
-Содержание сообщения
-![discord content](/pulse/discordcontent.png)
-
-#### `webhook_avatar`
-
-Включение дискорд вебхука с аватаром игрока. Лучше всего использовать `https://mc-heads.net/avatar/<skin>/32.png`
-![discord webhook](/pulse/discordwebhook.png)
-
-#### `embed`
-
-Дискорд эмбед сообщение
-![discord embed](/pulse/discordembed.png)
-
-##### `color`
-
-Цвет `embed` сообщения
-
-##### `title`
-
-Название `embed` сообщения
-
-##### `url`
-
-Ссылка для `embed` сообщения
-
-##### `author`
-
-Автор `embed` сообщения
-
-###### `name`
-
-Название автора `embed` сообщения
-
-###### `url`
-
-Ссылка на автора `embed` сообщения
-
-###### `icon_url`
-
-Ссылка на аватарку автора `embed` сообщения. Если будешь менять на свою, то ссылка должна содержать `<skin>`
-
-##### `description`
-
-Описание `embed` сообщения
-
-##### `thumbnail`
-
-Маленькое изображение внутри `embed` сообщения
-
-##### `fields`
-
-Нижние поля внутри `embed` сообщения
-
-###### `name`
-
-Название поля внутри `embed` сообщения
-
-###### `value`
-
-Значение поля внутри `embed` сообщения
-
-###### `inline`
-
-Если включено, то поле будет расположен в столбик с другими полями
-
-##### `image`
-
-Главное изображение `embed` сообщения
-
-##### `timestamp`
-
-Если включено, то `embed` сообщение будет включать время создания
-
-##### `footer`
-
-Нижняя часть `embed` сообщения
-
-###### `text`
-
-Текст в нижней части `embed` сообщения
-
-###### `icon_url`
-
-Изображение в нижней части `embed` сообщения
-
-
-<Callout type="info" title="Информация">
-
-Сообщение со всеми параметрами
-![discord](/pulse/discordembedpreview.png)
-
 ```yaml
 название_сообщения:
   content: ""
   webhook_avatar: "https://mc-heads.net/avatar/<skin>/32.png"
-  embed:
+    embed:
     color: ""
     title: ""
     url: ""
@@ -214,12 +111,117 @@ custom_command:
       text: ""
       icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
 ```
+
+<Callout type="info" title="Информация">
+
+    Пример сообщения со всеми параметрами
+    ![discord](/pulse/discordembedpreview.png)
+
+    Если параметр пустой или он не написан, то он не будет использован в итоговом сообщении
+
 </Callout>
 
+<Accordions>
+    <Accordion title="Настройка сообщения">
+        #### `content`
+
+        Содержание сообщения
+        ![discord content](/pulse/discordcontent.png)
+
+        #### `webhook_avatar`
+
+        Включение дискорд вебхука с аватаром игрока. Лучше всего использовать `https://mc-heads.net/avatar/<skin>/32.png`
+        ![discord webhook](/pulse/discordwebhook.png)
+
+        #### `embed`
+
+        Дискорд эмбед сообщение
+        ![discord embed](/pulse/discordembed.png)
+
+        ##### `color`
+
+        Цвет `embed` сообщения
+
+        ##### `title`
+
+        Название `embed` сообщения
+
+        ##### `url`
+
+        Ссылка для `embed` сообщения
+
+        ##### `author`
+
+        <Accordions>
+            <Accordion title="Автор `embed` сообщения">
+                ###### `name`
+
+                Название автора `embed` сообщения
+
+                ###### `url`
+
+                Ссылка на автора `embed` сообщения
+
+                ###### `icon_url`
+
+                Ссылка на аватарку автора `embed` сообщения. Если будешь менять на свою, то ссылка должна содержать `<skin>`
+            </Accordion>
+        </Accordions>
+        <br/>
+        ##### `description`
+
+        Описание `embed` сообщения
+
+        ##### `thumbnail`
+
+        Маленькое изображение внутри `embed` сообщения
+
+        ##### `fields`
+
+        <Accordions>
+            <Accordion title="Нижние поля внутри `embed` сообщения">
+                ###### `name`
+
+                Название поля внутри `embed` сообщения
+
+                ###### `value`
+
+                Значение поля внутри `embed` сообщения
+
+                ###### `inline`
+
+                Если включено, то поле будет расположен в столбик с другими полями
+            </Accordion>
+        </Accordions>
+        <br/>
+        ##### `image`
+
+        Главное изображение `embed` сообщения
+
+        ##### `timestamp`
+
+        Если включено, то `embed` сообщение будет включать время создания
+
+        ##### `footer`
+
+        <Accordions>
+            <Accordion title="Нижняя часть `embed` сообщения">
+                ###### `text`
+
+                Текст в нижней части `embed` сообщения
+
+                ###### `icon_url`
+
+                Изображение в нижней части `embed` сообщения
+            </Accordion>
+        </Accordions>
+    </Accordion>
+</Accordions>
+
+<br></br>
 
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `integration.yml → discord`</span>
-
 
 <include>../../../files/integration.yml#discord</include>
 
@@ -242,11 +244,10 @@ custom_command:
 
 Список кастомных комманд интеграции, ключом является название комманды и оно может быть любым. Комманды могут быть ТОЛЬКО информационными, на сервере они ничего не выполняют и не будут выполнять
 
-| Параметр      | Пояснение                                                                      |
+| Параметр      | Объяснение                                                                      |
 |---------------|--------------------------------------------------------------------------------|
 | `need_player` | Проверять ли первый аргумент комманды на имя игрока, например `!ping TheFaser` |
 | `aliases`     | Список псевдонимов для использования комманды                                  |
-
 
 <Callout type="info" title="Пример">
 
@@ -267,60 +268,65 @@ custom_command:
 
 ![discord presence](/pulse/discordpresence.png)
 
-### Настройка статуса бота
-#### `enable`
+<Accordions>
+    <Accordion title="Настройка статуса бота">
+        #### `enable`
 
-Включает или выключает кастомный статус бота
+        Включает или выключает кастомный статус бота
 
-#### `status`
+        #### `status`
 
-| Режим            | Пояснение                       |
-|------------------|---------------------------------|
-| `UNKNOWN`        | -                               |
-| `ONLINE`         | В сети                          |
-| `DO_NOT_DISTURB` | В сети, с режимом не беспокоить |
-| `IDLE`           | В сети, но отошёл               |
-| `INVISIBLE`      | Невидимый                       |
-| `OFFLINE`        | Не в сети                       |
+        | Режим            | Объяснение                       |
+        |------------------|---------------------------------|
+        | `UNKNOWN`        | -                               |
+        | `ONLINE`         | В сети                          |
+        | `DO_NOT_DISTURB` | В сети, с режимом не беспокоить |
+        | `IDLE`           | В сети, но отошёл               |
+        | `INVISIBLE`      | Невидимый                       |
+        | `OFFLINE`        | Не в сети                       |
 
-#### `activity`
+        #### `activity`
 
-Активность бота в дискорде
+        Активность бота в дискорде
 
-##### `enable`
+        ##### `enable`
 
-Включает или выключает активность
+        Включает или выключает активность
 
-##### `type`
+        ##### `type`
 
-| Тип         | Пояснение   |
-|-------------|-------------|
-| `UNKNOWN`   | -           |
-| `STREAMING` | Стримит     |
-| `LISTENING` | Слушает     |
-| `WATCHING`  | Смотрит     |
-| `CUSTOM`    | -           |
-| `COMPETING` | Соревнуется |
+        | Тип         | Объяснение   |
+        |-------------|-------------|
+        | `UNKNOWN`   | -           |
+        | `STREAMING` | Стримит     |
+        | `LISTENING` | Слушает     |
+        | `WATCHING`  | Смотрит     |
+        | `CUSTOM`    | -           |
+        | `COMPETING` | Соревнуется |
 
-##### `name`
+        ##### `name`
 
-Название активности
+        Название активности
 
-##### `url`
+        ##### `url`
 
-Ссылка на активности
-
+        Ссылка на активности
+    </Accordion>
+</Accordions>
 
 ### `channel_info`
 
 ![discord channel info](/pulse/discordchannelinfo.png)
 
-### Настройка каналов с информацией
-#### `enable`
+<Accordions>
+    <Accordion title="Настройка каналов с информацией">
+        #### `enable`
 
-Нужен ли канал информации
+        Нужен ли канал информации
 
-<include>../../../parts/ticker.mdx</include>
+        <include>../../../parts/ticker.mdx</include>
+    </Accordion>
+</Accordions>
 
 ### `message_channel`
 
@@ -345,14 +351,17 @@ message_channel:
 
 Локализацию можно не настраивать, по умолчанию сообщение будет отправляться с форматом `<final_message>`
 
-
 <include>../../../parts/destination.mdx</include>
 
+<include>../../../parts/sound.mdx</include>
+
+<br></br>
 
 # <include>../../../parts/words.mdx#permission</include>
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → integration.discord`</span>
 
-
 <include>../../../files/permission.yml#discord</include>
 
 <include>../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../parts/permission/sound.mdx</include>

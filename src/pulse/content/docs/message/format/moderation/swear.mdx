@@ -6,19 +6,21 @@ authors:
 ---
 ![swear](/pulse/swear.png)
 
+<br></br>
+
 # <include>../../../../../parts/words.mdx#localization</include> 
 <span><include>../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.moderation.swear`</span>
 
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../../../files/localizations/ru_ru.yml#swear</include></Tab>
-<Tab value="en_us"><include>../../../../../files/localizations/en_us.yml#swear</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../files/localizations/ru_ru.yml#swear</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/localizations/en_us.yml#swear</include></Tab>
 </Tabs>
 
 ### `symbol`
 
 Символ, которым заменяется каждая буква ругательства
 
+<br></br>
 
 # <include>../../../../../parts/words.mdx#setting</include>
 <span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.moderation.swear`</span>
@@ -26,6 +28,10 @@ authors:
 <include>../../../../../files/message.yml#swear</include>
 
 <include>../../../../../parts/enable.mdx</include>
+
+### `ignore`
+
+Список слов, которые не являются ругательством и их нужно пропускать при проверке
 
 ### `trigger`
 
@@ -36,6 +42,7 @@ authors:
 - Для буквенного айпи `(?i)\\b((https?:\\/\\/)?([\\w\\.а-яА-Я-]+\\.([a-z]{2,4}|[рР][фФ]|[уУ][кК][рР]))\\b(:\\d{2,7})?(\\/\\S+)?)`
 </Callout>
 
+<br></br>
 
 # <include>../../../../../parts/words.mdx#permission</include> 
 <span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.moderation.swear`</span>

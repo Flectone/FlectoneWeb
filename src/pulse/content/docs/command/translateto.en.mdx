@@ -6,13 +6,11 @@ authors:
 ---
 ![command translateto](/pulse/commandtranslateto.png)
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#localization</include>
 
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.translateto`</span>
-
-
-
 
 <Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../files/localizations/en_us.yml#translateto</include></Tab>
@@ -27,17 +25,16 @@ Message if an error occurred during translation
 
 Format of the message that will be sent
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `command.yml → translateto`</span>
-
 
 <include>../../../files/command.yml#translateto</include>
 
 <include>../../../parts/enable.en.mdx</include>
 
 <include>../../../parts/range.en.mdx</include>
-
 
 ### `service`
 
@@ -47,8 +44,7 @@ Type of API (`DEEPL`, `GOOGLE`, `YANDEX`) that will be used for translation
     `DEEPL` and `YANDEX` require a **token** and separate configuration in `integration.yml`
 </Callout>
 
-<include>../../../parts/range.en.mdx</include>
-
+<include>../../../parts/aliases.en.mdx</include>
 
 ### `languages`
 
@@ -60,14 +56,12 @@ List of languages used only for suggestions when using the command
 
 <include>../../../parts/sound.en.mdx</include>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.translateto`</span>
 
-
 <include>../../../files/permission.yml#translateto</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>
 

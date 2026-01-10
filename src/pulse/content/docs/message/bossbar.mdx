@@ -8,13 +8,14 @@ authors:
 ![bossbar wither](/pulse/bossbar_wither.png)
 ![bossbar enderdragon](/pulse/bossbar_enderdragon.png)
 
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → message.bossbar`</span>
 
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#bossbar</include></Tab>
-<Tab value="en_us"><include>../../../files/localizations/en_us.yml#bossbar</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#bossbar</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#bossbar</include></Tab>
 </Tabs>
 
 ### `announce`
@@ -25,7 +26,7 @@ authors:
 
 Список сообщений ванильных боссбаров. Ключ `event.minecraft.raid.raiders_remaining` особенный, он добавляется автоматически к сообщениям рейда, если это необходимо
 
-
+<br></br>
 
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `message.yml → bossbar`</span>
@@ -41,28 +42,27 @@ authors:
 Ключом является название боссбара (например `entity.minecraft.ender_dragon`), а значением то, куда будет отправлено
 
 <Callout type="info" title="ПРИМЕР">
-Я хочу, чтобы игроку писало сообщение в чат "Это дракон!", когда игрок входит в зону боссбара дракона
-```yaml
-announce:
-  entity.minecraft.ender_dragon:
-    destination:
-      type: "CHAT"
-      sound:
-        enable: false
-```
+    Я хочу, чтобы игроку писало сообщение в чат "Это дракон!", когда игрок входит в зону боссбара дракона
+    ```yaml
+    announce:
+      entity.minecraft.ender_dragon:
+        destination:
+          type: "CHAT"
+          sound:
+            enable: false
+    ```
 
-В локализации нужно также добавить сообщение
+    В локализации нужно также добавить сообщение
 
-```yaml
-announce:
-  entity.minecraft.ender_dragon: "Это дракон!"
-```
-
+    ```yaml
+    announce:
+      entity.minecraft.ender_dragon: "Это дракон!"
+    ```
 </Callout>
 
+<br></br>
 
-
-# <include>../../../parts/words.mdx#permission</include> 
+# <include>../../../parts/words.mdx#permission</include>
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → message.bossbar`</span>
 
 <include>../../../files/permission.yml#bossbar</include>

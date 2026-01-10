@@ -51,13 +51,14 @@ authors:
 
 ![strikethrough](/pulse/strikethrough.png)
 
+<br></br>
+
 # <include>../../../../parts/words.en.mdx#localization</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.replacement`</span>
 
-
-<Tabs items={['ru_ru', 'en_us']}>
-    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#replacement</include></Tab>
+<Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#replacement</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#replacement</include></Tab>
 </Tabs>
 
 ### `spoiler_symbol`
@@ -68,6 +69,7 @@ The symbol that will replace each letter of the words in a `spoiler`
 
 A list of messages where the key is the name and the value is what will be shown instead of the trigger
 
+<br></br>
 
 # <include>../../../../parts/words.en.mdx#setting</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `message.yml → format.replacement`</span>
@@ -84,6 +86,7 @@ A list of all available triggers, where the key is the name and the value is the
     If you add a new trigger, you must also add it to the localization file to define what it will be replaced with.
 </Callout>
 
+<br></br>
 
 # <include>../../../../parts/words.en.mdx#permission</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.replacement`</span>
@@ -91,3 +94,7 @@ A list of all available triggers, where the key is the name and the value is the
 <include>../../../../files/permission.yml#replacement</include>
 
 <include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `values`
+
+List of replacements with permissions

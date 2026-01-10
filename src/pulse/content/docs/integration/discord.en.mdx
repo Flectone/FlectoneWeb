@@ -11,7 +11,6 @@ authors:
 
 For the bot to work correctly, enable three settings for your bot in the [Discord Developer Portal](https://discord.com/developers/applications/)
 
-
 ![develop](/pulse/discorddevelopers.png)
 
 Also grant the bot permissions for `Read Messages`, `Send Messages`, and `Use Webhooks`
@@ -20,10 +19,10 @@ Also grant the bot permissions for `Read Messages`, `Send Messages`, and `Use We
 
 <include>../../../parts/messageTag.en.mdx</include>
 
-# <include>../../../parts/words.en.mdx#localization</include> 
-<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → integration.discord`</span>
+<br></br>
 
- 
+# <include>../../../parts/words.en.mdx#localization</include>
+<span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → integration.discord`</span>
 
 <Tabs items={['en_us', 'ru_ru']}>
   <Tab value="en_us"><include>../../../files/localizations/en_us.yml#discord</include></Tab>
@@ -54,7 +53,7 @@ Command to get the `tps` value on the server. **Don't forget to create it in int
 
 </Callout>
 
-### `Placeholders`
+#### `Placeholders`
 
 You can use all placeholders that are used in the initial message for Minecraft
 <Callout type="info" title="EXAMPLE FOR BAN MESSAGE">
@@ -69,8 +68,6 @@ There are also placeholders that will DEFINITELY be replaced in any message
 - `<plain_message>` formatted message written by the player
 - `<reply>` formatted reply message, it will be empty if the main message is not a reply
 - Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
-
-<br/>
 
 The message that will be sent from Discord to Minecraft has its own placeholders:
 
@@ -90,118 +87,18 @@ List of channel IDs and their names for displaying some information, such as `TP
 
 List of messages with their settings
 
-### Message settings
-<Callout type="info" title="Information">
-
-If a parameter is empty or not written, it will not be used in the final message
-
-</Callout>
-
-#### `content`
-
-Message content
-![discord content](/pulse/discordcontent.png)
-
-#### `webhook_avatar`
-
-Enable Discord webhook with the player's avatar. It is best to use `https://mc-heads.net/avatar/<skin>/32.png`
-![discord webhook](/pulse/discordwebhook.png)
-
-#### `embed`
-
-Discord embed message
-![discord embed](/pulse/discordembed.png)
-
-##### `color`
-
-Color of the `embed` message
-
-##### `title`
-
-Title of the `embed` message
-
-##### `url`
-
-Link for the `embed` message
-
-##### `author`
-
-Author of the `embed` message
-
-###### `name`
-
-Author's name of the `embed` message
-
-###### `url`
-
-Link to the author of the `embed` message
-
-###### `icon_url`
-
-Link to the author's avatar of the `embed` message. If you change it to your own, the link must contain `<skin>`
-
-##### `description`
-
-Description of the `embed` message
-
-##### `thumbnail`
-
-Small image inside the `embed` message
-
-##### `fields`
-
-Bottom fields inside the `embed` message
-
-###### `name`
-
-Field name inside the `embed` message
-
-###### `value`
-
-Field value inside the `embed` message
-
-###### `inline`
-
-If enabled, the field will be placed in a column with other fields
-
-##### `image`
-
-Main image of the `embed` message
-
-##### `timestamp`
-
-If enabled, the `embed` message will include the creation time
-
-##### `footer`
-
-Bottom part of the `embed` message
-
-###### `text`
-
-Text in the bottom part of the `embed` message
-
-###### `icon_url`
-
-Image in the bottom part of the `embed` message
-
-
-<Callout type="info" title="Information">
-
-Message with all parameters
-![discord](/pulse/discordembedpreview.png)
-
 ```yaml
 message_name:
   content: ""
-  webhook_avatar: "[https://mc-heads.net/avatar/](https://mc-heads.net/avatar/)<skin>/32.png"
-  embed:
+  webhook_avatar: "https://mc-heads.net/avatar/<skin>/32.png"
+    embed:
     color: ""
     title: ""
     url: ""
     author:
       name: ""
       url: ""
-      icon_url: "[https://mc-heads.net/avatar/](https://mc-heads.net/avatar/)<skin>/16.png"
+      icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
     description: ""
     thumbnail: ""
     fields:
@@ -212,14 +109,120 @@ message_name:
     timestamp: true
     footer:
       text: ""
-      icon_url: "[https://mc-heads.net/avatar/](https://mc-heads.net/avatar/)<skin>/16.png"
+      icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
 ```
+
+<Callout type="info" title="Information">
+
+    Message with all parameters
+    ![discord](/pulse/discordembedpreview.png)
+
+    If a parameter is empty or not written, it will not be used in the final message
+
 </Callout>
 
+<Accordions>
+    <Accordion title="Message settings">
+        #### `content`
+
+        Message content
+        ![discord content](/pulse/discordcontent.png)
+
+        #### `webhook_avatar`
+
+        Enable Discord webhook with the player's avatar. It is best to use `https://mc-heads.net/avatar/<skin>/32.png`
+        ![discord webhook](/pulse/discordwebhook.png)
+
+        #### `embed`
+
+        Discord embed message
+        ![discord embed](/pulse/discordembed.png)
+
+        ##### `color`
+
+        Color of the `embed` message
+
+        ##### `title`
+
+        Title of the `embed` message
+
+        ##### `url`
+
+        Link for the `embed` message
+
+        ##### `author`
+
+        <Accordions>
+            <Accordion title="Author of the `embed` message">
+                ###### `name`
+
+                Author's name of the `embed` message
+
+                ###### `url`
+
+                Link to the author of the `embed` message
+
+                ###### `icon_url`
+
+                Link to the author's avatar of the `embed` message. If you change it to your own, the link must contain `<skin>`
+            </Accordion>
+        </Accordions>
+        <br/>
+        ##### `description`
+
+        Description of the `embed` message
+
+        ##### `thumbnail`
+
+        Small image inside the `embed` message
+
+        ##### `fields`
+
+        <Accordions>
+            <Accordion title="Bottom fields inside the `embed` message">
+                ###### `name`
+
+                Field name inside the `embed` message
+
+                ###### `value`
+
+                Field value inside the `embed` message
+
+                ###### `inline`
+
+                If enabled, the field will be placed in a column with other fields
+            </Accordion>
+        </Accordions>
+        <br/>
+
+        ##### `image`
+
+        Main image of the `embed` message
+
+        ##### `timestamp`
+
+        If enabled, the `embed` message will include the creation time
+
+        ##### `footer`
+
+        <Accordions>
+            <Accordion title="Bottom part of the `embed` message">
+                ###### `text`
+
+                Text in the bottom part of the `embed` message
+
+                ###### `icon_url`
+
+                Image in the bottom part of the `embed` message
+            </Accordion>
+        </Accordions>
+    </Accordion>
+</Accordions>
+
+<br></br>
 
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `integration.yml → discord`</span>
-
 
 <include>../../../files/integration.yml#discord</include>
 
@@ -247,7 +250,6 @@ List of custom integration commands, the key is the command name and it can be a
 | `need_player` | Whether to check the first command argument for a player name, e.g., `!ping TheFaser` |
 | `aliases`     | List of aliases for using the command                                          |
 
-
 <Callout type="info" title="Example">
 
 ```yaml
@@ -267,60 +269,65 @@ Command to get the `tps` value on the server using `!tps` or `!tickpersecond`. *
 
 ![discord presence](/pulse/discordpresence.png)
 
-### Bot status settings
-#### `enable`
+<Accordions>
+    <Accordion title="Bot status settings">
+        #### `enable`
 
-Enables or disables custom bot status
+        Enables or disables custom bot status
 
-#### `status`
+        #### `status`
 
-| Mode             | Explanation                     |
-|------------------|---------------------------------|
-| `UNKNOWN`        | -                               |
-| `ONLINE`         | Online                          |
-| `DO_NOT_DISTURB` | Online, with do not disturb mode |
-| `IDLE`           | Online, but away                |
-| `INVISIBLE`      | Invisible                       |
-| `OFFLINE`        | Offline                         |
+        | Mode             | Explanation                     |
+        |------------------|---------------------------------|
+        | `UNKNOWN`        | -                               |
+        | `ONLINE`         | Online                          |
+        | `DO_NOT_DISTURB` | Online, with do not disturb mode |
+        | `IDLE`           | Online, but away                |
+        | `INVISIBLE`      | Invisible                       |
+        | `OFFLINE`        | Offline                         |
 
-#### `activity`
+        #### `activity`
 
-Bot activity in Discord
+        Bot activity in Discord
 
-##### `enable`
+        ##### `enable`
 
-Enables or disables activity
+        Enables or disables activity
 
-##### `type`
+        ##### `type`
 
-| Type        | Explanation |
-|-------------|-------------|
-| `UNKNOWN`   | -           |
-| `STREAMING` | Streaming   |
-| `LISTENING` | Listening   |
-| `WATCHING`  | Watching    |
-| `CUSTOM`    | -           |
-| `COMPETING` | Competing   |
+        | Type        | Explanation |
+        |-------------|-------------|
+        | `UNKNOWN`   | -           |
+        | `STREAMING` | Streaming   |
+        | `LISTENING` | Listening   |
+        | `WATCHING`  | Watching    |
+        | `CUSTOM`    | -           |
+        | `COMPETING` | Competing   |
 
-##### `name`
+        ##### `name`
 
-Activity name
+        Activity name
 
-##### `url`
+        ##### `url`
 
-Activity link
-
+        Activity link
+    </Accordion>
+</Accordions>
 
 ### `channel_info`
 
 ![discord channel info](/pulse/discordchannelinfo.png)
 
-### Info channels settings
-#### `enable`
+<Accordions>
+    <Accordion title="Info channels settings">
+        #### `enable`
 
-Whether an info channel is needed
+        Whether an info channel is needed
 
-<include>../../../parts/ticker.en.mdx</include>
+        <include>../../../parts/ticker.en.mdx</include>
+    </Accordion>
+</Accordions>
 
 ### `message_channel`
 
@@ -345,14 +352,17 @@ message_channel:
 
 Localization can be left unconfigured; by default, the message will be sent with the `<final_message>` format
 
-
 <include>../../../parts/destination.en.mdx</include>
 
+<include>../../../parts/sound.en.mdx</include>
+
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → integration.discord`</span>
 
-
 <include>../../../files/permission.yml#discord</include>
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>

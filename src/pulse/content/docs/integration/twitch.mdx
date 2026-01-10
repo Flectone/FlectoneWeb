@@ -15,10 +15,10 @@ authors:
 
 <include>../../../parts/messageTag.mdx</include>
 
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → integration.twitch`</span>
-
-
 
 <Tabs items={['ru_ru', 'en_us']}>
   <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#twitch</include></Tab>
@@ -49,7 +49,7 @@ custom_command:
 
 </Callout>
 
-### `Плейсхолдеры`
+#### `Плейсхолдеры`
 
 Ты можешь использовать все плейсхолдеры, которые используются в начальном сообщении для майнкрафта
 <Callout type="info" title="Например для сообщения о блокировке">
@@ -65,7 +65,6 @@ custom_command:
 - `<reply>` отформатированное сообщение-ответ, оно будет пустым, если основное сообщение не ответ
 - Очевидно, что все плейсхолдеры из `PlaceholderAPI` и `FlectonePulse` тоже будут работать
 
-<br/>
 У сообщения, которое будет отправлено из Твича в Майнкрафт есть свои плейсхолдеры:
 
 | Плейсхолдер    | Что возвращает                                            |
@@ -90,10 +89,10 @@ custom_command:
 ```
 </Callout>
 
+<br></br>
 
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `integration.yml → twitch`</span>
-
 
 <include>../../../files/integration.yml#twitch</include>
 
@@ -118,11 +117,10 @@ custom_command:
 
 Список кастомных комманд интеграции, ключом является название комманды и оно может быть любым. Комманды могут быть ТОЛЬКО информационными, на сервере они ничего не выполняют и не будут выполнять
 
-| Параметр      | Пояснение                                                                      |
+| Параметр      | Объяснение                                                                      |
 |---------------|--------------------------------------------------------------------------------|
 | `need_player` | Проверять ли первый аргумент комманды на имя игрока, например `!ping TheFaser` |
 | `aliases`     | Список псевдонимов для использования комманды                                  |
-
 
 <Callout type="info" title="Пример">
 
@@ -186,10 +184,12 @@ follow_channel:
 
 <include>../../../parts/destination.mdx</include>
 
+<include>../../../parts/sound.mdx</include>
+
+<br></br>
 
 # <include>../../../parts/words.mdx#permission</include>
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → integration.twitch`</span>
-
 
 <include>../../../files/permission.yml#twitch</include>
 

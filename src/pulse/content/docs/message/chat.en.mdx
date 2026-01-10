@@ -3,7 +3,6 @@ title: Chat
 description: Module responsible for messages sent by the player to the chat
 authors:
   - TheFaser
-  - Bakinu
 ---
 
 ![chat](/pulse/chat.png)
@@ -13,32 +12,34 @@ authors:
 
     ```yaml
     chat:
-    enable: true
-    mode: "BUKKIT"
-    priority: "NORMAL"
-    types:
-    local:
-    enable: false # set to false
-    global:
-    enable: true
-    cancel: false
-    range: "PROXY"
-    priority: 5
-    trigger: "" # make it empty
-    null_receiver:
-    enable: true
-    destination:
-    type: "ACTION_BAR"
-    times:
-    stay: 20
-    destination:
-    type: "CHAT"
-    cooldown:
-    enable: false
-    sound:
-    enable: false
+      enable: true
+      mode: "BUKKIT"
+      priority: "NORMAL"
+      types:
+        local:
+          enable: false # поставь false
+        global:
+          enable: true
+          cancel: false
+          range: "PROXY"
+          priority: 5
+          trigger: "" # сделай пусто
+          null_receiver:
+            enable: true
+            destination:
+              type: "ACTION_BAR"
+              times:
+                stay: 20
+          destination:
+            type: "CHAT"
+          cooldown:
+            enable: false
+          sound:
+            enable: false
     ```
 </Callout>
+
+<br></br>
 
 # <include>../../../parts/words.en.mdx#localization</include>
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.chat`</span>
@@ -60,6 +61,7 @@ Message if no one saw the player's message
 
 List of chats and their format
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `message.yml → chat`</span>
@@ -82,7 +84,7 @@ Chat processing mode
     If you need another plugin to see chat messages, set `mode: "BUKKIT"`. In rare cases, if the plugin works through `Paper` listeners, you should set `mode: "PAPER"`
 </Callout>
 
-### `event_priority`
+### `priority`
 
 Priority of the chat message event. Change this value if there is a conflict with other plugins using the chat.
 
@@ -106,7 +108,7 @@ chat_name:
   range: PROXY
   priority: number
   trigger: "trigger"
-  null-receiver:
+  null_receiver:
     enable: true
     destination:
       type: "ACTION_BAR"
@@ -120,69 +122,62 @@ chat_name:
     enable: false
 ```
 
-### `enable`
+<Accordions>
+    <Accordion title="Setting">
+        #### `enable`
 
-Enables chat functionality
+        Enables functionality
 
-### `null_recipient`
+        #### `cancel`
 
-![null recipient](/pulse/nullrecipient.png)
+        - If `true`, the chat message event is canceled for other plugins
+        - If you need another chat-related plugin (like DiscordSRV) to work, set to `false` (this may cause console duplication)
+        ![chat console](/pulse/chatconsole.png)
 
-Enables a notification that no one saw the sent message
+        <include>../../../parts/range.mdx</include>
 
-#### SETTING
+        #### `priority`
 
-##### `enable`
+        Chat priority used to determine which chat is selected when multiple chats have the same `trigger`. The chat with the higher priority is chosen
 
-Enables functionality
+        <Callout type="info" title="For example, if there are chats:">
+            ```yaml
+            admin:
+              priority: 20
+              trigger: "!"
+            helper:
+              priority: 10
+              trigger: "!"
+            ```
 
-##### `destination`
+            If a player has permission for both chats, the `admin` chat will be selected by the plugin because it has a higher `priority`
+        </Callout>
 
-Where the message will be sent
+        #### `trigger`
 
+        The message prefix that must be used to send a message to this chat
 
+        <Callout type="info" title="The `trigger` value can be anything:">
+            - `!`, `admin`, `.f`, etc.
+            - empty, i.e., `trigger: ""`, then any message matches this chat
+        </Callout>
 
-### `cancel`
+        The `trigger` is removed from the final message, meaning if a player sends `!hello`, the result will be `hello` without `!`
 
-- If `true`, the chat message event is cancelled for other plugins
-- If another chat-related plugin (e.g., DiscordSRV) needs to work, set this to `false`
-- If `false`, it also causes duplication in the console
-![chat console](/pulse/chatconsole.png)
+        #### `null_receiver`
 
-<include>../../../parts/range.en.mdx</include>
+        Enables the "No one heard you" message if no one heard the player
 
-### `priority`
-
-Chat priority used to choose when multiple chats have the same `trigger`. The one with the higher priority is selected.
-
-<Callout type="info" title="Example CHATS">
-    ```yaml
-    admin:
-    priority: 20
-    trigger: "!" // [!code highlight]
-    helper:
-    priority: 10
-    trigger: "!" // [!code highlight]
-    ```
-
-    If a player has permission for both chats, the `admin` chat will be selected because it has a higher `priority`
-</Callout>
-
-### `trigger`
-
-The message prefix that should trigger the chat type
-
-<Callout type="info" title="THE `trigger` VALUE CAN BE ANYTHING:">
-    - `!`, `admin`, `.f`, etc.
-    - Empty, i.e., `trigger: ""`, in which case any message fits this chat
-</Callout>
-
-In the final message, the `trigger` is removed; for example, if a player sends `!hello`, the result will be `hello` without the `!`
+    </Accordion>
+</Accordions>
 
 <include>../../../parts/destination.en.mdx</include>
+
 <include>../../../parts/cooldown.en.mdx</include>
+
 <include>../../../parts/sound.en.mdx</include>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → message.chat`</span>
@@ -196,4 +191,5 @@ In the final message, the `trigger` is removed; for example, if a player sends `
 List of chats and their permissions
 
 <include>../../../parts/permission/cooldown.en.mdx</include>
+
 <include>../../../parts/permission/sound.en.mdx</include>
