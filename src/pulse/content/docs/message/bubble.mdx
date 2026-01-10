@@ -1,5 +1,5 @@
 ---
-title: Над головой
+title: Сообщения над головой
 description: Модуль, отвечающий за сообщения над головой
 authors:
   - TheFaser
@@ -34,6 +34,10 @@ long duration = (countWords + handicapChars) / readSpeed * 60;
 <include>../../../files/message.yml#bubble</include>
 
 <include>../../../parts/enable.mdx</include>
+
+### `visible_to_self`
+
+Будет ли отправитель сообщения видеть собственное сообщение над головой
 
 ### `max_count`
 
@@ -121,7 +125,7 @@ long duration = (countWords + handicapChars) / readSpeed * 60;
 | `HORIZONTAL`   | Положение изменяется относительно горизонтали             |
 | `CENTER`       | Положение изменяется относительно горизонтали и вертикали |
 
-
+<include>../../../parts/ticker.mdx</include>
 
 # <include>../../../parts/words.mdx#permission</include> 
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → message.bubble`</span>

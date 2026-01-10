@@ -277,6 +277,7 @@ command:
 #region kick
   kick:
     null_player: "<color:#ff7171><sprite_or:⁉:gui:icon/chat_modified>This player does not exist"
+    lower_weight_group: "<color:#ff7171><sprite_or:⁉:gui:icon/chat_modified>You cannot kick a player with equal or higher permissions"
     reasons:
       default: "Kicked by an operator"
     server: "<color:#ff7171>🔒 <fcolor:2><moderator> <fcolor:1>kicked <fcolor:2><player> <fcolor:1><hover:show_text:\"<fcolor:1>ID: <id><br>Date: <date><br>Moderator: <moderator><br>Reason: <reason>\">[INFO]</hover>"
@@ -581,7 +582,7 @@ message:
     announce:
       key: "message"
     types:
-      entity.minecraft.ender_dragon: "<sprite:item/endermite_spawn_egg><gradient:#ff6bff:#dda0dd>Ender Dragon"
+      entity.minecraft.ender_dragon: "<sprite:block/chorus_flower><gradient:#ff6bff:#dda0dd>Ender Dragon"
       entity.minecraft.wither: "<sprite:gui:mob_effect/wither><gradient:#7b68ee:#9370db>Wither"
       event.minecraft.raid: "<sprite:gui:mob_effect/raid_omen><gradient:#ff6b6b:#ff4444>Raid"
       event.minecraft.raid.defeat: "<sprite:gui:hud/heart/poisoned_full><gradient:#ff6b6b:#ff4444>Defeat"
@@ -705,11 +706,13 @@ message:
 #endregion objective
 #region belowname
     belowname:
-      format: "<fcolor:1>ms"
+      display_format: "<fcolor:1>ms"
+      score_format: "<fcolor:1><score>"
 #endregion belowname
 #region tabname
     tabname:
-      format: "<fcolor:1><score> ms"
+      display_format: ""
+      score_format: "<fcolor:1><score> ms"
 #endregion tabname
 #region quit
   quit:

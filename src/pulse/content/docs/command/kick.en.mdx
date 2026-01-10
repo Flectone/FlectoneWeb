@@ -23,6 +23,10 @@ authors:
 
 Message if the entered player is not found
 
+### `lower_weight_group`
+
+Message if the command is executed by a player with a group lower than the player being moderated
+
 ### `reasons`
 
 A list with keys and values, where the key is a word and the value is a specific reason
@@ -53,6 +57,10 @@ Message for the player
 <include>../../../files/command.yml#kick</include>
 
 <include>../../../parts/enable.en.mdx</include>
+
+### `check_group_weight`
+
+Whether player groups will be checked. If the player being moderated has a higher role than the command sender, the command will not execute and a `lower_weight_group` error will occur
 
 <include>../../../parts/range.en.mdx</include>
 
