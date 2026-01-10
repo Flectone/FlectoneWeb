@@ -19,9 +19,9 @@
   --color-fd-muted-green: hsl(160, 49%, 38%);
   --color-fd-green-foreground: hsl(160, 49%, 95%);
 
-  --color-fd-gray: hsl(212, 32%, 70%);
-  --color-fd-muted-gray: hsl(212, 32%, 64%);
-  --color-fd-gray-foreground: hsl(212, 32%, 15%);
+  --color-fd-gray: hsl(0, 0%, 80%);
+  --color-fd-muted-gray: hsl(0, 0%, 72%);
+  --color-fd-gray-foreground: hsl(0, 0%, 15%);
 }
 
 .dark {
@@ -46,9 +46,9 @@
   --color-fd-muted-green: hsl(135, 80%, 82%);
   --color-fd-green-foreground: hsl(135, 80%, 15%);
 
-  --color-fd-gray: hsl(222, 12%, 22%);
-  --color-fd-muted-gray: hsl(222, 12%, 32%);
-  --color-fd-gray-foreground: hsl(222, 12%, 87%);
+  --color-fd-gray: #2b2b2b;
+  --color-fd-muted-gray: #353535;
+  --color-fd-gray-foreground: hsl(0, 0%, 87%);
 }
 
 b {
