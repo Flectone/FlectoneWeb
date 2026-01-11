@@ -137,7 +137,9 @@
       "description": "├── <b>backups/</b>\n│  ├──<c>version/</c>\n├── <b>images/</b>\n├── <b>libaries/</b>\n├── <b>minecraft/</b>\n├── <b>localizations/</b>\n├── <b>commands.yml</b>\n├── <b>config.yml</b>\n├── <b>integration.yml</b>\n├── <b>message.yml</b>\n├── <b>permission.yml</b>"
     },
     "Metrics": {
-      "title": "Аналитика"
+      "title": "Аналитика",
+      "playersCount": "Количество игроков",
+      "serversCount": "Количество серверов"
     }
   }
 }

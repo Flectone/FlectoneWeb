@@ -11,46 +11,61 @@ authors:
 </Callout>
 
 # Activity (7 days)
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg' alt="Activity (7 days)"/>
+<Metric
+  type="two-line"
+  slice={true}
+  data={{
+    first: { name: 'Player count', apiPath: 'playerCount' },
+    second: { name: 'Server count', apiPath: 'serverCount' }
+  }}
+/> 
 
 # Server Versions
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/server-versions' alt="Server Versions"/>
+<Metric type="pie" name="Server count" apiPath="field?name=serverVersion" sort='quickRevers'/>
 
-# CPU Core Counts
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/core-counts' alt="CPU Core Counts"/>
+# CPU Cores
+<Metric type="pie" suffix="CPU" name="Server count" apiPath="field?name=cpuCores" sort="quickRevers" />
 
 # RAM
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/ram-usage' alt="RAM"/>
+<Metric type="pie" name="Server count" apiPath="field?name=totalRam" sort="quickRevers" convert='gb' suffix="GB" />
 
 # Module Status
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/modules-status' alt="Module Status"/>
+<Metric type="treemap" apiPath="field?name=modules" />
 
 # FlectonePulse Versions
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/project-verions' alt="FlectonePulse Versions"/>
+<Metric type="pie" sort="quickRevers" name="Server count" apiPath="field?name=projectVersion" />
 
 # FlectonePulse Languages
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/project-languages' alt="FlectonePulse Languages"/>
+<Metric type="bar" name="Server count" apiPath="field?name=projectLanguage" sort="quick" />
 
-# Server Types
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/server-types' alt="Server Types"/>
+# Server Platforms
+<Metric
+  type="two-pie"
+  title="Platforms"
+  sort="quickRevers"
+  data={{
+    first: { name: 'Servers', apiPath: 'field?name=serverCore' },
+    second: { name: 'Players', apiPath: 'field?name=playerCountByServerCore' }
+  }}
+/>
 
 # System Architecture
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/system-archs' alt="System Architecture"/>
+<Metric type="pie" sort="quickRevers" apiPath="field?name=osArchitecture" name="Server count" />
 
 # Operating Systems
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/operation-systems' alt="Operating Systems"/>
+<Metric type="pie" sort="quickRevers" apiPath="field?name=osName" name="Server count" />
 
 # Java Versions
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/java-versions' alt="Java Versions"/>
+<Metric type="pie" name="Server count" apiPath="field?name=javaVersion" sort="quickRevers" />
 
 # Proxy Modes
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/proxy-modes' alt="Proxy Modes"/>
+<Metric type="bar" name="Server count" sort='quick' apiPath="field?name=proxyMode" />
 
 # Online / Offline
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/online-mode' alt="Online / Offline"/>
+<Metric type="bar" name="Server count" sort='quick' apiPath="field?name=onlineMode" />
 
 # Server Geography
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/server-locations' alt="Server Geography"/>
+<Metric type="geo" name="Server count" apiPath="field?name=location" />
 
 # Database Modes
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/database-modes' alt="Database Modes"/>
+<Metric type="bar" name="Server count" sort='quick' apiPath="field?name=databaseMode" />
