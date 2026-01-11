@@ -6,17 +6,15 @@ authors:
 ---
 ![command mutelist](/pulse/commandmutelist.png)
 
-  
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.mutelist`</span>
 
- 
-
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#mutelist</include></Tab>
-<Tab value="en_us"><include>../../../files/localizations/en_us.yml#mutelist</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#mutelist</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#mutelist</include></Tab>
 </Tabs>
 
 ### `empty`
@@ -33,41 +31,44 @@ authors:
 
 ### `global`
 
+<Accordions>
+    <Accordion title="Сообщения для глобальных мутов">
+        #### `header`
 
-Сообщения для глобальных мутов
+        Верхняя часть сообщения списка
 
-#### `header`
+        #### `line`
 
-Верхняя часть сообщения списка
+        Формат каждого мута из списка
 
-#### `line`
+        #### `footer`
 
-Формат каждого мута из списка
-
-#### `footer`
-
-Нижняя часть сообщения списка
+        Нижняя часть сообщения списка
+    </Accordion>
+</Accordions>
 
 ### `player`
 
+<Accordions>
+    <Accordion title="Сообщения для мутов игрока">
+        #### `header`
 
-Сообщения для мутов игрока
+        Верхняя часть сообщения списка
 
-#### `header`
+        #### `line`
 
-Верхняя часть сообщения списка
+        Формат каждого мута из списка
 
-#### `line`
+        #### `footer`
 
-Формат каждого мута из списка
-
-#### `footer`
-
-Нижняя часть сообщения списка
+        Нижняя часть сообщения списка
+    </Accordion>
+</Accordions>
  
+<br></br>
+
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `command.yml → mutelist`</span>
-
 
 <include>../../../files/command.yml#mutelist</include>
 
@@ -77,18 +78,18 @@ authors:
 
 <include>../../../parts/range.mdx</include>
 
+<include>../../../parts/aliases.mdx</include>
+
 <include>../../../parts/cooldown.mdx</include>
 
 <include>../../../parts/sound.mdx</include>
 
- 
-# <include>../../../parts/words.mdx#permission</include> 
-<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.mutelist`</span>
+<br></br>
 
+# <include>../../../parts/words.mdx#permission</include>
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.mutelist`</span>
  
 <include>../../../files/permission.yml#mutelist</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.mdx</include>
 

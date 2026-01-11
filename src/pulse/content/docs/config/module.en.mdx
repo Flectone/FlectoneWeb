@@ -4,9 +4,10 @@ description: Configuration for the core module of FlectonePulse
 authors:
   - TheFaser
 ---
+<br></br>
+
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `config.yml → module`</span>
-
 
 <include>../../../files/config.yml#module</include>
 
@@ -14,7 +15,7 @@ authors:
 
 Enables or disables the operation of all modules.
 
-- Every module has a parent (the one located above it).
+1. Every module has a parent (the one located above it).
 
 <Callout type="info" title="Example">
     ```yaml
@@ -26,7 +27,7 @@ Enables or disables the operation of all modules.
     `house` is the parent of `door` and `chair`.
 </Callout>
 
-- Every module depends on the parent's `enable` status.
+2. Every module depends on the parent's `enable` status.
 
 <Callout type="info" title="Example">
     ```yaml
@@ -43,7 +44,9 @@ Enables or disables the operation of all modules.
 
 ### `use_paper_message_sender`
 
-If enabled, `FlectonePulse` will use `Paper` as a tool for sending messages to a player's chat. How does it work? First, the plugin creates a message internally and obtains `FlectonePulse.Component`; this object is converted into a standard `String`. Then, `Paper` itself is used to derive a `Paper.Component` from this string and send it to the player.
+If enabled, `FlectonePulse` will use `Paper` as a tool for sending messages to a player's chat.
+
+How does it work? First, the plugin creates a message internally and obtains `FlectonePulse.Component`; this object is converted into a standard `String`. Then, `Paper` itself is used to derive a `Paper.Component` from this string and send it to the player.
 
 <Callout type="warn" title="Warning">
 
@@ -51,6 +54,7 @@ If enabled, `FlectonePulse` will use `Paper` as a tool for sending messages to a
 
 </Callout>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <include>../../../parts/words.en.mdx#path</include> `permission.yml`

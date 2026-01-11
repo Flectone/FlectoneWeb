@@ -26,10 +26,10 @@ To ensure achievements from `Blaze and Caves` are displayed correctly, you must 
 
 Check and enable the gamerule for command feedback using `/gamerule sendCommandFeedback true`
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#localization</include>
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.vanilla`</span>
-
 
 <Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../files/localizations/en_us.yml#vanilla</include></Tab>
@@ -87,6 +87,7 @@ List of messages where the key is the translation key
 
 </Callout>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `message.yml → vanilla`</span>
@@ -99,26 +100,31 @@ List of messages where the key is the translation key
 
 A list of message groups organized by common characteristics. Each parameter inside is optional.
 
-#### GROUP SETTINGS
 
-##### `multi_message`
+<Accordions>
+    <Accordion title="Group settings">
+        #### `multi_message`
 
-Whether this message is global for everyone. If enabled, it will be sent once by the sender, and all other duplicate messages will be cancelled. This isn't visible to users but is used for correct integration with `Proxy` and external services.
+        Whether this message is global for everyone. If enabled, it will be sent once by the sender, and all other duplicate messages will be cancelled. This isn't visible to users but is used for correct integration with `Proxy` and external services
 
-<Callout type="info" title="Example">
-    Advancement messages are sent to each player individually. If you enable `multi_message`, the message will be sent when the player who earned the achievement receives it. Then, the message is sent to everyone on their behalf, allowing it to be correctly forwarded to the `Proxy` and integrations.
+        <Callout type="info" title="Example">
+            Advancement messages are sent to each player individually. If you enable `multi_message`, the message will be sent when the player who earned the achievement receives it. Then, the message is sent to everyone on their behalf, allowing it to be correctly forwarded to the `Proxy` and integrations
 
-</Callout>
+        </Callout>
 
-#### `name`
+        #### `name`
 
-The group name in uppercase. Used to identify these messages in integrations (e.g., `Discord`) and in `/chatsetting` to toggle their display.
+        The group name in uppercase. Used to identify these messages in integrations (e.g., `Discord`) and in `/chatsetting` to toggle their display
+    </Accordion>
+</Accordions>
 
 <include>../../../parts/range.en.mdx</include>
+
 <include>../../../parts/destination.en.mdx</include>
+
 <include>../../../parts/sound.en.mdx</include>
 
-
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → message.vanilla`</span>
@@ -126,4 +132,5 @@ The group name in uppercase. Used to identify these messages in integrations (e.
 <include>../../../files/permission.yml#vanilla</include>
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>
+
 <include>../../../parts/permission/sound.en.mdx</include>

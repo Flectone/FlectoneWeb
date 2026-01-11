@@ -12,13 +12,11 @@ When the player who was sent a mail joins the server, they will see this
 If the player is already on the server and the [Tell](/pulse/docs/command/tell/) module is enabled, it will be used instead
 ![command tell](/pulse/commandtell.png)
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#localization</include>
 
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.mail`</span>
-
-
-
 
 <Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../files/localizations/en_us.yml#mail</include></Tab>
@@ -29,6 +27,10 @@ If the player is already on the server and the [Tell](/pulse/docs/command/tell/)
 
 Message if the entered player is not found
 
+### `online_player`
+
+Message if the entered player is online and the `tell` module is unavailable
+
 ### `sender`
 
 Message for the sender
@@ -37,16 +39,16 @@ Message for the sender
 
 Message for the receiver
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `command.yml → mail`</span>
-
 
 <include>../../../files/command.yml#mail</include>
 
 <include>../../../parts/enable.en.mdx</include>
 
-<include>../../../parts/range.en.mdx</include>
+<include>../../../parts/aliases.en.mdx</include>
 
 <include>../../../parts/destination.en.mdx</include>
 
@@ -54,14 +56,12 @@ Message for the receiver
 
 <include>../../../parts/sound.en.mdx</include>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.mail`</span>
 
-
 <include>../../../files/permission.yml#mail</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>
 

@@ -6,9 +6,10 @@ authors:
 ---
 ![player count](/pulse/playercount.png)
 
+<br></br>
+
 # <include>../../../../parts/words.en.mdx#localization</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.status.players`</span>
-
 
 <Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#players</include></Tab>
@@ -24,21 +25,21 @@ List of server players. The `<players>` placeholder adds all server players to t
     ```yaml
     samples:
     - name: "<red>This is a Minecraft server!"
-    id: null
+      id: null
     - name: "<players>"
-        id: null
-        ```
-        ![sample1](/pulse/sample1.png)
+      id: null
+    ```
+    ![sample1](/pulse/sample1.png)
 
-        or create fake players
-        ```yaml
-        samples:
-        - name: "Notch"
-        id: null
-        - name: "<players>"
-            id: null
-            ```
-            ![sample2](/pulse/sample2.png)
+    or create fake players
+    ```yaml
+    samples:
+    - name: "Notch"
+      id: null
+    - name: "<players>"
+      id: null
+    ```
+    ![sample2](/pulse/sample2.png)
 </Callout>
 
 <Callout type="warn" title="Warning">
@@ -50,6 +51,7 @@ List of server players. The `<players>` placeholder adds all server players to t
 
 Message when connecting to a full server
 
+<br></br>
 
 # <include>../../../../parts/words.en.mdx#setting</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `message.yml → status.players`</span>
@@ -74,6 +76,7 @@ A number that allows you to specify any online count on the server
     The number can be anything, but `-69` indicates the current online count
 </Callout>
 
+<br></br>
 
 # <include>../../../../parts/words.en.mdx#permission</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.status.players`</span>

@@ -13,19 +13,17 @@ More details about [colors](/pulse/docs/message/format/fcolor/)
 
 <Callout type="info" title="Information">
 
-    You can skip colors using `null` so they aren't replaced. For example, `/chatcolor see null null <red> <red>` will only replace `<fcolor:3>` and `<fcolor:4>`, leaving the first two unchanged.
-
+    You can skip colors using `null` so they aren't replaced. For example, `/chatcolor see null null <red> <red>` will only replace `<fcolor:3>` and `<fcolor:4>`, leaving the first two unchanged.\
+    \
     If you have the `other` permission, you can change the colors of other players by adding their nickname at the end of the command, for example `/chatcolor see null <red> <red> <blue> TheFaser`. You must specify all color slots before the nickname, but you can skip them as described above.
 
 </Callout>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#localization</include>
 
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.chatcolor`</span>
-
-
-
 
 <Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../files/localizations/en_us.yml#chatcolor</include></Tab>
@@ -48,16 +46,16 @@ Message if the type is entered incorrectly
 
 The format of the message that will be sent
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `command.yml → chatcolor`</span>
-
 
 <include>../../../files/command.yml#chatcolor</include>
 
 <include>../../../parts/enable.en.mdx</include>
 
-<include>../../../parts/range.en.mdx</include>
+<include>../../../parts/aliases.en.mdx</include>
 
 <include>../../../parts/destination.en.mdx</include>
 
@@ -65,22 +63,20 @@ The format of the message that will be sent
 
 <include>../../../parts/sound.en.mdx</include>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.chatcolor`</span>
 
-
 <include>../../../files/permission.yml#chatcolor</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>
 
 <include>../../../parts/permission/other.en.mdx</include>
+
 <include>../../../parts/permission/cooldown.en.mdx</include>
 
 <include>../../../parts/permission/sound.en.mdx</include>
-
 
 ### `colors`
 

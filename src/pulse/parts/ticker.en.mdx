@@ -1,24 +1,31 @@
 ### `ticker`
 
 Updating every specific interval of time
-<Callout type="info" title="How to use the ticker?">
-    <Steps>
-        <Step>
-            Replace `false` with `true`
-        </Step>
-        <Step>
-            Restart `FlectonePulse` using the command `/flectonepulse reload`
-        </Step>
-    </Steps>
 
-    <Callout type="info" title="">
-        Additional parameters for configuring the delay will appear automatically
-    </Callout>
-    #### `enable`
+<Accordions>
+    <Accordion title="How to use?">
+        <Steps>
+            <Step>
+                Replace `false` with `true`
+            </Step>
+            <Step>
+                Restart `FlectonePulse` using the command `/flectonepulse reload`
+            </Step>
+        </Steps>
 
-    Whether to update
+        <Callout type="info" title="">
+            Additional parameters for configuring period will appear automatically
+        </Callout>
 
-    #### `period`
+        ```yaml
+        ticker:
+          enable: true
+          period: 100
+        ```
 
-    How often to update, measured in [ticks](https://minecraft.wiki/w/Tick)
-</Callout>
+        | Field    | Explanation                                                                                             |
+        |----------|-------------------------------------------------------------------------------------------|
+        | `enable` | Whether to update                                                                    |
+        | `period` | How often to update, measured in [ticks](https://minecraft.wiki/w/Tick) |
+    </Accordion>
+</Accordions>

@@ -17,13 +17,11 @@ By default, a request is sent for [Chinese tic-tac-toe](#rules-of-chinese-tic-ta
 
 As a result, the game becomes complex and strategic!
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#localization</include>
 
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.tictactoe`</span>
-
-
-
 
 <Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../files/localizations/en_us.yml#tictactoe</include></Tab>
@@ -52,35 +50,37 @@ Message if one of the players involved in the game has left
 
 ### `symbol`
 
+<Accordions>
+    <Accordion title="Messages for symbols">
+        #### `empty`
 
-Messages for symbols
-#### `empty`
+        Message format for an empty cell
 
-Message format for an empty cell
+        #### `first`
 
-#### `first`
+        Message format for the first player's cell
 
-Message format for the first player's cell
+        #### `first_remove`
 
-#### `first_remove`
+        Message format for removing the first player's cell
 
-Message format for removing the first player's cell
+        #### `first_win`
 
-#### `first_win`
+        Message format for the first player's winning cell
 
-Message format for the first player's winning cell
+        #### `second`
 
-#### `second`
+        Message format for the second player's cell
 
-Message format for the second player's cell
+        #### `second_remove`
 
-#### `second_remove`
+        Message format for removing the second player's cell
 
-Message format for removing the second player's cell
+        #### `second_win`
 
-#### `second_win`
-
-Message format for the second player's winning cell
+        Message format for the second player's winning cell
+    </Accordion>
+</Accordions>
 
 ### `field`
 
@@ -114,29 +114,27 @@ Message for the sender upon request
 
 Message for the receiver upon request
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `command.yml → tictactoe`</span>
-
 
 <include>../../../files/command.yml#tictactoe</include>
 
 <include>../../../parts/enable.en.mdx</include>
 
-<include>../../../parts/range.en.mdx</include>
+<include>../../../parts/aliases.en.mdx</include>
 
 <include>../../../parts/cooldown.en.mdx</include>
 
 <include>../../../parts/sound.en.mdx</include>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.tictactoe`</span>
 
-
 <include>../../../files/permission.yml#tictactoe</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>
 

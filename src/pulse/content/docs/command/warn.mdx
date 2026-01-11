@@ -6,18 +6,17 @@ authors:
 ---
 ![command warn](/pulse/commandwarn.png)
 
-  
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.warn`</span>
-
- 
-
 
 <Tabs items={['ru_ru', 'en_us']}>
 <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#warn</include></Tab>
 <Tab value="en_us"><include>../../../files/localizations/en_us.yml#warn</include></Tab>
 </Tabs>
+
 ### `null_player`
 
 Сообщение, если введённый игрок не найден
@@ -51,10 +50,10 @@ random_kek: "Random reason"
 
 Сообщение для игрока
 
- 
+<br></br>
+
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `command.yml → warn`</span>
-
 
 <include>../../../files/command.yml#warn</include>
 
@@ -68,38 +67,38 @@ random_kek: "Random reason"
 
 <include>../../../parts/range.mdx</include>
 
-
 ### `time_limits`
 
 Лимиты по времени в зависимости от группы отправителя. Ключом является вес группы, а значением - максимальное количество времени модерации в милисекундах (`1` секунда = `1000` милисекунд)
 
 <Callout type="info" title="Пример">
 
-```yaml
- time_limits:
-    20: 35000
-    50: 100000
-```
+    ```yaml
+     time_limits:
+        20: 35000
+        50: 100000
+    ```
 
-- Если игрок имеет вес группы `10`, команда НЕ будет выполнена
-- Если игрок имеет вес группы `20`, максимальное количество времени будет `35000`
-- Если игрок имеет вес группы `40`, максимальное количество времени также будет `35000`
-- Если игрок имеет вес группы `50` и выше, то будет `100000`
+    - Если игрок имеет вес группы `10`, команда НЕ будет выполнена
+    - Если игрок имеет вес группы `20`, максимальное количество времени будет `35000`
+    - Если игрок имеет вес группы `40`, максимальное количество времени также будет `35000`
+    - Если игрок имеет вес группы `50` и выше, то будет `100000`
 
-Для безграничного времени нужно использовать значение `-1`
+    Для безграничного времени нужно использовать значение `-1`
 
 </Callout>
 
-<include>../../../parts/range.mdx</include>
-
+<include>../../../parts/aliases.mdx</include>
 
 ### `actions`
 
 Список, где ключом является `количество` предупреждений и значением `действие`, которое должно выполниться
 
 <Callout type="info" title="Например я хочу, чтобы при `10` варнов игрока банило">
-Тогда я должен вписать `10: ban <target> ohh`. Действие выполнится если у игрока будет `10` активных предупреждений
+    Тогда я должен вписать `10: ban <target> ohh`. Действие выполнится если у игрока будет `10` активных предупреждений
 </Callout>
+
+<include>../../../parts/range.mdx</include>
 
 <include>../../../parts/destination.mdx</include>
 
@@ -107,14 +106,12 @@ random_kek: "Random reason"
 
 <include>../../../parts/sound.mdx</include>
 
- 
-# <include>../../../parts/words.mdx#permission</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#permission</include>
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → command.warn`</span>
 
- 
 <include>../../../files/permission.yml#warn</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.mdx</include>
 

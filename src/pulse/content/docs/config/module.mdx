@@ -4,17 +4,18 @@ description: Настройка самого главного модуля Flect
 authors:
   - TheFaser
 ---
+<br></br>
+
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `config.yml → module`</span>
 
- 
 <include>../../../files/config.yml#module</include>
 
 ### `enable`
 
 Включает или выключает работу всех модулей
 
-- Каждый модуль имеет родителя (тот, кто выше находится)
+1. Каждый модуль имеет родителя (тот, кто выше находится)
 
 <Callout type="info" title="Например">
 ```yaml
@@ -26,7 +27,7 @@ house:
 `house` является родителем для `door` и `chair`
 </Callout>
 
-- Каждый модуль зависит от `enable` родителя
+2. Каждый модуль зависит от `enable` родителя
 
 <Callout type="info" title="Например">
 ```yaml
@@ -43,14 +44,15 @@ house:
 
 ### `use_paper_message_sender`
 
-Если включено, `FlectonePulse` будет использовать `Paper`, как инструмент для отправки сообщения в чат игроку. Как это работает? Сначала плагин создаёт сообщение внутри себя и получает `FlectonePulse.Component`, этот объект преобразуется в обычную строчку `String`. Далее используется сам `Paper`, чтобы из этой строчки получить `Paper.Component` и отправить его игроку
+Если включено, `FlectonePulse` будет использовать `Paper`, как инструмент для отправки сообщения в чат игроку.
+
+Как это работает? Сначала плагин создаёт сообщение внутри себя и получает `FlectonePulse.Component`, этот объект преобразуется в обычную строчку `String`. Далее используется сам `Paper`, чтобы из этой строчки получить `Paper.Component` и отправить его игроку
 
 <Callout type="warn" title="Предупреждение">
 
 Чтобы это работало, на сервере должен быть установлен `PacketEvents` отдельным плагином и ядро сервера должно быть `Paper` или его форк
 
 </Callout>
-
 
 # <include>../../../parts/words.mdx#permission</include>
 <include>../../../parts/words.mdx#path</include> `permission.yml`

@@ -10,14 +10,14 @@ authors:
 
 <include>../../../parts/messageTag.en.mdx</include>
 
-# <include>../../../parts/words.en.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.en.mdx#localization</include>
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → integration.telegram`</span>
 
- 
-
-<Tabs items={['ru_ru', 'en_us']}>
-  <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#telegram</include></Tab>
-  <Tab value="en_us"><include>../../../files/localizations/en_us.yml#telegram</include></Tab>
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#telegram</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#telegram</include></Tab>
 </Tabs>
 
 ### `null_player`
@@ -44,7 +44,7 @@ A command to get the `tps` value on the server. **Don't forget to define it in i
 
 </Callout>
 
-### `Placeholders`
+#### `Placeholders`
 
 You can use all the placeholders that are used in the initial Minecraft message.
 <Callout type="info" title="Example for a ban message">
@@ -60,7 +60,6 @@ There are also placeholders that are GUARANTEED to be replaced in any message:
 - `<reply>` the formatted reply message; it will be empty if the main message is not a reply
 - Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
 
-<br/>
 A message sent from Telegram to Minecraft has its own placeholders:
 
 | Placeholder    | What it returns                                            |
@@ -93,10 +92,10 @@ message_name: "<final_message>"
 ```
 </Callout>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `integration.yml → telegram`</span>
-
 
 <include>../../../files/integration.yml#telegram</include>
 
@@ -130,7 +129,6 @@ A list of custom integration commands; the key is the command name and can be an
 |---------------|--------------------------------------------------------------------------------|
 | `need_player` | Whether to check the first argument of the command for a player name, e.g., `!ping TheFaser` |
 | `aliases`     | A list of aliases for using the command                                        |
-
 
 <Callout type="info" title="Example">
 
@@ -187,11 +185,15 @@ This rule does not apply to other chats within the forum, where the **FULL** ID 
 
 <include>../../../parts/destination.en.mdx</include>
 
+<include>../../../parts/sound.en.mdx</include>
+
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → integration.telegram`</span>
 
-
 <include>../../../files/permission.yml#telegram</include>
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../parts/permission/sound.en.mdx</include>
