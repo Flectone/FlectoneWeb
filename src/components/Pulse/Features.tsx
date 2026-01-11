@@ -10,7 +10,7 @@ export default function Feautures() {
     return (
         <div className='w-full flex gap-8 max-[52rem]:flex-col'>
             <FeatureCard
-                className='w-1/3 h-72 max-[52rem]:w-full max-[52rem]:h-92 max-[64rem]:h-82'
+                className='w-1/3 h-72 max-[52rem]:w-full max-[52rem]:h-62 max-[64rem]:h-52'
                 title={t("Message.title")}
                 description={t("Message.description")}
                 image="/pulse/pulsecard1.svg"
@@ -20,7 +20,7 @@ export default function Feautures() {
 
             />
             <FeatureCard
-                className='w-1/3 h-72 max-[52rem]:w-full max-[52rem]:h-92 max-[64rem]:h-82'
+                className='w-1/3 h-72 max-[52rem]:w-full max-[52rem]:h-62 max-[64rem]:h-52'
                 title={t("Command.title")}
                 description={t("Command.description")}
                 image="/pulse/pulsecard2.svg"
@@ -29,7 +29,7 @@ export default function Feautures() {
                 imagePosition={'bottom'}
             />
             <FeatureCard
-                className='w-1/3 h-72 max-[52rem]:w-full max-[52rem]:h-92 max-[64rem]:h-82'
+                className='w-1/3 h-72 max-[52rem]:w-full max-[52rem]:h-62 max-[64rem]:h-52'
                 title={t("Integration.title")}
                 description={t("Integration.description")}
                 image="/pulse/pulsecard3.svg"
