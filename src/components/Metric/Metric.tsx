@@ -261,7 +261,7 @@ export default function Metric(props: MetricProps) {
                 }
             },
             visualMap: { min: 0, max: maxVal, left: '5%', bottom: '5%', orient: 'vertical', text: ['Max', '0'], calculable: true, inRange: { color: resolvedTheme === 'dark' ? ['#377ded50', '#377ded',] : ['#5094ff50', '#5094ff'] }, textStyle: { color: resolvedTheme === 'dark' ? '#999' : '#666' } },
-            series: [{ name: name, type: 'map', map: 'world', roam: true, label: { show: false }, itemStyle: { areaColor: resolvedTheme === 'dark' ? '#1a1a1a' : '#f3f4f6', borderColor: resolvedTheme === 'dark' ? '#333' : '#ccc' }, emphasis: { label: { show: false }, itemStyle: { areaColor: '#facc15' } }, nameProperty: 'name', data: chartData.map(item => ({ name: item.value === 'United States' ? 'United States of America' : item.value === 'The Netherlands' ? 'Netherlands' : item.value, value: item.count })) }]
+            series: [{ name: name, type: 'map', map: 'world', roam: true, label: { show: false }, itemStyle: { areaColor: resolvedTheme === 'dark' ? '#1a1a1a' : '#f3f4f6', borderColor: resolvedTheme === 'dark' ? '#333' : '#ccc' }, emphasis: { label: { show: false }, itemStyle: { areaColor: '#facc15' } }, nameProperty: 'name', data: chartData.map(item => ({ name: item.value === 'The Netherlands' ? 'Netherlands' : item.value, value: item.count })) }]
         } as EChartsOption;
     }, [chartData, name, resolvedTheme]);
 
