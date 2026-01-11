@@ -1,11 +1,11 @@
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import {Step, Steps} from 'fumadocs-ui/components/steps';
+import {Accordion, Accordions} from 'fumadocs-ui/components/accordion';
 import type {MDXComponents} from 'mdx/types';
 import * as TabsComponents from 'fumadocs-ui/components/tabs';
 import Callout from '@/components/Pulse/Callout/Callout'
 import { LinkIcon } from 'lucide-react';
 import Metric from './components/Metric/Metric';
-import { P } from 'node_modules/framer-motion/dist/types.d-DagZKalS';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -14,6 +14,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ...TabsComponents,
     Steps,
     Step,
+    Accordion,
+    Accordions,
     Callout,
     Metric: ({...props}) => <Metric {...props} className='my-6'/>,
     h1: ({ id, children, ...props }) => (
