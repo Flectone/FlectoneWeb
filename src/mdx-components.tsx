@@ -4,8 +4,8 @@ import type {MDXComponents} from 'mdx/types';
 import * as TabsComponents from 'fumadocs-ui/components/tabs';
 import Callout from '@/components/Pulse/Callout/Callout'
 import { LinkIcon } from 'lucide-react';
-import ZoomImage from '@/components/Pulse/ZoomImage'
-import TwoLineChart from '@/components/Metric/TwoLineChart'
+import Metric from './components/Metric/Metric';
+import { P } from 'node_modules/framer-motion/dist/types.d-DagZKalS';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -15,8 +15,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Steps,
     Step,
     Callout,
-    ZoomImage,
-    TwoLineChart,
+    Metric: ({...props}) => <Metric {...props} className='my-6'/>,
     h1: ({ id, children, ...props }) => (
       <h1
         id={id}
