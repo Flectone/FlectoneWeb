@@ -8,6 +8,7 @@ export default function Metrics() {
       <h1 className='text-2xl w-fit text-center font-bold border-b border-fd-foreground px-4 pb-2'>{t('title')}</h1>
       <Metric
         className="backdrop-blur-2xl py-4 bg-linear-to-br from-fd-primary/10"
+        slice={true}
         type="two-line"
         data={{
           first: { name: t('playersCount'), apiPath: 'playerCount' },
