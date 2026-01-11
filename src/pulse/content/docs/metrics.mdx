@@ -11,60 +11,64 @@ authors:
 </Callout>
 
 # Активность (7 дней)
-<TwoLineChart
+<Metric
+  type="two-line"
+  slice={true}
   data={{
-    first: {
-      name: 'Игроки',
-      apiPath: 'playerCount'
-    },
-    second: {
-      name: 'Сервера',
-      apiPath: 'serverCount'
-    }
+    first: { name: 'Количество игроков', apiPath: 'playerCount' },
+    second: { name: 'Количество серверов', apiPath: 'serverCount' }
+  }}
+/> 
+
+# Версии серверов
+<Metric type="pie" name="Количество серверов" apiPath="field?name=serverVersion" sort='quickRevers'/>
+
+# Количество ядер CPU
+<Metric type="pie" suffix="CPU" name="Количество серверов" apiPath="field?name=cpuCores" sort="quickRevers" />
+
+# Оперативная память
+<Metric type="pie" name="Количество серверов" apiPath="field?name=totalRam" sort="quickRevers" convert='gb' suffix="ГБ" />
+
+# Статус модулей
+<Metric type="treemap" apiPath="field?name=modules" />
+
+# Версии FlectonePulse
+<Metric type="pie" sort="quickRevers" name="Количество серверов" apiPath="field?name=projectVersion" />
+
+# Языки FlectonePulse
+<Metric type="bar" name="Количество серверов" apiPath="field?name=projectLanguage" sort="quick" />
+
+# Типы серверов
+<Metric
+  type="two-pie"
+  sort="quickRevers"
+  data={{
+    first: { name: 'Серверы', apiPath: 'field?name=serverCore' },
+    second: { name: 'Игроки', apiPath: 'field?name=playerCountByServerCore' }
   }}
 />
 
-# Версии серверов
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/server-versions' alt="Server Versions"/>
-
-# Количество ядер CPU
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/core-counts' alt="CPU Core Counts"/>
-
-# Оперативная память
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/ram-usage' alt="RAM"/>
-
-# Статус модулей
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/modules-status' alt="Module Status"/>
-
-# Версии FlectonePulse
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/project-verions' alt="FlectonePulse Versions"/>
-
-# Языки FlectonePulse
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/project-languages' alt="FlectonePulse Languages"/>
-
-# Типы серверов
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/server-types' alt="Server Types"/>
-
 # Архитектура системы
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/system-archs' alt="System Architecture"/>
+<Metric type="pie" sort="quickRevers" apiPath="field?name=osArchitecture" name="Количество серверов" />
 
 # Операционные системы
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/operation-systems' alt="Operating Systems"/>
+<Metric type="pie" sort="quickRevers" apiPath="field?name=osName" name="Количество серверов" />
 
 # Версии Java
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/java-versions' alt="Java Versions"/>
+<Metric type="pie" name="Количество серверов" apiPath="field?name=javaVersion" sort="quickRevers" />
 
 # Режимы прокси
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/proxy-modes' alt="Proxy Modes"/>
+<Metric type="bar" name="Количество серверов" sort='quick' apiPath="field?name=proxyMode" />
 
 # Онлайн / оффлайн
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/online-mode' alt="Online / Offline"/>
-
-# География серверов
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/server-locations' alt="Server Geography"/>
+<Metric type="bar" name="Количество серверов" sort='quick' apiPath="field?name=onlineMode" />
 
 # Режимы баз данных
-<ZoomImage src='https://flectone.net/api/pulse/metrics/svg/database-modes' alt="Database Modes"/>
+<Metric type="bar" name="Количество серверов" sort='quick' apiPath="field?name=databaseMode" />
+
+# География серверов
+<Metric type="geo" name="Количество серверов" apiPath="field?name=location" />
+
 
 
 
