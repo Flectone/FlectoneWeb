@@ -6,13 +6,14 @@ authors:
 ---
 ![player count](/pulse/playercount.png)
 
+<br></br>
+
 # <include>../../../../parts/words.mdx#localization</include> 
 <span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.status.players`</span>
 
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#players</include></Tab>
-<Tab value="en_us"><include>../../../../files/localizations/en_us.yml#players</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#players</include></Tab>
+    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#players</include></Tab>
 </Tabs>
 
 ### `samples`
@@ -20,36 +21,37 @@ authors:
 Список игроков сервера. Плейсхолдер `<players>` добавляет всех игроков сервера к списку
 
 <Callout type="info" title="ПРИМЕРЫ ИСПОЛЬЗОВАНИЯ">
-Можно добавлять любые сообщения
-```yaml
-samples:
-  - name: "<red>Это сервер в майнкрафте!"
-    id: null
-  - name: "<players>"
-    id: null
-```
-![sample1](/pulse/sample1.png)
+    Можно добавлять любые сообщения
+    ```yaml
+    samples:
+      - name: "<red>Это сервер в майнкрафте!"
+        id: null
+      - name: "<players>"
+        id: null
+    ```
+    ![sample1](/pulse/sample1.png)
 
-или создавать фейковых игроков
-```yaml
-samples:
-  - name: "Notch"
-    id: null
-  - name: "<players>"
-    id: null
-```
-![sample2](/pulse/sample2.png)
+    или создавать фейковых игроков
+    ```yaml
+    samples:
+      - name: "Notch"
+        id: null
+      - name: "<players>"
+        id: null
+    ```
+    ![sample2](/pulse/sample2.png)
 </Callout>
 
 <Callout type="warn" title="Предупреждение">
-Можно использовать только доступные цвета
-<include>../../../../parts/color.mdx</include>
+    Можно использовать только доступные цвета
+    <include>../../../../parts/color.mdx</include>
 </Callout>
 
 ### `full`
 
 Сообщение при подключении на полный сервер
 
+<br></br>
 
 # <include>../../../../parts/words.mdx#setting</include>
 <span><include>../../../../parts/words.mdx#path</include> `message.yml → status.players`</span>
@@ -75,6 +77,7 @@ samples:
 
 </Callout>
 
+<br></br>
 
 # <include>../../../../parts/words.mdx#permission</include> 
 <span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.status.players`</span>

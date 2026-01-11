@@ -8,88 +8,79 @@ authors:
 
 <Callout type="info" title="ПРИМЕЧАНИЕ">
 
-Можно открыть чужие настройки с помощью `/chatsetting TheFaser`
+    Можно открыть чужие настройки с помощью `/chatsetting TheFaser`\
+    \
+    Если ты хочешь сделать своё меню через другой плагин, то ты можешь изменять значения с помощью `/chatsetting TheFaser ADVANCEMENT`. Это включит или выключит показ достижений в зависимости от состояния. Узнать состояние можно через плейсхолдер `%flectonepulse_advancement%`.\
+    \
+    Некоторым настройкам можно назначать значения, например `/chatsetting TheFaser STREAM_PREFIX kek` поставит игроку префикс стримера `kek`.
 
-Если ты хочешь сделать своё меню через другой плагин, то ты можешь изменять значения с помощью `/chatsetting TheFaser ADVANCEMENT`. Это включит или выключит показ достижений в зависимости от состояния. Узнать состояние можно через плейсхолдер `%flectonepulse_advancement%`. 
-
-Некоторым настройкам можно назначать значения, например `/chatsetting TheFaser STREAM_PREFIX kek` поставит игроку префикс стримера `kek`.
-
-| Настройка           |
-|---------------------|
-| `ADVANCEMENT`       |
-| `AFK`               |
-| `AFK_SUFFIX`        |
-| `AUTO`              |
-| `BALL`              |
-| `BAN`               |
-| `BROADCAST`         |
-| `CHAT`              |
-| `COIN`              |
-| `DEATH`             |
-| `DICE`              |
-| `DISCORD`           |
-| `DO`                |
-| `GREETING`          |
-| `JOIN`              |
-| `KICK`              |
-| `LOCALE`            |
-| `MAIL`              |
-| `ME`                |
-| `MUTE`              |
-| `POLL`              |
-| `QUIT`              |
-| `REPLY`             |
-| `ROCKPAPERSCISSORS` |
-| `SPY`               |
-| `STREAM`            |
-| `STREAM_PREFIX`     |
-| `TELEGRAM`          |
-| `TELL`              |
-| `TICTACTOE`         |
-| `TRANSLATETO`       |
-| `TRY`               |
-| `TWITCH`            |
-| `WARN`              |
-| `WORLD_PREFIX`      |
-| `ANON`              |
+    | Доступные настройки для /chatsetting           |
+    |---------------------|
+    | `ADVANCEMENT`       |
+    | `AFK`               |
+    | `AFK_SUFFIX`        |
+    | `AUTO`              |
+    | `BALL`              |
+    | `BAN`               |
+    | `BROADCAST`         |
+    | `CHAT`              |
+    | `COIN`              |
+    | `DEATH`             |
+    | `DICE`              |
+    | `DISCORD`           |
+    | `DO`                |
+    | `GREETING`          |
+    | `JOIN`              |
+    | `KICK`              |
+    | `LOCALE`            |
+    | `MAIL`              |
+    | `ME`                |
+    | `MUTE`              |
+    | `POLL`              |
+    | `QUIT`              |
+    | `REPLY`             |
+    | `ROCKPAPERSCISSORS` |
+    | `SPY`               |
+    | `STREAM`            |
+    | `STREAM_PREFIX`     |
+    | `TELEGRAM`          |
+    | `TELL`              |
+    | `TICTACTOE`         |
+    | `TRANSLATETO`       |
+    | `TRY`               |
+    | `TWITCH`            |
+    | `WARN`              |
+    | `WORLD_PREFIX`      |
+    | `ANON`              |
 
 </Callout>
 
-  
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.chatsetting`</span>
 
- 
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#chatsetting</include></Tab>
-<Tab value="en_us"><include>../../../files/localizations/en_us.yml#chatsetting</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#chatsetting</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#chatsetting</include></Tab>
 </Tabs>
 
 <Callout type="info" title="Примечание">
-Название и описание предметов находятся в одной строчке, переход на новую строчку осуществляется с помощью `<br>`
+    Название и описание предметов находятся в одной строчке, переход на новую строчку осуществляется с помощью `<br>`
 </Callout>
 
 ### `no_permission`
 
 Сообщение, если для изменения настройки требуется определённое право
 
-### `disable`
+### `disabled_self`
 
+Сообщение, если игрок отключил функцию и пытается ей воспользоваться
 
-Сообщения об отключении
-#### `you`
+### `disabled_other`
 
-Сообщение, если отправитель отключил комманду в `/chatsetting`
-
-#### `he`
-
-Сообщение, если получатель отключил комманду в `/chatsetting`
-
-#### `server`
-
-Сообщение, если сервер отключил комманду для `/chatsetting`
+Соообщение, если игрока использует функцию для другого игрока, который отключил эту функцию
 
 ### `inventory`
 
@@ -97,58 +88,58 @@ authors:
 
 ### `checkbox`
 
+<Accordions>
+    <Accordion title="Настройка переключателей">
+        #### `enabled_color`
 
-Настройка переключателей
+        Цвет, если настройка включена. Заменяет `<status_color>`
 
-#### `enabled_color`
+        #### `enabled_hover`
 
-Цвет, если настройка включена. Заменяет `<status_color>`
+        Сообщение, если настройка включена
 
-#### `enabled_hover`
+        #### `disabled_color`
 
-Сообщение, если настройка включена
+        Цвет, если настройка выключена. Заменяет `<status_color>`
 
-#### `disabled_color`
+        #### `disabled_hover`
 
-Цвет, если настройка выключена. Заменяет `<status_color>`
+        Сообщение, если настройка выключена
 
-#### `disabled_hover`
+        #### `types`
 
-Сообщение, если настройка выключена
-
-#### `types`
-
-Список типов настроек и их названий
+        Список типов настроек и их названий
+    </Accordion>
+</Accordions>
 
 ### `menu`
 
-Каждое дополнительное меню имеет:
+<Accordions>
+    <Accordion title="Настройка дополнительных меню">
+        #### `item`
 
+        Название и описание предмета, который будет в основном меню
 
-Настройка дополнительных меню
+        #### `inventory`
 
-#### `item`
+        Название GUI в дополнительном меню
 
-Название и описание предмета, который будет в основном меню
+        #### `types`
 
-#### `inventory`
-
-Название GUI в дополнительном меню
-
-#### `types`
-
-Список предметов с их названием и описанием
+        Список предметов с их названием и описанием
+    </Accordion>
+</Accordions>
  
+<br></br>
+
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `command.yml → chatsetting`</span>
-
 
 <include>../../../files/command.yml#chatsetting</include>
 
 <include>../../../parts/enable.mdx</include>
 
-<include>../../../parts/range.mdx</include>
-
+<include>../../../parts/aliases.mdx</include>
 
 ### `modern`
 
@@ -158,77 +149,81 @@ authors:
 
 </Callout>
 
+<Accordions>
+    <Accordion title="Настройка нового меню">
+        #### `enable`
 
-Настройка нового меню
+        Включает использование диалгов, вместо инвентарей
 
-#### `enable`
+        #### `button_width`
 
-Включает использование диалгов, вместо инвентарей
+        Ширина каждой кнопки
 
-#### `button_width`
+        #### `columns`
 
-Ширина каждой кнопки
-
-#### `columns`
-
-Количество кнопок на одной строчке
+        Количество кнопок на одной строчке
+    </Accordion>
+</Accordions>
 
 ### `checkbox`
 
+<Accordions>
+    <Accordion title="Настройка переключателей">
+        #### `disabled_material`
 
-Настройка переключателей
+        Материал, если настройка выключена
 
-#### `disabled_material`
+        #### `enabled_material`
 
-Материал, если настройка выключена
+        Материал, если настройка включена
 
-#### `enabled_material`
+        #### `types`
 
-Материал, если настройка включена
-
-#### `types`
-
-Список типов настроек и их слот в инвентаре
+        Список типов настроек и их слот в инвентаре
+    </Accordion>
+</Accordions>
 
 ### `menu`
 
-Дополнительные меню
+<Accordions>
+    <Accordion title="Настройка переключателей">
+        #### `material`
 
-#### `material`
+        Предмет который будет перекидывать в дополнительные меню
 
-Предмет который будет перекидывать в дополнительные меню
+        #### `slot`
+        <Callout type="info" title="Информация">
+            Чтобы отключить меню, можно использовать `slot: -1`
+        </Callout>
 
+        Какой слот будет в основном инвентаре
 
-Настройка дополнительных меню
+        #### `types`
 
-#### `slot`
+        Список типов настроек с их параметрами
+    </Accordion>
+</Accordions>
 
-Какой слот будет в основном инвентаре
-
-#### `types`
-
-Список типов настроек с их параметрами
 
 | Вид              | Описание                                                                                                                                                                                                                                   |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | у `CHAT`         | Поле `name` является названием, а `material` тип предмета, который будет в инвентаре у этого чата                                                                                                                                          |
 | у `SEE` и `OUT`  | Поле `name` является названием, а `material` тип предмета, который будет в инвентаре у этого чата. Также имеет `colors`, где ключом является цифра, а значением цвет, который применится. Используй `""` для того, чтобы цвет не изменялся |
 
- 
-# <include>../../../parts/words.mdx#permission</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#permission</include>
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → command.chatsetting`</span>
 
- 
 <include>../../../files/permission.yml#chatsetting</include>
 
-
-
 <include>../../../parts/permission/permissionTier3.mdx</include>
-
 
 ### `settings`
 
 Список настроек и их прав
+
+<include>../../../parts/permission/other.mdx</include>
 
 <include>../../../parts/permission/cooldown.mdx</include>
 

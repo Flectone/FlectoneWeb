@@ -14,9 +14,10 @@ Idea taken from [LightChatBubbles](https://github.com/atesin/LightChatBubbles)
 long duration = (countWords + handicapChars) / readSpeed * 60;
 ```
 
+<br></br>
+
 # <include>../../../parts/words.en.mdx#localization</include>
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.bubble`</span>
-
 
 <Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../files/localizations/en_us.yml#bubble</include></Tab>
@@ -27,6 +28,7 @@ long duration = (countWords + handicapChars) / readSpeed * 60;
 
 Format of the message above the head
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `message.yml → bubble`</span>
@@ -34,6 +36,10 @@ Format of the message above the head
 <include>../../../files/message.yml#bubble</include>
 
 <include>../../../parts/enable.en.mdx</include>
+
+### `visible_to_self`
+
+Whether the message sender will see their own message above their head
 
 ### `max_count`
 
@@ -71,16 +77,17 @@ Allows changing the distance between messages from each other, otherwise the leg
     This will only be used for servers with version `1.21.3` and higher
 </Callout>
 
-#### SETTING
+<Accordions>
+    <Accordion title="Setting">
+        ##### `enable`
 
-##### `enable`
+        Enables functionality
 
-Enables functionality
+        ##### `height`
 
-##### `height`
-
-The distance between each message from one another
-
+        The distance between each message from one another
+    </Accordion>
+</Accordions>
 
 ### `modern`
 
@@ -90,38 +97,42 @@ Overhead messages via Text Display
     This will only be used for servers with version `1.19.4` and higher
 </Callout>
 
-#### SETTING
-##### `enable`
+<Accordions>
+    <Accordion title="Setting">
+        ##### `enable`
 
-Enables functionality
+        Enables functionality
 
-##### `has_shadow`
+        ##### `has_shadow`
 
-Enables text shadow
+        Enables text shadow
 
-##### `see_through`
+        ##### `see_through`
 
-Enables text transparency against water and clouds (so it cannot be seen through water)
+        Enables text transparency against water and clouds (so it cannot be seen through water)
 
+        ##### `scale`
 
-##### `scale`
+        How large the message will be
 
-How large the message will be
+        ##### `background`
 
-##### `background`
+        Background color of the message, it has transparency i.e. an alpha channel. [Website for color selection](https://rgbacolorpicker.com/color-wheel-picker)
 
-Background color of the message, it has transparency i.e. an alpha channel. [Website for color selection](https://rgbacolorpicker.com/color-wheel-picker)
+        ##### `billboard`
 
-##### `billboard`
+        | Type           | Explanation                                               |
+        |----------------|-----------------------------------------------------------|
+        | `FIXED`        | Position does not change                                  |
+        | `VERTICAL`     | Position changes relative to the vertical axis            |
+        | `HORIZONTAL`   | Position changes relative to the horizontal axis          |
+        | `CENTER`       | Position changes relative to horizontal and vertical axes |
+    </Accordion>
+</Accordions>
 
-| Type           | Explanation                                               |
-|----------------|-----------------------------------------------------------|
-| `FIXED`        | Position does not change                                  |
-| `VERTICAL`     | Position changes relative to the vertical axis            |
-| `HORIZONTAL`   | Position changes relative to the horizontal axis          |
-| `CENTER`       | Position changes relative to horizontal and vertical axes |
+<include>../../../parts/ticker.en.mdx</include>
 
-
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → message.bubble`</span>

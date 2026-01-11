@@ -10,9 +10,10 @@ authors:
 
 </Callout>
 
+<br></br>
+
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `config.yml → cache`</span>
-
 
 <include>../../../files/config.yml#cache</include>
 
@@ -34,17 +35,8 @@ A list of all caches used in `FlectonePulse`
 | `TRANSLATE_MESSAGE`    | For storing messages that need to be translated.                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `PROFILE_PROPERTY`     | For storing player profiles along with their skins, to avoid contacting `SkinsRestorer` or creating them manually every time.                                                                                                                                                                                                                                                                                                                                                             |
 
-<Callout type="info" title="Parameters">
-    #### `duration`
-
-    The lifespan of an unused object in the cache, after which it will be deleted.
-
-    #### `time_unit`
-
-    The type of time unit for the unused cache object's lifespan.
-
-    #### `size`
-
-    The maximum size of the cache.
-
-</Callout>
+| Parameter   | Explanation                                                                   |
+|-------------|-------------------------------------------------------------------------------|
+| `duration`  | The lifespan of an unused object in the cache, after which it will be deleted |
+| `time_unit` | The type of time unit for the unused cache object's lifespan                  |
+| `size`      | The maximum size of the cache                                                 |

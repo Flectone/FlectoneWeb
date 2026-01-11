@@ -6,19 +6,21 @@ authors:
 ---
 ![swear](/pulse/swear.png)
 
+<br></br>
+
 # <include>../../../../../parts/words.en.mdx#localization</include>
 <span><include>../../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.moderation.swear`</span>
 
-
-<Tabs items={['ru_ru', 'en_us']}>
-    <Tab value="ru_ru"><include>../../../../../files/localizations/ru_ru.yml#swear</include></Tab>
+<Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../../../files/localizations/en_us.yml#swear</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../files/localizations/ru_ru.yml#swear</include></Tab>
 </Tabs>
 
 ### `symbol`
 
 The symbol that replaces each letter of a swear word
 
+<br></br>
 
 # <include>../../../../../parts/words.en.mdx#setting</include>
 <span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.moderation.swear`</span>
@@ -26,6 +28,10 @@ The symbol that replaces each letter of a swear word
 <include>../../../../../files/message.yml#swear</include>
 
 <include>../../../../../parts/enable.en.mdx</include>
+
+### `ignore`
+
+List of words that are not profanity and should be skipped swear checking
 
 ### `trigger`
 
@@ -36,6 +42,7 @@ A list of [regular expressions](https://en.wikipedia.org/wiki/Regular_expression
     - For a domain/URL: `(?i)\\b((https?:\\/\\/)?([\\w\\.а-яА-Я-]+\\.([a-z]{2,4}|[рР][фФ]|[уУ][кК][рР]))\\b(:\\d{2,7})?(\\/\\S+)?)`
 </Callout>
 
+<br></br>
 
 # <include>../../../../../parts/words.en.mdx#permission</include>
 <span><include>../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.moderation.swear`</span>

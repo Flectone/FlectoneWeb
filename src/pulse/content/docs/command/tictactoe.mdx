@@ -17,17 +17,15 @@ authors:
 
 В итоге игра становится сложной и со стратегией!
 
-  
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.tictactoe`</span>
 
- 
-
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#tictactoe</include></Tab>
-<Tab value="en_us"><include>../../../files/localizations/en_us.yml#tictactoe</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#tictactoe</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#tictactoe</include></Tab>
 </Tabs>
 
 ### `null_player`
@@ -52,35 +50,37 @@ authors:
 
 ### `symbol`
 
+<Accordions>
+    <Accordion title="Сообщения для символов">
+        #### `empty`
 
-Сообщения для символов
-#### `empty`
+        Формат сообщения для пустой клетки
 
-Формат сообщения для пустой клетки
+        #### `first`
 
-#### `first`
+        Формат сообщения для клетки первого игрока
 
-Формат сообщения для клетки первого игрока
+        #### `first_remove`
 
-#### `first_remove`
+        Формат сообщения для удаления клетки первого игрока
 
-Формат сообщения для удаления клетки первого игрока
+        #### `first_win`
 
-#### `first_win`
+        Формат сообщения для победной клетки первого игрока
 
-Формат сообщения для победной клетки первого игрока
+        #### `second`
 
-#### `second`
+        Формат сообщения для клетки второго игрока
 
-Формат сообщения для клетки второго игрока
+        #### `second_remove`
 
-#### `second_remove`
+        Формат сообщения для удаления клетки второго игрока
 
-Формат сообщения для удаления клетки второго игрока
+        #### `second_win`
 
-#### `second_win`
-
-Формат сообщения для победной клетки второго игрока
+        Формат сообщения для победной клетки второго игрока
+    </Accordion>
+</Accordions>
 
 ### `field`
 
@@ -113,30 +113,28 @@ authors:
 ### `format_create`
 
 Сообщение для получателя при запросе
-
  
+<br></br>
+
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `command.yml → tictactoe`</span>
-
 
 <include>../../../files/command.yml#tictactoe</include>
 
 <include>../../../parts/enable.mdx</include>
 
-<include>../../../parts/range.mdx</include>
+<include>../../../parts/aliases.mdx</include>
 
 <include>../../../parts/cooldown.mdx</include>
 
 <include>../../../parts/sound.mdx</include>
 
- 
-# <include>../../../parts/words.mdx#permission</include> 
-<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.tictactoe`</span>
+<br></br>
 
+# <include>../../../parts/words.mdx#permission</include>
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.tictactoe`</span>
  
 <include>../../../files/permission.yml#tictactoe</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.mdx</include>
 

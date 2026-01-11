@@ -9,7 +9,7 @@
 #        \/           \/
 #
 # region version
-version: "1.7.3"
+version: "1.7.4"
 # endregion version
 #region language
 language:

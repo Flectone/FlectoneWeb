@@ -6,13 +6,11 @@ authors:
 ---
 ![command ban](/pulse/commandban.png)
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#localization</include>
 
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.ban`</span>
-
-
-
 
 <Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../files/localizations/en_us.yml#ban</include></Tab>
@@ -57,6 +55,8 @@ Message for the player
 Message if a banned player attempted to connect
 
 
+<br></br>
+
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `command.yml → ban`</span>
 
@@ -66,17 +66,16 @@ Message if a banned player attempted to connect
 
 <include>../../../parts/suggestOfflinePlayers.en.mdx</include>
 
-### `check_group_weight`
-
-Whether player groups will be checked. If the player being moderated has a higher role than the command sender, the command will not execute and the `lower_weight_group` error will occur
-
 ### `show_connection_attempts`
 
 If enabled, it will show a message that a banned player attempted to connect
 ![command ban connect](/pulse/commandbanconnect.png)
 
-<include>../../../parts/range.en.mdx</include>
+### `check_group_weight`
 
+Whether player groups will be checked. If the player being moderated has a higher role than the command sender, the command will not execute and the `lower_weight_group` error will occur
+
+<include>../../../parts/range.en.mdx</include>
 
 ### `time_limits`
 
@@ -85,8 +84,8 @@ Time limits depending on the sender's group. The key is the group weight, and th
 <Callout type="info" title="Example">
     ```yaml
     time_limits:
-    20: 35000
-    50: 100000
+      20: 35000
+      50: 100000
     ```
 
     - If a player has a group weight of `10`, the command will NOT be executed
@@ -97,7 +96,8 @@ Time limits depending on the sender's group. The key is the group weight, and th
     For unlimited time, use the value `-1`
 </Callout>
 
-<include>../../../parts/range.en.mdx</include>
+
+<include>../../../parts/aliases.en.mdx</include>
 
 <include>../../../parts/destination.en.mdx</include>
 
@@ -105,13 +105,12 @@ Time limits depending on the sender's group. The key is the group weight, and th
 
 <include>../../../parts/sound.en.mdx</include>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.ban`</span>
 
 <include>../../../files/permission.yml#ban</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>
 

@@ -16,17 +16,15 @@ authors:
 
 </Callout>
 
-  
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.poll`</span>
 
- 
-
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#poll</include></Tab>
-<Tab value="en_us"><include>../../../files/localizations/en_us.yml#poll</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#poll</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#poll</include></Tab>
 </Tabs>
 
 ### `null_poll`
@@ -59,78 +57,80 @@ authors:
 
 ### `status`
 
+<Accordions>
+    <Accordion title="Заголовки для каждого статуса голосования">
+        #### `start`
 
-Заголовки для каждого статуса голосования
+        Заголовок при старте голосования
 
-#### `start`
+        #### `run`
 
-Заголовок при старте голосования
+        Заголовок при повторном сообщении голосования
 
-#### `run`
+        #### `end`
 
-Заголовок при повторном сообщении голосования
-
-#### `end`
-
-Заголовок при конце голосования
+        Заголовок при конце голосования
+    </Accordion>
+</Accordions>
 
 ### `modern`
 
+<Accordions>
+    <Accordion title="Система диалогов для создания голосования">
+        #### `header`
 
-Система диалогов для создания голосования
+        Имя диалога
 
-#### `header`
+        #### `input_name`
 
-Имя диалога
+        Название для поля "название"
 
-#### `input_name`
+        #### `input_initial`
 
-Название для поля "название"
+        Текст по умолчанию для поля "название"
 
-#### `input_initial`
+        #### `multiple_name`
 
-Текст по умолчанию для поля "название"
+        Название для поля-переключателя "разрешить несколько ответов"
 
-#### `multiple_name`
+        #### `end_time_name`
 
-Название для поля-переключателя "разрешить несколько ответов"
+        Название для поля с длительностью
 
-#### `end_time_name`
+        #### `repeat_time_name`
 
-Название для поля с длительностью
+        Название для поля с интервалом
 
-#### `repeat_time_name`
+        #### `new_answer_button_name`
 
-Название для поля с интервалом
+        Название для кнопки, которая создаёт новый ответ
 
-#### `new_answer_button_name`
+        #### `remove_answer_button_name`
 
-Название для кнопки, которая создаёт новый ответ
+        Название для кнопки, которая удаляет последний ответ
 
-#### `remove_answer_button_name`
+        #### `input_answer_name`
 
-Название для кнопки, которая удаляет последний ответ
+        Название для нового поля с ответом
 
-#### `input_answer_name`
+        #### `input_answers_initial`
 
-Название для нового поля с ответом
+        Текст по умолчанию для поля с ответом
 
-#### `input_answers_initial`
+        #### `create_button_name`
 
-Текст по умолчанию для поля с ответом
+        Название для кнопки, которая создаёт голосование
+    </Accordion>
+</Accordions>
 
-#### `create_button_name`
-
-Название для кнопки, которая создаёт голосование
+<br></br>
 
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `command.yml → poll`</span>
 
-
 <include>../../../files/command.yml#poll</include>
 
 <include>../../../parts/enable.mdx</include>
-
 
 ### `enable_gui`
 
@@ -142,30 +142,26 @@ authors:
 
 Добавляет новую команду `/pollgui` (зависит от названия самой команды, т.е. `/название` + `gui`)
 
-<include>../../../parts/range.mdx</include>
-
-
 ### `last_id`
 
 Последний номер созданного голосования
 
 <include>../../../parts/range.mdx</include>
 
+<include>../../../parts/aliases.mdx</include>
+
 <include>../../../parts/cooldown.mdx</include>
 
 <include>../../../parts/sound.mdx</include>
 
- 
-# <include>../../../parts/words.mdx#permission</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#permission</include>
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → command.poll`</span>
 
- 
 <include>../../../files/permission.yml#poll</include>
 
-
-
 <include>../../../parts/permission/permissionTier3.mdx</include>
-
 
 ### `create`
 

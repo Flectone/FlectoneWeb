@@ -12,22 +12,24 @@ authors:
 Если игрок уже на сервере и модуль [Tell](/pulse/docs/command/tell/) включен, то он будет использован
 ![command tell](/pulse/commandtell.png)
 
-  
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.mail`</span>
 
- 
-
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#mail</include></Tab>
-<Tab value="en_us"><include>../../../files/localizations/en_us.yml#mail</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#mail</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#mail</include></Tab>
 </Tabs>
 
 ### `null_player`
 
 Сообщение, если введённый игрок не найден
+
+### `online_player`
+
+Сообщение, если введённый игрок в сети и `tell` модуль недоступен
 
 ### `sender`
 
@@ -36,17 +38,17 @@ authors:
 ### `receiver`
 
 Сообщение для получателя
-
  
+<br></br>
+
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `command.yml → mail`</span>
-
 
 <include>../../../files/command.yml#mail</include>
 
 <include>../../../parts/enable.mdx</include>
 
-<include>../../../parts/range.mdx</include>
+<include>../../../parts/aliases.mdx</include>
 
 <include>../../../parts/destination.mdx</include>
 
@@ -54,14 +56,12 @@ authors:
 
 <include>../../../parts/sound.mdx</include>
 
- 
-# <include>../../../parts/words.mdx#permission</include> 
-<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.mail`</span>
+<br></br>
 
+# <include>../../../parts/words.mdx#permission</include>
+<span><include>../../../parts/words.mdx#path</include> `permission.yml → command.mail`</span>
  
 <include>../../../files/permission.yml#mail</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.mdx</include>
 

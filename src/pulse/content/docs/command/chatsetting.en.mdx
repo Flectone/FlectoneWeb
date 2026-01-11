@@ -8,10 +8,10 @@ authors:
 
 <Callout type="info" title="NOTE">
 
-    You can open someone else's settings using `/chatsetting TheFaser`
-
-    If you want to create your own menu via another plugin, you can change values using `/chatsetting TheFaser ADVANCEMENT`. This will enable or disable the display of achievements depending on the state. You can find out the state via the placeholder `%flectonepulse_advancement%`.
-
+    You can open someone else's settings using `/chatsetting TheFaser`\
+    \
+    If you want to create your own menu via another plugin, you can change values using `/chatsetting TheFaser ADVANCEMENT`. This will enable or disable the display of achievements depending on the state. You can find out the state via the placeholder `%flectonepulse_advancement%`.\
+    \
     Some settings can be assigned values, for example `/chatsetting TheFaser STREAM_PREFIX kek` will set the player's streamer prefix to `kek`.
 
     | Setting             |
@@ -55,12 +55,11 @@ authors:
 
 </Callout>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#localization</include>
 
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.chatsetting`</span>
-
-
 
 <Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../files/localizations/en_us.yml#chatsetting</include></Tab>
@@ -75,21 +74,13 @@ authors:
 
 Message if a specific permission is required to change a setting
 
-### `disable`
+### `disabled_self`
 
+Message displayed when a player has disabled the function and tries to use it
 
-Disable messages
-#### `you`
+### `disabled_other`
 
-Message if the sender has disabled the command in `/chatsetting`
-
-#### `he`
-
-Message if the recipient has disabled the command in `/chatsetting`
-
-#### `server`
-
-Message if the server has disabled the command for `/chatsetting`
+Message displayed when a player attempts to use the function on another player who has disabled it
 
 ### `inventory`
 
@@ -97,20 +88,19 @@ Title for the main GUI
 
 ### `checkbox`
 
+<Accordions>
+    <Accordion title="Toggle settings">
+        #### `enabled_color`
 
-Toggle settings
+        Color if the setting is enabled. Replaces `<status_color>`
 
-#### `enabled_color`
+        #### `enabled_hover`
 
-Color if the setting is enabled. Replaces `<status_color>`
+        Message if the setting is enabled
 
-    #### `enabled_hover`
+        #### `disabled_color`
 
-    Message if the setting is enabled
-
-    #### `disabled_color`
-
-    Color if the setting is disabled. Replaces `<status_color>`
+        Color if the setting is disabled. Replaces `<status_color>`
 
         #### `disabled_hover`
 
@@ -119,14 +109,13 @@ Color if the setting is enabled. Replaces `<status_color>`
         #### `types`
 
         List of setting types and their names
+    </Accordion>
+</Accordions>
 
-        ### `menu`
+### `menu`
 
-        Each additional menu has:
-
-
-        Settings for additional menus
-
+<Accordions>
+    <Accordion title="Settings for additional menus">
         #### `item`
 
         Name and description of the item that will be in the main menu
@@ -138,29 +127,30 @@ Color if the setting is enabled. Replaces `<status_color>`
         #### `types`
 
         List of items with their names and descriptions
+    </Accordion>
+</Accordions>
 
-        # <include>../../../parts/words.en.mdx#setting</include>
-        <span><include>../../../parts/words.en.mdx#path</include> `command.yml → chatsetting`</span>
+<br></br>
 
+# <include>../../../parts/words.en.mdx#setting</include>
+<span><include>../../../parts/words.en.mdx#path</include> `command.yml → chatsetting`</span>
 
-        <include>../../../files/command.yml#chatsetting</include>
+<include>../../../files/command.yml#chatsetting</include>
 
-        <include>../../../parts/enable.en.mdx</include>
+<include>../../../parts/enable.en.mdx</include>
 
-        <include>../../../parts/range.en.mdx</include>
+<include>../../../parts/aliases.en.mdx</include>
 
+### `modern`
 
-        ### `modern`
+<Callout type="warn" title="Warning">
 
-        <Callout type="warn" title="Warning">
+    Only works for versions `1.21.6` and newer; older versions will use inventory
 
-            Only works for versions `1.21.6` and newer; older versions will use inventory
+</Callout>
 
-        </Callout>
-
-
-        New menu setup
-
+<Accordions>
+    <Accordion title="New menu setup">
         #### `enable`
 
         Enables the use of dialogs instead of inventories
@@ -172,12 +162,13 @@ Color if the setting is enabled. Replaces `<status_color>`
         #### `columns`
 
         Number of buttons per row
+    </Accordion>
+</Accordions>
 
-        ### `checkbox`
+### `checkbox`
 
-
-        Toggle settings
-
+<Accordions>
+    <Accordion title="Toggle settings">
         #### `disabled_material`
 
         Material if the setting is disabled
@@ -189,47 +180,51 @@ Color if the setting is enabled. Replaces `<status_color>`
         #### `types`
 
         List of setting types and their inventory slots
+    </Accordion>
+</Accordions>
 
-        ### `menu`
+### `menu`
 
-        Additional menus
-
+<Accordions>
+    <Accordion title="Settings for additional menus">
         #### `material`
 
         Item that will redirect to additional menus
 
-
-        Settings for additional menus
-
         #### `slot`
+        <Callout type="info" title="Information">
+            To disable the menu, you can use `slot: -1`
+        </Callout>
 
         Which slot will be in the main inventory
 
         #### `types`
 
         List of setting types with their parameters
+    </Accordion>
+</Accordions>
 
-        | View             | Description                                                                                                                                                                                                                                |
-        |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-        | for `CHAT`       | The `name` field is the title, and `material` is the item type that will be in the inventory for this chat                                                                                                                                 |
-        | for `SEE` and `OUT` | The `name` field is the title, and `material` is the item type that will be in the inventory for this chat. It also has `colors`, where the key is a number and the value is the color to be applied. Use `""` to keep the color unchanged |
-
-
-        # <include>../../../parts/words.en.mdx#permission</include>
-        <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.chatsetting`</span>
+| View             | Description                                                                                                                                                                                                                                |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| for `CHAT`       | The `name` field is the title, and `material` is the item type that will be in the inventory for this chat                                                                                                                                 |
+| for `SEE` and `OUT` | The `name` field is the title, and `material` is the item type that will be in the inventory for this chat. It also has `colors`, where the key is a number and the value is the color to be applied. Use `""` to keep the color unchanged |
 
 
-        <include>../../../files/permission.yml#chatsetting</include>
+<br></br>
 
+# <include>../../../parts/words.en.mdx#permission</include>
+<span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.chatsetting`</span>
 
+<include>../../../files/permission.yml#chatsetting</include>
 
-        <include>../../../parts/permission/permissionTier3.en.mdx</include>
+<include>../../../parts/permission/permissionTier3.en.mdx</include>
 
+### `settings`
 
-        ### `settings`
+List of settings and their permissions
 
-        List of settings and their permissions
+<include>../../../parts/permission/other.en.mdx</include>
 
-        <include>../../../parts/permission/cooldown.en.mdx</include>
+<include>../../../parts/permission/cooldown.en.mdx</include>
 
-        <include>../../../parts/permission/sound.en.mdx</include>
+<include>../../../parts/permission/sound.en.mdx</include>

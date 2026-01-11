@@ -8,19 +8,25 @@ authors:
 
 ![player list](/pulse/playerlist.png)
 
+<br></br>
+
 # <include>../../../../parts/words.mdx#localization</include> 
 <span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.tabname`</span>
 
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#tabname</include></Tab>
-<Tab value="en_us"><include>../../../../files/localizations/en_us.yml#tabname</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#tabname</include></Tab>
+    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#tabname</include></Tab>
 </Tabs>
 
-### `format`
+### `display_format`
 
-Сообщение, которое будет показано под ником
+Сообщение, которое будет являться названием этого `score` (бесполезно во многих случаях)
 
+### `score_format`
+
+Сообщение, которое будет показано справа от ника в ТАБе (динамическое, т.е. обновляется)
+
+<br></br>
 
 # <include>../../../../parts/words.mdx#setting</include>
 <span><include>../../../../parts/words.mdx#path</include> `message.yml → objective.tabname`</span>
@@ -36,12 +42,13 @@ authors:
 <include>../../../../parts/objective.mdx</include>
 
 <Callout type="info" title="Например РЕЖИМ `PING`">
-Значит будет возвращаться пинг игрока
-![player list](/pulse/playerlist.png)
+    Значит будет возвращаться пинг игрока
+    ![player list](/pulse/playerlist.png)
 </Callout>
 
 <include>../../../../parts/ticker.mdx</include>
 
+<br></br>
 
 # <include>../../../../parts/words.mdx#permission</include> 
 <span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.objective.tabname`</span>

@@ -6,13 +6,11 @@ authors:
 ---
 ![command mute](/pulse/commandmute.png)
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#localization</include>
 
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.mute`</span>
-
-
-
 
 <Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../files/localizations/en_us.yml#mute</include></Tab>
@@ -56,6 +54,7 @@ Message for everyone
 
 Message for the player
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `command.yml → mute`</span>
@@ -73,7 +72,6 @@ Whether player groups will be checked. If the player being moderated has a highe
 
 <include>../../../parts/range.en.mdx</include>
 
-
 ### `time_limits`
 
 Time limits depending on the sender's group. The key is the group weight, and the value is the maximum moderation time in milliseconds (`1` second = `1000` milliseconds)
@@ -82,8 +80,8 @@ Time limits depending on the sender's group. The key is the group weight, and th
 
     ```yaml
     time_limits:
-    20: 35000
-    50: 100000
+      20: 35000
+      50: 100000
     ```
 
     - If a player has a group weight of `10`, the command will NOT be executed
@@ -95,7 +93,7 @@ Time limits depending on the sender's group. The key is the group weight, and th
 
 </Callout>
 
-<include>../../../parts/range.en.mdx</include>
+<include>../../../parts/aliases.en.mdx</include>
 
 <include>../../../parts/destination.en.mdx</include>
 
@@ -103,14 +101,12 @@ Time limits depending on the sender's group. The key is the group weight, and th
 
 <include>../../../parts/sound.en.mdx</include>
 
+<br></br>
 
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → command.mute`</span>
 
-
 <include>../../../files/permission.yml#mute</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>
 

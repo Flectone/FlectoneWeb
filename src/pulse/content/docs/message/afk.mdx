@@ -9,13 +9,14 @@ authors:
 Если человек АФК, то ему выдаётся определённый суффикс
 ![afk suffix](/pulse/afksuffix.png)
 
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 <include>../../../parts/words.mdx#path</include> `localizations → язык.yml → message.afk`
 
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#afk</include></Tab>
-<Tab value="en_us"><include>../../../files/localizations/en_us.yml#afk</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#afk</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#afk</include></Tab>
 </Tabs>
 
 ### `suffix`
@@ -31,14 +32,15 @@ authors:
 
 Сообщение, если игрок вернулся
 
+<br></br>
 
 # <include>../../../parts/words.mdx#setting</include>
 <include>../../../parts/words.mdx#path</include> `message.yml → afk`
 
-
 <include>../../../files/message.yml#afk</include>
 
 <include>../../../parts/enable.mdx</include>
+
 <include>../../../parts/range.mdx</include>
 
 ### `delay`
@@ -56,21 +58,24 @@ authors:
 | `quit` - когда игрок выходит         |
 
 <Callout type="info" title="Например">
-Если я впишу в список комманду `tell` и игрок будет в режиме АФК, то он сможет использовать комманду `tell` и его не выкинет с режима АФК
+    Если я впишу в список комманду `tell` и игрок будет в режиме АФК, то он сможет использовать комманду `tell` и его не выкинет с режима АФК
 </Callout>
 
 <include>../../../parts/destination.mdx</include>
+
 <include>../../../parts/ticker.mdx</include>
+
 <include>../../../parts/sound.mdx</include>
 
+<br></br>
 
-
-# <include>../../../parts/words.mdx#permission</include> 
+# <include>../../../parts/words.mdx#permission</include>
 <include>../../../parts/words.mdx#path</include> `permission.yml → message.afk`
-
 
 <include>../../../files/permission.yml#afk</include>
 
 <include>../../../parts/permission/permissionTier3.mdx</include>
+
 <include>../../../parts/permission/cooldown.mdx</include>
+
 <include>../../../parts/permission/sound.mdx</include>

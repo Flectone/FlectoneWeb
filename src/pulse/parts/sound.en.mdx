@@ -2,32 +2,35 @@
 
 Sound playback
 
-#### Usage
-<Steps>
-    <Step>
-        Replace `false` with `true`
-    </Step>
-    <Step>
-        Restart `FlectonePulse` using the command `/flectonepulse reload`
-    </Step>
-</Steps>
-<Callout type="info" title="">
-    Additional parameters for sound configuration will appear automatically
-</Callout>
+<Accordions>
+    <Accordion title="How to use?">
+        <Steps>
+            <Step>
+                Replace `false` with `true`
+            </Step>
+            <Step>
+                Restart `FlectonePulse` using the command `/flectonepulse reload`
+            </Step>
+        </Steps>
+        <Callout type="info" title="">
+            Additional parameters for sound configuration will appear automatically
+        </Callout>
 
-```yaml
-sound:
-  enable: true
-  volume: 1.0
-  pitch: 1.0
-  category: "HOSTILE"
-  name: "minecraft:entity.llama.spit"
-```
-#### Parameters
-| Field      | Type      | Explanation                                                                                                      |
-|------------|-----------|------------------------------------------------------------------------------------------------------------------|
-| `enable`   | `boolean` | Enables sound playback                                                                                           |
-| `volume`   | `float`   | Sound volume from `0` to `1.0`                                                                                   |
-| `pitch`    | `float`   | Sound pitch from `0` to `1.0`                                                                                     |
-| `category` | `String`  | Category from `MASTER`, `MUSIC`, `RECORD`, `WEATHER`, `BLOCK`, `HOSTILE`, `NEUTRAL`, `PLAYER`, `AMBIENT`, `VOICE` |
-| `name`     | `String`  | Sound name, for example `minecraft:entity.llama.spit`                                                           |
+        ```yaml
+        sound:
+        enable: true
+        volume: 1.0
+        pitch: 1.0
+        category: "HOSTILE"
+        name: "minecraft:entity.llama.spit"
+        ```
+        #### Parameters
+        | Field      | Type      | Explanation                                                                                                      |
+        |------------|-----------|------------------------------------------------------------------------------------------------------------------|
+        | `enable`   | `boolean` | Enables sound playback                                                                                           |
+        | `volume`   | `float`   | Sound volume from `0` to `1.0`                                                                                   |
+        | `pitch`    | `float`   | Sound pitch from `0` to `1.0`                                                                                     |
+        | `category` | `String`  | Category from `MASTER`, `MUSIC`, `RECORD`, `WEATHER`, `BLOCK`, `HOSTILE`, `NEUTRAL`, `PLAYER`, `AMBIENT`, `VOICE` |
+        | `name`     | `String`  | Sound name, for example `minecraft:entity.llama.spit`                                                           |
+    </Accordion>
+</Accordions>

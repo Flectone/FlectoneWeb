@@ -6,17 +6,15 @@ authors:
 ---
 ![command mute](/pulse/commandmute.png)
 
-  
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.mute`</span>
 
- 
-
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#mute</include></Tab>
-<Tab value="en_us"><include>../../../files/localizations/en_us.yml#mute</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#mute</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#mute</include></Tab>
 </Tabs>
 
 ### `null_player`
@@ -56,10 +54,10 @@ random_kek: "Random reason"
 
 Сообщение для игрока
 
- 
+<br></br>
+
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `command.yml → mute`</span>
-
 
 <include>../../../files/command.yml#mute</include>
 
@@ -73,29 +71,28 @@ random_kek: "Random reason"
 
 <include>../../../parts/range.mdx</include>
 
-
 ### `time_limits`
 
 Лимиты по времени в зависимости от группы отправителя. Ключом является вес группы, а значением - максимальное количество времени модерации в милисекундах (`1` секунда = `1000` милисекунд)
 
 <Callout type="info" title="Пример">
 
-```yaml
- time_limits:
-    20: 35000
-    50: 100000
-```
+    ```yaml
+     time_limits:
+       20: 35000
+       50: 100000
+    ```
 
-- Если игрок имеет вес группы `10`, команда НЕ будет выполнена
-- Если игрок имеет вес группы `20`, максимальное количество времени будет `35000`
-- Если игрок имеет вес группы `40`, максимальное количество времени также будет `35000`
-- Если игрок имеет вес группы `50` и выше, то будет `100000`
+    - Если игрок имеет вес группы `10`, команда НЕ будет выполнена
+    - Если игрок имеет вес группы `20`, максимальное количество времени будет `35000`
+    - Если игрок имеет вес группы `40`, максимальное количество времени также будет `35000`
+    - Если игрок имеет вес группы `50` и выше, то будет `100000`
 
-Для безграничного времени нужно использовать значение `-1`
+    Для безграничного времени нужно использовать значение `-1`
 
 </Callout>
 
-<include>../../../parts/range.mdx</include>
+<include>../../../parts/aliases.mdx</include>
 
 <include>../../../parts/destination.mdx</include>
 
@@ -103,14 +100,12 @@ random_kek: "Random reason"
 
 <include>../../../parts/sound.mdx</include>
 
- 
-# <include>../../../parts/words.mdx#permission</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#permission</include>
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → command.mute`</span>
 
- 
 <include>../../../files/permission.yml#mute</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.mdx</include>
 

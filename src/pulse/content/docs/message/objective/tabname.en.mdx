@@ -8,19 +8,25 @@ More details about this [ScoreBoard value](https://minecraft.wiki/w/Scoreboard)
 
 ![player list](/pulse/playerlist.png)
 
+<br></br>
+
 # <include>../../../../parts/words.en.mdx#localization</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.tabname`</span>
 
-
-<Tabs items={['ru_ru', 'en_us']}>
-    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#tabname</include></Tab>
+<Tabs items={['en_us', 'ru_ru']}>
     <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#tabname</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#tabname</include></Tab>
 </Tabs>
 
-### `format`
+### `display_format`
 
-The message that will be displayed in the TAB list
+The message that will serve as the name for this `score` (useless in many cases)
 
+### `score_format`
+
+The message that will be displayed to the right of the nickname in the TAB list (dynamic, i.e., updates)
+
+<br></br>
 
 # <include>../../../../parts/words.en.mdx#setting</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `message.yml → objective.tabname`</span>
@@ -42,6 +48,7 @@ The digital display mode for the value from those available
 
 <include>../../../../parts/ticker.en.mdx</include>
 
+<br></br>
 
 # <include>../../../../parts/words.en.mdx#permission</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.objective.tabname`</span>

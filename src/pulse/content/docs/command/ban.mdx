@@ -6,17 +6,15 @@ authors:
 ---
 ![command ban](/pulse/commandban.png)
 
-  
-# <include>../../../parts/words.mdx#localization</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#localization</include>
 
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → command.ban`</span>
 
- 
-
-
 <Tabs items={['ru_ru', 'en_us']}>
-<Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#ban</include></Tab>
-<Tab value="en_us"><include>../../../files/localizations/en_us.yml#ban</include></Tab>
+    <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#ban</include></Tab>
+    <Tab value="en_us"><include>../../../files/localizations/en_us.yml#ban</include></Tab>
 </Tabs>
 
 ### `null_player`
@@ -56,7 +54,8 @@ authors:
 
 Сообщение, если заблокированный игрок пытался подключиться
 
- 
+<br></br>
+
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `command.yml → ban`</span>
 
@@ -66,17 +65,16 @@ authors:
 
 <include>../../../parts/suggestOfflinePlayers.mdx</include>
 
-### `check_group_weight`
-
-Будут ли проверяться группы игроков. Если игрок, на которого применяется модерация, имеет роль выше, чем отправитель комманды, то комманда не выполнится и будет ошибка `lower_weight_group`
-
 ### `show_connection_attempts`
 
 Если включено, то будет показывать сообщение, что заблокированный игрок пытался подключиться
 ![command ban connect](/pulse/commandbanconnect.png)
 
-<include>../../../parts/range.mdx</include>
+### `check_group_weight`
 
+Будут ли проверяться группы игроков. Если игрок, на которого применяется модерация, имеет роль выше, чем отправитель комманды, то комманда не выполнится и будет ошибка `lower_weight_group`
+
+<include>../../../parts/range.mdx</include>
 
 ### `time_limits`
 
@@ -85,8 +83,8 @@ authors:
 <Callout type="info" title="Пример">
     ```yaml
     time_limits:
-        20: 35000
-        50: 100000
+      20: 35000
+      50: 100000
     ```
 
     - Если игрок имеет вес группы `10`, команда НЕ будет выполнена
@@ -97,7 +95,7 @@ authors:
     Для безграничного времени нужно использовать значение `-1`
 </Callout>
 
-<include>../../../parts/range.mdx</include>
+<include>../../../parts/aliases.mdx</include>
 
 <include>../../../parts/destination.mdx</include>
 
@@ -105,13 +103,12 @@ authors:
 
 <include>../../../parts/sound.mdx</include>
 
- 
-# <include>../../../parts/words.mdx#permission</include> 
+<br></br>
+
+# <include>../../../parts/words.mdx#permission</include>
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → command.ban`</span>
  
 <include>../../../files/permission.yml#ban</include>
-
-
 
 <include>../../../parts/permission/permissionTier3.mdx</include>
 
