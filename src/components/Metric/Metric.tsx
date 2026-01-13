@@ -5,7 +5,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { EChartsOption } from 'echarts';
 import { useTheme } from 'next-themes';
-import { darkTheme, lightTheme } from './themes';
+import { darkTheme, lightTheme } from './chartThemes';
 import { useParams } from 'next/navigation';
 
 if (typeof window !== 'undefined') {
