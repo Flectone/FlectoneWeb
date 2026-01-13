@@ -8,23 +8,6 @@ interface RouteContext {
   params: Promise<{ slug: string[] }>;
 }
 
-const PAGE_ICON_MAP: Record<string, string | null> = {
-  undefined: 'CircleQuestionMark',
-  command: 'SquareTerminal',
-  message: 'MessageSquare',
-  integration: 'Blocks',
-  config: 'FileSliders',
-  api: 'Cable',
-  metrics: 'ChartCandlestick',
-};
-
-const getPageIconName = (url: string): string | null => {
-  const segments = url.split('/');
-  const segment = segments[4];
-
-  return PAGE_ICON_MAP[segment] || null;
-};
-
 export async function GET(req: Request, { params }: RouteContext) {
   const { slug } = await params;
 
@@ -34,14 +17,18 @@ export async function GET(req: Request, { params }: RouteContext) {
   const page = source.getPage(actualSlugs, locale);
   if (!page) notFound();
 
-  const pageIconName = getPageIconName(page.url);
+  const indexPageSlugs = actualSlugs.length > 0 ? [actualSlugs[0]] : [];
+  const indexPage = source.getPage(indexPageSlugs, locale);
+
+  const icon = page.data.icon || (indexPage?.data.icon || '');
+
 
   return new ImageResponse(
     <DocsTemplate
       title={page.data.title}
       description={page.data.description}
       icon={<MessageCircleCode color="hsl(210, 100%, 65%)" size={64} />}
-      pageIcon={pageIconName}
+      pageIcon={icon}
       primaryColor="hsla(210, 100%, 65%, 0.6)"
       primaryTextColor="hsl(210, 100%, 65%)"
       site="FlectonePulse"
