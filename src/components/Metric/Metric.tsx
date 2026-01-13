@@ -255,7 +255,7 @@ export default function Metric(props: MetricProps) {
             <div style="font-weight: bold; margin-bottom: 4px;">${params.name}</div>
             <div style="display: flex; align-items: center; gap: 8px;">
               <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background-color:${params.color};"></span>
-              <span>${name}: <b>${val}</b></span>
+              <span>${name}: <strong style="font-weight: bold;" >${val}</strong></span>
             </div>
           `;
                 }
