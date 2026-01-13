@@ -20,7 +20,7 @@ export const source = loader({
 });
 
 export function getPageImage(page: InferPageType<typeof source>) {
-  const segments = [...page.slugs, 'image.webp'];
+  const segments = [page.locale, ...page.slugs, 'image.webp'];
 
   return {
     segments,
