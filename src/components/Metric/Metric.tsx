@@ -1,12 +1,13 @@
 'use client';
 
 import * as echarts from 'echarts';
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState, useCallback } from 'react';
 import ReactECharts from 'echarts-for-react';
 import { EChartsOption } from 'echarts';
 import { useTheme } from 'next-themes';
 import { darkTheme, lightTheme } from './chartThemes';
 import { useParams } from 'next/navigation';
+import { CallbackDataParams , TopLevelFormatterParams } from "echarts/types/dist/shared";
 
 if (typeof window !== 'undefined') {
     echarts.registerTheme('dark', darkTheme);
@@ -38,6 +39,17 @@ interface MetricProps {
     slice?: boolean;
 }
 
+interface TreemapInfo extends CallbackDataParams {
+    treePathInfo?: {
+        name: string;
+        dataIndex: number;
+        value: number;
+    }[];
+}
+interface axis extends CallbackDataParams {
+    axisValue: string;
+}
+
 const BITES_IN_GB = 1024 * 1024 * 1024 * 8;
 
 export default function Metric(props: MetricProps) {
@@ -56,7 +68,7 @@ export default function Metric(props: MetricProps) {
 
     useEffect(() => { setMounted(true); }, []);
 
-    const processData = (rawValues: MetricItem[]) => {
+    const processData = useCallback((rawValues: MetricItem[]) => {
         let processed = [...rawValues];
 
         if (convert === 'gb') {
@@ -67,7 +79,7 @@ export default function Metric(props: MetricProps) {
                 if (isNaN(bits)) return;
 
                 const rawGb = bits / BITES_IN_GB;
-                let roundedGb = Math.ceil(rawGb);
+                const roundedGb = Math.ceil(rawGb);
 
 
                 const key = `${roundedGb}`;
@@ -103,7 +115,7 @@ export default function Metric(props: MetricProps) {
         });
 
         return processed;
-    };
+    }, [convert, sort]);
 
     useEffect(() => {
         if (!mounted) return;
@@ -166,15 +178,18 @@ export default function Metric(props: MetricProps) {
         else if (type === 'two-line' || type === 'two-pie') fetchTwo();
         else if (apiPath) fetchSingle();
 
-    }, [mounted, apiPath, sort, convert, type, data]);
+    }, [mounted, apiPath, sort, convert, type, data, slice, processData]);
 
     const barOption = useMemo((): EChartsOption => ({
         tooltip: {
             trigger: 'axis',
             axisPointer: { type: 'shadow' },
-            formatter: (params: any) => {
-                const item = params[0];
-                return `<span style="font-weight: bold;">${item.name}</span><br/>${name}: <span style="font-weight: bold;">${item.value}</span>`;
+            formatter: (params: CallbackDataParams | CallbackDataParams[])=> {
+                if (Array.isArray(params) && params.length > 0) {
+                    const item = params[0];
+                    return `<span style="font-weight: bold;">${item.name}</span><br/>${name}: <span style="font-weight: bold;">${item.value}</span>`;
+                }
+                return '';
             }
         },
         grid: { left: '3%', right: '3%', bottom: '5%', top: '10%', containLabel: true },
@@ -182,7 +197,7 @@ export default function Metric(props: MetricProps) {
         yAxis: { type: 'value', axisLabel: { inside: true, verticalAlign: 'bottom', padding: [0, 0, 4, 0], fontSize: 12 }, axisLine: { show: false }, axisTick: { show: false } },
         series: [{ name: name, data: chartData.map(item => ({ name: item.value + " " + suffix, value: item.count })), type: 'bar', itemStyle: { borderRadius: [4, 4, 0, 0] }, barMaxWidth: '50px' }],
         dataZoom: [{ type: 'inside' }]
-    }), [chartData, name]);
+    }), [chartData, name, suffix]);
 
     const pieOption = useMemo((): EChartsOption => ({
         tooltip: {
@@ -190,13 +205,18 @@ export default function Metric(props: MetricProps) {
             backgroundColor: 'rgba(0,0,0,0.8)',
             borderColor: '#333',
             textStyle: { color: '#fff' },
-            formatter: (params: any) => `
-          <div style="font-weight: bold; margin-bottom: 4px;">${params.name}</div>
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background-color:${params.color};"></span>
-            <span>${params.seriesName}: <strong style="font-weight: bold">${params.value}</strong></span>
-          </div>
-        `
+            formatter: (params: TopLevelFormatterParams) => {
+                const p = params as CallbackDataParams
+
+                return `
+                  <div style="font-weight: bold; margin-bottom: 4px;">${p.name}</div>
+                  <div style="display: flex; align-items: center; gap: 8px;">
+                    <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background-color:${p.color};"></span>
+                    <span>${p.seriesName}: <strong style="font-weight: bold">${p.value}</strong></span>
+                  </div>
+                `
+
+            }
         },
         legend: {
             orient: 'horizontal',
@@ -215,7 +235,7 @@ export default function Metric(props: MetricProps) {
             },
         },
         series: [{ name: name, type: 'pie', radius: ['40%', '70%'], center: ['50%', '45%'], avoidLabelOverlap: true, itemStyle: { borderRadius: 0, borderColor: resolvedTheme === 'dark' ? '#111' : '#fff', borderWidth: 0 }, label: { show: false }, emphasis: { label: { show: false }, itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.5)' } }, data: chartData.map(item => ({ name: item.value + " " + suffix, value: item.count })) }]
-    }), [chartData, name, resolvedTheme]);
+    }), [chartData, name, resolvedTheme, suffix]);
 
     const treemapOption = useMemo((): EChartsOption => {
         const rawValues = chartData || [];
@@ -226,7 +246,11 @@ export default function Metric(props: MetricProps) {
         return {
             backgroundColor: 'transparent',
             tooltip: {
-                trigger: 'item', formatter: (info: any) => {
+                trigger: 'item', formatter: (params: TopLevelFormatterParams) => {
+                    if (Array.isArray(params)) return '';
+
+                    const info = params as TreemapInfo;
+
                     if (!info.name || (info.treePathInfo && info.treePathInfo.length <= 1)) return '';
                     return `
           <div style="font-weight: bold; margin-bottom: 4px;">${info.name}</div>
@@ -249,7 +273,7 @@ export default function Metric(props: MetricProps) {
                 backgroundColor: 'rgba(0,0,0,0.8)',
                 borderColor: '#333',
                 textStyle: { color: '#fff' },
-                formatter: (params: any) => {
+                formatter: (params: CallbackDataParams) => {
                     const val = params.value || 0;
                     return `
             <div style="font-weight: bold; margin-bottom: 4px;">${params.name}</div>
@@ -270,8 +294,8 @@ export default function Metric(props: MetricProps) {
         return {
             tooltip: {
                 trigger: 'axis',
-                formatter: (params: any) => {
-                    const items = params as any[];
+                formatter: (params: CallbackDataParams[]) => {
+                    const items = params as axis[];
                     if (!items || items.length === 0) return '';
                     const date = new Date(items[0].axisValue);
                     const formattedDate = !isNaN(date.getTime())
@@ -280,10 +304,10 @@ export default function Metric(props: MetricProps) {
                     let res = `<div style="font-weight: bold; margin-bottom: 4px;">${formattedDate}</div>`;
                     items.forEach((item) => {
                         res += `
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-          <span style="margin-right: 10px;">${item.marker} ${item.seriesName}:</span>
-          <span style="font-weight: bold;">${item.value}</span>
-        </div>`;
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                      <span style="margin-right: 10px;">${item.marker} ${item.seriesName}:</span>
+                      <span style="font-weight: bold;">${item.value}</span>
+                    </div>`;
                     });
                     return res;
                 }
@@ -295,18 +319,26 @@ export default function Metric(props: MetricProps) {
             series: [{ name: data?.first.name, data: firstData.map(item => item.count + " " + suffix), type: 'line', smooth: true }, { name: data?.second.name, data: secondData.map(item => item.count + " " + suffix), type: 'line', smooth: true }],
             dataZoom: [{ type: 'inside', start: 0, end: 100 }, { type: 'slider', start: 0, end: 100, showDetail: false }]
         } as EChartsOption;
-    }, [firstData, secondData, data]);
+    }, [firstData, secondData, data, lang, suffix]);
 
     const twoPieOption = useMemo((): EChartsOption => ({
         title: [{ text: data?.first.name, left: '25%', top: '83%', textAlign: 'center', textStyle: { fontSize: 16, color: '#999' } }, { text: data?.second.name, left: '75%', top: '83%', textAlign: 'center', textStyle: { fontSize: 16, color: '#999' } }],
         tooltip: {
-            trigger: 'item', backgroundColor: 'rgba(0,0,0,0.8)', borderColor: '#333', textStyle: { color: '#fff' }, formatter: (params: any) => `
-          <div style="font-weight: bold; margin-bottom: 4px;">${params.name}</div>
-          <div style="display: flex; align-items: center; gap: 8px;">
-            <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background-color:${params.color};"></span>
-            <span>${params.seriesName}: <strong style="font-weight: bold">${params.value}</strong></span>
-          </div>
-        ` },
+            trigger: 'item',
+            backgroundColor: 'rgba(0,0,0,0.8)',
+            borderColor: '#333',
+            textStyle: { color: '#fff' },
+            formatter: (params: CallbackDataParams | CallbackDataParams[]) => {
+                const data = Array.isArray(params) ? params[0] : params;
+                return `
+                    <div style="font-weight: bold; margin-bottom: 4px;">${data.name}</div>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background-color:${data.color};"></span>
+                      <span>${data.seriesName}: <strong style="font-weight: bold">${data.value}</strong></span>
+                    </div>
+                `;
+            }
+        },
         legend: { 
             orient: 'horizontal',
             bottom: '0', 
@@ -327,7 +359,7 @@ export default function Metric(props: MetricProps) {
             { name: data?.first.name, type: 'pie', radius: ['40%', '70%'], center: ['25%', '45%'], avoidLabelOverlap: true, itemStyle: { borderRadius: 0, borderColor: resolvedTheme === 'dark' ? '#111' : '#fff', borderWidth: 0 }, label: { show: false }, data: firstData.map(item => ({ name: item.value + " " + suffix, value: item.count })) },
             { name: data?.second.name, type: 'pie', radius: ['40%', '70%'], center: ['75%', '45%'], avoidLabelOverlap: true, itemStyle: { borderRadius: 0, borderColor: resolvedTheme === 'dark' ? '#111' : '#fff', borderWidth: 0 }, label: { show: false }, data: secondData.map(item => ({ name: item.value + " " + suffix, value: item.count })) }
         ]
-    }), [firstData, secondData, data, resolvedTheme]);
+    }), [firstData, secondData, data, resolvedTheme, suffix]);
 
     if (!mounted || loading || (type === 'geo' && !mapLoaded)) {
         const heightClass = type === 'geo' || type === 'treemap' ? 'h-125' : 'h-100';

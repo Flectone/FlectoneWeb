@@ -1,6 +1,7 @@
 'use client';
 
 import {useTranslations} from "next-intl";
+import Image from "next/image";
 
 export function Authors({ ids }: { ids: string[] }) {
   const t = useTranslations('Pulse.Authors')
@@ -21,7 +22,9 @@ export function Authors({ ids }: { ids: string[] }) {
             rel="noreferrer noopener"
             className="flex items-center gap-2 group p-1 -ml-1 rounded-md hover:bg-accent transition-colors"
           >
-            <img
+            <Image
+              width={32}
+              height={32}
               src={`https://github.com/${username}.png?size=64`}
               alt={username}
               className="w-8 h-8 rounded-full border border-border group-hover:border-primary/50 transition-colors"

@@ -1,5 +1,3 @@
-import Card from "../Card/Card";
-import Svg from "../Svg/Svg";
 import {useTranslations} from "next-intl";
 import FeatureCard from "@/components/Card/FeatureCard";
 
