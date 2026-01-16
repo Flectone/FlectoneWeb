@@ -2,12 +2,6 @@ import {HomeLayout} from 'fumadocs-ui/layouts/home';
 import {baseOptions} from '@/lib/layout.shared';
 import {SiBoosty, SiDiscord, SiModrinth} from 'react-icons/si';
 import {useTranslations} from "next-intl";
-import {
-  NavbarMenu,
-  NavbarMenuContent,
-  NavbarMenuLink,
-  NavbarMenuTrigger,
-} from 'fumadocs-ui/layouts/home/navbar';
 import Footer from "@/components/Footer/Footer";
 
 export default function Layout({children}: LayoutProps<'/[lang]'>) {
