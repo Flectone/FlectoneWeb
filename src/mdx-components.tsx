@@ -50,7 +50,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
               src={imageSrc}
               alt={alt || 'image'}
               {...rest}
-              className="rounded-lg w-full h-auto my-2!"
+              className="rounded-lg w-fit h-auto my-2!"
             />
           </span>
         </span>

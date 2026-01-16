@@ -1,7 +1,6 @@
 'use client'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image'
 
 interface ZoomImageProps {
   src: string;
@@ -20,9 +19,7 @@ export default function ZoomImage({ src, className, alt }: ZoomImageProps) {
 
     <>
       <div className="w-full cursor-zoom-in max-xl:cursor-default" onClick={toggleZoom}>
-        <Image
-          width={900}
-          height={0}
+        <img
           src={src}
           alt={alt || 'image'}
           className={className}
