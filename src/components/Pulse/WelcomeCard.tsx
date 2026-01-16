@@ -1,4 +1,3 @@
-import {CodeBlock, Pre} from "fumadocs-ui/components/codeblock";
 import LinkButton from "../Button/LinkButton";
 import {useTranslations} from "next-intl";
 import Image from "next/image";
