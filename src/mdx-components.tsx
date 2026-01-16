@@ -5,7 +5,8 @@ import type {MDXComponents} from 'mdx/types';
 import * as TabsComponents from 'fumadocs-ui/components/tabs';
 import Callout from '@/components/Pulse/Callout/Callout'
 import { LinkIcon } from 'lucide-react';
-import Metric from './components/Metric/Metric';
+import Metric from './components/Metric/Metric'
+import ZoomImage from '@/components/Pulse/ZoomImage'
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -45,12 +46,11 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
       return (
         <span className="w-full">
           <span className="flex justify-start">
-            <img
+            <ZoomImage
               src={imageSrc}
               alt={alt || 'image'}
               {...rest}
-              className="rounded-lg h-full !my-2"
-              loading="lazy"
+              className="rounded-lg w-full h-auto my-2!"
             />
           </span>
         </span>

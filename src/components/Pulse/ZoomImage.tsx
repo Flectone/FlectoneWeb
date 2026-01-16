@@ -1,19 +1,32 @@
 'use client'
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image'
 
 interface ZoomImageProps {
   src: string;
+  className?: string;
+  alt?: string;
 }
 
-export default function ZoomImage({ src }: ZoomImageProps) {
+export default function ZoomImage({ src, className, alt }: ZoomImageProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const toggleZoom = () => setIsOpen(!isOpen);
+  const toggleZoom = () => {
+    if (window.innerWidth < 1280) return;
+    setIsOpen(!isOpen);
+  };
 
   return (
+
     <>
-      <div className="w-full cursor-zoom-in" onClick={toggleZoom}>
-        <img src={src} alt="" className="w-full rounded-lg" />
+      <div className="w-full cursor-zoom-in max-xl:cursor-default" onClick={toggleZoom}>
+        <Image
+          width={900}
+          height={0}
+          src={src}
+          alt={alt || 'image'}
+          className={className}
+        />
       </div>
 
       <AnimatePresence>
@@ -33,7 +46,7 @@ export default function ZoomImage({ src }: ZoomImageProps) {
               transition={{ duration: 0.2, ease: "easeOut" }}
               src={src}
               alt=""
-              className="max-w-full max-h-[90vh] object-contain"
+              className="min-w-full max-h-[90vh] object-contain rounded-lg"
             />
 
             <button
