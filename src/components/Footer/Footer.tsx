@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import {useTranslations} from "next-intl";
 
 export default function Footer() {
@@ -7,7 +6,7 @@ export default function Footer() {
 
   return (
     <footer
-      className="w-full border-t bg-fd-background py-4 backdrop-blur-lg transition-colors *:mx-auto *:max-w-(--fd-layout-width) bg-fd-background/80 ">
+      className="w-full border-t  py-4 backdrop-blur-lg transition-colors *:mx-auto *:max-w-(--fd-layout-width)">
       <div className="mx-auto w-full flex flex-col gap-4 px-4">
 
         <div className="flex flex-col md:flex-row md:items-stretch justify-between gap-6">
