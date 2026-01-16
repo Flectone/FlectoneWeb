@@ -11,6 +11,9 @@ export default function Layout({children}: LayoutProps<'/[lang]'>) {
   return (
     <HomeLayout
       {...baseOptions()}
+      searchToggle = {{
+        enabled: false,
+      }}
       links={[
         {
           text: t('Header.about'),
