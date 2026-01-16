@@ -1,4 +1,5 @@
 import {useTranslations} from "next-intl";
+import Image from "next/image";
 
 export default function Footer() {
 
@@ -13,7 +14,7 @@ export default function Footer() {
 
           <div className="flex flex-col gap-3 max-w-2xl">
             <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="logo" className="h-6 w-auto"/>
+              <Image width={32} height={32} src="/logo.png" alt="logo" className="h-6 w-auto"/>
               <span className="font-bold text-lg tracking-tight">Flectone</span>
             </div>
             <p className="text-[10px] leading-relaxed uppercase opacity-50 font-medium tracking-wider">{t('answer')}</p>

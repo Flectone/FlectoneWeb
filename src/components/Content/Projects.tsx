@@ -1,6 +1,7 @@
 import Card from "../Card/Card";
 import {useTranslations} from 'next-intl';
 import FeatureCard from "@/components/Card/FeatureCard";
+import Image from "next/image";
 
 export default function Projects() {
   const t = useTranslations("Projects")
@@ -16,9 +17,9 @@ export default function Projects() {
               <p className='w-2/3 max-md:text-md'>{t('Pulse.description')}</p>
             </div>
             <h1 className='max-sm:hidden max-sm:w-1/2 max-xl:text-2xl max-md:text-xl max-sm:text-sm text-3xl w-1/3 font-bold'>{t('Pulse.description')}</h1>
-            <img src="/flectonepulse2.png" className="max-sm:hidden max-xl:w-lg max-lg:w-sm max-md:w-xs w-xl z-50" alt='flectonepulse' />
+            <Image width={700} height={400} src="/flectonepulse2.png" className="max-sm:hidden max-xl:w-lg max-lg:w-sm max-md:w-xs w-xl z-50" alt='flectonepulse' />
             <div className="max-sm:hidden w-3/5 bottom-0 right-0 mask-[linear-gradient(to_left,white,transparent)] absolute">
-              <img src="/features.png" alt="metrics" className="h-full w-full rounded-xl shadow-sm" />
+              <Image width={580} height={120} src="/features.png" alt="metrics" className="h-full w-full rounded-xl shadow-sm" />
             </div>
           </Card>
         </div>
