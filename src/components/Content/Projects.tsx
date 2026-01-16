@@ -7,7 +7,6 @@ export default function Projects() {
 
   return (
     <div className="w-full flex flex-col justify-center gap-4">
-      <h1 className='font-bold text-4xl max-sm:w-1/3'>{t.rich('title', {b: (chunks) => <b>{chunks}</b>})}</h1>
       <div className="h-max w-full flex gap-4 flex-col">
         <div className="flex gap-4">
           <Card path='/pulse' className="w-full h-full max-md:h-fit items-center flex justify-between p-10 relative">
