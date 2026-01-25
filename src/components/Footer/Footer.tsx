@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import {useTranslations} from "next-intl";
+import Image from "next/image";
 
 export default function Footer() {
 
@@ -7,14 +7,14 @@ export default function Footer() {
 
   return (
     <footer
-      className="w-full border-t bg-fd-background py-4 backdrop-blur-lg transition-colors *:mx-auto *:max-w-(--fd-layout-width) bg-fd-background/80 ">
+      className="w-full border-t  py-4 backdrop-blur-lg transition-colors *:mx-auto *:max-w-(--fd-layout-width)">
       <div className="mx-auto w-full flex flex-col gap-4 px-4">
 
         <div className="flex flex-col md:flex-row md:items-stretch justify-between gap-6">
 
           <div className="flex flex-col gap-3 max-w-2xl">
             <div className="flex items-center gap-2">
-              <img src="/logo.png" alt="logo" className="h-6 w-auto"/>
+              <Image width={32} height={32} src="/logo.png" alt="logo" className="h-6 w-auto"/>
               <span className="font-bold text-lg tracking-tight">Flectone</span>
             </div>
             <p className="text-[10px] leading-relaxed uppercase opacity-50 font-medium tracking-wider">{t('answer')}</p>

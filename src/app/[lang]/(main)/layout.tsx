@@ -2,12 +2,6 @@ import {HomeLayout} from 'fumadocs-ui/layouts/home';
 import {baseOptions} from '@/lib/layout.shared';
 import {SiBoosty, SiDiscord, SiModrinth} from 'react-icons/si';
 import {useTranslations} from "next-intl";
-import {
-  NavbarMenu,
-  NavbarMenuContent,
-  NavbarMenuLink,
-  NavbarMenuTrigger,
-} from 'fumadocs-ui/layouts/home/navbar';
 import Footer from "@/components/Footer/Footer";
 
 export default function Layout({children}: LayoutProps<'/[lang]'>) {
@@ -17,6 +11,9 @@ export default function Layout({children}: LayoutProps<'/[lang]'>) {
   return (
     <HomeLayout
       {...baseOptions()}
+      searchToggle = {{
+        enabled: false,
+      }}
       links={[
         {
           text: t('Header.about'),
@@ -46,7 +43,7 @@ export default function Layout({children}: LayoutProps<'/[lang]'>) {
         }
       ]}
     >
-      <div className='not-dark:bg-[url(/square.svg)] min-h-screen bg-[url(/squaredark.svg)] flex justify-center max-xl:px-24 max-lg:px-12 max-sm:px-4'>
+      <div className='not-dark:bg-[url(/square.svg)] min-h-[calc(100vh-56px)] bg-[url(/squaredark.svg)] flex justify-center max-xl:px-24 max-lg:px-12 max-sm:px-4'>
         {children}
       </div>
       <Footer />
