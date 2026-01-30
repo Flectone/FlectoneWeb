@@ -1,0 +1,74 @@
+---
+title: Аналитика
+description: На этой странице собраны основные графики по работе серверов
+authors:
+  - TheFaser
+  - vplend
+---
+
+<Callout type='info'>
+  Ты в любой момент можешь отключить сбор этих данных на своём сервере [здесь](/pulse/docs/config/metrics)
+</Callout>
+
+# Активность (7 дней)
+<Metric
+  type="two-line"
+  slice={true}
+  data={{
+    first: { name: 'Количество игроков', apiPath: 'playerCount' },
+    second: { name: 'Количество серверов', apiPath: 'serverCount' }
+  }}
+/> 
+
+# Версии серверов
+<Metric type="pie" name="Количество серверов" apiPath="field?name=serverVersion" sort='quickRevers'/>
+
+# Количество ядер CPU
+<Metric type="pie" suffix="CPU" name="Количество серверов" apiPath="field?name=cpuCores" sort="quickRevers" />
+
+# Оперативная память
+<Metric type="pie" name="Количество серверов" apiPath="field?name=totalRam" sort="quickRevers" convert='gb' suffix="ГБ" />
+
+# Статус модулей
+<Metric type="treemap" apiPath="field?name=modules" />
+
+# Версии FlectonePulse
+<Metric type="pie" sort="quickRevers" name="Количество серверов" apiPath="field?name=projectVersion" />
+
+# Языки FlectonePulse
+<Metric type="bar" name="Количество серверов" apiPath="field?name=projectLanguage" sort="quick" />
+
+# Типы серверов
+<Metric
+  type="two-pie"
+  sort="quickRevers"
+  data={{
+    first: { name: 'Серверы', apiPath: 'field?name=serverCore' },
+    second: { name: 'Игроки', apiPath: 'field?name=playerCountByServerCore' }
+  }}
+/>
+
+# Архитектура системы
+<Metric type="pie" sort="quickRevers" apiPath="field?name=osArchitecture" name="Количество серверов" />
+
+# Операционные системы
+<Metric type="pie" sort="quickRevers" apiPath="field?name=osName" name="Количество серверов" />
+
+# Версии Java
+<Metric type="pie" name="Количество серверов" apiPath="field?name=javaVersion" sort="quickRevers" />
+
+# Режимы прокси
+<Metric type="bar" name="Количество серверов" sort='quick' apiPath="field?name=proxyMode" />
+
+# Онлайн / оффлайн
+<Metric type="bar" name="Количество серверов" sort='quick' apiPath="field?name=onlineMode" />
+
+# Режимы баз данных
+<Metric type="bar" name="Количество серверов" sort='quick' apiPath="field?name=databaseMode" />
+
+# География серверов
+<Metric type="geo" name="Количество серверов" apiPath="field?name=location" />
+
+
+
+

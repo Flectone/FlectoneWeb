@@ -1,0 +1,60 @@
+---
+title: Swear
+description: This formatting hides player profanity
+authors:
+  - TheFaser
+---
+![swear](/pulse/swear.png)
+
+<br></br>
+
+# <include>../../../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.moderation.swear`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../../../files/minecraft/localizations/en_us.yml#swear</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../../files/minecraft/localizations/ru_ru.yml#swear</include></Tab>
+</Tabs>
+
+### `symbol`
+
+The symbol that replaces each letter of a swear word
+
+<br></br>
+
+# <include>../../../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../../../parts/words.en.mdx#path</include> `message.yml → format.moderation.swear`</span>
+
+<include>../../../../../../files/minecraft/message.yml#swear</include>
+
+<include>../../../../../../parts/enable.en.mdx</include>
+
+### `ignore`
+
+List of words that are not profanity and should be skipped swear checking
+
+### `trigger`
+
+A list of [regular expressions](https://en.wikipedia.org/wiki/Regular_expression) used to identify profanity
+
+<Callout type="info" title="For example">
+    - For a numeric IP: `\\b((?:\\d{1,3}\\.){3}\\d{1,3})\\b`
+    - For a domain/URL: `(?i)\\b((https?:\\/\\/)?([\\w\\.а-яА-Я-]+\\.([a-z]{2,4}|[рР][фФ]|[уУ][кК][рР]))\\b(:\\d{2,7})?(\\/\\S+)?)`
+</Callout>
+
+<br></br>
+
+# <include>../../../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.moderation.swear`</span>
+
+<include>../../../../../../files/minecraft/permission.yml#swear</include>
+
+<include>../../../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `bypass`
+
+Permission to ignore the formatting
+
+### `see`
+
+Permission to view the original content of a censored word

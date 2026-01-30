@@ -1,0 +1,57 @@
+---
+title: Правое нажатие
+description: Модуль, при котором ПКМ по игроку создаёт сообщение над инвентарём игрока
+authors:
+  - TheFaser
+---
+![right click](/pulse/rightclick.png)
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.rightclick`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#rightclick</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#rightclick</include></Tab>
+</Tabs>
+
+### `format`
+
+Сообщение, которое будет отправлено игроку, нажавшему на другого игрока
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → rightclick`</span>
+
+<include>../../../../files/minecraft/message.yml#rightclick</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `should_check_sneaking`
+
+Нужно ли проверять, что игрок нажимает шифт, во время ПКМ
+
+### `hide_name_when_invisible`
+
+Нужно ли скрывать ник игрока, который находится в невидимости
+
+<include>../../../../parts/destination.mdx</include>
+
+<include>../../../../parts/cooldown.mdx</include>
+
+<include>../../../../parts/sound.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.rightclick`</span>
+
+<include>../../../../files/minecraft/permission.yml#rightclick</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../../parts/permission/sound.mdx</include>

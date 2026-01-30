@@ -1,0 +1,63 @@
+---
+title: /deletemessage
+description: Комманда для удаления сообщения в чате, используется автоматически при наведении на значок с удалением
+authors:
+  - TheFaser
+---
+![command deletemessage](/pulse/commanddeletemessage.png)
+
+<Callout type="warn" title="Предупреждение">
+
+Команда будет бесполезной, если выключен основной модуль [`Delete`](/pulse/docs/message/format/moderation/delete/)
+
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → command.deletemessage`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#deletemessage</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#deletemessage</include></Tab>
+</Tabs>
+
+### `null_message`
+
+Сообщение, если при удалении сообщения не существует
+
+### `format`
+
+Формат сообщения, которое будет отправлено
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `command.yml → deletemessage`</span>
+
+<include>../../../../files/minecraft/command.yml#deletemessage</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+<include>../../../../parts/aliases.mdx</include>
+
+<include>../../../../parts/destination.mdx</include>
+
+<include>../../../../parts/cooldown.mdx</include>
+
+<include>../../../../parts/sound.mdx</include>
+ 
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → command.deletemessage`</span>
+ 
+<include>../../../../files/minecraft/permission.yml#deletemessage</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../../parts/permission/sound.mdx</include>
+

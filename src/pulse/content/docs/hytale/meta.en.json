@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "title": "Hytale",
+  "icon": "Leaf",
+  "description": "Documentation for Hytale",
+  "pages": [
+    "---Documentation---",
+    "index",
+    "config",
+    "command",
+    "integration",
+    "message"
+  ]
+}

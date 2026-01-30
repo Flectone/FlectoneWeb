@@ -1,0 +1,68 @@
+---
+title: /ignorelist
+description: Комманда для того, чтобы посмотреть список своих игнорирований
+authors:
+  - TheFaser
+---
+![command ignorelist](/pulse/commandignorelist.png)
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → command.ignorelist`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#ignorelist</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#ignorelist</include></Tab>
+</Tabs>
+
+### `empty`
+
+Сообщение, если список игнорируемых игроков пуст
+
+### `null_page`
+
+Сообщение, если введённая страница не существует
+
+### `header`
+
+Верхняя часть сообщения списка
+
+### `line`
+
+Формат каждого игнорирования из списка
+
+### `footer`
+
+Нижняя часть сообщения списка
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `command.yml → ignorelist`</span>
+
+<include>../../../../files/minecraft/command.yml#ignorelist</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+<include>../../../../parts/perPage.mdx</include>
+
+<include>../../../../parts/aliases.mdx</include>
+
+<include>../../../../parts/cooldown.mdx</include>
+
+<include>../../../../parts/sound.mdx</include>
+ 
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → command.ignorelist`</span>
+ 
+<include>../../../../files/minecraft/permission.yml#ignorelist</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../../parts/permission/sound.mdx</include>
