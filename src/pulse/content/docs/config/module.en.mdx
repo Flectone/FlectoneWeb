@@ -9,7 +9,7 @@ authors:
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `config.yml → module`</span>
 
-<include>../../../files/config.yml#module</include>
+<include>../../../files/minecraft/config.yml#module</include>
 
 ### `enable`
 
@@ -18,11 +18,11 @@ Enables or disables the operation of all modules.
 1. Every module has a parent (the one located above it).
 
 <Callout type="info" title="Example">
-    ```yaml
-    house:
-    door:
-    chair:
-    ```
+```yaml
+house:
+  door:
+  chair:
+```
 
     `house` is the parent of `door` and `chair`.
 </Callout>
@@ -30,14 +30,14 @@ Enables or disables the operation of all modules.
 2. Every module depends on the parent's `enable` status.
 
 <Callout type="info" title="Example">
-    ```yaml
-    house:
-    enable: false
-    door:
+```yaml
+house:
+  enable: false
+  door:
     enable: true
-    chair:
+  chair:
     enable: true
-    ```
+```
 
     `house` is disabled, which means regardless of whether `door` and `chair` are enabled, they will also be disabled.
 </Callout>
@@ -60,7 +60,7 @@ How does it work? First, the plugin creates a message internally and obtains `Fl
 <include>../../../parts/words.en.mdx#path</include> `permission.yml`
 
 
-<include>../../../files/permission.yml#module</include>
+<include>../../../files/minecraft/permission.yml#module</include>
 
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>

@@ -21,6 +21,14 @@ advancedban:
   disable_flectonepulse_warn: true
   disable_flectonepulse_kick: true
 #endregion advancedban
+#region cmi
+cmi:
+  enable: true
+  disable_flectonepulse_ban: true
+  disable_flectonepulse_mute: true
+  disable_flectonepulse_warn: true
+  disable_flectonepulse_kick: true
+#endregion cmi
 #region deepl
 deepl:
   enable: false

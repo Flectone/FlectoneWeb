@@ -15,7 +15,7 @@ authors:
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `config.yml → cache`</span>
 
-<include>../../../files/config.yml#cache</include>
+<include>../../../files/minecraft/config.yml#cache</include>
 
 ### `types`
 
@@ -37,6 +37,7 @@ A list of all caches used in `FlectonePulse`
 
 | Parameter   | Explanation                                                                   |
 |-------------|-------------------------------------------------------------------------------|
+| `invalidate_on_reload` | Will this cache be cleared on reload using `/flectonepulse reload` |
 | `duration`  | The lifespan of an unused object in the cache, after which it will be deleted |
 | `time_unit` | The type of time unit for the unused cache object's lifespan                  |
 | `size`      | The maximum size of the cache                                                 |

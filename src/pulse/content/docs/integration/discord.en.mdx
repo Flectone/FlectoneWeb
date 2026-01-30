@@ -25,13 +25,17 @@ Also grant the bot permissions for `Read Messages`, `Send Messages`, and `Use We
 <span><include>../../../parts/words.en.mdx#path</include> `localizations → language.yml → integration.discord`</span>
 
 <Tabs items={['en_us', 'ru_ru']}>
-  <Tab value="en_us"><include>../../../files/localizations/en_us.yml#discord</include></Tab>
-  <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#discord</include></Tab>
+  <Tab value="en_us"><include>../../../files/minecraft/localizations/en_us.yml#discord</include></Tab>
+  <Tab value="ru_ru"><include>../../../files/minecraft/localizations/ru_ru.yml#discord</include></Tab>
 </Tabs>
 
 ### `null_player`
 
 Message if the player entered via `custom_command` is not found
+
+### `sender_name`
+
+Name of sender (of integration itself), which will be used, for example, in another integration for placeholders
 
 ### `format_reply`
 
@@ -90,6 +94,7 @@ List of messages with their settings
 ```yaml
 message_name:
   content: ""
+  webhook_name: "<player>"
   webhook_avatar: "https://mc-heads.net/avatar/<skin>/32.png"
     embed:
     color: ""
@@ -127,6 +132,10 @@ message_name:
 
         Message content
         ![discord content](/pulse/discordcontent.png)
+
+        #### `webhook_name`
+
+        Name of webhook, you can use any placeholder. By default, `<player>` is used
 
         #### `webhook_avatar`
 
@@ -224,7 +233,7 @@ message_name:
 # <include>../../../parts/words.en.mdx#setting</include>
 <span><include>../../../parts/words.en.mdx#path</include> `integration.yml → discord`</span>
 
-<include>../../../files/integration.yml#discord</include>
+<include>../../../files/minecraft/integration.yml#discord</include>
 
 <include>../../../parts/enable.en.mdx</include>
 
@@ -361,7 +370,7 @@ Localization can be left unconfigured; by default, the message will be sent with
 # <include>../../../parts/words.en.mdx#permission</include>
 <span><include>../../../parts/words.en.mdx#path</include> `permission.yml → integration.discord`</span>
 
-<include>../../../files/permission.yml#discord</include>
+<include>../../../files/minecraft/permission.yml#discord</include>
 
 <include>../../../parts/permission/permissionTier3.en.mdx</include>
 

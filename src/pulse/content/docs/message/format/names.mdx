@@ -13,19 +13,20 @@ authors:
 <span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.names`</span>
 
 <Tabs items={['ru_ru', 'en_us']}>
-    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#names</include></Tab>
-    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#names</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#names</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#names</include></Tab>
 </Tabs>
 
 ### `constant`
 
-Сообщение, которое будет форматироваться от отправителя на сервере, откуда было отправлено. Его можно использовать в любом сообщении с помощью `<constant>`
+Сообщения, которые будут форматироваться от отправителя на сервере, откуда было отправлено. Их можно использовать в любом сообщении с помощью `<constant:индекс>` (начиная с 0). Если указан некорретный индекс или его нет, будет использоваться первая константа
 
 <Callout type="info" title="ПРИМЕЧАНИЕ">
 Если у тебя возникают проблемы в сообщениях для `Velocity` или `BungeeCord`, то это решение твоей проблемы:
 
 ```yaml
-constant: "%player_name%"
+constant:
+  - "%player_name%"
 display: "<constant>"
 ```
 
@@ -53,7 +54,7 @@ display: "<constant>"
 # <include>../../../../parts/words.mdx#setting</include>
 <span><include>../../../../parts/words.mdx#path</include> `message.yml → format.names`</span>
 
-<include>../../../../files/message.yml#names</include>
+<include>../../../../files/minecraft/message.yml#names</include>
 
 <include>../../../../parts/enable.mdx</include>
 
@@ -66,6 +67,6 @@ display: "<constant>"
 # <include>../../../../parts/words.mdx#permission</include> 
 <span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.format.names`</span>
 
-<include>../../../../files/permission.yml#names</include>
+<include>../../../../files/minecraft/permission.yml#names</include>
 
 <include>../../../../parts/permission/permissionTier3.mdx</include>

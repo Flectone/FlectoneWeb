@@ -21,13 +21,17 @@ authors:
 <span><include>../../../parts/words.mdx#path</include> `localizations → язык.yml → integration.twitch`</span>
 
 <Tabs items={['ru_ru', 'en_us']}>
-  <Tab value="ru_ru"><include>../../../files/localizations/ru_ru.yml#twitch</include></Tab>
-  <Tab value="en_us"><include>../../../files/localizations/en_us.yml#twitch</include></Tab>
+  <Tab value="ru_ru"><include>../../../files/minecraft/localizations/ru_ru.yml#twitch</include></Tab>
+  <Tab value="en_us"><include>../../../files/minecraft/localizations/en_us.yml#twitch</include></Tab>
 </Tabs>
 
 ### `null_player`
 
 Сообщение, если введённый игрок через `custom_command` не найден
+
+### `sender_name`
+
+Название отправителя (самой интеграции), которое будет использовано, например, в другой интеграции для плейсхолдеров
 
 ### `format_reply`
 
@@ -94,7 +98,7 @@ custom_command:
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `integration.yml → twitch`</span>
 
-<include>../../../files/integration.yml#twitch</include>
+<include>../../../files/minecraft/integration.yml#twitch</include>
 
 <include>../../../parts/enable.mdx</include>
 
@@ -191,7 +195,7 @@ follow_channel:
 # <include>../../../parts/words.mdx#permission</include>
 <span><include>../../../parts/words.mdx#path</include> `permission.yml → integration.twitch`</span>
 
-<include>../../../files/permission.yml#twitch</include>
+<include>../../../files/minecraft/permission.yml#twitch</include>
 
 <include>../../../parts/permission/permissionTier3.mdx</include>
 

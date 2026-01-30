@@ -633,6 +633,11 @@ integration:
     name: "flectonepulse.module.integration.advancedban"
     type: "TRUE"
 #endregion advancedban
+#region cmi
+  cmi:
+    name: "flectonepulse.module.integration.cmi"
+    type: "TRUE"
+#endregion cmi
 #region deepl
   deepl:
     name: "flectonepulse.module.integration.deepl"

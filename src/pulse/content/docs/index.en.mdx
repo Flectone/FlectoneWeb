@@ -123,7 +123,7 @@ FlectonePulse is a new project, not an improved version of FlectoneChat. Flecton
 # How to enable name display above the player?
 Enable the `name_visible` setting in the `message.yml` file:
 
-<include>../../files/message.yml#scoreboard</include>
+<include>../../files/minecraft/message.yml#scoreboard</include>
 
 After changing, run the `/flectonepulse reload` command. Details in the [configuration documentation](/pulse/docs/message/format/scoreboard/).
 
@@ -133,8 +133,8 @@ After changing, run the `/flectonepulse reload` command. Details in the [configu
 Player name configuration (`display`) is done in the `localizations/...` file:
 
 <Tabs items={['en_us', 'ru_ru']}>
-    <Tab value="en_us"><include>../../files/localizations/en_us.yml#names</include></Tab>
-    <Tab value="ru_ru"><include>../../files/localizations/ru_ru.yml#names</include></Tab>
+    <Tab value="en_us"><include>../../files/minecraft/localizations/en_us.yml#names</include></Tab>
+    <Tab value="ru_ru"><include>../../files/minecraft/localizations/ru_ru.yml#names</include></Tab>
 </Tabs>
 
 After changes, run `/flectonepulse reload`. Details in the [localization documentation](/pulse/docs/message/format/names/).
@@ -144,7 +144,7 @@ After changes, run `/flectonepulse reload`. Details in the [localization documen
 # How to configure colors in messages and the interface?
 Colors are configured in the `message.yml` file using the `fcolor` module:
 
-<include>../../files/message.yml#fcolor</include>
+<include>../../files/minecraft/message.yml#fcolor</include>
 
 This sets the default colors if the player hasn't chosen their own in `/chatsetting` or `/chatcolor`. You can prohibit changing colors in the respective commands. Details in the [formatting guide](/pulse/docs/message/format/fcolor/).
 

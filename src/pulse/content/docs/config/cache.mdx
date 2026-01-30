@@ -15,7 +15,7 @@ authors:
 # <include>../../../parts/words.mdx#setting</include>
 <span><include>../../../parts/words.mdx#path</include> `config.yml → cache`</span>
  
-<include>../../../files/config.yml#cache</include>
+<include>../../../files/minecraft/config.yml#cache</include>
 
 ### `types`
 
@@ -37,6 +37,7 @@ authors:
 
 | Параметр    | Объяснение                                                                 |
 |-------------|----------------------------------------------------------------------------|
+| `invalidate_on_reload`   | Будет ли этот кэш очищаться при перезагрузке с помощью `/flectonepulse reload`  |
 | `duration`  | Время жизни неиспользуемого объекта в кэше, после которого он будет удалён |
 | `time_unit` | Тип времени жизни неиспользуемого объекта кэша                             |
 | `size`      | Максимальный размер кэша                                                   |

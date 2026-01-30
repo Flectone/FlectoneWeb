@@ -14,13 +14,17 @@ More details about this [ScoreBoard value](https://minecraft.wiki/w/Scoreboard)
 <span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.tabname`</span>
 
 <Tabs items={['en_us', 'ru_ru']}>
-    <Tab value="en_us"><include>../../../../files/localizations/en_us.yml#tabname</include></Tab>
-    <Tab value="ru_ru"><include>../../../../files/localizations/ru_ru.yml#tabname</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#tabname</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#tabname</include></Tab>
 </Tabs>
+
+### `score`
+
+Placeholder format `<score>`
 
 ### `display_format`
 
-The message that will serve as the name for this `score` (useless in many cases)
+The message that will serve as the name for score (useless in many cases)
 
 ### `score_format`
 
@@ -31,20 +35,9 @@ The message that will be displayed to the right of the nickname in the TAB list 
 # <include>../../../../parts/words.en.mdx#setting</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `message.yml → objective.tabname`</span>
 
-<include>../../../../files/message.yml#tabname</include>
+<include>../../../../files/minecraft/message.yml#tabname</include>
 
 <include>../../../../parts/enable.en.mdx</include>
-
-### `mode`
-
-The digital display mode for the value from those available
-
-<include>../../../../parts/objective.en.mdx</include>
-
-<Callout type="info" title="Example: `PING` MODE">
-    This means the player's ping will be returned.
-    ![player list](/pulse/playerlist.png)
-</Callout>
 
 <include>../../../../parts/ticker.en.mdx</include>
 
@@ -53,6 +46,6 @@ The digital display mode for the value from those available
 # <include>../../../../parts/words.en.mdx#permission</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.objective.tabname`</span>
 
-<include>../../../../files/permission.yml#tabname</include>
+<include>../../../../files/minecraft/permission.yml#tabname</include>
 
 <include>../../../../parts/permission/permissionTier3.en.mdx</include>
