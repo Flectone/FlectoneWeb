@@ -25,7 +25,6 @@ FlectoneWeb/
 │   ├── components/         # Reusable React components
 │   ├── i18n/               # Internationalization configuration
 │   ├── lib/                # Shared utilities and hooks
-│   ├── messages/           # Localization files (JSON)
 │   ├── pulse/              # Documentation content (MDX)
 │   └── styles/             # Global styles and Tailwind CSS
 │
