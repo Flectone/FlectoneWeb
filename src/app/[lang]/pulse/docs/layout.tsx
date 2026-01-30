@@ -20,10 +20,21 @@ export default async function Layout({
   }
 
   return (
-      <DocsLayout tree={tree} {...baseOptions()}
+      <DocsLayout
+          tree={tree}
+          {...baseOptions()}
           nav={{
               title: <h1 className='flex justify-center items-center'><Image src="/logo.png" alt="Flectone Logo" width={64} height={64} className='w-6 h-6 mr-1' /> FlectonePulse</h1>,
               url: '/pulse',
+          }}
+          sidebar={{
+              tabs: {
+                  transform: (option, node) => ({
+                      ...option,
+                      title: <h1 className='text-fd-foreground'>{node.name}</h1>,
+                      icon: <div className='text-fd-primary [&_svg]:size-full'>{node.icon}</div>
+                  }),
+              },
           }}
       >
         {children}
