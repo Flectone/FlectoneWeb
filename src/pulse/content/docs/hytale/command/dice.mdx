@@ -1,0 +1,66 @@
+---
+title: /dice
+description: Комманда для броска кубиков на удачу
+authors:
+  - TheFaser
+---
+![command dice](/pulse/commanddice.png)
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → command.dice`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/hytale/localizations/ru_ru.yml#dice</include></Tab>
+    <Tab value="en_us"><include>../../../../files/hytale/localizations/en_us.yml#dice</include></Tab>
+</Tabs>
+
+### `symbols`
+
+Список индексов (выпавшее число) и символов (кубики)
+
+### `format`
+
+Формат сообщения, которое будет отправлено
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `command.yml → dice`</span>
+
+<include>../../../../files/hytale/command.yml#dice</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+<include>../../../../parts/range.mdx</include>
+
+### `min`
+
+Минимальное количество кубиков
+
+### `max`
+
+Максимальное количество кубиков
+
+<include>../../../../parts/aliases.mdx</include>
+
+<include>../../../../parts/destination.mdx</include>
+
+<include>../../../../parts/cooldown.mdx</include>
+
+<include>../../../../parts/sound.mdx</include>
+ 
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → command.dice`</span>
+ 
+<include>../../../../files/hytale/permission.yml#dice</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../../parts/permission/sound.mdx</include>

@@ -1,0 +1,54 @@
+---
+title: /reply
+description: Command to write a private message to the last player who messaged you
+authors:
+  - TheFaser
+---
+![command reply](/pulse/commandreply.png)
+
+<Callout type="error" title="Attention">
+    The command will not work if the [`Tell`](/pulse/docs/command/tell/) module is disabled
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.reply`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../files/hytale/localizations/en_us.yml#reply</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/hytale/localizations/ru_ru.yml#reply</include></Tab>
+</Tabs>
+
+### `null_receiver`
+
+Message if the receiver is not found
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `command.yml → reply`</span>
+
+<include>../../../../files/hytale/command.yml#reply</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+<include>../../../../parts/aliases.en.mdx</include>
+
+<include>../../../../parts/cooldown.en.mdx</include>
+
+<include>../../../../parts/sound.en.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → command.reply`</span>
+
+<include>../../../../files/hytale/permission.yml#reply</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../../parts/permission/sound.en.mdx</include>

@@ -1,0 +1,28 @@
+{
+    "title": "Сообщения",
+    "description": "Настройка сообщений FlectonePulse (из-за чего появляются и как)",
+    "pages": [
+        "afk",
+        "anvil",
+        "auto",
+        "book",
+        "bossbar",
+        "brand",
+        "bubble",
+        "chat",
+        "format",
+        "greeting",
+        "join",
+        "objective",
+        "quit",
+        "rightclick",
+        "sidebar",
+        "sing",
+        "status",
+        "tab",
+        "update",
+        "vanilla"
+    ],
+    "icon": "MessageSquare",
+    "defaultOpen": false
+}

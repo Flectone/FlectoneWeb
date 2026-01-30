@@ -1,0 +1,76 @@
+---
+title: Автоматическое
+description: Сообщение от сервера раз в какой-то промежуток времени
+authors:
+  - TheFaser
+---
+![auto](/pulse/auto.png)
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.auto`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/hytale/localizations/ru_ru.yml#auto</include></Tab>
+    <Tab value="en_us"><include>../../../../files/hytale/localizations/en_us.yml#auto</include></Tab>
+</Tabs>
+
+### `types`
+
+Виды автоматических сообщений со списком
+
+<Callout type="info" title="Информация">
+    Ты можешь добавлять свои с любым именем или удалять текущие
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → auto`</span>
+
+<include>../../../../files/hytale/message.yml#auto</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `types`
+
+Виды автоматических сообщений
+
+<Callout type="info" title="МОЖНО СОЗДАВАТЬ СВОИ">
+```yaml
+  types:
+    newauto:
+      random: true
+      destination:
+        type: "CHAT"
+      ticker:
+        enable: true
+        period: 9000
+      sound:
+        enable: false
+```
+</Callout>
+
+<include>../../../../parts/random.mdx</include>
+
+<include>../../../../parts/destination.mdx</include>
+
+<include>../../../../parts/ticker.mdx</include>
+
+<include>../../../../parts/sound.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.auto`</span>
+
+<include>../../../../files/hytale/permission.yml#auto</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+### `types`
+
+Виды автоматических сообщений и их прав на звуки
+
+- <include>../../../../parts/permission/sound.mdx</include>

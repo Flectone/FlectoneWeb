@@ -1,0 +1,956 @@
+#  ___       ___  __  ___  __        ___
+# |__  |    |__  /  `  |  /  \ |\ | |__
+# |    |___ |___ \__,  |  \__/ | \| |___
+#  __             __   ___
+# |__) |  | |    /__` |__
+# |    \__/ |___ .__/ |___   /\
+#                           /  \
+# __/\___  ____/\_____  ___/    \______
+#        \/           \/
+#
+#region command
+enable: true
+suggest_invisible_players: true
+#endregion command
+#region afk
+afk:
+  enable: true
+  aliases:
+  - "afk"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion afk
+#region anon
+anon:
+  enable: true
+  range: "PROXY"
+  aliases:
+  - "anon"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion anon
+#region ball
+ball:
+  enable: true
+  range: "PROXY"
+  aliases:
+  - "ball"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion ball
+#region ban
+ban:
+  enable: true
+  suggest_offline_players: true
+  show_connection_attempts: true
+  check_group_weight: true
+  range: "PROXY"
+  time_limits:
+    0: -1
+  aliases:
+  - "ban"
+  - "tempban"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion ban
+#region banlist
+banlist:
+  enable: true
+  per_page: 4
+  aliases:
+  - "banlist"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion banlist
+#region broadcast
+broadcast:
+  enable: true
+  range: "PROXY"
+  aliases:
+  - "broadcast"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion broadcast
+#region chatcolor
+chatcolor:
+  enable: true
+  aliases:
+  - "chatcolor"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion chatcolor
+#region chatsetting
+chatsetting:
+  enable: false
+  aliases:
+  - "chatsetting"
+  modern:
+    enable: true
+    button_width: 100
+    columns: 5
+  checkbox:
+    disabled_material: "RED_DYE"
+    enabled_material: "LIME_DYE"
+    types:
+      AFK: 9
+      ADVANCEMENT: 10
+      CHAT: 11
+      COMMAND_ANON: 12
+      COMMAND_BALL: 13
+      COMMAND_BROADCAST: 14
+      COMMAND_COIN: 15
+      COMMAND_DICE: 16
+      COMMAND_DO: 17
+      COMMAND_MAIL: 18
+      COMMAND_ME: 19
+      COMMAND_POLL: 20
+      COMMAND_ROCKPAPERSCISSORS: 21
+      COMMAND_STREAM: 22
+      COMMAND_TELL: 23
+      COMMAND_TICTACTOE: 24
+      COMMAND_TRY: 25
+      DEATH: 26
+      FROM_DISCORD_TO_MINECRAFT: 27
+      FROM_TELEGRAM_TO_MINECRAFT: 28
+      FROM_TWITCH_TO_MINECRAFT: 29
+      JOIN: 30
+      QUIT: 31
+      SLEEP: 32
+  menu:
+    material: "LIGHT_BLUE_DYE"
+    chat:
+      slot: 0
+      types:
+      - name: "default"
+        material: "ARROW"
+      - name: "local"
+        material: "WHITE_DYE"
+      - name: "global"
+        material: "BLACK_DYE"
+    see:
+      slot: 1
+      types:
+      - name: "default"
+        material: "ARROW"
+        colors:
+          1: ""
+          2: ""
+          3: ""
+          4: ""
+      - name: "white"
+        material: "WHITE_DYE"
+        colors:
+          1: "<gradient:#F5F9FF:#E6F0FF>"
+          2: "<gradient:#D4E4FF:#B8D2FF>"
+          3: "null"
+          4: "null"
+      - name: "light_gray"
+        material: "LIGHT_GRAY_DYE"
+        colors:
+          1: "<gradient:#E0E3E6:#C8CCD0>"
+          2: "<gradient:#B5B9BD:#9DA2A6>"
+          3: "null"
+          4: "null"
+      - name: "gray"
+        material: "GRAY_DYE"
+        colors:
+          1: "<gradient:#6B7378:#535A5F>"
+          2: "<gradient:#4A5054:#3A3F42>"
+          3: "null"
+          4: "null"
+      - name: "black"
+        material: "BLACK_DYE"
+        colors:
+          1: "<gradient:#2E3133:#1F2123>"
+          2: "<gradient:#17191A:#0D0E0F>"
+          3: "null"
+          4: "null"
+      - name: "brown"
+        material: "BROWN_DYE"
+        colors:
+          1: "<gradient:#A67C52:#8C6A4A>"
+          2: "<gradient:#7A5A40:#634A34>"
+          3: "null"
+          4: "null"
+      - name: "red"
+        material: "RED_DYE"
+        colors:
+          1: "<gradient:#FF6B6B:#E74C4C>"
+          2: "<gradient:#D63E3E:#C12B2B>"
+          3: "null"
+          4: "null"
+      - name: "orange"
+        material: "ORANGE_DYE"
+        colors:
+          1: "<gradient:#FFB347:#FF9A1F>"
+          2: "<gradient:#FF8C00:#E67E00>"
+          3: "null"
+          4: "null"
+      - name: "yellow"
+        material: "YELLOW_DYE"
+        colors:
+          1: "<gradient:#FFF689:#FFEE57>"
+          2: "<gradient:#FFE83D:#FFD900>"
+          3: "null"
+          4: "null"
+      - name: "lime"
+        material: "LIME_DYE"
+        colors:
+          1: "<gradient:#C1FF72:#A2F55F>"
+          2: "<gradient:#8EE53F:#7ACC29>"
+          3: "null"
+          4: "null"
+      - name: "green"
+        material: "GREEN_DYE"
+        colors:
+          1: "<gradient:#77DD77:#5DC75D>"
+          2: "<gradient:#4BB54B:#3AA33A>"
+          3: "null"
+          4: "null"
+      - name: "cyan"
+        material: "CYAN_DYE"
+        colors:
+          1: "<gradient:#7FE5F0:#5FD9E8>"
+          2: "<gradient:#3ECFDF:#2AB7C9>"
+          3: "null"
+          4: "null"
+      - name: "light_blue"
+        material: "LIGHT_BLUE_DYE"
+        colors:
+          1: "<gradient:#A6D8FF:#8CC8FF>"
+          2: "<gradient:#6BB6FF:#4DA6FF>"
+          3: "null"
+          4: "null"
+      - name: "blue"
+        material: "BLUE_DYE"
+        colors:
+          1: "<gradient:#7AA7FF:#5D8EFF>"
+          2: "<gradient:#3A75FF:#1F5AFF>"
+          3: "null"
+          4: "null"
+      - name: "purple"
+        material: "PURPLE_DYE"
+        colors:
+          1: "<gradient:#C792EA:#B77DDA>"
+          2: "<gradient:#A368C7:#8A4DBF>"
+          3: "null"
+          4: "null"
+      - name: "magenta"
+        material: "MAGENTA_DYE"
+        colors:
+          1: "<gradient:#FF9CEE:#FF7AE3>"
+          2: "<gradient:#FF5CD9:#FF3DCF>"
+          3: "null"
+          4: "null"
+      - name: "pink"
+        material: "PINK_DYE"
+        colors:
+          1: "<gradient:#FFB6D9:#FF9BC8>"
+          2: "<gradient:#FF80B7:#FF66A6>"
+          3: "null"
+          4: "null"
+    out:
+      slot: 2
+      types:
+      - name: "default"
+        material: "ARROW"
+        colors:
+          1: ""
+          2: ""
+          3: ""
+          4: ""
+      - name: "white"
+        material: "WHITE_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#F5F9FF:#E6F0FF>"
+          4: "<gradient:#D4E4FF:#B8D2FF>"
+      - name: "light_gray"
+        material: "LIGHT_GRAY_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#E0E3E6:#C8CCD0>"
+          4: "<gradient:#B5B9BD:#9DA2A6>"
+      - name: "gray"
+        material: "GRAY_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#6B7378:#535A5F>"
+          4: "<gradient:#4A5054:#3A3F42>"
+      - name: "black"
+        material: "BLACK_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#2E3133:#1F2123>"
+          4: "<gradient:#17191A:#0D0E0F>"
+      - name: "brown"
+        material: "BROWN_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#A67C52:#8C6A4A>"
+          4: "<gradient:#7A5A40:#634A34>"
+      - name: "red"
+        material: "RED_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#FF6B6B:#E74C4C>"
+          4: "<gradient:#D63E3E:#C12B2B>"
+      - name: "orange"
+        material: "ORANGE_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#FFB347:#FF9A1F>"
+          4: "<gradient:#FF8C00:#E67E00>"
+      - name: "yellow"
+        material: "YELLOW_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#FFF689:#FFEE57>"
+          4: "<gradient:#FFE83D:#FFD900>"
+      - name: "lime"
+        material: "LIME_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#C1FF72:#A2F55F>"
+          4: "<gradient:#8EE53F:#7ACC29>"
+      - name: "green"
+        material: "GREEN_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#77DD77:#5DC75D>"
+          4: "<gradient:#4BB54B:#3AA33A>"
+      - name: "cyan"
+        material: "CYAN_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#7FE5F0:#5FD9E8>"
+          4: "<gradient:#3ECFDF:#2AB7C9>"
+      - name: "light_blue"
+        material: "LIGHT_BLUE_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#A6D8FF:#8CC8FF>"
+          4: "<gradient:#6BB6FF:#4DA6FF>"
+      - name: "blue"
+        material: "BLUE_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#7AA7FF:#5D8EFF>"
+          4: "<gradient:#3A75FF:#1F5AFF>"
+      - name: "purple"
+        material: "PURPLE_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#C792EA:#B77DDA>"
+          4: "<gradient:#A368C7:#8A4DBF>"
+      - name: "magenta"
+        material: "MAGENTA_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#FF9CEE:#FF7AE3>"
+          4: "<gradient:#FF5CD9:#FF3DCF>"
+      - name: "pink"
+        material: "PINK_DYE"
+        colors:
+          1: "null"
+          2: "null"
+          3: "<gradient:#FFB6D9:#FF9BC8>"
+          4: "<gradient:#FF80B7:#FF66A6>"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion chatsetting
+#region clearchat
+clearchat:
+  enable: true
+  aliases:
+  - "clearchat"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion clearchat
+#region clearmail
+clearmail:
+  enable: true
+  aliases:
+  - "clearmail"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion clearmail
+#region coin
+coin:
+  enable: true
+  draw: true
+  range: "PROXY"
+  aliases:
+  - "coin"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion coin
+#region deletemessage
+deletemessage:
+  enable: false
+  aliases:
+  - "deletemessage"
+  destination:
+    type: "ACTION_BAR"
+    times:
+      stay: 60
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion deletemessage
+#region dice
+dice:
+  enable: true
+  range: "PROXY"
+  min: 1
+  max: 6
+  aliases:
+  - "dice"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion dice
+#region do
+do:
+  enable: true
+  range: "PROXY"
+  aliases:
+  - "do"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion do
+#region emit
+emit:
+  enable: true
+  aliases:
+  - "emit"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion emit
+#region flectonepulse
+flectonepulse:
+  enable: true
+  execute_in_main_thread: false
+  aliases:
+  - "flectonepulse"
+  - "fp"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion flectonepulse
+#region geolocate
+geolocate:
+  enable: true
+  suggest_offline_players: true
+  aliases:
+  - "geolocate"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion geolocate
+#region helper
+helper:
+  enable: true
+  null_helper: true
+  range: "PROXY"
+  aliases:
+  - "helper"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion helper
+#region ignore
+ignore:
+  enable: true
+  suggest_offline_players: true
+  aliases:
+  - "ignore"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion ignore
+#region ignorelist
+ignorelist:
+  enable: true
+  per_page: 4
+  aliases:
+  - "ignorelist"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion ignorelist
+#region kick
+kick:
+  enable: true
+  check_group_weight: true
+  range: "PROXY"
+  aliases:
+  - "kick"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion kick
+#region mail
+mail:
+  enable: true
+  aliases:
+  - "mail"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion mail
+#region maintenance
+maintenance:
+  enable: true
+  turned_on: false
+  aliases:
+  - "maintenance"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion maintenance
+#region me
+me:
+  enable: true
+  range: "PROXY"
+  aliases:
+  - "me"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion me
+#region mute
+mute:
+  enable: true
+  suggest_offline_players: true
+  check_group_weight: true
+  range: "PROXY"
+  time_limits:
+    0: -1
+  aliases:
+  - "mute"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion mute
+#region mutelist
+mutelist:
+  enable: true
+  per_page: 4
+  aliases:
+  - "mutelist"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion mutelist
+#region online
+online:
+  enable: false
+  suggest_offline_players: true
+  range: "PROXY"
+  aliases:
+  - "online"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion online
+#region ping
+ping:
+  enable: true
+  aliases:
+  - "ping"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion ping
+#region poll
+poll:
+  enable: false
+  enable_gui: true
+  last_id: 1
+  range: "PROXY"
+  aliases:
+  - "poll"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion poll
+#region reply
+reply:
+  enable: true
+  aliases:
+  - "reply"
+  - "r"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion reply
+#region rockpaperscissors
+rockpaperscissors:
+  enable: false
+  aliases:
+  - "rockpaperscissors"
+  - "rps"
+  strategies:
+    rock:
+    - "scissors"
+    paper:
+    - "rock"
+    scissors:
+    - "paper"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion rockpaperscissors
+#region sprite
+sprite:
+  enable: false
+  per_page: 16
+  aliases:
+  - "sprite"
+  categories:
+  - "armor_trims"
+  - "banner_patterns"
+  - "beds"
+  - "blocks"
+  - "celestials"
+  - "chest"
+  - "decorated_pot"
+  - "gui"
+  - "items"
+  - "map_decorations"
+  - "paintings"
+  - "particles"
+  - "shield_patterns"
+  - "shulker_boxes"
+  - "signs"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion sprite
+#region spy
+spy:
+  enable: true
+  range: "PROXY"
+  aliases:
+  - "spy"
+  categories:
+    command:
+    - "tell"
+    - "msg"
+    - "w"
+    - "message"
+    - "send"
+    - "m"
+    - "anon"
+    action:
+    - "anvil"
+    - "book"
+    - "sign"
+    - "local"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion spy
+#region stream
+stream:
+  enable: true
+  range: "PROXY"
+  aliases:
+  - "stream"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: true
+    volume: 1.0
+    pitch: 1.0
+    category: "BLOCK"
+    name: "minecraft:block.note_block.bell"
+#endregion stream
+#region symbol
+symbol:
+  enable: true
+  per_page: 16
+  aliases:
+  - "symbol"
+  categories:
+    activities: "⚽ ⚾ ⛷ ⛸ ⛹ ⛺ 🎘 🎙 🎤 🎞 🎟 🎠 🎡 🎢 🎥 🎦 🎧 🎨 🎩 🎪 🎫 🎬 🎭 🎮 🕹 🎯 🎰 🎱 🎲 🎳 🎴 🎽 🎾 🎿 🏀 🏁 🏂 🏃 🏄 🏇 🏈 🏉 🏊 🏋 🏌 🏍 🏎 🏏 🏐 🏑 🏒 🏓 🥊 🥋 🥌 🥍 🥎 🥏 🪀 🪁 🪂 🪃 🪄 🪅 🪆 🤺 🤻 🤼 🤽 🤾 🤿 🧗 🧘 🤳 🤷 🤸 🤹 🏕 🏖 🏸 🏹 💒 🎀 🎁 🧧 🎂 🎃 🎄 🎅 🎆 🎇 🎈 🎉 🎊 🎋 🎌 🎍 🎎 🎏 🎐 🎑"
+    animals: "🐀 🐁 🐂 🐃 🐄 🐅 🐆 🐇 🐈 🐉 🐊 🐋 🐌 🐍 🐎 🐏 🐐 🐑 🐒 🐓 🐔 🐕 🐖 🐗 🐘 🐙 🐚 🐛 🐜 🐝 🐞 🐟 🐠 🐡 🐢 🐣 🐤 🐥 🐦 🐧 🐨 🐩 🐪 🐫 🐬 🐭 🐮 🐯 🐰 🐱 🐲 🐳 🐴 🐵 🐶 🐷 🐸 🐹 🐺 🐻 🐼 🐽 🐾 🐿 🕷 🕸 🦀 🦁 🦂 🦃 🦄 🦅 🦆 🦇 🦈 🦉 🦊 🦋 🦌 🦍 🦎 🦏 🦐 🦑 🦒 🦓 🦔 🦕 🦖 🦗 🦘 🦙 🦚 🦛 🦜 🦝 🦞 🦟 🦠 🦡 🦢 🦣 🦤 🦥 🦦 🦧 🦨 🦩 🦪 🦫 🦬 🦭 🦮 🪰 🪱 🪲 🪳 🪹 🪺 🪼 🪿 🫎 🫏"
+    arrows: "🡠 🡡 🡢 🡣 🡤 🡥 🡦 🡧 🡨 🡩 🡪 🡫 🡬 🡭 🡮 🡯 🢀 🢁 🢂 🢃 🢄 🢅 🢆 🢇 ← ↑ → ↓ ↔ ⇄ ⇵ ⇏ ⇒ ⇔ 🠘 🠙 🠚 🠛 🔙 🔚 🔛 🔜 🔝 🗘 🢴 🢵 🢶 🢷 🢸 🢹 🢺 🢻"
+    body: "👀 👁 👂 🦻 👃 👄 👅 💋 🗢 🫆 💪 🦴 🦵 🦶 🦷 🦾 🦿 🧠 🫀 🫁 🫦"
+    clothes: "👑 👒 👓 🕶 👔 👕 👖 👗 👘 👙 👚 👛 👜 👝 👞 👟 👠 👡 👢 🥻 🥼 🥽 🥾 🥿 🦺 🦯 🧢 🧣 🧤 🧥 🧦 🩰 🩱 🩲 🩳 🩴 🪖"
+    environment: "☼ ☽ ☾ ☀ 🌄 🌅 ☁ ☂ ☔ 🌂 ☄ ★ ☆ ⛅ ⛆ ☃ ⛄ ⛇ ⛈ ❄ 🌀 🌁 🌈 🌊 🌋 🌢 💧 🌣 🌤 🌥 🌦 🌧 🌨 🌩 🌪 🌫 🌬 🌆 🌇 🌉 ⭐ ⭑ ⭒ ⯪ ⯫ 🔯 🌃 🌌 🌞 🌟 🌠 🌍 🌎 🌏 🌐 🗺 🪐 🌑 🌒 🌓 🌔 🌕 🌖 🌗 🌘 🌙 🌚 🌛 🌜 🌝 🏔 🏜 🏝 🏞"
+    faces: "☹ ☺ ☻ 😀 😁 😂 😃 😄 😅 😆 😇 😈 😉 😊 😋 😌 😍 😎 😏 😐 😑 😒 😓 😔 😕 😖 😗 😘 😙 😚 😛 😜 😝 😞 😟 😠 😡 😢 😣 😤 😥 😦 😧 😨 😩 😪 😫 😬 😭 😮 😯 😰 😱 😲 😳 😴 🫩 😵 😶 😷 😸 😹 😺 😻 😼 😽 😾 😿 🙀 🙁 🙂 🙃 🙄 🙅 🙆 🙇 🙈 🙉 🙊 🙋 🙌 🙍 🙎 🙏 🤐 🤑 🤒 🤓 🤔 🤕 🤗 🤠 🤡 🤢 🤣 🤤 🤥 🤦 🤧 🤨 🤩 🤪 🤫 🤬 🤭 🤮 🤯 🥰 🥱 🥲 🥳 🥴 🥵 🥶 🥷 🥸 🥹 🥺 🧐 🫠 🫡 🫢 🫣 🫤 🫥 🫨"
+    food: "☕ 🌭 🌮 🌯 🌰 🌶 🍅 🍆 🍇 🍈 🍉 🍊 🍋 🍌 🍍 🍎 🍏 🍐 🍑 🍒 🍓 🍔 🍕 🍖 🍗 🍘 🍙 🍚 🍛 🍜 🍝 🍞 🍟 🍠 🍡 🍢 🍣 🍤 🍥 🍦 🍧 🍨 🍩 🍪 🍫 🍬 🍭 🍮 🍯 🍰 🍱 🍲 🍳 🍴 🍵 🍶 🍷 🍸 🍹 🍺 🍻 🍼 🍽 🍾 🍿 🥐 🥑 🥒 🥓 🥔 🥕 🫜 🥖 🥗 🥘 🥙 🥚 🥛 🥜 🥝 🥞 🥟 🥠 🥡 🥢 🥣 🥤 🥥 🥦 🥧 🥨 🥩 🥪 🥫 🥬 🥭 🥮 🥯 🧀 🧁 🧂 🧃 🧄 🧅 🧆 🧇 🧈 🧉 🧊 🧋 🫐 🫑 🫒 🫓 🫔 🫕 🫖 🫗 🫘 🫙 🫚 🫛"
+    greenery: "🌱 🌲 🌳 🌴 🌵 🌷 ⚘ 🌸 🌹 🥀 💮 🌺 🌻 🌼 🌽 🌾 🌿 🍀 🍁 🍂 🍃 🍄 🪾 🏵 🏶 🪴 🪷 🪸 🪻"
+    hands: "☜ ☝ ☞ ☟ ✊ ✋ ✌ ✍ 👆 👇 👈 👉 👊 👋 👌 👍 👎 👏 👐 🖎 🖏 🖐 🖑 🖒 🖓 🖔 🖕 🖖 🖗 🖘 🖙 🖚 🖛 🖜 🖝 🖞 🖟 🖠 🖡 🖢 🖣 🤌 🤏 🤘 🤙 🤚 🤛 🤜 🤝 🤞 🤟 🤲 🫰 🫱 🫲 🫳 🫴 🫵 🫶 🫷 🫸"
+    misc: "⏏ ⏩ ⏪ ⏫ ⏬ ⏭ ⏮ ⏯ ⏰ ⏱ ⏲ ⏳ ⏴ ⏵ ⏶ ⏷ ⏸ ⏹ ⏺ ⏻ ⏼ ⌚ ⌛ 🕐 🕑 🕒 🕓 🕔 🕕 🕖 🕗 🕘 🕙 🕚 🕛 🕜 🕝 🕞 🕟 🕠 🕡 🕢 🕣 🕤 🕥 🕦 🕧 🔅 🔆 🔇 🔈 🔉 🔊 🕨 🕩 🕪 🕫 🕬 🕭 🔋 🪫 🔌 🔍 🔎 🛜 🗔 🗕 🗖 🗗 🗘 🗙 🗚 🗛 ✉ 💌 📧 📨 📩 🖂 🖃 🖄 🖅 🖆 🪪 ⚐ ⚑ ⚕ ⚖ ⚙ ⛭ ⛮ ⚠ ⚡ ⚰ ⚱ ♔ ♕ ♖ ♗ ♘ ♙ ♚ ♛ ♜ ♝ ♞ ♟ ♠ ♡ ♢ ♣ ♤ ♥ ♦ ♧ ⚀ ⚁ ⚂ ⚃ ⚄ ⚅ ⛀ ⛁ ⛂ ⛃ 💠 🔰 💢 💤 💥 🔥 💦 💨 🫧 🫟 💫 💬 💭 🗨 🗩 🗪 🗫 🗬 🗭 🗮 🗯 🗰 🗱 🗲 💱 💲 💳 💴 💵 💶 💷 💸 🪙 💹 📈 📉 📊 🗠"
+    numbers: "🯰 🯱 🯲 🯳 🯴 🯵 🯶 🯷 🯸 🯹 ½ ↉ ⅓ ⅔ ¼ ¾ ⅕ ⅖ ⅗ ⅘ ⅙ ⅚ ⅐ ⅛ ⅜ ⅝ ⅞ ⅑ ⅒ ⅟ ⓪ ① ② ③ ④ ⑤ ⑥ ⑦ ⑧ ⑨ ⑩ ⑪ ⑫ ⑬ ⑭ ⑮ ⑯ ⑰ ⑱ ⑲ ⑳ ⓿ ➊ ➋ ➌ ➍ ➎ ➏ ➐ ➑ ➒ ➓ Ⅰ Ⅱ Ⅲ Ⅳ Ⅴ Ⅵ Ⅶ Ⅷ Ⅸ Ⅹ Ⅺ Ⅻ Ⅼ Ⅽ Ⅾ Ⅿ"
+    people: "👣 👤 👥 👦 👧 👨 👩 🧑 🧒 🧓 🧔 🧕 👪 👫 👬 👭 🧍 🧎 🚹 🚺 🚼 🛉 🛊 🧏 👮 👯 👰 👱 👲 🤶 👳 👴 👵 👶 👷 👸 👹 👺 👼 🤰 🫂 🫃 🫄 🤱 🧖 👻 👽 👾 🤖 🧌 👿 ☠ 💀 🕱 💁 💂 🤴 🫅 🤵 💃 🕺 💆 💇 💏 💑 🗣 🦸 🦹 🕴 🕵 🧙 🧚 🧛 🧜 🧝 🧞 🧟"
+    shapes: "🔲 🔳 🔴 🔵 🔶 🔷 🔸 🔹 🔺 🔻 🔼 🔽 💓 💔 💕 💖 💗 💘 💙 💚 💛 💜 🖤 💝 💞 💟 🤍 🤎 🧡 🩵 🩶 🩷 ❣ ❤ ❥ ❦ ❧ 🎔 │ ┤ ╡ ╢ ╖ ╕ ╣ ║ ╗ ╝ ╜ ╛ ┐ └ ┴ ┬ ├ ─ ┼ ╞ ╟ ╚ ╔ ╩ ╦ ╠ ═ ╬ ╧ ╨ ╤ ╥ ╙ ╘ ╒ ╓ ╫ ╪ ┘ ┌ ▁ ▂ ▃ ▄ ▅ ▆ ▇ █ ▉ ▊ ▋ ▌ ▍ ▎ ▏ ▕ ▐ ▔ ▀ ▝ ▖ ▗ ▘ ▙ ▛ ▜ ▟ ▞ ▚"
+    symbols: "♩ ♪ ♫ ♬ ♭ ♮ ♯ 🎜 🎝 🎵 🎶 🎼 ♲ ♻ ☮ ☯ 🕆 🕇 🕈 🕉 🕊 🕎 🕏 ☐ ☑ ☒ ✓ ✔ ✕ ✖ ✗ ✘ ❌ ❎ 🗴 🗵 🗶 🗷 🗸 🗹 ♿ 🔞 ⛔ 🕲 🚫 🚬 🚭 🚮 🚯 🚰 🚱 🛆 🛇 🛈 🛑 🔟 🔠 🔡 🔢 🔣 🔤 🆑 🆒 🆓 🆔 🆕 🆖 🆗 🆘 🆙 🆚 ❓ ❔ ❕ ❗ ❛ ❜ ❝ ❞ ❟ ❠ 💯 🏱 🏲 🏳 🏴 🚩"
+    things: "⛏ 🪓 🪏 ⚒ ⚓ ⚔ 🎣 🗡 🔱 ⚗ ⛓ 🛠 🛡 🪚 🪛 ✀ ✁ ✂ ✃ ✄ ✎ ✏ ✐ ✑ ✒ 🖉 🖊 🖋 🖌 🖍 🌡 🏷 🎒 🎓 🎕 💐 🎖 🎗 🏅 🥇 🥈 🥉 🏆 🎚 🎛 🎷 🎸 🎹 🎺 🎻 🪇 🪈 🪕 🪗 🪘 🪉 🏺 💄 💅 🪨 🪵 🪶 🪽 💈 💉 💊 🧪 🧫 🩸 🩹 🩺 🩻 🩼 🧬 🧭 🧮 🧯 🧰 🧱 🧲 🧳 🧴 🧵 🧶 🧷 🧸 🧹 🧺 🧻 🧼 🧽 🧾 🧿 💍 💎 💡 💣 🧨 🥁 🥂 🥃 🥄 🥅 🥆 🧩 🪠 🪡 🪢 🪣 🪤 🪥 🪦 🪧 💩 💰 💺 💻 💼 💽 🖭 🖴 💾 🖪 🖫 🖬 💿 📀 🖸 📁 📂 🖿 🗀 🗁 🗂 🗃 🗄 📃 📄 📅 📆 📇 🖹 🖺 🖻 🖼 🖽 🖾 📋 📌 📍 🖈 📎 🖇 📏 📐 📑 📒 📓 📔 📕 📖 📗 📘 📙 📚 📛 📜 📝 🗅 🗆 🗇 🗈 🗉 🗊 🗋 🗌 🗍 🗎 🗏 🗐 🗑 🗒 🗓 📞 📟 📠 📡 📢 📣 📤 📥 📦 📪 📫 📬 📭 📮 📯 📰 📱 📲 📳 📴 📵 📶 🕻 🕼 🕽 🕾 🕿 🖀 🖁 📷 📸 📹 📺 📻 📼 📽 📾 📿 🖥 🖦 🖧 🖨 🖩 🖮 🖯 🖰 🖱 🖲 🖳 🖵 🖶 🖷 🔏 🔐 🔑 🔒 🔓 🔔 🔕 🔖 🔗 🔘 🔦 🔧 🔨 🔩 🔪 🔫 🔬 🔭 🔮 🪒 🪔 🕮 🕯 🕰 🗳 🛍 🛎 🛢 🗜 🗝 🗞 🗟 🕳"
+    transport: "⛟ ⛴ ⛵ ✈ ⛩ ⛪ ⛫ ⛰ ⛱ ⛲ ⛳ ⛽ 🗻 🗼 🗽 🗾 🗿 🚀 🚁 🚂 🚃 🚄 🚅 🚆 🚇 🚈 🚉 🚊 🛲 🚋 🚌 🚍 🚎 🚏 🚐 🚑 🚒 🛱 🚓 🚔 🚕 🚖 🚗 🛻 🚘 🚙 🚚 🚛 🚜 🚝 🚞 🚟 🚠 🚡 🚢 🛳 🚣 🚤 🛶 🛥 🛦 🛧 🛨 🛩 🛪 🛫 🛬 🛰 🛴 🛵 🛹 🛼 🛺 🛷 🦼 🦽 🛸 🛒 🚥 🚦 🚧 🚨 🏗 🏘 🏙 🏚 🏛 🏟 🏠 🏡 🏢 🏣 🏤 🏥 🏦 🏧 🏨 🏩 🏪 🏫 🏬 🏭 🏮 🏯 🏰 🕋 🕌 🕍 🛐 🛓 🛔 🛕 🛖 🚲 🚳 🚴 🚵 🚶 🚷 🚸 🚪 🪑 🪟 🪜 🪝 🪞 🚻 🚽 🚾 🚿 🛀 🛁 🛂 🛃 🛄 🛅 🛋 🛌 🛏 🛗 🛝 🛞 🛟 🛣 🛤"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion symbol
+#region tell
+tell:
+  enable: true
+  suggest_offline_players: false
+  range: "PROXY"
+  aliases:
+  - "tell"
+  - "msg"
+  - "w"
+  - "message"
+  - "send"
+  - "m"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion tell
+#region tictactoe
+tictactoe:
+  enable: false
+  aliases:
+  - "tictactoe"
+  - "ttt"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion tictactoe
+#region toponline
+toponline:
+  enable: false
+  per_page: 10
+  aliases:
+  - "toponline"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion toponline
+#region translateto
+translateto:
+  enable: true
+  range: "PLAYER"
+  service: "GOOGLE"
+  aliases:
+  - "translateto"
+  languages:
+  - "en_us"
+  - "ru_ru"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion translateto
+#region try
+try:
+  enable: true
+  range: "PROXY"
+  min: 0
+  max: 100
+  good: 50
+  aliases:
+  - "try"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion try
+#region unban
+unban:
+  enable: true
+  check_group_weight: true
+  range: "PROXY"
+  aliases:
+  - "unban"
+  - "pardon"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion unban
+#region unmute
+unmute:
+  enable: true
+  check_group_weight: true
+  range: "PROXY"
+  aliases:
+  - "unmute"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion unmute
+#region unwarn
+unwarn:
+  enable: true
+  check_group_weight: true
+  range: "PROXY"
+  aliases:
+  - "unwarn"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion unwarn
+#region warn
+warn:
+  enable: true
+  suggest_offline_players: true
+  check_group_weight: true
+  range: "PROXY"
+  time_limits:
+    0: -1
+  aliases:
+  - "warn"
+  actions:
+    2: "mute <target> 1h"
+    3: "ban <target> 1h"
+    5: "ban <target>"
+  destination:
+    type: "CHAT"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion warn
+#region warnlist
+warnlist:
+  enable: true
+  per_page: 4
+  aliases:
+  - "warnlist"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion warnlist

@@ -1,0 +1,230 @@
+---
+title: /chatsetting
+description: Command for chat settings
+authors:
+  - TheFaser
+---
+![command chatsetting](/pulse/commandchatsetting.gif)
+
+<Callout type="info" title="NOTE">
+
+    You can open someone else's settings using `/chatsetting TheFaser`\
+    \
+    If you want to create your own menu via another plugin, you can change values using `/chatsetting TheFaser ADVANCEMENT`. This will enable or disable the display of achievements depending on the state. You can find out the state via the placeholder `%flectonepulse_advancement%`.\
+    \
+    Some settings can be assigned values, for example `/chatsetting TheFaser STREAM_PREFIX kek` will set the player's streamer prefix to `kek`.
+
+    | Setting             |
+    |---------------------|
+    | `ADVANCEMENT`       |
+    | `AFK`               |
+    | `AFK_SUFFIX`        |
+    | `AUTO`              |
+    | `BALL`              |
+    | `BAN`               |
+    | `BROADCAST`         |
+    | `CHAT`              |
+    | `COIN`              |
+    | `DEATH`             |
+    | `DICE`              |
+    | `DISCORD`           |
+    | `DO`                |
+    | `GREETING`          |
+    | `JOIN`              |
+    | `KICK`              |
+    | `LOCALE`            |
+    | `MAIL`              |
+    | `ME`                |
+    | `MUTE`              |
+    | `POLL`              |
+    | `QUIT`              |
+    | `REPLY`             |
+    | `ROCKPAPERSCISSORS` |
+    | `SPY`               |
+    | `STREAM`            |
+    | `STREAM_PREFIX`     |
+    | `TELEGRAM`          |
+    | `TELL`              |
+    | `TICTACTOE`         |
+    | `TRANSLATETO`       |
+    | `TRY`               |
+    | `TWITCH`            |
+    | `WARN`              |
+    | `WORLD_PREFIX`      |
+    | `ANON`              |
+
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.chatsetting`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../files/hytale/localizations/en_us.yml#chatsetting</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/hytale/localizations/ru_ru.yml#chatsetting</include></Tab>
+</Tabs>
+
+<Callout type="info" title="Note">
+    The name and description of items are in a single line; use `<br>` to move to a new line.
+</Callout>
+
+### `no_permission`
+
+Message if a specific permission is required to change a setting
+
+### `disabled_self`
+
+Message displayed when a player has disabled the function and tries to use it
+
+### `disabled_other`
+
+Message displayed when a player attempts to use the function on another player who has disabled it
+
+### `inventory`
+
+Title for the main GUI
+
+### `checkbox`
+
+<Accordions>
+    <Accordion title="Toggle settings">
+        #### `enabled_color`
+
+        Color if the setting is enabled. Replaces `<status_color>`
+
+        #### `enabled_hover`
+
+        Message if the setting is enabled
+
+        #### `disabled_color`
+
+        Color if the setting is disabled. Replaces `<status_color>`
+
+        #### `disabled_hover`
+
+        Message if the setting is disabled
+
+        #### `types`
+
+        List of setting types and their names
+    </Accordion>
+</Accordions>
+
+### `menu`
+
+<Accordions>
+    <Accordion title="Settings for additional menus">
+        #### `item`
+
+        Name and description of the item that will be in the main menu
+
+        #### `inventory`
+
+        GUI title in the additional menu
+
+        #### `types`
+
+        List of items with their names and descriptions
+    </Accordion>
+</Accordions>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `command.yml → chatsetting`</span>
+
+<include>../../../../files/hytale/command.yml#chatsetting</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+<include>../../../../parts/aliases.en.mdx</include>
+
+### `modern`
+
+<Callout type="warn" title="Warning">
+
+    Only works for versions `1.21.6` and newer; older versions will use inventory
+
+</Callout>
+
+<Accordions>
+    <Accordion title="New menu setup">
+        #### `enable`
+
+        Enables the use of dialogs instead of inventories
+
+        #### `button_width`
+
+        Width of each button
+
+        #### `columns`
+
+        Number of buttons per row
+    </Accordion>
+</Accordions>
+
+### `checkbox`
+
+<Accordions>
+    <Accordion title="Toggle settings">
+        #### `disabled_material`
+
+        Material if the setting is disabled
+
+        #### `enabled_material`
+
+        Material if the setting is enabled
+
+        #### `types`
+
+        List of setting types and their inventory slots
+    </Accordion>
+</Accordions>
+
+### `menu`
+
+<Accordions>
+    <Accordion title="Settings for additional menus">
+        #### `material`
+
+        Item that will redirect to additional menus
+
+        #### `slot`
+        <Callout type="info" title="Information">
+            To disable the menu, you can use `slot: -1`
+        </Callout>
+
+        Which slot will be in the main inventory
+
+        #### `types`
+
+        List of setting types with their parameters
+    </Accordion>
+</Accordions>
+
+| View             | Description                                                                                                                                                                                                                                |
+|------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| for `CHAT`       | The `name` field is the title, and `material` is the item type that will be in the inventory for this chat                                                                                                                                 |
+| for `SEE` and `OUT` | The `name` field is the title, and `material` is the item type that will be in the inventory for this chat. It also has `colors`, where the key is a number and the value is the color to be applied. Use `""` to keep the color unchanged |
+
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → command.chatsetting`</span>
+
+<include>../../../../files/hytale/permission.yml#chatsetting</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `settings`
+
+List of settings and their permissions
+
+<include>../../../../parts/permission/other.en.mdx</include>
+
+<include>../../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../../parts/permission/sound.en.mdx</include>
