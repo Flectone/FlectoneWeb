@@ -25,10 +25,7 @@ FlectoneWeb/
 │   ├── components/         # Reusable React components
 │   ├── i18n/               # Internationalization configuration
 │   ├── lib/                # Shared utilities and hooks
-│   ├── messages/           # Localization files (JSON)
-│   ├── pulse/              # Documentation content (MDX)
-│   └── styles/             # Global styles and Tailwind CSS
-│
+│   └── pulse/              # Documentation content (MDX)
 ├── public/                 # Static assets
 ├── source.config.ts        # Fumadocs configuration
 └── package.json            # Project dependencies and scripts

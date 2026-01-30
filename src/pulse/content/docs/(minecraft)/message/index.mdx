@@ -1,0 +1,55 @@
+---
+title: Сообщения
+description: Настройка сообщений FlectonePulse (из-за чего появляются и как)
+icon: MessageSquare
+authors:
+  - TheFaser
+---
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#message</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#message</include></Tab>
+</Tabs>
+
+### `cooldown`
+
+Сообщение, которое показывается при слишком частом использовании, если включен `cooldown`
+
+### `time`
+
+Сообщения времени
+
+- #### `format`
+
+Форматирование времени ([Apache DurationFormatUtils](https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/time/DurationFormatUtils.html))
+
+- #### `permanent`
+
+Форматирование времени, если оно `-1` т.е. навсегда
+
+- #### `zero`
+
+Форматирование времени, если оно равно нулю
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml`</span>
+
+<include>../../../../files/minecraft/message.yml#message</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message`</span>
+
+<include>../../../../files/minecraft/permission.yml#message</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

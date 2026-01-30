@@ -115,6 +115,7 @@
     "Buttons": {
       "support": "Support",
       "documentation": "Documentation",
+      "hytaleDocumentation": "Hytale Documentation",
       "metrics": "Metrics",
       "download": "Download"
     },

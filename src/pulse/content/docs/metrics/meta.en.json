@@ -1,0 +1,6 @@
+{
+  "root": true,
+  "title": "Metrics",
+  "icon": "ChartCandlestick",
+  "description": "Main charts on server performance"
+}

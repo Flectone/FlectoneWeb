@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "title": "Hytale",
+  "icon": "Leaf",
+  "description": "Документация для Hytale",
+  "pages": [
+    "---Документация---",
+    "index",
+    "config",
+    "command",
+    "integration",
+    "message"
+  ]
+}

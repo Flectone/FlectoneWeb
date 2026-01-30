@@ -1,0 +1,41 @@
+---
+title: Описание
+description: Модуль отвечающий за приветственное сообщение сервера
+authors:
+  - TheFaser
+---
+![motd](/pulse/motd.png)
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#localization</include> 
+<span><include>../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.status.motd`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../../files/minecraft/localizations/ru_ru.yml#motd</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/minecraft/localizations/en_us.yml#motd</include></Tab>
+</Tabs>
+
+### `values`
+
+Список сообщений, которые будут показываться
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#setting</include>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → status.motd`</span>
+
+<include>../../../../../files/minecraft/message.yml#motd</include>
+
+<include>../../../../../parts/enable.mdx</include>
+
+<include>../../../../../parts/random.mdx</include>
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#permission</include> 
+<span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.status.motd`</span>
+
+<include>../../../../../files/minecraft/permission.yml#motd</include>
+
+<include>../../../../../parts/permission/permissionTier3.mdx</include>

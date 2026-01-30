@@ -10,6 +10,7 @@
   --color-fd-primary: hsl(216, 49%, 44%);
   --color-fd-muted-primary: hsl(216, 49%, 38%);
   --color-fd-primary-foreground: hsl(216, 49%, 95%);
+  --color-fd-secondary: #e1e1e1;
 
   --color-fd-orange: hsl(29, 79%, 54%);
   --color-fd-muted-orange: hsl(29, 79%, 48%);
@@ -32,7 +33,7 @@
   --color-fd-background: #1b1b1b;
   --color-fd-muted: #1d1d1d;
   --color-fd-article: #181818;
-  --color-fd-secondary: #1d1d1d;
+  --color-fd-secondary: #232323;
 
   --color-fd-primary: hsl(203, 84%, 70%);
   --color-fd-muted-primary: hsl(203, 84%, 80%);

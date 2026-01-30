@@ -1,0 +1,54 @@
+---
+title: Бренд
+description: Модуль, отвечающий за сообщение бренда в F3
+authors:
+  - TheFaser
+---
+![brand](/pulse/brand.png)
+
+<Callout type="warn" title="Предупреждение">
+Если используется прокси (Velocity или BungeeCord), то изменение brand полностью невозможно
+
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.brand`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#brand</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#brand</include></Tab>
+</Tabs>
+
+### `values`
+
+Список сообщений для бренда
+
+<Callout type="warn" title="Можно использовать только обычные цвета">
+    <include>../../../../parts/color.mdx</include>
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → brand`</span>
+
+<include>../../../../files/minecraft/message.yml#brand</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+<include>../../../../parts/random.mdx</include>
+
+<include>../../../../parts/destination.mdx</include>
+
+<include>../../../../parts/ticker.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.brand`</span>
+
+<include>../../../../files/minecraft/permission.yml#brand</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

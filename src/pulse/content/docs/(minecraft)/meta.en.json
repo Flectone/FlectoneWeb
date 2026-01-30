@@ -1,0 +1,14 @@
+{
+  "root": true,
+  "title": "Minecraft",
+  "icon": "Pickaxe",
+  "description": "Documentation for Minecraft",
+  "pages": [
+    "---Documentation---",
+    "index",
+    "config",
+    "command",
+    "integration",
+    "message"
+  ]
+}

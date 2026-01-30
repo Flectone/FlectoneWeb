@@ -1,0 +1,98 @@
+---
+title: /mutelist
+description: Command to view the mute list
+authors:
+  - TheFaser
+---
+![command mutelist](/pulse/commandmutelist.png)
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.mutelist`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#mutelist</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#mutelist</include></Tab>
+</Tabs>
+
+### `empty`
+
+Message if the list of muted players is empty
+
+### `null_page`
+
+Message if the entered page does not exist
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `global`
+
+<Accordions>
+    <Accordion title="Messages for global mutes">
+        #### `header`
+
+        Top part of the list message
+
+        #### `line`
+
+        Format of each mute entry in the list
+
+        #### `footer`
+
+        Bottom part of the list message
+    </Accordion>
+</Accordions>
+
+### `player`
+
+<Accordions>
+    <Accordion title="Messages for a specific player's mutes">
+        #### `header`
+
+        Top part of the list message
+
+        #### `line`
+
+        Format of each mute entry in the list
+
+        #### `footer`
+
+        Bottom part of the list message
+    </Accordion>
+</Accordions>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `command.yml → mutelist`</span>
+
+<include>../../../../files/minecraft/command.yml#mutelist</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+<include>../../../../parts/perPage.en.mdx</include>
+
+<include>../../../../parts/range.en.mdx</include>
+
+<include>../../../../parts/aliases.en.mdx</include>
+
+<include>../../../../parts/cooldown.en.mdx</include>
+
+<include>../../../../parts/sound.en.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → command.mutelist`</span>
+
+<include>../../../../files/minecraft/permission.yml#mutelist</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../../parts/permission/sound.en.mdx</include>

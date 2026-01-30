@@ -1,0 +1,72 @@
+---
+title: /unwarn
+description: Комманда для того, чтобы снять предупреждение с игрока
+authors:
+  - TheFaser
+---
+![command unwarn](/pulse/commandunwarn.png)
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → command.unwarn`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#unwarn</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#unwarn</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Сообщение, если введённый игрок не найден
+
+### `not_warned`
+
+Сообщение, если введённый игрок не имеет предупреждения
+
+### `lower_weight_group`
+
+Сообщение, если комманда исполняется от игрока с группой ниже, чем у игрока на которого применяется модерация
+
+### `format`
+
+Сообщение при снятии предупреждения
+ 
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `command.yml → unwarn`</span>
+
+<include>../../../../files/minecraft/command.yml#unwarn</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `check_group_weight`
+
+Будут ли проверяться группы игроков. Если игрок, на которого применяется модерация, имеет роль выше, чем отправитель комманды, то комманда не выполнится и будет ошибка `lower_weight_group`
+
+<include>../../../../parts/range.mdx</include>
+
+<include>../../../../parts/aliases.mdx</include>
+
+<include>../../../../parts/destination.mdx</include>
+
+<include>../../../../parts/cooldown.mdx</include>
+
+<include>../../../../parts/sound.mdx</include>
+ 
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → command.unwarn`</span>
+ 
+<include>../../../../files/minecraft/permission.yml#unwarn</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../../parts/permission/sound.mdx</include>
+
+
