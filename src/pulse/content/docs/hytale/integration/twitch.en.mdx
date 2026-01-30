@@ -6,8 +6,8 @@ authors:
 ---
 Allows:
 
-- sending messages from Minecraft to Twitch
-- sending messages from Twitch to Minecraft
+- sending messages from Hytale to Twitch
+- sending messages from Twitch to Hytale
 - subscribing to the start of a Twitch broadcast
 
 ![twitch message](/pulse/twitchmessage.png)
@@ -55,21 +55,21 @@ A command to get the `tps` value on the server. **Don't forget to define it in i
 
 #### `Placeholders`
 
-You can use all the placeholders that are used in the initial Minecraft message.
+You can use all the placeholders that are used in the initial Hytale message.
 <Callout type="info" title="Example for a ban message">
 There is a `<reason>` placeholder there, which means I can use `<reason>` inside Twitch messages.
 </Callout>
 
 There are also placeholders that are GUARANTEED to be replaced in any message:
-- `<final_message>` the message sent to Minecraft
-- `<final_clear_message>` the message sent to Minecraft without unicode emojis
+- `<final_message>` the message sent to Hytale
+- `<final_clear_message>` the message sent to Hytale without unicode emojis
 - `<player>` the nickname of the player who sent the message
 - `<message>` the raw message written by the player
 - `<plain_message>` the formatted message written by the player
 - `<reply>` the formatted reply message; it will be empty if the main message is not a reply
 - Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
 
-A message sent from Twitch to Minecraft has its own placeholders:
+A message sent from Twitch to Hytale has its own placeholders:
 
 | Placeholder    | What it returns                                            |
 |----------------|-----------------------------------------------------------|
@@ -145,7 +145,7 @@ A command to get the `tps` value on the server using `!tps` or `!tickpersecond`.
 
 A list of message types and Twitch channel names
 
-<Callout type="info" title="For example, I want Minecraft `/ban` command messages to be sent to Twitch">
+<Callout type="info" title="For example, I want Hytale `/ban` command messages to be sent to Twitch">
 <Steps>
     <Step>
         Copy the Twitch channel names where the message should be sent (`faseri4ka`)
@@ -186,9 +186,9 @@ follow_channel:
 - There can be any number of commands triggered at the start of the broadcast
 </Callout>
 
-<include>../../../../parts/destination.en.mdx</include>
+<include>../../../../parts/hytale/destination.en.mdx</include>
 
-<include>../../../../parts/sound.en.mdx</include>
+<include>../../../../parts/hytale/sound.en.mdx</include>
 
 <br></br>
 

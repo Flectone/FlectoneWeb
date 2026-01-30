@@ -1,12 +1,9 @@
 ---
 title: Proxy
-description: Used for synchronizing multiple servers using BungeeCord/Velocity or Redis
+description: Used for synchronizing multiple servers using Redis
 authors:
   - TheFaser
 ---
-<Callout type="info" title="Information">
-    This works on any platform where FlectonePulse is installed. For Bukkit and Fabric servers.
-</Callout>
 
 <br></br>
 
@@ -33,22 +30,14 @@ If the list is empty, the server receives all messages from other servers.
 
 ### `bungeecord`
 
-Enables communication with `BungeeCord`.
-
-<Callout type="idea" title="How to configure this?">
-    1. The `FlectonePulse-bukkit.jar` file must be placed in the `plugins` folder on `BungeeCord`. Even if you have a Fabric server, you must place `FlectonePulse-bukkit.jar` on `BungeeCord`.
-    2. On all servers where communication with `BungeeCord` is required, `bungeecord: true` must be enabled in FlectonePulse.
-    3. The selected database must be `MySQL`, `MariaDB`, or `PostgreSQL` (i.e., server-based).
+<Callout type="error" title="">
+    Not supported on Hytale
 </Callout>
 
 ### `velocity`
 
-Enables communication with `Velocity`.
-
-<Callout type="idea" title="How to configure this?">
-    1. The `FlectonePulse-bukkit.jar` file must be placed in the `plugins` folder on `Velocity`. Even if you have a Fabric server, you must place `FlectonePulse-bukkit.jar` on `Velocity`.
-    2. On all servers where communication with `Velocity` is required, `velocity: true` must be enabled in FlectonePulse.
-    3. The selected database must be `MySQL`, `MariaDB`, or `PostgreSQL` (i.e., server-based).
+<Callout type="error" title="">
+    Not supported on Hytale
 </Callout>
 
 ### `redis`

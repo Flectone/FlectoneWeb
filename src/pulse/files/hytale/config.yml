@@ -45,14 +45,14 @@ proxy:
 command:
   unregister_on_reload: false
   disabled_fabric:
-    - "msg"
-    - "banlist"
-    - "kick"
-    - "w"
-    - "tell"
-    - "me"
-    - "pardon"
-    - "ban"
+  - "msg"
+  - "banlist"
+  - "kick"
+  - "w"
+  - "tell"
+  - "me"
+  - "pardon"
+  - "ban"
 #endregion command
 #region module
 module:
@@ -70,24 +70,24 @@ logger:
   console: "Console"
   prefix: "\e[0;34m(FlectonePulse) \e[0m"
   description:
-    - " \e[0;34m ___       ___  __  ___  __        ___ \e[0m"
-    - " \e[0;34m|__  |    |__  /  `  |  /  \\ |\\ | |__  \e[0m"
-    - " \e[0;34m|    |___ |___ \\__,  |  \\__/ | \\| |___ \e[0m"
-    - " \e[0;34m __             __   ___ \e[0;96m                       \e[0m"
-    - " \e[0;34m|__) |  | |    /__` |__  \e[0;96m                   \e[0m"
-    - " \e[0;34m|    \\__/ |___ .__/ |___\e[0;96m   /\\         \e[0m"
-    - " \e[0;96m                          /  \\ v<version>               \e[0m"
-    - " \e[0;96m__/\\___  ____/\\_____  ___/    \\______ \e[0m"
-    - " \e[0;96m       \\/           \\/  \e[0m"
+  - " \e[0;34m ___       ___  __  ___  __        ___ \e[0m"
+  - " \e[0;34m|__  |    |__  /  `  |  /  \\ |\\ | |__  \e[0m"
+  - " \e[0;34m|    |___ |___ \\__,  |  \\__/ | \\| |___ \e[0m"
+  - " \e[0;34m __             __   ___ \e[0;96m                       \e[0m"
+  - " \e[0;34m|__) |  | |    /__` |__  \e[0;96m                   \e[0m"
+  - " \e[0;34m|    \\__/ |___ .__/ |___\e[0;96m   /\\         \e[0m"
+  - " \e[0;96m                          /  \\ v<version>               \e[0m"
+  - " \e[0;96m__/\\___  ____/\\_____  ___/    \\______ \e[0m"
+  - " \e[0;96m       \\/           \\/  \e[0m"
   warn: "\e[0;93m"
   info: "\e[0;96m"
   filter:
-    - "Paper Async Command Builder"
-    - "Caught previously unhandled exception :"
-    - "Error received from Telegram GetUpdates Request"
-    - "OkHttp TaskRunner"
-    - "Exception in thread \"ForkJoinPool"
-    - "FlectonePulseDatabase - "
+  - "Paper Async Command Builder"
+  - "Caught previously unhandled exception :"
+  - "Error received from Telegram GetUpdates Request"
+  - "OkHttp TaskRunner"
+  - "Exception in thread \"ForkJoinPool"
+  - "FlectonePulseDatabase - "
 #endregion logger
 #region cache
 cache:

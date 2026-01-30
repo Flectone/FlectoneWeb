@@ -1,0 +1,37 @@
+### `sound`
+
+Проигрывание звука
+
+<Accordions>
+    <Accordion title="Как использовать?">
+        <Steps>
+            <Step>
+                Заменить `false` на `true`
+            </Step>
+            <Step>
+                Перезапустить `FlectonePulse` с помощью комманды `/flectonepulse reload`
+            </Step>
+        </Steps>
+
+        <Callout type="info" title="">
+            Дополнительные параметры для настройки задержки появятся сами
+        </Callout>
+
+        ```yaml
+        sound:
+          enable: true
+          volume: 1.0
+          pitch: 1.0
+          category: "UI"
+          name: "SFX_Drop_Items_Potion"
+        ```
+
+        | Поле       | Объяснение                                                                                                        |
+        |------------|------------------------------------------------------------------------------------------------------------------|
+        | `enable`   | Включает работу звука                                                                                            |
+        | `volume`   | Громкость звука, чем выше, тем громче                                                                                  |
+        | `pitch`    | Тональность звука, чем выше, тем звонче                                                                               |
+        | `category` | Категория из `Music`, `Ambient`, `SFX`, `UI` |
+        | `name`     | Название звука, например `SFX_Drop_Items_Potion`, их можно посмотреть [тут](https://hytalemodding.dev/en/docs/server/sounds)                                                           |
+    </Accordion>
+</Accordions>

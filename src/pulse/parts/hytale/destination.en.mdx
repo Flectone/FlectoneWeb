@@ -1,0 +1,84 @@
+### `destination`
+
+Where the message will be sent
+
+| Type           | Explanation                                    | Requires additional configuration? |
+|---------------|----------------------------------------------|-----------------------------------|
+| `CHAT`        | Message to chat                              | No                               |
+| `TITLE`       | Fullscreen message                          | Yes                               |
+| `SUBTITLE`    | Fullscreen message (top line)               | Yes                               |
+| `TOAST`       | Notification in the bottom right corner     | Yes                               |
+
+<Accordions>
+    <Accordion title="How to use?">
+        <Steps>
+            <Step>
+                Replace the `type` value accordingly
+            </Step>
+            <Step>
+                Restart `FlectonePulse` using the `/flectonepulse reload` command
+            </Step>
+
+        </Steps>
+        <Callout type="info" title="">
+            Additional parameters for delay configuration will appear automatically
+        </Callout>
+
+        <div className='flex flex-col gap-4 mb-5'>
+
+            <Accordions>
+                <Accordion title={<code>TITLE (or SUBTITLE)</code>}>
+                    ![title](/pulse/hytale/destinationtitle.png)
+
+                    ```yaml
+                    destination:
+                      type: "TITLE" (or "SUBTITLE")
+                      subtext: ""
+                      times:
+                        fade_in: 20
+                        stay: 60
+                        fade_out: 20
+                    ```
+
+                    `subtext`
+
+                    Message for the second part of the display. For example, if `TITLE` is selected, `subtext` will be displayed above it, and vice versa
+
+                    `times`
+
+                    | Field       | Explanation                            |
+                    |------------|--------------------------------------|
+                    | `fade_in`  | Time in ticks for the message to appear |
+                    | `stay`     | Time in ticks for the message to stay   |
+                    | `fade_out` | Time in ticks for the message to disappear |
+
+                </Accordion>
+            </Accordions>
+
+            <Accordions>
+                <Accordion title={<code>TOAST</code>}>
+                    ![toast](/pulse/hytale/destinationtoast.png)
+                    ```yaml
+                    destination:
+                      type: "TOAST"
+                      icon: "Ingredient_Stick"
+                      subtext: ""
+                      style: "TASK"
+                    ```
+
+                    `icon`
+
+                    Achievement icon, which can be any item from Hytale. If an incorrect ID is entered, there will be no icon
+
+                    `subtext`
+
+                    Achievement description, the text below
+
+                    `style`
+
+                    Not used
+                </Accordion>
+            </Accordions>
+        </div>
+    </Accordion>
+</Accordions>

@@ -4,9 +4,7 @@ description: Module responsible for messages above the head
 authors:
   - TheFaser
 ---
-![bubble](/pulse/bubble.gif)
-
-Idea taken from [LightChatBubbles](https://github.com/atesin/LightChatBubbles)
+![bubble](/pulse/hytale/bubble.gif)
 
 ### Duration formula
 
@@ -39,7 +37,9 @@ Format of the message above the head
 
 ### `visible_to_self`
 
-Whether the message sender will see their own message above their head
+<Callout type="error" title="">
+    Not supported on Hytale
+</Callout>
 
 ### `max_count`
 
@@ -55,7 +55,9 @@ How high above the head the message will be
 
 ### `distance`
 
-How far away a player's overhead message can be seen
+<Callout type="error" title="">
+    Not supported on Hytale
+</Callout>
 
 ### `read_speed`
 
@@ -71,11 +73,7 @@ A hint symbol placed when a word is broken into two lines
 
 ### `interaction`
 
-Allows changing the distance between messages from each other, otherwise the legacy `area effect cloud` is used
-
-<Callout type="warn" title="Warning">
-    This will only be used for servers with version `1.21.3` and higher
-</Callout>
+Allows changing the distance between messages from each other
 
 <Accordions>
     <Accordion title="Setting">
@@ -91,44 +89,9 @@ Allows changing the distance between messages from each other, otherwise the leg
 
 ### `modern`
 
-Overhead messages via Text Display
-
-<Callout type="warn" title="Warning">
-    This will only be used for servers with version `1.19.4` and higher
+<Callout type="error" title="">
+    Не поддерживается на Hytale
 </Callout>
-
-<Accordions>
-    <Accordion title="Setting">
-        ##### `enable`
-
-        Enables functionality
-
-        ##### `has_shadow`
-
-        Enables text shadow
-
-        ##### `see_through`
-
-        Enables text transparency against water and clouds (so it cannot be seen through water)
-
-        ##### `scale`
-
-        How large the message will be
-
-        ##### `background`
-
-        Background color of the message, it has transparency i.e. an alpha channel. [Website for color selection](https://rgbacolorpicker.com/color-wheel-picker)
-
-        ##### `billboard`
-
-        | Type           | Explanation                                               |
-        |----------------|-----------------------------------------------------------|
-        | `FIXED`        | Position does not change                                  |
-        | `VERTICAL`     | Position changes relative to the vertical axis            |
-        | `HORIZONTAL`   | Position changes relative to the horizontal axis          |
-        | `CENTER`       | Position changes relative to horizontal and vertical axes |
-    </Accordion>
-</Accordions>
 
 <include>../../../../parts/ticker.en.mdx</include>
 

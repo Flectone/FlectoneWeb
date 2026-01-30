@@ -1,6 +1,6 @@
 ---
 title: Discord
-description: Integration with Discord allows sending messages (Discord ↔ Minecraft) between the Minecraft server and a Discord server.
+description: Integration with Discord allows sending messages (Discord ↔ Hytale) between the Hytale server and a Discord server.
 authors:
   - TheFaser
 ---
@@ -59,21 +59,21 @@ Command to get the `tps` value on the server. **Don't forget to create it in int
 
 #### `Placeholders`
 
-You can use all placeholders that are used in the initial message for Minecraft
+You can use all placeholders that are used in the initial message for Hytale
 <Callout type="info" title="EXAMPLE FOR BAN MESSAGE">
 There is a `<reason>` placeholder there, so I can use `<reason>` inside Discord messages
 </Callout>
 
 There are also placeholders that will DEFINITELY be replaced in any message
-- `<final_message>` message sent to Minecraft
-- `<final_clear_message>` message sent to Minecraft without unicode emojis
+- `<final_message>` message sent to Hytale
+- `<final_clear_message>` message sent to Hytale without unicode emojis
 - `<player>` nickname of the player who sent the message
 - `<message>` raw message written by the player
 - `<plain_message>` formatted message written by the player
 - `<reply>` formatted reply message, it will be empty if the main message is not a reply
 - Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
 
-The message that will be sent from Discord to Minecraft has its own placeholders:
+The message that will be sent from Discord to Hytale has its own placeholders:
 
 | Placeholder      | What it returns                       |
 |------------------|---------------------------------------|
@@ -95,7 +95,7 @@ List of messages with their settings
 message_name:
   content: ""
   webhook_name: "<player>"
-  webhook_avatar: "https://mc-heads.net/avatar/<skin>/32.png"
+  webhook_avatar: ""
     embed:
     color: ""
     title: ""
@@ -103,7 +103,7 @@ message_name:
     author:
       name: ""
       url: ""
-      icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
+      icon_url: ""
     description: ""
     thumbnail: ""
     fields:
@@ -114,7 +114,7 @@ message_name:
     timestamp: true
     footer:
       text: ""
-      icon_url: "https://mc-heads.net/avatar/<skin>/16.png"
+      icon_url: ""
 ```
 
 <Callout type="info" title="Information">
@@ -139,7 +139,7 @@ message_name:
 
         #### `webhook_avatar`
 
-        Enable Discord webhook with the player's avatar. It is best to use `https://mc-heads.net/avatar/<skin>/32.png`
+        Enable Discord webhook with the player's avatar
         ![discord webhook](/pulse/discordwebhook.png)
 
         #### `embed`
@@ -342,7 +342,7 @@ Command to get the `tps` value on the server using `!tps` or `!tickpersecond`. *
 
 List of message types and [Channel IDs](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) in Discord
 
-<Callout type="info" title="For example, I want a `/ban` command message to be sent from Minecraft to Discord">
+<Callout type="info" title="For example, I want a `/ban` command message to be sent from Hytale to Discord">
 <Steps>
     <Step>
         Copy the channel ID in Discord `1286666844358316083`
@@ -361,9 +361,9 @@ message_channel:
 
 Localization can be left unconfigured; by default, the message will be sent with the `<final_message>` format
 
-<include>../../../../parts/destination.en.mdx</include>
+<include>../../../../parts/hytale/destination.en.mdx</include>
 
-<include>../../../../parts/sound.en.mdx</include>
+<include>../../../../parts/hytale/sound.en.mdx</include>
 
 <br></br>
 

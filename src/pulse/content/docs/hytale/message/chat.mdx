@@ -5,7 +5,7 @@ authors:
   - TheFaser
 ---
 
-![chat](/pulse/chat.png)
+![chat](/pulse/hytale/chat.png)
 
 <Callout type="info" title="Как отключить локальный чат?">
 Внутри `message.yml` выключи `local` с помощью `enable: false`, а также сделай пустой `trigger: ""` для `global`
@@ -72,17 +72,8 @@ authors:
 
 ### `mode`
 
-Режим обработки чата
-
-| Тип       | Объяснение                                                                               |
-|-----------|------------------------------------------------------------------------------------------|
-| `PACKET`  | Сообщения чата обрабатываются через пакеты (полностью асинхронно)                        |
-| `BUKKIT`  | Сообщения чата обрабатываются через `Bukkit` (асинхронно, но только в одном потоке чата) |
-| `PAPER`   | Сообщения чата обрабатываются через `Paper` (асинхронно, но только в одном потоке чата)  |
-
-<Callout type="warn" title="Предупреждение">
-Если тебе нужно, чтобы твой другой плагин видел сообщения чата, поставь `mode: "BUKKIT"`. В редком случае, если плагин работает через `Paper` слушатели, то нужно поставить `mode: "PAPER"`
-
+<Callout type="error" title="">
+    Не поддерживается на Hytale
 </Callout>
 
 ### `priority`
@@ -172,11 +163,11 @@ authors:
     </Accordion>
 </Accordions>
 
-<include>../../../../parts/destination.mdx</include>
+<include>../../../../parts/hytale/destination.mdx</include>
 
 <include>../../../../parts/cooldown.mdx</include>
 
-<include>../../../../parts/sound.mdx</include>
+<include>../../../../parts/hytale/sound.mdx</include>
 
 <br></br>
 

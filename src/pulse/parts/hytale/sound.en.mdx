@@ -1,0 +1,37 @@
+### `sound`
+
+Sound playback
+
+<Accordions>
+    <Accordion title="How to use?">
+        <Steps>
+            <Step>
+                Change `false` to `true`
+            </Step>
+            <Step>
+                Restart `FlectonePulse` using the `/flectonepulse reload` command
+            </Step>
+        </Steps>
+
+        <Callout type="info" title="">
+            Additional parameters for delay configuration will appear automatically
+        </Callout>
+
+        ```yaml
+        sound:
+          enable: true
+          volume: 1.0
+          pitch: 1.0
+          category: "UI"
+          name: "SFX_Drop_Items_Potion"
+        ```
+
+        | Field       | Explanation                                                                                                        |
+        |------------|------------------------------------------------------------------------------------------------------------------|
+        | `enable`   | Enables sound functionality                                                                                            |
+        | `volume`   | Sound volume, the higher the value, the louder the sound                                                                                  |
+        | `pitch`    | Sound pitch, the higher the value, the higher the tone                                                                               |
+        | `category` | Category among `Music`, `Ambient`, `SFX`, `UI` |
+        | `name`     | Sound name, e.g., `SFX_Drop_Items_Potion`. You can view them [here](https://hytalemodding.dev/en/docs/server/sounds)                                                           |
+    </Accordion>
+</Accordions>

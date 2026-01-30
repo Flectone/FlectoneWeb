@@ -5,7 +5,7 @@ authors:
   - TheFaser
 ---
 
-![chat](/pulse/chat.png)
+![chat](/pulse/hytale/chat.png)
 
 <Callout type="info" title="How to disable local chat?">
     Inside `message.yml` disable `local` using `enable: false`, and also set an empty `trigger: ""` for `global`
@@ -72,16 +72,8 @@ List of chats and their format
 
 ### `mode`
 
-Chat processing mode
-
-| Type      | Explanation                                                                              |
-|-----------|------------------------------------------------------------------------------------------|
-| `PACKET`  | Chat messages are processed via packets (fully asynchronous)                             |
-| `BUKKIT`  | Chat messages are processed via `Bukkit` (asynchronous, but only in one chat thread)     |
-| `PAPER`   | Chat messages are processed via `Paper` (asynchronous, but only in one chat thread)      |
-
-<Callout type="warn" title="Warning">
-    If you need another plugin to see chat messages, set `mode: "BUKKIT"`. In rare cases, if the plugin works through `Paper` listeners, you should set `mode: "PAPER"`
+<Callout type="error" title="">
+    Not supported on Hytale
 </Callout>
 
 ### `priority`
@@ -171,11 +163,11 @@ chat_name:
     </Accordion>
 </Accordions>
 
-<include>../../../../parts/destination.en.mdx</include>
+<include>../../../../parts/hytale/destination.en.mdx</include>
 
 <include>../../../../parts/cooldown.en.mdx</include>
 
-<include>../../../../parts/sound.en.mdx</include>
+<include>../../../../parts/hytale/sound.en.mdx</include>
 
 <br></br>
 
