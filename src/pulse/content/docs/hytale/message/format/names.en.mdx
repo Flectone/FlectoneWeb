@@ -36,6 +36,12 @@ Messages that will be formatted from sender on server from where it was sent. Th
 Responsible for the player's name
 ![name display](/pulse/hytale/name.png)
 
+You can have any number of such name formats, and to use a specific one, you need to specify its index, starting from zero: `<display_name:0>`, `<display_name:1>`, etc.
+
+In some messages, you may encounter `<target>`, which is the same as `<display_name>`; you can also use indices with it: `<target:0>`, `<target:1>`, etc.
+
+If an incorrect index is specified, the first name will be used
+
 ### `entity`
 
 Responsible for the entity's name

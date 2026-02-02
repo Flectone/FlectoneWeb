@@ -4,6 +4,7 @@ Where the message will be sent
 
 | Type           | Explanation                                    | Requires additional configuration? |
 |---------------|----------------------------------------------|-----------------------------------|
+| `ACTION_BAR`  | Message above the player's inventory         | Yes                               |
 | `CHAT`        | Message to chat                              | No                               |
 | `TITLE`       | Fullscreen message                          | Yes                               |
 | `SUBTITLE`    | Fullscreen message (top line)               | Yes                               |
@@ -25,6 +26,25 @@ Where the message will be sent
         </Callout>
 
         <div className='flex flex-col gap-4 mb-5'>
+
+            <Accordions>
+                <Accordion title={<code>ACTION_BAR</code>}>
+                    ![action bar](/pulse/hytale/destinationaction_bar.png)
+
+                    ```yaml
+                    destination:
+                      type: "ACTION_BAR"
+                      times:
+                        stay: 60
+                    ```
+
+                    `times`
+
+                    | Field      | Explanation                          |
+                    |------------|--------------------------------------|
+                    | `stay`     | Time in ticks to hold the message    |
+                </Accordion>
+            </Accordions>
 
             <Accordions>
                 <Accordion title={<code>TITLE (or SUBTITLE)</code>}>

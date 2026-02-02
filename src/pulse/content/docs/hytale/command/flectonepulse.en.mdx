@@ -23,7 +23,19 @@ Message when the `host` field in config.yml is empty
 
 ### `null_port_editor`
 
-Message when the `port` specified in config.yml is occupied or unavailable
+Message when the `port` specified in config.yml is busy or unavailable
+
+### `null_file`
+
+Message when the file specified in `/flectonepulse import file` does not exist
+
+### `file_exist`
+
+Message when the file specified in `/flectonepulse export file` already exists
+
+### `format_starting`
+
+Message when the command starts executing
 
 ### `format_false`
 
@@ -31,15 +43,19 @@ Message when an error occurs
 
 ### `format_true`
 
-The format of the message that will be sent upon reloading the entire `FlectonePulse`
-
-### `format_web_starting`
-
-The format of the message that will be sent when the web server starts
+Format of the message that will be sent when the entire `FlectonePulse` is reloaded
 
 ### `format_editor`
 
-The format of the message that will be sent upon a successful web server launch
+Format of the message that will be sent when the web server is successfully started
+
+### `format_export`
+
+Format of the message that will be sent upon successful export
+
+### `format_import`
+
+Format of the message that will be sent upon successful import
 
 <br></br>
 

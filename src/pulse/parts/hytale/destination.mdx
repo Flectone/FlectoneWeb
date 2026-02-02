@@ -4,6 +4,7 @@
 
 | Тип           | Объяснение                                    | Требует дополнительной настройки? |
 |---------------|----------------------------------------------|-----------------------------------|
+| `ACTION_BAR`  | Сообщение над инвентарём игрока              | Да                                |
 | `CHAT`        | Сообщение в чат                              | Нет                               |
 | `TITLE`       | Сообщение на весь экран                      | Да                                |
 | `SUBTITLE`    | Сообщение на весь экран (верхняя строчка)     | Да                                |
@@ -25,6 +26,25 @@
         </Callout>
 
         <div className='flex flex-col gap-4 mb-5'>
+
+            <Accordions>
+                <Accordion title={<code>ACTION_BAR</code>}>
+                    ![action bar](/pulse/hytale/destinationaction_bar.png)
+
+                    ```yaml
+                    destination:
+                      type: "ACTION_BAR"
+                      times:
+                        stay: 60
+                    ```
+
+                    `times`
+
+                    | Поле       | Объяснение                            |
+                    |------------|--------------------------------------|
+                    | `stay`     | Время в тиках на удержание сообщения |
+                </Accordion>
+            </Accordions>
 
             <Accordions>
                 <Accordion title={<code>TITLE (или SUBTITLE)</code>}>

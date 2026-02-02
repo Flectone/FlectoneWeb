@@ -13,30 +13,31 @@ FlectonePulse is available in Maven Central. Below are the configurations for co
         <dependency>
             <groupId>net.flectone.pulse</groupId>
             <artifactId>core</artifactId>
-            <version>1.7.4</version> <scope>provided</scope>
+            <version>1.8.0</version>
+            <scope>provided</scope>
         </dependency>
         ```
     </Tab>
     <Tab value="groovy">
         ```groovy
         repositories {
-        mavenCentral()
-    }
+            mavenCentral()
+        }
 
         dependencies {
-        compileOnly 'net.flectone.pulse:core:1.7.4' // Replace with the current version
-    }
+            compileOnly 'net.flectone.pulse:core:1.8.0' // Replace with the current version
+        }
         ```
     </Tab>
     <Tab value="kotlin">
         ```kotlin
         repositories {
-        mavenCentral()
-    }
+            mavenCentral()
+        }
 
         dependencies {
-        compileOnly("net.flectone.pulse:core:1.7.4") // Replace with the current version
-    }
+            compileOnly("net.flectone.pulse:core:1.8.0") // Replace with the current version
+        }
         ```
     </Tab>
 </Tabs>
@@ -50,30 +51,31 @@ For snapshot versions:
         <dependency>
             <groupId>net.flectone.pulse</groupId>
             <artifactId>core</artifactId>
-            <version>1.7.5-SNAPSHOT</version> <scope>provided</scope>
+            <version>1.8.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         ```
     </Tab>
     <Tab value="groovy">
         ```groovy
         repositories {
-        maven { url '[https://central.sonatype.com/repository/maven-snapshots/](https://central.sonatype.com/repository/maven-snapshots/)' }
-    }
+            maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+        }
 
         dependencies {
-        compileOnly 'net.flectone.pulse:core:1.7.5-SNAPSHOT' // Replace with the current version
-    }
+            compileOnly 'net.flectone.pulse:core:1.8.1-SNAPSHOT' // Replace with the current version
+        }
         ```
     </Tab>
     <Tab value="kotlin">
         ```kotlin
         repositories {
-        maven { url = uri("[https://central.sonatype.com/repository/maven-snapshots/](https://central.sonatype.com/repository/maven-snapshots/)") }
-    }
+            maven { url = uri("https://central.sonatype.com/repository/maven-snapshots/") }
+        }
 
         dependencies {
-        compileOnly("net.flectone.pulse:core:1.7.5-SNAPSHOT") // Replace with the current version
-    }
+            compileOnly("net.flectone.pulse:core:1.8.1-SNAPSHOT") // Replace with the current version
+        }
         ```
     </Tab>
 </Tabs>
