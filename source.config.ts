@@ -10,6 +10,7 @@ export const docs = defineDocs({
       description: z.string().optional(),
       icon: z.string().optional(),
       authors: z.array(z.string()).optional(),
+      tag: z.string().optional(),
     }),
   },
 });

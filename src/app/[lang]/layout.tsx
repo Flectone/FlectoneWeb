@@ -3,6 +3,7 @@ import '../globals.css';
 import {Inter} from 'next/font/google';
 import {NextIntlClientProvider} from 'next-intl';
 import {source} from "@/lib/source";
+import SearchComponent from "@/components/Search/SearchComponent";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -53,15 +54,14 @@ export default async function Layout({params, children}: {
       locale: 'en'
     }
   ];
+
   return (
     <html className={inter.className} suppressHydrationWarning>
     <body className="flex flex-col min-h-screen">
     <NextIntlClientProvider>
       <RootProvider
         search={{
-          options: {
-            api: '/search'
-          }
+          SearchDialog: SearchComponent,
         }}
         i18n={{
           locale: lang,
