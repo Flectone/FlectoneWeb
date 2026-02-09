@@ -2,5 +2,6 @@
   "root": true,
   "title": "Аналитика",
   "icon": "ChartCandlestick",
-  "description": "Основные графики по работе серверов"
+  "description": "Основные графики по работе серверов",
+  "tag": "metrics"
 }
