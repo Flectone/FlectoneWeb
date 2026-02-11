@@ -1,6 +1,7 @@
 import LinkButton from "../Button/LinkButton";
-import {useTranslations} from "next-intl";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
+import ModalButton from "../Button/ModalButton";
 
 export default function WelcomeCard() {
 
@@ -18,14 +19,11 @@ export default function WelcomeCard() {
         <div className='flex gap-4 max-sm:flex-col'>
           <LinkButton href='https://boosty.to/thefaser' mode='blue' className='h-8'>{t('Buttons.support')}</LinkButton>
           <LinkButton href='https://modrinth.com/plugin/flectonepulse' mode='gray' className='h-8'>{t('Buttons.download')}</LinkButton>
-        </div>
-        <div className='flex gap-4 max-sm:flex-col'>
-          <LinkButton href='/pulse/docs/hytale' mode='gray' className='h-8'>{t('Buttons.hytaleDocumentation')}</LinkButton>
-          <LinkButton href='/pulse/docs' mode='gray' className='h-8'>{t('Buttons.documentation')}</LinkButton>
+          <ModalButton title={t('Buttons.documentation')} text={t('Buttons.documentation')} />
         </div>
       </div>
       <Image className='max-lg:hidden w-85 rounded-xl' src={'/flectonepulse2.png'} alt={'flectonepulse'} width={1000}
-             height={1000}/>
+        height={1000} />
     </div>
   )
 }

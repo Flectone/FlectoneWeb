@@ -114,8 +114,7 @@
     },
     "Buttons": {
       "support": "Support",
-      "documentation": "Documentation for Minecraft",
-      "hytaleDocumentation": "Documentation for Hytale",
+      "documentation": "Documentation",
       "metrics": "Metrics",
       "download": "Download"
     },

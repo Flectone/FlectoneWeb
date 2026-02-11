@@ -114,8 +114,7 @@
     },
     "Buttons": {
       "support": "Поддержка",
-      "documentation": "Документация для Minecraft",
-      "hytaleDocumentation": "Документация для Hytale",
+      "documentation": "Документация",
       "metrics": "Аналитика",
       "download": "Скачать"
     },
