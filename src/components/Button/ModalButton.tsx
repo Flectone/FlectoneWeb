@@ -1,15 +1,14 @@
 'use client'
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import LinkButton from './LinkButton';
-import { Leaf, Pickaxe } from 'lucide-react'
 
 interface ModalButtonProps {
   text: string
   title: string
+  children: ReactNode
 }
 
-export default function ModalButton({ text, title }: ModalButtonProps) {
+export default function ModalButton({ text, title, children }: ModalButtonProps) {
   const [isOpen, setIsOpen] = useState(false);
   function openModal() {
     setIsOpen(!isOpen);
@@ -27,18 +26,17 @@ export default function ModalButton({ text, title }: ModalButtonProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 md:px-32 z-50 flex items-center justify-center bg-black/50"
+            className="fixed inset-0 md:px-32 z-50 flex items-center justify-center bg-fd-background/50"
             onClick={openModal}
           >
             <motion.div className='flex flex-col items-start gap-2'>
               <h1 className='font-bold text-lg'>{title}</h1>
               <div className='flex gap-2'>
-                <LinkButton className='gap-1' href='/pulse/docs/'><Pickaxe size='1.1em' />Minecraft</LinkButton>
-                <LinkButton className='gap-1' href='/pulse/docs/hytale'><Leaf size='1.1em' />Hytale</LinkButton>
+                {children}
               </div>
             </motion.div>
             <button
-              className="absolute cursor-pointer hover:text-fd-muted-foreground duration-70 top-5 right-5 text-white text-2xl drop-shadow-md"
+              className="absolute cursor-pointer hover:text-fd-muted-foreground duration-70 top-5 right-5 text-fd-foreground text-2xl drop-shadow-md"
               onClick={openModal}
             >
               ✕
