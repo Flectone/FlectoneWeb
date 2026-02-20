@@ -7,6 +7,11 @@
       "keywords": "flectone, Flectone",
       "image": "/logo.png"
     },
+    "NotFound": {
+      "title": "404 | Flectone",
+      "description": "Not found",
+      "image": "/ogimages/notfounden.jpg"
+    },
     "Mix": {
       "title": "FlectoneMix",
       "description": "Was created to make it easier to find and install things for Minecraft, but the project was closed",
@@ -30,11 +35,23 @@
       "description": "Every message under your control!",
       "applicationName": "Flectone",
       "keywords": "flectone, Flectone, plugin, minecraft plugin, chat plugin, minecraft chat plugin, chat, minecraft, flectonepulse",
-      "image": "/logo.png"
+      "image": "/logo.png",
+      "Download": {
+        "title": "Download | FlectonePulse",
+        "description": "Download FlectonePulse right now and start configuring your server!",
+        "ApplicationName": "FlectonePulse",
+        "keywords": "download flectonepulse, download flectonepulse, download chat plugin, download minecraft chat plugin, download chat, download minecraft, download flectone, download flectone",
+        "image": "/logo.png"
+      }
     }
   },
+  "NotFound": {
+    "title": "404",
+    "description": "What you are looking for has not been found.",
+    "button": "Go to the main page"
+  },
   "Footer": {
-    "answer": "Not an official Minecraft service. Not approved by or associated with Mojang or Microsoft.",
+    "answer": "Not an official Minecraft or Hypixel service. Not approved by or associated with Mojang, Microsoft and Hypixel Studios.",
     "date": "Established in 2019",
     "openSourse": "All project code is <a>open source</a>"
   },
@@ -114,8 +131,7 @@
     },
     "Buttons": {
       "support": "Support",
-      "documentation": "Documentation for Minecraft",
-      "hytaleDocumentation": "Documentation for Hytale",
+      "documentation": "Documentation",
       "metrics": "Metrics",
       "download": "Download"
     },
@@ -141,6 +157,11 @@
       "title": "Analytics",
       "playersCount": "Player count",
       "serversCount": "Server count"
+    },
+    "Download": {
+      "latestrelease": "Latest release",
+      "devbuilds": "Dev bulds",
+      "download": "Download"
     }
   }
 }

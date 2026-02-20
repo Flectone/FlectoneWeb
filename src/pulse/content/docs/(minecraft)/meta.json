@@ -3,6 +3,7 @@
   "title": "Minecraft",
   "icon": "Pickaxe",
   "description": "Документация для Minecraft",
+  "tag": "minecraft",
   "pages": [
     "---Документация---",
     "index",

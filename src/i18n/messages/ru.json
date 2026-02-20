@@ -7,6 +7,11 @@
       "keywords": "флектон, Флектон, Flectone, flectone",
       "image": "/logo.png"
     },
+    "NotFound": {
+      "title": "404 | Flectone",
+      "description": "Ничего не найдено",
+      "image": "/ogimages/notfoundru.jpg"
+    },
     "Mix": {
       "title": "FlectoneMix",
       "description": "Был создан, чтобы облегчить поиск и установку вещей для Minecraft, но проект был закрыт",
@@ -30,11 +35,23 @@
       "description": "Каждое сообщение под вашим контролем!",
       "applicationName": "Flectone",
       "keywords": "флектон, Флектон, плагин, плагин майнкрафт, плагин на чат, плагин на чат майнкрафт, чат, майнкрафт, флектонпульс flectonepulse",
-      "image": "/logo.png"
+      "image": "/logo.png",
+      "Download": {
+        "title": "Скачать | FlectonePulse",
+        "description": "Скачайте FlectonePulse прямо сейчас и начните настраивать свой сервер!",
+        "applicationName": "FlectonePulse",
+        "keywords": "скачать флектонпульс, скачать flectonepulse, скачать плагин на чат, скачать плагин на чат майнкрафт, скачать чат, скачать майнкрафт, скачать флектон, скачать Флектон",
+        "image": "/logo.png"
+      }
     }
   },
+  "NotFound": {
+    "title": "404",
+    "description": "То что вы ищете, не найдено",
+    "button": "Перейти на главную"
+  },
   "Footer": {
-    "answer": "Не является официальным сервисом Minecraft. Не одобрено и не связано с компанией Mojang или Microsoft.",
+    "answer": "Не является официальным сервисом Minecraft или Hytale. Не одобрено и не связано с компанией Mojang, Microsoft или Hypixel Studios.",
     "date": "Существует с 2019 года",
     "openSourse": "Весь код проекта имеет <a>открытый исходный код</a>"
   },
@@ -114,8 +131,7 @@
     },
     "Buttons": {
       "support": "Поддержка",
-      "documentation": "Документация для Minecraft",
-      "hytaleDocumentation": "Документация для Hytale",
+      "documentation": "Документация",
       "metrics": "Аналитика",
       "download": "Скачать"
     },
@@ -141,6 +157,11 @@
       "title": "Аналитика",
       "playersCount": "Количество игроков",
       "serversCount": "Количество серверов"
+    },
+    "Download": {
+      "latestrelease": "Последний релиз",
+      "devbuilds": "Снапшот версии",
+      "download": "Скачать"
     }
   }
 }

@@ -3,6 +3,7 @@
   "title": "Hytale",
   "icon": "Leaf",
   "description": "Documentation for Hytale",
+  "tag": "hytale",
   "pages": [
     "---Documentation---",
     "index",

@@ -2,10 +2,10 @@
 import { ReactNode } from "react"
 import Link from 'next/link'
 
-interface CardProps {
+export interface CardProps {
   className?: string;
   children?: ReactNode;
-  path?: string;      
+  path?: string;
   target?: string;
 }
 
@@ -13,7 +13,7 @@ export default function Card({ className = '', children, path, target }: CardPro
 
   const base =
     `${className} duration-100 p-6 max-sm:p-4 backdrop-blur-3xl 
-     rounded-xl bg-fd-card overflow-hidden border
+     rounded-2xl bg-fd-card overflow-hidden border shadow-md
      ${path ? 'hover:bg-fd-border cursor-pointer' : ''}`
 
   if (path) {

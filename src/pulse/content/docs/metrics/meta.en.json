@@ -2,5 +2,6 @@
   "root": true,
   "title": "Metrics",
   "icon": "ChartCandlestick",
-  "description": "Main charts on server performance"
+  "description": "Main charts on server performance",
+  "tag": "metrics"
 }

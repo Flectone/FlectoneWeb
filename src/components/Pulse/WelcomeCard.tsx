@@ -1,6 +1,8 @@
 import LinkButton from "../Button/LinkButton";
-import {useTranslations} from "next-intl";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
+import ModalButton from "../Button/ModalButton";
+import { Leaf, Pickaxe, ChartCandlestick, Cable } from "lucide-react";
 
 export default function WelcomeCard() {
 
@@ -8,7 +10,7 @@ export default function WelcomeCard() {
 
   return (
     <div
-      className='w-full max-lg:p-8 rounded-2xl bg-[url(/square.svg)] not-dark:bg-[url(/squaredark.svg)] bg-size-[36px] border overflow-hidden bg-fd-card/85 backdrop-blur-3xl flex px-16 py-12 justify-between items-center gap-8'>
+      className='w-full max-lg:p-8 rounded-2xl bg-size-[36px] border overflow-hidden bg-fd-card/85 backdrop-blur-3xl flex px-16 py-12 justify-between items-center gap-8'>
       <div
         className='blur-2xl bg-fd-primary/20 -z-1 w-180 h-[calc(100%+2rem)] rounded-full absolute -right-[20%] animate-pulse [animation-duration:6s]'></div>
       <div className='flex flex-col gap-4'>
@@ -17,15 +19,17 @@ export default function WelcomeCard() {
         })}</h1>
         <div className='flex gap-4 max-sm:flex-col'>
           <LinkButton href='https://boosty.to/thefaser' mode='blue' className='h-8'>{t('Buttons.support')}</LinkButton>
-          <LinkButton href='https://modrinth.com/plugin/flectonepulse' mode='gray' className='h-8'>{t('Buttons.download')}</LinkButton>
-        </div>
-        <div className='flex gap-4 max-sm:flex-col'>
-          <LinkButton href='/pulse/docs/hytale' mode='gray' className='h-8'>{t('Buttons.hytaleDocumentation')}</LinkButton>
-          <LinkButton href='/pulse/docs' mode='gray' className='h-8'>{t('Buttons.documentation')}</LinkButton>
+          <LinkButton href='/pulse/download' mode='gray' className='h-8'>{t('Buttons.download')}</LinkButton>
+          <ModalButton title={t('Buttons.documentation')} text={t('Buttons.documentation')}>
+            <LinkButton className='gap-1' href='/pulse/docs/'><Pickaxe size='1.1em' />Minecraft</LinkButton>
+            <LinkButton className='gap-1' href='/pulse/docs/hytale'><Leaf size='1.1em' />Hytale</LinkButton>
+            <LinkButton className='gap-1' href='/pulse/docs/hytale'><ChartCandlestick size='1.1em' />{t('Buttons.metrics')}</LinkButton>
+            <LinkButton className='gap-1' href='/pulse/docs/hytale'><Cable size='1.1em' />API</LinkButton>
+          </ModalButton>
         </div>
       </div>
       <Image className='max-lg:hidden w-85 rounded-xl' src={'/flectonepulse2.png'} alt={'flectonepulse'} width={1000}
-             height={1000}/>
+        height={1000} />
     </div>
   )
 }
