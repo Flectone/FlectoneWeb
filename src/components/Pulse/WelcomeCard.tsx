@@ -2,7 +2,7 @@ import LinkButton from "../Button/LinkButton";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 import ModalButton from "../Button/ModalButton";
-import { Leaf, Pickaxe } from "lucide-react";
+import { Leaf, Pickaxe, ChartCandlestick, Cable } from "lucide-react";
 
 export default function WelcomeCard() {
 
@@ -10,7 +10,7 @@ export default function WelcomeCard() {
 
   return (
     <div
-      className='w-full max-lg:p-8 rounded-2xl bg-[url(/square.svg)] not-dark:bg-[url(/squaredark.svg)] bg-size-[36px] border overflow-hidden bg-fd-card/85 backdrop-blur-3xl flex px-16 py-12 justify-between items-center gap-8'>
+      className='w-full max-lg:p-8 rounded-2xl bg-size-[36px] border overflow-hidden bg-fd-card/85 backdrop-blur-3xl flex px-16 py-12 justify-between items-center gap-8'>
       <div
         className='blur-2xl bg-fd-primary/20 -z-1 w-180 h-[calc(100%+2rem)] rounded-full absolute -right-[20%] animate-pulse [animation-duration:6s]'></div>
       <div className='flex flex-col gap-4'>
@@ -23,6 +23,8 @@ export default function WelcomeCard() {
           <ModalButton title={t('Buttons.documentation')} text={t('Buttons.documentation')}>
             <LinkButton className='gap-1' href='/pulse/docs/'><Pickaxe size='1.1em' />Minecraft</LinkButton>
             <LinkButton className='gap-1' href='/pulse/docs/hytale'><Leaf size='1.1em' />Hytale</LinkButton>
+            <LinkButton className='gap-1' href='/pulse/docs/hytale'><ChartCandlestick size='1.1em' />{t('Buttons.metrics')}</LinkButton>
+            <LinkButton className='gap-1' href='/pulse/docs/hytale'><Cable size='1.1em' />API</LinkButton>
           </ModalButton>
         </div>
       </div>
