@@ -14,10 +14,11 @@ import {
 } from 'fumadocs-ui/components/dialog/search';
 import { Cable, ChartCandlestick, Leaf, Pickaxe } from 'lucide-react';
 import { useEffect, useMemo, useState } from "react";
+import { useTranslations } from 'next-intl';
 
 export default function SearchComponent(props: SharedProps) {
   const pathname = usePathname();
-
+  const t = useTranslations()
   const currentTag = useMemo(() => {
     const segments = pathname.split('/');
     const validTags = ['hytale', 'metrics', 'api'];
@@ -50,7 +51,7 @@ export default function SearchComponent(props: SharedProps) {
           <TagsList tag={tag} onTagChange={setTag}>
             <TagsListItem className='px-3 py-1 cursor-pointer flex items-center gap-0.5 hover:bg-fd-accent' value="minecraft"><Pickaxe size={1.1 + 'em'} />Minecraft</TagsListItem>
             <TagsListItem className='px-3 py-1 cursor-pointer flex items-center gap-0.5 hover:bg-fd-accent' value="hytale"><Leaf size={1.1 + 'em'} />Hytale</TagsListItem>
-            <TagsListItem className='px-3 py-1 cursor-pointer flex items-center gap-0.5 hover:bg-fd-accent' value="metrics"><ChartCandlestick size={1.1 + 'em'} />Аналитика</TagsListItem>
+            <TagsListItem className='px-3 py-1 cursor-pointer flex items-center gap-0.5 hover:bg-fd-accent' value="metrics"><ChartCandlestick size={1.1 + 'em'} />{t('Pulse.Buttons.metrics')}</TagsListItem>
             <TagsListItem className='px-3 py-1 cursor-pointer flex items-center gap-0.5 hover:bg-fd-accent' value="api"><Cable size={1.1 + 'em'} />API</TagsListItem>
           </TagsList>
         </SearchDialogFooter>
