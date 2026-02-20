@@ -34,7 +34,7 @@
     }
   },
   "Footer": {
-    "answer": "Not an official Minecraft service. Not approved by or associated with Mojang or Microsoft.",
+    "answer": "Not an official Minecraft or Hypixel service. Not approved by or associated with Mojang, Microsoft and Hypixel Studios.",
     "date": "Established in 2019",
     "openSourse": "All project code is <a>open source</a>"
   },
@@ -140,6 +140,11 @@
       "title": "Analytics",
       "playersCount": "Player count",
       "serversCount": "Server count"
+    },
+    "Download": {
+      "latestrelease": "Latest release",
+      "devbuilds": "Dev bulds",
+      "download": "Download"
     }
   }
 }

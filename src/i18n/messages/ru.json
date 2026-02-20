@@ -34,7 +34,7 @@
     }
   },
   "Footer": {
-    "answer": "Не является официальным сервисом Minecraft. Не одобрено и не связано с компанией Mojang или Microsoft.",
+    "answer": "Не является официальным сервисом Minecraft или Hytale. Не одобрено и не связано с компанией Mojang, Microsoft или Hypixel Studios.",
     "date": "Существует с 2019 года",
     "openSourse": "Весь код проекта имеет <a>открытый исходный код</a>"
   },
@@ -140,6 +140,11 @@
       "title": "Аналитика",
       "playersCount": "Количество игроков",
       "serversCount": "Количество серверов"
+    },
+    "Download": {
+      "latestrelease": "Последний релиз",
+      "devbuilds": "Снапшот версии",
+      "download": "Скачать"
     }
   }
 }
