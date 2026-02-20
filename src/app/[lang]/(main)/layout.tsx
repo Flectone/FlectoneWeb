@@ -1,17 +1,17 @@
-import {HomeLayout} from 'fumadocs-ui/layouts/home';
-import {baseOptions} from '@/lib/layout.shared';
-import {SiBoosty, SiDiscord, SiModrinth} from 'react-icons/si';
-import {useTranslations} from "next-intl";
+import { HomeLayout } from 'fumadocs-ui/layouts/home';
+import { baseOptions } from '@/lib/layout.shared';
+import { SiBoosty, SiDiscord, SiModrinth } from 'react-icons/si';
+import { useTranslations } from "next-intl";
 import Footer from "@/components/Footer/Footer";
 
-export default function Layout({children}: LayoutProps<'/[lang]'>) {
+export default function Layout({ children }: LayoutProps<'/[lang]'>) {
 
   const t = useTranslations('')
 
   return (
     <HomeLayout
       {...baseOptions()}
-      searchToggle = {{
+      searchToggle={{
         enabled: false,
       }}
       links={[
@@ -22,28 +22,28 @@ export default function Layout({children}: LayoutProps<'/[lang]'>) {
         },
         {
           type: 'icon',
-          icon: <SiBoosty/>,
+          icon: <SiBoosty />,
           text: 'Boosty',
           url: 'https://boosty.to/thefaser',
           secondary: true,
         },
         {
           type: 'icon',
-          icon: <SiModrinth/>,
+          icon: <SiModrinth />,
           text: 'Modrinth',
           url: 'https://modrinth.com/plugin/flectonepulse',
           secondary: true,
         },
         {
           type: 'icon',
-          icon: <SiDiscord/>,
+          icon: <SiDiscord />,
           text: 'Discord',
           url: 'https://discord.flectone.net/',
           secondary: true,
         }
       ]}
     >
-      <div className='not-dark:bg-[url(/square.svg)] min-h-[calc(100vh-56px)] bg-[url(/squaredark.svg)] flex justify-center max-xl:px-24 max-lg:px-12 max-sm:px-4'>
+      <div className='min-h-[calc(100vh-56px)] flex justify-center max-xl:px-24 max-lg:px-12 max-sm:px-4'>
         {children}
       </div>
       <Footer />
