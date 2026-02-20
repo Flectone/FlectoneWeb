@@ -15,7 +15,7 @@ export default function ModalButton({ text, title, children }: ModalButtonProps)
   };
   return (
     <>
-      <button onClick={openModal} className={`bg-fd-gray text-fd-gray-foreground hover:bg-fd-muted-gray w-fit px-5 py-1 rounded-full text-nowrap duration-100 cursor-pointer box-content flex font-medium items-center`}>
+      <button onClick={openModal} className={`bg-fd-gray text-fd-gray-foreground hover:bg-fd-muted-gray w-fit px-5 py-1 rounded-lg text-nowrap duration-100 cursor-pointer box-content flex font-medium items-center`}>
         <h1>{text}</h1>
       </button>
 
@@ -26,7 +26,7 @@ export default function ModalButton({ text, title, children }: ModalButtonProps)
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 md:px-32 z-50 flex items-center justify-center bg-fd-background/50"
+            className="fixed inset-0 md:px-32 z-50 flex items-center justify-center bg-fd-background/80 backdrop-blur-xs"
             onClick={openModal}
           >
             <motion.div className='flex flex-col items-start gap-2'>
