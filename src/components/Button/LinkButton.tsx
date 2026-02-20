@@ -32,7 +32,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({
         ${modeStyles[mode]}
         ${className}
         w-fit px-5 py-1 rounded-lg text-nowrap 
-        duration-100 cursor-pointer box-content flex font-medium items-center
+        duration-100 cursor-pointer flex font-medium items-center
       `}
     >
       {children}
