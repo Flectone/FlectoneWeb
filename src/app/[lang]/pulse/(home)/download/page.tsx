@@ -1,9 +1,7 @@
-import LinkButton from '@/components/Button/LinkButton';
 import { useTranslations } from 'next-intl';
-import { SiModrinth, SiSpigotmc, SiGithub, SiBuiltbybit, SiCurseforge } from 'react-icons/si';
+import { SiModrinth, SiSpigotmc, SiBuiltbybit, SiCurseforge } from 'react-icons/si';
 import { FaCode } from "react-icons/fa";
-import { FaPaperPlane } from "react-icons/fa6";
-import { TbCircleLetterPFilled, TbBrandGithubFilled } from "react-icons/tb";
+import { TbBrandGithubFilled } from "react-icons/tb";
 import { BsHexagonFill } from "react-icons/bs";
 import DownloadCard from '@/components/Card/DownloadCard';
 import { getTranslations } from "next-intl/server";
