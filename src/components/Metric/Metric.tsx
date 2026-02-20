@@ -7,7 +7,7 @@ import { EChartsOption } from 'echarts';
 import { useTheme } from 'next-themes';
 import { darkTheme, lightTheme } from './chartThemes';
 import { useParams } from 'next/navigation';
-import { CallbackDataParams , TopLevelFormatterParams } from "echarts/types/dist/shared";
+import { CallbackDataParams, TopLevelFormatterParams } from "echarts/types/dist/shared";
 
 if (typeof window !== 'undefined') {
     echarts.registerTheme('dark', darkTheme);
@@ -184,7 +184,7 @@ export default function Metric(props: MetricProps) {
         tooltip: {
             trigger: 'axis',
             axisPointer: { type: 'shadow' },
-            formatter: (params: CallbackDataParams | CallbackDataParams[])=> {
+            formatter: (params: CallbackDataParams | CallbackDataParams[]) => {
                 if (Array.isArray(params) && params.length > 0) {
                     const item = params[0];
                     return `<span style="font-weight: bold;">${item.name}</span><br/>${name}: <span style="font-weight: bold;">${item.value}</span>`;
@@ -224,11 +224,11 @@ export default function Metric(props: MetricProps) {
             left: 'center',
             type: 'scroll',
             textStyle: { color: resolvedTheme === 'dark' ? '#ccc' : '#333' },
-            pageButtonGap: 10, 
+            pageButtonGap: 10,
             pageButtonItemGap: 5,
-            pageButtonPosition: 'end', 
-            pageIconColor: resolvedTheme === 'dark' ? '#377ded' : '#5094ff', 
-            pageIconInactiveColor: '#444', 
+            pageButtonPosition: 'end',
+            pageIconColor: resolvedTheme === 'dark' ? '#377ded' : '#5094ff',
+            pageIconInactiveColor: '#444',
             pageIconSize: 15,
             pageTextStyle: {
                 color: resolvedTheme === 'dark' ? '#999' : '#666'
@@ -339,17 +339,17 @@ export default function Metric(props: MetricProps) {
                 `;
             }
         },
-        legend: { 
+        legend: {
             orient: 'horizontal',
-            bottom: '0', 
-            left: 'center', 
-            type: 'scroll', 
+            bottom: '0',
+            left: 'center',
+            type: 'scroll',
             textStyle: { color: resolvedTheme === 'dark' ? '#ccc' : '#333' },
-            pageButtonGap: 10, 
+            pageButtonGap: 10,
             pageButtonItemGap: 5,
-            pageButtonPosition: 'end', 
-            pageIconColor: resolvedTheme === 'dark' ? '#377ded' : '#5094ff', 
-            pageIconInactiveColor: '#444', 
+            pageButtonPosition: 'end',
+            pageIconColor: resolvedTheme === 'dark' ? '#377ded' : '#5094ff',
+            pageIconInactiveColor: '#444',
             pageIconSize: 15,
             pageTextStyle: {
                 color: resolvedTheme === 'dark' ? '#999' : '#666'
@@ -385,7 +385,7 @@ export default function Metric(props: MetricProps) {
     const height = type === 'geo' ? '550px' : type === 'treemap' ? '500px' : '400px';
 
     return (
-        <div className={`bg-fd-card/50 rounded-xl border overflow-hidden w-full ${className}`}>
+        <div className={`bg-fd-card/50 rounded-2xl border overflow-hidden w-full ${className}`}>
             <ReactECharts
                 option={option}
                 style={{ height, width: '100%' }}
