@@ -1,8 +1,8 @@
 import LinkButton from "../Button/LinkButton";
 import Card from "../Card/Card";
-import {SiBoosty} from "react-icons/si";
-import {SiGithub} from "react-icons/si";
-import {useTranslations} from "next-intl";
+import { SiBoosty } from "react-icons/si";
+import { SiGithub } from "react-icons/si";
+import { useTranslations } from "next-intl";
 import Svg from "@/components/Svg/Svg";
 
 export default function FlectoneMix() {
@@ -18,12 +18,12 @@ export default function FlectoneMix() {
           <h2 className="my-1.5"><strong className="text-xl font-bold">65138</strong> {t('downloads')}</h2>
         </div>
         <div className="flex gap-2 max-lg:mt-2 xl:flex-col justify-start">
-          <LinkButton mode="gray" className="flex items-center" href="https://github.com/Flectone/FlectoneMix"><SiGithub className="mr-1" size={'16px'}/>GitHub</LinkButton>
-          <LinkButton mode="orange" className="flex items-center mr-2 max-sm:mb-2" href="https://boosty.to/thefaser/"><SiBoosty className="mr-1" size={'16px'}/>{t('availableOnBoosty')}</LinkButton>
+          <LinkButton mode="gray" className="flex items-center" href="https://github.com/Flectone/FlectoneMix"><SiGithub className="mr-1" size={'16px'} />GitHub</LinkButton>
+          <LinkButton mode="orange" className="flex items-center" href="https://boosty.to/thefaser/"><SiBoosty className="mr-1" size={'16px'} />{t('availableOnBoosty')}</LinkButton>
         </div>
       </Card>
       <Card className="w-full">
-        <Svg src='/mix/mix.svg' className='rounded-md border'/>
+        <Svg src='/mix/mix.svg' className='rounded-md border' />
       </Card>
     </div>
   )
