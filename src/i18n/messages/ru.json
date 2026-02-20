@@ -7,6 +7,11 @@
       "keywords": "флектон, Флектон, Flectone, flectone",
       "image": "/logo.png"
     },
+    "NotFound": {
+      "title": "404 | Flectone",
+      "description": "Ничего не найдено",
+      "image": "/ogimages/notfoundru.jpg"
+    },
     "Mix": {
       "title": "FlectoneMix",
       "description": "Был создан, чтобы облегчить поиск и установку вещей для Minecraft, но проект был закрыт",
@@ -39,6 +44,11 @@
         "image": "/logo.png"
       }
     }
+  },
+  "NotFound": {
+    "title": "404",
+    "description": "То что вы ищете, не найдено",
+    "button": "Перейти на главную"
   },
   "Footer": {
     "answer": "Не является официальным сервисом Minecraft или Hytale. Не одобрено и не связано с компанией Mojang, Microsoft или Hypixel Studios.",
