@@ -4,13 +4,14 @@ import LinkButton from "../Button/LinkButton";
 
 interface DownloadCardProps {
     link: string
+    button: string
     icon: ReactNode
     name: string
     color?: 'blue' | 'green'
     release: string
 }
 
-export default function DownloadCard({ link, icon, name, color = 'blue', release }: DownloadCardProps) {
+export default function DownloadCard({ link, icon, name, color = 'blue', release, button }: DownloadCardProps) {
     return (
         <span className={`flex w-full p-3 text-fd-foreground bg-fd-article/40 not-dark:bg-fd-article rounded-xl items-center justify-between`}>
             <div className={`flex items-center gap-2`}>
@@ -20,7 +21,7 @@ export default function DownloadCard({ link, icon, name, color = 'blue', release
                     <p className="text-sm">{release}</p>
                 </div>
             </div>
-            <LinkButton className="rounded-md" href={link} mode={color}>Скачать</LinkButton>
+            <LinkButton className="rounded-md" href={link} mode={color}>{button}</LinkButton>
         </span>
     )
 }
