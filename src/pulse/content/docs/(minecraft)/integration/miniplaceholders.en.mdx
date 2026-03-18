@@ -13,6 +13,25 @@ More about [mini-placeholders](https://github.com/MiniPlaceholders/MiniPlacehold
     Example `{<server_name>}`
 </Callout>
 
+FlectonePulse also adds its own mini-placeholders
+
+| Placeholder                                 | Returns                                                       |
+|---------------------------------------------|----------------------------------------------------------------------|
+| `<flectonepulse_ip>`                        | Returns the player's IP address                                           |
+| `<flectonepulse_online>`                    | Returns the number of players on the server                             |
+| `<flectonepulse_ping>`                      | Returns the player's ping                                               |
+| `<flectonepulse_player>`                    | Returns the player's regular name                                        |
+| `<flectonepulse_tps>`                       | Returns the server TPS                                               |
+| `<flectonepulse_mute_suffix>`               | Returns the player's [mute suffix](/pulse/docs/command/mute/)                |
+| `<flectonepulse_afk_durationx>`             | Returns the player's afk duration in seconds               |
+| `<flectonepulse_afk_durationx_formatted>`   | Returns the formatted player's afk duration in seconds               |
+| `<flectonepulse_condition:name>`            | Returns the result of the [condition](/pulse/docs/message/format/condition/)               |
+| `<flectonepulse_fcolor:number>`             | Returns the player's [custom color](/pulse/docs/message/format/fcolor/)     |
+| `<flectonepulse_fcolor_out:number>`         | Returns the player's [custom color OUT](/pulse/docs/message/format/fcolor/) |
+| `<flectonepulse_fcolor_see:number>`         | Returns the player's [custom color SEE](/pulse/docs/message/format/fcolor/) |
+| `<flectonepulse_setting:name>`               | If `setting` is a [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), its value will be returned. <br/>Otherwise, it checks [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java); if enabled, returns `yes`, otherwise `no`              |
+| `<flectonepulse_format:'any text'>`          | Returns the finished text that was formatted inside FlectonePulse. Can be used to return custom tags, for example `<flectonepulse_format:'<player_head>'>` will return the player's head texture |
+
 <br></br>
 
 # <include>../../../../parts/words.en.mdx#setting</include>
