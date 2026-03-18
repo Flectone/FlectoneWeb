@@ -1,0 +1,85 @@
+---
+title: /nickname
+description: Комманда для того, чтобы изменить никнейм
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+
+- Чтобы изменить никнейм другому игроку, нужно использовать `/nicknameother игрок`
+- Чтобы сбросить никнейм, нужно вписать `clear` т.е. `/nickname clear`
+
+![command nickname](/pulse/commandnickname.png)
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → command.nickname`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#nickname</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#nickname</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Сообщение, если введённый игрок не найден
+
+### `null_nickname`
+
+Сообщение, если введённый ник нельзя использовать
+
+### `display`
+
+Как будет отображаться изменённый никнейм всем
+
+### `display_see`
+
+Как будет отображаться изменённый никнейм игроку с правом `see`
+
+### `format`
+
+Сообщение при изменении никнейма
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `command.yml → nickname`</span>
+
+<include>../../../../files/minecraft/command.yml#nickname</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `allowed_input`
+
+Разрешённое [регулярнон выражение](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) для никнейма
+
+<include>../../../../parts/aliases.mdx</include>
+
+<include>../../../../parts/destination.mdx</include>
+
+<include>../../../../parts/cooldown.mdx</include>
+
+<include>../../../../parts/sound.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → command.nickname`</span>
+
+<include>../../../../files/minecraft/permission.yml#nickname</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+### `see`
+
+Право для просмотра настоящего никнейма игрока
+
+### `other`
+
+Право для изменения никнейма другому игроку
+
+<include>../../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../../parts/permission/sound.mdx</include>

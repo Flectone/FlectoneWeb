@@ -55,6 +55,12 @@ How does it work? First, the plugin creates a message internally and obtains `Fl
 
 </Callout>
 
+### `use_bukkit_pre_login_listener`
+
+If enabled, for versions `1.20.2` and above, the `Bukkit` player login listener will be used instead of packets from `PacketEvents`. On lower versions, this listener is already used.
+
+This resolves issues with plugins that interact with the player during login. For example, plugins that create fake players will only work with this setting enabled.
+
 <br></br>
 
 # <include>../../../../parts/words.en.mdx#permission</include>

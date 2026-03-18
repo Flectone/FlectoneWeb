@@ -78,9 +78,9 @@ command:
     lower_weight_group: "<color:#ff7171>Ты не можешь забанить игрока с такими же или большими правами"
     reasons:
       default: "Ты заблокирован на этом сервере"
-    server: "<color:#ff7171>[!] <fcolor:2><moderator><fcolor:1> заблокировал игрока <fcolor:2><player> <br><fcolor:1>Айди: <id><br>Дата: <date><br>Время: <time><br>Осталось: <time_left><br>Модератор: <moderator><br>Причина: <reason>"
-    person: "<color:#ff7171>[!] БАН<fcolor:1><br>Дата: <date><br><br>Время: <time><br>Осталось: <time_left><br>Модератор: <moderator><br>Причина: <reason>"
-    connection_attempt: "<color:#ff7171>[!] Заблокированный <fcolor:2><player><fcolor:1> попытался подключиться <fcolor:1><br>Осталось: <time_left>"
+    server: "<color:#ff7171>[!] <moderator> <fcolor:1>заблокировал игрока <display_name> <br>Айди: <id><br>Дата: <date><br>Время: <time><br>Осталось: <time_left><br>Модератор: <moderator><br>Причина: <reason>"
+    person: "<color:#ff7171>[!] БАН <fcolor:1><br>Дата: <date><br><br>Время: <time><br>Осталось: <time_left><br>Модератор: <moderator><br>Причина: <reason>"
+    connection_attempt: "<color:#ff7171>[!] <fcolor:1>Заблокированный <display_name> попытался подключиться. Осталось: <time_left>"
 #endregion ban
 #region banlist
   banlist:
@@ -105,7 +105,7 @@ command:
     null_player: "<color:#ff7171>Игрок не найден"
     null_type: "<color:#ff7171>Тип введён неверно"
     null_color: "<color:#ff7171>Цвета введены неверно"
-    format: "<br><color:#98FB98>| Твои цвета выглядят так: <br><color:#98FB98>| <fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><color:#98FB98>| <fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир! <br>"
+    format: "<br><color:#98FB98>| Твои цвета выглядят так: <br><color:#98FB98>| <fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><color:#98FB98>| <fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир! <br>"
 #endregion chatcolor
 #region chatsetting
   chatsetting:
@@ -119,9 +119,9 @@ command:
       disabled_color: "<color:#ff7171>"
       disabled_hover: "<color:#ff7171>Отображение выключено"
       types:
-        AFK: "<status_color>Афк"
+        MESSAGE_AFK: "<status_color>Афк"
         ADVANCEMENT: "<status_color>Достижения"
-        CHAT: "<status_color>Сообщения чата"
+        MESSAGE_CHAT: "<status_color>Сообщения чата"
         COMMAND_ANON: "<status_color>Команда /anon"
         COMMAND_BALL: "<status_color>Команда /ball"
         COMMAND_BROADCAST: "<status_color>Команда /broadcast"
@@ -137,11 +137,11 @@ command:
         COMMAND_TICTACTOE: "<status_color>Команда /tictactoe"
         COMMAND_TRY: "<status_color>Команда /try"
         DEATH: "<status_color>Смерти"
-        FROM_DISCORD_TO_MINECRAFT: "<status_color>Сообщения из Discord"
-        FROM_TELEGRAM_TO_MINECRAFT: "<status_color>Сообщения из Telegram"
-        FROM_TWITCH_TO_MINECRAFT: "<status_color>Сообщения из Twitch"
-        JOIN: "<status_color>Вход на сервер"
-        QUIT: "<status_color>Выход с сервера"
+        INTEGRATION_DISCORD: "<status_color>Сообщения из Discord"
+        INTEGRATION_TELEGRAM: "<status_color>Сообщения из Telegram"
+        INTEGRATION_TWITCH: "<status_color>Сообщения из Twitch"
+        MESSAGE_JOIN: "<status_color>Вход на сервер"
+        MESSAGE_QUIT: "<status_color>Выход с сервера"
         SLEEP: "<status_color>Сон"
     menu:
       chat:
@@ -152,47 +152,47 @@ command:
           local: "<fcolor:2>Локальный чат<br><fcolor:1>Ты можешь писать в <fcolor:2>любой <fcolor:1>чат"
           global: "<fcolor:2>Глобальный чат<br><fcolor:1>Ты можешь писать только в <fcolor:2>глобальный <fcolor:1>чат"
       see:
-        item: "<fcolor:2>Цвета \"see\" <br><fcolor:1>Цвета для /chatcolor see <br><br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир! <br><br><u><color:#ff7171>Это видишь только ТЫ в любых сообщений"
+        item: "<fcolor:2>Цвета \"see\" <br><fcolor:1>Цвета для /chatcolor see <br><br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир! <br><br><u><color:#ff7171>Это видишь только ТЫ в любых сообщений"
         inventory: "Colors"
         types:
-          default: "<gradient:#70C7EF:#37B1F2>Стандартные цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          white: "<gradient:#D4E4FF:#B8D2FF>Белые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          light_gray: "<gradient:#B5B9BD:#9DA2A6>Светло-серые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          gray: "<gradient:#4A5054:#3A3F42>Серые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          black: "<gradient:#17191A:#0D0E0F>Черные цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          brown: "<gradient:#7A5A40:#634A34>Коричневые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          red: "<gradient:#D63E3E:#C12B2B>Красные цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          orange: "<gradient:#FF8C00:#E67E00>Оранжевые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          yellow: "<gradient:#FFE83D:#FFD900>Желтые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          lime: "<gradient:#8EE53F:#7ACC29>Лаймовые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          green: "<gradient:#4BB54B:#3AA33A>Зеленые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          cyan: "<gradient:#3ECFDF:#2AB7C9>Бирюзовые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          light_blue: "<gradient:#6BB6FF:#4DA6FF>Голубые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          blue: "<gradient:#3A75FF:#1F5AFF>Синие цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          purple: "<gradient:#A368C7:#8A4DBF>Фиолетовые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          magenta: "<gradient:#FF5CD9:#FF3DCF>Пурпурные цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          pink: "<gradient:#FF80B7:#FF66A6>Розовые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
+          default: "<gradient:#70C7EF:#37B1F2>Стандартные цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          white: "<gradient:#D4E4FF:#B8D2FF>Белые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          light_gray: "<gradient:#B5B9BD:#9DA2A6>Светло-серые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          gray: "<gradient:#4A5054:#3A3F42>Серые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          black: "<gradient:#17191A:#0D0E0F>Черные цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          brown: "<gradient:#7A5A40:#634A34>Коричневые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          red: "<gradient:#D63E3E:#C12B2B>Красные цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          orange: "<gradient:#FF8C00:#E67E00>Оранжевые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          yellow: "<gradient:#FFE83D:#FFD900>Желтые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          lime: "<gradient:#8EE53F:#7ACC29>Лаймовые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          green: "<gradient:#4BB54B:#3AA33A>Зеленые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          cyan: "<gradient:#3ECFDF:#2AB7C9>Бирюзовые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          light_blue: "<gradient:#6BB6FF:#4DA6FF>Голубые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          blue: "<gradient:#3A75FF:#1F5AFF>Синие цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          purple: "<gradient:#A368C7:#8A4DBF>Фиолетовые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          magenta: "<gradient:#FF5CD9:#FF3DCF>Пурпурные цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          pink: "<gradient:#FF80B7:#FF66A6>Розовые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
       out:
-        item: "<fcolor:2>Цвета \"out\" <br><fcolor:1>Цвета для /chatcolor out <br><br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир! <br><br><u><color:#ff7171>Это видят ВСЕ у твоих сообщений"
+        item: "<fcolor:2>Цвета \"out\" <br><fcolor:1>Цвета для /chatcolor out <br><br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир! <br><br><u><color:#ff7171>Это видят ВСЕ у твоих сообщений"
         inventory: "Colors"
         types:
-          default: "<gradient:#70C7EF:#37B1F2>Стандартные цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          white: "<gradient:#D4E4FF:#B8D2FF>Белые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          light_gray: "<gradient:#B5B9BD:#9DA2A6>Светло-серые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          gray: "<gradient:#4A5054:#3A3F42>Серые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          black: "<gradient:#17191A:#0D0E0F>Черные цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          brown: "<gradient:#7A5A40:#634A34>Коричневые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          red: "<gradient:#D63E3E:#C12B2B>Красные цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          orange: "<gradient:#FF8C00:#E67E00>Оранжевые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          yellow: "<gradient:#FFE83D:#FFD900>Желтые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          lime: "<gradient:#8EE53F:#7ACC29>Лаймовые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          green: "<gradient:#4BB54B:#3AA33A>Зеленые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          cyan: "<gradient:#3ECFDF:#2AB7C9>Бирюзовые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          light_blue: "<gradient:#6BB6FF:#4DA6FF>Голубые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          blue: "<gradient:#3A75FF:#1F5AFF>Синие цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          purple: "<gradient:#A368C7:#8A4DBF>Фиолетовые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          magenta: "<gradient:#FF5CD9:#FF3DCF>Пурпурные цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
-          pink: "<gradient:#FF80B7:#FF66A6>Розовые цвета<br><fcolor:1>(local) <fcolor:2><player><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><player><fcolor:4>: привет мир!"
+          default: "<gradient:#70C7EF:#37B1F2>Стандартные цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          white: "<gradient:#D4E4FF:#B8D2FF>Белые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          light_gray: "<gradient:#B5B9BD:#9DA2A6>Светло-серые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          gray: "<gradient:#4A5054:#3A3F42>Серые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          black: "<gradient:#17191A:#0D0E0F>Черные цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          brown: "<gradient:#7A5A40:#634A34>Коричневые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          red: "<gradient:#D63E3E:#C12B2B>Красные цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          orange: "<gradient:#FF8C00:#E67E00>Оранжевые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          yellow: "<gradient:#FFE83D:#FFD900>Желтые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          lime: "<gradient:#8EE53F:#7ACC29>Лаймовые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          green: "<gradient:#4BB54B:#3AA33A>Зеленые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          cyan: "<gradient:#3ECFDF:#2AB7C9>Бирюзовые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          light_blue: "<gradient:#6BB6FF:#4DA6FF>Голубые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          blue: "<gradient:#3A75FF:#1F5AFF>Синие цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          purple: "<gradient:#A368C7:#8A4DBF>Фиолетовые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          magenta: "<gradient:#FF5CD9:#FF3DCF>Пурпурные цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
+          pink: "<gradient:#FF80B7:#FF66A6>Розовые цвета<br><fcolor:1>(local) <fcolor:2><nickname><fcolor:3>: привет мир! <br><fcolor:1>(global) <fcolor:2><nickname><fcolor:4>: привет мир!"
 #endregion chatsetting
 #region clearchat
   clearchat:
@@ -238,6 +238,7 @@ command:
 #endregion emit
 #region flectonepulse
   flectonepulse:
+    dump_error: "<color:#ff7171>Возникла проблема при загрузке дампа: <error>"
     null_host_editor: "<color:#ff7171>Параметр host должен быть настроен в config.yml"
     null_port_editor: "<color:#ff7171>Порт <port> недоступен, выбери другой в config.yml"
     null_file: "<color:#ff7171>Файл <file> не существует"
@@ -245,6 +246,7 @@ command:
     format_starting: "<fcolor:1>[*] Начало <fcolor:2><type><fcolor:1>, подождите..."
     format_false: "<color:#ff7171>[*] Возникла проблема при перезагрузке <br>Ошибка: <message>"
     format_true: "<fcolor:1>[*] <fcolor:2>FlectonePulse <fcolor:1>успешно перезагружен! (<fcolor:2><i><time></i><fcolor:1>)"
+    format_dump: "<fcolor:1>[*] Ссылка для дампа <fcolor:2><click:open_url:\"<url>\"><hover:show_text:\"<fcolor:2><url>\"><url>"
     format_editor: "<fcolor:1>[*] Ссылка для веб-редактирования <fcolor:2><click:open_url:\"<url>\"><hover:show_text:\"<fcolor:2><url>\"><url>"
     format_export: "<fcolor:1>[*] Файлы экспортированы в <fcolor:2><file>"
     format_import: "<fcolor:1>[*] Файлы импортированы из <fcolor:2><file>"
@@ -284,8 +286,8 @@ command:
     lower_weight_group: "<color:#ff7171>Ты не можешь кикнуть игрока с такими же или большими правами"
     reasons:
       default: "Исключён модератором"
-    server: "<color:#ff7171>[!] <fcolor:2><moderator><fcolor:1> исключил <fcolor:2><player><fcolor:1> <br>Айди: <id><br>Дата: <date><br>Модератор: <moderator><br>Причина: <reason>"
-    person: "<color:#ff7171>[!] КИК<fcolor:1><br>Айди: <id><br>Дата: <date><br>Модератор: <moderator><br>Причина: <reason>"
+    server: "<color:#ff7171>[!] <moderator> <fcolor:1>исключил <display_name> <br>Айди: <id><br>Дата: <date><br>Модератор: <moderator><br>Причина: <reason>"
+    person: "<color:#ff7171>[!] КИК <fcolor:1><br>Айди: <id><br>Дата: <date><br>Модератор: <moderator><br>Причина: <reason>"
 #endregion kick
 #region mail
   mail:
@@ -314,7 +316,7 @@ command:
     suffix: " <color:#ff7171>[!]</color>"
     reasons:
       default: "Ты был замучен на сервере"
-    server: "<color:#ff7171>[!] <fcolor:2><moderator><fcolor:1> выдал мут игроку <fcolor:2><player><fcolor:1> <br>Айди: <id><br>Дата: <date><br>Время: <time><br>Осталось: <time_left><br>Модератор: <moderator><br>Причина: <reason>"
+    server: "<color:#ff7171>[!] <moderator> <fcolor:1>выдал мут игроку <display_name> <br>Айди: <id><br>Дата: <date><br>Время: <time><br>Осталось: <time_left><br>Модератор: <moderator><br>Причина: <reason>"
     person: "<color:#ff7171>[!] Ты замучен, осталось <time_left>"
 #endregion mute
 #region mutelist
@@ -331,13 +333,21 @@ command:
       line: "<color:#ff7171>[X] <target> <fcolor:1>Причина: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Страница: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
 #endregion mutelist
+#region nickname
+  nickname:
+    null_player: "<color:#ff7171>Игрок не найден"
+    null_nickname: "<color:#ff7171>Этот ник нельзя использовать"
+    display: "<value><gray>~</gray>"
+    display_see: "(<player>) <value><gray>~</gray>"
+    format: "<fcolor:1>[>] Ник был изменён на <fcolor:2><nickname>"
+#endregion nickname
 #region online
   online:
     null_player: "<color:#ff7171>Игрок не найден"
     format_current: "<fcolor:1>[/] <target> сейчас на сервере"
     format_first: "<fcolor:1>[/] <target> впервые зашёл на сервер <time> назад"
     format_last: "<fcolor:1>[/] <target> <fcolor:1>последний раз был на сервере <time> назад"
-    format_total: "<fcolor:1>[/] <target> <fcolor:1>всего провёл на сервере <time>"
+    format_total: "<fcolor:1>[/] <target> <fcolor:1>всего провёл на сервере <time> и был <sessions> раз(а)"
 #endregion online
 #region ping
   ping:
@@ -403,9 +413,21 @@ command:
 #endregion sprite
 #region spy
   spy:
-    format_true: "<fcolor:1>[*] Ты <color:#98FB98>включил <fcolor:1>слежку"
-    format_false: "<fcolor:1>[*] Ты <color:#F08080>выключил <fcolor:1>слежку"
-    format_log: "<fcolor:1>[*] <display_name> <color:#98FB98><action> <fcolor:1>→ <fcolor:2><message>"
+    format_true: "<fcolor:1>[*] Ты <color:#98FB98>включил</color:#98FB98> слежку"
+    format_false: "<fcolor:1>[*] Ты <color:#F08080>выключил</color:#F08080> слежку"
+    format_log: "<fcolor:1>[*] <display_name> <color:#98FB98><action> <fcolor:2>→ <fcolor:3><message>"
+    actions:
+      tell: "личное сообщение"
+      msg: "личное сообщение"
+      w: "личное сообщение"
+      message: "личное сообщение"
+      send: "личное сообщение"
+      m: "личное сообщение"
+      anon: "анонимное сообщение"
+      anvil: "название предмета"
+      book: "текст книги"
+      sign: "текст таблички"
+      local: "локальный чат"
 #endregion spy
 #region stream
   stream:
@@ -478,21 +500,21 @@ command:
     null_player: "<color:#ff7171>Игрок не найден"
     not_banned: "<color:#ff7171>Игрок не заблокирован"
     lower_weight_group: "<color:#ff7171>Ты не можешь разбанить игрока с такими же или большими правами"
-    format: "<color:#98FB98><fcolor:2><moderator><color:#98FB98> разблокировал игрока <fcolor:2><player>"
+    format: "<color:#98FB98><moderator> разблокировал игрока <display_name>"
 #endregion unban
 #region unmute
   unmute:
     null_player: "<color:#ff7171>Игрок не найден"
     not_muted: "<color:#ff7171>Игрок не замучен"
     lower_weight_group: "<color:#ff7171>Ты не можешь размутить игрока с такими же или большими правами"
-    format: "<color:#98FB98><fcolor:2><moderator><color:#98FB98> размутил игрока <fcolor:2><player>"
+    format: "<color:#98FB98><moderator> размутил игрока <display_name>"
 #endregion unmute
 #region unwarn
   unwarn:
     null_player: "<color:#ff7171>Игрок не найден"
     not_warned: "<color:#ff7171>Игрок не имеет предупреждений"
     lower_weight_group: "<color:#ff7171>Ты не можешь снять предупреждение с игрока с такими же или большими правами"
-    format: "<color:#98FB98><fcolor:2><moderator><color:#98FB98> снял предупреждение с игрока <fcolor:2><player>"
+    format: "<color:#98FB98><moderator> снял предупреждение с игрока <display_name>"
 #endregion unwarn
 #region warn
   warn:
@@ -501,7 +523,7 @@ command:
     lower_weight_group: "<color:#ff7171>Ты не можешь выдать предупреждение игроку с такими же или большими правами"
     reasons:
       default: "Ты получил предупреждение"
-    server: "<color:#ff7171>[!] <fcolor:2><moderator><fcolor:1> выдал предупреждение игроку <fcolor:2><player> <fcolor:1> <br>Айди: <id><br>Дата: <date><br>Время: <time><br>Осталось: <time_left><br>Модератор: <moderator><br>Причина: <reason>"
+    server: "<color:#ff7171>[!] <moderator> <fcolor:1>выдал предупреждение игроку <display_name> <br>Айди: <id><br>Дата: <date><br>Время: <time><br>Осталось: <time_left><br>Модератор: <moderator><br>Причина: <reason>"
     person: "<color:#ff7171>[!] Ты получил предупреждение на <time>"
 #endregion warn
 #region warnlist
@@ -532,9 +554,9 @@ integration:
     info_channel:
       айди: "ТПС <replacement:tps>"
     message_channel:
-      FROM_DISCORD_TO_MINECRAFT:
+      INTEGRATION_DISCORD:
         content: "<fcolor:2><global_name> <fcolor:1>» <fcolor:4><reply><message>"
-      CHAT_GLOBAL:
+      MESSAGE_CHAT_GLOBAL:
         content: "<final_message>"
 #endregion discord
 #region telegram
@@ -548,8 +570,8 @@ integration:
     info_channel:
       айди: "ТПС <replacement:tps>"
     message_channel:
-      FROM_TELEGRAM_TO_MINECRAFT: "<fcolor:2><user_name> <fcolor:1>» <fcolor:4><reply><message>"
-      CHAT_GLOBAL: "<final_message>"
+      INTEGRATION_TELEGRAM: "<fcolor:2><user_name> <fcolor:1>» <fcolor:4><reply><message>"
+      MESSAGE_CHAT_GLOBAL: "<final_message>"
 #endregion telegram
 #region twitch
   twitch:
@@ -559,8 +581,8 @@ integration:
     custom_command:
       ping: "Пинг игрока <player> равен <replacement:ping>"
     message_channel:
-      FROM_TWITCH_TO_MINECRAFT: "<fcolor:2><name> <fcolor:1>» <fcolor:4><hover:show_text:'<fcolor:4><reply><message>"
-      CHAT_GLOBAL: "<final_message>"
+      INTEGRATION_TWITCH: "<fcolor:2><name> <fcolor:1>» <fcolor:4><hover:show_text:'<fcolor:4><reply><message>'"
+      MESSAGE_CHAT_GLOBAL: "<final_message>"
 #endregion twitch
 #region message
 message:
@@ -569,10 +591,10 @@ message:
   afk:
     suffix: " <color:#FFFF00>[Afk]</color>"
     format_true:
-      global: "<gradient:#ffd500:#FFFF00><player> отошёл"
+      global: "<gradient:#ffd500:#FFFF00><nickname> отошёл"
       local: "<gradient:#ffd500:#FFFF00>Ты отошёл от игры"
     format_false:
-      global: "<gradient:#ffd500:#FFFF00><player> вернулся"
+      global: "<gradient:#ffd500:#FFFF00><nickname> вернулся"
       local: "<gradient:#ffd500:#FFFF00>Ты вернулся в игру"
 #endregion afk
 #region auto
@@ -604,12 +626,47 @@ message:
     null_chat: "<color:#ff7171>На сервер выключен чат"
     null_receiver: "<color:#ff7171>Тебя никто не услышал"
     types:
-      global: "<delete><display_name> <world_prefix>»<fcolor:4> <message>"
+      global: "<delete><display_name> <world>»<fcolor:4> <message>"
       local: "<delete><display_name><fcolor:3>: <message>"
 #endregion chat
 #region format
   format:
 #endregion format
+#region animation
+    animation:
+      values:
+        flectonepulse:
+        - "<#a6dbff>F<#9ad3fe>l<#8eccfd>e<#82c4fc>c<#77bdfc>t<#6bb5fb>o<#5faefa>n<#6bb5fb>e<#77bdfc>P<#82c4fc>u<#8eccfd>l<#9ad3fe>s<#a6dbff>e"
+        - "<#a6dbff>F<#a6dbff>l<#9ad3fe>e<#8eccfd>c<#82c4fc>t<#77bdfc>o<#6bb5fb>n<#5faefa>e<#6bb5fb>P<#77bdfc>u<#82c4fc>l<#8eccfd>s<#9ad3fe>e"
+        - "<#9ad3fe>F<#a6dbff>l<#a6dbff>e<#9ad3fe>c<#8eccfd>t<#82c4fc>o<#77bdfc>n<#6bb5fb>e<#5faefa>P<#6bb5fb>u<#77bdfc>l<#82c4fc>s<#8eccfd>e"
+        - "<#8eccfd>F<#9ad3fe>l<#a6dbff>e<#a6dbff>c<#9ad3fe>t<#8eccfd>o<#82c4fc>n<#77bdfc>e<#6bb5fb>P<#5faefa>u<#6bb5fb>l<#77bdfc>s<#82c4fc>e"
+        - "<#82c4fc>F<#8eccfd>l<#9ad3fe>e<#a6dbff>c<#a6dbff>t<#9ad3fe>o<#8eccfd>n<#82c4fc>e<#77bdfc>P<#6bb5fb>u<#5faefa>l<#6bb5fb>s<#77bdfc>e"
+        - "<#77bdfc>F<#82c4fc>l<#8eccfd>e<#9ad3fe>c<#a6dbff>t<#a6dbff>o<#9ad3fe>n<#8eccfd>e<#82c4fc>P<#77bdfc>u<#6bb5fb>l<#5faefa>s<#6bb5fb>e"
+        - "<#6bb5fb>F<#77bdfc>l<#82c4fc>e<#8eccfd>c<#9ad3fe>t<#a6dbff>o<#a6dbff>n<#9ad3fe>e<#8eccfd>P<#82c4fc>u<#77bdfc>l<#6bb5fb>s<#5faefa>e"
+        - "<#5faefa>F<#6bb5fb>l<#77bdfc>e<#82c4fc>c<#8eccfd>t<#9ad3fe>o<#a6dbff>n<#a6dbff>e<#9ad3fe>P<#8eccfd>u<#82c4fc>l<#77bdfc>s<#6bb5fb>e"
+        - "<#6bb5fb>F<#5faefa>l<#6bb5fb>e<#77bdfc>c<#82c4fc>t<#8eccfd>o<#9ad3fe>n<#a6dbff>e<#a6dbff>P<#9ad3fe>u<#8eccfd>l<#82c4fc>s<#77bdfc>e"
+        - "<#77bdfc>F<#6bb5fb>l<#5faefa>e<#6bb5fb>c<#77bdfc>t<#82c4fc>o<#8eccfd>n<#9ad3fe>e<#a6dbff>P<#a6dbff>u<#9ad3fe>l<#8eccfd>s<#82c4fc>e"
+        - "<#82c4fc>F<#77bdfc>l<#6bb5fb>e<#5faefa>c<#6bb5fb>t<#77bdfc>o<#82c4fc>n<#8eccfd>e<#9ad3fe>P<#a6dbff>u<#a6dbff>l<#9ad3fe>s<#8eccfd>e"
+        - "<#8eccfd>F<#82c4fc>l<#77bdfc>e<#6bb5fb>c<#5faefa>t<#6bb5fb>o<#77bdfc>n<#82c4fc>e<#8eccfd>P<#9ad3fe>u<#a6dbff>l<#a6dbff>s<#9ad3fe>e"
+        - "<#9ad3fe>F<#8eccfd>l<#82c4fc>e<#77bdfc>c<#6bb5fb>t<#5faefa>o<#6bb5fb>n<#77bdfc>e<#82c4fc>P<#8eccfd>u<#9ad3fe>l<#a6dbff>s<#a6dbff>e"
+#endregion animation
+#region condition
+    condition:
+      values:
+        player_name:
+          default: "Безымянный"
+          notch: "Маркус Перссон"
+          thefaser: "Артём Мочалин"
+        player_ping:
+          "0": "Отлично"
+          "50": "Хорошо"
+          "100": "Неплохо"
+          "150": "Плохо"
+          "300": "Ужасно"
+        is_admin:
+          "true": "Админ"
+          "false": "Игрок"
+#endregion condition
 #region object
     object:
       default_symbol: ""
@@ -660,7 +717,7 @@ message:
     names:
       constant: []
       display:
-      - "<click:suggest_command:\"/msg <player> \"><hover:show_text:\"<fcolor:2>Написать <player>\"><vault_prefix><stream_prefix><fcolor:2><player><afk_suffix><vault_suffix></hover></click>"
+      - "<click:suggest_command:\"/msg <player> \"><hover:show_text:\"<fcolor:2>Написать <nickname>\"><prefix><stream><fcolor:2><nickname><afk><suffix><reset>"
       entity: "<fcolor:2><hover:show_text:\"<fcolor:2><name> <br><fcolor:1>Тип <fcolor:2><lang:'<type>'> <br><fcolor:1>Айди <fcolor:2><uuid>\"><name></hover>"
       unknown: "<fcolor:2><name>"
       invisible: "<fcolor:2>[Invisible]"
@@ -677,7 +734,7 @@ message:
 #endregion translate
 #region greeting
   greeting:
-    format: "<fcolor:1>Привет, <fcolor:2><player>"
+    format: "<fcolor:1>Привет, <fcolor:2><nickname>"
 #endregion greeting
 #region join
   join:
@@ -712,7 +769,7 @@ message:
     values:
     - - "<fcolor:1>FlectonePulse"
       - " "
-      - "<fcolor:1>Привет, <player>!"
+      - "<fcolor:1>Привет, <nickname>!"
       - "<fcolor:1>Пинг <replacement:ping> мс"
     - - "<fcolor:2>FlectonePulse"
       - " "
@@ -756,7 +813,7 @@ message:
     footer:
       lists:
       - - " "
-        - "<fcolor:1>Привет <fcolor:2><player><fcolor:1>!"
+        - "<fcolor:1>Привет <fcolor:2><nickname><fcolor:1>!"
         - " "
       - - " "
         - "<fcolor:1>ТПС <replacement:tps>, Онлайн <replacement:online>"
@@ -764,7 +821,7 @@ message:
 #endregion footer
 #region playerlistname
     playerlistname:
-      format: "<world_prefix>| <reset><vault_prefix><stream_prefix><fcolor:2><player><afk_suffix><mute_suffix><vault_suffix>"
+      format: "<world>| <reset><prefix><stream><fcolor:2><nickname><afk><mute><suffix>"
 #endregion playerlistname
 #region update
   update:
@@ -938,4 +995,6 @@ message:
       server.world.notFound: "<fcolor:1>Не удалось найти мир '<fcolor:2><argument:0><fcolor:1>'!<fcolor:1>"
       server.death.player: "<fcolor:2><argument:0><fcolor:1> умер"
       server.death.player.killedBy: "<fcolor:2><argument:0><fcolor:1> был убит благодаря <fcolor:2><argument:1>"
+      server.assetModule.outOfDatePacks: ""
+      server.pluginManager.outOfDatePlugins: ""
 #endregion vanilla

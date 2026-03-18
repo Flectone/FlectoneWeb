@@ -122,14 +122,14 @@ command:
       FCOLOR_OUT:
         name: "flectonepulse.module.command.chatsetting.fcolor_out"
         type: "OP"
-      AFK:
-        name: "flectonepulse.module.command.chatsetting.afk"
+      MESSAGE_AFK:
+        name: "flectonepulse.module.command.chatsetting.message_afk"
         type: "TRUE"
       ADVANCEMENT:
         name: "flectonepulse.module.command.chatsetting.advancement"
         type: "TRUE"
-      CHAT:
-        name: "flectonepulse.module.command.chatsetting.chat"
+      MESSAGE_CHAT:
+        name: "flectonepulse.module.command.chatsetting.message_chat"
         type: "TRUE"
       COMMAND_ANON:
         name: "flectonepulse.module.command.chatsetting.command_anon"
@@ -176,20 +176,20 @@ command:
       DEATH:
         name: "flectonepulse.module.command.chatsetting.death"
         type: "TRUE"
-      FROM_DISCORD_TO_MINECRAFT:
-        name: "flectonepulse.module.command.chatsetting.from_discord_to_minecraft"
+      INTEGRATION_DISCORD:
+        name: "flectonepulse.module.command.chatsetting.integration_discord"
         type: "TRUE"
-      FROM_TELEGRAM_TO_MINECRAFT:
-        name: "flectonepulse.module.command.chatsetting.from_telegram_to_minecraft"
+      INTEGRATION_TELEGRAM:
+        name: "flectonepulse.module.command.chatsetting.integration_telegram"
         type: "TRUE"
-      FROM_TWITCH_TO_MINECRAFT:
-        name: "flectonepulse.module.command.chatsetting.from_twitch_to_minecraft"
+      INTEGRATION_TWITCH:
+        name: "flectonepulse.module.command.chatsetting.integration_twitch"
         type: "TRUE"
-      JOIN:
-        name: "flectonepulse.module.command.chatsetting.join"
+      MESSAGE_JOIN:
+        name: "flectonepulse.module.command.chatsetting.message_join"
         type: "TRUE"
-      QUIT:
-        name: "flectonepulse.module.command.chatsetting.quit"
+      MESSAGE_QUIT:
+        name: "flectonepulse.module.command.chatsetting.nessage_quit"
         type: "TRUE"
       SLEEP:
         name: "flectonepulse.module.command.chatsetting.sleep"
@@ -411,6 +411,23 @@ command:
       name: "flectonepulse.module.command.mutelist.sound"
       type: "TRUE"
 #endregion mutelist
+#region nickname
+  nickname:
+    name: "flectonepulse.module.command.nickname"
+    type: "OP"
+    see:
+      name: "flectonepulse.module.command.nickname.see"
+      type: "FALSE"
+    other:
+      name: "flectonepulse.module.command.nickname.other"
+      type: "OP"
+    cooldown_bypass:
+      name: "flectonepulse.module.command.nickname.cooldown.bypass"
+      type: "OP"
+    sound:
+      name: "flectonepulse.module.command.nickname.sound"
+      type: "TRUE"
+#endregion nickname
 #region online
   online:
     name: "flectonepulse.module.command.online"
@@ -686,11 +703,11 @@ integration:
     name: "flectonepulse.module.integration.luckperms"
     type: "TRUE"
 #endregion luckperms
-#region maintenance
+#region integrationmaintenance
   maintenance:
     name: "flectonepulse.module.integration.maintenance"
     type: "TRUE"
-#endregion maintenance
+#endregion integrationmaintenance
 #region minimotd
   minimotd:
     name: "flectonepulse.module.integration.minimotd"
@@ -737,11 +754,11 @@ integration:
     name: "flectonepulse.module.integration.supervanish"
     type: "TRUE"
 #endregion supervanish
-#region tab
+#region integrationtab
   tab:
     name: "flectonepulse.module.integration.tab"
     type: "TRUE"
-#endregion tab
+#endregion integrationtab
 #region telegram
   telegram:
     name: "flectonepulse.module.integration.telegram"
@@ -911,6 +928,30 @@ message:
         name: "flectonepulse.module.message.format.shadow_color"
         type: "OP"
 #endregion format
+#region animation
+    animation:
+      name: "flectonepulse.module.message.format.animation"
+      type: "TRUE"
+      values:
+        flectonepulse:
+          name: "flectonepulse.module.message.format.animation.flectonepulse"
+          type: "TRUE"
+#endregion animation
+#region condition
+    condition:
+      name: "flectonepulse.module.message.format.condition"
+      type: "TRUE"
+      values:
+        player_name:
+          name: "flectonepulse.module.message.format.condition.player_name"
+          type: "TRUE"
+        player_ping:
+          name: "flectonepulse.module.message.format.condition.player_ping"
+          type: "TRUE"
+        is_admin:
+          name: "flectonepulse.module.message.format.condition.is_admin"
+          type: "TRUE"
+#endregion condition
 #region fcolor
     fcolor:
       name: "flectonepulse.module.message.format.fcolor"
@@ -928,11 +969,6 @@ message:
       name: "flectonepulse.module.message.format.fixation"
       type: "TRUE"
 #endregion fixation
-#region image
-    image:
-      name: "flectonepulse.module.message.format.image"
-      type: "TRUE"
-#endregion image
 #region mention
     mention:
       name: "flectonepulse.module.message.format.mention"
@@ -1001,12 +1037,15 @@ message:
     object:
       name: "flectonepulse.module.message.format.object"
       type: "TRUE"
-      player_head:
+      player_head_tag:
         name: "flectonepulse.module.message.format.object.player_head"
         type: "TRUE"
-      sprite:
+      sprite_tag:
         name: "flectonepulse.module.message.format.object.sprite"
         type: "TRUE"
+      texture_tag:
+        name: "flectonepulse.module.message.format.object.texture"
+        type: "OP"
 #endregion object
 #region questionanswer
     question_answer:
@@ -1139,11 +1178,6 @@ message:
       name: "flectonepulse.module.message.format.scoreboard"
       type: "TRUE"
 #endregion scoreboard
-#region spoiler
-    spoiler:
-      name: "flectonepulse.module.message.format.spoiler"
-      type: "TRUE"
-#endregion spoiler
 #region translate
     translate:
       name: "flectonepulse.module.message.format.translate"
@@ -1259,8 +1293,14 @@ message:
 #endregion header
 #region playerlistname
     playerlistname:
-      name: "flectonepulse.module.message.tab.footer"
+      name: "flectonepulse.module.message.tab.playerlistname"
       type: "TRUE"
+      hide_invisible:
+        name: "flectonepulse.module.message.tab.playerlistname.hide_invisible"
+        type: "TRUE"
+      hide_spectator:
+        name: "flectonepulse.module.message.tab.playerlistname.hide_spectator"
+        type: "TRUE"
 #endregion playerlistname
 #region update
   update:

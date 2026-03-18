@@ -157,6 +157,27 @@ format:
   - "PRIDE"
   - "SHADOW_COLOR"
 #endregion format
+#region animation
+  animation:
+    enable: true
+    values:
+      flectonepulse:
+        interval: 5
+#endregion animation
+#region condition
+  condition:
+    enable: true
+    values:
+      player_name:
+        value: "%player_name%"
+        type: "STRING"
+      player_ping:
+        value: "%player_ping%"
+        type: "NUMBER"
+      is_admin:
+        value: "minecraft.admin"
+        type: "PERMISSION"
+#endregion condition
 #region fcolor
   fcolor:
     enable: true
@@ -243,10 +264,19 @@ format:
 #region object
   object:
     enable: false
-    player_head: true
-    sprite: true
-    need_extra_space: true
-    hide_invisible_player_head: false
+    player_head_tag:
+      enable: true
+      need_extra_space: true
+      hide_invisible_player_head: false
+    sprite_tag:
+      enable: true
+      need_extra_space: true
+    texture_tag:
+      enable: true
+      need_extra_space: false
+      mineskin_api_key: ""
+      values:
+        example: ""
 #endregion object
 #region questionanswer
   question_answer:
@@ -295,9 +325,10 @@ format:
   scoreboard:
     enable: true
     name_visible: true
+    hide_name_when_sneaking: false
     color: "<white>"
-    prefix: "<vault_prefix><stream_prefix> <white>"
-    suffix: " <afk_suffix><vault_suffix>"
+    prefix: "<prefix><stream> <white>"
+    suffix: " <afk><suffix>"
     ticker:
       enable: false
 #endregion scoreboard
@@ -417,7 +448,7 @@ status:
     enable: false
     control: true
     max: 69
-    online: -69
+    online: ""
 #endregion players
 #region version
   version:
@@ -451,6 +482,8 @@ tab:
 #region playerlistname
   playerlistname:
     enable: false
+    hide_invisible: false
+    hide_spectator: false
     proxy_mode: true
     ticker:
       enable: true

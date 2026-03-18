@@ -1,0 +1,70 @@
+---
+title: Condition
+description: The condition tag is used to display text based on a specific condition
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+Usage: `<condition:name>`
+
+![condition](/pulse/condition.png)
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.condition`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../../files/minecraft/localizations/en_us.yml#condition</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../files/minecraft/localizations/ru_ru.yml#condition</include></Tab>
+</Tabs>
+
+### `values`
+
+A list of all conditions, where the key is the name and the value is the parameters with their localization
+
+All parameters must be specified in lowercase, for example, if `player_name` is `TheFaser`, you need to specify `thefaser`
+
+In all conditions, you can use the `default` field, which will be used if other values are not found. This can be thought of as the `else` in an `if` construct
+
+If the condition is a `NUMBER`, then the values are specified in ranges. For example, the condition is `%player_ping%` and values are defined for `0`, `50`, `100`, and the player's ping is `69`, then the localization from `50` will be used
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.condition`</span>
+
+<include>../../../../../files/minecraft/message.yml#condition</include>
+
+<include>../../../../../parts/enable.en.mdx</include>
+
+### `values`
+
+A list of all conditions with settings, where the key is the name
+
+#### `value`
+
+The text that will be checked for value. This is a string and can be anything like `"%player_name% %player_world%"` or `"1234"`
+
+#### `type`
+
+The type of condition
+
+| Type               | Explanation                                  |
+|--------------------|----------------------------------------------|
+| `STRING`           | A string that will be formatted and its value will be checked         |
+| `NUMBER`           | A number that will be formatted and parsed, its value is checked within a range             |
+| `PERMISSION`       | A permission that is checked for existence                              |
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.condition`</span>
+
+<include>../../../../../files/minecraft/permission.yml#condition</include>
+
+<include>../../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `values`
+
+A list of all conditions with their individual display permissions

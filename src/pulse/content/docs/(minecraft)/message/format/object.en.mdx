@@ -1,19 +1,26 @@
 ---
 title: Object
+description: A module responsible for heads, sprites, and textures in chat without Resource Packs and without Mods
 authors:
   - TheFaser
 tag: "minecraft"
 ---
 <Callout type="warn" title="Warning">
-    The module will only work for players using version `1.21.9` or higher. It will not be displayed for others.
+    The module will only work for players playing on version `1.21.9` and above. It will not be displayed for others.
 </Callout>
 
 <Callout type="warn" title="Warning">
-    Heads and icons can be tinted by colors in config files. To prevent this, use a white color tag before them. For example: `<white><player_head></white>`
+    Displaying `<player_head>` and `<texture>` in MOTD is only available for players playing on 1.21.9 - 1.21.11 (in newer versions, Mojang removed this ability for MOTD)
 </Callout>
 
-Module responsible for heads and symbols in chat
+<Callout type="warn" title="Warning">
+    Heads, sprites, and textures can be colored in config files. To prevent this, you need to use a white color before them. For example `<white><player_head></white>`
+</Callout>
+
 ![object](/pulse/object.png)
+![texturemotd](/pulse/texturemotd.png)
+![texture](/pulse/texture.png)
+![texturesidebar](/pulse/texturesidebar.png)
 
 <br></br>
 
@@ -27,7 +34,7 @@ Module responsible for heads and symbols in chat
 
 ### `default_symbol`
 
-The symbol for standard `<player_head>` and `<sprite>` tags if the recipient cannot see the resulting object (for `<player_head_or>` and `<sprite_or>`, this is specified manually).
+The symbol for standard `<player_head>`, `<sprite>`, `<texture>` if the recipient cannot see the resulting object (for `<player_head_or>`, `<sprite_or>` and `<texture_or>` this is specified manually)
 
 <br></br>
 
@@ -38,49 +45,109 @@ The symbol for standard `<player_head>` and `<sprite>` tags if the recipient can
 
 <include>../../../../../parts/enable.en.mdx</include>
 
-### `player_head`
+### `player_head_tag`
 
-Enables formatting for the `<player_head>` placeholder. It can be used in several ways:
-- `<player_head>` returns the head of the player who sent the message.
-- `<player_head:Notch>` returns the head of the player whose nickname is specified inside.
-- `<player_head:Notch:false>` returns the head of the specified player with the second layer disabled.
-- If the specified nickname does not exist, the head will have a random default skin.
-- `<player_head_or:...>` returns the player's head or the text specified as the first argument if the recipient cannot see heads in chat. For example, `<player_head_or:hello:Notch>` returns Notch's head, but the word `hello` will appear in the console.
+Enables formatting for the `<player_head>` placeholder. It can be used in different ways:
+- `<player_head>` returns the head of the player who sent the message
+- `<player_head:Notch>` returns the head of the player whose name was specified inside
+- `<player_head:Notch:false>` returns the player's head with the second layer disabled, for the name specified inside
+- If the specified name does not exist, the head will have a random default skin
+- `<player_head_or:...>` returns the player's head or the text specified as the first argument if the recipient cannot see heads in chat. For example `<player_head_or:hello:Notch>` returns Notch's head, and in the console, the word `hello` will appear
 
 <Callout type="idea" title="Note">
-    The `playerlistname` module already has `<player_head>` built-in by default, and it only works for players using unofficial game versions. For licensed versions, the tab list remains standard.
+The `playerlistname` module already has `<player_head>` built in by default, and it only works for players who have an unofficial game version. For licensed versions, the tab will be standard.
 </Callout>
 
-### `sprite`
+#### `need_extra_space`
 
-Enables formatting for the `<sprite:...>` placeholder. It can be used in several ways:
-- `<sprite:name>` returns an icon from the `blocks` atlas, e.g., `<sprite:block/oak_log>` (equivalent to `<sprite:blocks:block/oak_log>`).
-- `<sprite:atlas:name>` returns an icon from the specified atlas, e.g., `<sprite:gui:container/slot>`.
-- If the sprite is specified incorrectly, it will appear as an unknown texture. You can create your own sprites using a resource pack.
-- `<sprite_or:...>` returns the icon or the text specified as the first argument if the recipient cannot see icons in chat. For example, `<sprite_or:hello:block/oak_log>` returns the oak log icon, but the word `hello` will appear in the console.
+Enables adding an extra space for `<player_head>` tags written in config files. Spaces are not added to player messages.
 
-The easiest way to find atlas and icon names is by using the [/sprite command](/pulse/docs/command/sprite/).
+#### `hide_invisible_player_head`
+
+Enables hiding the player's head display if they have the invisibility effect.
+
+### `sprite_tag`
+
+Enables formatting for the `<sprite:...>` placeholder. It can be used in different ways:
+- `<sprite:name>`, returns an icon from the `blocks` atlas, for example `<sprite:block/oak_log>` (this is the same as `<sprite:blocks:block/oak_log>`)
+- `<sprite:atlas:name>`, returns an icon from the specified atlas, for example `<sprite:gui:container/slot>`
+- If the sprite is specified incorrectly, it will be an unknown texture. Using a resource pack, you can create your own sprites.
+- `<sprite_or:...>` returns an icon or the text specified as the first argument if the recipient cannot see icons in chat. For example `<sprite_or:hello:block/oak_log>` returns the oak icon, and in the console, the word `hello` will appear
+
+The easiest way to find atlas and icon names is using the [/sprite command](/pulse/docs/command/sprite/)
 ![command sprite](/pulse/commandsprite.png)
 
-You can also find these in the folder created using the `F3 + S` combination in Minecraft. There will be `minecraft_textures_atlas_...` files in `.txt` and `.png` formats, which can help you find the appropriate sprite.
+You can also find this in the folder created using the `F3 + S` combination inside Minecraft. There will be files named `minecraft_textures_atlas_...` with `.txt` and `.png` formats, which can help you find a suitable sprite.
 
-<Callout type="info" title="Example">
-    There is a `gui` atlas named `minecraft_textures_atlas_gui.png.txt`. Inside, you can find a line like `minecraft:container/slot  x=494  y=54   w=18   h=18`.
+<Callout type="info" title="For example">
+There is a `gui` atlas named `minecraft_textures_atlas_gui.png.txt`. In it, you can find a line with `minecraft:container/slot	x=494	y=54	w=18	h=18`
 
-    Using these coordinates, you can visually locate it in the `.png` atlas. To display it inside Minecraft, remove the `minecraft:` prefix.
+Using these coordinates, you can visually find it in the `.png` atlas (to see what it looks like). To display it inside Minecraft, you need to remove the `minecraft:` prefix.
 
-    The result is `<sprite:gui:container/slot>`.
-    ![object slot](/pulse/objectslot.png)
+The result is `<sprite:gui:container/slot>`
+![object slot](/pulse/objectslot.png)
 
 </Callout>
 
-### `need_extra_space`
+#### `need_extra_space`
 
-Enables adding an extra space for `<player_head>` and `<sprite>` instances written in config files. Space is not added to player messages.
+Enables adding an extra space for `<sprite>` tags written in config files. Spaces are not added to player messages.
 
-### `hide_invisible_player_head`
+### `texture_tag`
 
-Enables hiding the display of a player's head if they are under the invisibility effect
+Enables formatting for the `<texture:...>` placeholder to display your own image in Minecraft. It can be used in different ways:
+- `<texture:name>`, returns the texture image that was generated when FlectonePulse started
+- `<texture_or:...>` returns the image or the text specified as the first argument if the recipient cannot see textures in chat. For example `<texture_or:hello:flectonepulse>` returns the image named `flectonepulse`, and in the console, the word `hello` will appear
+
+<Callout type="warn" title="Warnings">
+    - All images for conversion must have dimensions that are multiples of `8` (both height and width). A large image will take a long time to convert; this is due to the MineSkin limitation when using a free API key. For example, a 64x64 image will take 5 to 15 minutes to upload (maybe faster if the image has already been uploaded).
+    - All images are converted only once, the first time they are added to `images`. After that, a `name.json` file is generated nearby, which will be used without the original image. You can later move these `.json` files to other servers without the image. If you need to regenerate the image, delete the `.json` file.
+</Callout>
+
+How to create your own texture? For example, I have an image `flectonepulse.png`
+<Steps>
+    <Step>
+        Copy `flectonepulse.png` to the `FlectonePulse/images/` folder
+    </Step>
+    <Step>
+        Go to `message.yml` and add a new name in `values` with the path to the image, for example
+        ```yaml
+        values:
+          myimage: "flectonepulse.png"
+        ```
+    </Step>
+    <Step>
+        Paste your [own](https://mineskin.org/apikey) `mineskin_api_key` into `message.yml`
+    </Step>
+    <Step>
+        Reload FlectonePulse using `/flectonepulse reload`. The conversion may be long, very long, so you need to wait
+    </Step>
+    <Step>
+        After a successful reload, the file `flectonepulse.json` appears (next to `flectonepulse.png`) and it will be used in the future to load instantly. To use our texture, you need to write `<texture:name>` in any message, in our case it's `<texture:myimage>`
+    </Step>
+</Steps>
+
+<Callout type="info" title="Information">
+    If you have a ready `.json` file, you don't need the image itself in `FlectonePulse/images/` and you don't need to insert `mineskin_api_key`. FlectonePulse will load the image from the ready `.json` file itself.
+</Callout>
+
+#### `need_extra_space`
+
+Enables adding an extra space for `<texture>` tags written in config files. Spaces are not added to player messages.
+
+#### `mineskin_api_key`
+
+The API key for MineSkin, which will be used to convert the image into a texture. It is free and can be generated [here](https://mineskin.org/apikey)
+
+<Callout type="info" title="Information">
+    To convert an image without a MineSkin API key, you can use our service [FlectoneTools](https://flectone.net/tools/texture-generator)
+    ![flectonetools](/pulse/flectonetools.png)
+    You only need to put the finished `name.json` file into the `images` folder, and write `name.png` in the config.
+</Callout>
+
+#### `values`
+
+A list of textures with their locations
 
 <br></br>
 
@@ -90,3 +157,15 @@ Enables hiding the display of a player's head if they are under the invisibility
 <include>../../../../../files/minecraft/permission.yml#object</include>
 
 <include>../../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `player_head_tag`
+
+Permission to use `<player_head>` in chat
+
+### `sprite`
+
+Permission to use `<sprite>` in chat
+
+### `texture`
+
+Permission to use `<texture>` in chat
