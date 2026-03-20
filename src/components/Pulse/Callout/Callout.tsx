@@ -2,12 +2,13 @@ import { FaInfoCircle } from "react-icons/fa";
 import { TiWarning } from "react-icons/ti";
 import { BiSolidErrorAlt } from "react-icons/bi";
 import { IoMdBulb } from "react-icons/io";
-import {ReactNode} from "react";
+import { ReactNode } from "react";
 
 interface CalloutProps {
   type: 'info' | 'warn' | 'idea' | 'error';
   title: string;
   children?: ReactNode;
+  margin?: 'none' | 'normal';
 }
 
 const typeStyles: Record<CalloutProps["type"], string> = {
@@ -18,16 +19,16 @@ const typeStyles: Record<CalloutProps["type"], string> = {
 }
 
 const typeIcons: Record<CalloutProps["type"], ReactNode> = {
-  info: <FaInfoCircle className='w-[1em] text-fd-info'/>,
-  warn: <TiWarning className='w-[1em] text-fd-warning'/>,
-  idea: <IoMdBulb className='w-[1em] text-fd-success'/>,
-  error: <BiSolidErrorAlt className='w-[1em] text-fd-error'/>
+  info: <FaInfoCircle className='w-[1em] text-fd-info' />,
+  warn: <TiWarning className='w-[1em] text-fd-warning' />,
+  idea: <IoMdBulb className='w-[1em] text-fd-success' />,
+  error: <BiSolidErrorAlt className='w-[1em] text-fd-error' />
 }
 
-export default function Callout({type, title, children}: CalloutProps) {
+export default function Callout({ type, title, children, margin = 'normal' }: CalloutProps) {
   return (
-    <div className={` pt-3 pr-3 pb-3 w-full flex gap-3 mb-4 bg-fd-card/50 border rounded-lg overflow-hidden`}>
-      <div className={`${typeStyles[type]} w-0.5 ml-[6px] rounded-full shrink-0`}></div>
+    <div className={`pt-3 pr-3 pb-3 w-full flex gap-3 ${margin == 'normal' ? 'mb-4' : ''} bg-fd-card/50 border rounded-lg overflow-hidden`}>
+      <div className={`${typeStyles[type]} w-0.5 ml-1.5 rounded-full shrink-0`}></div>
       <div className={`flex flex-col ${title ? 'gap-2' : 'gap-0'}`}>
         <div className='flex items-center text-sm gap-2 font-semibold [&_p]:my-0'>
           {typeIcons[type]}
