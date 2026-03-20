@@ -1,0 +1,65 @@
+---
+title: Анимация
+description: Тег animation используется для плавного изменения текста
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+Использовать можно в любых сообщениях, которые изменяются через время (например в header/footer или sidebar) с помощью: `<animation:название>`
+
+![animation](/pulse/hytale/animation.gif)
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#localization</include>
+<span><include>../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.animation`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../../files/minecraft/localizations/ru_ru.yml#animation</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/minecraft/localizations/en_us.yml#animation</include></Tab>
+</Tabs>
+
+### `values`
+
+Список всех анимаций с текстом, где ключом является название, а значением - последовательный список. Анимация всегда цикличная, и как только доходит до конца, начинается с начала
+
+Генерировать анимацию можно с помощью [Birdflop](https://www.birdflop.com/resources/animtab/) или [Gradient Generator by reliances](https://starve-l.github.io/tab-animation)
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#setting</include>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.animation`</span>
+
+<include>../../../../../files/minecraft/message.yml#animation</include>
+
+<include>../../../../../parts/enable.mdx</include>
+
+### `values`
+
+Список всех анимаций с настройкой, где ключом является название
+
+#### `raw`
+
+Будет ли текст таким, которым написан т.е. **не будет** применено форматирование
+
+#### `interval`
+
+Как часто будет изменяться текст в тиках (20 тиков = 1 секунда)
+
+Вам нужно понимать, что это значение зависит от того, как часто впринципе текст показывается игроку. Для примера возьмём `header`, в котором у `ticker` будет период `20` тиков т.е. текст изменяется каждую секунду, а у нашей анимации `interval` = 5, значит текст будет изменяться через каждые 5 секунд (`period` * `interval`)
+
+Для того, чтобы анимация была плавной, рекомендуется ставить у `ticker` период равный 1, тогда изменение текста полностью зависит от `interval`
+
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#permission</include>
+<span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.animation`</span>
+
+<include>../../../../../files/minecraft/permission.yml#animation</include>
+
+<include>../../../../../parts/permission/permissionTier3.mdx</include>
+
+### `values`
+
+Список всех анимаций с их отдельными правами

@@ -1,0 +1,85 @@
+---
+title: /nickname
+description: Command to change a nickname
+authors:
+  - TheFaser
+tag: "hytale"
+---
+
+- To change another player's nickname, use `/nicknameother player`
+- To reset a nickname, type `clear` i.e. `/nickname clear`
+
+![command nickname](/pulse/hytale/commandnickname.png)
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.nickname`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../files/hytale/localizations/en_us.yml#nickname</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/hytale/localizations/ru_ru.yml#nickname</include></Tab>
+</Tabs>
+
+### `null_player`
+
+Message if the specified player is not found
+
+### `null_nickname`
+
+Message if the specified nickname cannot be used
+
+### `display`
+
+How the changed nickname will be displayed to everyone
+
+### `display_see`
+
+How the changed nickname will be displayed to a player with the `see` permission
+
+### `format`
+
+Message when changing a nickname
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `command.yml → nickname`</span>
+
+<include>../../../../files/hytale/command.yml#nickname</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `allowed_input`
+
+Allowed [regular expression](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) for the nickname
+
+<include>../../../../parts/aliases.en.mdx</include>
+
+<include>../../../../parts/destination.en.mdx</include>
+
+<include>../../../../parts/cooldown.en.mdx</include>
+
+<include>../../../../parts/sound.en.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → command.nickname`</span>
+
+<include>../../../../files/hytale/permission.yml#nickname</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `see`
+
+Permission to see the player's real nickname
+
+### `other`
+
+Permission to change another player's nickname
+
+<include>../../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../../parts/permission/sound.en.mdx</include>

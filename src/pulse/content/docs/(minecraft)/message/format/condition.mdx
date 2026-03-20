@@ -1,0 +1,70 @@
+---
+title: Условие
+description: Тег condition используется для отображения текста по определённому условию
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+Использование: `<condition:название>`
+
+![condition](/pulse/condition.png)
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#localization</include>
+<span><include>../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.condition`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../../files/minecraft/localizations/ru_ru.yml#condition</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/minecraft/localizations/en_us.yml#condition</include></Tab>
+</Tabs>
+
+### `values`
+
+Список всех условий, где ключом является название, а значением параметры с их локализацией
+
+Все параметры должны указываться в нижнем регистре, например у `player_name` ник `TheFaser`, а указывать нужно `thefaser`
+
+Во всех condition можно использовать поле `default`, которое будет использоваться, если другие значения не нашлись. Это можно воспринимать как `else` у `if` конструкции
+
+Если condition является `NUMBER`, то значения указываются в промежутках. Например condition это `%player_ping%` и определены значения для `0`, `50`, `100`, а у игрока пинг = `69`, значит локализация будет использовано из `50`
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#setting</include>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.condition`</span>
+
+<include>../../../../../files/minecraft/message.yml#condition</include>
+
+<include>../../../../../parts/enable.mdx</include>
+
+### `values`
+
+Список всех условий с настройкой, где ключом является название
+
+#### `value`
+
+Текст, который будет проверяться на значение. Это строка и она может быть любой `"%player_name% %player_world%"` или `"1234"`
+
+#### `type`
+
+Тип условия
+
+| Type               | Explanation                                  |
+|--------------------|----------------------------------------------|
+| `STRING`           | Строка, которая будет форматировариться и значение которой будет проверяться         |
+| `NUMBER`           | Число, которое будет форматироваться и парситься, значение которого проверяется в промежутке             |
+| `PERMISSION`       | Право, которое проверяется на наличие                              |
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#permission</include>
+<span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.condition`</span>
+
+<include>../../../../../files/minecraft/permission.yml#condition</include>
+
+<include>../../../../../parts/permission/permissionTier3.mdx</include>
+
+### `values`
+
+Список всех условий с их отдельными правами на отображение

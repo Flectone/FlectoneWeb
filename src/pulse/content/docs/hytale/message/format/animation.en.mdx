@@ -1,0 +1,65 @@
+---
+title: Animation
+description: The animation tag is used for smooth text transitions
+authors:
+  - TheFaser
+tag: "hytale"
+---
+It can be used in any messages that change over time (for example, in header/footer or sidebar) using: `<animation:name>`
+
+![animation](/pulse/hytale/animation.gif)
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.animation`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../../files/hytale/localizations/en_us.yml#animation</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../files/hytale/localizations/ru_ru.yml#animation</include></Tab>
+</Tabs>
+
+### `values`
+
+A list of all animations with text, where the key is the animation name and the value is a sequential list. The animation is always cyclical, and once it reaches the end, it starts over from the beginning
+
+You can generate animations using [Birdflop](https://www.birdflop.com/resources/animtab/) or [Gradient Generator by reliances](https://starve-l.github.io/tab-animation)
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.animation`</span>
+
+<include>../../../../../files/hytale/message.yml#animation</include>
+
+<include>../../../../../parts/enable.en.mdx</include>
+
+### `values`
+
+A list of all animations with settings, where the key is the animation name
+
+#### `raw`
+
+Whether the text will be displayed exactly as written, i.e., formatting will **not** be applied
+
+#### `interval`
+
+How often the text will change in ticks (20 ticks = 1 second)
+
+You need to understand that this value depends on how often the text is shown to the player in the first place. Let's take `header` as an example, where the `ticker` period is `20` ticks, meaning the text changes every second, and our animation `interval` = 5, then the text will change every 5 seconds (`period` * `interval`)
+
+For smooth animation, it is recommended to set the `ticker` period to 1, then the text change depends entirely on the `interval`
+
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.animation`</span>
+
+<include>../../../../../files/hytale/permission.yml#animation</include>
+
+<include>../../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `values`
+
+A list of all animations with their individual permissions

@@ -13,53 +13,21 @@ tag: "hytale"
 
 - Adds its own placeholders
 
-| Placeholder                                 | What it returns                                                      |
+| Placeholder                                 | Returns                                                       |
 |---------------------------------------------|----------------------------------------------------------------------|
-| `%flectonepulse_advancement%`               | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_afk%`                       | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_afk_suffix%`                | Returns [AFK suffix](/pulse/docs/hytale/command/afk/)                         |
-| `%flectonepulse_auto%`                      | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_chat_name%`                 | Returns the selected chat type, `default` by default                 |
-| `%flectonepulse_death%`                     | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_discord%`                   | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_fcolor_number%`             | Returns the player's [custom color](/pulse/docs/hytale/message/format/fcolor/)     |
-| `%flectonepulse_fcolor_out_number%`         | Returns the player's [custom OUT color](/pulse/docs/hytale/message/format/fcolor/) |
-| `%flectonepulse_fcolor_see_number%`         | Returns the player's [custom SEE color](/pulse/docs/hytale/message/format/fcolor/) |
-| `%flectonepulse_greeting%`                  | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_ip%`                        | Returns the player's IP address                                      |
-| `%flectonepulse_join%`                      | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_locale%`                    | Returns the player's current locale                                  |
-| `%flectonepulse_online%`                    | Returns the number of players on the server                          |
-| `%flectonepulse_ping%`                      | Returns the player's ping                                            |
-| `%flectonepulse_player%`                    | Returns the player's regular name                                    |
-| `%flectonepulse_quit%`                      | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_stream_prefix%`             | Returns the player's [stream prefix](/pulse/docs/hytale/message/command/stream/)     |
-| `%flectonepulse_spy_status`                 | Returns a string if spy mode is enabled, otherwise empty             |
-| `%flectonepulse_telegram%`                  | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_ip%`                        | Returns the player's IP address                                           |
+| `%flectonepulse_online%`                    | Returns the number of players on the server                             |
+| `%flectonepulse_ping%`                      | Returns the player's ping                                               |
+| `%flectonepulse_player%`                    | Returns the player's regular name                                        |
 | `%flectonepulse_tps%`                       | Returns the server TPS                                               |
-| `%flectonepulse_twitch%`                    | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_world_prefix%`              | Returns the player's [world prefix](/pulse/docs/hytale/message/format/world/)        |
-| `%flectonepulse_mute_suffix%`               | Returns the player's [mute suffix](/pulse/docs/hytale/command/mute/)                |
-| `%flectonepulse_command_ball%`              | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_ban%`               | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_broadcast%`         | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_coin%`              | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_dice%`              | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_do%`                | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_kick%`              | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_mail%`              | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_me%`                | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_mute%`              | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_poll%`              | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_reply%`             | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_rockpaperscissors%` | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_spy%`               | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_stream%`            | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_tell%`              | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_tictactoe%`         | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_translateto%`       | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_try%`               | Returns `true` if display is enabled, otherwise empty                |
-| `%flectonepulse_command_warn%`              | Returns `true` if display is enabled, otherwise empty                |
+| `%flectonepulse_mute_suffix%`               | Returns the player's [mute suffix](/pulse/docs/command/mute/)                |
+| `%flectonepulse_afk_durationx%`             | Returns the player's afk duration in seconds               |
+| `%flectonepulse_afk_durationx_formatted%`   | Returns the formatted player's afk duration in seconds               |
+| `%flectonepulse_condition_name%`            | Returns the result of the [condition](/pulse/docs/message/format/condition/)               |
+| `%flectonepulse_fcolor_number%`             | Returns the player's [custom color](/pulse/docs/message/format/fcolor/)     |
+| `%flectonepulse_fcolor_out_number%`         | Returns the player's [custom color OUT](/pulse/docs/message/format/fcolor/) |
+| `%flectonepulse_fcolor_see_number%`         | Returns the player's [custom color SEE](/pulse/docs/message/format/fcolor/) |
+| `%flectonepulse_setting_name%`              | If `setting` is a [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), its value will be returned. <br/>Otherwise, it checks [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java); if enabled, returns `yes`, otherwise `no`              |
 
 <br></br>
 

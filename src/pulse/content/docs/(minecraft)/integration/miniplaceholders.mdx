@@ -1,0 +1,55 @@
+---
+title: MiniPlaceholders
+description: Интеграция с плагином MiniPlaceholders позволяет использовать любые мини-плейсхолдеры
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+Подробнее про [мини-плейсхолдеры](https://github.com/MiniPlaceholders/MiniPlaceholders/wiki/Placeholders)
+
+<Callout type="warn" title="Предупреждение">
+    Чтобы использовать мини-плейсхолдер, его обязательно нужно обернуть в `{}`
+
+    Пример `{<server_name>}`
+</Callout>
+
+FlectonePulse также добавляет свои мини-плейсхолдеры
+
+| Плейсхолдер                                 | Что возвращает                                                       |
+|---------------------------------------------|----------------------------------------------------------------------|
+| `<flectonepulse_ip>`                        | Возвращает IP-адрес игрока                                           |
+| `<flectonepulse_online>`                    | Возвращает количество игроков на сервере                             |
+| `<flectonepulse_ping>`                      | Возвращает пинг игрока                                               |
+| `<flectonepulse_player>`                    | Возвращает обычное имя игрока                                        |
+| `<flectonepulse_tps>`                       | Возвращает TPS сервера                                               |
+| `<flectonepulse_mute_suffix>`               | Возвращает [суффикс мута](/pulse/docs/command/mute/) игрока                |
+| `<flectonepulse_afk_durationx>`             | Возвращает время бездействия игрока в секундах               |
+| `<flectonepulse_afk_durationx_formatted>`   | Возвращает отформатированное время бездействия игрока в секундах               |
+| `<flectonepulse_condition:название>`        | Возвращает результат [условия](/pulse/docs/message/format/condition/)               |
+| `<flectonepulse_fcolor:число>%`              | Возвращает [кастомный цвет](/pulse/docs/message/format/fcolor/) игрока     |
+| `<flectonepulse_fcolor_out:число>`          | Возвращает [кастомный цвет OUT](/pulse/docs/message/format/fcolor/) игрока |
+| `<flectonepulse_fcolor_see:число>`          | Возвращает [кастомный цвет SEE](/pulse/docs/message/format/fcolor/) игрока |
+| `<flectonepulse_setting:название>`          | Если `setting` является [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), то вернётся его значение. <br/>Иначе проверяется [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java), если включено то `yes`, иначе `no`              |
+| `<flectonepulse_format:'любой текст'>`          | Возвращает готовый текст, который был отформатирован внутри FlectonePulse. Можно использовать, чтобы возвращать кастомные теги, например `<flectonepulse_format:'<player_head>'>` вернёт текстуру головы игрока |
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `integration.yml → miniplaceholders`</span>
+
+<include>../../../../files/minecraft/integration.yml#miniplaceholders</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → integration.miniplaceholders`</span>
+
+<include>../../../../files/minecraft/permission.yml#miniplaceholders</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+### `use`
+
+Право для использования плейсхолдеров из MiniPlaceholders в сообщении
