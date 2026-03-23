@@ -1,10 +1,10 @@
 'use client';
 import { useRef, useState } from 'react';
-import { TextureGenerator } from '@/components/Tools/TextureGenerator/TextureGenerator/TextureGenerator';
+import { TextureGenerator } from '@/components/Tools/TextureGenerator';
 import { Trash } from 'lucide-react'
 import Title from '@/components/Title/Title';
 import { useTranslations } from 'next-intl';
-import Callout from '@/components/Pulse/Callout/Callout';
+import Callout from '@/components/Pulse/Callout';
 
 export default function TextureGeneratorPage() {
     const t = useTranslations('Tools.TextureGenerator');
