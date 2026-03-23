@@ -168,7 +168,7 @@
     "TextureGenerator": {
       "title": "Texture Generator",
       "description": "A simple tool for creating textures for Minecraft. Just upload an image, and it will create the texture for you!",
-      "warn": "The image must be 8 by 8 pixels",
+      "warn": "The height and width of the image must be a multiple of 8 (8x8, 8x16, 64x16, etc.)",
       "input": "Drag and drop an image or click",
       "drag": "Drag",
       "startGeneration": "Generate JSON",
