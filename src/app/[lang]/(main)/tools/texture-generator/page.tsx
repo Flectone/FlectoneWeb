@@ -1,10 +1,28 @@
-'use client';
-import { useRef, useState } from 'react';
 import { TextureGenerator } from '@/components/Tools/TextureGenerator';
-import { Trash } from 'lucide-react'
 import Title from '@/components/Title/Title';
 import { useTranslations } from 'next-intl';
 import Callout from '@/components/Pulse/Callout';
+import { getTranslations } from 'next-intl/server';
+
+type Props = {
+    params: Promise<{ locale: string }>;
+};
+
+export async function generateMetadata({ params }: Props) {
+    const { locale } = await params;
+
+    const t = await getTranslations({ locale, namespace: 'Metadata.Tools.TextureGenerator' });
+
+    return {
+        title: t('title'),
+        description: t('description'),
+        openGraph: {
+            title: t('title'),
+            description: t('description'),
+            locale: locale,
+        }
+    };
+}
 
 export default function TextureGeneratorPage() {
     const t = useTranslations('Tools.TextureGenerator');
