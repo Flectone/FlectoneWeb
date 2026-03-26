@@ -43,6 +43,20 @@
         "keywords": "скачать флектонпульс, скачать flectonepulse, скачать плагин на чат, скачать плагин на чат майнкрафт, скачать чат, скачать майнкрафт, скачать флектон, скачать Флектон",
         "image": "/logo.png"
       }
+    },
+    "Tools": {
+      "TextureGenerator": {
+        "title": "Генератор текстур | FlectoneTools",
+        "description": "Простой инструмент для создания текстур для Minecraft. Просто загрузите изображение, и он создаст текстуру для вас!",
+        "applicationName": "TextureGenerator",
+        "image": "/logo.png"
+      },
+      "TextAnimation": {
+        "title": "Анимация текста | FlectoneTools",
+        "description": "Удобный инструмент для генерации файлов конфигурации текстовых анимаций",
+        "applicationName": "TextAmination",
+        "image": "/logo.png"
+      }
     }
   },
   "NotFound": {
@@ -175,6 +189,27 @@
       "generation": "Обработка...",
       "previewGeneration": "Генерация превью...",
       "reset": "Сбросить"
+    },
+    "TextAnimation": {
+      "title": "Анимация текста",
+      "description": "Удобный инструмент для генерации файлов конфигурации текстовых анимаций",
+      "Settings": {
+        "text": "Текст",
+        "interval": "Частота анимации",
+        "ticks": "тиков",
+        "ms": "мс",
+        "gradientBlur": "Размытие градиента",
+        "symbols": "Символов на один цвет",
+        "colors": "Цвета",
+        "gradientMode": "Режим градиента",
+        "ltr": "Слева направо",
+        "rtl": "Справа налево",
+        "reset": "Сбросить" 
+      },
+      "Output": {
+        "frames": "Кадры анимации",
+        "interval": "Частота анимации"
+      }
     }
   }
 }

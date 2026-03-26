@@ -43,6 +43,20 @@
         "keywords": "download flectonepulse, download flectonepulse, download chat plugin, download minecraft chat plugin, download chat, download minecraft, download flectone, download flectone",
         "image": "/logo.png"
       }
+    },
+    "Tools": {
+      "TextureGenerator": {
+        "title": "Texture Generator | FlectoneTools",
+        "description": "A simple tool for creating textures for Minecraft. Just upload an image, and it will create a texture for you!",
+        "applicationName": "TextureGenerator",
+        "image": "/logo.png"
+      },
+      "TextAnimation": {
+        "title": "Text Animation | FlectoneTools",
+        "description": "A convenient tool for generating text animation configuration files",
+        "applicationName": "TextAmination",
+        "image": "/logo.png"
+      }
     }
   },
   "NotFound": {
@@ -175,6 +189,27 @@
       "generation": "Processing...",
       "previewGeneration": "Generating preview...",
       "reset": "Reset"
+    },
+    "TextAnimation": {
+      "title": "Text Animation",
+      "description": "A convenient tool for generating text animation configuration files",
+      "Settings": {
+        "text": "Text",
+        "interval": "Animation interval",
+        "ticks": "ticks",
+        "ms": "ms",
+        "gradientBlur": "Gradient blur",
+        "symbols": "Symbols per color",
+        "colors": "Colors",
+        "gradientMode": "Gradient mode",
+        "ltr": "Left to right",
+        "rtl": "Right to left",
+        "reset": "Reset" 
+      },
+      "Output": {
+        "frames": "Animation frames",
+        "interval": "Animation interval"
+      }
     }
   }
 }
