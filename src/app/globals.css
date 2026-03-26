@@ -36,7 +36,12 @@
   --color-fd-gray: hsl(0, 0%, 80%);
   --color-fd-muted-gray: hsl(0, 0%, 72%);
   --color-fd-gray-foreground: hsl(0, 0%, 15%);
+
+  --color-fd-red: #ff3030;
+  --color-fd-muted-red: rgb(231, 66, 66);
+  --color-fd-red-foreground: rgb(253, 185, 185);
 }
+
 
 .dark {
   --color-fd-foreground: #dfdfd6;
@@ -63,6 +68,10 @@
   --color-fd-gray: #2b2b2b;
   --color-fd-muted-gray: #353535;
   --color-fd-gray-foreground: hsl(0, 0%, 87%);
+
+  --color-fd-red: #fa4e4e;
+  --color-fd-muted-red: rgb(248, 96, 96);
+  --color-fd-red-foreground: rgb(255, 209, 209);
 }
 
 b {
@@ -87,4 +96,47 @@ a.inline-flex.items-center.justify-center.rounded-md.text-sm.font-medium.transit
 }
 button[aria-haspopup="dialog"] {
   color: var(--color-fd-muted-foreground);
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
+}
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  background: var(--color-fd-primary);
+  cursor: pointer;
+  margin-top: -6px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  background: var(--color-fd-primary);
+  cursor: pointer;
+  border: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: var(--color-fd-card);
+  border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: var(--color-fd-card);
+  border-radius: 4px;
 }
