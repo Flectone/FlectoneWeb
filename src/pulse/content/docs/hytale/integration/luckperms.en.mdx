@@ -18,6 +18,12 @@ Allows:
 
 <include>../../../../parts/enable.en.mdx</include>
 
+### `always_have_true`
+
+If enabled, all permissions that have `type: "TRUE"` in permission.yml will be granted to the player without any checks. This solves the issue when LuckPerms has a rule like `* false` (i.e., all permissions are disabled), but this has its own downsides:
+1. If you want to remove a `TRUE` permission from a player, you will need to change it type in permission.yml first, otherwise disabling the permission will not work in LuckPerms
+2. For commands to be suggested to players instead of showing up as red text, you need to grant their permissions separately
+
 ### `tab_sort`
 
 <Callout type="error" title="">

@@ -655,7 +655,7 @@ nickname:
 #endregion nickname
 #region online
 online:
-  enable: false
+  enable: true
   suggest_offline_players: true
   range: "PROXY"
   aliases:
@@ -855,7 +855,7 @@ tictactoe:
 #endregion tictactoe
 #region toponline
 toponline:
-  enable: false
+  enable: true
   per_page: 10
   aliases:
   - "toponline"
