@@ -1,0 +1,119 @@
+---
+title: Main methods
+description: The FlectonePulse interface is the main entry point for interacting with the project. It provides access to the dependency injection system (Google Guice) and manages the lifecycle.
+tag: "api"
+icon: SearchAlert
+---
+
+## Methods Table
+
+| Method | Returns |
+|--------|---------|
+| `get(Class<T>)` | `T` |
+| `isReady()` | `boolean` |
+| `getInjector()` | `Injector` or `null` |
+| `reload()` | `void` |
+| `closeUIs()` | `void` |
+| `initPacketAdapter()` | `void` |
+| `terminatePacketAdapter()` | `void` |
+| `terminateFailedPacketAdapter()` | `void` |
+| `throwInitException(Exception)` | `void` |
+| `onEnable()` / `onDisable()` / `reload()` | `void` |
+
+## Getting an Instance
+
+```java
+import net.flectone.pulse.FlectonePulse;
+import net.flectone.pulse.FlectonePulseAPI;
+
+FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
+```
+
+## Main Methods
+
+### `get(Class<T> type)`
+
+<Callout type="warn" title="Warning">
+    Before calling `get()`, make sure the injector is ready using `isReady()`
+</Callout>
+
+Returns an instance of the specified class via Guice. Most services are marked as `@Singleton`
+
+```java
+FLogger logger = flectonePulse.get(FLogger.class);
+MessageModule messageModule = flectonePulse.get(MessageModule.class);
+```
+
+### `isReady()`
+
+Checks if the dependency injector is initialized
+
+```java
+if (flectonePulse.isReady()) {
+    // safe to call get()
+    FLogger logger = flectonePulse.get(FLogger.class);
+    logger.info("API is ready");
+} else {
+    // FlectonePulse is not loaded yet
+}
+```
+
+### `getInjector()`
+
+Returns the `Injector` object itself (may be `null` before initialization). Usually not needed directly.
+
+### `reload()`
+
+Reloads the plugin configuration. Throws `ReloadException` on error
+
+```java
+try {
+    flectonePulse.reload();
+    getLogger().info("Plugin reloaded");
+} catch (ReloadException e) {
+    getLogger().severe("Reload error: " + e.getMessage());
+}
+```
+
+### `closeUIs()`
+
+Closes all open user interfaces (inventories, dialogs)
+
+### `throwInitException(Exception e)`
+
+Helper method to throw an `InitException` with truncation of long messages (up to 25 lines in production mode)
+
+```java
+try {
+    // dangerous operation
+    throw new RuntimeException("Very long text");
+} catch (Exception e) {
+    flectonePulse.throwInitException(e); // always throws InitException
+}
+```
+
+## `PacketAdapter` Methods
+
+Used to initialize and shut down the network adapter (called automatically)
+
+```java
+// Initialization
+flectonePulse.initPacketAdapter();
+
+// Force termination on initialization error
+flectonePulse.terminateFailedPacketAdapter();
+
+// Normal termination
+flectonePulse.terminatePacketAdapter();
+```
+
+## Internal Methods (`onEnable`, `onDisable`, `reload`)
+
+These methods are called by the plugin itself during enable/disable or reload
+
+## Notes
+
+- For 95% of tasks, you only need `get(Class)` and occasionally `reload()`
+- Always check `isReady()` before calling `get()`
+- The `PacketAdapter` and `throwInitException` methods are only needed for low-level integration
+- `ReloadException` and `InitException` require handling or propagation
