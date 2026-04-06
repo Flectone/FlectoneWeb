@@ -45,16 +45,34 @@
       }
     },
     "Tools": {
+      "Main": {
+        "title": "FlectoneTools",
+        "description": "Here are useful tools for server owners",
+        "applicationName": "FlectoneTools",
+        "keywords": "flectone tools, Flectone tools, flectone tools, tools for minecraft, tools for minecraft, texture generator, text animation, prefix generator, player info"
+      },
       "TextureGenerator": {
         "title": "Texture Generator | FlectoneTools",
-        "description": "A simple tool for creating textures for Minecraft. Just upload an image, and it will create a texture for you!",
+        "description": "description",
         "applicationName": "TextureGenerator",
         "image": "/logo.png"
       },
       "TextAnimation": {
         "title": "Text Animation | FlectoneTools",
-        "description": "A convenient tool for generating text animation configuration files",
+        "description": "description",
         "applicationName": "TextAmination",
+        "image": "/logo.png"
+      },
+      "PrefixGenerator": {
+        "title": "Prefix Generator | FlectoneTools",
+        "description": "description",
+        "applicationName": "PrefixGenerator",
+        "image": "/logo.png"
+      },
+      "UuidExtractor": {
+        "title": "UUID Extractor | FlectoneTools",
+        "description": "description",
+        "applicationName": "UuidExtractor",
         "image": "/logo.png"
       }
     }
@@ -179,6 +197,31 @@
     }
   },
   "Tools": {
+    "Main": {
+      "title": "Flectone Tools",
+      "description": "Here are useful tools for server owners",
+      "TextureGenerator": {
+        "title": "Texture Generator",
+        "description": "Description"
+      },
+      "TextAnimation": {
+        "title": "Text Animation",
+        "description": "Description"
+      },
+      "PrefixGenerator": {
+        "title": "Prefix Generator",
+        "description": "Description"
+      },
+      "UuidExtractor": {
+        "title": "UUID Extractor",
+        "description": "Description"
+      }
+    },
+    "Form": {
+      "InputText": {
+        "placeholder": "Enter text"
+      }
+    },
     "TextureGenerator": {
       "title": "Texture Generator",
       "description": "A simple tool for creating textures for Minecraft. Just upload an image, and it will create the texture for you!",
@@ -204,11 +247,58 @@
         "gradientMode": "Gradient mode",
         "ltr": "Left to right",
         "rtl": "Right to left",
-        "reset": "Reset" 
+        "reset": "Reset"
       },
       "Output": {
         "frames": "Animation frames",
         "interval": "Animation interval"
+      }
+    },
+    "PrefixGenerator": {
+      "title": "Prefix Generator",
+      "description": "Create a prefix",
+      "Settings": {
+        "text": "Text",
+        "font": "Font",
+        "padding": "Padding",
+        "vertical": "Vertical",
+        "horizontal": "Horizontal",
+        "gradientAngle": "Gradient angle",
+        "grid": "8px grid",
+        "colors": "Colors",
+        "background": "Background",
+        "textOffset": "Text offset",
+        "textShadow": "Text shadow",
+        "horizontalOffset": "Horizontal offset",
+        "verticalOffset": "Vertical offset",
+        "shadowOpacity": "Shadow opacity",
+        "shadowColor": "Shadow color",
+        "stroke": "Stroke",
+        "display": "Display",
+        "underText": "Under text",
+        "overText": "Over text",
+        "strokeColor": "Stroke color",
+        "thicknessStroke": "Stroke thickness",
+        "same": "Same on each side",
+        "up": "Top",
+        "bottom": "Bottom",
+        "right": "Right",
+        "left": "Left"
+      },
+      "reset": "Reset",
+      "download": "Download PNG"
+    },
+    "UuidExtractor": {
+      "title": "UUID Extractor",
+      "description": "Description",
+      "nickname": "Nickname",
+      "onlineUuid": "Online UUID",
+      "offlineUuid": "Offline UUID",
+      "Errors": {
+        "enterNickname": "Enter nickname",
+        "dataError": "Error processing data",
+        "playerNotFound": "Player not found",
+        "searchError": "An error occurred during search"
       }
     }
   }

@@ -45,16 +45,34 @@
       }
     },
     "Tools": {
+      "Main": {
+        "title": "FlectoneTools",
+        "description": "Здесь собраны полезные инструменты для владельцев серверов",
+        "applicationName": "FlectoneTools",
+        "keywords": "инструменты флектон, инструменты Флектон, инструменты flectone, инструменты для майнкрафт, инструменты для minecraft, генератор текстур, анимация текста, генератор префиксов, информация о игроке"
+      },
       "TextureGenerator": {
         "title": "Генератор текстур | FlectoneTools",
-        "description": "Простой инструмент для создания текстур для Minecraft. Просто загрузите изображение, и он создаст текстуру для вас!",
+        "description": "описание",
         "applicationName": "TextureGenerator",
         "image": "/logo.png"
       },
       "TextAnimation": {
         "title": "Анимация текста | FlectoneTools",
-        "description": "Удобный инструмент для генерации файлов конфигурации текстовых анимаций",
+        "description": "описание",
         "applicationName": "TextAmination",
+        "image": "/logo.png"
+      },
+      "PrefixGenerator": {
+        "title": "Генератор префиксов | FlectoneTools",
+        "description": "описание",
+        "applicationName": "PrefixGenerator",
+        "image": "/logo.png"
+      },
+      "UuidExtractor": {
+        "title": "Получение UUID | FlectoneTools",
+        "description": "описание",
+        "applicationName": "UuidExtractor",
         "image": "/logo.png"
       }
     }
@@ -179,9 +197,34 @@
     }
   },
   "Tools": {
+    "Main": {
+      "title": "Flectone Tools",
+      "description": "Здесь собраны полезные инструменты для владельцев серверов",
+      "TextureGenerator": {
+        "title": "Генератор текстур",
+        "description": "Описание"
+      },
+      "TextAnimation": {
+        "title": "Анимация текста",
+        "description": "Описание"
+      },
+      "PrefixGenerator": {
+        "title": "Геренатор префиксов",
+        "description": "Описание"
+      },
+      "UuidExtractor": {
+        "title": "Получение UUID",
+        "description": "Описание"
+      }
+    },
+    "Form": {
+      "InputText": {
+        "placeholder": "Введите текст"
+      }
+    },
     "TextureGenerator": {
       "title": "Генератор текстур",
-      "description": "Простой инструмент для создания текстур для Minecraft. Просто загрузите изображение, и он создаст текстуру для вас!",
+      "description": "Описание",
       "warn": "Высота и ширина изображения должны быть кратны 8 (8x8, 8x16, 64x16 и т.д.)",
       "input": "Перетащите изображение или нажмите",
       "drag": "Отпустите",
@@ -192,7 +235,7 @@
     },
     "TextAnimation": {
       "title": "Анимация текста",
-      "description": "Удобный инструмент для генерации файлов конфигурации текстовых анимаций",
+      "description": "Описание",
       "Settings": {
         "text": "Текст",
         "interval": "Частота анимации",
@@ -204,11 +247,58 @@
         "gradientMode": "Режим градиента",
         "ltr": "Слева направо",
         "rtl": "Справа налево",
-        "reset": "Сбросить" 
+        "reset": "Сбросить"
       },
       "Output": {
         "frames": "Кадры анимации",
         "interval": "Частота анимации"
+      }
+    },
+    "PrefixGenerator": {
+      "title": "Геренатор префиксов",
+      "description": "Описание",
+      "Settings": {
+        "text": "Текст",
+        "font": "Шрифт",
+        "padding": "Отступ",
+        "vertical": "По вертикали",
+        "horizontal": "По горизонтали",
+        "gradientAngle": "Угол градиента",
+        "grid": "8px сетка",
+        "colors": "Цвета",
+        "background": "Фон",
+        "textOffset": "Смещение текста",
+        "textShadow": "Тень текста",
+        "horizontalOffset": "Смещение по горизонтали",
+        "verticalOffset": "Смещение по горизонтали",
+        "shadowOpacity": "Прозрачность тени",
+        "shadowColor": "Цвет тени",
+        "stroke": "Обводка",
+        "display": "Отображение",
+        "underText": "Под текстом",
+        "overText": "Поверх текста",
+        "strokeColor": "Цвет обводки",
+        "thicknessStroke": "Толщина обводки",
+        "same": "Одинаковая с каждой стороны",
+        "up": "Верх",
+        "bottom": "Низ",
+        "right": "Право",
+        "left": "Лево"
+      },
+      "reset": "Сбросить",
+      "download": "Скачать PNG"
+    },
+    "UuidExtractor": {
+      "title": "Получение UUID",
+      "description": "Описание",
+      "nickname": "Никнейм",
+      "onlineUuid": "Онлайн UUID",
+      "offlineUuid": "Оффлайн UUID",
+      "Errors": {
+        "enterNickname": "Введите никнейм",
+        "dataError": "Ошибка при обработке данных",
+        "playerNotFound": "Игрок не найден",
+        "searchError": "Произошла ошибка при поиске"
       }
     }
   }
