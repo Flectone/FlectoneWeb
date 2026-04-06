@@ -28,7 +28,7 @@ export default function TextureGeneratorPage() {
     const t = useTranslations('Tools.TextureGenerator');
 
     return (
-        <div className="w-7xl flex gap-4 flex-col items-center justify-center">
+        <div className="w-full max-w-7xl flex gap-4 flex-col justify-center my-4">
             <Title text={t('title')} />
             <p className='w-full'>{t('description')}</p>
             <Callout margin='none' title='' type='warn'>{t('warn')}</Callout>

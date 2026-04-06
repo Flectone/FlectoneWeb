@@ -122,10 +122,10 @@ export const TextureGenerator = () => {
     return (
         <div className="flex flex-col w-full gap-4 relative">
             <div className="flex flex-col gap-4">
-                <div className='flex transition-transform justify-center items-center bg-[url(/assets/minecraftclouds.jpg)] bg-top w-full p-8 rounded-2xl border-2'>
+                <div className='bg-[url("/assets/minecraftjungle.png")] bg-bottom flex transition-transform overflow-hidden justify-center items-center w-full p-8 rounded-2xl border-2'>
                     <MinecraftTab tabText={<Preview inputLabel={t('input')} inputClassName='w-44' inputActiveLabel={t('drag')} />} />
                 </div>
-                <div className='font-[Minecraft] pt-8 flex relative overflow-hidden transition-transform justify-start items-center bg-bottom bg-[url(/assets/minecraftlandscape.jpg)] w-full rounded-2xl border-2'>
+                <div className='font-[Minecraft] bg-[url("/assets/minecraftjungle2.png")] bg-center bg-cover pt-8 flex relative overflow-hidden transition-transform justify-start items-center w-full rounded-2xl border-2'>
                     <div className='flex flex-col pl-1 w-fit pr-16 h-fit mb-5 bg-black/60 items-start justify-end gap-2'>
                         <div className='flex items-end gap-1'>
                             <Preview inputClassName='py-1.5' />

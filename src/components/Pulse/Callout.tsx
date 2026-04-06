@@ -19,10 +19,10 @@ const typeStyles: Record<CalloutProps["type"], string> = {
 }
 
 const typeIcons: Record<CalloutProps["type"], ReactNode> = {
-  info: <FaInfoCircle className='w-[1em] text-fd-info' />,
-  warn: <TiWarning className='w-[1em] text-fd-warning' />,
-  idea: <IoMdBulb className='w-[1em] text-fd-success' />,
-  error: <BiSolidErrorAlt className='w-[1em] text-fd-error' />
+  info: <FaInfoCircle className='w-[1em] text-fd-info shrink-0' />,
+  warn: <TiWarning className='w-[1em] text-fd-warning shrink-0' />,
+  idea: <IoMdBulb className='w-[1em] text-fd-success shrink-0' />,
+  error: <BiSolidErrorAlt className='w-[1em] text-fd-error shrink-0' />
 }
 
 export default function Callout({ type, title, children, margin = 'normal' }: CalloutProps) {

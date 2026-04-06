@@ -1,3 +1,4 @@
+'use client'
 import { ReactNode } from "react"
 
 interface MinecraftTabProps {
@@ -19,7 +20,7 @@ export default function MinecraftTab({ tabText }: MinecraftTabProps) {
                         <div className='flex h-full items-center'>
                             <img className='h-full mr-0.5' src={`https://s.namemc.com/2d/skin/face.png?id=${user.id}&scale=4`} />
                             <span className='bg-[#96F896] [box-shadow:1.2px_1.2px_0_#303631] w-1 h-full mr-2'></span>
-                            <p className='text-[1em] [text-shadow:1.2px_1.2px_0px_#212F38] text-[#85CCF7]!'>{user.name}</p>
+                            <p className='text-[1.28em] -mt-[3.2px] [text-shadow:1.2px_1.2px_0px_#212F38] text-[#85CCF7]!'>{user.name}</p>
                         </div>
                         <div className='mr-0.5 ml-2 flex items-end gap-0.5'>
                             {[0.125, 0.25, 0.375, 0.5, 0.625].map((h, i) => (
@@ -30,7 +31,7 @@ export default function MinecraftTab({ tabText }: MinecraftTabProps) {
                 ))}
             </div>
             <div className='flex justify-center w-full mt-1'>
-                <p className='text-[0.8em] [text-shadow:1.2px_1.2px_0px_#212F38] text-[#85CCF7]!'>
+                <p className='text-[1.28em] [text-shadow:1.2px_1.2px_0px_#212F38] text-[#85CCF7]!'>
                     <b className='font-normal text-[#ABD5E3]!'>TPS</b> 20.0, <b className='font-normal text-[#ABD5E3]!'>Online</b> 3
                 </p>
             </div>

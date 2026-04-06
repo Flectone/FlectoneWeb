@@ -7,19 +7,17 @@
 
 @font-face {
   font-family: 'Minecraft';
-  src: url('/fonts/minecraft.ttf') format('truetype');
+  src: url('/fonts/MojanglesNormal.woff2') format('woff2');
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'MinecraftBold';
+  src: url('/fonts/MojanglesBold.woff2') format('woff2');
+  font-display: block;
 }
 
 @theme {
-  @keyframes apperance {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
   --color-fd-primary: hsl(216, 49%, 44%);
   --color-fd-muted-primary: hsl(216, 49%, 38%);
   --color-fd-primary-foreground: hsl(216, 49%, 95%);
@@ -40,6 +38,22 @@
   --color-fd-red: #ff3030;
   --color-fd-muted-red: rgb(231, 66, 66);
   --color-fd-red-foreground: rgb(253, 185, 185);
+
+--animate-gradient-flow: gradient-flow 2s linear infinite;
+
+  @keyframes gradient-flow {
+    from { background-position: 200% center; }
+    to { background-position: -200% center; }
+  }
+
+  @keyframes apperance {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
 
 
@@ -70,7 +84,7 @@
   --color-fd-gray-foreground: hsl(0, 0%, 87%);
 
   --color-fd-red: #fa4e4e;
-  --color-fd-muted-red: rgb(248, 96, 96);
+  --color-fd-muted-red: #ffa1a1;
   --color-fd-red-foreground: rgb(255, 209, 209);
 }
 
@@ -89,6 +103,14 @@ p {
 
 div[data-radix-popper-content-wrapper=""]{
   margin: 4px;
+}
+
+canvas {
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
 }
 
 a.inline-flex.items-center.justify-center.rounded-md.text-sm.font-medium.transition-colors.duration-100  {
@@ -140,3 +162,24 @@ input[type="range"]::-moz-range-track {
   background: var(--color-fd-card);
   border-radius: 4px;
 }
+
+input[type="checkbox"] {
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  border-radius: 4px;
+  background-color: var(--color-fd-gray);
+  cursor: pointer;
+  
+}
+input[type="checkbox"]:checked:hover {
+  background-color: var(--color-fd-muted-primary);
+}
+input[type="checkbox"]:hover {
+  background-color: var(--color-fd-muted-gray);
+}
+input[type="checkbox"]:checked {
+  background-color: var(--color-fd-primary);
+}
+
+
