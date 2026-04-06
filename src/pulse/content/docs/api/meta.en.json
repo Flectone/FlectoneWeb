@@ -3,5 +3,11 @@
   "title": "API",
   "icon": "Cable",
   "tag": "api",
-  "description": "Plugin API Documentation"
+  "description": "API Documentation",
+  "pages": [
+    "---API Documentation---",
+    "index",
+    "methods",
+    "events"
+  ]
 }
