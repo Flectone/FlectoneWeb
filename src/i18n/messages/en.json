@@ -53,25 +53,25 @@
       },
       "TextureGenerator": {
         "title": "Texture Generator | FlectoneTools",
-        "description": "description",
+        "description": "Allows you to turn any image into a ready-made Minecraft texture by generating a JSON model. Simply upload your image, and the tool will automatically generate the texture as a JSON model file. Copy the finished result and place it into the images folder of the FlectonePulse plugin, after which the texture can be used immediately on your server. Full documentation and examples: https://flectone.net/pulse/docs/message/format/object",
         "applicationName": "TextureGenerator",
         "image": "/logo.png"
       },
       "TextAnimation": {
         "title": "Text Animation | FlectoneTools",
-        "description": "description",
+        "description": "Creates animated texts with flicker, rainbow, wave, and letter-by-letter appearance effects. Adjust the speed and colors, and the tool will generate ready-to-use settings. Copy them into your plugin (e.g., FlectonePulse). Full documentation and examples: https://flectone.net/pulse/docs/message/format/animation",
         "applicationName": "TextAmination",
         "image": "/logo.png"
       },
       "PrefixGenerator": {
         "title": "Prefix Generator | FlectoneTools",
-        "description": "description",
+        "description": "A visual editor for creating colored prefixes with gradients, symbols, and separators. The tool generates a ready-made prefix image that you can download and use anywhere, for example, in a Resource Pack, on social media, in videos, or for server branding",
         "applicationName": "PrefixGenerator",
         "image": "/logo.png"
       },
       "UuidExtractor": {
         "title": "UUID Extractor | FlectoneTools",
-        "description": "description",
+        "description": "Finds a player's UUID by username. Supports offline and online modes. You can also generate a random UUID and copy the result",
         "applicationName": "UuidExtractor",
         "image": "/logo.png"
       }
@@ -198,23 +198,23 @@
   },
   "Tools": {
     "Main": {
-      "title": "Flectone Tools",
-      "description": "Here are useful tools for server owners",
+      "title": "FlectoneTools",
+      "description": "A set of online tools for Minecraft server owners. Everything is free, works in your browser, and requires no installation. Helps quickly create resources for plugins, customize designs, and perform technical operations",
       "TextureGenerator": {
         "title": "Texture Generator",
-        "description": "Description"
+        "description": "Converts any image into a Minecraft texture and generates a JSON model"
       },
       "TextAnimation": {
         "title": "Text Animation",
-        "description": "Description"
+        "description": "Creates animated messages with flicker, rainbow, wave, and letter-by-letter appearance effects"
       },
       "PrefixGenerator": {
         "title": "Prefix Generator",
-        "description": "Description"
+        "description": "Builds prefixes using a visual editor. Add icons (symbols/Unicode) and colored text"
       },
       "UuidExtractor": {
         "title": "UUID Extractor",
-        "description": "Description"
+        "description": "Finds a player's UUID by username for Java Edition. Supports offline and online modes"
       }
     },
     "Form": {
@@ -224,8 +224,8 @@
     },
     "TextureGenerator": {
       "title": "Texture Generator",
-      "description": "A simple tool for creating textures for Minecraft. Just upload an image, and it will create the texture for you!",
-      "warn": "The height and width of the image must be a multiple of 8 (8x8, 8x16, 64x16, etc.)",
+      "description": "Allows you to turn any image into a ready-made Minecraft texture by generating a JSON model. Simply upload your image, and the tool will automatically generate the texture as a JSON model file. Copy the finished result and place it into the images folder of the FlectonePulse plugin, after which the texture can be used immediately on your server. Full documentation and examples: https://flectone.net/pulse/docs/message/format/object",
+      "warn": "Image dimensions must be multiples of 8 (e.g., 16x16, 32x32, 64x16, 64x32, etc.). The larger the image, the longer it will take to convert",
       "input": "Drag and drop an image or click",
       "drag": "Drag",
       "startGeneration": "Generate JSON",
@@ -235,7 +235,7 @@
     },
     "TextAnimation": {
       "title": "Text Animation",
-      "description": "A convenient tool for generating text animation configuration files",
+      "description": "Creates animated texts with flicker, rainbow, wave, and letter-by-letter appearance effects. Adjust the speed and colors, and the tool will generate ready-to-use settings. Copy them into your plugin (e.g., FlectonePulse). Full documentation and examples: https://flectone.net/pulse/docs/message/format/animation",
       "Settings": {
         "text": "Text",
         "interval": "Animation interval",
@@ -256,7 +256,7 @@
     },
     "PrefixGenerator": {
       "title": "Prefix Generator",
-      "description": "Create a prefix",
+      "description": "A visual editor for creating colored prefixes with gradients, symbols, and separators. The tool generates a ready-made prefix image that you can download and use anywhere, for example, in a Resource Pack, on social media, in videos, or for server branding",
       "Settings": {
         "text": "Text",
         "font": "Font",
@@ -290,7 +290,7 @@
     },
     "UuidExtractor": {
       "title": "UUID Extractor",
-      "description": "Description",
+      "description": "Finds a player's UUID by username. Supports offline and online modes. You can also generate a random UUID and copy the result",
       "nickname": "Nickname",
       "onlineUuid": "Online UUID",
       "offlineUuid": "Offline UUID",
