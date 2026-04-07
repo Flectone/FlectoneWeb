@@ -32,14 +32,14 @@ export default function ToolsPage() {
 
     return (
         <div className="w-full max-w-7xl flex gap-4 flex-col justify-center my-4">
-            <div className="flex w-full gap-2 items-center">
-                <div className="p-1.5 rounded-lg bg-fd-primary-foreground border-fd-primary text-fd-primary border-4">
-                    <Hammer className="" size={3 + 'em'} fill="var(--color-fd-primary)" strokeWidth={1 + 'px'} />
-                </div>
-                <div>
+            <div className="flex flex-col w-full gap-2 justify-center">
+                <div className="flex gap-2 items-center">
+                    <div className="p-1.5 flex rounded-lg bg-fd-primary-foreground border-fd-primary text-fd-primary border-4">
+                        <Hammer className="" size={1.75 + 'em'} fill="var(--color-fd-primary)" strokeWidth={1 + 'px'} />
+                    </div>
                     <Title text={t('title')} />
-                    <p className="w-full">{t('description')}</p>
                 </div>
+                <p className="w-full">{t('description')}</p>
             </div>
             <div className="w-full grid grid-cols-3 max-xl:grid-cols-2 max-md:grid-cols-1 gap-4">
                 <Card className="w-full h-72 max-[52rem]:w-full max-[52rem]:h-62 max-[64rem]:h-52 not-dark:border duration-100 p-6 max-sm:p-4 backdrop-blur-3xl 
