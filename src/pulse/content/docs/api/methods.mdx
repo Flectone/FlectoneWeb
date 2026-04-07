@@ -1,0 +1,120 @@
+---
+title: Основные методы
+description: Интерфейс FlectonePulse является главной точкой входа для взаимодействия с проектом. Он предоставляет доступ к системе внедрения зависимостей (Google Guice) и управляет жизненным циклом.
+tag: "api"
+icon: SearchAlert
+---
+
+## Таблица методов
+
+| Метод | Возвращает |
+|-------|------------|
+| `get(Class<T>)` | `T` |
+| `isReady()` | `boolean` |
+| `getInjector()` | `Injector` или `null` |
+| `reload()` | `void` |
+| `closeUIs()` | `void` |
+| `initPacketAdapter()` | `void` |
+| `terminatePacketAdapter()` | `void` |
+| `terminateFailedPacketAdapter()` | `void` |
+| `throwInitException(Exception)` | `void` |
+| `onEnable()` / `onDisable()` / `reload()` | `void` |
+
+## Получение экземпляра
+
+```java
+import net.flectone.pulse.FlectonePulse;
+import net.flectone.pulse.FlectonePulseAPI;
+
+FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
+```
+
+## Основные методы
+
+### `get(Class<T> type)`
+
+
+<Callout type="warn" title="Предупреждение">
+    Перед вызовом `get()` убедись, что инжектор готов, используя `isReady()`
+</Callout>
+
+Возвращает экземпляр указанного класса через Guice. Большинство сервисов помечены как `@Singleton`
+
+```java
+FLogger logger = flectonePulse.get(FLogger.class);
+MessageModule messageModule = flectonePulse.get(MessageModule.class);
+```
+
+### `isReady()`
+
+Проверяет, инициализирован ли инжектор зависимостей
+
+```java
+if (flectonePulse.isReady()) {
+    // безопасно вызываем get()
+    FLogger logger = flectonePulse.get(FLogger.class);
+    logger.info("API готов к работе");
+} else {
+    // FlectonePulse ещё не загружен
+}
+```
+
+### `getInjector()`
+
+Возвращает сам объект `Injector` (может быть `null` до инициализации). Обычно не требуется напрямую
+
+### `reload()`
+
+Перезагружает конфигурацию плагина. Выбрасывает `ReloadException` при ошибке
+
+```java
+try {
+    flectonePulse.reload();
+    getLogger().info("Плагин перезагружен");
+} catch (ReloadException e) {
+    getLogger().severe("Ошибка перезагрузки: " + e.getMessage());
+}
+```
+
+### `closeUIs()`
+
+Закрывает все открытые пользовательские интерфейсы (инвентари, диалоги)
+
+### `throwInitException(Exception e)`
+
+Вспомогательный метод для выброса `InitException` с усечением длинных сообщений (до 25 строк в production-режиме)
+
+```java
+try {
+    // опасная операция
+    throw new RuntimeException("Очень длинный текст");
+} catch (Exception e) {
+    flectonePulse.throwInitException(e); // всегда выбрасывает InitException
+}
+```
+
+## Методы `PacketAdapter`
+
+Используются для инициализации и завершения работы сетевого адаптера (вызываются автоматически)
+
+```java
+// Инициализация
+flectonePulse.initPacketAdapter();
+
+// Принудительное завершение при ошибке инициализации
+flectonePulse.terminateFailedPacketAdapter();
+
+// Нормальное завершение
+flectonePulse.terminatePacketAdapter();
+```
+
+## Внутренние методы (`onEnable`, `onDisable`, `reload`)
+
+Эти методы вызываются самим плагином во время включения/выключения или перезагрузки
+
+## Примечания
+
+- Для 95% задач вам достаточно `get(Class)` и изредка `reload()`
+- Всегда проверяйте `isReady()` перед вызовом `get()`
+- Методы `PacketAdapter` и `throwInitException` нужны только для низкоуровневой интеграции
+- Исключения `ReloadException` и `InitException` требуют обработки или проброса

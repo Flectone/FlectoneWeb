@@ -1,10 +1,11 @@
 ---
-title: API
-description: FlectonePulse is a powerful Minecraft plugin that allows you to customize server messages, chat, commands, and integrations. It supports Bukkit, Spigot, Paper, Purpur, Folia, BungeeCord, Velocity, and Fabric platforms. It uses Google Guice for dependency injection, with most classes (except models) marked with the @Singleton annotation.
+title: Connection
+description: Instructions for connecting the FlectonePulse API to your project. Example of integration with a Bukkit plugin and obtaining services via Guice
 tag: "api"
+icon: Plug
 ---
 
-# Connecting Dependency
+## Connecting Dependency
 
 FlectonePulse is available in Maven Central. Below are the configurations for connecting in a project via Maven, Gradle (Groovy), or Gradle (Kotlin DSL).
 
@@ -82,7 +83,7 @@ For snapshot versions:
 </Tabs>
 
 
-# Example for Bukkit
+## Example for Bukkit
 
 An example of a Bukkit plugin using FlectonePulse to output the message "Hello from FlectonePulse".
 
@@ -110,7 +111,7 @@ public class MyPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if (Bukkit.getPluginManager().getPlugin("FlectonePulse") != null) {
+        if (Bukkit.getPluginManager().isPluginEnabled("FlectonePulse")) {
             FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
 
             FLogger fLogger = flectonePulse.get(FLogger.class);
@@ -120,24 +121,7 @@ public class MyPlugin extends JavaPlugin {
 }
 ```
 
-# Key API Methods
-
-```java
-FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
-
-// Retrieve a singleton instance of the specified class via Guice dependency injection
-// Class<?> clazz = ...
-// flectonePulse.get(clazz);
-FLogger fLogger = flectonePulse.get(FLogger.class);
-
-// Check if the injector is ready for operation
-flectonePulse.isReady();
-
-// Reloads the plugin, throwing a `ReloadException` on errors
-flectonePulse.reload();
-```
-
-# Notes
+## Notes
 
 - Ensure that FlectonePulse is installed on the server and listed as a softdepend in `plugin.yml`.
 - Use `isReady()` to check the readiness of the injector before calling `get()`.

@@ -3,5 +3,11 @@
   "title": "API",
   "icon": "Cable",
   "tag": "api",
-  "description": "Документация по API плагина"
+  "description": "Документация по API",
+  "pages": [
+    "---Документация по API---",
+    "index",
+    "methods",
+    "events"
+  ]
 }
