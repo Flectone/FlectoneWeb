@@ -184,7 +184,7 @@ export default function TextAnimation() {
             <div className="w-1/3 max-lg:w-full flex flex-col gap-4">
                 <div
                     onClick={() => inputRef.current?.focus()}
-                    className="w-full shadow-md bg-[url('/assets/minecraftclouds.png')] p-4 flex justify-center items-center rounded-2xl border grow"
+                    className="w-full shadow-md bg-[url('/assets/minecraftclouds.png')] p-4 flex justify-center items-center rounded-2xl border"
                 >
                     <MinecraftTab tabText={
                         <div className="relative z-0 select-none flex flex-wrap justify-center px-4">
