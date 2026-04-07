@@ -29,7 +29,7 @@ export async function GET(request: { url: string | URL }) {
     return Response.json({
       status: 404,
       nickname: username,
-      uuid: "Игрока не существует",
+      uuid: "",
       offlineUuid: offlineUuid,
       headSrc: null,
     });

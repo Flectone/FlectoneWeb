@@ -32,7 +32,7 @@ export default function UuidExtractor() {
             const response = await fetch(`/apis/mojang/info?username=${nickname}`);
 
             if (!response.ok) {
-                console.error(`Ошибка при запросе: ${response.statusText}`);
+                console.error(`Error request: ${response.statusText}`);
                 return null;
             }
 
@@ -46,7 +46,7 @@ export default function UuidExtractor() {
             };
             return JSON.stringify(result);
         } catch (error) {
-            console.error("Ошибка сети или парсинга:", error);
+            console.error("Network or parsing error:", error);
             return null;
         }
     }
@@ -136,7 +136,7 @@ export default function UuidExtractor() {
                 <div className="w-full flex flex-col gap-2 justify-end">
                     <div>
                         <p>{t('onlineUuid')}:</p>
-                        <TextOutput text={data.uuid} />
+                        <TextOutput text={data.status === 200 ? data.uuid : t('Errors.playerNotFound')} />
                     </div>
                     <div>
                         <p>{t('offlineUuid')}:</p>
