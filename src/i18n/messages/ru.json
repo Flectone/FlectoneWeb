@@ -115,6 +115,9 @@
     "Chat": {
       "description": "Отец FlectonePulse, но проект был закрыт",
       "imagePath": "/chat/chat-ru.svg"
+    },
+    "Tools": {
+      "description": "Инструменты для разработчиков серверов"
     }
   },
   "Members": {

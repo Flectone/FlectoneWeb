@@ -115,6 +115,9 @@
     "Chat": {
       "description": "Father of FlectonePulse, but it's closed",
       "imagePath": "/chat/chat-en.svg"
+    },
+    "Tools": {
+      "description": "Tools for server developers"
     }
   },
   "Members": {
