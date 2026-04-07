@@ -29,7 +29,7 @@ export default function TabAnimationPage() {
     return (
         <div className="w-full max-w-7xl flex gap-4 flex-col justify-center my-4">
             <Title text={t('title')} />
-            <p>{t('description')}</p>
+            <p>{t('description')} <a target="blank" className="text-fd-primary hover:text-fd-muted-primary transition-colors duration-75" href="https://flectone.net/pulse/docs/message/format/animation">{t('fullDocs')}</a></p>
             <TextAnimation />
         </div>
     )

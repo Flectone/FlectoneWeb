@@ -235,7 +235,8 @@
     },
     "TextAnimation": {
       "title": "Text Animation",
-      "description": "Creates animated texts with flicker, rainbow, wave, and letter-by-letter appearance effects. Adjust the speed and colors, and the tool will generate ready-to-use settings. Copy them into your plugin (e.g., FlectonePulse). Full documentation and examples: https://flectone.net/pulse/docs/message/format/animation",
+      "description": "Creates animated texts with flicker, rainbow, wave, and letter-by-letter appearance effects. Adjust the speed and colors, and the tool will generate ready-to-use settings. Copy them into your plugin (e.g., FlectonePulse).",
+      "fullDocs": "Full documentation and examples",
       "Settings": {
         "text": "Text",
         "interval": "Animation interval",
