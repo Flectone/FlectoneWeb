@@ -294,6 +294,7 @@
       "nickname": "Nickname",
       "onlineUuid": "Online UUID",
       "offlineUuid": "Offline UUID",
+      "randomUuid": "Random UUID",
       "Errors": {
         "enterNickname": "Enter nickname",
         "dataError": "Error processing data",

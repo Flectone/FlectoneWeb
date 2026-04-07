@@ -294,6 +294,7 @@
       "nickname": "Никнейм",
       "onlineUuid": "Онлайн UUID",
       "offlineUuid": "Оффлайн UUID",
+      "randomUuid": "Случайный UUID",
       "Errors": {
         "enterNickname": "Введите никнейм",
         "dataError": "Ошибка при обработке данных",

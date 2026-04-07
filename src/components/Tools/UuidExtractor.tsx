@@ -51,8 +51,9 @@ export default function UuidExtractor() {
         }
     }
 
-    async function getUUID() {
-        if (!nickname.trim()) {
+    async function getUUID(nick: string | void) {
+        const usedNickname = nick ? nick : nickname
+        if (!usedNickname.trim()) {
             setError(t('Errors.enterNickname'));
             return;
         }
@@ -68,13 +69,12 @@ export default function UuidExtractor() {
         });
 
         try {
-            const res = await getMinecraftInfoByNickname(nickname);
+            const res = await getMinecraftInfoByNickname(usedNickname);
 
             if (res && typeof res === 'string') {
                 try {
                     const parsedData = JSON.parse(res) as Data;
                     setData(parsedData);
-                    console.log(parsedData.offlineUuid)
                 } catch (parseError) {
                     setError(t('Errors.dataError'));
                     console.error(parseError);
@@ -90,6 +90,12 @@ export default function UuidExtractor() {
         }
     }
 
+    function randomNickname() {
+        const randomNickname = Math.random().toString(36).substring(2, 7)
+        setNickname(randomNickname)
+        getUUID(randomNickname)
+    }
+
     return (
         <div className="w-full flex flex-col gap-4">
             <div className="bg-fd-article p-6 gap-2 flex flex-col border shadow-md rounded-2xl">
@@ -99,11 +105,10 @@ export default function UuidExtractor() {
                         onChange={(e) => setNickname(e.target.value)}
                         value={nickname}
                         onKeyDown={(e) => e.key === 'Enter' && getUUID()}
-                        buttonClick={getUUID}
+                        buttonClick={() => { getUUID() }}
                         disabled={loading}
                     />
                 </div>
-
             </div>
 
             {error && (
@@ -144,7 +149,15 @@ export default function UuidExtractor() {
                     </div>
                 </div>
             </div>
-
+            <div className="flex justify-end">
+                <button
+                    onClick={randomNickname}
+                    disabled={loading}
+                    className="bg-fd-gray transition w-fit px-3 py-2 rounded-lg cursor-pointer hover:bg-fd-muted-gray"
+                >
+                    {t('randomUuid')}
+                </button>
+            </div>
         </div >
     )
 }
