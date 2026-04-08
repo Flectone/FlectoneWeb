@@ -235,7 +235,10 @@
       "startGeneration": "Generate JSON",
       "generation": "Processing...",
       "previewGeneration": "Generating preview...",
-      "reset": "Reset"
+      "reset": "Reset",
+      "Errors": {
+        "422": "The image resolution must be a multiple of 8"
+      }
     },
     "TextAnimation": {
       "title": "Text Animation",

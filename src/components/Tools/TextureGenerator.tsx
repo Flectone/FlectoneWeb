@@ -47,7 +47,7 @@ export const TextureGenerator = () => {
         startPreviewTransition(async () => {
             const result = await imageToHeadSkin(file);
             if (result.imageArray) setPreviewData(result.imageArray);
-            if (result.error) alert(result.error);
+            if (result.error === 422) alert(t('Errors.422'));
         });
     };
 
