@@ -227,7 +227,8 @@
     },
     "TextureGenerator": {
       "title": "Texture Generator",
-      "description": "Allows you to turn any image into a ready-made Minecraft texture by generating a JSON model. Simply upload your image, and the tool will automatically generate the texture as a JSON model file. Copy the finished result and place it into the images folder of the FlectonePulse plugin, after which the texture can be used immediately on your server. Full documentation and examples: https://flectone.net/pulse/docs/message/format/object",
+      "description": "Allows you to turn any image into a ready-made Minecraft texture by generating a JSON model. Simply upload your image, and the tool will automatically generate the texture as a JSON model file. Copy the finished result and place it into the images folder of the FlectonePulse plugin, after which the texture can be used immediately on your server.",
+      "fullDocs": "Full documentation and examples",
       "warn": "Image dimensions must be multiples of 8 (e.g., 16x16, 32x32, 64x16, 64x32, etc.). The larger the image, the longer it will take to convert",
       "input": "Drag and drop an image or click",
       "drag": "Drag",

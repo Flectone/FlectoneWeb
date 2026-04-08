@@ -30,7 +30,7 @@ export default function TextureGeneratorPage() {
     return (
         <div className="w-full max-w-7xl flex gap-4 flex-col justify-center my-4">
             <Title text={t('title')} />
-            <p className='w-full'>{t('description')}</p>
+            <p className='w-full'>{t('description')} <a className="text-fd-primary hover:text-fd-muted-primary transition-colors duration-75" href="https://flectone.net/pulse/docs/message/format/object" target="_blank">{t('fullDocs')}</a></p>
             <Callout margin='none' title='' type='warn'>{t('warn')}</Callout>
             <TextureGenerator />
         </div>
