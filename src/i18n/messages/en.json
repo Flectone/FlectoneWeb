@@ -43,6 +43,38 @@
         "keywords": "download flectonepulse, download flectonepulse, download chat plugin, download minecraft chat plugin, download chat, download minecraft, download flectone, download flectone",
         "image": "/logo.png"
       }
+    },
+    "Tools": {
+      "Main": {
+        "title": "FlectoneTools",
+        "description": "Here are useful tools for server owners",
+        "applicationName": "FlectoneTools",
+        "keywords": "flectone tools, Flectone tools, flectone tools, tools for minecraft, tools for minecraft, texture generator, text animation, prefix generator, player info"
+      },
+      "TextureGenerator": {
+        "title": "Texture Generator | FlectoneTools",
+        "description": "Allows you to turn any image into a ready-made Minecraft texture by generating a JSON model. Simply upload your image, and the tool will automatically generate the texture as a JSON model file. Copy the finished result and place it into the images folder of the FlectonePulse plugin, after which the texture can be used immediately on your server. Full documentation and examples: https://flectone.net/pulse/docs/message/format/object",
+        "applicationName": "TextureGenerator",
+        "image": "/logo.png"
+      },
+      "TextAnimation": {
+        "title": "Text Animation | FlectoneTools",
+        "description": "Creates animated texts with flicker, rainbow, wave, and letter-by-letter appearance effects. Adjust the speed and colors, and the tool will generate ready-to-use settings. Copy them into your plugin (e.g., FlectonePulse). Full documentation and examples: https://flectone.net/pulse/docs/message/format/animation",
+        "applicationName": "TextAmination",
+        "image": "/logo.png"
+      },
+      "PrefixGenerator": {
+        "title": "Prefix Generator | FlectoneTools",
+        "description": "A visual editor for creating colored prefixes with gradients, symbols, and separators. The tool generates a ready-made prefix image that you can download and use anywhere, for example, in a Resource Pack, on social media, in videos, or for server branding",
+        "applicationName": "PrefixGenerator",
+        "image": "/logo.png"
+      },
+      "UuidExtractor": {
+        "title": "UUID Extractor | FlectoneTools",
+        "description": "Finds a player's UUID by username. Supports offline and online modes. You can also generate a random UUID and copy the result",
+        "applicationName": "UuidExtractor",
+        "image": "/logo.png"
+      }
     }
   },
   "NotFound": {
@@ -51,7 +83,7 @@
     "button": "Go to the main page"
   },
   "Footer": {
-    "answer": "Not an official Minecraft or Hypixel service. Not approved by or associated with Mojang, Microsoft and Hypixel Studios.",
+    "answer": "Not an official Minecraft or Hypixel service. Not approved by or associated with Mojang, Microsoft or Hypixel Studios.",
     "date": "Established in 2019",
     "openSourse": "All project code is <a>open source</a>"
   },
@@ -73,7 +105,7 @@
   "Projects": {
     "title": "Projects by <b>Flectone</b>",
     "Pulse": {
-      "description": "New project for easy server customization",
+      "description": "Project for configuring server messages",
       "button": "More",
       "buttonPath": "https://flectone.net/en/pulse"
     },
@@ -83,6 +115,9 @@
     "Chat": {
       "description": "Father of FlectonePulse, but it's closed",
       "imagePath": "/chat/chat-en.svg"
+    },
+    "Tools": {
+      "description": "Tools for server developers"
     }
   },
   "Members": {
@@ -162,6 +197,118 @@
       "latestrelease": "Latest release",
       "devbuilds": "Dev bulds",
       "download": "Download"
+    }
+  },
+  "Tools": {
+    "Main": {
+      "title": "FlectoneTools",
+      "description": "A set of online tools for Minecraft server owners. Everything is free, works in your browser, and requires no installation. Helps quickly create resources for plugins, customize designs, and perform technical operations",
+      "TextureGenerator": {
+        "title": "Texture Generator",
+        "description": "Converts any image into a Minecraft texture and generates a JSON model"
+      },
+      "TextAnimation": {
+        "title": "Text Animation",
+        "description": "Creates animated messages with flicker, rainbow, wave, and letter-by-letter appearance effects"
+      },
+      "PrefixGenerator": {
+        "title": "Prefix Generator",
+        "description": "Builds prefixes using a visual editor. Add icons (symbols/Unicode) and colored text"
+      },
+      "UuidExtractor": {
+        "title": "UUID Extractor",
+        "description": "Finds a player's UUID by username for Java Edition. Supports offline and online modes"
+      }
+    },
+    "Form": {
+      "InputText": {
+        "placeholder": "Enter text"
+      }
+    },
+    "TextureGenerator": {
+      "title": "Texture Generator",
+      "description": "Allows you to turn any image into a ready-made Minecraft texture by generating a JSON model. Simply upload your image, and the tool will automatically generate the texture as a JSON model file. Copy the finished result and place it into the images folder of the FlectonePulse plugin, after which the texture can be used immediately on your server.",
+      "fullDocs": "Full documentation and examples",
+      "warn": "Image dimensions must be multiples of 8 (e.g., 16x16, 32x32, 64x16, 64x32, etc.). The larger the image, the longer it will take to convert",
+      "input": "Drag and drop an image or click",
+      "drag": "Drag",
+      "startGeneration": "Generate JSON",
+      "generation": "Processing...",
+      "previewGeneration": "Generating preview...",
+      "reset": "Reset",
+      "Errors": {
+        "422": "The image resolution must be a multiple of 8"
+      }
+    },
+    "TextAnimation": {
+      "title": "Text Animation",
+      "description": "Creates animated texts with flicker, rainbow, wave, and letter-by-letter appearance effects. Adjust the speed and colors, and the tool will generate ready-to-use settings. Copy them into your plugin (e.g., FlectonePulse).",
+      "fullDocs": "Full documentation and examples",
+      "Settings": {
+        "text": "Text",
+        "interval": "Animation interval",
+        "ticks": "ticks",
+        "ms": "ms",
+        "gradientBlur": "Gradient blur",
+        "symbols": "Symbols per color",
+        "colors": "Colors",
+        "gradientMode": "Gradient mode",
+        "ltr": "Left to right",
+        "rtl": "Right to left",
+        "reset": "Reset"
+      },
+      "Output": {
+        "frames": "Animation frames",
+        "interval": "Animation interval"
+      }
+    },
+    "PrefixGenerator": {
+      "title": "Prefix Generator",
+      "description": "A visual editor for creating colored prefixes with gradients, symbols, and separators. The tool generates a ready-made prefix image that you can download and use anywhere, for example, in a Resource Pack, on social media, in videos, or for server branding",
+      "Settings": {
+        "text": "Text",
+        "font": "Font",
+        "padding": "Padding",
+        "vertical": "Vertical",
+        "horizontal": "Horizontal",
+        "gradientAngle": "Gradient angle",
+        "grid": "8px grid",
+        "colors": "Colors",
+        "background": "Background",
+        "textOffset": "Text offset",
+        "textShadow": "Text shadow",
+        "horizontalOffset": "Horizontal offset",
+        "verticalOffset": "Vertical offset",
+        "shadowOpacity": "Shadow opacity",
+        "shadowColor": "Shadow color",
+        "stroke": "Stroke",
+        "display": "Display",
+        "underText": "Under text",
+        "overText": "Over text",
+        "strokeColor": "Stroke color",
+        "thicknessStroke": "Stroke thickness",
+        "same": "Same on each side",
+        "up": "Top",
+        "bottom": "Bottom",
+        "right": "Right",
+        "left": "Left"
+      },
+      "reset": "Reset",
+      "download": "Download PNG"
+    },
+    "UuidExtractor": {
+      "title": "UUID Extractor",
+      "description": "Finds a player's UUID by username. Supports offline and online modes. You can also generate a random UUID and copy the result",
+      "nickname": "Nickname",
+      "onlineUuid": "Online UUID",
+      "offlineUuid": "Offline UUID",
+      "randomUuid": "Random UUID",
+      "Errors": {
+        "enterNickname": "Enter nickname",
+        "dataError": "Error processing data",
+        "playerNotFound": "Player not found",
+        "searchError": "An error occurred during search"
+      }
     }
   }
 }

@@ -43,10 +43,10 @@ export default function HomePage() {
           <DownloadCard button={t('download')} release={t('latestrelease')} link='https://modrinth.com/plugin/flectonepulse' icon={<SiModrinth color='var(--color-fd-green)' size={2.3 + 'em'} />} name='Modrinth' />
           <DownloadCard button={t('download')} release={t('latestrelease')} link='https://www.spigotmc.org/resources/flectonepulse.121618/' icon={<SiSpigotmc color='var(--color-fd-orange)' size={2.3 + 'em'} />} name='Spigot' />
           <DownloadCard button={t('download')} release={t('latestrelease')} link='https://spigotmc.ru/resources/flectonepulse.2912/' icon={<SiSpigotmc color='var(--color-fd-orange)' size={2.3 + 'em'} />} name='SpigotRU' />
-          <DownloadCard button={t('download')} release={t('latestrelease')} link='https://polymart.org/resource/flectonepulse.7203' icon={<img className='size-[2.3em]' src='https://images.polymart.org/assets/icon/96.png' />} name='Polymart' />
+          <DownloadCard button={t('download')} release={t('latestrelease')} link='https://polymart.org/resource/flectonepulse.7203' icon={<BsHexagonFill color='var(--color-purple-400)' size={2.3 + 'em'} />} name='Voxel (Polymart)' />
         </div>
         <div className='bg-fd-card shadow-xl w-full h-fit border border-fd-border/50 rounded-2xl p-4 gap-2 flex flex-col justify-center items-center'>
-          <img className='h-26 my-2' src="https://hytale.com/static/images/logo.png" alt="" />
+          <img className='h-26 my-2' src="https://hytale.com/images/logo.webp" alt="" />
           <DownloadCard button={t('download')} release={t('latestrelease')} link='https://curseforge.com/hytale/mods/flectonepulse' icon={<SiCurseforge color='var(--color-gray-600)' size={2.3 + 'em'} />} name='CurseForge' />
           <DownloadCard button={t('download')} release={t('latestrelease')} link='https://modtale.net/mod/flectonepulse-hytale-edition-83535d1b-4837-4b01-9fd5-8307f3c007b5' icon={<BsHexagonFill color='var(--color-sky-800)' size={2.3 + 'em'} />} name='ModTale' />
           <DownloadCard button={t('download')} release={t('latestrelease')} link='https://spigotmc.ru/resources/flectonepulse-hytale-edition.4938/' icon={<SiSpigotmc color='var(--color-fd-orange)' size={2.3 + 'em'} />} name='SpigotRU' />

@@ -5,8 +5,19 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
+@font-face {
+  font-family: 'Minecraft';
+  src: url('/fonts/MojanglesNormal.woff2') format('woff2');
+  font-display: block;
+}
 
+@font-face {
+  font-family: 'MinecraftBold';
+  src: url('/fonts/MojanglesBold.woff2') format('woff2');
+  font-display: block;
+}
+
+@theme {
   --color-fd-primary: hsl(216, 49%, 44%);
   --color-fd-muted-primary: hsl(216, 49%, 38%);
   --color-fd-primary-foreground: hsl(216, 49%, 95%);
@@ -23,7 +34,28 @@
   --color-fd-gray: hsl(0, 0%, 80%);
   --color-fd-muted-gray: hsl(0, 0%, 72%);
   --color-fd-gray-foreground: hsl(0, 0%, 15%);
+
+  --color-fd-red: #ff3030;
+  --color-fd-muted-red: rgb(231, 66, 66);
+  --color-fd-red-foreground: rgb(253, 185, 185);
+
+--animate-gradient-flow: gradient-flow 2s linear infinite;
+
+  @keyframes gradient-flow {
+    from { background-position: 200% center; }
+    to { background-position: -200% center; }
+  }
+
+  @keyframes apperance {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 }
+
 
 .dark {
   --color-fd-foreground: #dfdfd6;
@@ -50,6 +82,10 @@
   --color-fd-gray: #2b2b2b;
   --color-fd-muted-gray: #353535;
   --color-fd-gray-foreground: hsl(0, 0%, 87%);
+
+  --color-fd-red: #fa4e4e;
+  --color-fd-muted-red: #ffa1a1;
+  --color-fd-red-foreground: rgb(255, 209, 209);
 }
 
 b {
@@ -69,45 +105,81 @@ div[data-radix-popper-content-wrapper=""]{
   margin: 4px;
 }
 
+canvas {
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    image-rendering: -moz-crisp-edges;
+}
+
 a.inline-flex.items-center.justify-center.rounded-md.text-sm.font-medium.transition-colors.duration-100  {
   color: var(--color-fd-muted-foreground);
 }
 button[aria-haspopup="dialog"] {
   color: var(--color-fd-muted-foreground);
 }
-/* @theme {
-  --color-fd-background: hsl(0, 0%, 96%);
-  --color-fd-foreground: hsl(0, 0%, 3.9%);
-  --color-fd-muted: hsl(0, 0%, 96.1%);
-  --color-fd-muted-foreground: hsl(0, 0%, 45.1%);
-  --color-fd-popover: hsl(0, 0%, 98%);
-  --color-fd-popover-foreground: hsl(0, 0%, 15.1%);
-  --color-fd-card: hsl(0, 0%, 94.7%);
-  --color-fd-card-foreground: hsl(0, 0%, 3.9%);
-  --color-fd-border: hsla(0, 0%, 80%, 50%);
-  --color-fd-primary: hsl(0, 0%, 9%);
-  --color-fd-primary-foreground: hsl(0, 0%, 98%);
-  --color-fd-secondary: hsl(0, 0%, 93.1%);
-  --color-fd-secondary-foreground: hsl(0, 0%, 9%);
-  --color-fd-accent: hsla(0, 0%, 82%, 50%);
-  --color-fd-accent-foreground: hsl(0, 0%, 9%);
-  --color-fd-ring: hsl(0, 0%, 63.9%);
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: transparent;
 }
-.dark {
-  --color-fd-background: var(--color-zinc-900);
-  --color-fd-foreground: var(--color-zinc-200);
-  --color-fd-muted: var(--color-zinc-800);
-  --color-fd-muted-foreground: var(--color-zinc-400);
-  --color-fd-popover: var(--color-zinc-800);
-  --color-fd-popover-foreground: var(--color-zinc-400);
-  --color-fd-card: var(--color-zinc-800);
-  --color-fd-card-foreground: var(--color-zinc-200);
-  --color-fd-border: var(--color-zinc-700);
-  --color-fd-primary: var(--color-sky-500);
-  --color-fd-primary-foreground: var(--color-sky-200);
-  --color-fd-secondary: var(--color-zinc-900);
-  --color-fd-secondary-foreground: var(--color-zinc-300);
-  --color-fd-accent: var(--color-zinc-700);
-  --color-fd-accent-foreground: var(--color-zinc-300);
-  --color-fd-ring: hsl(0, 0%, 54.9%);
-} */
+
+input[type="range"]:focus {
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  background: var(--color-fd-primary);
+  cursor: pointer;
+  margin-top: -6px;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 100%;
+  background: var(--color-fd-primary);
+  cursor: pointer;
+  border: none;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 8px;
+  background: var(--color-fd-card);
+  border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  background: var(--color-fd-card);
+  border-radius: 4px;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  width: 1em;
+  height: 1em;
+  border-radius: 4px;
+  background-color: var(--color-fd-gray);
+  cursor: pointer;
+  
+}
+input[type="checkbox"]:checked:hover {
+  background-color: var(--color-fd-muted-primary);
+}
+input[type="checkbox"]:hover {
+  background-color: var(--color-fd-muted-gray);
+}
+input[type="checkbox"]:checked {
+  background-color: var(--color-fd-primary);
+}
+
+
