@@ -274,7 +274,7 @@
         "textOffset": "Смещение текста",
         "textShadow": "Тень текста",
         "horizontalOffset": "Смещение по горизонтали",
-        "verticalOffset": "Смещение по горизонтали",
+        "verticalOffset": "Смещение по вертикали",
         "shadowOpacity": "Прозрачность тени",
         "shadowColor": "Цвет тени",
         "stroke": "Обводка",

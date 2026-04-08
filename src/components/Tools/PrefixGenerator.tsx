@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import InputText from '../Form/Input/InputText';
 import { Slider } from '../Form/Input/Slider';
 import { ColorPickerList } from '../Form/Input/ColorPickerList';
@@ -23,6 +23,7 @@ export default function PrefixGenerator() {
     const [text, setText] = useState('flectone');
     const [font, setFont] = useState(AVAILABLE_FONTS[0].value);
     const [fontOffset, setFontOffset] = useState(AVAILABLE_FONTS[0].offsetY);
+    const [fontsLoaded, setFontsLoaded] = useState(false);
     const [paddingX, setPaddingX] = useState(0);
     const [paddingY, setPaddingY] = useState(0);
     const [bgColor, setBgColor] = useState(['#3f51b5']);
@@ -51,6 +52,7 @@ export default function PrefixGenerator() {
     const [textOffsetY, setTextOffsetY] = useState(1);
 
     const [gradientAngle, setGradientAngle] = useState(0);
+    const userAgent = navigator.userAgent;
 
     function resetAll() {
         setText('flectone');
@@ -84,6 +86,34 @@ export default function PrefixGenerator() {
 
         setGradientAngle(0);
     };
+
+    useEffect(() => {
+        const loadFonts = async () => {
+            try {
+                const fontPromises = AVAILABLE_FONTS.map(async (fontConfig) => {
+                    if (document.fonts.check(`10px ${fontConfig.family}`)) {
+                        return true;
+                    }
+
+                    try {
+                        await document.fonts.load(`10px "${fontConfig.family}"`);
+                    } catch (e) {
+                        console.warn(`Failed to load font: ${fontConfig.family}`, e);
+                        await document.fonts.ready;
+                    }
+                });
+
+                await Promise.all(fontPromises);
+                await document.fonts.ready;
+                setFontsLoaded(true);
+            } catch (error) {
+                console.error('Error loading fonts:', error);
+                setFontsLoaded(true);
+            }
+        };
+
+        loadFonts();
+    }, []);
 
     const getDarkerColor = (hex: string, amount = 0.8) => {
         const r = parseInt(hex.slice(1, 3), 16);
@@ -236,15 +266,19 @@ export default function PrefixGenerator() {
         const ctx = canvas?.getContext('2d');
         if (!canvas || !ctx) return;
 
+        if (!document.fonts.check(`10px ${font.split(' ')[1]}`)) {
+            setTimeout(() => draw(), 100);
+            return;
+        }
+
         ctx.imageSmoothingEnabled = false;
         (ctx as any).webkitImageSmoothingEnabled = false;
         (ctx as any).mozImageSmoothingEnabled = false;
 
         ctx.font = font;
 
-        const textWidth = Math.ceil(ctx.measureText(text).width);
-
-        let finalWidth = Math.max(textWidth + paddingX * 2 + 1, 8);
+        const textWidth = text.split('').reduce((sum, char) => sum + Math.ceil(ctx.measureText(char).width), 0);
+        let finalWidth = Math.max(textWidth + paddingX * 2, 8);
         let finalHeight = Math.max(8 + paddingY * 2, 8);
 
         if (useGrid) {
@@ -257,8 +291,7 @@ export default function PrefixGenerator() {
 
         ctx.font = font;
 
-        const bgGradient = createBackgroundGradient(ctx, finalWidth, finalHeight);
-        ctx.fillStyle = bgGradient;
+        ctx.fillStyle = createBackgroundGradient(ctx, finalWidth, finalHeight);
         ctx.fillRect(0, 0, finalWidth, finalHeight);
 
         if (enableBorder && borderType === 'background') {
@@ -267,59 +300,68 @@ export default function PrefixGenerator() {
 
         const baseOffsetX = Math.floor((finalWidth - textWidth) / 2);
         const baseOffsetY = Math.floor((finalHeight - fontOffset) / 2);
-
         const offsetX = baseOffsetX + textOffsetX;
-        const offsetY = baseOffsetY + textOffsetY;
-
-        ctx.textBaseline = 'top';
-        ctx.font = font;
+        const offsetY = baseOffsetY + textOffsetY - ((userAgent.match(/chrome|chromium|crios/i)) ? 1 : 0);
 
         if (enableShadow) {
-            ctx.fillStyle = shadowColor[0];
-            ctx.globalAlpha = shadowOpacity;
-            ctx.fillText(text, offsetX + shadowOffsetX, offsetY + shadowOffsetY - 1);
-            ctx.globalAlpha = 1;
+            const shadowCanvas = document.createElement('canvas');
+            shadowCanvas.width = finalWidth;
+            shadowCanvas.height = finalHeight;
+            const shadowCtx = shadowCanvas.getContext('2d')!;
+            shadowCtx.imageSmoothingEnabled = false;
+            shadowCtx.font = font;
+            shadowCtx.textBaseline = 'top';
+            shadowCtx.fillStyle = shadowColor[0];
+            shadowCtx.fillText(text, offsetX + shadowOffsetX, offsetY + shadowOffsetY - 1);
+
+            const shadowData = shadowCtx.getImageData(0, 0, finalWidth, finalHeight);
+            const sd = shadowData.data;
+            for (let i = 0; i < sd.length; i += 4) {
+                if (sd[i + 3] > 128) {
+                    sd[i + 3] = Math.round(255 * shadowOpacity);
+                } else {
+                    sd[i + 3] = 0;
+                }
+            }
+            shadowCtx.putImageData(shadowData, 0, 0);
+            ctx.drawImage(shadowCanvas, 0, 0);
         }
 
+        const textCanvas = document.createElement('canvas');
+        textCanvas.width = finalWidth;
+        textCanvas.height = finalHeight;
+        const textCtx = textCanvas.getContext('2d')!;
+        textCtx.imageSmoothingEnabled = false;
+        textCtx.font = font;
+        textCtx.textBaseline = 'top';
+
         if (textColor.length > 1) {
-            const gradient = createTextGradient(ctx, offsetX, offsetY, textWidth);
-            ctx.fillStyle = gradient;
+            const gradient = createTextGradient(textCtx, offsetX, offsetY, textWidth);
+            textCtx.fillStyle = gradient;
         } else {
-            ctx.fillStyle = textColor[0];
+            textCtx.fillStyle = textColor[0];
         }
-        ctx.fillText(text, offsetX, offsetY - 1);
+        textCtx.fillText(text, offsetX, offsetY - 1);
+
+        const textData = textCtx.getImageData(0, 0, finalWidth, finalHeight);
+        const td = textData.data;
+        for (let i = 0; i < td.length; i += 4) {
+            td[i + 3] = td[i + 3] > 128 ? 255 : 0;
+        }
+        textCtx.putImageData(textData, 0, 0);
+        ctx.drawImage(textCanvas, 0, 0);
 
         if (enableBorder && borderType === 'foreground') {
             drawBorder(ctx, finalWidth, finalHeight);
         }
 
-    }, [text, font, paddingX, paddingY, bgColor, textColor, useGrid, enableShadow, shadowOffsetX, shadowOffsetY, shadowColor, shadowOpacity, borderTop, borderRight, borderBottom, borderLeft, getBorderColor, textOffsetX, textOffsetY, gradientAngle, createTextGradient, bgGradientAngle, createBackgroundGradient, enableBorder, borderColor, borderGradientAngle, createBorderGradient, borderType, drawBorder]);
+    }, [text, font, paddingX, paddingY, bgColor, textColor, useGrid, enableShadow, shadowOffsetX, shadowOffsetY, shadowColor, shadowOpacity, borderTop, borderRight, borderBottom, borderLeft, getBorderColor, textOffsetX, textOffsetY, gradientAngle, createTextGradient, bgGradientAngle, createBackgroundGradient, enableBorder, borderColor, borderGradientAngle, createBorderGradient, borderType, drawBorder, fontOffset]);
 
     useEffect(() => {
-        const loadFonts = async () => {
-            const fontPromises = AVAILABLE_FONTS.map(async (fontConfig) => {
-                if (fontConfig.family !== 'Minecraft' &&
-                    fontConfig.family !== 'MinecraftBold') {
-                    try {
-                        await document.fonts.load(`10px "${fontConfig.family}"`);
-                    } catch (e) {
-                        console.warn(`Failed to load font: ${fontConfig.family}`);
-                    }
-                }
-            });
-            await Promise.all(fontPromises);
-        };
-
-        loadFonts();
-    }, []);
-
-    useEffect(() => {
-        if (document.fonts) {
-            document.fonts.ready.then(draw);
-        } else {
+        if (fontsLoaded) {
             draw();
         }
-    }, [draw]);
+    }, [fontsLoaded, draw, text, font, paddingX, paddingY, bgColor, textColor, useGrid, enableShadow, shadowOffsetX, shadowOffsetY, shadowColor, shadowOpacity, borderTop, borderRight, borderBottom, borderLeft, textOffsetX, textOffsetY, gradientAngle, bgGradientAngle, enableBorder, borderColor, borderGradientAngle, borderType]);
 
     const canvasWidth = canvasRef.current?.width || 8;
     const canvasHeight = canvasRef.current?.height || 8;
@@ -359,13 +401,7 @@ export default function PrefixGenerator() {
                     <p className='font-bold'>{t('Settings.font')}</p>
                     <Dropdown
                         value={font}
-                        onChange={(value) => {
-                            const selectedFont = AVAILABLE_FONTS.find(f => f.value === value);
-                            setFont(value);
-                            if (selectedFont) {
-                                setFontOffset(selectedFont.offsetY);
-                            }
-                        }}
+                        onChange={(value) => handleFontChange(value)}
                         options={AVAILABLE_FONTS}
                     />
                 </div>
@@ -379,24 +415,26 @@ export default function PrefixGenerator() {
                             minHeight: '100px'
                         }}
                     >
-                        <canvas
-                            ref={canvasRef}
-                            style={{
-                                imageRendering: 'pixelated',
-                                width: `${displayWidth}px`,
-                                height: `${displayHeight}px`,
-                                maxWidth: '100%',
-                                maxHeight: '100%',
-                                objectFit: 'contain',
-                            }}
-                        />
+                        {fontsLoaded && (
+                            <canvas
+                                ref={canvasRef}
+                                style={{
+                                    imageRendering: 'pixelated',
+                                    width: `${displayWidth}px`,
+                                    height: `${displayHeight}px`,
+                                    maxWidth: '100%',
+                                    maxHeight: '100%',
+                                    objectFit: 'contain',
+                                }}
+                            />
+                        )}
                     </div>
                 </div>
                 <div className='w-full flex justify-end'>
                     <button
                         onClick={() => {
                             const link = document.createElement('a');
-                            link.download = `${text.toLowerCase()}-${canvasWidth}x${canvasHeight}.png`;
+                            link.download = `${text.toLowerCase()}-prefix.png`;
                             link.href = canvasRef.current?.toDataURL() || '';
                             link.click();
                         }}
@@ -603,11 +641,9 @@ export default function PrefixGenerator() {
                                 <div className='flex justify-between'>
                                     <p>{t('Settings.thicknessStroke')}: <code className={`bg-fd-card py-0.5 px-1 rounded-sm ${useSameBorder ? '' : 'hidden'}`}>{borderTop}px</code></p>
                                     <div className="flex items-center gap-1 cursor-pointer">
-                                        <input
-                                            type="checkbox"
+                                        <Checkbox
                                             checked={useSameBorder}
-                                            onChange={(e) => setUseSameBorder(e.target.checked)}
-                                            className="w-4 h-4 rounded border-slate-700 bg-slate-900 accent-blue-500"
+                                            onChange={setUseSameBorder}
                                         />
                                         <p className="text-sm">{t('Settings.same')}</p>
                                     </div>
