@@ -32,7 +32,7 @@ export async function imageToHeadSkin(file: File) {
     (await sharp(image).metadata()).width,
   ];
   if (imageHeignt % 8 != 0 || imageWidth % 8 != 0) {
-    return { error: "Разрешение изображения должно быть кратно 8" };
+    return { error: 422 };
   }
   const imageArray = [];
 
