@@ -43,7 +43,7 @@ export default function HomePage() {
           <DownloadCard button={t('download')} release={t('latestrelease')} link='https://modrinth.com/plugin/flectonepulse' icon={<SiModrinth color='var(--color-fd-green)' size={2.3 + 'em'} />} name='Modrinth' />
           <DownloadCard button={t('download')} release={t('latestrelease')} link='https://www.spigotmc.org/resources/flectonepulse.121618/' icon={<SiSpigotmc color='var(--color-fd-orange)' size={2.3 + 'em'} />} name='Spigot' />
           <DownloadCard button={t('download')} release={t('latestrelease')} link='https://spigotmc.ru/resources/flectonepulse.2912/' icon={<SiSpigotmc color='var(--color-fd-orange)' size={2.3 + 'em'} />} name='SpigotRU' />
-          <DownloadCard button={t('download')} release={t('latestrelease')} link='https://polymart.org/resource/flectonepulse.7203' icon={<img className='size-[2.3em]' src='https://images.polymart.org/assets/icon/96.png' />} name='Polymart' />
+          <DownloadCard button={t('download')} release={t('latestrelease')} link='https://polymart.org/resource/flectonepulse.7203' icon={<BsHexagonFill color='var(--color-purple-400)' size={2.3 + 'em'} />} name='Voxel (Polymart)' />
         </div>
         <div className='bg-fd-card shadow-xl w-full h-fit border border-fd-border/50 rounded-2xl p-4 gap-2 flex flex-col justify-center items-center'>
           <img className='h-26 my-2' src="https://hytale.com/images/logo.webp" alt="" />
