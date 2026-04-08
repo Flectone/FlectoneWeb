@@ -5,7 +5,7 @@ import { Clipboard, Check } from 'lucide-react';
 
 interface YamlFormatterProps {
     yaml: string;
-    header?: ReactNode;
+    header?: ReactNode | null;
     hfull?: boolean
 }
 
@@ -28,18 +28,29 @@ export function YamlFormatter({ yaml, header, hfull = true }: YamlFormatterProps
 
     return (
         <div className="relative w-full flex-col group h-full flex">
-            <button
-                className={`text-fd-foreground/80 ${copied ? '' : 'hover:text-fd-primary hover:bg-fd-primary-foreground'} transition absolute bottom-0 right-0 p-1.5 m-1.5 rounded-sm cursor-pointer`}
-                onClick={handleCopy}
-                disabled={copied}
-            >
-                {copied ? <Check size={1.2 + 'em'} /> : <Clipboard size={1.2 + 'em'} />}
-            </button>
             <pre className="w-full bg-fd-card p-4 rounded-lg overflow-auto overflow-y-auto text-sm font-mono" style={hfull ? { height: 100 + '%' } : {}}>
                 {header ?
-                    <div className='bg-fd-muted w-full p-1 px-2 mb-2 rounded-xs'>
-                        {header}
-                    </div> : ''
+                    <div className='flex items-center justify-center gap-1'>
+                        <div className='bg-fd-muted w-full p-1 px-2 mb-2 rounded-xs'>
+                            {header}
+                        </div>
+                        <button
+                            className={`text-fd-foreground/80 bg-fd-gray py-1 px-1 mb-2 ${copied ? '' : 'hover:bg-fd-muted-gray'} transition rounded-sm cursor-pointer`}
+                            onClick={handleCopy}
+                            disabled={copied}
+                        >
+                            {copied ? <Check size={1.2 + 'em'} /> : <Clipboard size={1.2 + 'em'} />}
+                        </button>
+                    </div>
+                    : <div className='flex items-center justify-start gap-1'>
+                        <button
+                            className={`text-fd-foreground/80 bg-fd-gray py-1 px-1 mb-2 ${copied ? '' : 'hover:bg-fd-muted-gray'} transition rounded-sm cursor-pointer`}
+                            onClick={handleCopy}
+                            disabled={copied}
+                        >
+                            {copied ? <Check size={1.2 + 'em'} /> : <Clipboard size={1.2 + 'em'} />}
+                        </button>
+                    </div>
                 }
                 {lines.map((line, lineIdx) => {
                     if (line.trim().endsWith(':') || line.includes(': ')) {
