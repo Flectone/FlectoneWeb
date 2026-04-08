@@ -105,7 +105,7 @@
   "Projects": {
     "title": "Проекты <b>Flectone</b>",
     "Pulse": {
-      "description": "Новый проект для легкой кастомизации сервера",
+      "description": "Проект для настройки сообщений сервера",
       "button": "Подробрее",
       "buttonPath": "https://flectone.net/pulse"
     },
