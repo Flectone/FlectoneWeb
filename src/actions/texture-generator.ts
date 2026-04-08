@@ -87,7 +87,7 @@ export async function imageToHeadSkin(file: File) {
           imageBlock: `data:${file.type};base64,${imageBlock.toString("base64")}`,
         });
       } catch (error) {
-        console.error(`Ошибка при обработке блока (${x},${y}):`, error);
+        console.error(`Error when processing the block (${x},${y}):`, error);
       }
     }
   }
@@ -106,7 +106,7 @@ export interface imageToHeadSkinResult {
 
 export async function MainSkin(prevState: any, formData: FormData) {
   const file = formData.get("image") as File;
-  if (!file || file.size === 0) return { error: "Файл не выбран" };
+  if (!file || file.size === 0) return { error: 404 };
   const filename = file.name.split(".").slice(0, -1).join(".");
   const processedData = await imageToHeadSkin(file);
   const frames = [];

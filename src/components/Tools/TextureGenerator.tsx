@@ -8,7 +8,7 @@ import MinecraftTab from '@/components/Assets/MinecraftTab';
 
 export const TextureGenerator = () => {
     const [actionData, setActionData] = useState<any>(null);
-    const [actionError, setActionError] = useState<string | null>(null);
+    const [actionError, setActionError] = useState<string | null | number>(null);
 
     const [previewData, setPreviewData] = useState<any>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
