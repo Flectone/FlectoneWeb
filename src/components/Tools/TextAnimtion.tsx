@@ -252,10 +252,10 @@ export default function TextAnimation() {
                 </div>
             </div>
             <div className="w-2/3 max-lg:w-full bg-fd-article h-full p-8 rounded-2xl border shadow-md flex flex-col gap-2">
-                <div className="flex flex-col grow">
+                <div className="flex h-full max-h-150 flex-col">
                     <YamlFormatter yaml={yamlOutput} header={<p>{t('Output.frames')}</p>} />
                 </div>
-                <div className="flex flex-col">
+                <div className="flex h-fit flex-col">
                     <YamlFormatter hfull={false} yaml={`${text}:\n  interval: ${ticks}`} header={<p>{t('Output.interval')}</p>} />
                 </div>
             </div>
