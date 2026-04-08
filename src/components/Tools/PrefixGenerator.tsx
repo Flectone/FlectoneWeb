@@ -363,7 +363,7 @@ export default function PrefixGenerator() {
         }
     }, [fontsLoaded, draw, text, font, paddingX, paddingY, bgColor, textColor, useGrid, enableShadow, shadowOffsetX, shadowOffsetY, shadowColor, shadowOpacity, borderTop, borderRight, borderBottom, borderLeft, textOffsetX, textOffsetY, gradientAngle, bgGradientAngle, enableBorder, borderColor, borderGradientAngle, borderType]);
 
-    const canvasWidth = canvasRef.current?.width || 8;
+    const canvasWidth = canvasRef.current?.width || 48;
     const canvasHeight = canvasRef.current?.height || 8;
 
     const MAX_CONTAINER_SIZE = 400;
