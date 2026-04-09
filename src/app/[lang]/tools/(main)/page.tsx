@@ -59,7 +59,7 @@ export default function ToolsPage() {
                             </div>
                             <div className='flex items-end gap-1'>
                                 <div className='flex items-center gap-1 h-3.5'>
-                                    <p className='[text-shadow:1.2px_1.2px_0px_#212F38] text-[#ABD5E3]!'>nopox_:</p>
+                                    <p className='[text-shadow:1.2px_1.2px_0px_#212F38] text-[#ABD5E3]!'>Terrona:</p>
                                     <p className='text-white! [text-shadow:1.2px_1.2px_0px_#252525]'>qq</p>
                                 </div>
                             </div>

@@ -12,8 +12,8 @@ export default function MinecraftTab({ tabText }: MinecraftTabProps) {
             <div className='w-full flex flex-col gap-1'>
                 {[
                     { name: 'TheFaser', id: '4ebc9a34fb5e55be' },
+                    { name: 'Terrona', id: '7693a80b8a699db1' },
                     { name: 'vpllll', id: '1ac29710d9c4e3dd' },
-                    { name: 'nopox_', id: '6c1319d28eebeccd' },
                     { name: 'Realepi_Bars_', id: 'df64f2e4705dfd18' }
                 ].map((user) => (
                     <div key={user.name} className='flex w-full bg-white/10 h-[calc(1em-1px)] items-center justify-between'>
