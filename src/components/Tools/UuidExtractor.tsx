@@ -108,6 +108,7 @@ export default function UuidExtractor() {
                         buttonClick={() => { getUUID() }}
                         disabled={loading}
                         placeholder={t('placeHolder')}
+                        onlyLatin={true}
                     />
                 </div>
             </div>
