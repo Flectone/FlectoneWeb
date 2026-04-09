@@ -299,7 +299,8 @@
     "UuidExtractor": {
       "title": "Получение UUID",
       "description": "Находит UUID игрока по нику. Поддерживает оффлайн и онлайн режимы. Можно сгенерировать случайный UUID, а результат скопировать",
-      "nickname": "Никнейм",
+      "nicknameOrUuid": "Никнейм или онлайн UUID",
+      "placeHolder": "Введите никнейм или онлайн UUID",
       "onlineUuid": "Онлайн UUID",
       "offlineUuid": "Оффлайн UUID",
       "randomUuid": "Случайный UUID",

@@ -299,7 +299,8 @@
     "UuidExtractor": {
       "title": "UUID Extractor",
       "description": "Finds a player's UUID by username. Supports offline and online modes. You can also generate a random UUID and copy the result",
-      "nickname": "Nickname",
+      "nicknameOrUuid": "Nickname or online UUID",
+      "placeHolder": "Enter nickname or online UUID",
       "onlineUuid": "Online UUID",
       "offlineUuid": "Offline UUID",
       "randomUuid": "Random UUID",
