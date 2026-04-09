@@ -223,6 +223,9 @@
     "Form": {
       "InputText": {
         "placeholder": "Введите текст"
+      },
+      "FileUploader": {
+        "sizeError": "Файл слишком большой"
       }
     },
     "TextureGenerator": {
