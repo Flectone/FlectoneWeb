@@ -28,7 +28,7 @@ export default function InputText({ ref, value, onChange, onKeyDown, buttonClick
                 placeholder={placeholder ? placeholder : t('placeholder')}
                 onInput={onlyLatin ? (e) => {
                     const target = e.target as HTMLInputElement;
-                    target.value = target.value.replace(/[^a-zA-Z]/g, '');
+                    target.value = target.value.replace(/[^a-zA-Z_0-9]/g, '');
                 } : undefined}
             />
             {buttonClick && <button
