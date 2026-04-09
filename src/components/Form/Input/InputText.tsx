@@ -10,9 +10,10 @@ interface InputTextProps {
     buttonClick?: MouseEventHandler<HTMLButtonElement>,
     disabled?: boolean,
     placeholder?: string,
+    onlyLatin?: boolean,
 }
 
-export default function InputText({ ref, value, onChange, onKeyDown, buttonClick, disabled, placeholder }: InputTextProps) {
+export default function InputText({ ref, value, onChange, onKeyDown, buttonClick, disabled, placeholder, onlyLatin }: InputTextProps) {
     const t = useTranslations('Tools.Form.InputText')
     return (
         <div className='bg-fd-card w-full flex text-fd-foreground p-2 rounded-md border border-transparent focus-within:border-fd-primary transition-colors'>
@@ -25,6 +26,10 @@ export default function InputText({ ref, value, onChange, onKeyDown, buttonClick
                 onKeyDown={onKeyDown}
                 className="cursor-text outline-none bg-transparent w-full"
                 placeholder={placeholder ? placeholder : t('placeholder')}
+                onInput={onlyLatin ? (e) => {
+                    const target = e.target as HTMLInputElement;
+                    target.value = target.value.replace(/[^a-zA-Z_0-9]/g, '');
+                } : undefined}
             />
             {buttonClick && <button
                 onClick={buttonClick}

@@ -32,7 +32,7 @@ export default function MinecraftTab({ tabText }: MinecraftTabProps) {
             </div>
             <div className='flex justify-center w-full mt-1'>
                 <p className='text-[1.28em] [text-shadow:1.2px_1.2px_0px_#212F38] text-[#85CCF7]!'>
-                    <b className='font-normal text-[#ABD5E3]!'>TPS</b> 20.0, <b className='font-normal text-[#ABD5E3]!'>Online</b> 3
+                    <b className='font-normal text-[#ABD5E3]!'>TPS</b> 20.0, <b className='font-normal text-[#ABD5E3]!'>Online</b> 4
                 </p>
             </div>
         </div>

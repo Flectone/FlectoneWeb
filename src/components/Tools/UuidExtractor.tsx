@@ -99,7 +99,7 @@ export default function UuidExtractor() {
     return (
         <div className="w-full flex flex-col gap-4">
             <div className="bg-fd-article p-6 gap-2 flex flex-col border shadow-md rounded-2xl">
-                <p className="font-bold">{t('nickname')}</p>
+                <p className="font-bold">{t('nicknameOrUuid')}</p>
                 <div className="flex w-full gap-2 items-center">
                     <InputText
                         onChange={(e) => setNickname(e.target.value)}
@@ -107,6 +107,8 @@ export default function UuidExtractor() {
                         onKeyDown={(e) => e.key === 'Enter' && getUUID()}
                         buttonClick={() => { getUUID() }}
                         disabled={loading}
+                        placeholder={t('placeHolder')}
+                        onlyLatin={true}
                     />
                 </div>
             </div>
@@ -118,7 +120,7 @@ export default function UuidExtractor() {
             )}
 
 
-            <div className="bg-fd-article p-6 gap-2 flex h-fit border shadow-md rounded-2xl max-md:flex-col">
+            <div className={`bg-fd-article p-6 gap-2 flex h-fit border transition shadow-md rounded-2xl max-md:flex-col ${loading ? 'opacity-40' : ''}`}>
                 <div className="bg-fd-card w-fit shrink-0 p-4 gap-2 rounded-md flex flex-col items-center">
                     {data.status === 200 ? (
                         <img

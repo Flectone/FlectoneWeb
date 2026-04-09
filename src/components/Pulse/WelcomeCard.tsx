@@ -23,8 +23,8 @@ export default function WelcomeCard() {
           <ModalButton title={t('Buttons.documentation')} text={t('Buttons.documentation')}>
             <LinkButton className='gap-1' href='/pulse/docs/'><Pickaxe size='1.1em' />Minecraft</LinkButton>
             <LinkButton className='gap-1' href='/pulse/docs/hytale'><Leaf size='1.1em' />Hytale</LinkButton>
-            <LinkButton className='gap-1' href='/pulse/docs/hytale'><ChartCandlestick size='1.1em' />{t('Buttons.metrics')}</LinkButton>
-            <LinkButton className='gap-1' href='/pulse/docs/hytale'><Cable size='1.1em' />API</LinkButton>
+            <LinkButton className='gap-1' href='/pulse/docs/metrics'><ChartCandlestick size='1.1em' />{t('Buttons.metrics')}</LinkButton>
+            <LinkButton className='gap-1' href='/pulse/docs/api'><Cable size='1.1em' />API</LinkButton>
           </ModalButton>
         </div>
       </div>

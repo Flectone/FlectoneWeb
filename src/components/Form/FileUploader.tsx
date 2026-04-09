@@ -1,4 +1,5 @@
 'use client';
+import { useTranslations } from 'next-intl';
 import { useRef, useState } from 'react';
 
 interface FileUploaderProps {
@@ -20,26 +21,28 @@ export function FileUploader({
 }: FileUploaderProps) {
     const [isDragging, setIsDragging] = useState(false);
     const fileInputRef = useRef<HTMLInputElement>(null);
+    const t = useTranslations('Tools.Form.FileUploader')
 
     const handleDrag = (e: React.DragEvent) => {
         e.preventDefault();
         e.stopPropagation();
     };
-
     const handleDrop = (e: React.DragEvent) => {
         handleDrag(e);
         setIsDragging(false);
         if (disabled || isPending) return;
 
         const file = e.dataTransfer.files?.[0];
-        if (file) {
-            onFileSelect(file);
-        }
+
+        if (file && file.size <= 1048500) onFileSelect(file);
+        if (file && file.size >= 1048500) alert(t('sizeError'));
+
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
-        if (file) onFileSelect(file);
+        if (file && file.size <= 1048500) onFileSelect(file);
+        if (file && file.size >= 1048500) alert(t('sizeError'));
     };
 
     return (
