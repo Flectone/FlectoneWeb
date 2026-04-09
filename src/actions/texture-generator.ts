@@ -4,7 +4,6 @@ import sharp from "sharp";
 sharp.cache(false);
 
 const MAX_IMAGE_SIZE = 256;
-const MINESKIN_API_URL = "https://api.mineskin.org/v2/generate";
 
 export async function getSkinHead(url: string) {
   try {
@@ -77,7 +76,7 @@ export async function imageToHeadSkin(file: File) {
             left: 8,
             right: 48,
             bottom: 48,
-            background: { r: 0, g: 0, b: 0, alpha: 1 },
+            background: { r: 0, g: 0, b: 0, alpha: 0 },
           })
           .png()
           .toBuffer();
