@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState, useTransition, useRef } from 'react';
 import { imageToHeadSkin } from '@/actions/texture-generator';
-import { FileUploader } from '@/components/Form/FileUploader';
+import { FileUploader } from '@/components/Form/Input/FileUploader';
 import { Trash } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import MinecraftTab from '@/components/Assets/MinecraftTab';
