@@ -3,12 +3,10 @@ import sharp from "sharp";
 
 sharp.cache(false);
 
-const MAX_IMAGE_SIZE = 256;
-
 export async function getSkinHead(url: string) {
   try {
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 5000); // 5 секунд таймаут
+    const timeout = setTimeout(() => controller.abort(), 5000);
 
     const response = await fetch(url, { signal: controller.signal });
     clearTimeout(timeout);
@@ -46,7 +44,7 @@ export async function imageToHeadSkin(file: File) {
   if (!metadata.width || !metadata.height)
     return { status: 400, error: "Invalid image metadata" };
 
-  if (metadata.width > MAX_IMAGE_SIZE || metadata.height > MAX_IMAGE_SIZE) {
+  if (metadata.width > 256 || metadata.height > 256) {
     return { status: 413, error: "Image too large. Max 256x256 pixels." };
   }
 
