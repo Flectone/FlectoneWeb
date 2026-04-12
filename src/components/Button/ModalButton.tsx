@@ -29,9 +29,9 @@ export default function ModalButton({ text, title, children }: ModalButtonProps)
             className="fixed inset-0 md:px-32 z-50 flex items-center justify-center bg-fd-background/80 backdrop-blur-xs"
             onClick={openModal}
           >
-            <motion.div className='flex flex-col items-start gap-2'>
+            <motion.div className='flex flex-col items-start gap-2 p-4'>
               <h1 className='font-bold text-lg'>{title}</h1>
-              <div className='flex gap-2'>
+              <div className='flex flex-wrap gap-2'>
                 {children}
               </div>
             </motion.div>
