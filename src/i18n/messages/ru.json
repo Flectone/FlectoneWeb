@@ -74,6 +74,12 @@
         "description": "Находит UUID игрока по нику. Поддерживает оффлайн и онлайн режимы. Можно сгенерировать случайный UUID, а результат скопировать",
         "applicationName": "UuidExtractor",
         "image": "/logo.png"
+      },
+      "InventoryPreviewer": {
+        "title": "Просмотр Инвентарей | FlectoneTools",
+        "description": "Просматривайте все слоты инвентарей Minecraft — сундуки, печи, верстаки и другие контейнеры.",
+        "applicationName": "InventoryPreviewer",
+        "image": "/logo.png"
       }
     }
   },
@@ -312,6 +318,41 @@
         "dataError": "Ошибка при обработке данных",
         "playerNotFound": "Игрок не найден",
         "searchError": "Произошла ошибка при поиске"
+      }
+    },
+    "InventoryPreviewer": {
+      "title": "Просмотр Инвентарей",
+      "description": "Все GUI контейнеров Minecraft собраны в одном месте. Выбери нужный из списка и посмотри какие номера слотов у него",
+      "container": "Инвентарь",
+      "allContainers": "Виды инвентарей",
+      "Containers": {
+        "anvil": "Наковальня",
+        "barrel": "Бочка",
+        "beacon": "Маяк",
+        "blast_furnance": "Плавильная печь",
+        "brewing_stand": "Зельеварка",
+        "cartography_table": "Стол картографа",
+        "chest": "Сундук",
+        "crafter": "Сборщик",
+        "crafting_table": "Верстак",
+        "dispenser": "Раздатчик",
+        "donkey": "Осёл",
+        "dropper": "Выбрасыватель",
+        "enchanting_table": "Чародейский стол",
+        "furnance": "Печь",
+        "grindstone": "Точило",
+        "hopper": "Воронка",
+        "horse": "Лошадь",
+        "inventory": "Инвентарь",
+        "large_chest": "Большой сундук",
+        "llama": "Лама",
+        "loom": "Ткацкий станок",
+        "nautilus": "Наутилус",
+        "shulker_box": "Шалкеровый ящик",
+        "smithing": "Стол кузнеца",
+        "smoker": "Коптильня",
+        "stonecutter": "Камнерез",
+        "villager": "Житель"
       }
     }
   }

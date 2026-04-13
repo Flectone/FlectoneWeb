@@ -74,6 +74,12 @@
         "description": "Finds a player's UUID by username. Supports offline and online modes. You can also generate a random UUID and copy the result",
         "applicationName": "UuidExtractor",
         "image": "/logo.png"
+      },
+      "InventoryPreviewer": {
+        "title": "Inventory Viewer | FlectoneTools",
+        "description": "Browse all Minecraft inventory slots — chests, furnaces, crafting tables and other containers.",
+        "applicationName": "InventoryPreviewer",
+        "image": "/logo.png"
       }
     }
   },
@@ -312,6 +318,41 @@
         "dataError": "Error processing data",
         "playerNotFound": "Player not found",
         "searchError": "An error occurred during search"
+      }
+    },
+    "InventoryPreviewer": {
+      "title": "Inventory Viewer",
+      "description": "All Minecraft container GUIs collected in one place. Pick the one you need from the list and see what slot numbers it has",
+      "container": "Inventory",
+      "allContainers": "Inventory types",
+      "Containers": {
+        "anvil": "Anvil",
+        "barrel": "Barrel",
+        "beacon": "Beacon",
+        "blast_furnance": "Blast Furnace",
+        "brewing_stand": "Brewing Stand",
+        "cartography_table": "Cartography Table",
+        "chest": "Chest",
+        "crafter": "Crafter",
+        "crafting_table": "Crafting Table",
+        "dispenser": "Dispenser",
+        "donkey": "Donkey",
+        "dropper": "Dropper",
+        "enchanting_table": "Enchanting Table",
+        "furnance": "Furnace",
+        "grindstone": "Grindstone",
+        "hopper": "Hopper",
+        "horse": "Horse",
+        "inventory": "Inventory",
+        "large_chest": "Large Chest",
+        "llama": "Llama",
+        "loom": "Loom",
+        "nautilus": "Nautilus",
+        "shulker_box": "Shulker Box",
+        "smithing": "Smithing Table",
+        "smoker": "Smoker",
+        "stonecutter": "Stonecutter",
+        "villager": "Villager"
       }
     }
   }
