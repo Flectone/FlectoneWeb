@@ -152,8 +152,14 @@ export default function PrefixGenerator() {
         const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
 
         if (borderColor.length === 1) {
-            gradient.addColorStop(0, borderColor[0]);
-            gradient.addColorStop(1, borderColor[0]);
+            try {
+                gradient.addColorStop(0, borderColor[0]);
+                gradient.addColorStop(1, borderColor[0]);
+            }
+            catch (err) {
+                console.error(err)
+            }
+
         } else {
             borderColor.forEach((color, index) => {
                 const position = index / (borderColor.length - 1);
@@ -187,8 +193,13 @@ export default function PrefixGenerator() {
         const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
 
         if (bgColor.length === 1) {
-            gradient.addColorStop(0, bgColor[0]);
-            gradient.addColorStop(1, bgColor[0]);
+            try {
+                gradient.addColorStop(0, bgColor[0]);
+                gradient.addColorStop(1, bgColor[0]);
+            }
+            catch (err) {
+                console.error(err)
+            }
         } else {
             bgColor.forEach((color, index) => {
                 const position = index / (bgColor.length - 1);
@@ -224,8 +235,13 @@ export default function PrefixGenerator() {
         const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
 
         if (textColor.length === 1) {
-            gradient.addColorStop(0, textColor[0]);
-            gradient.addColorStop(1, textColor[0]);
+            try {
+                gradient.addColorStop(0, textColor[0]);
+                gradient.addColorStop(1, textColor[0]);
+            }
+            catch (err) {
+                console.error(err)
+            }
         } else {
             textColor.forEach((color, index) => {
                 const position = index / (textColor.length - 1);
