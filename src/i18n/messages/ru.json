@@ -86,6 +86,12 @@
         "description": "Переводи координаты между Незером и обычным миром, а также находи крепость Энда по двум броскам жемчуга",
         "applicationName": "CoordinateCalculator",
         "image": "/logo.png"
+      },
+      "ColorTextGenerator": {
+        "title": "Генератор Цветного Текста | FlectoneTools",
+        "description": "Создавай цветной текст для Minecraft с поддержкой Legacy и MiniMessage форматов",
+        "applicationName": "ColorTextGenerator",
+        "image": "/logo.png"
       }
     }
   },
@@ -374,6 +380,49 @@
       "tutorialStep1": "Бросьте жемчуг Края и запомните координаты X, Z и угол полёта",
       "tutorialStep2": "Отойдите на несколько блоков (250 - 500) и бросьте второй жемчуг, записав новые координаты и угол",
       "tutorialStep3": "Калькулятор вычислит пересечение и покажет координаты крепости"
+    },
+    "ColorTextGenerator": {
+      "title": "Генератор Цветного Текста",
+      "description": "Создавай цветной текст для Minecraft с поддержкой Legacy и MiniMessage форматов",
+      "colors": "Цвета",
+      "formats": "Форматирование",
+      "outputFormat": "Формат вывода",
+      "input": "Ввод",
+      "placeholder": "Введите текст с цветовыми кодами...",
+      "output": "Вывод",
+      "outputEmpty": "Вывод появится здесь",
+      "preview": "Предпросмотр",
+      "add": "Добавить",
+      "cancel": "Отмена",
+      "addHex": "Hex цвет",
+      "bold": "Жирный",
+      "italic": "Курсив",
+      "magic": "Магия",
+      "underline": "Подчёркнутый",
+      "strike": "Зачёркнутый",
+      "reset": "Сбросить",
+      "newline": "Новая строка",
+      "previews": {
+        "text": "Текст",
+        "tab": "Таб",
+        "sign": "Табличка",
+        "book": "Книга",
+        "chat": "Чат",
+        "motd": "MOTD",
+        "name": "Ник",
+        "lore": "Лор",
+        "kick": "Кик"
+      },
+      "convertOutput": "Конвертировать вывод",
+      "miniTags": "MiniMessage теги",
+      "miniTagGroups": {
+        "decoration": "Декорации",
+        "interaction": "Клик",
+        "hover": "Наведение",
+        "insertion": "Вставка",
+        "keybind": "Прочее",
+        "newline": "Перенос строки"
+      }
     }
   }
 }

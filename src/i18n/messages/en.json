@@ -86,6 +86,12 @@
         "description": "Convert coordinates between the Nether and the Overworld, and find the End stronghold using two ender eye throws",
         "applicationName": "CoordinateCalculator",
         "image": "/logo.png"
+      },
+      "ColorTextGenerator": {
+        "title": "Color Text Generator | FlectoneTools",
+        "description": "Create colored text for Minecraft with support for Legacy and MiniMessage formats",
+        "applicationName": "ColorTextGenerator",
+        "image": "/logo.png"
       }
     }
   },
@@ -374,6 +380,49 @@
       "tutorialStep1": "Throw an Ender pearl and record the X, Z coordinates and the angle of flight",
       "tutorialStep2": "Move several blocks away (250–500) and throw the second pearl, recording the new coordinates and angle",
       "tutorialStep3": "The calculator will compute the intersection and show the stronghold coordinates"
+    },
+    "ColorTextGenerator": {
+      "title": "Colored Text Generator",
+      "description": "Create colored text for Minecraft with support for Legacy and MiniMessage formats",
+      "colors": "Colors",
+      "formats": "Formatting",
+      "outputFormat": "Output format",
+      "input": "Input",
+      "placeholder": "Enter text with color codes...",
+      "output": "Output",
+      "outputEmpty": "Output will appear here",
+      "preview": "Preview",
+      "add": "Add",
+      "cancel": "Cancel",
+      "addHex": "Hex color",
+      "bold": "Bold",
+      "italic": "Italic",
+      "magic": "Magic",
+      "underline": "Underlined",
+      "strike": "Strikethrough",
+      "reset": "Reset",
+      "newline": "New line",
+      "previews": {
+        "text": "Text",
+        "tab": "Tab",
+        "sign": "Sign",
+        "book": "Book",
+        "chat": "Chat",
+        "motd": "MOTD",
+        "name": "Name",
+        "lore": "Lore",
+        "kick": "Kick"
+      },
+      "convertOutput": "Convert output",
+      "miniTags": "MiniMessage tags",
+      "miniTagGroups": {
+        "decoration": "Decorations",
+        "interaction": "Click",
+        "hover": "Hover",
+        "insertion": "Insertion",
+        "keybind": "Other",
+        "newline": "Line break"
+      }
     }
   }
 }
