@@ -77,8 +77,14 @@
       },
       "InventoryPreviewer": {
         "title": "Inventory Viewer | FlectoneTools",
-        "description": "Browse all Minecraft inventory slots — chests, furnaces, crafting tables and other containers.",
+        "description": "Browse all Minecraft inventory slots — chests, furnaces, crafting tables and other containers",
         "applicationName": "InventoryPreviewer",
+        "image": "/logo.png"
+      },
+      "CoordinateCalculator": {
+        "title": "Coordinate Calculator | FlectoneTools",
+        "description": "Convert coordinates between the Nether and the Overworld, and find the End stronghold using two ender eye throws",
+        "applicationName": "CoordinateCalculator",
         "image": "/logo.png"
       }
     }
@@ -354,6 +360,20 @@
         "stonecutter": "Stonecutter",
         "villager": "Villager"
       }
+    },
+    "CoordinateCalculator": {
+      "title": "Coordinate Calculator",
+      "description": "Convert coordinates between the Nether and the Overworld, and find the End stronghold using two Ender pearl throws",
+      "nether": "Nether",
+      "stronghold": "End Stronghold",
+      "angle": "Angle",
+      "overworld": "Overworld",
+      "firstThrow": "First Throw",
+      "secondThrow": "Second Throw",
+      "tutorial": "Tutorial",
+      "tutorialStep1": "Throw an Ender pearl and record the X, Z coordinates and the angle of flight",
+      "tutorialStep2": "Move several blocks away (250–500) and throw the second pearl, recording the new coordinates and angle",
+      "tutorialStep3": "The calculator will compute the intersection and show the stronghold coordinates"
     }
   }
 }
