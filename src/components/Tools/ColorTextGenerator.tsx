@@ -6,6 +6,7 @@ import { Trash2 } from 'lucide-react';
 import SelectBlock from '@/components/Form/Input/SelectBlock';
 import TextOutput from '@/components/Form/Output/TextOutput';
 import { HexColorPicker } from 'react-colorful';
+import InputText from '../Form/Input/InputText';
 
 const LEGACY_COLORS = [
     { code: '0', hex: '#000000' },
@@ -73,20 +74,20 @@ interface MiniTag {
 }
 
 const MINI_TAGS: MiniTag[] = [
-    { label: 'gradient',   insert: '<gradient:#ff0000:#0000ff>text</gradient>',      cursorOffset: -15 },
-    { label: 'rainbow',    insert: '<rainbow>text</rainbow>',                          cursorOffset: -14 },
-    { label: 'transition', insert: '<transition:#ff0000:#0000ff:0>text</transition>',  cursorOffset: -17 },
-    { label: 'shadow',     insert: '<shadow:#000000:100>text</shadow>',                cursorOffset: -13 },
-    { label: 'hover',      insert: "<hover:show_text:'tooltip'>text</hover>",          cursorOffset: -12 },
-    { label: 'click',      insert: "<click:run_command:'/say hi'>text</click>",        cursorOffset: -12 },
-    { label: 'insertion',  insert: "<insertion:'text'>label</insertion>",              cursorOffset: -17 },
-    { label: 'font',       insert: '<font:minecraft:uniform>text</font>',              cursorOffset: -11 },
-    { label: 'keybind',    insert: '<key:key.jump>',                                   cursorOffset: 0 },
-    { label: 'lang',       insert: '<lang:item.minecraft.diamond>',                    cursorOffset: 0 },
-    { label: 'score',      insert: '<score:playername:objective>',                     cursorOffset: 0 },
-    { label: 'selector',   insert: '<selector:@s>',                                    cursorOffset: 0 },
-    { label: 'nbt',        insert: '<nbt:entity:\'@s\':Health>',                       cursorOffset: 0 },
-    { label: 'newline',    insert: '<newline>',                                        cursorOffset: 0 },
+    { label: 'gradient', insert: '<gradient:#ff0000:#0000ff>text</gradient>', cursorOffset: -15 },
+    { label: 'rainbow', insert: '<rainbow>text</rainbow>', cursorOffset: -14 },
+    { label: 'transition', insert: '<transition:#ff0000:#0000ff:0>text</transition>', cursorOffset: -17 },
+    { label: 'shadow', insert: '<shadow:#000000:100>text</shadow>', cursorOffset: -13 },
+    { label: 'hover', insert: "<hover:show_text:'tooltip'>text</hover>", cursorOffset: -12 },
+    { label: 'click', insert: "<click:run_command:'/say hi'>text</click>", cursorOffset: -12 },
+    { label: 'insertion', insert: "<insertion:'text'>label</insertion>", cursorOffset: -17 },
+    { label: 'font', insert: '<font:minecraft:uniform>text</font>', cursorOffset: -11 },
+    { label: 'keybind', insert: '<key:key.jump>', cursorOffset: 0 },
+    { label: 'lang', insert: '<lang:item.minecraft.diamond>', cursorOffset: 0 },
+    { label: 'score', insert: '<score:playername:objective>', cursorOffset: 0 },
+    { label: 'selector', insert: '<selector:@s>', cursorOffset: 0 },
+    { label: 'nbt', insert: '<nbt:entity:\'@s\':Health>', cursorOffset: 0 },
+    { label: 'newline', insert: '<newline>', cursorOffset: 0 },
 ];
 
 const KNOWN_TAGS = new Set([
@@ -274,15 +275,15 @@ function hslToHex(h: number): string {
     const hue2rgb = (t: number) => {
         if (t < 0) t += 1;
         if (t > 1) t -= 1;
-        if (t < 1/6) return p + (q - p) * 6 * t;
-        if (t < 1/2) return q;
-        if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+        if (t < 1 / 6) return p + (q - p) * 6 * t;
+        if (t < 1 / 2) return q;
+        if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
         return p;
     };
     return rgbToHex(
-        Math.round(hue2rgb(h + 1/3) * 255),
+        Math.round(hue2rgb(h + 1 / 3) * 255),
         Math.round(hue2rgb(h) * 255),
-        Math.round(hue2rgb(h - 1/3) * 255),
+        Math.round(hue2rgb(h - 1 / 3) * 255),
     );
 }
 
@@ -499,34 +500,6 @@ function RainbowButton({ onClick, disabled }: Readonly<{ onClick: () => void; di
 }
 
 const FAKE_PLAYERS = ['Steve', 'Alex', 'Notch', 'Herobrine', 'Jeb_', 'Dinnerbone'];
-function TextareaField({ value, onChange, placeholder, rows = 3, inputRef }: Readonly<{
-    value: string;
-    onChange: (v: string) => void;
-    placeholder?: string;
-    rows?: number;
-    inputRef?: React.RefObject<HTMLTextAreaElement>;
-}>) {
-    return (
-        <div className="relative">
-            <textarea
-                ref={inputRef}
-                value={value}
-                onChange={(e) => onChange(e.target.value)}
-                placeholder={placeholder}
-                rows={rows}
-                className="w-full bg-fd-card border border-fd-border rounded-xl px-4 py-3 pr-10 text-sm outline-none focus:border-fd-primary resize-none font-mono transition-colors"
-            />
-            {value && (
-                <button
-                    onClick={() => onChange('')}
-                    className="absolute top-2.5 right-2.5 p-1 rounded-md text-fd-muted-foreground hover:text-fd-foreground hover:bg-fd-muted transition-colors cursor-pointer"
-                >
-                    <Trash2 className="w-3.5 h-3.5" />
-                </button>
-            )}
-        </div>
-    );
-}
 
 export default function ColorTextGenerator() {
     const t = useTranslations('Tools.ColorTextGenerator');
@@ -540,17 +513,17 @@ export default function ColorTextGenerator() {
     const [pickerColor, setPickerColor] = useState('#ff0000');
     const [showPicker, setShowPicker] = useState(false);
     const pickerRef = useRef<HTMLDivElement>(null);
-    const textareaRef = useRef<HTMLTextAreaElement>(null);
-    const tabHeaderRef = useRef<HTMLTextAreaElement>(null);
-    const tabFooterRef = useRef<HTMLTextAreaElement>(null);
+    const textareaRef = useRef<HTMLInputElement>(null);
+    const tabHeaderRef = useRef<HTMLInputElement>(null);
+    const tabFooterRef = useRef<HTMLInputElement>(null);
 
     const isMini = format === 'minimessage';
 
     const insertAtCursor = (text: string, cursorOffset = 0) => {
         const el = textareaRef.current;
         if (!el) return;
-        const start = el.selectionStart;
-        const end = el.selectionEnd;
+        const start = el.selectionStart ? el.selectionStart : 0;
+        const end = el.selectionEnd ? el.selectionEnd : 0;
         const val = el === tabHeaderRef.current ? tabHeader : el === tabFooterRef.current ? tabFooter : raw;
         const setter = el === tabHeaderRef.current ? setTabHeader : el === tabFooterRef.current ? setTabFooter : setRaw;
         setter(val.slice(0, start) + text + val.slice(end));
@@ -571,7 +544,7 @@ export default function ColorTextGenerator() {
                 <div className="relative w-full rounded-xl overflow-hidden border border-fd-border bg-black flex items-center justify-center" style={{ aspectRatio: '16/12' }}>
                     <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-50" />
                     <div className="relative z-10 flex flex-col items-center gap-0.5 w-72">
-                        {raw.trim() && (
+                        {raw && (
                             <div className="bg-black/70 px-4 py-1.5 w-full text-center border-b border-white/10">
                                 <RenderedText raw={raw} style={mc} />
                             </div>
@@ -585,7 +558,7 @@ export default function ColorTextGenerator() {
                                 </div>
                             ))}
                         </div>
-                        {raw.trim() && (
+                        {raw && (
                             <div className="bg-black/70 px-4 py-1.5 w-full text-center border-t border-white/10">
                                 <RenderedText raw={raw} style={mc} />
                             </div>
@@ -753,11 +726,10 @@ export default function ColorTextGenerator() {
                                         key={tag.label}
                                         disabled={!isMini}
                                         onClick={() => isMini && insertAtCursor(tag.insert, tag.cursorOffset ?? 220)}
-                                        className={`px-2 py-1 rounded-md border text-xs transition-colors ${
-                                            isMini
-                                                ? 'bg-fd-card border-fd-border hover:bg-fd-muted cursor-pointer'
-                                                : 'bg-fd-card/50 border-fd-border/50 cursor-not-allowed opacity-40'
-                                        }`}
+                                        className={`px-2 py-1 rounded-md border text-xs transition-colors ${isMini
+                                            ? 'bg-fd-card border-fd-border hover:bg-fd-muted cursor-pointer'
+                                            : 'bg-fd-card/50 border-fd-border/50 cursor-not-allowed opacity-40'
+                                            }`}
                                     >
                                         {tag.label}
                                     </button>
@@ -782,11 +754,12 @@ export default function ColorTextGenerator() {
 
                         <div className="flex flex-col gap-2">
                             <p className="font-bold text-sm">{t('input')}</p>
-                            <TextareaField
+                            <InputText
                                 value={raw}
-                                onChange={setRaw}
+                                onChange={(e) => (setRaw(e.target.value))}
                                 placeholder={t('placeholder')}
-                                inputRef={textareaRef}
+                                ref={textareaRef}
+                                clearText
                             />
                         </div>
 
@@ -800,19 +773,19 @@ export default function ColorTextGenerator() {
 
                     <div className="flex flex-col gap-2 w-full xl:w-115 shrink-0">
                         <p className="font-bold text-sm">{t('preview')}</p>
-                        <div className="flex-shrink-0">
+                        <div className="shrink-0">
                             {renderPreview()}
                         </div>
                         <div className="grid grid-cols-3 gap-1">
-                        {PREVIEW_MODES.map((m) => (
-                            <button
-                                key={m}
-                                onClick={() => setPreviewMode(m)}
-                                className={`h-8 px-2 py-1 rounded-md text-xs transition-colors cursor-pointer border ${previewMode === m ? 'bg-fd-primary text-fd-primary-foreground border-fd-primary' : 'bg-fd-card border-fd-border hover:bg-fd-muted'}`}
-                            >
-                                {t(`previews.${m}`)}
-                            </button>
-                        ))}
+                            {PREVIEW_MODES.map((m) => (
+                                <button
+                                    key={m}
+                                    onClick={() => setPreviewMode(m)}
+                                    className={`h-8 px-2 py-1 rounded-md text-xs transition-colors cursor-pointer border ${previewMode === m ? 'bg-fd-primary text-fd-primary-foreground border-fd-primary' : 'bg-fd-card border-fd-border hover:bg-fd-muted'}`}
+                                >
+                                    {t(`previews.${m}`)}
+                                </button>
+                            ))}
                         </div>
                     </div>
                 </div>
