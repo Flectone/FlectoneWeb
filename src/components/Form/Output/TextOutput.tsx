@@ -4,7 +4,6 @@ import { useState } from "react";
 
 interface TextOutputProps {
     text: string,
-
 }
 
 export default function TextOutput({ text }: TextOutputProps) {
@@ -21,14 +20,16 @@ export default function TextOutput({ text }: TextOutputProps) {
     };
 
     return (
-        <div className="bg-fd-card flex items-center justify-between gap-2 px-3 py-2 rounded-md w-full">
-            <p>{text}</p>
+        <div className="bg-fd-card flex items-start justify-between gap-2 px-2 py-2 rounded-md w-full">
+            <p className="wrap-break-word whitespace-normal overflow-hidden">
+                {text}
+            </p>
             <button
-                className={`text-fd-gray-foreground p-1 bg-fd-gray ${copied ? '' : 'hover:bg-fd-muted-gray'} transition rounded-sm cursor-pointer`}
+                className={`text-fd-gray-foreground p-1 bg-fd-gray ${copied ? '' : 'hover:bg-fd-muted-gray'} transition rounded-sm cursor-pointer shrink-0`}
                 onClick={handleCopy}
                 disabled={copied}
             >
-                {copied ? <Check size={1 + 'em'} /> : <Clipboard size={1 + 'em'} />}
+                {copied ? <Check size={16} /> : <Clipboard size={16} />}
             </button>
         </div>
     )
