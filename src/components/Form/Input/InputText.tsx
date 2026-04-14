@@ -1,25 +1,27 @@
-import { CornerDownLeft, LoaderCircle } from "lucide-react";
-import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler, Ref } from "react";
+import { CornerDownLeft, LoaderCircle, Trash } from "lucide-react";
+import { ChangeEventHandler, KeyboardEventHandler, MouseEventHandler, Ref, useRef } from "react";
 import { useTranslations } from "next-intl";
 
 interface InputTextProps {
     ref?: Ref<HTMLInputElement>,
     value?: string,
-    onChange?: ChangeEventHandler<HTMLInputElement, HTMLInputElement>,
+    onChange?: ChangeEventHandler<HTMLInputElement>
     onKeyDown?: KeyboardEventHandler,
     buttonClick?: MouseEventHandler<HTMLButtonElement>,
     disabled?: boolean,
     placeholder?: string,
     onlyLatin?: boolean,
+    clearText?: MouseEventHandler<HTMLButtonElement>
 }
 
-export default function InputText({ ref, value, onChange, onKeyDown, buttonClick, disabled, placeholder, onlyLatin }: InputTextProps) {
+export default function InputText({ ref, value, onChange, onKeyDown, buttonClick, disabled, placeholder, onlyLatin, clearText }: InputTextProps) {
     const t = useTranslations('Tools.Form.InputText')
     return (
         <div className='bg-fd-card w-full flex text-fd-foreground p-2 rounded-md border border-transparent focus-within:border-fd-primary transition-colors'>
             <input
                 ref={ref}
                 type="text"
+                id="textInput"
                 value={value}
                 disabled={disabled}
                 onChange={onChange}
@@ -31,6 +33,13 @@ export default function InputText({ ref, value, onChange, onKeyDown, buttonClick
                     target.value = target.value.replace(/[^a-zA-Z_0-9]/g, '');
                 } : undefined}
             />
+            {clearText && <button
+                onClick={clearText}
+                disabled={disabled}
+                className="cursor-pointer bg-fd-gray hover:bg-fd-muted-gray text-fd-gray-foreground transition h-fit w-fit px-1 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+                <Trash className="w-[1em]" />
+            </button>}
             {buttonClick && <button
                 onClick={buttonClick}
                 disabled={disabled}
