@@ -90,6 +90,13 @@ const MINI_TAGS: MiniTag[] = [
     { label: 'newline',    insert: '<newline>',                                        cursorOffset: 0,   description: 'Line break' },
 ];
 
+const KNOWN_TAGS = new Set([
+    ...MINI_TAGS.map(t => t.label.toLowerCase()),
+    'bold', 'italic', 'underlined', 'strikethrough', 'obfuscated', 'reset',
+    'newline', 'rainbow', 'gradient', 'transition', 'hover', 'click',
+    'key', 'lang', 'score', 'selector', 'nbt', 'font', 'insertion', 'shadow'
+]);
+
 type PreviewMode = 'chat' | 'sign' | 'book' | 'motd' | 'name' | 'lore' | 'kick' | 'tab' | 'text';
 const PREVIEW_MODES: PreviewMode[] = ['chat', 'sign', 'book', 'motd', 'name', 'lore', 'kick', 'tab', 'text'];
 
@@ -170,6 +177,11 @@ function parseNodes(raw: string): ParsedNode[] {
             const raw_tag = m[4];
             const lower = raw_tag.toLowerCase();
             const tagName = lower.split(':')[0];
+
+            if (!KNOWN_TAGS.has(tagName) && resolveColor(raw_tag) === null) {
+                nodes.push({ text: `<${raw_tag}>`, ...state, newline: false });
+                continue;
+            }
 
             if (lower === 'newline') {
                 nodes.push({ text: '\n', ...state, newline: true });
