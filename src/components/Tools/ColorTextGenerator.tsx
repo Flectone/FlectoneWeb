@@ -70,24 +70,23 @@ interface MiniTag {
     label: string;
     insert: string;
     cursorOffset?: number;
-    description: string;
 }
 
 const MINI_TAGS: MiniTag[] = [
-    { label: 'gradient',   insert: '<gradient:#ff0000:#0000ff>text</gradient>',      cursorOffset: -20, description: 'Gradient between colors' },
-    { label: 'rainbow',    insert: '<rainbow>text</rainbow>',                          cursorOffset: -9,  description: 'Rainbow colored text' },
-    { label: 'transition', insert: '<transition:#ff0000:#0000ff:0>text</transition>',  cursorOffset: -13, description: 'Color transition with phase' },
-    { label: 'shadow',     insert: '<shadow:#000000:100>text</shadow>',                cursorOffset: -9,  description: 'Drop shadow' },
-    { label: 'hover',      insert: "<hover:show_text:'tooltip'>text</hover>",          cursorOffset: -8,  description: 'Tooltip on hover' },
-    { label: 'click',      insert: "<click:run_command:'/say hi'>text</click>",        cursorOffset: -8,  description: 'Action on click' },
-    { label: 'insertion',  insert: "<insertion:'text'>label</insertion>",              cursorOffset: -10, description: 'Shift+click to insert text' },
-    { label: 'font',       insert: '<font:minecraft:uniform>text</font>',              cursorOffset: -7,  description: 'Custom font' },
-    { label: 'keybind',    insert: '<key:key.jump>',                                   cursorOffset: 0,   description: 'Displays a keybind' },
-    { label: 'lang',       insert: '<lang:item.minecraft.diamond>',                    cursorOffset: 0,   description: 'Translatable text' },
-    { label: 'score',      insert: '<score:playername:objective>',                     cursorOffset: 0,   description: 'Scoreboard value' },
-    { label: 'selector',   insert: '<sel:@a>',                                         cursorOffset: 0,   description: 'Entity selector' },
-    { label: 'nbt',        insert: '<nbt:entity:\'@s\':Health>',                       cursorOffset: 0,   description: 'NBT value' },
-    { label: 'newline',    insert: '<newline>',                                        cursorOffset: 0,   description: 'Line break' },
+    { label: 'gradient',   insert: '<gradient:#ff0000:#0000ff>text</gradient>',      cursorOffset: -15 },
+    { label: 'rainbow',    insert: '<rainbow>text</rainbow>',                          cursorOffset: -14 },
+    { label: 'transition', insert: '<transition:#ff0000:#0000ff:0>text</transition>',  cursorOffset: -17 },
+    { label: 'shadow',     insert: '<shadow:#000000:100>text</shadow>',                cursorOffset: -13 },
+    { label: 'hover',      insert: "<hover:show_text:'tooltip'>text</hover>",          cursorOffset: -12 },
+    { label: 'click',      insert: "<click:run_command:'/say hi'>text</click>",        cursorOffset: -12 },
+    { label: 'insertion',  insert: "<insertion:'text'>label</insertion>",              cursorOffset: -17 },
+    { label: 'font',       insert: '<font:minecraft:uniform>text</font>',              cursorOffset: -11 },
+    { label: 'keybind',    insert: '<key:key.jump>',                                   cursorOffset: 0 },
+    { label: 'lang',       insert: '<lang:item.minecraft.diamond>',                    cursorOffset: 0 },
+    { label: 'score',      insert: '<score:playername:objective>',                     cursorOffset: 0 },
+    { label: 'selector',   insert: '<selector:@s>',                                    cursorOffset: 0 },
+    { label: 'nbt',        insert: '<nbt:entity:\'@s\':Health>',                       cursorOffset: 0 },
+    { label: 'newline',    insert: '<newline>',                                        cursorOffset: 0 },
 ];
 
 const KNOWN_TAGS = new Set([
@@ -734,15 +733,14 @@ export default function ColorTextGenerator() {
                                 <button onClick={() => insert('&r', '<reset>')} className="items-center gap-1 px-2 py-1 rounded-md bg-fd-card border border-fd-border hover:bg-fd-muted transition-colors text-xs cursor-pointer">⟳ {t('reset')}</button>
                                 <button onClick={() => insert('\n', '<newline>')} className="px-2 py-1 rounded-md bg-fd-card border border-fd-border hover:bg-fd-muted transition-colors text-xs cursor-pointer">{t('newline')}</button>
 
-                                <GradientButton disabled={!isMini} onClick={() => insertAtCursor('<gradient:#ff0000:#0000ff>text</gradient>', -20)} />
-                                <RainbowButton disabled={!isMini} onClick={() => insertAtCursor('<rainbow>text</rainbow>', -9)} />
+                                <GradientButton disabled={!isMini} onClick={() => insertAtCursor('<gradient:#ff0000:#0000ff>text</gradient>', -15)} />
+                                <RainbowButton disabled={!isMini} onClick={() => insertAtCursor('<rainbow>text</rainbow>', -14)} />
 
                                 {MINI_TAGS.filter(tag => !['gradient', 'rainbow', 'newline'].includes(tag.label)).map(tag => (
                                     <button
                                         key={tag.label}
-                                        title={tag.description}
                                         disabled={!isMini}
-                                        onClick={() => isMini && insertAtCursor(tag.insert, tag.cursorOffset ?? 0)}
+                                        onClick={() => isMini && insertAtCursor(tag.insert, tag.cursorOffset ?? 220)}
                                         className={`px-2 py-1 rounded-md border text-xs transition-colors ${
                                             isMini
                                                 ? 'bg-fd-card border-fd-border hover:bg-fd-muted cursor-pointer'
