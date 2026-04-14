@@ -4,7 +4,7 @@ import TextOutput from '../Form/Output/TextOutput';
 import { Slider } from '../Form/Input/Slider';
 import SelectBlock from '../Form/Input/SelectBlock';
 
-export default function TimeConverter() {
+export default function TimeConvertor() {
     const [rotate, setRotate] = useState(90)
     const [isDragging, setIsDragging] = useState(false)
     const [startRotate, setStartRotate] = useState(0)
