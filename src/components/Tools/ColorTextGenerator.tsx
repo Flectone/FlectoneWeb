@@ -194,16 +194,16 @@ function parseNodes(raw: string): ParsedNode[] {
                 Object.assign(next, { color: resolveColor(raw_tag), gradient: null, rainbow: false, transition: null });
             } else if (lower.startsWith('gradient:')) {
                 const parts = raw_tag.slice(9).split(':');
-                const maybePhase = parseFloat(parts[parts.length - 1]);
-                const hasPhase = !isNaN(maybePhase) && /^-?\d*\.?\d+$/.test(parts[parts.length - 1]);
+                const maybePhase = Number.parseFloat(parts.at(-1) as string);
+                const hasPhase = !Number.isNaN(maybePhase) && /^-?\d*\.?\d+$/.test(parts.at(-1) as string);
                 const colors = (hasPhase ? parts.slice(0, -1) : parts).map(p => resolveColor(p) ?? p);
                 Object.assign(next, { gradient: colors, gradientPhase: hasPhase ? maybePhase : 0, color: null, rainbow: false, transition: null });
             } else if (lower.startsWith('rainbow')) {
                 Object.assign(next, { rainbow: true, rainbowPhase: parseFloat(raw_tag.slice(8)) || 0, color: null, gradient: null, transition: null });
             } else if (lower.startsWith('transition:')) {
                 const parts = raw_tag.slice(11).split(':');
-                const maybePhase = parseFloat(parts[parts.length - 1]);
-                const hasPhase = !isNaN(maybePhase);
+                const maybePhase = Number.parseFloat(parts.at(-1) as string);
+                const hasPhase = !Number.isNaN(maybePhase);
                 const colors = (hasPhase ? parts.slice(0, -1) : parts).map(p => resolveColor(p) ?? p);
                 Object.assign(next, { transition: { colors, phase: hasPhase ? maybePhase : 0 }, color: null, gradient: null, rainbow: false });
             } else if (lower === 'bold') {
@@ -219,17 +219,17 @@ function parseNodes(raw: string): ParsedNode[] {
             } else if (lower === 'reset') {
                 Object.assign(next, emptyState());
             } else if (lower.startsWith('hover:show_text:')) {
-                next.hoverText = raw_tag.slice(16).replace(/^['"]|['"]$/g, '');
+                next.hoverText = raw_tag.slice(16).replaceAll(/^['"]|['"]$/g, '');
                 next.underline = true;
             } else if (lower.startsWith('hover:show_item:') || lower.startsWith('hover:show_entity:')) {
-                next.hoverText = raw_tag.replace(/^['"]|['"]$/g, '');
+                next.hoverText = raw_tag.replaceAll(/^['"]|['"]$/g, '');
                 next.underline = true;
             } else if (lower.startsWith('click:')) {
                 const rest = raw_tag.slice(6);
                 const ci = rest.indexOf(':');
                 if (ci !== -1) {
                     next.clickAction = rest.slice(0, ci);
-                    next.clickValue = rest.slice(ci + 1).replace(/^['"]|['"]$/g, '');
+                    next.clickValue = rest.slice(ci + 1).replaceAll(/^['"]|['"]$/g, '');
                     next.underline = true;
                 }
             }
@@ -246,7 +246,7 @@ function parseNodes(raw: string): ParsedNode[] {
 }
 
 function hexToRgb(hex: string): [number, number, number] {
-    const n = parseInt(hex.replace('#', ''), 16);
+    const n = Number.parseInt(hex.replace('#', ''), 16);
     return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
 }
 
@@ -290,19 +290,24 @@ function rainbowAt(t: number, phase = 0): string {
     return hslToHex(((t + phase) % 1 + 1) % 1);
 }
 
-function ObfuscatedSpan({ text, style }: { text: string; style?: React.CSSProperties }) {
+function ObfuscatedSpan({ text, style }: Readonly<{ text: string; style?: React.CSSProperties }>) {
     const random = () => text.split('').map(() => OBFUSCATED_CHARS[Math.floor(Math.random() * OBFUSCATED_CHARS.length)]);
     const [chars, setChars] = useState(random);
 
     useEffect(() => {
         const id = setInterval(() => setChars(random()), 50);
         return () => clearInterval(id);
-    }, [text]);
+    }, [random, text]);
 
     return <span style={{ ...style, fontVariantNumeric: 'tabular-nums', display: 'inline-block' }}>{chars.join('')}</span>;
 }
 
-function GradientSpan({ text, colors, phase, style }: { text: string; colors: string[]; phase: number; style?: React.CSSProperties }) {
+function GradientSpan({ text, colors, phase, style }: Readonly<{
+    text: string;
+    colors: string[];
+    phase: number;
+    style?: React.CSSProperties
+}>) {
     return (
         <span style={style}>
             {text.split('').map((ch, i) => (
@@ -312,7 +317,7 @@ function GradientSpan({ text, colors, phase, style }: { text: string; colors: st
     );
 }
 
-function RainbowSpan({ text, phase, style }: { text: string; phase: number; style?: React.CSSProperties }) {
+function RainbowSpan({ text, phase, style }: Readonly<{ text: string; phase: number; style?: React.CSSProperties }>) {
     return (
         <span style={style}>
             {text.split('').map((ch, i) => (
@@ -322,7 +327,7 @@ function RainbowSpan({ text, phase, style }: { text: string; phase: number; styl
     );
 }
 
-function HoverTooltip({ children, text }: { children: React.ReactNode; text: string }) {
+function HoverTooltip({ children, text }: Readonly<{ children: React.ReactNode; text: string }>) {
     const [show, setShow] = useState(false);
     return (
         <span className="relative cursor-default" onMouseEnter={() => setShow(true)} onMouseLeave={() => setShow(false)}>
@@ -341,7 +346,7 @@ function HoverTooltip({ children, text }: { children: React.ReactNode; text: str
     );
 }
 
-function RenderedText({ raw, style }: { raw: string; style?: React.CSSProperties }) {
+function RenderedText({ raw, style }: Readonly<{ raw: string; style?: React.CSSProperties }>) {
     const nodes = parseNodes(raw);
     if (!nodes.length || !raw.trim()) return <span style={{ ...style, opacity: 0.3 }}>Preview</span>;
 
@@ -372,24 +377,27 @@ function RenderedText({ raw, style }: { raw: string; style?: React.CSSProperties
 
 function toMiniMessage(raw: string): string {
     return raw
-        .replace(/(?:&|§)([0-9a-fA-F])/g, (_, c) => { const n = LEGACY_CODE_TO_MM[c.toLowerCase()]; return n ? `<${n}>` : `&${c}`; })
-        .replace(/(?:&|§)(#[0-9a-fA-F]{6})/g, (_, hex) => `<${hex}>`)
-        .replace(/(?:&|§)l/gi, '<bold>').replace(/(?:&|§)o/gi, '<italic>')
-        .replace(/(?:&|§)n/gi, '<underlined>').replace(/(?:&|§)m/gi, '<strikethrough>')
-        .replace(/(?:&|§)k/gi, '<obfuscated>').replace(/(?:&|§)r/gi, '<reset>')
-        .replace(/\n/g, '<newline>');
+        .replaceAll(/[&§]([0-9a-fA-F])/g, (_, c) => { const n = LEGACY_CODE_TO_MM[c.toLowerCase()]; return n ? `<${n}>` : `&${c}`; })
+        .replaceAll(/[&§](#[0-9a-fA-F]{6})/g, (_, hex) => `<${hex}>`)
+        .replaceAll(/[&§]l/gi, '<bold>')
+        .replaceAll(/[&§]o/gi, '<italic>')
+        .replaceAll(/[&§]n/gi, '<underlined>')
+        .replaceAll(/[&§]m/gi, '<strikethrough>')
+        .replaceAll(/[&§]k/gi, '<obfuscated>')
+        .replaceAll(/[&§]r/gi, '<reset>')
+        .replaceAll('\n', '<newline>');
 }
 
 function toLegacy(raw: string): string {
     const nameToCode = Object.fromEntries(Object.entries(LEGACY_CODE_TO_MM).map(([k, v]) => [v, k]));
     return raw
-        .replace(/<newline>/gi, '\n')
-        .replace(/<([a-z_]+)>/g, (_, tag) => {
+        .replaceAll(/<newline>/gi, '\n')
+        .replaceAll(/<([a-z_]+)>/g, (_, tag) => {
             if (nameToCode[tag]) return `&${nameToCode[tag]}`;
             const map: Record<string, string> = { bold: '&l', italic: '&o', underlined: '&n', strikethrough: '&m', obfuscated: '&k', reset: '&r' };
             return map[tag] ?? `<${tag}>`;
         })
-        .replace(/<(#[0-9a-fA-F]{6})>/g, (_, hex) => `&${hex}`);
+        .replaceAll(/<(#[0-9a-fA-F]{6})>/g, (_, hex) => `&${hex}`);
 }
 
 function convertText(raw: string, isMini: boolean, doConvert: boolean): string {
@@ -397,7 +405,11 @@ function convertText(raw: string, isMini: boolean, doConvert: boolean): string {
     return isMini ? toMiniMessage(raw) : toLegacy(raw).replace(/\n/g, '\\n');
 }
 
-function Toggle({ enabled, onChange, label }: { enabled: boolean; onChange: (v: boolean) => void; label: string }) {
+function Toggle({ enabled, onChange, label }: Readonly<{
+    enabled: boolean;
+    onChange: (v: boolean) => void;
+    label: string
+}>) {
     return (
         <button onClick={() => onChange(!enabled)} className="flex items-center gap-2 cursor-pointer group shrink-0">
             <div className={`relative w-9 h-5 rounded-full transition-colors shrink-0 ${enabled ? 'bg-fd-primary' : 'bg-fd-border'}`}>
@@ -408,8 +420,8 @@ function Toggle({ enabled, onChange, label }: { enabled: boolean; onChange: (v: 
     );
 }
 
-function ColorButton({ color, onClick }: { color: typeof LEGACY_COLORS[number]; onClick: () => void }) {
-    const isLight = parseInt(color.hex.slice(1), 16) > 0x888888;
+function ColorButton({ color, onClick }: Readonly<{ color: typeof LEGACY_COLORS[number]; onClick: () => void }>) {
+    const isLight = Number.parseInt(color.hex.slice(1), 16) > 0x888888;
     return (
         <button
             title={`&${color.code} · ${color.hex}`}
@@ -427,7 +439,7 @@ function ColorButton({ color, onClick }: { color: typeof LEGACY_COLORS[number]; 
     );
 }
 
-function MagicButton({ onClick, label }: { onClick: () => void; label: string }) {
+function MagicButton({ onClick, label }: Readonly<{ onClick: () => void; label: string }>) {
     const [chars, setChars] = useState(label.split(''));
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -457,7 +469,7 @@ function MagicButton({ onClick, label }: { onClick: () => void; label: string })
     );
 }
 
-function GradientButton({ onClick, disabled }: { onClick: () => void; disabled?: boolean }) {
+function GradientButton({ onClick, disabled }: Readonly<{ onClick: () => void; disabled?: boolean }>) {
     return (
         <button
             onClick={onClick}
@@ -471,7 +483,7 @@ function GradientButton({ onClick, disabled }: { onClick: () => void; disabled?:
     );
 }
 
-function RainbowButton({ onClick, disabled }: { onClick: () => void; disabled?: boolean }) {
+function RainbowButton({ onClick, disabled }: Readonly<{ onClick: () => void; disabled?: boolean }>) {
     const text = 'rainbow';
     return (
         <button
@@ -487,13 +499,13 @@ function RainbowButton({ onClick, disabled }: { onClick: () => void; disabled?: 
 }
 
 const FAKE_PLAYERS = ['Steve', 'Alex', 'Notch', 'Herobrine', 'Jeb_', 'Dinnerbone'];
-function TextareaField({ value, onChange, placeholder, rows = 3, inputRef }: {
+function TextareaField({ value, onChange, placeholder, rows = 3, inputRef }: Readonly<{
     value: string;
     onChange: (v: string) => void;
     placeholder?: string;
     rows?: number;
     inputRef?: React.RefObject<HTMLTextAreaElement>;
-}) {
+}>) {
     return (
         <div className="relative">
             <textarea
@@ -761,7 +773,7 @@ export default function ColorTextGenerator() {
                                         { label: 'Legacy (&)', value: 'legacy' },
                                         { label: 'MiniMessage', value: 'minimessage' },
                                     ]}
-                                    onChange={(v) => setFormat(v as 'legacy' | 'minimessage')}
+                                    onChange={(v) => setFormat(v)}
                                     defaultValue="legacy"
                                 />
                                 <Toggle enabled={convertOutput} onChange={setConvertOutput} label={t('convertOutput')} />
