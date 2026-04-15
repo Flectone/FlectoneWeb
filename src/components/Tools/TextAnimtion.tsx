@@ -7,7 +7,7 @@ import { HexColorPicker } from "react-colorful";
 import { useTranslations } from "next-intl";
 import InputText from "@/components/Form/Input/InputText";
 import { Slider } from "../Form/Input/Slider";
-import { ColorPickerList } from "../Form/Input/ColorPickerList";
+import { ColorList } from "../Form/Input/Color/ColorList";
 import SelectBlock from "../Form/Input/SelectBlock";
 
 type AnimationStyle = 'ltr' | 'rtl';
@@ -230,7 +230,7 @@ export default function TextAnimation() {
                             onChange={setCharsPerColor}
                         />
                     </div>
-                    <ColorPickerList colors={pickerColors} onChange={setPickerColors} label={t('Settings.colors')} />
+                    <ColorList colors={pickerColors} onChange={setPickerColors} label={t('Settings.colors')} />
                     <div className="flex flex-col gap-1">
                         <p>{t('Settings.gradientMode')}</p>
                         <SelectBlock

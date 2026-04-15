@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Plus, Trash2, ArrowUp, ArrowDown } from "lucide-react";
 import { HexColorPicker } from "react-colorful";
 
-interface ColorPickerListProps {
+interface ColorListProps {
     label: string;
     colors: string[];
     onChange: (colors: string[]) => void;
@@ -10,12 +10,12 @@ interface ColorPickerListProps {
     maxColors?: number;
 }
 
-export function ColorPickerList({
+export function ColorList({
     colors,
     onChange,
     label,
     maxColors = Infinity
-}: ColorPickerListProps) {
+}: ColorListProps) {
     const [activePickerIndex, setActivePickerIndex] = useState<number | null>(null);
     const pickerRef = useRef<HTMLDivElement>(null);
 
