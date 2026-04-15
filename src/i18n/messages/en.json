@@ -402,6 +402,7 @@
       "strike": "Strikethrough",
       "reset": "Reset",
       "newline": "New line",
+      "display": "Display",
       "previews": {
         "text": "Text",
         "tab": "Tab",

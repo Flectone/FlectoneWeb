@@ -2,11 +2,14 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import { Trash2 } from 'lucide-react';
+import { Plus } from 'lucide-react';
 import SelectBlock from '@/components/Form/Input/SelectBlock';
 import TextOutput from '@/components/Form/Output/TextOutput';
 import { HexColorPicker } from 'react-colorful';
 import InputText from '../Form/Input/InputText';
+import MinecraftChat from '../Assets/MinecraftChat';
+import MinecraftTab from '../Assets/MinecraftTab';
+import Checkbox from '../Form/Input/Checkbox';
 
 const LEGACY_COLORS = [
     { code: '0', hex: '#000000' },
@@ -347,10 +350,9 @@ function HoverTooltip({ children, text }: Readonly<{ children: React.ReactNode; 
     );
 }
 
-function RenderedText({ raw, style }: Readonly<{ raw: string; style?: React.CSSProperties }>) {
+function RenderedText({ raw, style, isSignMode = false }: Readonly<{ raw: string; style?: React.CSSProperties; isSignMode?: boolean }>) {
     const nodes = parseNodes(raw);
     if (!nodes.length || !raw.trim()) return <span style={{ ...style, opacity: 0.3 }}>Preview</span>;
-
     return (
         <span style={style}>
             {nodes.map((node, i) => {
@@ -368,7 +370,6 @@ function RenderedText({ raw, style }: Readonly<{ raw: string; style?: React.CSSP
                 else if (node.rainbow) inner = <RainbowSpan text={node.text} phase={node.rainbowPhase} style={fmt} />;
                 else if (node.transition) inner = <span style={{ ...fmt, color: gradientColor(node.transition.colors, node.transition.phase) }}>{node.text}</span>;
                 else inner = <span style={{ ...fmt, color: node.color ?? undefined }}>{node.text}</span>;
-
                 if (node.hoverText) inner = <HoverTooltip key={i} text={node.hoverText}>{inner}</HoverTooltip>;
                 return <span key={i}>{inner}</span>;
             })}
@@ -406,36 +407,19 @@ function convertText(raw: string, isMini: boolean, doConvert: boolean): string {
     return isMini ? toMiniMessage(raw) : toLegacy(raw).replace(/\n/g, '\\n');
 }
 
-function Toggle({ enabled, onChange, label }: Readonly<{
-    enabled: boolean;
-    onChange: (v: boolean) => void;
-    label: string
-}>) {
-    return (
-        <button onClick={() => onChange(!enabled)} className="flex items-center gap-2 cursor-pointer group shrink-0">
-            <div className={`relative w-9 h-5 rounded-full transition-colors shrink-0 ${enabled ? 'bg-fd-primary' : 'bg-fd-border'}`}>
-                <div className={`absolute top-0.5 left-0.5 w-4 h-4 rounded-full bg-white shadow transition-transform ${enabled ? 'translate-x-4' : 'translate-x-0'}`} />
-            </div>
-            <span className="text-sm text-fd-muted-foreground group-hover:text-fd-foreground transition-colors whitespace-nowrap">{label}</span>
-        </button>
-    );
-}
-
 function ColorButton({ color, onClick }: Readonly<{ color: typeof LEGACY_COLORS[number]; onClick: () => void }>) {
-    const isLight = Number.parseInt(color.hex.slice(1), 16) > 0x888888;
+    const isLight = Number.parseInt(color.hex.slice(1), 16) > 0x555555;
+    const [isHover, setIsHover] = useState(false);
     return (
         <button
+            onMouseEnter={() => setIsHover(true)}
+            onMouseLeave={() => setIsHover(false)}
             title={`&${color.code} · ${color.hex}`}
             onClick={onClick}
-            className="w-7 h-7 rounded-md border-2 border-black/30 hover:scale-110 transition-transform cursor-pointer flex items-center justify-center shrink-0"
-            style={{ backgroundColor: color.hex }}
+            className={`w-7 h-7 transition hover:bg-[color-mix(in_srgb,${color.hex},white_40%)] rounded-md border border-black/30 cursor-pointer flex items-center justify-center shrink-0`}
+            style={{ backgroundColor: isHover ? `color-mix(${color.hex}, black 20%)` : color.hex, }}
         >
-            <span className="text-[8px] font-bold select-none" style={{
-                color: isLight ? '#000' : '#fff',
-                textShadow: isLight ? '0 0 3px rgba(255,255,255,0.4)' : '0 0 3px rgba(0,0,0,0.8)',
-            }}>
-                &amp;{color.code}
-            </span>
+            <p className='text-xs font-mono' style={{ color: `color-mix(${color.hex}, ${isLight ? 'black 50%' : 'white 90%'})` }}>{color.code.length > 1 ? '' : `&${color.code}`}</p>
         </button>
     );
 }
@@ -462,7 +446,7 @@ function MagicButton({ onClick, label }: Readonly<{ onClick: () => void; label: 
             onClick={onClick}
             onMouseEnter={start}
             onMouseLeave={stop}
-            className="px-2 py-1 rounded-md bg-fd-card border border-fd-border hover:bg-fd-muted transition-colors text-xs cursor-pointer"
+            className="px-2 py-1 rounded-md bg-fd-gray border border-fd-border hover:bg-fd-muted-gray transition-colors text-xs cursor-pointer"
             style={{ fontVariantNumeric: 'tabular-nums', width: `100` }}
         >
             {chars.join('')}
@@ -475,7 +459,7 @@ function GradientButton({ onClick, disabled }: Readonly<{ onClick: () => void; d
         <button
             onClick={onClick}
             disabled={disabled}
-            className={`px-2 py-1 rounded-md border text-xs transition-colors ${disabled ? 'bg-fd-card/50 border-fd-border/50 cursor-not-allowed opacity-40' : 'bg-fd-card border-fd-border hover:bg-fd-muted cursor-pointer'}`}
+            className={`px-2 py-1 rounded-md border text-xs transition-colors ${disabled ? 'bg-fd-gray border-fd-border/50 cursor-not-allowed opacity-40' : 'bg-fd-gray border-fd-border hover:bg-fd-muted-gray cursor-pointer'}`}
         >
             <span style={disabled ? {} : { background: 'linear-gradient(90deg,#f00,#00f)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
                 gradient
@@ -490,7 +474,7 @@ function RainbowButton({ onClick, disabled }: Readonly<{ onClick: () => void; di
         <button
             onClick={onClick}
             disabled={disabled}
-            className={`px-2 py-1 rounded-md border text-xs transition-colors ${disabled ? 'bg-fd-card/50 border-fd-border/50 cursor-not-allowed opacity-40' : 'bg-fd-card border-fd-border hover:bg-fd-muted cursor-pointer'}`}
+            className={`px-2 py-1 rounded-md border text-xs transition-colors ${disabled ? 'bg-fd-gray border-fd-border/50 cursor-not-allowed opacity-40' : 'bg-fd-gray border-fd-border hover:bg-fd-muted-gray cursor-pointer'}`}
         >
             {text.split('').map((ch, i) => (
                 <span key={i} style={disabled ? {} : { color: rainbowAt(i / (text.length - 1)) }}>{ch}</span>
@@ -498,8 +482,6 @@ function RainbowButton({ onClick, disabled }: Readonly<{ onClick: () => void; di
         </button>
     );
 }
-
-const FAKE_PLAYERS = ['Steve', 'Alex', 'Notch', 'Herobrine', 'Jeb_', 'Dinnerbone'];
 
 export default function ColorTextGenerator() {
     const t = useTranslations('Tools.ColorTextGenerator');
@@ -513,17 +495,17 @@ export default function ColorTextGenerator() {
     const [pickerColor, setPickerColor] = useState('#ff0000');
     const [showPicker, setShowPicker] = useState(false);
     const pickerRef = useRef<HTMLDivElement>(null);
-    const textareaRef = useRef<HTMLInputElement>(null);
-    const tabHeaderRef = useRef<HTMLInputElement>(null);
-    const tabFooterRef = useRef<HTMLInputElement>(null);
+    const textareaRef = useRef<HTMLTextAreaElement>(null);
+    const tabHeaderRef = useRef<HTMLTextAreaElement>(null);
+    const tabFooterRef = useRef<HTMLTextAreaElement>(null);
 
     const isMini = format === 'minimessage';
 
     const insertAtCursor = (text: string, cursorOffset = 0) => {
         const el = textareaRef.current;
         if (!el) return;
-        const start = el.selectionStart ? el.selectionStart : 0;
-        const end = el.selectionEnd ? el.selectionEnd : 0;
+        const start = el.selectionStart;
+        const end = el.selectionEnd;
         const val = el === tabHeaderRef.current ? tabHeader : el === tabFooterRef.current ? tabFooter : raw;
         const setter = el === tabHeaderRef.current ? setTabHeader : el === tabFooterRef.current ? setTabFooter : setRaw;
         setter(val.slice(0, start) + text + val.slice(end));
@@ -536,74 +518,63 @@ export default function ColorTextGenerator() {
     const insert = (legacy: string, mini: string, cursorOffset = 0) =>
         insertAtCursor(isMini ? mini : legacy, cursorOffset);
 
-    const mc: React.CSSProperties = { fontFamily: 'Minecraft, monospace', fontSize: '13px' };
+    const mc: React.CSSProperties = { fontFamily: 'Minecraft, monospace', fontSize: '1em' };
 
     const renderPreview = () => {
         switch (previewMode) {
             case 'tab': return (
-                <div className="relative w-full rounded-xl overflow-hidden border border-fd-border bg-black flex items-center justify-center" style={{ aspectRatio: '16/12' }}>
-                    <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-50" />
-                    <div className="relative z-10 flex flex-col items-center gap-0.5 w-72">
-                        {raw && (
-                            <div className="bg-black/70 px-4 py-1.5 w-full text-center border-b border-white/10">
-                                <RenderedText raw={raw} style={mc} />
+                <div className="h-72 flex items-center justify-center bg-[url('/assets/minecrafttaiga.png')]  bg-center bg-cover overflow-hidden border rounded-lg">
+                    <MinecraftTab tabText={
+                        <div className='flex items-start gap-1'>
+                            <div className='flex items-center gap-1'>
+                                <RenderedText raw={raw} style={{ ...mc, color: '#FFFFFF', fontSize: '1.2em', marginBottom: '6px' }} />
                             </div>
-                        )}
-                        <div className="bg-black/60 w-full">
-                            {FAKE_PLAYERS.map((p, i) => (
-                                <div key={i} className="flex items-center gap-2 px-3 py-0.5 hover:bg-white/5">
-                                    <div className="w-3.5 h-3.5 bg-[#888] rounded-sm shrink-0" style={{ imageRendering: 'pixelated' }} />
-                                    <span style={{ ...mc, color: '#fff' }}>{p}</span>
-                                    <span style={{ ...mc, color: '#55FF55', marginLeft: 'auto', fontSize: '10px' }}>■</span>
-                                </div>
-                            ))}
-                        </div>
-                        {raw && (
-                            <div className="bg-black/70 px-4 py-1.5 w-full text-center border-t border-white/10">
-                                <RenderedText raw={raw} style={mc} />
-                            </div>
-                        )}
-                    </div>
+                        </div>}
+                    />
                 </div>
             );
             case 'chat': return (
-                <div className="relative w-full rounded-xl overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
-                    <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-60" />
-                    <div className="relative z-10 w-full h-full flex flex-col justify-end p-4 gap-1">
-                        <div className="flex gap-2 items-baseline">
-                            <span style={{ ...mc, color: '#AAAAAA' }}>&lt;Player&gt;</span>
-                            <RenderedText raw={raw} style={mc} />
-                        </div>
-                        <div className="w-full h-7 bg-black/60 border border-white/20 flex items-center px-2">
-                            <span style={{ ...mc, color: '#AAAAAA', fontSize: '12px' }}>Press T to chat...</span>
-                        </div>
-                    </div>
+                <div className="h-72 bg-[url('/assets/minecrafttaiga.png')] bg-center bg-cover overflow-hidden border rounded-lg">
+                    <MinecraftChat addString={
+                        <div className='flex items-start gap-1'>
+                            <div className='flex items-start gap-1'>
+                                <p className='[text-shadow:1.2px_1.2px_0px_#212F38] text-[#ABD5E3]!'>
+                                    MISQZY:&#160;
+                                    <RenderedText raw={raw} style={{
+                                        ...mc,
+                                        color: '#FFFFFF',
+                                        textWrap: 'wrap',
+                                        wordBreak: 'break-word',
+                                        overflowWrap: 'break-word'
+                                    }} />
+                                </p>
+
+                            </div>
+                        </div>}
+                    />
                 </div>
+
             );
             case 'sign': return (
-                <div className="relative w-full rounded-xl overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
-                    <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-50" />
-                    <div className="relative z-10 w-full h-full flex items-center justify-center">
-                        <div className="bg-[#8B6914]/80 border-2 border-[#5c4210] px-8 py-3 rounded flex flex-col items-center gap-1">
-                            <RenderedText raw={raw} style={{ ...mc, color: '#000000' }} />
-                            <div className="w-full h-px bg-black/30 mt-1" />
-                            <span style={{ ...mc, color: '#000000', opacity: 0.4, fontSize: '11px' }}>— — — —</span>
-                        </div>
+                <div className="h-full relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                    <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-40" />
+                    <div className="relative z-10 w-[192px] h-[96px] flex items-start justify-center">
+                        <img src="/assets/containers/sign.png" className="absolute -z-1" />
+                        <RenderedText isSignMode raw={raw} style={{ ...mc, color: '#000000', fontSize: '1.2em', lineHeight: '1', textAlign: 'center', marginTop: '4px' }} />
                     </div>
                 </div>
             );
             case 'book': return (
-                <div className="relative w-full rounded-xl overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                <div className="h-72 relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
                     <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-40" />
-                    <div className="relative z-10 w-full h-full flex items-center justify-center">
-                        <div className="bg-[#f0e8d0] border border-[#c8b880] px-8 py-4 rounded shadow-lg w-52">
-                            <RenderedText raw={raw} style={{ ...mc, color: '#2c1810', lineHeight: '1.6' }} />
-                        </div>
+                    <div className="relative z-10 w-48 h-59 flex items-start justify-start">
+                        <img src="/assets/containers/book.webp" className="absolute -z-1 w-48" />
+                        <RenderedText raw={raw} style={{ ...mc, color: '#2c1810', lineHeight: '1', marginLeft: '18px', marginTop: '16px' }} />
                     </div>
                 </div>
             );
             case 'motd': return (
-                <div className="relative w-full rounded-xl overflow-hidden border border-fd-border bg-[#1a1a2e]" style={{ aspectRatio: '16/12' }}>
+                <div className="relative w-full rounded-lg overflow-hidden border border-fd-border bg-[#1a1a2e]" style={{ aspectRatio: '16/12' }}>
                     <div className="relative z-10 w-full h-full flex items-center justify-center">
                         <div className="bg-[#2a2a3e]/90 border border-white/10 px-8 py-4 rounded-lg flex items-center gap-3">
                             <img src="/assets/minecrafttaiga.png" className="w-12 h-12 rounded" />
@@ -616,7 +587,7 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'name': return (
-                <div className="relative w-full rounded-xl overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                <div className="relative w-full rounded-lg overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
                     <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-50" />
                     <div className="relative z-10 w-full h-full flex items-center justify-center">
                         <div className="flex flex-col items-center gap-1">
@@ -627,7 +598,7 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'lore': return (
-                <div className="relative w-full rounded-xl overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                <div className="relative w-full rounded-lg overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
                     <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-50" />
                     <div className="relative z-10 w-full h-full flex items-center justify-center">
                         <div className="border border-[#2d0a63] bg-[#100010]/95 px-3 py-2 rounded flex flex-col gap-0.5" style={{ boxShadow: '0 0 8px #2d0a6380' }}>
@@ -641,7 +612,7 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'kick': return (
-                <div className="relative w-full rounded-xl overflow-hidden border border-fd-border bg-[#3c0000]" style={{ aspectRatio: '16/12' }}>
+                <div className="relative w-full rounded-lg overflow-hidden border border-fd-border bg-[#3c0000]" style={{ aspectRatio: '16/12' }}>
                     <div className="relative z-10 w-full h-full flex flex-col items-center justify-center gap-3 px-8 text-center">
                         <span style={{ ...mc, color: '#FF5555', fontSize: '16px', fontWeight: 'bold' }}>Disconnected</span>
                         <div className="bg-black/40 border border-white/10 px-6 py-3 rounded">
@@ -651,23 +622,31 @@ export default function ColorTextGenerator() {
                 </div>
             );
             default: return (
-                <div className="w-full rounded-xl border border-fd-border bg-fd-card flex items-center justify-center" style={{ aspectRatio: '16/12' }}>
+                <div className="w-full rounded-lg border border-fd-border bg-fd-card flex items-center justify-center" style={{ aspectRatio: '16/12' }}>
                     <RenderedText raw={raw} style={{ ...mc, fontSize: '16px' }} />
                 </div>
             );
         }
     };
 
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (showPicker && pickerRef.current && !pickerRef.current.contains(event.target as Node)) {
+                setShowPicker(false);
+            }
+        }
+
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, [showPicker]);
+
     return (
         <div className="flex flex-col w-full gap-4">
-            <div className="bg-fd-article border rounded-2xl p-6 flex flex-col gap-4">
-
+            <div className="flex flex-col gap-4">
                 <div className="flex gap-4 max-lg:flex-col">
-
-                    <div className="flex flex-col gap-4 flex-1 min-w-0">
-
+                    <div className="flex flex-col gap-4 flex-1 min-w-0  bg-fd-article border p-6 rounded-2xl">
                         <div className="flex flex-col gap-2">
-                            <p className="font-bold text-sm">{t('colors')}</p>
+                            <p className="">{t('colors')}</p>
                             <div className="flex gap-1 flex-wrap">
                                 {LEGACY_COLORS.map((c) => (
                                     <ColorButton key={c.code} color={c} onClick={() => insert(`&${c.code}`, `<${LEGACY_CODE_TO_MM[c.code]}>`)} />
@@ -675,30 +654,27 @@ export default function ColorTextGenerator() {
                                 <div className="relative">
                                     <button
                                         title={t('addHex')}
-                                        onClick={() => setShowPicker(v => !v)}
-                                        className="w-7 h-7 rounded-md border-2 border-dashed border-fd-border hover:border-fd-primary hover:scale-110 transition-all cursor-pointer flex items-center justify-center bg-fd-card text-sm shrink-0"
+                                        onClick={() => { setShowPicker(true) }}
+                                        className="w-7 h-7 rounded-md border-2 border-dashed hover:bg-fd-muted-gray border-fd-border bg-fd-gray transition cursor-pointer flex items-center justify-center text-sm shrink-0"
                                     >
-                                        +
+                                        <Plus size={'1em'} />
                                     </button>
                                     {showPicker && (
-                                        <div ref={pickerRef} className="absolute z-50 top-9 left-0 bg-fd-article border border-fd-border rounded-xl p-3 flex flex-col gap-2 shadow-xl">
+                                        <div ref={pickerRef} className="absolute left-0 top-full mt-2 z-50 bg-fd-card border p-3 rounded-lg shadow-xl flex flex-col gap-2">
                                             <HexColorPicker color={pickerColor} onChange={setPickerColor} />
-                                            <div className="flex gap-2 items-center">
-                                                <div className="w-8 h-8 rounded-lg border border-fd-border shrink-0" style={{ backgroundColor: pickerColor }} />
-                                                <span className="text-xs font-mono">{pickerColor}</span>
-                                            </div>
-                                            <div className="flex gap-2">
-                                                <button
-                                                    onClick={() => { insert(`&${pickerColor}`, `<${pickerColor}>`); setShowPicker(false); }}
-                                                    className="flex-1 py-1.5 rounded-lg bg-fd-primary text-fd-primary-foreground hover:opacity-90 transition-opacity text-sm cursor-pointer"
-                                                >
-                                                    {t('add')}
-                                                </button>
-                                                <button
-                                                    onClick={() => setShowPicker(false)}
-                                                    className="flex-1 py-1.5 rounded-lg bg-fd-card border border-fd-border hover:bg-fd-muted transition-colors text-sm cursor-pointer"
-                                                >
-                                                    {t('cancel')}
+                                            <div className='flex gap-2 items-center h-fit'>
+                                                <span className='h-7 w-7 shrink-0 rounded-sm border' style={{ backgroundColor: pickerColor }}></span>
+                                                <div className="flex gap-1 items-center border rounded-md h-7 px-1.5">
+                                                    <span className="text-xs text-fd-foreground font-mono">HEX:</span>
+                                                    <input
+                                                        type="text"
+                                                        value={pickerColor}
+                                                        onChange={(e) => setPickerColor(e.target.value)}
+                                                        className="bg-transparent text-xs font-mono outline-none w-full text-fd-foreground"
+                                                    />
+                                                </div>
+                                                <button className='w-7 h-7 cursor-pointer hover:bg-fd-muted-gray transition rounded-sm bg-fd-gray shrink-0 flex items-center justify-center' onClick={() => { insert(`&${pickerColor}`, `<${pickerColor}>`); setShowPicker(false); LEGACY_COLORS.push({ code: pickerColor, hex: pickerColor }) }}>
+                                                    <Plus size={'1.2em'} />
                                                 </button>
                                             </div>
                                         </div>
@@ -708,15 +684,15 @@ export default function ColorTextGenerator() {
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <p className="font-bold text-sm">{t('formats')}</p>
+                            <p className="">{t('formats')}</p>
                             <div className="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-1">
-                                <button onClick={() => insert('&l', '<bold>')} className="px-2 py-1 rounded-md bg-fd-card border border-fd-border hover:bg-fd-muted transition-colors text-xs cursor-pointer font-bold">{t('bold')}</button>
-                                <button onClick={() => insert('&o', '<italic>')} className="px-2 py-1 rounded-md bg-fd-card border border-fd-border hover:bg-fd-muted transition-colors text-xs cursor-pointer italic">{t('italic')}</button>
+                                <button onClick={() => insert('&l', '<bold>')} className="px-2 py-1 rounded-md bg-fd-gray border border-fd-border hover:bg-fd-muted-gray transition-colors text-xs cursor-pointer font-bold">{t('bold')}</button>
+                                <button onClick={() => insert('&o', '<italic>')} className="px-2 py-1 rounded-md bg-fd-gray border border-fd-border hover:bg-fd-muted-gray transition-colors text-xs cursor-pointer italic">{t('italic')}</button>
                                 <MagicButton onClick={() => insert('&k', '<obfuscated>')} label={t('magic')} />
-                                <button onClick={() => insert('&n', '<underlined>')} className="px-2 py-1 rounded-md bg-fd-card border border-fd-border hover:bg-fd-muted transition-colors text-xs cursor-pointer underline">{t('underline')}</button>
-                                <button onClick={() => insert('&m', '<strikethrough>')} className="px-2 py-1 rounded-md bg-fd-card border border-fd-border hover:bg-fd-muted transition-colors text-xs cursor-pointer line-through">{t('strike')}</button>
-                                <button onClick={() => insert('&r', '<reset>')} className="items-center gap-1 px-2 py-1 rounded-md bg-fd-card border border-fd-border hover:bg-fd-muted transition-colors text-xs cursor-pointer">⟳ {t('reset')}</button>
-                                <button onClick={() => insert('\n', '<newline>')} className="px-2 py-1 rounded-md bg-fd-card border border-fd-border hover:bg-fd-muted transition-colors text-xs cursor-pointer">{t('newline')}</button>
+                                <button onClick={() => insert('&n', '<underlined>')} className="px-2 py-1 rounded-md bg-fd-gray border border-fd-border hover:bg-fd-muted-gray transition-colors text-xs cursor-pointer underline">{t('underline')}</button>
+                                <button onClick={() => insert('&m', '<strikethrough>')} className="px-2 py-1 rounded-md bg-fd-gray border border-fd-border hover:bg-fd-muted-gray transition-colors text-xs cursor-pointer line-through">{t('strike')}</button>
+                                <button onClick={() => insert('&r', '<reset>')} className="items-center gap-1 px-2 py-1 rounded-md bg-fd-gray border border-fd-border hover:bg-fd-muted-gray transition-colors text-xs cursor-pointer">⟳ {t('reset')}</button>
+                                <button onClick={() => insert('\n', '<newline>')} className="px-2 py-1 rounded-md bg-fd-gray border border-fd-border hover:bg-fd-muted-gray transition-colors text-xs cursor-pointer">{t('newline')}</button>
 
                                 <GradientButton disabled={!isMini} onClick={() => insertAtCursor('<gradient:#ff0000:#0000ff>text</gradient>', -15)} />
                                 <RainbowButton disabled={!isMini} onClick={() => insertAtCursor('<rainbow>text</rainbow>', -14)} />
@@ -727,8 +703,8 @@ export default function ColorTextGenerator() {
                                         disabled={!isMini}
                                         onClick={() => isMini && insertAtCursor(tag.insert, tag.cursorOffset ?? 220)}
                                         className={`px-2 py-1 rounded-md border text-xs transition-colors ${isMini
-                                            ? 'bg-fd-card border-fd-border hover:bg-fd-muted cursor-pointer'
-                                            : 'bg-fd-card/50 border-fd-border/50 cursor-not-allowed opacity-40'
+                                            ? 'bg-fd-gray border-fd-border hover:bg-fd-muted-gray cursor-pointer'
+                                            : 'bg-fd-gray border-fd-border/50 cursor-not-allowed opacity-40'
                                             }`}
                                     >
                                         {tag.label}
@@ -738,7 +714,7 @@ export default function ColorTextGenerator() {
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <p className="font-bold text-sm">{t('outputFormat')}</p>
+                            <p className="">{t('outputFormat')}</p>
                             <div className="flex items-center gap-3">
                                 <SelectBlock
                                     values={[
@@ -748,44 +724,51 @@ export default function ColorTextGenerator() {
                                     onChange={(v) => setFormat(v)}
                                     defaultValue="legacy"
                                 />
-                                <Toggle enabled={convertOutput} onChange={setConvertOutput} label={t('convertOutput')} />
                             </div>
+                        </div>
+                        <div className='flex gap-1 items-center'>
+                            <Checkbox checked={convertOutput} onChange={setConvertOutput} />
+                            <p>{t('convertOutput')}</p>
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <p className="font-bold text-sm">{t('input')}</p>
+                            <p className="">{t('input')}</p>
                             <InputText
                                 value={raw}
                                 onChange={(e) => (setRaw(e.target.value))}
                                 placeholder={t('placeholder')}
-                                ref={textareaRef}
-                                clearText
+                                textareaRef={textareaRef}
+                                clearText={() => (setRaw(''))}
+                                maxLines={previewMode === 'sign' ? 4 : previewMode === 'book' ? 12 : null}
+                                maxCharsPerLine={previewMode === 'sign' ? 16 : previewMode === 'book' ? 16 : null}
                             />
                         </div>
 
                         <div className="flex flex-col gap-2">
-                            <p className="font-bold text-sm">{t('output')}</p>
+                            <p className="">{t('output')}</p>
                             <div className="font-mono">
                                 <TextOutput text={convertText(raw, isMini, convertOutput)} />
                             </div>
                         </div>
                     </div>
-
-                    <div className="flex flex-col gap-2 w-full xl:w-115 shrink-0">
-                        <p className="font-bold text-sm">{t('preview')}</p>
+                    <div className="flex flex-col gap-2 w-1/3 max-lg:w-full bg-fd-article border p-6 rounded-2xl">
+                        <p className="font-bold">{t('preview')}</p>
                         <div className="shrink-0">
                             {renderPreview()}
                         </div>
-                        <div className="grid grid-cols-3 gap-1">
-                            {PREVIEW_MODES.map((m) => (
-                                <button
-                                    key={m}
-                                    onClick={() => setPreviewMode(m)}
-                                    className={`h-8 px-2 py-1 rounded-md text-xs transition-colors cursor-pointer border ${previewMode === m ? 'bg-fd-primary text-fd-primary-foreground border-fd-primary' : 'bg-fd-card border-fd-border hover:bg-fd-muted'}`}
-                                >
-                                    {t(`previews.${m}`)}
-                                </button>
-                            ))}
+                        <div className='flex flex-col gap-2'>
+                            <p>{t('display')}</p>
+                            <div className="grid grid-cols-3 gap-1">
+                                {PREVIEW_MODES.map((m) => (
+                                    <button
+                                        key={m}
+                                        onClick={() => setPreviewMode(m)}
+                                        className={`h-8 px-2 py-1 rounded-md text-xs transition-colors cursor-pointer border ${previewMode === m ? 'bg-fd-primary text-fd-primary-foreground border-fd-primary' : 'bg-fd-card border-fd-border hover:bg-fd-muted'}`}
+                                    >
+                                        {t(`previews.${m}`)}
+                                    </button>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
