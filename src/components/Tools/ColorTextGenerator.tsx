@@ -569,7 +569,7 @@ export default function ColorTextGenerator() {
                     <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-40" />
                     <div className="relative z-10 w-48 h-59 flex items-start justify-start">
                         <img src="/assets/containers/book.webp" className="absolute -z-1 w-48" />
-                        <RenderedText raw={raw} style={{ ...mc, color: '#2c1810', lineHeight: '1', marginLeft: '18px', marginTop: '16px' }} />
+                        <RenderedText raw={raw} style={{ ...mc, color: '#2c1810', lineHeight: '1', marginLeft: '18px', marginTop: '32px' }} />
                     </div>
                 </div>
             );
@@ -739,7 +739,7 @@ export default function ColorTextGenerator() {
                                 placeholder={t('placeholder')}
                                 textareaRef={textareaRef}
                                 clearText={() => (setRaw(''))}
-                                maxLines={previewMode === 'sign' ? 4 : previewMode === 'book' ? 12 : null}
+                                maxLines={previewMode === 'sign' ? 4 : previewMode === 'book' ? 11 : null}
                                 maxCharsPerLine={previewMode === 'sign' ? 16 : previewMode === 'book' ? 16 : null}
                             />
                         </div>
