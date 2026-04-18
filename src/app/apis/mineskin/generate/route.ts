@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { imageToHeadSkin } from "@/actions/texture-generator";
+import { imageToHeadSkin } from "@/lib/texture-generator";
 
 const MINESKIN_API_URL = "https://api.mineskin.org/v2/generate";
 

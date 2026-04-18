@@ -3,7 +3,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import InputText from '../Form/Input/InputText';
 import { Slider } from '../Form/Input/Slider';
-import { ColorPickerList } from '../Form/Input/ColorPickerList';
+import { ColorList } from '../Form/Input/Color/ColorList';
 import SelectBlock from '../Form/Input/SelectBlock';
 import { RotateCcw } from 'lucide-react';
 import { useTranslations } from 'next-intl';
@@ -152,8 +152,14 @@ export default function PrefixGenerator() {
         const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
 
         if (borderColor.length === 1) {
-            gradient.addColorStop(0, borderColor[0]);
-            gradient.addColorStop(1, borderColor[0]);
+            try {
+                gradient.addColorStop(0, borderColor[0]);
+                gradient.addColorStop(1, borderColor[0]);
+            }
+            catch (err) {
+                console.error(err)
+            }
+
         } else {
             borderColor.forEach((color, index) => {
                 const position = index / (borderColor.length - 1);
@@ -187,8 +193,13 @@ export default function PrefixGenerator() {
         const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
 
         if (bgColor.length === 1) {
-            gradient.addColorStop(0, bgColor[0]);
-            gradient.addColorStop(1, bgColor[0]);
+            try {
+                gradient.addColorStop(0, bgColor[0]);
+                gradient.addColorStop(1, bgColor[0]);
+            }
+            catch (err) {
+                console.error(err)
+            }
         } else {
             bgColor.forEach((color, index) => {
                 const position = index / (bgColor.length - 1);
@@ -224,8 +235,13 @@ export default function PrefixGenerator() {
         const gradient = ctx.createLinearGradient(startX, startY, endX, endY);
 
         if (textColor.length === 1) {
-            gradient.addColorStop(0, textColor[0]);
-            gradient.addColorStop(1, textColor[0]);
+            try {
+                gradient.addColorStop(0, textColor[0]);
+                gradient.addColorStop(1, textColor[0]);
+            }
+            catch (err) {
+                console.error(err)
+            }
         } else {
             textColor.forEach((color, index) => {
                 const position = index / (textColor.length - 1);
@@ -480,7 +496,7 @@ export default function PrefixGenerator() {
                     <p className='font-bold'>{t('Settings.colors')}</p>
                     <div className="flex w-full gap-4">
                         <div className="flex flex-col gap-2 w-1/2">
-                            <ColorPickerList colors={textColor} onChange={setTextColor} label={t('Settings.text')} maxColors={5} />
+                            <ColorList colors={textColor} onChange={setTextColor} label={t('Settings.text')} maxColors={5} />
 
                             {textColor.length > 1 && (
                                 <div className="flex flex-col gap-2">
@@ -496,7 +512,7 @@ export default function PrefixGenerator() {
                             )}
                         </div>
                         <div className="flex flex-col gap-2 w-1/2">
-                            <ColorPickerList colors={bgColor} onChange={setBgColor} label={t('Settings.background')} maxColors={5} />
+                            <ColorList colors={bgColor} onChange={setBgColor} label={t('Settings.background')} maxColors={5} />
                             {bgColor.length > 1 && (
                                 <div className="flex flex-col gap-2">
                                     <p>{t('Settings.gradientAngle')}: <code className="bg-fd-card py-0.5 px-1 rounded-sm">{bgGradientAngle}°</code></p>
@@ -571,7 +587,7 @@ export default function PrefixGenerator() {
                             </div>
                             <div className='flex gap-4 w-full'>
                                 <div className='w-1/2'>
-                                    <ColorPickerList
+                                    <ColorList
                                         colors={shadowColor}
                                         onChange={setShadowColor}
                                         label="Цвет тени"
@@ -615,7 +631,7 @@ export default function PrefixGenerator() {
                                     />
                                 </div>
                                 <div className='w-1/2'>
-                                    <ColorPickerList
+                                    <ColorList
                                         colors={borderColor}
                                         onChange={setBorderColor}
                                         label={t('Settings.strokeColor')}

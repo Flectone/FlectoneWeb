@@ -6,13 +6,15 @@ interface SelectBlockProps<T extends string = string> {
         value: T
     }[],
     onChange?: (value: T) => void,
-    defaultValue?: T
+    defaultValue?: T,
+    grid?: number
 }
 
 export default function SelectBlock<T extends string = string>({
     values,
     onChange,
-    defaultValue
+    defaultValue,
+    grid
 }: SelectBlockProps<T>) {
     const [activeValue, setActiveValue] = useState<T>(defaultValue || values[0]?.value);
 
@@ -22,7 +24,7 @@ export default function SelectBlock<T extends string = string>({
     };
 
     return (
-        <div className="w-full flex gap-1">
+        <div className={`w-full ${grid ? `grid grid-cols-${grid}` : 'flex'} gap-1`}>
             {values.map((item) => (
                 <button
                     key={item.value}

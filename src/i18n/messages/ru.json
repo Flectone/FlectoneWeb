@@ -74,6 +74,36 @@
         "description": "Находит UUID игрока по нику. Поддерживает оффлайн и онлайн режимы. Можно сгенерировать случайный UUID, а результат скопировать",
         "applicationName": "UuidExtractor",
         "image": "/logo.png"
+      },
+      "InventoryPreviewer": {
+        "title": "Просмотр Инвентарей | FlectoneTools",
+        "description": "Просматривайте все слоты инвентарей Minecraft — сундуки, печи, верстаки и другие контейнеры",
+        "applicationName": "InventoryPreviewer",
+        "image": "/logo.png"
+      },
+      "CoordinateCalculator": {
+        "title": "Калькулятор Координат | FlectoneTools",
+        "description": "Переводи координаты между Незером и обычным миром, а также находи крепость Энда по двум броскам жемчуга",
+        "applicationName": "CoordinateCalculator",
+        "image": "/logo.png"
+      },
+      "ColorTextGenerator": {
+        "title": "Генератор Цветного Текста | FlectoneTools",
+        "description": "Создавай цветной текст для Minecraft с поддержкой Legacy и MiniMessage форматов",
+        "applicationName": "ColorTextGenerator",
+        "image": "/logo.png"
+      },
+      "ServerFlagsGenerator": {
+        "title": "Генератор флагов сервера | FlectoneTools",
+        "description": "Генерируй скрипты запуска Minecraft сервера с оптимальными JVM флагами для Linux, Windows и Java.",
+        "applicationName": "ServerFlagsGenerator",
+        "image": "/logo.png"
+      },
+      "TimeConvertor": {
+        "title": "Конвертер времени | FlectoneTools",
+        "description": "Описание",
+        "applicationName": "TimeConvertor",
+        "image": "/logo.png"
       }
     }
   },
@@ -312,6 +342,128 @@
         "dataError": "Ошибка при обработке данных",
         "playerNotFound": "Игрок не найден",
         "searchError": "Произошла ошибка при поиске"
+      }
+    },
+    "InventoryPreviewer": {
+      "title": "Просмотр Инвентарей",
+      "description": "Все GUI контейнеров Minecraft собраны в одном месте. Выбери нужный из списка и посмотри какие номера слотов у него",
+      "container": "Инвентарь",
+      "allContainers": "Виды инвентарей",
+      "Containers": {
+        "anvil": "Наковальня",
+        "barrel": "Бочка",
+        "beacon": "Маяк",
+        "blast_furnance": "Плавильная печь",
+        "brewing_stand": "Зельеварка",
+        "cartography_table": "Стол картографа",
+        "chest": "Сундук",
+        "crafter": "Сборщик",
+        "crafting_table": "Верстак",
+        "dispenser": "Раздатчик",
+        "donkey": "Осёл",
+        "dropper": "Выбрасыватель",
+        "enchanting_table": "Чародейский стол",
+        "furnance": "Печь",
+        "grindstone": "Точило",
+        "hopper": "Воронка",
+        "horse": "Лошадь",
+        "inventory": "Инвентарь",
+        "large_chest": "Большой сундук",
+        "llama": "Лама",
+        "loom": "Ткацкий станок",
+        "nautilus": "Наутилус",
+        "shulker_box": "Шалкеровый ящик",
+        "smithing": "Стол кузнеца",
+        "smoker": "Коптильня",
+        "stonecutter": "Камнерез",
+        "villager": "Житель"
+      }
+    },
+    "CoordinateCalculator": {
+      "title": "Калькулятор Координат",
+      "description": "Переводи координаты между Незером и обычным миром, а также находи крепость Энда по двум броскам жемчуга",
+      "nether": "Незер",
+      "stronghold": "Крепость Энда",
+      "angle": "Угол",
+      "overworld": "Обычный мир",
+      "firstThrow": "Первый бросок",
+      "secondThrow": "Второй бросок",
+      "tutorial": "Обучение",
+      "tutorialStep1": "Бросьте жемчуг Края и запомните координаты X, Z и угол полёта",
+      "tutorialStep2": "Отойдите на несколько блоков (250 - 500) и бросьте второй жемчуг, записав новые координаты и угол",
+      "tutorialStep3": "Калькулятор вычислит пересечение и покажет координаты крепости"
+    },
+    "ColorTextGenerator": {
+      "title": "Генератор Цветного Текста",
+      "description": "Создавай цветной текст для Minecraft с поддержкой Legacy и MiniMessage форматов",
+      "settings": "Настройки",
+      "colors": "Цвета",
+      "formats": "Форматирование",
+      "outputFormat": "Формат вывода",
+      "input": "Ввод",
+      "placeholder": "Введите текст с цветовыми кодами...",
+      "output": "Вывод",
+      "outputEmpty": "Вывод появится здесь",
+      "preview": "Предпросмотр",
+      "add": "Добавить",
+      "cancel": "Отмена",
+      "addHex": "Hex цвет",
+      "bold": "Жирный",
+      "italic": "Курсив",
+      "magic": "Магия",
+      "underline": "Подчёркнутый",
+      "strike": "Зачёркнутый",
+      "reset": "Сбросить",
+      "newline": "Новая строка",
+      "display": "Отображение",
+      "previews": {
+        "text": "Текст",
+        "tab": "Таб",
+        "sign": "Табличка",
+        "book": "Книга",
+        "chat": "Чат",
+        "motd": "MOTD",
+        "name": "Никнейм",
+        "lore": "Лор",
+        "kick": "Отключение"
+      },
+      "convertOutput": "Конвертировать вывод",
+      "miniTags": "MiniMessage теги",
+      "miniTagGroups": {
+        "decoration": "Декорации",
+        "interaction": "Клик",
+        "hover": "Наведение",
+        "insertion": "Вставка",
+        "keybind": "Прочее",
+        "newline": "Перенос строки"
+      }
+    },
+    "ServerFlagsGenerator": {
+      "title": "Генератор флагов сервера",
+      "description": "Генерируй скрипты запуска Minecraft сервера с оптимальными JVM флагами для Linux, Windows и Java.",
+      "filename": "Файл сервера",
+      "filenameHint": "Файл .jar для запуска. Должен быть в той же папке, что и скрипт.",
+      "memory": "Память",
+      "flags": "Флаги",
+      "options": "Параметры",
+      "result": "Результат",
+      "guiHint": "Панель управления",
+      "autoRestart": "Авто-перезапуск",
+      "autoRestartHint": "Перезапуск после остановки",
+      "ignoreJavaVersion": "Игнорировать версию Java",
+      "ignoreJavaVersionHint": "Добавляет -Dpaper.ignoreJavaVersion=true флаг"
+    },
+    "TimeConvertor": {
+      "title": "Конвертер времени",
+      "description": "Описание",
+      "command": "Комманда",
+      "sunAngle": "Угол солнца",
+      "Presets": {
+        "title": "Пресеты",
+        "day": "День",
+        "noon": "Полночь",
+        "night": "Ночь",
+        "midnight": "Полночь"
       }
     }
   }

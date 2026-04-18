@@ -1,4 +1,4 @@
-import { getSkinHead } from "@/actions/texture-generator";
+import { getSkinHead } from "@/lib/texture-generator";
 import { md5 } from "js-md5";
 
 interface MinecraftProfile {
