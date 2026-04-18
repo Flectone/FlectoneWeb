@@ -55,14 +55,14 @@ export default function InputText({ ref, value, onChange, onKeyDown, buttonClick
             {clearText && <button
                 onClick={clearText}
                 disabled={disabled}
-                className="cursor-pointer bg-fd-gray hover:bg-fd-muted-gray text-fd-gray-foreground transition h-fit w-fit px-1 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`text-fd-gray-foreground/40 rounded-md hover:text-fd-gray-foreground/70 transition cursor-pointer shrink-0 h-fit w-fit px-1`}
             >
                 <Trash className="w-[1em]" />
             </button>}
             {buttonClick && <button
                 onClick={buttonClick}
                 disabled={disabled}
-                className="cursor-pointer bg-fd-gray hover:bg-fd-muted-gray text-fd-gray-foreground transition h-fit w-fit px-1 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`text-fd-gray-foreground/40 rounded-md hover:text-fd-gray-foreground/70 transition cursor-pointer shrink-0 h-fit w-fit px-1 disabled:opacity-50 disabled:cursor-not-allowed`}
             >
                 {disabled ? <LoaderCircle className="w-[1em] animate-spin" /> : <CornerDownLeft className="w-[1em]" />}
             </button>}
@@ -87,14 +87,14 @@ export default function InputText({ ref, value, onChange, onKeyDown, buttonClick
             {clearText && <button
                 onClick={clearText}
                 disabled={disabled}
-                className="cursor-pointer bg-fd-gray hover:bg-fd-muted-gray text-fd-gray-foreground transition h-fit w-fit px-1 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`text-fd-gray-foreground/40 rounded-md hover:text-fd-gray-foreground/70 transition cursor-pointer shrink-0 h-fit w-fit px-1`}
             >
                 <Trash className="w-[1em]" />
             </button>}
             {buttonClick && <button
                 onClick={buttonClick}
                 disabled={disabled}
-                className="cursor-pointer bg-fd-gray hover:bg-fd-muted-gray text-fd-gray-foreground transition h-fit w-fit px-1 rounded-md disabled:opacity-50 disabled:cursor-not-allowed"
+                className={`text-fd-gray-foreground/40 rounded-md hover:text-fd-gray-foreground/70 transition cursor-pointer shrink-0 h-fit w-fit px-1 disabled:opacity-50 disabled:cursor-not-allowed`}
             >
                 {disabled ? <LoaderCircle className="w-[1em] animate-spin" /> : <CornerDownLeft className="w-[1em]" />}
             </button>}

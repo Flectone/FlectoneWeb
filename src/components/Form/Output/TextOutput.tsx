@@ -25,7 +25,7 @@ export default function TextOutput({ text }: TextOutputProps) {
                 {text}
             </p>
             <button
-                className={`text-fd-gray-foreground p-1 bg-fd-gray ${copied ? '' : 'hover:bg-fd-muted-gray'} transition rounded-sm cursor-pointer shrink-0`}
+                className={`text-fd-gray-foreground/40 p-1 rounded-md ${copied ? '' : 'hover:text-fd-gray-foreground/70'} transition cursor-pointer shrink-0`}
                 onClick={handleCopy}
                 disabled={copied}
             >
