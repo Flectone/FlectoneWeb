@@ -98,6 +98,12 @@
         "description": "Generate Minecraft server startup scripts with optimal JVM flags for Linux, Windows and Java.",
         "applicationName": "ServerFlagsGenerator",
         "image": "/logo.png"
+      },
+      "TimeConvertor": {
+        "title": "Time Converter | FlectoneTools",
+        "description": "Description",
+        "applicationName": "TimeConvertor",
+        "image": "/logo.png"
       }
     }
   },
@@ -446,6 +452,19 @@
       "autoRestartHint": "Restart after stop",
       "ignoreJavaVersion": "Ignore Java version",
       "ignoreJavaVersionHint": "Add -Dpaper.ignoreJavaVersion=true flag"
+    },
+    "TimeConvertor": {
+      "title": "Time Converter",
+      "description": "Description",
+      "command": "Command",
+      "sunAngle": "Sun angle",
+      "Presets": {
+        "title": "Presets",
+        "day": "Day",
+        "noon": "Noon",
+        "night": "Night",
+        "midnight": "Midnight"
+      }
     }
   }
 }

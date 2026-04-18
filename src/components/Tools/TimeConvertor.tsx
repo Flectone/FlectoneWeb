@@ -3,6 +3,7 @@ import { useRef, useState, useEffect } from 'react';
 import TextOutput from '../Form/Output/TextOutput';
 import { Slider } from '../Form/Input/Slider';
 import SelectBlock from '../Form/Input/SelectBlock';
+import { useTranslations } from 'next-intl';
 
 export default function TimeConvertor() {
     const [rotate, setRotate] = useState(90)
@@ -10,6 +11,7 @@ export default function TimeConvertor() {
     const [startRotate, setStartRotate] = useState(0)
     const [startAngle, setStartAngle] = useState(0)
     const divRef = useRef<HTMLImageElement>(null)
+    const t = useTranslations('Tools.TimeConvertor')
 
     const normalizeAngle = (angle: number) => {
         angle = angle % 360
@@ -112,20 +114,20 @@ export default function TimeConvertor() {
             </div>
             <div className='flex flex-col gap-2 w-1/2 max-xl:w-full'>
                 <div className='bg-fd-article gap-2 flex flex-col p-6 rounded-2xl border w-full'>
-                    <p className='font-bold'>Комманда</p>
+                    <p className='font-bold'>{t('command')}</p>
                     <TextOutput text={`/time set ${Math.ceil(Math.ceil(rotate) * 24000 / 360)}`} />
                 </div>
                 <div className='bg-fd-article gap-2 flex flex-col p-6 rounded-2xl border w-full'>
-                    <p className='font-bold'>Угол солнца: <code className="bg-fd-card py-0.5 px-1 rounded-sm">{Math.ceil(rotate)}°</code></p>
+                    <p className='font-bold'>{t('sunAngle')}: <code className="bg-fd-card py-0.5 px-1 rounded-sm">{Math.ceil(rotate)}°</code></p>
                     <Slider value={rotate} min={0} max={360} onChange={setRotate} />
                 </div>
                 <div className='bg-fd-article gap-2 flex flex-col p-6 rounded-2xl border w-full'>
-                    <p className='font-bold'>Пресеты</p>
+                    <p className='font-bold'>{t('Presets.title')}</p>
                     <SelectBlock values={[
-                        { label: 'День', value: '15' },
-                        { label: 'Полдень', value: '90' },
-                        { label: 'Ночь', value: '210' },
-                        { label: 'Полночь', value: '270' }
+                        { label: t('Presets.day'), value: '15' },
+                        { label: t('Presets.noon'), value: '90' },
+                        { label: t('Presets.night'), value: '210' },
+                        { label: t('Presets.midnight'), value: '270' }
                     ]}
                         onChange={(value) => setRotate(parseInt(value))}
                         grid={2}

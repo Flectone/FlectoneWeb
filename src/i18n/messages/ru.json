@@ -98,6 +98,12 @@
         "description": "Генерируй скрипты запуска Minecraft сервера с оптимальными JVM флагами для Linux, Windows и Java.",
         "applicationName": "ServerFlagsGenerator",
         "image": "/logo.png"
+      },
+      "TimeConvertor": {
+        "title": "Конвертер времени | FlectoneTools",
+        "description": "Описание",
+        "applicationName": "TimeConvertor",
+        "image": "/logo.png"
       }
     }
   },
@@ -446,6 +452,19 @@
       "autoRestartHint": "Перезапуск после остановки",
       "ignoreJavaVersion": "Игнорировать версию Java",
       "ignoreJavaVersionHint": "Добавляет -Dpaper.ignoreJavaVersion=true флаг"
+    },
+    "TimeConvertor": {
+      "title": "Конвертер времени",
+      "description": "Описание",
+      "command": "Комманда",
+      "sunAngle": "Угол солнца",
+      "Presets": {
+        "title": "Пресеты",
+        "day": "День",
+        "noon": "Полночь",
+        "night": "Ночь",
+        "midnight": "Полночь"
+      }
     }
   }
 }
