@@ -390,6 +390,7 @@
     "ColorTextGenerator": {
       "title": "Colored Text Generator",
       "description": "Create colored text for Minecraft with support for Legacy and MiniMessage formats",
+      "settings": "Settings",
       "colors": "Colors",
       "formats": "Formatting",
       "outputFormat": "Output format",
@@ -416,9 +417,9 @@
         "book": "Book",
         "chat": "Chat",
         "motd": "MOTD",
-        "name": "Name",
+        "name": "Nickname",
         "lore": "Lore",
-        "kick": "Kick"
+        "kick": "Disconnected"
       },
       "convertOutput": "Convert output",
       "miniTags": "MiniMessage tags",

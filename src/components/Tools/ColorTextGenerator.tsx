@@ -100,8 +100,8 @@ const KNOWN_TAGS = new Set([
     'key', 'lang', 'score', 'selector', 'nbt', 'font', 'insertion', 'shadow'
 ]);
 
-type PreviewMode = 'chat' | 'sign' | 'book' | 'motd' | 'name' | 'lore' | 'kick' | 'tab' | 'text';
-const PREVIEW_MODES: PreviewMode[] = ['chat', 'sign', 'book', 'motd', 'name', 'lore', 'kick', 'tab', 'text'];
+type PreviewMode = 'chat' | 'sign' | 'book' | 'motd' | 'name' | 'lore' | 'kick' | 'tab';
+const PREVIEW_MODES: PreviewMode[] = ['chat', 'sign', 'book', 'motd', 'name', 'lore', 'kick', 'tab'];
 
 interface ParsedNode {
     text: string;
@@ -558,7 +558,7 @@ export default function ColorTextGenerator() {
             case 'sign': return (
                 <div className="h-full relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
                     <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-40" />
-                    <div className="relative z-10 w-[192px] h-[96px] flex items-start justify-center">
+                    <div className="relative z-10 w-48 h-24 flex items-start justify-center">
                         <img src="/assets/containers/sign.png" className="absolute -z-1" />
                         <RenderedText isSignMode raw={raw} style={{ ...mc, color: '#000000', fontSize: '1.2em', lineHeight: '1', textAlign: 'center', marginTop: '4px' }} />
                     </div>
@@ -574,26 +574,30 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'motd': return (
-                <div className="relative w-full rounded-lg overflow-hidden border border-fd-border bg-[#1a1a2e]" style={{ aspectRatio: '16/12' }}>
-                    <div className="relative z-10 w-full h-full flex items-center justify-center">
-                        <div className="bg-[#2a2a3e]/90 border border-white/10 px-8 py-4 rounded-lg flex items-center gap-3">
-                            <img src="/assets/minecrafttaiga.png" className="w-12 h-12 rounded" />
-                            <div className="flex flex-col gap-1">
-                                <RenderedText raw={raw} style={mc} />
-                                <span style={{ ...mc, color: '#AAAAAA', fontSize: '12px' }}>0/20 players</span>
+                <div className="h-72 font-[Minecraft] relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                    <img src="/assets/dirt.webp" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="relative border-2 py-5 px-px border-white z-10 w-60 h-10 flex items-center justify-start bg-black/20">
+                        <div className='flex items-center w-10 h-full shrink-0'>
+                            <img src="/logo.png" className='w-full' alt="" />
+                        </div>
+                        <div className='px-1 flex flex-col justify-center w-full h-full text-[0.7em]'>
+                            <div className='flex items-center justify-between w-full'>
+                                <p className='text-white! leading-3'>Server Name</p>
+                                <p className='text-white/50! leading-3'>0/6</p>
+                            </div>
+                            <div className='leading-3 h-6 flex justify start flex-col'>
+                                <RenderedText raw={raw} style={{ ...mc, color: '#fff', lineHeight: '12px' }} />
                             </div>
                         </div>
                     </div>
                 </div>
             );
             case 'name': return (
-                <div className="relative w-full rounded-lg overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
-                    <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-50" />
-                    <div className="relative z-10 w-full h-full flex items-center justify-center">
-                        <div className="flex flex-col items-center gap-1">
-                            <div className="bg-black/70 px-2 py-0.5 rounded"><RenderedText raw={raw} style={mc} /></div>
-                            <img src="/assets/minecrafttaiga.png" className="w-8 h-16 object-contain" style={{ imageRendering: 'pixelated' }} />
-                        </div>
+                <div className="h-72 relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                    <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="relative z-10 flex items-center justify-center bg-black/50 text-[2em] px-1">
+                        <RenderedText raw={raw} style={{ ...mc, color: '#Fff', lineHeight: '1' }} />
+                        <img className='absolute top-10 max-w-45' src="/assets/player.png" />
                     </div>
                 </div>
             );
@@ -612,18 +616,17 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'kick': return (
-                <div className="relative w-full rounded-lg overflow-hidden border border-fd-border bg-[#3c0000]" style={{ aspectRatio: '16/12' }}>
-                    <div className="relative z-10 w-full h-full flex flex-col items-center justify-center gap-3 px-8 text-center">
-                        <span style={{ ...mc, color: '#FF5555', fontSize: '16px', fontWeight: 'bold' }}>Disconnected</span>
-                        <div className="bg-black/40 border border-white/10 px-6 py-3 rounded">
-                            <RenderedText raw={raw} style={mc} />
+                <div className="relative w-full font-[Minecraft] rounded-lg overflow-hidden border" style={{ aspectRatio: '16/12' }}>
+                    <img src="/assets/dirt.webp" className="absolute inset-0 w-full h-full object-cover" />
+                    <div className="relative gap-4 z-10 w-full h-full flex flex-col items-center justify-center px-8 text-center">
+                        <span className='text-white/50 [text-shadow:2px_2px_0px_#212121] leading-[1em]'>Connection Lost</span>
+                        <RenderedText raw={raw} style={{ ...mc, color: '#ffffff', lineHeight: '1em', textAlign: 'center' }} />
+                        <div className='border-black border'>
+                            <div className='bg-[#858585] [text-shadow:2px_2px_0px_#505050] text-white py-0.5 px-6 shadow-[inset_-2px_-4px_0px_1px_rgba(0,0,0,0.1)] border'>
+                                Back to server list
+                            </div>
                         </div>
                     </div>
-                </div>
-            );
-            default: return (
-                <div className="w-full rounded-lg border border-fd-border bg-fd-card flex items-center justify-center" style={{ aspectRatio: '16/12' }}>
-                    <RenderedText raw={raw} style={{ ...mc, fontSize: '16px' }} />
                 </div>
             );
         }
@@ -646,6 +649,7 @@ export default function ColorTextGenerator() {
                 <div className="flex gap-4 max-lg:flex-col">
                     <div className="flex flex-col gap-4 flex-1 min-w-0  bg-fd-article border p-6 rounded-2xl">
                         <div className="flex flex-col gap-2">
+                            <p className="font-bold">{t('settings')}</p>
                             <p className="">{t('colors')}</p>
                             <div className="flex gap-1 flex-wrap">
                                 {LEGACY_COLORS.map((c) => (
@@ -739,8 +743,8 @@ export default function ColorTextGenerator() {
                                 placeholder={t('placeholder')}
                                 textareaRef={textareaRef}
                                 clearText={() => (setRaw(''))}
-                                maxLines={previewMode === 'sign' ? 4 : previewMode === 'book' ? 11 : null}
-                                maxCharsPerLine={previewMode === 'sign' ? 16 : previewMode === 'book' ? 16 : null}
+                                maxLines={previewMode === 'sign' ? 4 : previewMode === 'book' ? 11 : previewMode === 'motd' ? 2 : previewMode === 'name' ? 1 : null}
+                                maxCharsPerLine={previewMode === 'sign' ? 16 : previewMode === 'book' ? 16 : previewMode === 'motd' ? 29 : previewMode === 'name' ? 16 : null}
                             />
                         </div>
 
@@ -758,12 +762,15 @@ export default function ColorTextGenerator() {
                         </div>
                         <div className='flex flex-col gap-2'>
                             <p>{t('display')}</p>
-                            <div className="grid grid-cols-3 gap-1">
+                            <div className="grid grid-cols-2 gap-1">
                                 {PREVIEW_MODES.map((m) => (
                                     <button
                                         key={m}
                                         onClick={() => setPreviewMode(m)}
-                                        className={`h-8 px-2 py-1 rounded-md text-xs transition-colors cursor-pointer border ${previewMode === m ? 'bg-fd-primary text-fd-primary-foreground border-fd-primary' : 'bg-fd-card border-fd-border hover:bg-fd-muted'}`}
+                                        className={`p-3 w-full text-xs font-bold rounded-lg cursor-pointer transition-colors ${previewMode === m
+                                            ? 'bg-fd-primary text-fd-primary-foreground'
+                                            : 'bg-fd-gray hover:bg-fd-muted-gray text-fd-gray-foreground'
+                                            }`}
                                     >
                                         {t(`previews.${m}`)}
                                     </button>

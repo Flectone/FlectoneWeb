@@ -390,6 +390,7 @@
     "ColorTextGenerator": {
       "title": "Генератор Цветного Текста",
       "description": "Создавай цветной текст для Minecraft с поддержкой Legacy и MiniMessage форматов",
+      "settings": "Настройки",
       "colors": "Цвета",
       "formats": "Форматирование",
       "outputFormat": "Формат вывода",
@@ -416,9 +417,9 @@
         "book": "Книга",
         "chat": "Чат",
         "motd": "MOTD",
-        "name": "Ник",
+        "name": "Никнейм",
         "lore": "Лор",
-        "kick": "Кик"
+        "kick": "Отключение"
       },
       "convertOutput": "Конвертировать вывод",
       "miniTags": "MiniMessage теги",
