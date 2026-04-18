@@ -92,6 +92,12 @@
         "description": "Create colored text for Minecraft with support for Legacy and MiniMessage formats",
         "applicationName": "ColorTextGenerator",
         "image": "/logo.png"
+      },
+      "ServerFlagsGenerator": {
+        "title": "Server Flags Generator | FlectoneTools",
+        "description": "Generate Minecraft server startup scripts with optimal JVM flags for Linux, Windows and Java.",
+        "applicationName": "ServerFlagsGenerator",
+        "image": "/logo.png"
       }
     }
   },
@@ -424,6 +430,21 @@
         "keybind": "Other",
         "newline": "Line break"
       }
+    },
+    "ServerFlagsGenerator": {
+      "title": "Server Flags Generator",
+      "description": "Generate Minecraft server startup scripts with optimal JVM flags for Linux, Windows and Java.",
+      "filename": "Server file",
+      "filenameHint": "The .jar file to launch. Must be in the same directory as the script.",
+      "memory": "Memory",
+      "flags": "Flags",
+      "options": "Options",
+      "result": "Result",
+      "guiHint": "Control panel",
+      "autoRestart": "Auto-restart",
+      "autoRestartHint": "Restart after stop",
+      "ignoreJavaVersion": "Ignore Java version",
+      "ignoreJavaVersionHint": "Add -Dpaper.ignoreJavaVersion=true flag"
     }
   }
 }
