@@ -4,28 +4,11 @@ import { FaCode } from "react-icons/fa";
 import { TbBrandGithubFilled } from "react-icons/tb";
 import { BsHexagonFill } from "react-icons/bs";
 import DownloadCard from '@/components/Card/DownloadCard';
-import { getTranslations } from "next-intl/server";
+import { createMetadata } from "@/lib/create-metadata";
 
-type Props = {
-  params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: Props) {
-  const { locale } = await params;
-
-  const t = await getTranslations({ locale, namespace: 'Metadata.Pulse.Download' });
-
-  return {
-    title: t('title'),
-    description: t('description'),
-    keywords: t('keywords'),
-    openGraph: {
-      title: t('title'),
-      description: t('description'),
-      locale: locale,
-    }
-  };
-}
+export const generateMetadata = createMetadata({
+  namespace: 'Pulse.Download'
+});
 
 export default function HomePage() {
   const t = useTranslations('Pulse.Download')

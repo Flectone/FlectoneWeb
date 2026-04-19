@@ -1,27 +1,11 @@
 import Title from "@/components/Title/Title";
 import ColorTextGenerator from "@/components/Tools/ColorTextGenerator";
 import { useTranslations } from "next-intl";
-import { getTranslations } from "next-intl/server";
+import { createMetadata } from "@/lib/create-metadata";
 
-type Props = {
-    params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: Props) {
-    const { locale } = await params;
-
-    const t = await getTranslations({ locale, namespace: 'Metadata.Tools.ColorTextGenerator' });
-
-    return {
-        title: t('title'),
-        description: t('description'),
-        openGraph: {
-            title: t('title'),
-            description: t('description'),
-            locale: locale,
-        }
-    };
-}
+export const generateMetadata = createMetadata({
+    namespace: 'Tools.ColorTextGenerator'
+});
 
 export default function ColorTextGeneratorPage() {
     const t = useTranslations('Tools.ColorTextGenerator');

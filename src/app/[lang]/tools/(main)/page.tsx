@@ -3,28 +3,11 @@ import Title from "@/components/Title/Title";
 import { Hammer, BrickWall, TextSelect, SquareStar, SquareUserRound } from "lucide-react";
 import MinecraftTab from "@/components/Assets/MinecraftTab";
 import { useTranslations } from "next-intl";
-import { getTranslations } from 'next-intl/server';
+import { createMetadata } from "@/lib/create-metadata";
 
-type Props = {
-    params: Promise<{ locale: string }>;
-};
-
-export async function generateMetadata({ params }: Props) {
-    const { locale } = await params;
-
-    const t = await getTranslations({ locale, namespace: 'Metadata.Tools.Main' });
-
-    return {
-        title: t('title'),
-        description: t('description'),
-        keywords: t('keywords'),
-        openGraph: {
-            title: t('title'),
-            description: t('description'),
-            locale: locale,
-        }
-    };
-}
+export const generateMetadata = createMetadata({
+    namespace: 'Tools.Main'
+});
 
 
 export default function ToolsPage() {
