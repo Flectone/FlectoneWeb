@@ -600,7 +600,7 @@ export default function ColorTextGenerator() {
                         <div className='flex items-center w-10 h-full shrink-0'>
                             <img src="/assets/server-icon.svg" className='w-full' alt="" />
                         </div>
-                        <div className='px-1 flex flex-col justify-center w-full h-full text-[1em]'>
+                        <div className='px-1 gap-1 flex flex-col justify-center w-full h-full text-[1em]'>
                             <div className='flex items-center justify-between w-full'>
                                 <p className='text-white! leading-3'>Server Name</p>
                                 <p className='text-white/50! leading-3'>0/6</p>
