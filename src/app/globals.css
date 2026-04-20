@@ -31,8 +31,8 @@
   --color-fd-muted-green: hsl(160, 49%, 38%);
   --color-fd-green-foreground: hsl(160, 49%, 95%);
 
-  --color-fd-gray: hsl(0, 0%, 80%);
-  --color-fd-muted-gray: hsl(0, 0%, 72%);
+  --color-fd-gray: hsl(0, 0%, 90%);
+  --color-fd-muted-gray: hsl(0, 0%, 85%);
   --color-fd-gray-foreground: hsl(0, 0%, 15%);
 
   --color-fd-red: #ff3030;
