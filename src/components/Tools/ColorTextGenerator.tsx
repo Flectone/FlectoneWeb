@@ -523,7 +523,7 @@ export default function ColorTextGenerator() {
     const renderPreview = () => {
         switch (previewMode) {
             case 'tab': return (
-                <div className="h-72 flex items-center justify-center bg-[url('/assets/minecrafttaiga.png')]  bg-center bg-cover overflow-hidden border rounded-lg">
+                <div className="h-70 flex items-center justify-center bg-[url('/assets/minecrafttaiga.png')]  bg-center bg-cover overflow-hidden border rounded-lg">
                     <MinecraftTab tabText={
                         <div className='flex items-start gap-1'>
                             <div className='flex items-center gap-1'>
@@ -534,7 +534,7 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'chat': return (
-                <div className="h-72 bg-[url('/assets/minecrafttaiga.png')] bg-center bg-cover overflow-hidden border rounded-lg">
+                <div className="h-70 bg-[url('/assets/minecrafttaiga.png')] bg-center bg-cover overflow-hidden border rounded-lg">
                     <MinecraftChat addString={
                         <div className='flex items-start gap-1'>
                             <div className='flex items-start gap-1'>
@@ -556,7 +556,7 @@ export default function ColorTextGenerator() {
 
             );
             case 'sign': return (
-                <div className="h-full relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                <div className="h-70 relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black">
                     <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-40" />
                     <div className="relative z-10 w-48 h-24 flex items-start justify-center">
                         <img src="/assets/containers/sign.png" className="absolute -z-1" />
@@ -565,7 +565,7 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'book': return (
-                <div className="h-72 relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                <div className="h-70 relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black">
                     <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-40" />
                     <div className="relative z-10 w-48 h-59 flex items-start justify-start">
                         <img src="/assets/containers/book.webp" className="absolute -z-1 w-48" />
@@ -574,7 +574,7 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'motd': return (
-                <div className="h-72 font-[Minecraft] relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                <div className="h-70 font-[Minecraft] relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black">
                     <img src="/assets/dirt.webp" className="absolute inset-0 w-full h-full object-cover" />
                     <div className="relative border-2 py-5 px-px border-white z-10 w-60 h-10 flex items-center justify-start bg-black/20">
                         <div className='flex items-center w-10 h-full shrink-0'>
@@ -593,7 +593,7 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'name': return (
-                <div className="h-72 relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                <div className="h-70 relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black">
                     <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover" />
                     <div className="relative z-10 flex items-center justify-center bg-black/50 text-[2em] px-1">
                         <RenderedText raw={raw} style={{ ...mc, color: '#Fff', lineHeight: '1' }} />
@@ -602,7 +602,7 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'lore': return (
-                <div className="relative w-full rounded-lg overflow-hidden border border-fd-border bg-black" style={{ aspectRatio: '16/12' }}>
+                <div className="h-70 relative w-full rounded-lg overflow-hidden border border-fd-border bg-black">
                     <img src="/assets/minecrafttaiga.png" className="absolute inset-0 w-full h-full object-cover opacity-50" />
                     <div className="relative z-10 w-full h-full flex items-center justify-center">
                         <div className="border border-[#2d0a63] bg-[#100010]/95 px-3 py-2 rounded flex flex-col gap-0.5" style={{ boxShadow: '0 0 8px #2d0a6380' }}>
@@ -616,7 +616,7 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'kick': return (
-                <div className="relative w-full font-[Minecraft] rounded-lg overflow-hidden border" style={{ aspectRatio: '16/12' }}>
+                <div className="h-70 relative w-full font-[Minecraft] rounded-lg overflow-hidden border">
                     <img src="/assets/dirt.webp" className="absolute inset-0 w-full h-full object-cover" />
                     <div className="relative gap-4 z-10 w-full h-full flex flex-col items-center justify-center px-8 text-center">
                         <span className='text-white/50 [text-shadow:2px_2px_0px_#212121] leading-[1em]'>Connection Lost</span>
