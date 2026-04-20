@@ -90,8 +90,8 @@ export default function FlectoneTools() {
             path: "/tools/coordinate-calculator",
             preview:
                 <div className="font-[Minecraft] bg-[url(/assets/minecraftnether2.png)] h-full bg-cover flex items-center justify-center">
-                    <div className="w-full h-full flex-col flex items-center justify-center p-2 ">
-                        <h2 className="text-xl max-sm:text-sm bg-black/50 px-2">x: 12, y: 127, z:25</h2>
+                    <div className="w-full h-full flex-col flex items-center justify-center p-2 text-white">
+                        <h2 className="text-xl max-sm:text-sm bg-black/50 px-2 ">x: 12, y: 127, z:25</h2>
                         <h2 className="text-xl max-sm:text-sm">↓   ↓</h2>
                         <h2 className="text-xl max-sm:text-sm bg-black/50 px-2">x: 96, y: 127, z:200</h2>
                     </div>
@@ -104,11 +104,11 @@ export default function FlectoneTools() {
             path: "/tools/color-text-generator",
             preview:
                 <div className="font-[Minecraft] h-full bg-cover flex items-center justify-center">
-                    <div className="w-full h-full bg-fd-primary/30 border-fd-primary/60 border-3 border-dashed flex flex-col gap-2 items-center justify-center">
+                    <div className="w-full h-full bg-fd-green/30 border-fd-green/60 border-3 border-dashed flex flex-col gap-2 items-center justify-center">
                         <span className="bg-linear-to-r from-red-500 via-yellow-400 to-purple-500 bg-clip-text text-transparent font-bold text-xl">
                             Text example
                         </span>
-                        <span className="bg-black/40 px-2 max-sm:text-sm text-center">&#8249;rainbow&#8250;Text example&#8249;/rainbow&#8250;</span>
+                        <span className="bg-black/40 px-2 max-sm:text-sm text-center text-white">&#8249;rainbow&#8250;Text example&#8249;/rainbow&#8250;</span>
                     </div>
                 </div>
         },
@@ -120,7 +120,7 @@ export default function FlectoneTools() {
             preview:
                 <div className="font-[Minecraft] h-full bg-cover flex items-center justify-center">
                     <div className="relative w-full h-full bg-white/10 border-white/30 border-3 border-dashed flex flex-col gap-2 items-center justify-center">
-                        <span className="text-justify absolute text-[0.6em] text-white/70">java -Xms4096M -Xmx4096M --add-modules=jdk.incubator.vector -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true  -jar server.jar --nogui</span>
+                        <span className="text-justify absolute text-[0.6em] text-fd-foreground/70">java -Xms4096M -Xmx4096M --add-modules=jdk.incubator.vector -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20 -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true  -jar server.jar --nogui</span>
                     </div>
                 </div>
         },
