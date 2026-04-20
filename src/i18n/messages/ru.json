@@ -248,6 +248,26 @@
       "UuidExtractor": {
         "title": "Получение UUID",
         "description": "Находит UUID игрока по нику для Java Edition. Поддерживает оффлайн и онлайн режимы"
+      },
+      "InventoryPreviewer": {
+        "title": "Просмотр Инвентарей",
+        "description": "Все GUI контейнеров Minecraft собраны в одном месте. Выбери нужный из списка и посмотри какие номера слотов у него"
+      },
+      "CoordinateCalculator": {
+        "title": "Калькулятор Координат",
+        "description": "Переводи координаты между Незером и обычным миром, а также находи крепость Энда по двум броскам жемчуга"
+      },
+      "ColorTextGenerator": {
+        "title": "Генератор Цветного Текста",
+        "description": "Создавай цветной текст для Minecraft с поддержкой Legacy и MiniMessage форматов"
+      },
+      "ServerFlagsGenerator": {
+        "title": "Генератор флагов сервера",
+        "description": "Генерируй скрипты запуска Minecraft сервера с оптимальными JVM флагами для Linux, Windows и Java."
+      },
+      "TimeConvertor": {
+        "title": "Конвертер времени",
+        "description": "Конвертирует тики Minecraft в реальное время и наоборот. Помогает быстро получить команду /time set"
       }
     },
     "Form": {
@@ -483,7 +503,7 @@
     },
     "TimeConvertor": {
       "title": "Конвертер времени",
-      "description": "Описание",
+      "description": "Конвертирует тики Minecraft в реальное время и наоборот. Помогает быстро получить команду /time set",
       "command": "Комманда",
       "sunAngle": "Угол солнца",
       "Presets": {

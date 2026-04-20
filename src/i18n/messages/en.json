@@ -248,6 +248,26 @@
       "UuidExtractor": {
         "title": "UUID Extractor",
         "description": "Finds a player's UUID by username for Java Edition. Supports offline and online modes"
+      },
+      "InventoryPreviewer": {
+        "title": "Inventory Previewer",
+        "description": "All Minecraft container GUIs collected in one place. Choose the one you need from the list and see its slot numbers"
+      },
+      "CoordinateCalculator": {
+        "title": "Coordinate Calculator",
+        "description": "Convert coordinates between the Nether and the Overworld, and find the End Stronghold using two ender pearl throws"
+      },
+      "ColorTextGenerator": {
+        "title": "Colored Text Generator",
+        "description": "Create colored text for Minecraft with support for Legacy and MiniMessage formats"
+      },
+      "ServerFlagsGenerator": {
+        "title": "Server Flags Generator",
+        "description": "Generate Minecraft server startup scripts with optimal JVM flags for Linux, Windows, and Java."
+      },
+      "TimeConvertor": {
+        "title": "Time Converter",
+        "description": "Converts Minecraft ticks to real time and vice versa. Helps quickly get the /time set command"
       }
     },
     "Form": {
@@ -483,7 +503,7 @@
     },
     "TimeConvertor": {
       "title": "Time Converter",
-      "description": "Description",
+      "description": "Converts Minecraft ticks to real time and vice versa. Helps quickly get the /time set command",
       "command": "Command",
       "sunAngle": "Sun angle",
       "Presets": {
