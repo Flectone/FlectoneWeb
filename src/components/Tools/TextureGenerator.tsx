@@ -73,7 +73,7 @@ export const TextureGenerator = () => {
 
         startTransition(async () => {
             try {
-                const response = await fetch('/apis/mineskin/generate', {
+                const response = await fetch('/api/mineskin/generate', {
                     method: 'POST',
                     body: formData,
                     signal: abortControllerRef.current?.signal
