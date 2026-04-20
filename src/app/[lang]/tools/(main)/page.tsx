@@ -23,7 +23,7 @@ export default function ToolsPage() {
                 </div>
                 <p className="w-full">{t('description')}</p>
             </div>
-            <span className="border-b-1"></span>
+            <span className="border-b"></span>
             <FlectoneTools />
         </div>
     )

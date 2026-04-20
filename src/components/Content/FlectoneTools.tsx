@@ -26,7 +26,11 @@ export default function FlectoneTools() {
             path: '/tools/texture-generator',
             preview:
                 <div className="font-[Minecraft] bg-[url(/assets/minecrafttaiga.png)] bg-center h-full bg-cover">
-                    <MinecraftChat prefix={<span className="h-[1em] flex items-center justify-center px-1 bg-linear-to-br from-[#3F51B5] to-[#030D48]"><h5 className="text-transparent bg-clip-text bg-linear-to-r from-[#D4E6F8] to-[#89BDD4]">prefix</h5></span>} />
+                    <MinecraftChat prefix={
+                        <span className="h-[1em] flex items-center justify-center px-1 bg-linear-to-br from-[#3F51B5] to-[#030D48]">
+                            <h5 className="text-transparent bg-clip-text bg-linear-to-r from-[#D4E6F8] to-[#89BDD4]">prefix</h5>
+                        </span>
+                    } />
                 </div>
         },
         {
@@ -37,7 +41,7 @@ export default function FlectoneTools() {
             preview:
                 <div className=" text-fd-primary h-full bottom-0 p-2 flex justify-center items-center font-[Minecraft] bg-[url(/assets/minecraftlandscape.jpg)] bg-bottom border">
                     <div className="bg-black/60">
-                        <h3 style={{ backgroundSize: '200% auto' }} className="px-3 text-transparent text-4xl animate-gradient-flow bg-linear-to-r from-fd-red via-fd-primary to-fd-red bg-clip-text">
+                        <h3 style={{ backgroundSize: '200% auto' }} className="px-3 text-transparent text-4xl max-sm:text-xl animate-gradient-flow bg-linear-to-r from-fd-red via-fd-primary to-fd-red bg-clip-text">
                             FlectonePulse
                         </h3>
                     </div>
@@ -50,7 +54,7 @@ export default function FlectoneTools() {
             path: "/tools/prefix-generator",
             preview:
                 <div className="font-[Minecraft] bg-[url(/assets/minecraftclouds.png)] bg-center h-full bg-cover flex items-center justify-center">
-                    <span className="flex items-center justify-center px-3 bg-linear-to-br from-[#3F51B5] to-[#030D48]"><h5 className="text-transparent bg-clip-text bg-linear-to-r from-[#D4E6F8] to-[#89BDD4] text-6xl">Admin</h5></span>
+                    <span className="flex items-center justify-center px-3 bg-linear-to-br from-[#3F51B5] to-[#030D48]"><h5 className="text-transparent bg-clip-text bg-linear-to-r from-[#D4E6F8] to-[#89BDD4] text-6xl max-sm:text-3xl">Admin</h5></span>
                 </div>
         },
         {
@@ -75,7 +79,7 @@ export default function FlectoneTools() {
             preview:
                 <div className="font-[Minecraft] bg-[url(/assets/minecraftjungle.png)] h-full bg-cover flex items-center justify-center">
                     <div className="w-full h-full bg-black/60 flex items-center justify-center p-2">
-                        <img src="/assets/containers/inventory.png" alt="" className="h-full" />
+                        <img src="/assets/containers/inventory.png" alt="" className="h-full shrink-0 max-sm:h-2/3" />
                     </div>
                 </div>
         },
@@ -86,10 +90,10 @@ export default function FlectoneTools() {
             path: "/tools/coordinate-calculator",
             preview:
                 <div className="font-[Minecraft] bg-[url(/assets/minecraftnether2.png)] h-full bg-cover flex items-center justify-center">
-                    <div className="w-full h-full flex-col flex items-center justify-center p-2">
-                        <h2 className="text-xl bg-black/50 px-2">x: 12, y: 127, z:25</h2>
-                        <h2 className="text-xl">↓   ↓</h2>
-                        <h2 className="text-xl bg-black/50 px-2">x: 96, y: 127, z:200</h2>
+                    <div className="w-full h-full flex-col flex items-center justify-center p-2 ">
+                        <h2 className="text-xl max-sm:text-sm bg-black/50 px-2">x: 12, y: 127, z:25</h2>
+                        <h2 className="text-xl max-sm:text-sm">↓   ↓</h2>
+                        <h2 className="text-xl max-sm:text-sm bg-black/50 px-2">x: 96, y: 127, z:200</h2>
                     </div>
                 </div>
         },
@@ -104,7 +108,7 @@ export default function FlectoneTools() {
                         <span className="bg-linear-to-r from-red-500 via-yellow-400 to-purple-500 bg-clip-text text-transparent font-bold text-xl">
                             Text example
                         </span>
-                        <span className="bg-black/40 px-2">&#8249;rainbow&#8250;Text example&#8249;/rainbow&#8250;</span>
+                        <span className="bg-black/40 px-2 max-sm:text-sm text-center">&#8249;rainbow&#8250;Text example&#8249;/rainbow&#8250;</span>
                     </div>
                 </div>
         },
@@ -134,8 +138,8 @@ export default function FlectoneTools() {
 
     return (
         <div className="w-full grid grid-cols-2 max-xl:grid-cols-1 gap-4">
-            {tools.map((e) => (
-                <ToolCard path={e.path} name={e.label} description={e.description} icon={e.icon} preview={e.preview} />
+            {tools.map((tool, key) => (
+                <ToolCard key={key} path={tool.path} name={tool.label} description={tool.description} icon={tool.icon} preview={tool.preview} />
             ))}
         </div>
     )
