@@ -494,10 +494,30 @@ export default function ColorTextGenerator() {
     const [previewMode, setPreviewMode] = useState<PreviewMode>('chat');
     const [pickerColor, setPickerColor] = useState('#ff0000');
     const [showPicker, setShowPicker] = useState(false);
+    const [maxLines, setMaxLines] = useState<number>()
+    const [maxCharsPerLine, setMaxCharsPerLine] = useState<number>()
     const pickerRef = useRef<HTMLDivElement>(null);
     const textareaRef = useRef<HTMLTextAreaElement>(null);
     const tabHeaderRef = useRef<HTMLTextAreaElement>(null);
     const tabFooterRef = useRef<HTMLTextAreaElement>(null);
+
+    let lines = raw.split('\n');
+
+    useEffect(() => {
+        if (maxCharsPerLine) {
+            lines = lines.map(line => line.slice(0, maxCharsPerLine));
+        }
+
+        if (maxLines && lines.length > maxLines) {
+            lines = lines.slice(0, maxLines);
+        }
+
+        const processed = lines.join('\n');
+        if (processed !== raw) {
+            setRaw(processed);
+        }
+    }, [maxLines, maxCharsPerLine]);
+
 
     const isMini = format === 'minimessage';
 
@@ -527,7 +547,7 @@ export default function ColorTextGenerator() {
                     <MinecraftTab tabText={
                         <div className='flex items-start gap-1'>
                             <div className='flex items-center gap-1'>
-                                <RenderedText raw={raw} style={{ ...mc, color: '#FFFFFF', fontSize: '1.2em', marginBottom: '6px' }} />
+                                <RenderedText raw={raw} style={{ ...mc, color: '#FFFFFF', fontSize: '1.2em', marginBottom: '6px', textAlign: 'center' }} />
                             </div>
                         </div>}
                     />
@@ -766,7 +786,11 @@ export default function ColorTextGenerator() {
                                 {PREVIEW_MODES.map((m) => (
                                     <button
                                         key={m}
-                                        onClick={() => setPreviewMode(m)}
+                                        onClick={() => {
+                                            setPreviewMode(m)
+                                            setMaxLines(m === 'sign' ? 4 : m === 'book' ? 11 : m === 'motd' ? 2 : m === 'name' ? 1 : undefined)
+                                            setMaxCharsPerLine(m === 'sign' ? 16 : m === 'book' ? 16 : m === 'motd' ? 29 : m === 'name' ? 16 : undefined)
+                                        }}
                                         className={`p-3 w-full text-xs font-bold rounded-lg cursor-pointer transition-colors ${previewMode === m
                                             ? 'bg-fd-primary text-fd-primary-foreground'
                                             : 'bg-fd-gray hover:bg-fd-muted-gray text-fd-gray-foreground'
