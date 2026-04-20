@@ -1,9 +1,12 @@
 'use client';
 
-import {useState, useMemo, useEffect} from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { Copy, Check, Download } from 'lucide-react';
 import Checkbox from '../Form/Input/Checkbox';
+import { Slider } from '../Form/Input/Slider';
+import InputText from '../Form/Input/InputText';
+import TextOutput from '../Form/Output/TextOutput';
 
 type FlagPreset = 'none' | 'aikars' | 'zgc' | 'shenandoah' | 'velocity';
 type OsTab = 'linux' | 'windows' | 'java';
@@ -12,7 +15,7 @@ const MIN_MB = 512;
 const MAX_MB = 32768;
 const STEP_MB = 512;
 
-const MEMORY_TICKS = [512, 1024, 2048, 4096, 8192, 12288, 16384, 20480, 32768];
+const MEMORY_TICKS = [1024 * 0.5, 1024, 1024 * 2, 1024 * 4, 1024 * 8, 1024 * 12, 1024 * 16, 1024 * 20, 1024 * 24, 1024 * 28, 1024 * 32];
 
 function formatMemory(mb: number): string {
     if (mb >= 1024 && mb % 1024 === 0) return `${mb / 1024} GB`;
@@ -201,7 +204,7 @@ function CodeBlock({ code, tab, onDownload }: { code: string; tab: OsTab; onDown
     };
 
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-4">
             <div className="relative bg-fd-card rounded-xl border overflow-hidden">
                 <button
                     onClick={handleCopy}
@@ -224,40 +227,6 @@ function CodeBlock({ code, tab, onDownload }: { code: string; tab: OsTab; onDown
                     <Download size="1em" />
                     {tab === 'linux' ? 'start.sh' : tab === 'windows' ? 'start.bat' : 'flags.txt'}
                 </button>
-            </div>
-        </div>
-    );
-}
-
-function MemorySlider({ value, onChange }: { value: number; onChange: (mb: number) => void }) {
-    return (
-        <div className="flex flex-col gap-3">
-            <p className="font-bold">
-                Память: <code className="bg-fd-card py-0.5 px-1 rounded-sm">{formatMemory(value)}</code>
-            </p>
-            <input
-                type="range"
-                min={MIN_MB}
-                max={MAX_MB}
-                step={STEP_MB}
-                value={value}
-                onChange={(e) => onChange(Number(e.target.value))}
-                className="w-full"
-            />
-            <div className="flex justify-between">
-                {MEMORY_TICKS.map((mb) => (
-                    <button
-                        key={mb}
-                        onClick={() => onChange(mb)}
-                        className={`text-xs cursor-pointer transition-colors duration-75 ${
-                            value === mb
-                                ? 'text-fd-primary font-bold'
-                                : 'text-fd-muted-foreground hover:text-fd-foreground'
-                        }`}
-                    >
-                        {formatMemory(mb)}
-                    </button>
-                ))}
             </div>
         </div>
     );
@@ -299,58 +268,58 @@ export default function ServerFlagsGenerator() {
         URL.revokeObjectURL(url);
     };
 
-    const PRESETS: { id: FlagPreset; label: string }[] = [
-        { id: 'none',       label: 'None' },
-        { id: 'aikars',     label: "Aikar's Flags" },
-        { id: 'zgc',        label: 'ZGC (Java 21+)' },
-        { id: 'shenandoah', label: 'Shenandoah' },
-        { id: 'velocity',   label: 'Velocity / Proxy' },
+    const PRESETS: { id: FlagPreset; label: string, description: string, link: string }[] = [
+        { id: 'none', label: t('Presets.None.label'), description: t('Presets.None.description'), link: t('Presets.None.link') },
+        { id: 'aikars', label: t('Presets.Aikars.label'), description: t('Presets.Aikars.description'), link: t('Presets.Aikars.link') },
+        { id: 'zgc', label: t('Presets.Zgc.label'), description: t('Presets.Zgc.description'), link: t('Presets.Zgc.link') },
+        { id: 'shenandoah', label: t('Presets.Shenandoah.label'), description: t('Presets.Shenandoah.description'), link: t('Presets.Shenandoah.link') },
+        { id: 'velocity', label: t('Presets.Velocity.label'), description: t('Presets.Velocity.description'), link: t('Presets.Velocity.link') },
     ];
 
     const OS_TABS: { id: OsTab; label: string }[] = [
-        { id: 'linux',   label: 'Linux / Mac' },
+        { id: 'linux', label: 'Linux / Mac' },
         { id: 'windows', label: 'Windows' },
-        { id: 'java',    label: 'Java' },
+        { id: 'java', label: 'Java' },
     ];
 
     return (
         <div className="flex flex-col gap-4 w-full">
-            <div className="bg-fd-article border rounded-2xl p-6 flex flex-col gap-6">
-                <div className="flex gap-6 max-md:flex-col">
-                    <div className="flex flex-col gap-2 w-52 max-md:w-full shrink-0">
+            <div className="flex flex-col gap-4">
+                <div className="flex gap-4 max-lg:flex-col">
+                    <div className="bg-fd-article border rounded-2xl p-6  flex flex-col gap-2 w-52 max-lg:w-full shrink-0">
                         <p className="font-bold">{t('filename')}</p>
-                        <div className="flex items-center bg-fd-card border rounded-xl px-4 py-2.5">
-                            <input
-                                type="text"
-                                value={jar}
-                                onChange={(e) => setJar(e.target.value)}
-                                className="bg-transparent w-full text-fd-foreground text-base outline-none"
-                                placeholder="server.jar"
-                            />
-                        </div>
+                        <InputText
+                            value={jar}
+                            onChange={(e) => setJar(e.target.value)}
+                            placeholder="server.jar"
+                        />
                         <p className="text-xs">{t('filenameHint')}</p>
                     </div>
 
-                    <div className="flex flex-col gap-2 flex-1">
+                    <div className="bg-fd-article border rounded-2xl p-6  flex flex-col gap-2 w-full">
                         <p className="font-bold">{t('flags')}</p>
-                        <div className="grid grid-cols-5 gap-2 h-full max-sm:grid-cols-2">
+                        <div className="flex gap-2 h-full w-full flex-wrap">
                             {PRESETS.map((p) => (
-                                <button
-                                    key={p.id}
-                                    onClick={() => setPreset(p.id)}
-                                    className={`px-3 py-2 rounded-xl border cursor-pointer text-sm font-medium transition-all duration-100 h-full min-h-10 ${
-                                        preset === p.id
+                                <div className='w-full flex-1 flex-col gap-2 flex'>
+                                    <button
+                                        key={p.id}
+                                        onClick={() => setPreset(p.id)}
+                                        className={`px-3 py-2 w-full rounded-md border cursor-pointer text-sm font-medium transition-all duration-100 h-fit ${preset === p.id
                                             ? 'border-fd-primary bg-fd-primary/10 text-fd-primary'
                                             : 'border-fd-border bg-fd-card text-fd-muted-foreground hover:bg-fd-muted hover:text-fd-foreground'
-                                    }`}
-                                >
-                                    {p.label}
-                                </button>
+                                            }`}
+                                    >
+                                        {p.label}
+                                    </button>
+                                    <div className='bg-fd-card/60 text-xs rounded-md h-full border border-fd-border/30 p-2'>
+                                        <p>{p.description} {p.link !== '' && (<a href={p.link} target='blank' className='text-fd-primary hover:text-fd-muted-primary transition'>{t('more')}</a>)}</p>
+                                    </div>
+                                </div>
                             ))}
                         </div>
                     </div>
 
-                    <div className="flex flex-col gap-3 shrink-0">
+                    <div className="bg-fd-article border rounded-2xl p-6 flex flex-col gap-3 shrink-0">
                         <p className="font-bold">{t('options')}</p>
                         <div className="flex flex-col gap-3">
                             <label className="flex items-center gap-2 cursor-pointer">
@@ -378,8 +347,33 @@ export default function ServerFlagsGenerator() {
                     </div>
                 </div>
 
-                <div className="border-t border-fd-border pt-4">
-                    <MemorySlider value={memoryMb} onChange={setMemoryMb} />
+                <div className="bg-fd-article border rounded-2xl p-6">
+                    <div className="flex flex-col gap-3 relative">
+                        <p className="font-bold">
+                            Память: <code className="bg-fd-card py-0.5 px-1 rounded-sm">{formatMemory(memoryMb)}</code>
+                        </p>
+                        <Slider
+                            value={memoryMb}
+                            min={MIN_MB}
+                            max={MAX_MB}
+                            step={STEP_MB}
+                            onChange={setMemoryMb}
+                        />
+                        <div className="flex gap-2">
+                            {MEMORY_TICKS.map((mb) => (
+                                <button
+                                    key={mb}
+                                    onClick={() => setMemoryMb(mb)}
+                                    className={`text-xs cursor-pointer w-full py-2 rounded-md text-nowrap transition-colors duration-75 ${memoryMb === mb
+                                        ? 'text-fd-primary font-bold bg-fd-border'
+                                        : 'text-fd-muted-foreground hover:text-fd-foreground bg-fd-card hover:bg-fd-border'
+                                        }`}
+                                >
+                                    {formatMemory(mb)}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -391,11 +385,10 @@ export default function ServerFlagsGenerator() {
                             <button
                                 key={tab.id}
                                 onClick={() => setOsTab(tab.id)}
-                                className={`px-4 py-1.5 rounded-lg text-sm font-medium cursor-pointer transition-all duration-100 ${
-                                    osTab === tab.id
-                                        ? 'bg-fd-primary text-fd-primary-foreground shadow-sm'
-                                        : 'text-fd-muted-foreground hover:text-fd-foreground'
-                                }`}
+                                className={`px-4 py-1.5 rounded-lg text-sm font-medium cursor-pointer transition-all duration-100 ${osTab === tab.id
+                                    ? 'bg-fd-primary text-fd-primary-foreground shadow-sm'
+                                    : 'text-fd-muted-foreground hover:text-fd-foreground'
+                                    }`}
                             >
                                 {tab.label}
                             </button>

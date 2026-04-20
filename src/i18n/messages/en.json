@@ -445,6 +445,34 @@
       "filenameHint": "The .jar file to launch. Must be in the same directory as the script.",
       "memory": "Memory",
       "flags": "Flags",
+      "Presets": {
+        "None": {
+          "label": "Basic",
+          "description": "Minimal flags for starting Java.",
+          "link": ""
+        },
+        "Aikars": {
+          "label": "Aikar's Flags",
+          "description": "Recommended flags for Paper servers.",
+          "link": "https://docs.papermc.io/paper/aikars-flags/"
+        },
+        "Zgc": {
+          "label": "ZGC (Java 21+)",
+          "description": "High performance with a large amount of memory.",
+          "link": "https://obydux.github.io/Minecraft-startup-flags/"
+        },
+        "Shenandoah": {
+          "label": "Shenandoah",
+          "description": "Low GC latencies (Temurin JDK recommended).",
+          "link": "https://github.com/brucethemoose/Minecraft-Performance-Flags-Benchmarks"
+        },
+        "Velocity": {
+          "label": "Velocity / Proxy",
+          "description": "Optimized flags for proxy servers.",
+          "link": "https://docs.papermc.io/velocity/getting-started"
+        }
+      },
+      "more": "More",
       "options": "Options",
       "result": "Result",
       "guiHint": "Control panel",

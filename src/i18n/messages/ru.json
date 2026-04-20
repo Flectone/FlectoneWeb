@@ -445,6 +445,34 @@
       "filenameHint": "Файл .jar для запуска. Должен быть в той же папке, что и скрипт.",
       "memory": "Память",
       "flags": "Флаги",
+      "Presets": {
+        "None": {
+          "label": "Базовые",
+          "description": "Минимальные флаги для запуска Java.",
+          "link": ""
+        },
+        "Aikars": {
+          "label": "Флаги Айкара",
+          "description": "Рекомендованные флаги для Paper серверов.",
+          "link": "https://docs.papermc.io/paper/aikars-flags/"
+        },
+        "Zgc": {
+          "label": "ZGC (Java 21+)",
+          "description": "Высокая производительность при большом объёме памяти.",
+          "link": "https://obydux.github.io/Minecraft-startup-flags/"
+        },
+        "Shenandoah": {
+          "label": "Shenandoah",
+          "description": "Низкие задержки GC (рекомендуется Temurin JDK).",
+          "link": "https://github.com/brucethemoose/Minecraft-Performance-Flags-Benchmarks"
+        },
+        "Velocity": {
+          "label": "Velocity / Proxy",
+          "description": "Оптимизированные флаги для прокси-серверов.",
+          "link": "https://docs.papermc.io/velocity/getting-started"
+        }
+      },
+      "more": "Подробнее",
       "options": "Параметры",
       "result": "Результат",
       "guiHint": "Панель управления",
