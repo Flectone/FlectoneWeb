@@ -33,72 +33,73 @@ export async function POST(req: Request) {
       );
     }
 
-    const frames = [];
     const token = process.env.MINESKIN_API_TOKEN;
+    const encoder = new TextEncoder();
 
-    for (const item of imageArray) {
-      if (signal.aborted) break;
+    const stream = new ReadableStream({
+        async start(controller) {
+            for (const item of imageArray) {
+                if (signal.aborted) break;
 
-      try {
-        const fetchResponse = await fetch(MINESKIN_API_URL, {
-          method: "POST",
-          signal,
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            variant: "classic",
-            visibility: "public",
-            url: item.skin,
-          }),
-        });
+                try {
+                    const fetchResponse = await fetch(MINESKIN_API_URL, {
+                        method: "POST",
+                        signal,
+                        headers: {
+                            "Content-Type": "application/json",
+                            Accept: "application/json",
+                            Authorization: `Bearer ${token}`,
+                        },
+                        body: JSON.stringify({
+                            variant: "classic",
+                            visibility: "public",
+                            url: item.skin,
+                        }),
+                    });
 
-        const data = await fetchResponse.json();
+                    const data = await fetchResponse.json();
 
-        if (data.success && data.skin) {
-          frames.push({
-            x: item.x,
-            y: item.y,
-            value: data.skin.texture.data.value,
-          });
-        } else {
-          console.error("Mineskin API returned success:false", data);
-        }
+                    if (data.success && data.skin) {
+                        const frame = {
+                            x: item.x,
+                            y: item.y,
+                            imageBlock: item.imageBlock,
+                        };
+                        controller.enqueue(encoder.encode(JSON.stringify(frame) + "\n"));
+                    }
 
-        const nextDelay = data.rateLimit?.delay?.millis || 1000;
-        await new Promise((resolve, reject) => {
-          const timeout = setTimeout(resolve, nextDelay);
-          const abortHandler = () => {
-            clearTimeout(timeout);
-            reject(new Error("AbortError"));
-          };
-          signal.addEventListener("abort", abortHandler, { once: true });
-          setTimeout(
-            () => signal.removeEventListener("abort", abortHandler),
-            nextDelay,
-          );
-        });
-      } catch (error: any) {
-        if (error.name === "AbortError" || error.message === "AbortError") {
-          break;
-        }
-        console.error(`Ошибка кадра ${item.x}:${item.y}:`, error);
-      }
-    }
+                    const nextDelay = data.rateLimit?.delay?.millis || 1000;
+                    await new Promise((resolve, reject) => {
+                        const timeout = setTimeout(resolve, nextDelay);
+                        const abortHandler = () => {
+                            clearTimeout(timeout);
+                            reject(new Error("AbortError"));
+                        };
 
-    return NextResponse.json({
-      success: true,
-      data: { lastModified: Date.now(), frames },
-      imageArray: imageArray,
-      filename,
+                        signal.addEventListener("abort", abortHandler, { once: true });
+                        setTimeout(() => signal.removeEventListener("abort", abortHandler), nextDelay);
+                    });
+                } catch (error: any) {
+                    if (error.name === "AbortError" || error.message === "AbortError") break;
+                    console.error(`Frame error ${item.x}:${item.y}:`, error);
+                }
+            }
+
+            controller.close();
+        },
+    });
+
+    return new Response(stream, {
+        headers: {
+            "Content-Type": "text/plain",
+            "X-Filename": filename,
+        },
     });
   } catch (err: any) {
-    console.error("Критическая ошибка роута:", err);
-    return NextResponse.json(
-      { error: err.message || "Internal Server Error" },
-      { status: 500 },
-    );
+      console.error("Critical route error:", err);
+      return NextResponse.json(
+          { error: err.message || "Internal Server Error" },
+          { status: 500 }
+      );
   }
 }
