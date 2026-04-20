@@ -121,7 +121,8 @@ These events manage the message processing pipeline: from formatting to delivery
 |---------|--------|------------|
 | `EnableEvent` | `FlectonePulse` | Called when the project is enabled |
 | `DisableEvent` | `FlectonePulse` | Called when the project is disabled |
-| `ReloadEvent` | `FlectonePulse`, `ReloadException` (error during execution, if any) | Called during project reload |
+| `StartReloadEvent` | `FlectonePulse` | Called at the beginning of reload (may be useful to cancel it) |
+| `EndReloadEvent` | `FlectonePulse`, `ReloadException` (error during execution, if any) | Called at the end of reload |
 
 ### Module Events
 
