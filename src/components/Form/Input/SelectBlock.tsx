@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 
 interface SelectBlockProps<T extends string = string> {
     values: {
-        label: string,
+        label: string | ReactNode,
         value: T
     }[],
     onChange?: (value: T) => void,
