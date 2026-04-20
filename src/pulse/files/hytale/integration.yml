@@ -21,6 +21,10 @@ advancedban:
   disable_flectonepulse_warn: true
   disable_flectonepulse_kick: true
 #endregion advancedban
+#region blazeandcave
+blazeandcave:
+  enable: true
+#endregion blazeandcave
 #region cmi
 cmi:
   enable: true
@@ -40,6 +44,12 @@ discord:
   ignore_all_bots: true
   ignore_all_webhooks: true
   token: ""
+  proxy:
+    type: "DIRECT"
+    host: "127.0.0.1"
+    port: 1080
+    user: ""
+    password: ""
   custom_command:
     ping:
       need_player: true
@@ -76,6 +86,25 @@ floodgate:
 geyser:
   enable: true
 #endregion geyser
+#region icu
+icu:
+  enable: false
+  bidi:
+    enable: true
+  arabic_shaping:
+    enable: true
+    numerals: false
+  word_breaking:
+    enable: false
+    thai: true
+    khmer: true
+    lao: true
+    tibetan: false
+    break_character: " "
+  normalization:
+    enable: false
+    form: "NFC"
+#endregion icu
 #region interactivechat
 interactivechat:
   enable: true
@@ -159,6 +188,12 @@ telegram:
   ignore_all_bots: true
   parse_mode: "NONE"
   token: ""
+  proxy:
+    type: "DIRECT"
+    host: "127.0.0.1"
+    port: 1080
+    user: ""
+    password: ""
   custom_command:
     id:
       need_player: false
@@ -192,6 +227,12 @@ twitch:
   enable: false
   client_id: ""
   token: ""
+  proxy:
+    type: "DIRECT"
+    host: "127.0.0.1"
+    port: 1080
+    user: ""
+    password: ""
   custom_command:
     ping:
       need_player: true

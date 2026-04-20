@@ -16,6 +16,7 @@ afk:
   enable: true
   range: "SERVER"
   delay: 3000
+  radius: 1.0
   ignore:
   - "afk"
   destination:
@@ -73,6 +74,7 @@ bubble:
   distance: 30.0
   read_speed: 90.0
   handicap_chars: 10.0
+  hint_buffer_length: 7
   word_break_hint: "‑"
   interaction:
     enable: true
@@ -312,8 +314,8 @@ format:
       stats: "(?<!\\\\)(?<!\\S)%stats%(?!\\S)"
       skin: "(?<!\\\\)(?<!\\S)%skin%(?!\\S)"
       item: "(?<!\\\\)(?<!\\S)%item%(?!\\S)"
-      image: "(?<!\\\\{2,})(?<=\\s|^)((?i:https?)://(?:[a-zA-Z0-9-@]{1,63}\\.)*(?i:imgur\\.com|discordapp\\.net|cdn\\.discordapp\\.com)/[\\w\\-./?=&%!#$'()*+,;=~@]*\\.(?:jpg|jpeg|png|gif|webp|bmp))(?!\\S)"
-      url: "(?<!\\\\{2,})(?<=\\s|^)((?i:https?|ftp)://(?:[\\p{L}a-zA-Z0-9-@]{1,63}\\.)+[\\p{L}a-zA-Z]{2,6}(?::\\d{1,5})?(?:/[\\w\\-./?=&%!#$'()*+,;=~@]*)?)(?!\\S)"
+      image: "(?<!\\\\{2,})(?<=\\s|^)((?i:https?)://(?:[a-zA-Z0-9-@]{1,63}\\.)*(?i:imgur\\.com|discordapp\\.net|cdn\\.discordapp\\.com)/[\\w\\-./?=&%!#$'()*+,;:=~@]*\\.(?:jpg|jpeg|png|gif|webp|bmp))(?!\\S)"
+      url: "(?<!\\\\{2,})(?<=\\s|^)((?i:https?|ftp)://(?:[\\p{L}a-zA-Z0-9-@]{1,63}\\.)+[\\p{L}a-zA-Z]{2,6}(?::\\d{1,5})?(?:/[\\w\\-./?=&%!#$'()*+,;:=~@]*)?)(?!\\S)"
       spoiler: "(?<!\\S)\\|\\|([^\\|\\|\\n]+)\\|\\|(?!\\S)"
       bold: "(?<!\\S)\\*\\*([^\\*\\*\\n]+)\\*\\*(?!\\S)"
       italic: "(?<!\\S)\\*([^\\*\\n]+)\\*(?!\\S)"
@@ -359,7 +361,7 @@ greeting:
 join:
   enable: true
   first: true
-  range: "SERVER"
+  range: "PROXY"
   destination:
     type: "CHAT"
   sound:
@@ -386,7 +388,7 @@ objective:
 #region quit
 quit:
   enable: true
-  range: "SERVER"
+  range: "PROXY"
   destination:
     type: "CHAT"
   sound:

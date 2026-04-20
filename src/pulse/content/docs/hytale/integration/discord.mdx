@@ -90,14 +90,14 @@ custom_command:
 
 ### `message_channel`
 
-Список сообщений с их настройкой
+Список сообщений с их настройкой. Эти параметры ты должен добавлять вручную в файл локализации под каждым сообщением для дискорда, их можно пропускать и не использовать
 
 ```yaml
 название_сообщения:
   content: ""
   webhook_name: "<player>"
   webhook_avatar: ""
-    embed:
+  embed:
     color: ""
     title: ""
     url: ""
@@ -257,6 +257,10 @@ custom_command:
 ### `token`
 
 [Токен](https://discordgsm.com/guide/how-to-get-a-discord-bot-token) дискорд бота для подключения. Можно использовать environment variables, например `${VALUE}`
+
+### `proxy`
+
+<include>../../../../parts/proxy.mdx</include>
 
 ### `custom_command`
 
