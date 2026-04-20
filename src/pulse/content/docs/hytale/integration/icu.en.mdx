@@ -1,0 +1,94 @@
+---
+title: International Formatting
+description: Integration with the ICU library (International Components for Unicode), which allows proper formatting of unsupported languages (e.g., Arabic)
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+
+![icu](/pulse/icu.png)
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `integration.yml → icu`</span>
+
+<include>../../../../files/minecraft/integration.yml#icu</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `bidi`
+
+Universal text formatting
+
+#### `enable`
+
+Enables support for bidirectional text. This is necessary for the correct display of mixed text in right-to-left (Arabic, Hebrew) and left-to-right (Latin, Cyrillic) scripts
+
+### `arabic`
+
+Formatting for Arabic text
+
+#### `shaping`
+
+Converts logical Arabic characters into visual glyphs with proper letter connections (initial, medial, final, isolated forms)
+
+#### `numerals`
+
+Enables replacement of European digits (0-9) with Arabic-Indic digits (٠١٢٣٤٥٦٧٨٩)
+
+### `word_breaking`
+
+Text word breaking
+
+#### `enable`
+
+Enables the core algorithmic word breaking
+
+#### `thai`
+
+Enables special breaking for the Thai language (no spaces between words)
+
+#### `khmer`
+
+Enables breaking for the Khmer (Cambodian) language, considering its writing system specifics
+
+#### `lao`
+
+Enables special breaking for the Lao language (no spaces between words)
+
+#### `tibetan`
+
+Enables special breaking for the Tibetan script
+
+#### `break_character`
+
+Character for word breaking
+
+### `normalization`
+
+Text normalization
+
+#### `enable`
+
+Enables text normalization
+
+#### `form`
+
+Text normalization form
+
+| Type                          |
+|-------------------------------|
+| `NFC`                         |
+| `NFD`                         |
+| `NFKC`                        |
+| `NFKD`                        |
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → integration.icu`</span>
+
+<include>../../../../files/minecraft/permission.yml#icu</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

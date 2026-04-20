@@ -27,7 +27,7 @@ tag: "hytale"
 | `%flectonepulse_fcolor_number%`             | Returns the player's [custom color](/pulse/docs/message/format/fcolor/)     |
 | `%flectonepulse_fcolor_out_number%`         | Returns the player's [custom color OUT](/pulse/docs/message/format/fcolor/) |
 | `%flectonepulse_fcolor_see_number%`         | Returns the player's [custom color SEE](/pulse/docs/message/format/fcolor/) |
-| `%flectonepulse_setting_name%`              | If `setting` is a [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), its value will be returned. <br/>Otherwise, it checks [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java); if enabled, returns `yes`, otherwise `no`              |
+| `%flectonepulse_setting_name%`              | Returns the value of a specific setting for the player <br/><br/>If `setting` is a [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), its value is returned. <br/>Otherwise, it checks [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java); if enabled, returns `yes`, otherwise `no` <br/><br/>For example, `%flectonepulse_setting_afk_suffix%` returns the AFK suffix, and `%flectonepulse_setting_module_message_chat%` returns `yes` if the player has chat enabled, and `no` if not |
 
 <br></br>
 

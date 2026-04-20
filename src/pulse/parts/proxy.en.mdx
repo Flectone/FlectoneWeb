@@ -1,0 +1,29 @@
+<Accordions>
+    <Accordion title="Proxy mode of operation via another IP (solves service unavailability issues)">
+        #### `type`
+
+        Proxy operation mode
+
+        | Type                          | Explanation                                       |
+        |-------------------------------|---------------------------------------------------|
+        | `DIRECT`                      | All requests go through the main IP (no proxy)    |
+        | `HTTP`                        | All requests go through an HTTP proxy             |
+        | `SOCKS`                       | All requests go through a SOCKS v5 proxy          |
+
+        #### `host`
+
+        Proxy IP address
+
+        #### `port`
+
+        Proxy port
+
+        #### `user`
+
+        Proxy authorization username, can be empty. Environment variables can be used, e.g., `${VALUE}`
+
+        #### `password`
+
+        Proxy authorization password, can be empty. Environment variables can be used, e.g., `${VALUE}`
+    </Accordion>
+</Accordions>

@@ -27,7 +27,7 @@ tag: "minecraft"
 | `%flectonepulse_fcolor_число%`              | Возвращает [кастомный цвет](/pulse/docs/message/format/fcolor/) игрока     |
 | `%flectonepulse_fcolor_out_число%`          | Возвращает [кастомный цвет OUT](/pulse/docs/message/format/fcolor/) игрока |
 | `%flectonepulse_fcolor_see_число%`          | Возвращает [кастомный цвет SEE](/pulse/docs/message/format/fcolor/) игрока |
-| `%flectonepulse_setting_название%`          | Если `setting` является [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), то вернётся его значение. <br/>Иначе проверяется [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java), если включено то `yes`, иначе `no`              |
+| `%flectonepulse_setting_название%`          | Возвращает значение конкретной настройки у игрока <br/><br/>Если `setting` является [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), то вернётся его значение. <br/>Иначе проверяется [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java), если включено то `yes`, иначе `no` <br/><br/>Например, `%flectonepulse_setting_afk_suffix%` вернёт АФК суффикс, а `%flectonepulse_setting_module_message_chat%` вернёт `yes`, если у игрока включен чат, и `no` если нет             |
 
 <br></br>
 

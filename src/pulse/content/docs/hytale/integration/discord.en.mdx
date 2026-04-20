@@ -90,14 +90,14 @@ List of channel IDs and their names for displaying some information, such as `TP
 
 ### `message_channel`
 
-List of messages with their settings
+List of messages with their settings. These parameters must be manually added to the localization file under each message for Discord. They can be skipped or left unused
 
 ```yaml
 message_name:
   content: ""
   webhook_name: "<player>"
   webhook_avatar: ""
-    embed:
+  embed:
     color: ""
     title: ""
     url: ""
@@ -258,6 +258,10 @@ If enabled, any messages from Discord Webhook will be ignored. Otherwise, only o
 ### `token`
 
 [Token](https://discordgsm.com/guide/how-to-get-a-discord-bot-token) of the Discord bot for connection. You can use environment variables, for example `${VALUE}`
+
+### `proxy`
+
+<include>../../../../parts/proxy.mdx</include>
 
 ### `custom_command`
 

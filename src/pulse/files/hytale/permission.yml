@@ -650,6 +650,11 @@ integration:
     name: "flectonepulse.module.integration.advancedban"
     type: "TRUE"
 #endregion advancedban
+#region blazeandcave
+  blazeandcave:
+    name: "flectonepulse.module.integration.blazeandcave"
+    type: "TRUE"
+#endregion blazeandcave
 #region cmi
   cmi:
     name: "flectonepulse.module.integration.cmi"
@@ -678,6 +683,11 @@ integration:
     name: "flectonepulse.module.integration.geyser"
     type: "TRUE"
 #endregion geyser
+#region icu
+  icu:
+    name: "flectonepulse.module.integration.icu"
+    type: "TRUE"
+#endregion icu
 #region interactivechat
   interactivechat:
     name: "flectonepulse.module.integration.interactivechat"
