@@ -182,4 +182,8 @@ input[type="checkbox"]:checked {
   background-color: var(--color-fd-primary);
 }
 
+@keyframes blockFadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
 

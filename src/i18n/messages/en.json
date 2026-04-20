@@ -286,6 +286,7 @@
       "input": "Drag and drop an image or click",
       "drag": "Drag",
       "startGeneration": "Generate JSON",
+      "resume": "Resume",
       "generation": "Processing...",
       "previewGeneration": "Generating preview...",
       "reset": "Reset",

@@ -1,41 +1,49 @@
-// components/TextureGenerator.tsx
 'use client';
-import { useEffect, useState, useTransition, useRef } from 'react';
-import { imageToHeadSkin } from '@/lib/texture-generator';
+import { useEffect, useState, useTransition, useRef, useMemo } from 'react';
 import { FileUploader } from '@/components/Form/Input/FileUploader';
 import { Trash } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import MinecraftTab from '@/components/Assets/MinecraftTab';
 import { LoaderCircle, Pause } from "lucide-react";
+import '@/app/globals.css'
 
 export const TextureGenerator = () => {
     const [actionData, setActionData] = useState<any>(null);
     const [actionError, setActionError] = useState<string | null | number>(null);
-    const [previewData, setPreviewData] = useState<any>(null);
-    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [previewData, setPreviewData] = useState<any[]| null>(null);
+    const [filename, setFilename] = useState<string>('skin');
     const [generatedFrames, setGeneratedFrames] = useState<any[]>([]);
+    const [isGenerating, setIsGenerating] = useState(false);
+    const [latestKey, setLatestKey] = useState<string | null>(null);
+    const [gridSize, setGridSize] = useState<{ cols: number; rows: number } | null>(null);
 
     const [isProcessingPreview, startPreviewTransition] = useTransition();
     const t = useTranslations('Tools.TextureGenerator');
 
-    const abortControllerRef = useRef<AbortController | null>(null);
     const framesAccumulatorRef = useRef<any[]>([]);
+    const animatedKeysRef = useRef<Set<string>>(new Set());
+    const pendingItemsRef = useRef<any[]>([]);
+    const isStoppedRef = useRef(false);
 
     const handleReset = () => {
+        isStoppedRef.current = true;
         setPreviewData(null);
         setActionData(null);
         setActionError(null);
-        setSelectedFile(null);
+        setFilename('skin');
         setGeneratedFrames([]);
+        setLatestKey(null);
+        setGridSize(null);
+        setIsGenerating(false);
         framesAccumulatorRef.current = [];
+        animatedKeysRef.current = new Set();
+        pendingItemsRef.current = [];
     };
 
     const handleStop = () => {
-        if (abortControllerRef.current) {
-            abortControllerRef.current.abort();
-            abortControllerRef.current = null;
-        }
-    }
+        isStoppedRef.current = true;
+        setIsGenerating(false);
+    };
 
     useEffect(() => {
         if (actionData?.success && actionData?.data) {
@@ -51,66 +59,94 @@ export const TextureGenerator = () => {
     }, [actionData]);
 
     const handleFileSelect = (file: File) => {
+        isStoppedRef.current = true;
         setActionError(null);
         setActionData(null);
-        setSelectedFile(file);
         setGeneratedFrames([]);
+        setLatestKey(null);
+        setGridSize(null);
+        setIsGenerating(false);
         framesAccumulatorRef.current = [];
+        animatedKeysRef.current = new Set();
+        pendingItemsRef.current = [];
 
         startPreviewTransition(async () => {
-            const result = await imageToHeadSkin(file);
-            if (result.imageArray) setPreviewData(result.imageArray);
-            if (result.status === 422) setActionError(t('Errors.422'));
-            if (result.status === 413) setActionError("Максимальный размер изображение 256 на 256 пикселей");
-            if (result.status === 400) setActionError("Поврежденный или неверный файл");
+            const formData = new FormData();
+            formData.append('image', file);
+            const res = await fetch('/api/mineskin/generate', { method: 'POST', body: formData });
+            if (!res.ok) {
+                const err = await res.json();
+                if (err.status === 422) setActionError(t('Errors.422'));
+                else if (err.status === 413) setActionError("Максимальный размер изображение 256 на 256 пикселей");
+                else setActionError("Поврежденный или неверный файл");
+                return;
+            }
+            const result = await res.json();
+            if (result.imageArray) {
+                setPreviewData(result.imageArray);
+                setFilename(result.filename || 'skin');
+                const maxX = Math.max(...result.imageArray.map((i: any) => i.x));
+                const maxY = Math.max(...result.imageArray.map((i: any) => i.y));
+                setGridSize({ cols: maxX + 1, rows: maxY + 1 });
+            }
         });
     };
 
-    const handleStartGeneration = async () => {
-        if (!selectedFile) return;
-        setActionError(null);
-        setGeneratedFrames([]);
-        framesAccumulatorRef.current = [];
-        setActionData(null);
+    const runGeneration = async (items: any[]) => {
+        setIsGenerating(true);
+        isStoppedRef.current = false;
 
-        if (abortControllerRef.current) abortControllerRef.current.abort();
-        abortControllerRef.current = new AbortController();
-
-        const formData = new FormData();
-        formData.append('image', selectedFile);
-
-        try {
-            const response = await fetch('/api/mineskin/generate', {
-                method: 'POST',
-                body: formData,
-                signal: abortControllerRef.current?.signal
-            });
-
-            if (!response.ok) {
-                const errorData = await response.json();
-                setActionError(errorData.error || 'Server error');
+        for (let i = 0; i < items.length; i++) {
+            if (isStoppedRef.current) {
+                pendingItemsRef.current = items.slice(i);
+                setIsGenerating(false);
                 return;
             }
 
-            const reader = response.body?.getReader();
-            const decoder = new TextDecoder();
-            let buffer = '';
+            const item = items[i];
 
-            while (true) {
-                const { done, value } = await reader!.read();
-                if (done) break;
-                buffer += decoder.decode(value, { stream: true });
-                const lines = buffer.split('\n');
-                buffer = lines.pop() || '';
-                for (const line of lines) {
-                    if (line.trim()) {
-                        const frame = JSON.parse(line);
-                        framesAccumulatorRef.current.push(frame);
-                        setGeneratedFrames(prev => [...prev, frame]);
+            try {
+                const formData = new FormData();
+                formData.append('skin', item.skin);
+
+                const res = await fetch('/api/mineskin/generate', { method: 'POST', body: formData });
+
+                if (isStoppedRef.current) {
+                    pendingItemsRef.current = items.slice(i);
+                    setIsGenerating(false);
+                    return;
+                }
+
+                const data = await res.json();
+
+                if (data.success) {
+                    const frame = { x: item.x, y: item.y, imageBlock: item.imageBlock };
+                    const key = `${frame.x}-${frame.y}`;
+                    framesAccumulatorRef.current.push(frame);
+                    setGeneratedFrames(prev => [...prev, frame]);
+                    setLatestKey(key);
+                    setTimeout(() => { animatedKeysRef.current.add(key); }, 500);
+
+                    if (data.delay && !isStoppedRef.current) {
+                        await new Promise<void>(resolve => {
+                            const timeout = setTimeout(resolve, data.delay);
+                            const check = setInterval(() => {
+                                if (isStoppedRef.current) {
+                                    clearTimeout(timeout);
+                                    clearInterval(check);
+                                    resolve();
+                                }
+                            }, 100);
+                        });
                     }
                 }
+            } catch (err: any) {
+                console.error(`Frame error ${item.x}:${item.y}:`, err);
             }
+        }
 
+        if (!isStoppedRef.current) {
+            pendingItemsRef.current = [];
             const finalFrames = framesAccumulatorRef.current;
             setActionData({
                 success: true,
@@ -122,43 +158,77 @@ export const TextureGenerator = () => {
                         value: f.imageBlock.split(',')[1]
                     }))
                 },
-                imageArray: finalFrames,
-                filename: response.headers.get('X-Filename') || 'skin',
+                filename,
             });
-
-        } catch (err: any) {
-            if (err.name === 'AbortError') {
-                console.log('Generation cancelled');
-            } else {
-                setActionError('Something went wrong during generation.');
-            }
-        } finally {
-            if (!abortControllerRef.current?.signal.aborted) {
-                abortControllerRef.current = null;
-            }
         }
+
+        setIsGenerating(false);
     };
 
-    const displayArray = generatedFrames.length > 0 ? generatedFrames : previewData;
+    const handleStartGeneration = async () => {
+        if (!previewData) return;
+        setActionError(null);
+
+        if (pendingItemsRef.current.length > 0) {
+            await runGeneration(pendingItemsRef.current);
+            return;
+        }
+
+        setGeneratedFrames([]);
+        setLatestKey(null);
+        framesAccumulatorRef.current = [];
+        animatedKeysRef.current = new Set();
+        setActionData(null);
+        pendingItemsRef.current = [];
+        await runGeneration(previewData);
+    };
+
+    const displayArray = useMemo(() => {
+        const source = generatedFrames.length > 0 ? generatedFrames : previewData;
+        if (!source) return null;
+        const seen = new Set<string>();
+        return source.filter((image: any) => {
+            const key = `${image.x}-${image.y}`;
+            if (seen.has(key)) return false;
+            seen.add(key);
+            return true;
+        });
+    }, [generatedFrames, previewData]);
+
+    const isPaused = !isGenerating && pendingItemsRef.current.length > 0;
 
     type PreviewProps = {
-        inputLabel?: string,
-        inputActiveLabel?: string,
-        inputClassName?: string
-    }
+        inputLabel?: string;
+        inputActiveLabel?: string;
+        inputClassName?: string;
+    };
 
     function Preview({ inputLabel, inputActiveLabel, inputClassName }: PreviewProps) {
         return (
-            <div className='grid justify-center gap-y-0.5'>
-                {displayArray && displayArray.map((image: any, index: number) => (
-                    <img
-                        key={index}
-                        src={image.imageBlock}
-                        alt={`block-${index}`}
-                        className={`w-4 h-4 object-contain ${isProcessingPreview ? 'hidden' : ''}`}
-                        style={{ gridColumnStart: image.x + 1, gridRowStart: image.y + 1 }}
-                    />
-                ))}
+            <div
+                className='grid justify-center gap-y-0.5'
+                style={gridSize ? {
+                    gridTemplateColumns: `repeat(${gridSize.cols}, 1rem)`,
+                    gridTemplateRows: `repeat(${gridSize.rows}, 1rem)`,
+                } : undefined}
+            >
+                {displayArray && displayArray.map((image: any, index: number) => {
+                    const key = `${image.x}-${image.y}`;
+                    const isNew = generatedFrames.length > 0 && key === latestKey && !animatedKeysRef.current.has(key);
+                    return (
+                        <img
+                            key={key}
+                            src={image.imageBlock}
+                            alt={`block-${index}`}
+                            className={`w-4 h-4 object-contain ${isProcessingPreview ? 'hidden' : ''}`}
+                            style={{
+                                gridColumnStart: image.x + 1,
+                                gridRowStart: image.y + 1,
+                                animation: isNew ? 'blockFadeIn 0.4s ease-out forwards' : undefined,
+                            }}
+                        />
+                    );
+                })}
                 {!displayArray && (
                     <FileUploader
                         onFileSelect={handleFileSelect}
@@ -169,7 +239,7 @@ export const TextureGenerator = () => {
                     />
                 )}
             </div>
-        )
+        );
     }
 
     return (
@@ -215,23 +285,22 @@ export const TextureGenerator = () => {
                     <button
                         type='button'
                         onClick={handleStartGeneration}
-                        disabled={isProcessingPreview || !selectedFile}
+                        disabled={isProcessingPreview || isGenerating || (!previewData && !isPaused)}
                         className={`
-                            w-fit px-5 py-1 rounded-lg text-nowrap 
+                            w-fit px-5 py-1 rounded-lg text-nowrap
                             duration-100 cursor-pointer flex font-medium items-center
-                            ${isProcessingPreview || !selectedFile
-                                ? 'bg-gray-400 text-gray-600 cursor-not-allowed opacity-70'
-                                : 'bg-fd-primary hover:bg-fd-muted-primary shadow-md hover:shadow-lg text-fd-primary-foreground'}
+                            ${isProcessingPreview || isGenerating || (!previewData && !isPaused)
+                            ? 'bg-gray-400 text-gray-600 cursor-not-allowed opacity-70'
+                            : 'bg-fd-primary hover:bg-fd-muted-primary shadow-md hover:shadow-lg text-fd-primary-foreground'}
                         `}
                     >
-                        {isProcessingPreview ? (
-                            <span className="flex items-center justify-center gap-2">
-                                {t('generation')}
-                            </span>
-                        ) : t('startGeneration')}
+                        {isGenerating
+                            ? <span className="flex items-center justify-center gap-2">{t('generation')}</span>
+                            : isPaused ? t('resume') : t('startGeneration')
+                        }
                     </button>
 
-                    {isProcessingPreview ? (
+                    {isGenerating ? (
                         <button
                             type='button'
                             onClick={handleStop}
@@ -259,4 +328,4 @@ export const TextureGenerator = () => {
             )}
         </div>
     );
-}
+};
