@@ -594,19 +594,19 @@ export default function ColorTextGenerator() {
                 </div>
             );
             case 'motd': return (
-                <div className="h-70 font-[Minecraft] relative w-full rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black">
+                <div className="h-70 font-[Minecraft] as relative w-full p-6 rounded-lg flex justify-center items-center overflow-hidden border border-fd-border bg-black">
                     <img src="/assets/dirt.webp" className="absolute inset-0 w-full h-full object-cover" />
-                    <div className="relative border-2 py-5 px-px border-white z-10 w-60 h-10 flex items-center justify-start bg-black/20">
+                    <div className="z-10 flex items-center bg-black/60 p-1 w-full">
                         <div className='flex items-center w-10 h-full shrink-0'>
-                            <img src="/logo.png" className='w-full' alt="" />
+                            <img src="/assets/server-icon.svg" className='w-full' alt="" />
                         </div>
-                        <div className='px-1 flex flex-col justify-center w-full h-full text-[0.7em]'>
+                        <div className='px-1 flex flex-col justify-center w-full h-full text-[1em]'>
                             <div className='flex items-center justify-between w-full'>
                                 <p className='text-white! leading-3'>Server Name</p>
                                 <p className='text-white/50! leading-3'>0/6</p>
                             </div>
                             <div className='leading-3 h-6 flex justify start flex-col'>
-                                <RenderedText raw={raw} style={{ ...mc, color: '#fff', lineHeight: '12px' }} />
+                                <RenderedText raw={raw} style={{ ...mc, color: '#606060', lineHeight: '12px' }} />
                             </div>
                         </div>
                     </div>
