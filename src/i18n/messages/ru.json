@@ -448,27 +448,27 @@
       "Presets": {
         "None": {
           "label": "Базовые",
-          "description": "Минимальные флаги для запуска Java.",
+          "description": "Запуск Java без специальных флагов (настройки по умолчанию)",
           "link": ""
         },
         "Aikars": {
           "label": "Флаги Айкара",
-          "description": "Рекомендованные флаги для Paper серверов.",
+          "description": "Оптимальные флаги для Paper. Подходит в большинстве случаев",
           "link": "https://docs.papermc.io/paper/aikars-flags/"
         },
         "Zgc": {
-          "label": "ZGC (Java 21+)",
-          "description": "Высокая производительность при большом объёме памяти.",
+          "label": "ZGC",
+          "description": "Современные флаги с низкими задержками GC, но с большим потреблением памяти (Java 21+)",
           "link": "https://obydux.github.io/Minecraft-startup-flags/"
         },
         "Shenandoah": {
           "label": "Shenandoah",
-          "description": "Низкие задержки GC (рекомендуется Temurin JDK).",
+          "description": "Альтернативные флаги с низкими задержками GC (рекомендуется Temurin JDK)",
           "link": "https://github.com/brucethemoose/Minecraft-Performance-Flags-Benchmarks"
         },
         "Velocity": {
           "label": "Velocity / Proxy",
-          "description": "Оптимизированные флаги для прокси-серверов.",
+          "description": "Оптимизированные флаги для прокси-сервера",
           "link": "https://docs.papermc.io/velocity/getting-started"
         }
       },

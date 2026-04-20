@@ -448,27 +448,27 @@
       "Presets": {
         "None": {
           "label": "Basic",
-          "description": "Minimal flags for starting Java.",
+          "description": "Running Java without special flags (default settings)",
           "link": ""
         },
         "Aikars": {
           "label": "Aikar's Flags",
-          "description": "Recommended flags for Paper servers.",
+          "description": "Optimal flags for Paper. Suitable for most cases",
           "link": "https://docs.papermc.io/paper/aikars-flags/"
         },
         "Zgc": {
-          "label": "ZGC (Java 21+)",
-          "description": "High performance with a large amount of memory.",
+          "label": "ZGC",
+          "description": "Modern flags with low GC latency but higher memory usage (Java 21+)",
           "link": "https://obydux.github.io/Minecraft-startup-flags/"
         },
         "Shenandoah": {
           "label": "Shenandoah",
-          "description": "Low GC latencies (Temurin JDK recommended).",
+          "description": "Alternative low-latency GC flags (Temurin JDK recommended)",
           "link": "https://github.com/brucethemoose/Minecraft-Performance-Flags-Benchmarks"
         },
         "Velocity": {
           "label": "Velocity / Proxy",
-          "description": "Optimized flags for proxy servers.",
+          "description": "Optimized flags for a proxy server",
           "link": "https://docs.papermc.io/velocity/getting-started"
         }
       },
