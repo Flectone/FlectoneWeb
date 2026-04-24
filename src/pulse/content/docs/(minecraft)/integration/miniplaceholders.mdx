@@ -25,12 +25,15 @@ FlectonePulse также добавляет свои мини-плейсхолд
 | `<flectonepulse_mute_suffix>`               | Возвращает [суффикс мута](/pulse/docs/command/mute/) игрока                |
 | `<flectonepulse_afk_durationx>`             | Возвращает время бездействия игрока в секундах               |
 | `<flectonepulse_afk_durationx_formatted>`   | Возвращает отформатированное время бездействия игрока в секундах               |
+| `<flectonepulse_toponline:позиция>`         | Возвращает имя игрока, который находится в этой позиции по наигранному времени. Например `<flectonepulse_toponline:1>` вернёт самого первого игрока по наигранному времени               |
+| `<flectonepulse_online:тип>`                | Возвращает время от конкретного типа (`first`, `last`, `total`) в секундах. Например `<flectonepulse_online:total>` вернёт всё наигранное время в секундах               |
+| `<flectonepulse_online:тип_formatted>`      | Возвращает отформатированное время от конкретного типа (`first`, `last`, `total`) в секундах. Например `<flectonepulse_online:total>` вернёт всё наигранное время в отформатированном виде               |
 | `<flectonepulse_condition:название>`        | Возвращает результат [условия](/pulse/docs/message/format/condition/)               |
-| `<flectonepulse_fcolor:число>%`              | Возвращает [кастомный цвет](/pulse/docs/message/format/fcolor/) игрока     |
+| `<flectonepulse_fcolor:число>%`             | Возвращает [кастомный цвет](/pulse/docs/message/format/fcolor/) игрока     |
 | `<flectonepulse_fcolor_out:число>`          | Возвращает [кастомный цвет OUT](/pulse/docs/message/format/fcolor/) игрока |
 | `<flectonepulse_fcolor_see:число>`          | Возвращает [кастомный цвет SEE](/pulse/docs/message/format/fcolor/) игрока |
-| `<flectonepulse_setting:название>`          | Если `setting` является [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), то вернётся его значение. <br/>Иначе проверяется [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java), если включено то `yes`, иначе `no`              |
-| `<flectonepulse_format:'любой текст'>`          | Возвращает готовый текст, который был отформатирован внутри FlectonePulse. Можно использовать, чтобы возвращать кастомные теги, например `<flectonepulse_format:'<player_head>'>` вернёт текстуру головы игрока |
+| `<flectonepulse_setting:название>`          | Возвращает значение конкретной настройки у игрока <br/><br/>Если `setting` является [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), то вернётся его значение. <br/>Иначе проверяется [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java), если включено то `yes`, иначе `no` <br/><br/>Например, `<flectonepulse_setting:afk_suffix>` вернёт АФК суффикс, а `<flectonepulse_setting:module_message_chat>` вернёт `yes`, если у игрока включен чат, и `no` если нет              |
+| `<flectonepulse_format:'любой текст'>`      | Возвращает готовый текст, который был отформатирован внутри FlectonePulse. Можно использовать, чтобы возвращать кастомные теги, например `<flectonepulse_format:'<player_head>'>` вернёт текстуру головы игрока |
 
 <br></br>
 

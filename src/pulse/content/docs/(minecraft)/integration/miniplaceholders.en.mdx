@@ -25,12 +25,15 @@ FlectonePulse also adds its own mini-placeholders
 | `<flectonepulse_mute_suffix>`               | Returns the player's [mute suffix](/pulse/docs/command/mute/)                |
 | `<flectonepulse_afk_durationx>`             | Returns the player's afk duration in seconds               |
 | `<flectonepulse_afk_durationx_formatted>`   | Returns the formatted player's afk duration in seconds               |
+| `<flectonepulse_toponline:position>`        | Returns the name of the player at that position by playtime. For example `<flectonepulse_toponline:1>` returns the top player by playtime               |
+| `<flectonepulse_online:type>`               | Returns the time for a specific type (`first`, `last`, `total`) in seconds. For example `<flectonepulse_online:total>` returns the total playtime in seconds               |
+| `<flectonepulse_online:type_formatted>`     | Returns the formatted time for a specific type (`first`, `last`, `total`). For example `<flectonepulse_online:total_formatted>` returns the total playtime in a formatted way               |
 | `<flectonepulse_condition:name>`            | Returns the result of the [condition](/pulse/docs/message/format/condition/)               |
 | `<flectonepulse_fcolor:number>`             | Returns the player's [custom color](/pulse/docs/message/format/fcolor/)     |
 | `<flectonepulse_fcolor_out:number>`         | Returns the player's [custom color OUT](/pulse/docs/message/format/fcolor/) |
 | `<flectonepulse_fcolor_see:number>`         | Returns the player's [custom color SEE](/pulse/docs/message/format/fcolor/) |
-| `<flectonepulse_setting:name>`               | If `setting` is a [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), its value will be returned. <br/>Otherwise, it checks [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java); if enabled, returns `yes`, otherwise `no`              |
-| `<flectonepulse_format:'any text'>`          | Returns the finished text that was formatted inside FlectonePulse. Can be used to return custom tags, for example `<flectonepulse_format:'<player_head>'>` will return the player's head texture |
+| `<flectonepulse_setting:name>`              | Returns the value of a specific setting for the player <br/><br/>If `setting` is a [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), its value is returned. <br/>Otherwise, it checks [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/ModuleName.java); if enabled, returns `yes`, otherwise `no` <br/><br/>For example, `<flectonepulse_setting:afk_suffix>` returns the AFK suffix, and `<flectonepulse_setting:module_message_chat>` returns `yes` if the player has chat enabled, and `no` if not              |
+| `<flectonepulse_format:'any text'>`         | Returns the finished text that was formatted inside FlectonePulse. Can be used to return custom tags, for example `<flectonepulse_format:'<player_head>'>` will return the player's head texture |
 
 <br></br>
 

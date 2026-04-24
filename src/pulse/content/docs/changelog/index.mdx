@@ -10,6 +10,35 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.9.2" date="2026-04-24" authors={["TheFaser"]}>
+    <Title >
+        # Версия 1.9.2
+    </Title>
+    <Features>
+        <Feature>Добавлен плейсхолдер toponline (toponline)</Feature>
+        <Feature>Добавлены плейсхолдеры времени онлайн и поддержка интеграции (online)</Feature>
+        <Feature>Добавлена возможность отключения отслеживания времени в AFK (#322)</Feature>
+        <Feature>Добавлена перегрузка метода предупреждения для параметра объекта (логирование)</Feature>
+        <Feature>Добавлена отправка сообщений о выходе всем игрокам платформы при отключении</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Переименованы классы с префиксом платформы</Refactor>
+        <Refactor>Обработка сообщений интеграции перенесена в асинхронные задачи</Refactor>
+        <Refactor>Обновлена обработка событий входа/выхода игрока с поддержкой отмены (api)</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлена обработка события отключения AFK (afk)</Fix>
+        <Fix>Исправлен обработчик выхода AFK-игрока для возврата изменённого события с обновлёнными данными игрока</Fix>
+        <Fix>Исправлена отмена событий Minecraft: теперь происходит только при отмене messageReceiveEvent</Fix>
+        <Fix>Исправлен парсер игрока в chatcolor для поддержки офлайн-игроков</Fix>
+        <Fix>Исправлен порядок загрузки игрока (загрузка после модулей)</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Обновлён Lombok до v1.18.46</Dependency>
+        <Dependency>Обновлён Lombok plugin до v9.4.0</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.9.1" date="2026-04-20" authors={["TheFaser"]}>
     <Title >
         # Версия 1.9.1

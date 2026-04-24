@@ -10,6 +10,35 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.9.2" date="2026-04-24" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.9.2
+    </Title>
+    <Features>
+        <Feature>Added toponline player placeholder (toponline)</Feature>
+        <Feature>Added online time placeholders and integration support (online)</Feature>
+        <Feature>Added AFK playtime tracking disabling option (#322)</Feature>
+        <Feature>Added warning method overload for object parameter (logging)</Feature>
+        <Feature>Added quit message sending to all platform players on disable</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Renamed classes with platform prefix</Refactor>
+        <Refactor>Moved integration message handling to async tasks</Refactor>
+        <Refactor>Updated player join/quit event handling with cancellation support (api)</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed AFK disable event handling (afk)</Fix>
+        <Fix>Fixed AFK player quit handler to return modified event with updated player data</Fix>
+        <Fix>Fixed Minecraft event cancellation to only occur when messageReceiveEvent is cancelled</Fix>
+        <Fix>Fixed chatcolor player parser to support offline players</Fix>
+        <Fix>Fixed player loading order (load after modules)</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated Lombok to v1.18.46</Dependency>
+        <Dependency>Updated Lombok plugin to v9.4.0</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.9.1" date="2026-04-20" authors={["TheFaser"]}>
     <Title >
         # Version 1.9.1
