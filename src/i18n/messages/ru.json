@@ -198,7 +198,8 @@
       "support": "Поддержка",
       "documentation": "Документация",
       "metrics": "Аналитика",
-      "download": "Скачать"
+      "download": "Скачать",
+      "changelog": "Изменения"
     },
     "Features": {
       "Message": {
@@ -227,6 +228,14 @@
       "latestrelease": "Последний релиз",
       "devbuilds": "Снапшот версии",
       "download": "Скачать"
+    },
+    "Changelog": {
+      "download": "Скачать",
+      "github": "Гитхаб",
+      "features": "Новые возможности",
+      "refactors": "Улучшения",
+      "bugFixes": "Исправления ошибок",
+      "dependencies": "Зависимости"
     }
   },
   "Tools": {

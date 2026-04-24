@@ -198,7 +198,8 @@
       "support": "Support",
       "documentation": "Documentation",
       "metrics": "Metrics",
-      "download": "Download"
+      "download": "Download",
+      "changelog": "Changelog"
     },
     "Features": {
       "Message": {
@@ -227,6 +228,14 @@
       "latestrelease": "Latest release",
       "devbuilds": "Dev bulds",
       "download": "Download"
+    },
+    "Changelog": {
+      "download": "Download",
+      "github": "Github",
+      "features": "Features",
+      "refactors": "Refactors",
+      "bugFixes": "Bug Fixes",
+      "dependencies": "Dependencies"
     }
   },
   "Tools": {

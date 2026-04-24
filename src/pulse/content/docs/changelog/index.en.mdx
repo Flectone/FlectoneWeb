@@ -1,0 +1,1417 @@
+---
+title: Changelog
+description: All changes for each version of FlectonePulse
+authors:
+  - TheFaser
+tag: "changelog"
+---
+
+<br></br>
+
+import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
+
+<Version v="1.9.1" date="2026-04-20" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.9.1
+    </Title>
+    <Features>
+        <Feature>Added ICU library integration for advanced text processing</Feature>
+        <Feature>Added BlazeandCave integration support</Feature>
+        <Feature>Added proxy support for Discord, Telegram and Twitch integrations</Feature>
+        <Feature>Added IP lookup support for geolocation module</Feature>
+        <Feature>Added coordinate distance checking for AFK detection</Feature>
+        <Feature>Added default nickname fallback when no custom nickname is set</Feature>
+        <Feature>Added proxy integration support for join/quit modules</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Renamed ReloadEvent to EndReloadEvent and added StartReloadEvent</Refactor>
+        <Refactor>Replaced org.incendo group id for cloud libraries</Refactor>
+        <Refactor>Replaced direct disabled field access with isDisabled method</Refactor>
+        <Refactor>Extracted database player retrieval method</Refactor>
+        <Refactor>Enhanced proxy data validation and consumer support</Refactor>
+        <Refactor>Simplified Discord gateway client configuration</Refactor>
+        <Refactor>Restructured module controller with improved hierarchy management</Refactor>
+        <Refactor>Updated task scheduler implementation</Refactor>
+        <Refactor>Added 1.9.1 migration</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed duplicate player join/quit events</Fix>
+        <Fix>Fixed playerlist cache logic with online status check</Fix>
+        <Fix>Fixed playerlistname player settings loading</Fix>
+        <Fix>Fixed nickname module placeholder when disabled</Fix>
+        <Fix>Fixed scoreboard team removal before creating new team</Fix>
+        <Fix>Fixed quit message sending for empty receivers</Fix>
+        <Fix>Fixed texture processing for filenames without extensions</Fix>
+        <Fix>Fixed object receiver tag checking with version compatibility</Fix>
+        <Fix>Fixed Bukkit datapack compatibility for older server versions</Fix>
+        <Fix>Fixed Vault permission check null pointer exception</Fix>
+        <Fix>Fixed library download failures with better error messaging</Fix>
+        <Fix>Fixed resource saving when resource does not exist</Fix>
+        <Fix>Fixed player persistence logic with API disabling check</Fix>
+        <Fix>Fixed URL pattern to allow colon character</Fix>
+        <Fix>Fixed chatsetting to use localized chat type names</Fix>
+        <Fix>Fixed bubble waiting queue clearing when max count reached</Fix>
+        <Fix>Fixed Fabric reload method renamed to onDisable</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated Adventure API to v5</Dependency>
+        <Dependency>Updated PacketEvents to v2.12.1</Dependency>
+        <Dependency>Updated Fabric Loader to v0.19.2</Dependency>
+        <Dependency>Updated PlasmoVoice API to v2.1.9</Dependency>
+        <Dependency>Updated MineSkin Java Client to v3.2.5</Dependency>
+        <Dependency>Updated Maintenance API to v5</Dependency>
+        <Dependency>Updated SkinsRestorer API to v15.12.0</Dependency>
+        <Dependency>Updated Jackson YAML to v3.1.2</Dependency>
+        <Dependency>Updated SQLite JDBC to v3.53.0.0</Dependency>
+        <Dependency>Updated JDBI to v3.52.1</Dependency>
+        <Dependency>Updated DeepL Java to v1.16.0</Dependency>
+        <Dependency>Updated Triton API to v4</Dependency>
+        <Dependency>Updated Placeholder API to v3.0.0+26.1</Dependency>
+        <Dependency>Updated CMI API to v9.8.6.4</Dependency>
+    </Dependencies>
+</Version>
+
+<Version v="1.9.0" date="2026-04-13" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.9.0
+    </Title>
+    <Features>
+        <Feature>Added support for Minecraft 26.1, 26.1.1 and last Hytale version server</Feature>
+        <Feature>Added condition format module</Feature>
+        <Feature>Added animation format module</Feature>
+        <Feature>Added nickname command</Feature>
+        <Feature>Added dump subcommand for diagnostics</Feature>
+        <Feature>Added base64 player_head support and texture tag with MineSkin integration (object)</Feature>
+        <Feature>Added player playtime tracking system with AFK duration placeholders (#76, #261)</Feature>
+        <Feature>Added Discord embed, poll, forward message and webhook filtering support</Feature>
+        <Feature>Added LuckPerms alwaysHaveTrue permission option</Feature>
+        <Feature>Added MiniPlaceholders advanced placeholder expansion system</Feature>
+        <Feature>Added spectator list order and hide name when sneaking options (playerlistname, scoreboard)</Feature>
+        <Feature>Added Telegram option to ignore all bots</Feature>
+        <Feature>Added configurable length parameter (clearchat)</Feature>
+        <Feature>Added bukkit pre login listener option (#242)</Feature>
+        <Feature>Added -Dload.asm.jar=value and -Dflectonepulse.debug=true Java flags</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Replaced getClientVersion with getPacketVersion (fix ViaVersion #278)</Refactor>
+        <Refactor>Replaced ImmutableList with ImmutableSet</Refactor>
+        <Refactor>Replaced individual setting placeholders with single 'setting' placeholder (placeholderapi)</Refactor>
+        <Refactor>Replaced direct command registration, module state checks and sendMessage calls with controllers and dispatcher</Refactor>
+        <Refactor>Replaced MessageType with ModuleName</Refactor>
+        <Refactor>Replaced generic map implementations with FastUtil specialized maps</Refactor>
+        <Refactor>Migrated to immutable FPlayer entity pattern</Refactor>
+        <Refactor>Migrated translate flag to translation flag</Refactor>
+        <Refactor>Removed deprecated spoiler and image permissions</Refactor>
+        <Refactor>Renamed RandomUtil, IconUtil, message flags, base module names and ModuleCommandController</Refactor>
+        <Refactor>Changed animation configuration structure from list to map</Refactor>
+        <Refactor>Changed mute message rendering and integration channel naming convention (integration)</Refactor>
+        <Refactor>Updated permission checker to use isConsole instead of isUnknown</Refactor>
+        <Refactor>Updated FLogger to record with improved ANSI support (logging)</Refactor>
+        <Refactor>Updated dependency injection patterns with Guice Stage.PRODUCTION</Refactor>
+        <Refactor>Updated message formatting logic, flag handling and MessageFlag enum documentation</Refactor>
+        <Refactor>Optimized file saving logic, color processing, spy module logic and mention replacement</Refactor>
+        <Refactor>Simplified player login processing, receiver tag checking, env var substitution and AFK suffix processing</Refactor>
+        <Refactor>Separated metrics creation from sending logic and platform configurations</Refactor>
+        <Refactor>Moved quit message handling to platform-specific modules and target tag resolvers to pipeline</Refactor>
+        <Refactor>Converted event listener classes and AbstractModuleListLocalization to interfaces</Refactor>
+        <Refactor>Converted EventMetadata from abstract class to interface with record implementation</Refactor>
+        <Refactor>Replaced flat objects with nested tag records (playerheadTag, spriteTag) (object)</Refactor>
+        <Refactor>Replaced reflection resolver with direct library loading (object)</Refactor>
+        <Refactor>Replaced GsonComponentSerializer with injected Gson instance (pipeline)</Refactor>
+        <Refactor>Injected HttpClient as singleton</Refactor>
+        <Refactor>Standardized logging format and integration interface</Refactor>
+        <Refactor>Added composite unique constraint to fp_player table (#249)</Refactor>
+        <Refactor>Added TagResolver support for moderator tag</Refactor>
+        <Refactor>Replaced unused lambda parameters with underscore notation</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed MiniMessage tag deserialization issue (#243)</Fix>
+        <Fix>Fixed Discord privileged intents (#294)</Fix>
+        <Fix>Fixed toponline player time calculation</Fix>
+        <Fix>Fixed reply message handling and localization context in integrations</Fix>
+        <Fix>Fixed legacy color code handling in message deserialization</Fix>
+        <Fix>Fixed chat color name overflow (chatcolor)</Fix>
+        <Fix>Fixed MySQL 8 support and fcolor table column type (database)</Fix>
+        <Fix>Fixed ItemsAdder font image formatting</Fix>
+        <Fix>Fixed Gson deserialization on proxy with concrete implementation classes</Fix>
+        <Fix>Fixed server icon initialization and non-existent icon file handling (fabric)</Fix>
+        <Fix>Fixed Hytale permission checking logic, PlaceholderAPI async thread issues and enabled online/toponline commands by default</Fix>
+        <Fix>Fixed quit task scheduler execution methods (#270) and quit message sending with delayed dispatch</Fix>
+        <Fix>Fixed condition base permission and object client version handling</Fix>
+        <Fix>Fixed sprite tag config reference and flectonepulse message placeholder (object)</Fix>
+        <Fix>Fixed SimpleVoice event handler with Object parameter and instanceof checks</Fix>
+        <Fix>Fixed player disconnect event handling</Fix>
+        <Fix>Fixed empty symbol handling in Minecraft object module</Fix>
+        <Fix>Fixed file path resolution in editor controller</Fix>
+        <Fix>Fixed port availability check timing in flectonepulse command</Fix>
+        <Fix>Fixed user message flag addition to bubble rendering and message pipeline</Fix>
+        <Fix>Fixed player UUID serialization and FPlayer instance checking in proxy module</Fix>
+        <Fix>Fixed hasFPlayerPermission to check module enable state before permission checks</Fix>
+        <Fix>Fixed conditional build logic for Paper, Fabric and Velocity</Fix>
+        <Fix>Fixed forward slash usage instead of File.separator</Fix>
+        <Fix>Fixed Gson library relocation to avoid conflicts</Fix>
+        <Fix>Fixed getPlatformFPlayers usage instead of getOnlineFPlayers</Fix>
+        <Fix>Fixed database player object reference in loop</Fix>
+        <Fix>Fixed chomp to chop for proper trailing character removal</Fix>
+        <Fix>Fixed Minecraft localization file existence check</Fix>
+        <Fix>Fixed player list order support and scoreboard team update logic for name changes (playerlist, scoreboard)</Fix>
+        <Fix>Fixed MOTD client version check</Fix>
+        <Fix>Fixed database trailing commas</Fix>
+        <Fix>Fixed receiver tag handling for newer versions</Fix>
+        <Fix>Fixed null user handling (object)</Fix>
+        <Fix>Fixed AFK timestamp when setting suffix</Fix>
+        <Fix>Fixed command prompt retrieval logic (#259) (command)</Fix>
+        <Fix>Fixed predicate logic in module controller</Fix>
+        <Fix>Fixed IllegalPluginAccessException in Bukkit (scheduler)</Fix>
+        <Fix>Fixed Hytale Level.parse with explicit log level mapping (#240)</Fix>
+        <Fix>Fixed integration URL processing (#266)</Fix>
+        <Fix>Fixed player synchronization issue and nickname placeholder (afk, nickname)</Fix>
+        <Fix>Fixed duplicate ignore entries with unique constraint</Fix>
+        <Fix>Fixed database method name in ColorsDAO</Fix>
+        <Fix>Fixed Hytale message pipeline with locale translation support</Fix>
+        <Fix>Fixed tell createFilter to exclude receiver players from spy notifications</Fix>
+        <Fix>Fixed database SQL integrity constraint violations and LIMIT 1 in queries</Fix>
+        <Fix>Fixed PlaceholderAPI boolean value conversion</Fix>
+        <Fix>Fixed Fabric permission registry</Fix>
+        <Fix>Fixed build packetevents dependency to common version</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated Fabric Loader to v0.19.0</Dependency>
+        <Dependency>Updated Fabric Loom to v1.16.1</Dependency>
+        <Dependency>Updated MariaDB JDBC to v3.5.8</Dependency>
+        <Dependency>Updated Yandex Cloud SDK to v2.14.0</Dependency>
+        <Dependency>Updated SkinsRestorer API to v15.11.1</Dependency>
+        <Dependency>Updated Log4j Core to v2.25.4</Dependency>
+        <Dependency>Updated Jackson YAML to v3.1.1</Dependency>
+        <Dependency>Updated VoiceChat API to v2.6.13</Dependency>
+        <Dependency>Updated MiniPlaceholders API to v3.2.0</Dependency>
+        <Dependency>Updated PlaceholderAPI-Hytale to v1.0.8</Dependency>
+        <Dependency>Updated DeepL Java to v1.15.0</Dependency>
+        <Dependency>Updated Shadow plugin to v9.4.1</Dependency>
+        <Dependency>Updated Gradle to v9.4.1</Dependency>
+        <Dependency>Updated JDBI to v3.52.0</Dependency>
+        <Dependency>Updated Gradle Actions to v6</Dependency>
+        <Dependency>Updated Lettuce Core to v7.5.1.RELEASE</Dependency>
+        <Dependency>Updated Discord4J to v3.3.2</Dependency>
+        <Dependency>Updated Vanish to v1.6.8+26.1</Dependency>
+        <Dependency>Updated PostgreSQL to v42.7.10</Dependency>
+        <Dependency>Updated Velocity to v3.5.0-SNAPSHOT</Dependency>
+        <Dependency>Updated TelegramBots to v9.5.0</Dependency>
+        <Dependency>Updated SQLite JDBC to v3.51.3.0</Dependency>
+        <Dependency>Updated MineSkin client to v3.2.2</Dependency>
+    </Dependencies>
+</Version>
+
+<Version v="1.8.1" date="2026-02-07" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.8.1
+    </Title>
+    <Features>
+        <Feature>Added vanished player visibility check in vanilla message filtering</Feature>
+        <Feature>Added PlaceholderAPI integration for Hytale server</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Enhanced plugin identifier parsing in Hytale server adapter</Refactor>
+        <Refactor>Updated Hytale server initialization to server-only environment</Refactor>
+        <Refactor>Migrated Gson component serializer binding to platform-specific modules</Refactor>
+        <Refactor>Updated Russian localization for better accuracy</Refactor>
+        <Refactor>Refactored Fabric initialization process</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Prevented duplicate command manager initialization in Fabric</Fix>
+        <Fix>Improved null safety in Fabric modules</Fix>
+        <Fix>Fixed potential null reference in scoreboard module</Fix>
+        <Fix>Prevented sending data when no enabled proxy exists</Fix>
+        <Fix>Formatted FlectonePulse placeholders (afk_suffix, stream_prefix, mute_suffix, world_prefix) correctly</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated Lettuce Core to v7.4.0</Dependency>
+        <Dependency>Updated PlaceholderAPI to v2.12.1</Dependency>
+        <Dependency>Updated Hytale UI version</Dependency>
+    </Dependencies>
+</Version>
+
+<Version v="1.8.0" date="2026-02-02" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.8.0
+    </Title>
+    <Features>
+        <Feature>Added full Hytale platform support with dedicated modules and configurations</Feature>
+        <Feature>Added CMI integration support for enhanced compatibility</Feature>
+        <Feature>Added geolocation enhancement with current time display (#226)</Feature>
+        <Feature>Added configurable swear word display formatting</Feature>
+        <Feature>Added option to hide invisible player heads in object module</Feature>
+        <Feature>Added support for multiple display names with index selection in names module</Feature>
+        <Feature>Added toast notification subtext support</Feature>
+        <Feature>Added sender name configuration for integrations with custom Discord webhook support</Feature>
+        <Feature>Added distributed cooldown system with proxy synchronization and cache management</Feature>
+        <Feature>Added cache invalidation on reload configuration</Feature>
+        <Feature>Added export/import operations to flectonepulse command</Feature>
+        <Feature>Added escaped ampersand handling in legacy color conversion</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Updated dependency injection patterns with Guice Stage.PRODUCTION</Refactor>
+        <Refactor>Replaced static date format with injected dependency</Refactor>
+        <Refactor>Updated MessageSender interface to use string-based console output</Refactor>
+        <Refactor>Optimized message processing in MessagePipeline</Refactor>
+        <Refactor>Removed core PacketEvents dependency and updated module architecture</Refactor>
+        <Refactor>Separated platform configurations for better organization</Refactor>
+        <Refactor>Migrated EventMetadata from abstract class to interface with record implementation</Refactor>
+        <Refactor>Improved potion effect handling with extracted invisibility constant</Refactor>
+        <Refactor>Replaced manual containsChild/isEnable checks with containsEnabledChild calls</Refactor>
+        <Refactor>Moved LogFilter to separate package and made it injectable</Refactor>
+        <Refactor>Removed objective mode enum and updated score handling</Refactor>
+        <Refactor>Changed constant field from single string to list of components</Refactor>
+        <Refactor>Replaced &lt;display_name&gt; placeholders with in target modules</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed player disconnect event handling</Fix>
+        <Fix>Fixed empty symbol handling in Minecraft object module</Fix>
+        <Fix>Fixed file path resolution in editor controller</Fix>
+        <Fix>Fixed port availability check timing in flectonepulse command</Fix>
+        <Fix>Fixed user message flag addition to bubble rendering and message pipeline</Fix>
+        <Fix>Fixed player UUID serialization in proxy module</Fix>
+        <Fix>Fixed FPlayer instance checking in proxy module</Fix>
+        <Fix>Fixed hasFPlayerPermission to check module enable state before permission checks</Fix>
+        <Fix>Fixed conditional build logic for Paper, Fabric and Velocity</Fix>
+        <Fix>Fixed forward slash usage instead of File.separator</Fix>
+        <Fix>Fixed Gson library relocation to avoid conflicts</Fix>
+        <Fix>Fixed client version usage instead of packet version in object module</Fix>
+        <Fix>Fixed metrics documentation link and Russian README paths</Fix>
+        <Fix>Fixed getPlatformFPlayers usage instead of getOnlineFPlayers</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated HyUI library dependency with version variable</Dependency>
+        <Dependency>Updated PlaceholderAPI to v2.8.2+1.21.10</Dependency>
+        <Dependency>Updated SkinsRestorer API to v15.10.0</Dependency>
+        <Dependency>Updated Gradle to v9.3.1</Dependency>
+        <Dependency>Updated Fabric Loom to v1.15.3</Dependency>
+        <Dependency>Updated JDowngrader plugin to v1.3.6</Dependency>
+        <Dependency>Updated Jackson YAML to v3.0.4</Dependency>
+        <Dependency>Updated PacketEvents to v2.11.2</Dependency>
+        <Dependency>Updated Maven Publish plugin to v0.36.0</Dependency>
+        <Dependency>Updated Lombok plugin to v9.2.0</Dependency>
+        <Dependency>Updated PostgreSQL to v42.7.9</Dependency>
+        <Dependency>Updated Vanish to v1.6.6+1.21.11</Dependency>
+        <Dependency>Updated GitHub Actions: setup-java digest</Dependency>
+    </Dependencies>
+</Version>
+
+<Version v="1.7.4" date="2026-01-11" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.7.4
+    </Title>
+    <Features>
+        <Feature>Added bot filtering configuration for Discord integration</Feature>
+        <Feature>Added visibility and ticker configuration for bubble chat</Feature>
+        <Feature>Added group weight check for kick command</Feature>
+        <Feature>Added async playerlist update for SkinsRestorer integration</Feature>
+        <Feature>Added NOT_VALID_BED packet listener for vanilla messages</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Renamed display and format fields to displayFormat and scoreFormat in objective module</Refactor>
+        <Refactor>Replaced single messageName with specific message names for all name variants support in integrations</Refactor>
+        <Refactor>Replaced withFlag with addFlag methods in message pipeline</Refactor>
+        <Refactor>Updated console sender detection logic</Refactor>
+        <Refactor>Moved MiniMOTD module registration to core</Refactor>
+        <Refactor>Optimized skin profile property retrieval order</Refactor>
+        <Refactor>Removed trailing slashes from documentation URLs</Refactor>
+        <Refactor>Removed tag presence checks in message processing modules</Refactor>
+        <Refactor>Skipped building empty messages in message pipeline</Refactor>
+        <Refactor>Implemented equals method for bubble comparison</Refactor>
+        <Refactor>Improved Discord embed validation</Refactor>
+        <Refactor>Updated Ender Dragon sprite icon in bossbar module</Refactor>
+        <Refactor>Renamed tick parameter to delay in scheduler</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed localization fallback logic</Fix>
+        <Fix>Fixed passenger updates to prevent bubble persistence issues</Fix>
+        <Fix>Resolved Folia compatibility issue for quit messages</Fix>
+        <Fix>Fixed message flag configuration in bubble module</Fix>
+        <Fix>Fixed chat color configuration with null color values handling</Fix>
+        <Fix>Fixed Discord and Telegram timer scheduling and async operations</Fix>
+        <Fix>Fixed Discord message content handling with attachments</Fix>
+        <Fix>Fixed swear module permission check placement in message processing</Fix>
+        <Fix>Fixed chat color saving to store only non-empty fcolors</Fix>
+        <Fix>Fixed playerlist module to check its own enable status</Fix>
+        <Fix>Fixed bubble removal logic with text screen integration</Fix>
+        <Fix>Fixed SkinsRestorer integration by removing specific DataRequestException for legacy API</Fix>
+        <Fix>Fixed replacement regex patterns for image and URL matching</Fix>
+        <Fix>Relocated io.lettuce dependencies to avoid conflicts</Fix>
+        <Fix>Ensured all context creation methods properly inherit message context flags</Fix>
+        <Fix>Skipped unknown players in tab list processing</Fix>
+        <Fix>Fixed permission documentation link</Fix>
+        <Fix>Removed unused message placeholders in integrations</Fix>
+        <Fix>Fixed message flag default value in integrations</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated TelegramBots to v9.2.1</Dependency>
+        <Dependency>Updated SkinsRestorer API to v15.9.2</Dependency>
+        <Dependency>Updated Fabric Yarn to v1.21.11+build.4</Dependency>
+        <Dependency>Updated Shadow plugin to v9.3.1</Dependency>
+        <Dependency>Updated JDowngrader plugin to v1.3.5</Dependency>
+    </Dependencies>
+</Version>
+
+<Version v="1.7.3" date="2025-12-31" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.7.3
+    </Title>
+    <Features>
+        <Feature>Added scoreformat support in tabname module</Feature>
+        <Feature>Added sync option to runRegion method in scheduler (replacing async and sync annotations)</Feature>
+        <Feature>Added Javadocs for API</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Converted CommandRegistry from abstract class to interface</Refactor>
+        <Refactor>Moved brigadier setup to abstract registry</Refactor>
+        <Refactor>Replaced lombok and jetbrains annotations with jspecify</Refactor>
+        <Refactor>Replaced Random with ThreadLocalRandom in RandomUtil</Refactor>
+        <Refactor>Updated platform adapter interfaces and implementations</Refactor>
+        <Refactor>Updated player adapter interface and implementations</Refactor>
+        <Refactor>Moved command removal logic to main mod class (Fabric)</Refactor>
+        <Refactor>Removed deprecated chatType and chatName fields from ChatMetadata</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed brigadier setup in Fabric</Fix>
+        <Fix>Fixed player localization in tabname module</Fix>
+        <Fix>Fixed player invalidation on login rejection</Fix>
+        <Fix>Fixed proxy chat sound (#202)</Fix>
+        <Fix>Fixed exception handling in PlaceholderAPI processing</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.7.2" date="2025-12-27" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.7.2
+    </Title>
+    <Features>
+        <Feature>Added paginated symbol command with category navigation</Feature>
+        <Feature>Added sprite command to view all available sprites</Feature>
+        <Feature>Added customizable default symbol and "or" tags in object module</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Updated Minecraft translation path configuration</Refactor>
+        <Refactor>Modified exception logging to capture stack traces properly</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed sound effects for integration messages</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.7.1" date="2025-12-26" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.7.1
+    </Title>
+    <Features>
+        <Feature>Added see_through configuration for text screen and modern bubbles</Feature>
+        <Feature>Added Floodgate integration for Bedrock player support</Feature>
+        <Feature>Added database indexes for performance improvement</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Migrated message pipeline to use MessageContext</Refactor>
+        <Refactor>Converted classes to immutable records: MessageContext, Ticker, Range, Moderation, FImage, Destination, BossBar, MetricsDTO, Cooldown, Sound</Refactor>
+        <Refactor>Migrated configurations to immutable state</Refactor>
+        <Refactor>Optimized HikariCP configuration and driver setup</Refactor>
+        <Refactor>Optimized translation service</Refactor>
+        <Refactor>Restructured permission registration</Refactor>
+        <Refactor>Replaced mutable collections with immutable builders in module system</Refactor>
+        <Refactor>Replaced default destination constants with empty variants</Refactor>
+        <Refactor>Replaced list with set for entity storage in vanilla module</Refactor>
+        <Refactor>Updated event handling system to use immutability</Refactor>
+        <Refactor>Removed metrics sending on shutdown</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed MySQL driver with updated class name</Fix>
+        <Fix>Fixed switch statements for MYSQL and MARIADB</Fix>
+        <Fix>Fixed mention sound by updating default category from NEUTRAL to BLOCK</Fix>
+        <Fix>Fixed missing spear death for integrations</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated PacketEvents to v2.11.1</Dependency>
+        <Dependency>Updated Fabric Loom to v1.14.10</Dependency>
+        <Dependency>Updated BuildConfig plugin to v6.0.7</Dependency>
+        <Dependency>Updated Vanish to v1.6.5+1.21.11</Dependency>
+        <Dependency>Updated Fabric Loader to v0.18.4</Dependency>
+        <Dependency>Updated MariaDB Java Client to v3.5.7</Dependency>
+        <Dependency>Updated PlasmoVoice API to v2.1.8</Dependency>
+        <Dependency>Updated Adventure API to v4.26.1</Dependency>
+        <Dependency>Updated Lettuce Core to v7.2.1</Dependency>
+    </Dependencies>
+</Version>
+
+<Version v="1.7.0" date="2025-12-15" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.7.0
+    </Title>
+    <Features>
+        <Feature>Added support for Minecraft 1.21.11</Feature>
+        <Feature>Added bossbar message module for enhanced notifications</Feature>
+        <Feature>Added text screen rendering system for dynamic displays</Feature>
+        <Feature>Added server lifecycle events for integrations and better process control</Feature>
+        <Feature>Added emit command for event management with improved suggestions</Feature>
+        <Feature>Added permanent listener registration mechanism (#148)</Feature>
+        <Feature>Added time limits for moderation commands</Feature>
+        <Feature>Added custom command execution for Twitch, Discord and Telegram integrations</Feature>
+        <Feature>Added reply support and formatting for Discord, Telegram and Twitch messages</Feature>
+        <Feature>Added mute suffix with placeholder integration</Feature>
+        <Feature>Added Markdown and HTML support for Telegram messages (#166)</Feature>
+        <Feature>Added player list command and spear death messages to localization</Feature>
+        <Feature>Added config flag to control automatic database driver downloading</Feature>
+        <Feature>Added multiple Discord channels support</Feature>
+        <Feature>Added Paper-specific item messaging with PacketEvents (#173)</Feature>
+        <Feature>Added extra space configuration in object module</Feature>
+        <Feature>Added advanced argument parsing for vanilla messages</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Simplified permission checking logic and extracted operator check</Refactor>
+        <Refactor>Replaced regex parsing with tag processor in fcolor module</Refactor>
+        <Refactor>Optimized replacement tag processing</Refactor>
+        <Refactor>Refactored vanilla tag resolver logic</Refactor>
+        <Refactor>Optimized player list version check logic</Refactor>
+        <Refactor>Improved destination initialization and parsing logic</Refactor>
+        <Refactor>Replaced random entity id generation with platform-specific implementation in bubble module</Refactor>
+        <Refactor>Refactored Sound class to use SoundCategory enum and Sound packet</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed console message delivery</Fix>
+        <Fix>Fixed single active ban handling</Fix>
+        <Fix>Fixed UUID version check for offline client detection (playerlistname)</Fix>
+        <Fix>Fixed symbol command to use input tag resolver</Fix>
+        <Fix>Fixed target player in saveSetting method (chatsetting)</Fix>
+        <Fix>Fixed PacketEvents termination handling on startup failures</Fix>
+        <Fix>Fixed bubble chat elevation rendering logic</Fix>
+        <Fix>Fixed Spigot command (un)registration</Fix>
+        <Fix>Fixed mention and replacement checks for unknown senders</Fix>
+        <Fix>Fixed player online status checks for mentions</Fix>
+        <Fix>Fixed bubble module viewers for base bubble builder</Fix>
+        <Fix>Fixed reload to affect only console and online players</Fix>
+        <Fix>Fixed Twitch integration with Jackson library relocation</Fix>
+        <Fix>Fixed empty message sending in integrations</Fix>
+        <Fix>Removed deprecated placeholder tags</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated PacketEvents to v2.11.0</Dependency>
+        <Dependency>Updated Fabric Loom to v1.14.6</Dependency>
+        <Dependency>Updated Jackson YAML to v3.0.3</Dependency>
+        <Dependency>Updated BuildConfig plugin to v6.0.6</Dependency>
+        <Dependency>Updated Gradle to v9.2.1</Dependency>
+        <Dependency>Updated SkinsRestorer API to v15.9.1</Dependency>
+        <Dependency>Updated DeepL Java to v1.14.0</Dependency>
+        <Dependency>Updated Cloud Framework (Paper, Fabric, Minecraft Extras) to beta.15</Dependency>
+        <Dependency>Updated PlasmoVoice API to v2.1.7</Dependency>
+        <Dependency>Updated Fabric Loader to v0.18.2</Dependency>
+        <Dependency>Updated Fabric Yarn to v1.21.11+build.3</Dependency>
+        <Dependency>Updated JDBI3 Core to v3.51.0</Dependency>
+        <Dependency>Updated Lettuce Core to v7.2.0</Dependency>
+        <Dependency>Updated Commons Text to v1.15.0</Dependency>
+        <Dependency>Updated Shadow plugin to v9.3.0</Dependency>
+        <Dependency>Updated Vanish to v1.6.2+1.21.10</Dependency>
+        <Dependency>Updated SQLite JDBC to v3.51.1.0</Dependency>
+        <Dependency>Updated Maven Publish plugin to v0.35.0</Dependency>
+        <Dependency>Updated JDowngrader plugin to v1.3.4</Dependency>
+        <Dependency>Updated GitHub Actions: checkout to v6, upload-artifact to v6, setup-java</Dependency>
+    </Dependencies>
+</Version>
+
+<Version v="1.6.2" date="2025-11-04" authors={["TheFaser", "Vavun33"]}>
+    <Title >
+        # Version 1.6.2
+    </Title>
+    <Features>
+        <Feature>Added LibertyBans integration for advanced punishment handling</Feature>
+        <Feature>Added mention-all tag support for mass notifications</Feature>
+        <Feature>Added support for multiple usernames in Discord and Telegram integrations</Feature>
+        <Feature>Added option to suggest invisible players in command suggestions</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Improved localization loading and translation initialization</Refactor>
+        <Refactor>Enhanced mention handling logic and caching</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed player online status checks for mentions</Fix>
+        <Fix>Fixed URL formatting with better exception handling</Fix>
+        <Fix>Fixed object component validation for player head arguments</Fix>
+        <Fix>Excluded user messages from disabled tag replacement</Fix>
+        <Fix>Relocated Netty and FasterXML dependencies for Discord</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated PacketEvents dependency to v2.10.1</Dependency>
+        <Dependency>Updated Fabric Loom to v1.13.3</Dependency>
+        <Dependency>Updated PlaceholderAPI to v2.11.7</Dependency>
+        <Dependency>Updated BuildConfig plugin to v5.7.1</Dependency>
+        <Dependency>Updated Gradle to v9.2.0</Dependency>
+    </Dependencies>
+</Version>
+
+<Version v="1.6.1" date="2025-10-??" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.6.1
+    </Title>
+    <Features>
+        <Feature>Added Geyser integration for Bedrock player support</Feature>
+        <Feature>Added configurable database table prefix</Feature>
+        <Feature>Added Telegram channel info support</Feature>
+        <Feature>Added option to hide name when player is invisible (right-click)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Refactored chat message sending to use async methods</Refactor>
+        <Refactor>Simplified Bedrock gradient tag support</Refactor>
+        <Refactor>Optimized profile property caching logic</Refactor>
+        <Refactor>Changed Fabric async executor from cached to fixed thread pool</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed object component building for Bedrock players</Fix>
+        <Fix>Fixed RockPaperScissors localization tags in Russian locale</Fix>
+        <Fix>Fixed mute cache cleanup reversion</Fix>
+        <Fix>Fixed stream prefix management logic</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated Placeholder API to v2.8.1+1.21.10</Dependency>
+        <Dependency>Updated Jackson YAML to v3.0.1</Dependency>
+        <Dependency>Updated Discord4J to v3.3.0</Dependency>
+        <Dependency>Updated Lettuce Core to v7</Dependency>
+        <Dependency>Updated Upload Artifact action to v5</Dependency>
+    </Dependencies>
+</Version>
+
+<Version v="1.6.0" date="2025-10-19" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.6.0
+    </Title>
+    <Features>
+        <Feature>Added support for Minecraft 1.21.9 and 1.21.10</Feature>
+        <Feature>Added 30+ new message types with unified vanilla module</Feature>
+        <Feature>Added object module for player head and sprite support</Feature>
+        <Feature>Added proxy mode support for online player count and player list names</Feature>
+        <Feature>Added Minecraft translation service and global translations</Feature>
+        <Feature>Added backup functionality for config and database files</Feature>
+        <Feature>Added MariaDB database support</Feature>
+        <Feature>Added Discord embed fields support</Feature>
+        <Feature>Added console message handling for all destinations</Feature>
+        <Feature>Added centralized cache management</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Updated to Java 17</Refactor>
+        <Refactor>Changed default database from SQLite to H2</Refactor>
+        <Refactor>Migrated from Elytrium Serializer to Jackson YAML</Refactor>
+        <Refactor>Refactored player settings management</Refactor>
+        <Refactor>Replaced module predicates with event-based listeners</Refactor>
+        <Refactor>Optimized chat message handling</Refactor>
+        <Refactor>Improved entity name handling and localization</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed double ampersand escaping in URLs (#77)</Fix>
+        <Fix>Fixed colors in toponline footer</Fix>
+        <Fix>Fixed TPS retrieval for modern Bukkit</Fix>
+        <Fix>Fixed swear word detection logic</Fix>
+        <Fix>Fixed player UUID validation</Fix>
+        <Fix>Fixed bubble chat for older versions</Fix>
+        <Fix>Fixed action bar colors for legacy versions</Fix>
+        <Fix>Fixed null values during deserialization</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.5.1" date="2025-09-01" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.5.1
+    </Title>
+    <Features>
+        <Feature>Added modern GUI for poll creation</Feature>
+        <Feature>Added nullHelper option to helper</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Refactored IntegrationSender to handle message replacing</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed null issue by using MessageType.name() instead of MessageType directly in integration</Fix>
+        <Fix>Added delay to async process join event for Fabric</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.5.0" date="2025-08-29" authors={["TheFaser", "giftedl"]}>
+    <Title >
+        # Version 1.5.0
+    </Title>
+    <Features>
+        <Feature>Implemented dynamic message naming based on chat type and source</Feature>
+        <Feature>Added EventMetadata and updated API</Feature>
+        <Feature>Added configurable skin API URLs</Feature>
+        <Feature>Added MiniPlaceholders integration for Fabric</Feature>
+        <Feature>Added support for Clearchat command for proxy</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Changed default chat mode to BUKKIT</Refactor>
+        <Refactor>Improved async task handling for restricted threads</Refactor>
+        <Refactor>Added async annotation to sendMessage and IntegrationSender methods</Refactor>
+        <Refactor>Renamed SenderToReceiverMessageEvent to MessageSendEvent</Refactor>
+        <Refactor>Implemented PreMessageSendEvent</Refactor>
+        <Refactor>Rebuilt message sending logic</Refactor>
+        <Refactor>Simplified item handling in death messages</Refactor>
+        <Refactor>Moved logger reload operation to before database connection</Refactor>
+        <Refactor>Registered EnumSerializer for Newbie.Mode</Refactor>
+        <Refactor>Updated log filter to include Hikari messages</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Removed unnecessary check in player name for clearchat</Fix>
+        <Fix>Increased NBT max size limit in packetevents</Fix>
+        <Fix>Updated regex patterns to support HTTP and HTTPS in replacement</Fix>
+        <Fix>Added module disabled check for HeaderModule and FooterModule</Fix>
+        <Fix>Updated spoiler formatting logic to use '.' instead of '\' for raw text representation</Fix>
+        <Fix>Validated info channel IDs before processing in Discord</Fix>
+        <Fix>Fixed skin image insertion in chat</Fix>
+        <Fix>Improved game field colors in TicTacToe</Fix>
+        <Fix>Corrected poll message formatting</Fix>
+        <Fix>Removed redundant symbol in ping</Fix>
+        <Fix>Correctly checked if module is enabled and added range in helper</Fix>
+        <Fix>Added user agent for image URL connection</Fix>
+        <Fix>Improved player data handling and IP management</Fix>
+        <Fix>Replaced outdated GitHub link with current SkinsRestorer documentation URL</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.4.3" date="2025-08-20" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.4.3
+    </Title>
+    <Features>
+        <Feature>Added BungeeCord and Velocity support for Fabric</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Improved AFK status handling for players who quit</Refactor>
+        <Refactor>Enhanced SuperVanish integration for offline players</Refactor>
+        <Refactor>Added shutdown() method to TaskScheduler and improved FabricTaskScheduler</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed invalid key in advancement messages</Fix>
+        <Fix>Removed break statement in mention handling</Fix>
+        <Fix>Updated permission name for versions &lt; 1.4.3</Fix>
+        <Fix>Improved SuperVanish integration check</Fix>
+        <Fix>Updated FPlayer in database with delay</Fix>
+        <Fix>Added MySQL connector dependency</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.4.2" date="2025-08-17" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.4.2
+    </Title>
+    <Features>
+        <Feature>Added sender color flag to control color in messages (API)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Moved legacy color convertor to FormatModule and renamed permission</Refactor>
+        <Refactor>Moved message formatting logic from listeners to modules</Refactor>
+        <Refactor>Improved game logic in tictactoe</Refactor>
+        <Refactor>Optimized log record creation and handling</Refactor>
+        <Refactor>Renamed isInitialized to isReady</Refactor>
+        <Refactor>Created common Extractor class and added support for extra target format</Refactor>
+        <Refactor>Reverted try-catch for numeric validation</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Removed redundant receiver permission check in PlaceholderAPI</Fix>
+        <Fix>Added version check and disabled bubble module for Minecraft versions below 1.9</Fix>
+        <Fix>Replaced StringUtils.isEmpty() with manual check, fixing #20</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.4.1" date="2025-08-15" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.4.1
+    </Title>
+    <Features>
+        <Feature>Added support for specific fcolor types (fcolor_out, fcolor_see) for PlaceholderAPI</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Created addDefaultPredicates() method to centralize predicate logic</Refactor>
+        <Refactor>Replaced reloadWithChildren with reload</Refactor>
+        <Refactor>Replaced repetitive code with new getFColors method</Refactor>
+        <Refactor>Separated load() and enable() methods for better separation of concerns</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed predicates loading</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.4.0" date="2025-08-15" authors={["TheFaser", "giftedl"]}>
+    <Title >
+        # Version 1.4.0
+    </Title>
+    <Features>
+        <Feature>Created and uploaded API to Maven Central</Feature>
+        <Feature>Added minecraft dialogs for /chatsetting</Feature>
+        <Feature>Added support for Paper chat event (#17)</Feature>
+        <Feature>Added support for legacy and named colors in chatcolor, with flexible input for admins</Feature>
+        <Feature>Implemented Maintenance integration support (#16)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Registered EnumSerializer for Range.Type</Refactor>
+        <Refactor>Added onLoad method and modified module loading logic</Refactor>
+        <Refactor>Implemented get() method for dependency injection</Refactor>
+        <Refactor>Implemented message caching to improve performance</Refactor>
+        <Refactor>Changed default chat mode to PACKET and optimized chat handling</Refactor>
+        <Refactor>Moved replacement logic to ReplacementModule and removed duplicated modules</Refactor>
+        <Refactor>Optimized distance calculation between players in PlayerAdapter</Refactor>
+        <Refactor>Optimized player-related operations and vanish checks</Refactor>
+        <Refactor>Optimized scoreboard packets and added reload functionality</Refactor>
+        <Refactor>Optimized async and sync method execution</Refactor>
+        <Refactor>Optimized Bukkit chat listener performance</Refactor>
+        <Refactor>Updated permissions for /chatcolor and fcolor modules</Refactor>
+        <Refactor>Replaced String ".replace" with Strings and StringUtils</Refactor>
+        <Refactor>Replaced manual string checks with StringUtils</Refactor>
+        <Refactor>Replaced try-catch with StringUtils.isNumeric()</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed UpdateModule permission</Fix>
+        <Fix>Inverted condition in hasClassOrElse method</Fix>
+        <Fix>Corrected URL operator formatting and ampersand escaping</Fix>
+        <Fix>Ensured valid color for scoreboard team</Fix>
+        <Fix>Corrected color code conversion in LegacyMiniConvertorPulseListener</Fix>
+        <Fix>Handled null values in style settings for SQL</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.3.0" date="2025-08-08" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.3.0
+    </Title>
+    <Features>
+        <Feature>New fcolors for improved visual customization</Feature>
+        <Feature>Improved /chatsetting command and new functionality for setting/removing player settings</Feature>
+        <Feature>Added replacement module and removed emoji module for more efficient text processing</Feature>
+        <Feature>Added ANSI serializer for Adventure to enhance logging output</Feature>
+        <Feature>Added new localization prompt for value to improve user interaction</Feature>
+        <Feature>Optimized replacement processing with regex for faster performance</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Reintroduced InteractiveChat integration with conflict check for Delete module</Refactor>
+        <Refactor>Introduced MessageReceiveEvent for all messages, replacing TranslatableMessageReceiveEvent</Refactor>
+        <Refactor>Set default message channel IDs for Telegram and Twitch integrations</Refactor>
+        <Refactor>Updated default messages for /chatsetting and /chatcolor commands</Refactor>
+        <Refactor>Implemented fcolor see/out support and refactored chat color system</Refactor>
+        <Refactor>Changed chatcolor permission type to TRUE</Refactor>
+        <Refactor>Migrated player styles to new fcolor system and removed style modules</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Corrected permission check for mentioned players</Fix>
+        <Fix>Removed closed tag to prevent formatting errors</Fix>
+        <Fix>Fixed delete module and InteractiveChat integration compatibility</Fix>
+        <Fix>Replaced getArgument with getPrompt in chatcolor for consistency</Fix>
+        <Fix>Improved VoiceChat integration compatibility</Fix>
+        <Fix>Updated 'PacketEvents' to 'packetevents' in plugin.yml for consistency</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.2.1" date="2025-08-05" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.2.1
+    </Title>
+    <Features>
+        <Feature>Updated PacketSender to support silent packet sending for more discreet message handling</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Moved PacketEvents.getAPI().load() to after injector creation to improve initialization</Refactor>
+        <Refactor>Removed InteractiveChat integration (very bad API)</Refactor>
+        <Refactor>Removed unused PacketProvider class to clean up codebase</Refactor>
+        <Refactor>Improved item stack serialization for Paper servers</Refactor>
+        <Refactor>Implemented onRequest method in PlaceholderAPIIntegration to support OfflinePlayer</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Improved item name translation and hover</Fix>
+        <Fix>Fixed PlaceholderAPI to save formatted messages for offline players</Fix>
+        <Fix>Replaced getDeclaredMethods() with getMethods() for broader method access</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.2.0" date="2025-08-04" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.2.0
+    </Title>
+    <Features>
+        <Feature>Added DeleteModule to handle message deletion</Feature>
+        <Feature>Added UpdateModule to check for new versions</Feature>
+        <Feature>Added SenderToReceiverMessageEvent (API)</Feature>
+        <Feature>Added new SenderToReceiverMessageEvent constructors</Feature>
+        <Feature>Added SimpleVoice and PlasmoVoice support for Fabric</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Switched to event-driven architecture</Refactor>
+        <Refactor>Moved URL formatting logic to a separate class</Refactor>
+        <Refactor>Added ReflectionResolver for class and method resolution</Refactor>
+        <Refactor>Removed unused fields and optimized imports</Refactor>
+        <Refactor>Split sleep, setblock, seed, op, deop, gamemode, clear, spawn, kill, enchant, and advancement logic into separate classes</Refactor>
+        <Refactor>Renamed checkModulePredicates to isModuleDisabledFor</Refactor>
+        <Refactor>Renamed disable() method to terminate()</Refactor>
+        <Refactor>Replaced PacketEvents API calls with PacketProvider</Refactor>
+        <Refactor>Removed unused FabricProxySender, PlatformPlayerAdapter</Refactor>
+        <Refactor>Renamed ChatListener to ChatPacketListener and ChatBukkitListener for Bukkit</Refactor>
+        <Refactor>Replaced MessagePulseListener with EventDispatcher and MessageSender</Refactor>
+        <Refactor>Added prompt system for commands and updated command registration</Refactor>
+        <Refactor>Used FPlayer for receiver in message processing</Refactor>
+        <Refactor>Renamed translatable message receive event type</Refactor>
+        <Refactor>Added MessageFlag enum and updated message processing</Refactor>
+        <Refactor>Optimized tag resolver in MessageContext</Refactor>
+        <Refactor>Moved AdventureTag to constant package</Refactor>
+        <Refactor>Added common onEnable, onDisable, and reload methods</Refactor>
+        <Refactor>Added replacement tags for message formatting</Refactor>
+        <Refactor>Added generic enum serializer and moved enums</Refactor>
+        <Refactor>Added unique message UUID to pipeline</Refactor>
+        <Refactor>Updated MessageContext to use userMessage instead of messageToTranslate</Refactor>
+        <Refactor>Removed cancelPacket() from TranslatableMessageReceiveEvent</Refactor>
+        <Refactor>Renamed onMessageProcessingEvent to onMessageFormattingEvent</Refactor>
+        <Refactor>Improved BLOCKS range retrieval exception message</Refactor>
+        <Refactor>Replaced custom Pair with org.incendo.cloud.type.tuple.Pair</Refactor>
+        <Refactor>Replaced emoji with checkbox in delete message format</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed permission check logic without LuckPerms</Fix>
+        <Fix>Changed Q&A messages to [Answer] format</Fix>
+        <Fix>Fixed prompt index checking logic</Fix>
+        <Fix>Fixed old player name update in database</Fix>
+        <Fix>Added enable flag to voice integrations</Fix>
+        <Fix>Replaced non-threadsafe collections with concurrent ones</Fix>
+        <Fix>Relocated cloud libraries</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.1.1" date="2025-07-27" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.1.1
+    </Title>
+    <Features>
+        <Feature>Added ignore list for swear words in core</Feature>
+        <Feature>Implemented ticker functionality for world module</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Updated total RAM calculation in metrics</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Improved URL and image handling and formatting</Fix>
+        <Fix>Improved trigger tag handling in FormatModule</Fix>
+        <Fix>Added region-specific sync task execution, fixing #10</Fix>
+        <Fix>Enhanced Telegram integration initialization</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.1.0" date="2025-07-25" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.1.0
+    </Title>
+    <Features>
+        <Feature>Added FULL support for Minecraft 1.8.8 - 1.21.8 versions</Feature>
+        <Feature>Added support for Fabric 1.21.8</Feature>
+        <Feature>Introduced H2 and PostgreSQL database support</Feature>
+        <Feature>Implemented Text Placeholder API for Fabric</Feature>
+        <Feature>Implemented Vanish API for Fabric</Feature>
+        <Feature>Implemented SkinsRestorer API for Fabric</Feature>
+        <Feature>Implemented LuckPerms API for Fabric</Feature>
+        <Feature>Added packet-based chat listener</Feature>
+        <Feature>Enhanced editor with cursor position saving/restoring when switching files</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Optimized code by removing unused imports, classes, methods, and version checking</Refactor>
+        <Refactor>Updated TimeFormatter to use Apache Commons Lang 3</Refactor>
+        <Refactor>Removed database type-specific methods</Refactor>
+        <Refactor>Replaced Javalin with Spark Java for web handling</Refactor>
+        <Refactor>Improved exception handling and logging in handler</Refactor>
+        <Refactor>Reduced join message delay to 5 seconds</Refactor>
+        <Refactor>Consolidated packet sending logic in scoreboard</Refactor>
+        <Refactor>Replaced direct player.getPing() call with packetProvider.getPing(player)</Refactor>
+        <Refactor>Updated method to handle status response packet</Refactor>
+        <Refactor>Replaced Component tree dump with JSON serialization</Refactor>
+        <Refactor>Added support for legacy versions in scoreboard and inventory</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Prevented duplicate sidebar creation</Fix>
+        <Fix>Improved URL handling in stream</Fix>
+        <Fix>Removed unknown player check in insertOrIgnore method for Console inserting</Fix>
+        <Fix>Improved handling for advancements</Fix>
+        <Fix>Removed delay for join messages in older versions</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.0.1" date="2025-07-18" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.0.1
+    </Title>
+    <Fixes>
+        <Fix>Fixed login event compatibility for Minecraft 1.20.1 and older versions</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.0.0" date="2025-07-17" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.0.0
+    </Title>
+    <Features>
+        <Feature>Added support for 1.21.8 minecraft</Feature>
+        <Feature>Web-based configuration editor for simplified plugin management</Feature>
+        <Feature>Redis support for efficient proxy communication</Feature>
+        <Feature>Enhanced messaging with &lt;translateto&gt; support, online player notifications in mail, and custom belowname messages</Feature>
+        <Feature>Player visibility improvements with invisibility potion effect in name formatting and /anon command for spy</Feature>
+        <Feature>Delayed update() in playerlistname for smoother operation</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Optimized MessageProcessRegistry, plugin lifecycle, and module reloading for better performance</Refactor>
+        <Refactor>Cleaned up code by removing unused methods, deprecated code, and redundant error handling</Refactor>
+        <Refactor>Improved modularity with LinkedHashSet for order preservation, Registry interface, and refactored module constructors to use enable()/disable()</Refactor>
+        <Refactor>Enhanced scoreboard, sidebar, and objective modules with PacketEvents integration</Refactor>
+        <Refactor>Reworked ProxySender to support multiple proxy types and removed unnecessary proxy send logic</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed IPv6 support and IP handling</Fix>
+        <Fix>Improved vanished player filtering and visibility for CMI permission holders</Fix>
+        <Fix>Optimized version comparison logic and database operations</Fix>
+        <Fix>Resolved join message execution and history clearing issues after file loading</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.9.0" date="2025-07-10" authors={["TheFaser", "Bakinu"]}>
+    <Title >
+        # Version 0.9.0
+    </Title>
+    <Features>
+        <Feature>Added support for 1.21.6 and 1.21.7 minecraft</Feature>
+        <Feature>Added /anon command</Feature>
+        <Feature>Added /toponline command module</Feature>
+        <Feature>Introduced new chat style module /chatstyle</Feature>
+        <Feature>Implemented kill message module</Feature>
+        <Feature>Added support for all FPlayer settings in PlaceholderAPI</Feature>
+        <Feature>Implemented native toast notifications using PacketEvents</Feature>
+        <Feature>Added ticker functionality for scoreboards</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Optimized player data loading and login process</Refactor>
+        <Refactor>Improved join message handling</Refactor>
+        <Refactor>Enhanced moderation cache system</Refactor>
+        <Refactor>Optimized database operations with JDBI</Refactor>
+        <Refactor>Improved chat color processing and message formatting</Refactor>
+        <Refactor>Simplified ItemStack building process in Bukkit</Refactor>
+        <Refactor>Optimized bubble message sending</Refactor>
+        <Refactor>Implemented menu-based settings</Refactor>
+        <Refactor>Deleted migration for 0.1.0 and 0.6.0 versions</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed handling of color/gradient tags</Fix>
+        <Fix>Improved offline player checks for null names</Fix>
+        <Fix>Corrected typos in moderator messages</Fix>
+        <Fix>Fixed advancement description handling</Fix>
+        <Fix>Fixed synchronous command reload for Spigot servers</Fix>
+        <Fix>Improved PlaceholderAPI integration for offline players</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.8.4" date="2025-06-16" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.8.4
+    </Title>
+    <Refactors>
+        <Refactor>Rename height to elevation for bubble</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed upgrade from 0.8.2 version</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.8.3" date="2025-06-13" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.8.3
+    </Title>
+    <Features>
+        <Feature>Added billboard option for bubble messages</Feature>
+        <Feature>Implemented animations for modern bubbles</Feature>
+        <Feature>Improved bubble height rendering for better visual positioning</Feature>
+        <Feature>Enhanced bubble message breaking logic</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Implemented Builder pattern for Bubble classes</Refactor>
+        <Refactor>Optimized integration sending performance</Refactor>
+        <Refactor>Improved version comparison in FileManager</Refactor>
+        <Refactor>Replaced GSON component serializer imports</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed null message channel handling in Telegram integration</Fix>
+        <Fix>Simplified messenger detection in BukkitIntegration</Fix>
+        <Fix>Resolved scheduler enable/disable errors</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.8.2" date="2025-05-15" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.8.2
+    </Title>
+    <Features>
+        <Feature>Added mode selection for Newbie message triggers</Feature>
+    </Features>
+    <Fixes>
+        <Fix>Fixed playtime calculation in online modules</Fix>
+        <Fix>Corrected online status checks for /tell command range</Fix>
+    </Fixes>
+    <Refactors>
+        <Refactor>Implemented @async/@sync annotations for method scheduling</Refactor>
+        <Refactor>Removed legacy Async annotations</Refactor>
+        <Refactor>Improved exception interceptor logging</Refactor>
+        <Refactor>Enhanced metrics collection on server shutdown</Refactor>
+    </Refactors>
+</Version>
+
+<Version v="0.8.1" date="2025-05-02" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.8.1
+    </Title>
+    <Fixes>
+        <Fix>Fixed handling of cancelled MicrophonePacketEvent in SimpleVoice</Fix>
+        <Fix>Fixed resolveLibrary method implementation</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.8.0" date="2025-05-02" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.8.0
+    </Title>
+    <Features>
+        <Feature>Added AdvancedBan and LiteBans integration for moderation system</Feature>
+        <Feature>Implemented new ScoreboardModule with real scoreboard system</Feature>
+        <Feature>Added Newbie module for new players</Feature>
+        <Feature>MiniPlaceholders support for advanced formatting</Feature>
+        <Feature>ItemsAdder integration for custom items</Feature>
+        <Feature>Added Paper item serialization support</Feature>
+        <Feature>Added range limitation for private messages (/tell)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Complete Bubble system rewrite with modern entities</Refactor>
+        <Refactor>Optimized LuckPerms integration for better performance</Refactor>
+        <Refactor>Replaced bStats with custom metrics solution</Refactor>
+        <Refactor>Refactored moderation system with caching</Refactor>
+        <Refactor>Improved message processing via MessagePipeline</Refactor>
+        <Refactor>Moved prefixes/suffixes to ScoreboardModule</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed player online status checks on specific servers</Fix>
+        <Fix>Fixed HEX color handling in MiniPlaceholders</Fix>
+        <Fix>Fixed Afk module functionality</Fix>
+        <Fix>Optimized permission checks</Fix>
+        <Fix>Fixed proxy quit message handling</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.7.1" date="2025-03-23" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.7.1
+    </Title>
+    <Features>
+        <Feature>Added TAB integration</Feature>
+    </Features>
+    <Fixes>
+        <Fix>Fixed null recipient messages in BukkitChatModule</Fix>
+        <Fix>Disabled join/quit messages on Bukkit/Spigot servers</Fix>
+        <Fix>Fixed TAB integration and added settings for TAB-dependent modules</Fix>
+        <Fix>Injected IntegrationModule at runtime</Fix>
+        <Fix>Replaced grammatical typo in ru_ru localization</Fix>
+        <Fix>Fixed null user checks in PlayerlistnameModule</Fix>
+    </Fixes>
+    <Refactors>
+        <Refactor>Refactored mutes collection</Refactor>
+        <Refactor>Set tabSort to true by default</Refactor>
+        <Refactor>Reloaded all child modules even if the parent module is disabled</Refactor>
+        <Refactor>Initialized child modules in the constructor</Refactor>
+        <Refactor>Disabled team by default in the Name module</Refactor>
+        <Refactor>Replaced double quotes with single quotes</Refactor>
+    </Refactors>
+</Version>
+
+<Version v="0.7.0" date="2025-03-15" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.7.0
+    </Title>
+    <Features>
+        <Feature>Added SleepModule for sleep messages</Feature>
+        <Feature>Added BedModule for bed messages</Feature>
+        <Feature>Added WORLD_NAME (-3) and WORLD_TYPE (-4) range</Feature>
+        <Feature>Added filter for Paper 1.16.5 warnings to clean up logs</Feature>
+    </Features>
+    <Fixes>
+        <Fix>Replaced legacy paragraph symbols with ampersands</Fix>
+    </Fixes>
+    <Refactors>
+        <Refactor>Merged SET_SPAWN, CHANGE_GAME_STATE, and SPAWNPOINT messages</Refactor>
+        <Refactor>Created MinecraftTranslationKeys for better localization management</Refactor>
+        <Refactor>Optimized chat filter in BukkitChatModule</Refactor>
+        <Refactor>Optimized metadata retrieval in LuckPermsIntegration</Refactor>
+        <Refactor>Checked recipients asynchronously in BukkitChatModule</Refactor>
+        <Refactor>Updated FLogger to use a log consumer for better logging</Refactor>
+    </Refactors>
+</Version>
+
+<Version v="0.6.3" date="2025-03-10" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.6.3
+    </Title>
+    <Fixes>
+        <Fix>Fixed text length check in the FloodModule to prevent errors</Fix>
+        <Fix>Corrected vanish boolean check</Fix>
+        <Fix>Added exception handling in the BanModule to catch IllegalArgumentException</Fix>
+        <Fix>Fixed player IP check to improve accuracy</Fix>
+    </Fixes>
+    <Refactors>
+        <Refactor>Simplified logging warnings for cleaner logs</Refactor>
+        <Refactor>Used Bukkit player's IP address</Refactor>
+        <Refactor>Saved player IP to the database</Refactor>
+        <Refactor>Renamed basic methods for creating and saving a player</Refactor>
+    </Refactors>
+</Version>
+
+<Version v="0.6.2" date="2025-03-05" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.6.2
+    </Title>
+    <Features>
+        <Feature>Added support for all plugins vanish to improve compatibility</Feature>
+        <Feature>Added spying for a specific chat type for enhanced moderation</Feature>
+    </Features>
+    <Fixes>
+        <Fix>Changed mention destination to ACTION_BAR</Fix>
+        <Fix>Optimized swear regex for better performance</Fix>
+        <Fix>Optimized TOAST creation for better performance</Fix>
+        <Fix>Fixed color standalone checking</Fix>
+        <Fix>Fixed not closing the first tag</Fix>
+        <Fix>Fixed message formatting by sender</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.6.1" date="2025-03-03" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.6.1
+    </Title>
+    <Fixes>
+        <Fix>Added chat permission checking to ensure proper access control</Fix>
+        <Fix>Fixed fPlayer settings loading to correctly load player settings</Fix>
+        <Fix>Added ignore check to handle ignored players appropriately</Fix>
+        <Fix>Improved fPlayer saving when removing players to prevent data loss</Fix>
+    </Fixes>
+    <Refactors>
+        <Refactor>Added permission removing logic for better permission management</Refactor>
+        <Refactor>Improved database update for offline players</Refactor>
+        <Refactor>Removed async annotation for insertOrIgnore</Refactor>
+        <Refactor>Optimized fPlayer getting</Refactor>
+    </Refactors>
+</Version>
+
+<Version v="0.6.0" date="2025-02-28" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.6.0
+    </Title>
+    <Features>
+        <Feature>Added a flood module</Feature>
+    </Features>
+    <Fixes>
+        <Fix>Changed the URL to the maintenance documentation</Fix>
+        <Fix>Added "§" replacement to handle special characters correctly</Fix>
+        <Fix>Trimmed dice messages</Fix>
+    </Fixes>
+    <Refactors>
+        <Refactor>Removed swear sound</Refactor>
+        <Refactor>Separated the setting table and optimized DAO classes for better performance</Refactor>
+        <Refactor>Removed the contact submodule</Refactor>
+        <Refactor>Disabled anvil, book, and sign modules by default</Refactor>
+        <Refactor>Deleted the spit, knock, sign, and unsign modules</Refactor>
+        <Refactor>Changed the italic trigger logic for better usability</Refactor>
+        <Refactor>Switched to using a fork of MiniTranslator</Refactor>
+    </Refactors>
+</Version>
+
+<Version v="0.5.4" date="2025-02-14" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.5.4
+    </Title>
+    <Features>
+        <Feature>Added FixationModule (end dot and first letter uppercase)</Feature>
+    </Features>
+    <Fixes>
+        <Fix>Fixed PLAY_ONE_MINUTE calculation by multiplying it by 60</Fix>
+        <Fix>Updated chat event message for other plugins</Fix>
+        <Fix>Fixed next message in the rockpaperscissors module</Fix>
+        <Fix>Corrected player value checks in the tictactoe module</Fix>
+        <Fix>Removed visual spawn display in the bubble module</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.5.3" date="2025-02-12" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.5.3
+    </Title>
+    <Features>
+        <Feature>Added support for stay ticks in action bar messages to control display duration</Feature>
+    </Features>
+    <Fixes>
+        <Fix>Fixed action bar message compatibility for Minecraft 1.18 and older versions</Fix>
+        <Fix>Improved emoji escaping to prevent formatting issues</Fix>
+        <Fix>Added null checks for channels in BukkitProxyConnector to avoid unexpected errors</Fix>
+        <Fix>Removed duplicate Sync matcher to prevent conflicts</Fix>
+        <Fix>Added null player checks in the spit module for safer execution</Fix>
+        <Fix>Fixed player data (fPlayer) not updating when inventory settings were closed</Fix>
+        <Fix>Corrected maintenance mode logic to properly kick players when enabled</Fix>
+        <Fix>Ignored null connections to prevent crashes during network handling</Fix>
+    </Fixes>
+    <Refactors>
+        <Refactor>Major codebase reorganization: Renamed multiple classes, packages, and interfaces (e.g., ILocalization → Localization, moved interceptors to dedicated packages)</Refactor>
+        <Refactor>Removed deprecated/unused code: DebugInterceptor, ModuleManager, DatabaseThread, and ticker classes</Refactor>
+        <Refactor>Optimized SQLite integration using HikariCP for better performance</Refactor>
+        <Refactor>Split database logic into DAO (Data Access Object) layers for modularity</Refactor>
+        <Refactor>Updated user login and maintenance-checking logic for reliability</Refactor>
+        <Refactor>Integrated the latest version of MiniTranslator</Refactor>
+    </Refactors>
+</Version>
+
+<Version v="0.5.2" date="2025-02-08" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.5.2
+    </Title>
+    <Fixes>
+        <Fix>Updated regex to allow uppercase in HEX colors (e.g. #AAAAAA)</Fix>
+        <Fix>Fixed disabling format tags</Fix>
+        <Fix>Fixed calculating next message for lists modules</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.5.1" date="2025-02-07" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.5.1
+    </Title>
+    <Features>
+        <Feature>Added lists to auto module</Feature>
+    </Features>
+    <Fixes>
+        <Fix>Removed legacy color map</Fix>
+        <Fix>Fixed legacy color support for &#amp;#</Fix>
+        <Fix>Fixed deop module</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.5.0" date="2025-02-07" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.5.0
+    </Title>
+    <Features>
+        <Feature>Added full support legacy colors (gradients too)</Feature>
+        <Feature>Added translateto tag for messages</Feature>
+        <Feature>Added YandexSDK integration for /translateto</Feature>
+        <Feature>Added Deepl integration for /translateto</Feature>
+        <Feature>Added Triton integration</Feature>
+        <Feature>Refactored /poll and added repeat time</Feature>
+        <Feature>Refactored /mark and added modern version mark</Feature>
+    </Features>
+</Version>
+
+<Version v="0.4.1" date="2025-02-04" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.4.1
+    </Title>
+    <Fixes>
+        <Fix>Fixed 1.20.5 support</Fix>
+        <Fix>Fixed bubble height change</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.4.0" date="2025-02-04" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.4.0
+    </Title>
+    <Features>
+        <Feature>Added InteractiveChat support</Feature>
+        <Feature>Added Q&amp;A module</Feature>
+        <Feature>Added ping module</Feature>
+        <Feature>Added modern bubble system</Feature>
+        <Feature>Updated symbols</Feature>
+        <Feature>Updated README and Added README-RU</Feature>
+    </Features>
+    <Fixes>
+        <Fix>Fixed knock module</Fix>
+        <Fix>Fixed folia support</Fix>
+        <Fix>Fixed double mention</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.3.0" date="2025-01-18" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.3.0
+    </Title>
+    <Features>
+        <Feature>Added TOAST destination</Feature>
+        <Feature>Added bubble distance setting</Feature>
+        <Feature>Added subtext for TITLE and SUBTITLE</Feature>
+        <Feature>Added /flectonepulse reload text, for text reloading</Feature>
+        <Feature>Added /id command for telegram bot</Feature>
+        <Feature>Added support for environment variables</Feature>
+        <Feature>Added clusters for proxy</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Refactored ban, mute, warn, kick, unban, unmute, unwarn and lists</Refactor>
+        <Refactor>Refactored mention</Refactor>
+        <Refactor>Removed InteractiveChat integration</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed Velocity and BungeeCord startup</Fix>
+        <Fix>Fixed chat on proxy</Fix>
+        <Fix>Fixed null PAPI on disable</Fix>
+        <Fix>Fixed double message check</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.2.1" date="2025-01-13" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.2.1
+    </Title>
+    <Features>
+        <Feature>Added setting range for unban, unwarn, unmute</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Changed sound</Refactor>
+        <Refactor>Removed legacy printStackTrace</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed distance to show</Fix>
+        <Fix>Fixed prefix and suffix for offline player</Fix>
+        <Fix>Fixed name formatting</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.2.0" date="2025-01-06" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.2.0
+    </Title>
+    <Features>
+        <Feature>Added full support for 1.16.5-1.19.4, currently is 1.16.5-1.21.4</Feature>
+        <Feature>Added ScoreBoard settings (SideBar)</Feature>
+        <Feature>Added Destination</Feature>
+        <Feature>Added pride, shadow_color tags</Feature>
+        <Feature>Added version check</Feature>
+        <Feature>Added legacy chat message support</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Changed Sound, Cooldown, Ticker configuration</Refactor>
+        <Refactor>Changed tab header and tab footer format</Refactor>
+        <Refactor>Changed brand serialize</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed tictactoe</Fix>
+        <Fix>Fixed name formatting</Fix>
+        <Fix>Fixed status icon</Fix>
+        <Fix>Fixed documentation urls</Fix>
+        <Fix>Fixed replacing placeholders</Fix>
+        <Fix>Fixed null world prefix</Fix>
+        <Fix>Fixed async integration messages</Fix>
+        <Fix>Fixed supervanish integration</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.1.0" date="2024-12-31" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.1.0
+    </Title>
+    <Features>
+        <Feature>Initial release</Feature>
+    </Features>
+</Version>
+
+<br></br>

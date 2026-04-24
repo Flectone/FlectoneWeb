@@ -3,6 +3,7 @@
     "(minecraft)",
     "hytale",
     "api",
-    "metrics"
+    "metrics",
+    "changelog"
   ]
 }

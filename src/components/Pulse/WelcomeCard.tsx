@@ -25,6 +25,7 @@ export default function WelcomeCard() {
             <LinkButton className='gap-1' href='/pulse/docs/hytale'><Leaf size='1.1em' />Hytale</LinkButton>
             <LinkButton className='gap-1' href='/pulse/docs/metrics'><ChartCandlestick size='1.1em' />{t('Buttons.metrics')}</LinkButton>
             <LinkButton className='gap-1' href='/pulse/docs/api'><Cable size='1.1em' />API</LinkButton>
+            <LinkButton className='gap-1' href='/pulse/docs/changelog'><Cable size='1.1em' />{t('Buttons.changelog')}</LinkButton>
           </ModalButton>
         </div>
       </div>

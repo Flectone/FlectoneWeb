@@ -1,0 +1,7 @@
+{
+  "root": true,
+  "title": "Changelog",
+  "icon": "ArrowUpDown",
+  "tag": "changelog",
+  "description": "List of changes for all versions"
+}

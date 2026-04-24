@@ -187,3 +187,213 @@ input[type="checkbox"]:checked {
     to   { opacity: 1; }
 }
 
+.changelog-version {
+    position: relative;
+    display: grid;
+    grid-template-columns: 2px minmax(0, 1fr);
+    gap: 2rem;
+    margin: 0;
+    padding: 0 0 2rem 0;
+}
+
+.changelog-version:not(:last-child)::before {
+    content: "";
+    position: absolute;
+    left: 1px;
+    top: 1rem;
+    bottom: 0;
+    width: 1px;
+    background: var(--color-fd-border);
+}
+
+.changelog-timeline {
+    position: relative;
+    width: 2px;
+    min-height: 1rem;
+}
+
+.changelog-timeline::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0.5rem;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--color-fd-primary);
+    box-shadow: 0 0 0 4px var(--color-fd-background), 0 0 0 6px var(--color-fd-primary);
+}
+
+.changelog-content {
+    min-width: 0;
+}
+
+.changelog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.changelog-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.changelog-date {
+    align-items: center;
+    font-size: 0.875rem;
+    color: var(--color-fd-muted-foreground);
+}
+
+.changelog-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.changelog-btn {
+    align-items: center;
+    padding: 0.0rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: 1px solid var(--color-fd-border);
+    color: var(--color-fd-foreground);
+    transition: all 0.2s;
+}
+
+.changelog-btn:hover {
+    border-color: var(--color-fd-primary);
+    background: color-mix(in srgb, var(--color-fd-primary) 10%, transparent);
+}
+
+.changelog-btn-download {
+    background: var(--color-fd-primary);
+    color: var(--color-fd-primary-foreground);
+    border-color: var(--color-fd-primary);
+}
+
+.changelog-btn-download:hover {
+    background: var(--color-fd-muted-primary);
+    border-color: var(--color-fd-muted-primary);
+}
+
+.changelog-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.changelog-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.changelog-group-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.changelog-icon {
+    flex-shrink: 0;
+}
+
+.changelog-icon-feature { color: var(--color-fd-green); }
+.changelog-icon-fix { color: var(--color-fd-red); }
+.changelog-icon-refactor { color: var(--color-fd-orange); }
+.changelog-icon-deps { color: var(--color-fd-primary); }
+.changelog-icon-breaking { color: var(--color-fd-red); }
+
+.changelog-label {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-fd-foreground);
+}
+
+.changelog-list {
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+}
+
+.changelog-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    line-height: 1.6;
+    color: var(--color-fd-muted-foreground);
+}
+
+.changelog-dot {
+    flex-shrink: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    margin-top: 0.5rem;
+    margin-left: 0.42rem;
+}
+
+.changelog-dot-feature { background: var(--color-fd-green); }
+.changelog-dot-fix { background: var(--color-fd-red); }
+.changelog-dot-refactor { background: var(--color-fd-orange); }
+.changelog-dot-deps { background: var(--color-fd-primary); }
+.changelog-dot-breaking { background: var(--color-fd-red); }
+
+.changelog-item-breaking {
+    font-weight: 600;
+    color: var(--color-fd-foreground);
+}
+
+.changelog-authors {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.changelog-author {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0;
+    height: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: var(--color-fd-muted-foreground);
+    transition: color 0.2s;
+}
+
+.changelog-author:hover {
+    color: var(--color-fd-foreground);
+}
+
+.changelog-avatar {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+@media (max-width: 640px) {
+    .changelog-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .changelog-actions {
+        width: 100%;
+    }
+
+    .changelog-btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
