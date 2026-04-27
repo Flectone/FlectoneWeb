@@ -16,7 +16,7 @@ afk:
   enable: true
   track_playtime: true
   range: "SERVER"
-  delay: 3000
+  delay: 36000
   radius: 1.0
   ignore:
   - "afk"
@@ -69,6 +69,7 @@ brand:
 bubble:
   enable: true
   visible_to_self: true
+  disallowed_input: ""
   max_count: 3
   max_length: 30
   elevation: 2.1
