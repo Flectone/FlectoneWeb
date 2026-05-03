@@ -54,10 +54,10 @@ export async function POST(req: Request) {
             if (!data.success || !data.skin) {
                 return NextResponse.json({ success: false });
             }
-
             return NextResponse.json({
                 success: true,
                 delay: data.rateLimit?.delay?.millis || 1000,
+                skin: data.skin.texture.data.value
             });
         }
 

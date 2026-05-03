@@ -104,7 +104,6 @@ export const TextureGenerator = () => {
             }
 
             const item = items[i];
-
             try {
                 const formData = new FormData();
                 formData.append('skin', item.skin);
@@ -118,9 +117,13 @@ export const TextureGenerator = () => {
                 }
 
                 const data = await res.json();
-
                 if (data.success) {
-                    const frame = { x: item.x, y: item.y, imageBlock: item.imageBlock };
+                    const frame = {
+                        x: item.x,
+                        y: item.y,
+                        skin: data.skin,
+                        imageBlock: item.imageBlock
+                    };
                     const key = `${frame.x}-${frame.y}`;
                     framesAccumulatorRef.current.push(frame);
                     setGeneratedFrames(prev => [...prev, frame]);
@@ -155,7 +158,7 @@ export const TextureGenerator = () => {
                     frames: finalFrames.map((f: any) => ({
                         x: f.x,
                         y: f.y,
-                        value: f.imageBlock.split(',')[1]
+                        value: f.skin
                     }))
                 },
                 filename,
