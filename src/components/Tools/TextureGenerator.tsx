@@ -1,31 +1,66 @@
 'use client';
+
 import { useEffect, useState, useTransition, useRef, useMemo } from 'react';
 import { FileUploader } from '@/components/Form/Input/FileUploader';
-import { Trash } from 'lucide-react';
+import { Trash, LoaderCircle, Pause } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import MinecraftTab from '@/components/Assets/MinecraftTab';
-import { LoaderCircle, Pause } from "lucide-react";
-import '@/app/globals.css'
+import '@/app/globals.css';
+
+interface ImageData {
+    x: number;
+    y: number;
+    skin: string;
+    imageBlock: string;
+}
+
+interface ActionData {
+    success: boolean;
+    data: {
+        lastModified: number;
+        frames: {
+            x: number;
+            y: number;
+            value: string;
+        }[];
+    };
+    filename: string;
+}
+
+interface GridSize {
+    cols: number;
+    rows: number;
+}
+
+interface ApiResponse {
+    success?: boolean;
+    imageArray?: ImageData[];
+    filename?: string;
+    skin?: string;
+    delay?: number;
+    status?: number;
+}
 
 export const TextureGenerator = () => {
-    const [actionData, setActionData] = useState<any>(null);
-    const [actionError, setActionError] = useState<string | null | number>(null);
-    const [previewData, setPreviewData] = useState<any[]| null>(null);
+    const [actionData, setActionData] = useState<ActionData | null>(null);
+    const [actionError, setActionError] = useState<string | null>(null);
+    const [previewData, setPreviewData] = useState<ImageData[] | null>(null);
     const [filename, setFilename] = useState<string>('skin');
-    const [generatedFrames, setGeneratedFrames] = useState<any[]>([]);
-    const [isGenerating, setIsGenerating] = useState(false);
+    const [generatedFrames, setGeneratedFrames] = useState<ImageData[]>([]);
+    const [isGenerating, setIsGenerating] = useState<boolean>(false);
     const [latestKey, setLatestKey] = useState<string | null>(null);
-    const [gridSize, setGridSize] = useState<{ cols: number; rows: number } | null>(null);
+    const [gridSize, setGridSize] = useState<GridSize | null>(null);
+    const [isPaused, setIsPaused] = useState<boolean>(false);
 
     const [isProcessingPreview, startPreviewTransition] = useTransition();
     const t = useTranslations('Tools.TextureGenerator');
 
-    const framesAccumulatorRef = useRef<any[]>([]);
+    const framesAccumulatorRef = useRef<ImageData[]>([]);
     const animatedKeysRef = useRef<Set<string>>(new Set());
-    const pendingItemsRef = useRef<any[]>([]);
-    const isStoppedRef = useRef(false);
+    const pendingItemsRef = useRef<ImageData[]>([]);
+    const isStoppedRef = useRef<boolean>(false);
 
-    const handleReset = () => {
+    const handleReset = (): void => {
         isStoppedRef.current = true;
         setPreviewData(null);
         setActionData(null);
@@ -35,14 +70,16 @@ export const TextureGenerator = () => {
         setLatestKey(null);
         setGridSize(null);
         setIsGenerating(false);
+        setIsPaused(false);
         framesAccumulatorRef.current = [];
         animatedKeysRef.current = new Set();
         pendingItemsRef.current = [];
     };
 
-    const handleStop = () => {
+    const handleStop = (): void => {
         isStoppedRef.current = true;
         setIsGenerating(false);
+        setIsPaused(pendingItemsRef.current.length > 0);
     };
 
     useEffect(() => {
@@ -58,7 +95,7 @@ export const TextureGenerator = () => {
         }
     }, [actionData]);
 
-    const handleFileSelect = (file: File) => {
+    const handleFileSelect = (file: File): void => {
         isStoppedRef.current = true;
         setActionError(null);
         setActionData(null);
@@ -66,40 +103,47 @@ export const TextureGenerator = () => {
         setLatestKey(null);
         setGridSize(null);
         setIsGenerating(false);
+        setIsPaused(false);
         framesAccumulatorRef.current = [];
         animatedKeysRef.current = new Set();
         pendingItemsRef.current = [];
 
         startPreviewTransition(async () => {
-            const formData = new FormData();
-            formData.append('image', file);
-            const res = await fetch('/api/mineskin/generate', { method: 'POST', body: formData });
-            if (!res.ok) {
-                const err = await res.json();
-                if (err.status === 422) setActionError(t('Errors.422'));
-                else if (err.status === 413) setActionError("Максимальный размер изображение 256 на 256 пикселей");
-                else setActionError("Поврежденный или неверный файл");
-                return;
-            }
-            const result = await res.json();
-            if (result.imageArray) {
-                setPreviewData(result.imageArray);
-                setFilename(result.filename || 'skin');
-                const maxX = Math.max(...result.imageArray.map((i: any) => i.x));
-                const maxY = Math.max(...result.imageArray.map((i: any) => i.y));
-                setGridSize({ cols: maxX + 1, rows: maxY + 1 });
+            try {
+                const formData = new FormData();
+                formData.append('image', file);
+                const res = await fetch('/api/mineskin/generate', { method: 'POST', body: formData });
+                if (!res.ok) {
+                    const err: ApiResponse = await res.json();
+                    if (err.status === 422) setActionError(t('Errors.422'));
+                    else if (err.status === 413) setActionError("Максимальный размер изображение 256 на 256 пикселей");
+                    else setActionError("Поврежденный или неверный файл");
+                    return;
+                }
+                const result: ApiResponse = await res.json();
+                if (result.imageArray) {
+                    setPreviewData(result.imageArray);
+                    setFilename(result.filename || 'skin');
+                    const maxX = Math.max(...result.imageArray.map((i) => i.x));
+                    const maxY = Math.max(...result.imageArray.map((i) => i.y));
+                    setGridSize({ cols: maxX + 1, rows: maxY + 1 });
+                }
+            } catch {
+                setActionError("Ошибка при обработке файла");
             }
         });
     };
 
-    const runGeneration = async (items: any[]) => {
+    const runGeneration = async (items: ImageData[]): Promise<void> => {
         setIsGenerating(true);
+        setIsPaused(false);
         isStoppedRef.current = false;
 
         for (let i = 0; i < items.length; i++) {
             if (isStoppedRef.current) {
                 pendingItemsRef.current = items.slice(i);
                 setIsGenerating(false);
+                setIsPaused(pendingItemsRef.current.length > 0);
                 return;
             }
 
@@ -113,12 +157,13 @@ export const TextureGenerator = () => {
                 if (isStoppedRef.current) {
                     pendingItemsRef.current = items.slice(i);
                     setIsGenerating(false);
+                    setIsPaused(pendingItemsRef.current.length > 0);
                     return;
                 }
 
-                const data = await res.json();
-                if (data.success) {
-                    const frame = {
+                const data: ApiResponse = await res.json();
+                if (data.success && data.skin) {
+                    const frame: ImageData = {
                         x: item.x,
                         y: item.y,
                         skin: data.skin,
@@ -143,19 +188,20 @@ export const TextureGenerator = () => {
                         });
                     }
                 }
-            } catch (err: any) {
+            } catch (err) {
                 console.error(`Frame error ${item.x}:${item.y}:`, err);
             }
         }
 
         if (!isStoppedRef.current) {
             pendingItemsRef.current = [];
+            setIsPaused(false);
             const finalFrames = framesAccumulatorRef.current;
             setActionData({
                 success: true,
                 data: {
                     lastModified: Date.now(),
-                    frames: finalFrames.map((f: any) => ({
+                    frames: finalFrames.map((f) => ({
                         x: f.x,
                         y: f.y,
                         value: f.skin
@@ -168,7 +214,7 @@ export const TextureGenerator = () => {
         setIsGenerating(false);
     };
 
-    const handleStartGeneration = async () => {
+    const handleStartGeneration = async (): Promise<void> => {
         if (!previewData) return;
         setActionError(null);
 
@@ -186,11 +232,11 @@ export const TextureGenerator = () => {
         await runGeneration(previewData);
     };
 
-    const displayArray = useMemo(() => {
+    const displayArray = useMemo((): ImageData[] | null => {
         const source = generatedFrames.length > 0 ? generatedFrames : previewData;
         if (!source) return null;
         const seen = new Set<string>();
-        return source.filter((image: any) => {
+        return source.filter((image) => {
             const key = `${image.x}-${image.y}`;
             if (seen.has(key)) return false;
             seen.add(key);
@@ -198,15 +244,13 @@ export const TextureGenerator = () => {
         });
     }, [generatedFrames, previewData]);
 
-    const isPaused = !isGenerating && pendingItemsRef.current.length > 0;
-
-    type PreviewProps = {
+    interface PreviewProps {
         inputLabel?: string;
         inputActiveLabel?: string;
         inputClassName?: string;
-    };
+    }
 
-    function Preview({ inputLabel, inputActiveLabel, inputClassName }: PreviewProps) {
+    const Preview = ({ inputLabel, inputActiveLabel, inputClassName }: PreviewProps) => {
         return (
             <div
                 className='grid justify-center gap-y-0.5'
@@ -215,7 +259,7 @@ export const TextureGenerator = () => {
                     gridTemplateRows: `repeat(${gridSize.rows}, 1rem)`,
                 } : undefined}
             >
-                {displayArray && displayArray.map((image: any, index: number) => {
+                {displayArray && displayArray.map((image, index) => {
                     const key = `${image.x}-${image.y}`;
                     const isNew = generatedFrames.length > 0 && key === latestKey && !animatedKeysRef.current.has(key);
                     return (
@@ -332,3 +376,5 @@ export const TextureGenerator = () => {
         </div>
     );
 };
+
+export default TextureGenerator;

@@ -63,8 +63,13 @@ export async function POST(req: Request) {
 
         return NextResponse.json({ error: "Invalid request" }, { status: 400 });
 
-    } catch (err: any) {
+    } catch (err: unknown) {
         console.error("Route error:", err);
-        return NextResponse.json({ error: err.message || "Internal Server Error" }, { status: 500 });
+        const errorMessage = err instanceof Error ? err.message : "Internal Server Error";
+
+        return NextResponse.json(
+            { error: errorMessage },
+            { status: 500 }
+        );
     }
 }
