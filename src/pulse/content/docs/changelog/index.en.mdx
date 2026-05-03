@@ -10,6 +10,44 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.9.3" date="2026-04-27" authors={["TheFaser"]}>
+    <Title>
+        # Version 1.9.3
+    </Title>
+    <Features>
+        <Feature>Added disallowed input pattern filtering for bubble messages (bubble)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Renamed eventMessage parameter to rawString for clarity (chat)</Refactor>
+        <Refactor>Changed AFK delay from seconds to ticks (afk)</Refactor>
+        <Refactor>Updated AFK delay value from 3000 to 36000 ticks (afk)</Refactor>
+        <Refactor>Separated TOTAL and TOTAL_DYNAMIC time types (online)</Refactor>
+        <Refactor>Replaced hardcoded library relocation patterns with BuildConfig constant</Refactor>
+        <Refactor>Streamlined library resolution with dynamic artifact handling</Refactor>
+        <Refactor>Moved LoginStatus to shared constant utility</Refactor>
+        <Refactor>Simplified chat type lookup (proxy)</Refactor>
+        <Refactor>Replaced visibility filter method with direct stream filtering (playerlistname)</Refactor>
+        <Refactor>Optimized HTTP client configuration for Discord and Telegram integrations</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed Fabric SimpleVoice chat integration class name</Fix>
+        <Fix>Added Velocity login state tracking for player connection management</Fix>
+        <Fix>Added null check for sound object in sound players</Fix>
+        <Fix>Added system skin handling with proxy cache updates (skinsrestorer)</Fix>
+        <Fix>Added fallback mechanism using MojangSkinDataResult when primary skin lookup fails (skinsrestorer)</Fix>
+        <Fix>Fixed signature inclusion in profile property (object)</Fix>
+        <Fix>Changed online players to platform players in cleanup process</Fix>
+        <Fix>Fixed object module to always use local textures when MineSkin is not hooked</Fix>
+        <Fix>Fixed object client version check</Fix>
+        <Fix>Fixed LuckPerms user loading when player is not unknown</Fix>
+        <Fix>Fixed tick multiplier usage</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Downgraded Adventure API dependency to 4.x (temp)</Dependency>
+        <Dependency>Updated cloud dependencies to org.incendo namespace</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.9.2" date="2026-04-24" authors={["TheFaser"]}>
     <Title >
         # Version 1.9.2

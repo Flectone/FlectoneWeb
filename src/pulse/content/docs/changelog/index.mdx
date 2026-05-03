@@ -10,6 +10,44 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.9.3" date="2026-04-27" authors={["TheFaser"]}>
+    <Title>
+        # Версия 1.9.3
+    </Title>
+    <Features>
+        <Feature>Добавлена фильтрация запрещённых шаблонов ввода для сообщений над головой (bubble)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Переименован параметр eventMessage в rawString для ясности (chat)</Refactor>
+        <Refactor>Изменена задержка AFK с секунд на тики (afk)</Refactor>
+        <Refactor>Обновлено значение задержки AFK с 3000 до 36000 тиков (afk)</Refactor>
+        <Refactor>Разделены типы времени TOTAL и TOTAL_DYNAMIC (online)</Refactor>
+        <Refactor>Заменены жестко заданные шаблоны перемещения библиотек константой BuildConfig</Refactor>
+        <Refactor>Оптимизирована загрузка библиотек с динамической обработкой артефактов</Refactor>
+        <Refactor>Перемещён LoginStatus в общую утилиту констант</Refactor>
+        <Refactor>Упрощён поиск типа чата (proxy)</Refactor>
+        <Refactor>Заменён метод фильтрации видимости на прямую фильтрацию потока (playerlistname)</Refactor>
+        <Refactor>Оптимизирована конфигурация HTTP-клиента для интеграций Discord и Telegram</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлено имя класса интеграции SimpleVoice чата Fabric</Fix>
+        <Fix>Добавлено отслеживание состояния входа в Velocity для управления подключениями игроков</Fix>
+        <Fix>Добавлена проверка на null для звукового объекта в звуковых проигрывателях</Fix>
+        <Fix>Добавлена обработка системного скина с обновлением прокси-кэша (skinsrestorer)</Fix>
+        <Fix>Добавлен механизм запасного варианта с использованием MojangSkinDataResult при сбое основного поиска скина (skinsrestorer)</Fix>
+        <Fix>Исправлено включение подписи в свойство профиля (object)</Fix>
+        <Fix>Изменены онлайн-игроки на игроков платформы в процессе очистки</Fix>
+        <Fix>Исправлен модуль object для постоянного использования локальных текстур, когда MineSkin не подключён</Fix>
+        <Fix>Исправлена проверка версии клиента в модуле object</Fix>
+        <Fix>Исправлена загрузка пользователя LuckPerms, когда игрок не неизвестен</Fix>
+        <Fix>Исправлено использование множителя тиков</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Понижена версия зависимости Adventure API до 4.x (времмено)</Dependency>
+        <Dependency>Обновлены зависимости cloud до пространства имён org.incendo</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.9.2" date="2026-04-24" authors={["TheFaser"]}>
     <Title >
         # Версия 1.9.2
