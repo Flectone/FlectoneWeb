@@ -42,6 +42,10 @@ long duration = (countWords + handicapChars) / readSpeed * 60;
 
 Будет ли отправитель сообщения видеть собственное сообщение над головой
 
+### `disallowed_input`
+
+[Регулярное выражение](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) для того, чтобы не показывать сообщения над головой. Например, `disallowed_input: "^!.*"` запретит сообщения над головой, которые начинаются с `!` знака
+
 ### `max_count`
 
 Максимальное количество сообщений над головой одновременно
