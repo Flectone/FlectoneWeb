@@ -39,7 +39,7 @@
     "@svgr/webpack": "8.1.0",
     "@tailwindcss/postcss": "4.1.18",
     "@types/js-yaml": "4.0.9",
-    "@types/node": "20.19.33",
+    "@types/node": "24.12.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/unist": "3.0.3",
