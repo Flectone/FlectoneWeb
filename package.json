@@ -36,16 +36,16 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@svgr/webpack": "^8.1.0",
-    "@tailwindcss/postcss": "^4",
-    "@types/js-yaml": "^4.0.9",
-    "@types/node": "^20",
+    "@svgr/webpack": "8.1.0",
+    "@tailwindcss/postcss": "4.1.18",
+    "@types/js-yaml": "4.0.9",
+    "@types/node": "20.19.33",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/unist": "^3.0.3",
-    "eslint": "^9",
+    "@types/unist": "3.0.3",
+    "eslint": "9.39.2",
     "eslint-config-next": "16.0.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "tailwindcss": "4.1.18",
+    "typescript": "5.9.3"
   }
 }
