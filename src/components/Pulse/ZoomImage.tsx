@@ -18,13 +18,13 @@ export default function ZoomImage({ src, className, alt }: ZoomImageProps) {
   return (
 
     <>
-      <div className="w-full cursor-zoom-in max-xl:cursor-default" onClick={toggleZoom}>
+      <span className="w-full cursor-zoom-in max-xl:cursor-default" onClick={toggleZoom}>
         <img
           src={src}
           alt={alt || 'image'}
           className={className}
         />
-      </div>
+      </span>
 
       <AnimatePresence>
         {isOpen && (
