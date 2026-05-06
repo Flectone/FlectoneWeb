@@ -6,9 +6,6 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 /** @type {import('next').NextConfig} */
 const config = {
-  env: {
-    NEXT_PUBLIC_BASE_URL: '',
-  },
   async rewrites() {
     return [
       {
@@ -17,8 +14,6 @@ const config = {
       },
     ]
   },
-  trailingSlash: true,
-  basePath: '',
   serverExternalPackages: ["@takumi-rs/core"],
   reactStrictMode: true,
   output: 'standalone',
