@@ -138,7 +138,7 @@ function highlightLine(line: string, tab: OsTab, key: number): React.ReactNode {
             return (
                 <div key={key} className="flex gap-3 min-w-0">
                     {lineNum}
-                    <span className="text-fd-muted-foreground italic break-words min-w-0 whitespace-pre-wrap">{line}</span>
+                    <span className="text-fd-muted-foreground italic wrap-break-word min-w-0 whitespace-pre-wrap">{line}</span>
                 </div>
             );
         }
@@ -146,7 +146,7 @@ function highlightLine(line: string, tab: OsTab, key: number): React.ReactNode {
             return (
                 <div key={key} className="flex gap-3 min-w-0">
                     {lineNum}
-                    <span className="text-fd-orange break-words min-w-0 whitespace-pre-wrap">{line}</span>
+                    <span className="text-fd-orange wrap-break-word min-w-0 whitespace-pre-wrap">{line}</span>
                 </div>
             );
         }
@@ -181,7 +181,7 @@ function highlightLine(line: string, tab: OsTab, key: number): React.ReactNode {
         return (
             <div key={key} className="flex gap-3 min-w-0">
                 {lineNum}
-                <span className="break-words min-w-0 whitespace-pre-wrap">{rendered}</span>
+                <span className="wrap-break-word min-w-0 whitespace-pre-wrap">{rendered}</span>
             </div>
         );
     }
@@ -189,7 +189,7 @@ function highlightLine(line: string, tab: OsTab, key: number): React.ReactNode {
     return (
         <div key={key} className="flex gap-3 min-w-0">
             {lineNum}
-            <span className="text-fd-foreground break-words min-w-0 whitespace-pre-wrap">{line || '\u00A0'}</span>
+            <span className="text-fd-foreground wrap-break-word min-w-0 whitespace-pre-wrap">{line || '\u00A0'}</span>
         </div>
     );
 }
@@ -296,11 +296,11 @@ export default function ServerFlagsGenerator() {
                         <p className="text-xs">{t('filenameHint')}</p>
                     </div>
 
-                    <div className="bg-fd-article border rounded-2xl p-6  flex flex-col gap-2 w-full">
+                    <div className="bg-fd-article border rounded-2xl p-6 flex flex-col gap-2 w-full">
                         <p className="font-bold">{t('flags')}</p>
                         <div className="flex gap-2 h-full w-full flex-wrap">
-                            {PRESETS.map((p) => (
-                                <div className='w-full flex-1 flex-col gap-2 flex'>
+                            {PRESETS.map((p, key) => (
+                                <div key={key} className='w-full flex-1 flex-col gap-2 flex'>
                                     <button
                                         key={p.id}
                                         onClick={() => setPreset(p.id)}
@@ -359,12 +359,12 @@ export default function ServerFlagsGenerator() {
                             step={STEP_MB}
                             onChange={setMemoryMb}
                         />
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 max-md:flex-wrap">
                             {MEMORY_TICKS.map((mb) => (
                                 <button
                                     key={mb}
                                     onClick={() => setMemoryMb(mb)}
-                                    className={`text-xs cursor-pointer w-full py-2 rounded-md text-nowrap transition-colors duration-75 ${memoryMb === mb
+                                    className={`text-xs cursor-pointer w-full max-md:w-[calc(25%-8px)] py-2 rounded-md text-nowrap transition-colors duration-75 ${memoryMb === mb
                                         ? 'text-fd-primary font-bold bg-fd-border'
                                         : 'text-fd-muted-foreground hover:text-fd-foreground bg-fd-card hover:bg-fd-border'
                                         }`}

@@ -118,7 +118,12 @@ export function Dependency({ children }: Readonly<{ children: ReactNode }>) {
 }
 
 function formatDate(dateStr: string) {
-    const userLocale = navigator.language || 'ru';
+    const localeValue = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("NEXT_LOCALE"))
+        ?.split("=")[1];
+
+    const userLocale = localeValue == 'en' ? 'en-US' : 'ru-RU'
 
     return new Date(dateStr).toLocaleDateString(userLocale, {
         year: 'numeric',

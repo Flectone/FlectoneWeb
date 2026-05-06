@@ -1,6 +1,6 @@
 {
   "name": "flectoneweb",
-  "version": "2.5.4",
+  "version": "2.5.5",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -33,7 +33,8 @@
     "react-icons": "^5.5.0",
     "sharp": "^0.34.5",
     "tailwind-merge": "^3.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "takumi-js": "^1.1.2"
   },
   "devDependencies": {
     "@svgr/webpack": "8.1.0",

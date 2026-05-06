@@ -14,7 +14,7 @@ const config = {
       },
     ]
   },
-  serverExternalPackages: ['@takumi-rs/image-response'],
+  serverExternalPackages: ["@takumi-rs/core"],
   reactStrictMode: true,
   output: 'standalone',
   images: {

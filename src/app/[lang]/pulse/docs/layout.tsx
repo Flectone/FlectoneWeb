@@ -9,7 +9,7 @@ export default async function Layout({
                                        params
                                      }: {
   children: React.ReactNode;
-  params: Promise<{ lang: string }>; // В Next.js 15+ params — это Promise
+  params: Promise<{ lang: string }>;
 }) {
   const { lang } = await params;
 
@@ -31,7 +31,7 @@ export default async function Layout({
               tabs: {
                   transform: (option, node) => ({
                       ...option,
-                      title: <h1 className='text-fd-foreground'>{node.name}</h1>,
+                      title: <span className='text-fd-foreground'>{node.name}</span>,
                       icon: <div className='text-fd-primary [&_svg]:size-full'>{node.icon}</div>
                   }),
               },
