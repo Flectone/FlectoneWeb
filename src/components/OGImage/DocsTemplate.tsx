@@ -1,11 +1,9 @@
 import type { ReactNode } from "react";
-import { icons } from "lucide-react";
 
 export default function DocsTemplate({
                                        title,
                                        description,
                                        icon,
-                                       pageIcon,
                                        primaryColor,
                                        mutedPrimaryColor,
                                        primaryTextColor,
@@ -14,14 +12,11 @@ export default function DocsTemplate({
   title: ReactNode;
   description: ReactNode;
   icon: ReactNode;
-  pageIcon: ReactNode;
   primaryColor: string;
   mutedPrimaryColor: string;
   primaryTextColor: string;
   site: string;
 }) {
-  const iconName = pageIcon as keyof typeof icons;
-  const IconComponent = icons[iconName];
 
   return (
     <div
@@ -69,9 +64,6 @@ export default function DocsTemplate({
               gap: '8px'
             }}
           >
-            {pageIcon && (
-              <IconComponent color="white" size={64} />
-            )}
             {title}
           </span>
           <span
