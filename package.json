@@ -18,7 +18,7 @@
     "echarts-for-react": "^3.0.5",
     "framer-motion": "^12.23.24",
     "fumadocs-core": "^16.4.1",
-    "fumadocs-mdx": "^14.2.3",
+    "fumadocs-mdx": "^15.0.0",
     "fumadocs-ui": "^16.4.1",
     "js-md5": "^0.8.3",
     "lucide-react": "^1.0.0",
