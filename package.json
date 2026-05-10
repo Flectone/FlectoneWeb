@@ -45,7 +45,7 @@
     "@types/react-dom": "19.2.3",
     "@types/unist": "3.0.3",
     "eslint": "9.39.4",
-    "eslint-config-next": "16.2.4",
+    "eslint-config-next": "16.2.6",
     "tailwindcss": "4.2.4",
     "typescript": "5.9.3"
   }
