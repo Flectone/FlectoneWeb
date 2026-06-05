@@ -10,6 +10,106 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.10.0" date="2026-06-05" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.10.0
+    </Title>
+    <Features>
+        <Feature>Added serverlink module (serverlink)</Feature>
+        <Feature>Added whitelist command</Feature>
+        <Feature>Added support for formatting books, anvil names, and sign events with components for Paper (book, anvil, sign)</Feature>
+        <Feature>Added reasons field for unban, unmute, and unwarn (moderation)</Feature>
+        <Feature>Added server UUID configuration and server-side filtering for bans, mutes, and warns (ban, mute, warn)</Feature>
+        <Feature>Added subcommand configuration (command)</Feature>
+        <Feature>Added extended maintenance command capabilities: start/stop, support for time and reason (maintenance)</Feature>
+        <Feature>Added asynchronous texture loading with MineSkin integration (texture)</Feature>
+        <Feature>Added integration with MiniPlaceholders API for Fabric (miniplaceholders)</Feature>
+        <Feature>Added console name formatting (names)</Feature>
+        <Feature>Added radius parsing for clearchat and emit commands (clearchat, emit)</Feature>
+        <Feature>Added always_send_silent_packet option</Feature>
+        <Feature>Added detection of Bedrock players via UUID version check</Feature>
+        <Feature>Added additional integration placeholders (COMMAND_MAINTENANCE_FALSE/TRUE, MESSAGE_AFK_FALSE/TRUE, etc.)</Feature>
+        <Feature>Added Type enum with INIT and READY values in EnableEvent (api)</Feature>
+        <Feature>Added controls for fake join/leave messages (supervanish)</Feature>
+        <Feature>Added option to cancel default death screen (vanilla)</Feature>
+        <Feature>Added death messages for magma cube (minecraft)</Feature>
+        <Feature>Added radius configuration for playerlistname (playerlistname)</Feature>
+        <Feature>Added Mojang skins loading option (skinsrestorer)</Feature>
+        <Feature>Added avatar and body skin support for Hytale (hytale)</Feature>
+        <Feature>Added player indexing system for fast lookup by UUID, name, and IP (player)</Feature>
+        <Feature>Added violation tracking system with caps, flood, and profanity limits (moderation)</Feature>
+        <Feature>Added mode selection support for newbie message triggers (newbie)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Simplified task scheduling API, runRegion used only when necessary (scheduler)</Refactor>
+        <Refactor>Enabled server-side filtering by default (moderation)</Refactor>
+        <Refactor>Updated moderation system to properly handle unmoderation events</Refactor>
+        <Refactor>Replaced Collections with immutable collection factory methods</Refactor>
+        <Refactor>Replaced deprecated Optional-based formatting with Paper component serialization</Refactor>
+        <Refactor>MessageContext migrated to builder pattern</Refactor>
+        <Refactor>Split PreLoginEvent listeners for Bukkit and Paper compatibility (bukkit)</Refactor>
+        <Refactor>Replaced direct component serialization methods with unified ComponentSerializer</Refactor>
+        <Refactor>Optimized bubble message splitting logic (bubble)</Refactor>
+        <Refactor>Added ComponentDecorator for consistent text formatting (platform)</Refactor>
+        <Refactor>Set default has_shadow: true and see_through: false for bubble messages (bubble)</Refactor>
+        <Refactor>Moved scoreboard module to correct package (scoreboard)</Refactor>
+        <Refactor>Moved DAO implementations to database-specific interfaces (database)</Refactor>
+        <Refactor>Replaced individual moderation command implementations with centralized ModerationListSender (moderation)</Refactor>
+        <Refactor>Extracted UUID parsing logic into dedicated parser class</Refactor>
+        <Refactor>Reworked message dispatcher with improved API and documentation (api)</Refactor>
+        <Refactor>Changed moderation field type from int to string (moderation)</Refactor>
+        <Refactor>Separated Twitch, Telegram, and Discord integration classes</Refactor>
+        <Refactor>Optimized bubble message queue management with minimum display time (bubble)</Refactor>
+        <Refactor>Animation time applied to all modern bubble messages (bubble)</Refactor>
+        <Refactor>Updated Discord client creation with presence handling (discord)</Refactor>
+        <Refactor>Performed general refactoring and code optimization</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed login session management and player collection operations in async tasks (minecraft)</Fix>
+        <Fix>Implemented persist method for integration modules (placeholderapi)</Fix>
+        <Fix>Updated equals and hashCode methods for FPlayer entity</Fix>
+        <Fix>Players are always kicked to the proxy via the server (maintenance)</Fix>
+        <Fix>Added check for empty full word before calling isIgnored (swear)</Fix>
+        <Fix>Fixed double command suggestions (hytale)</Fix>
+        <Fix>Player data always saved after login event</Fix>
+        <Fix>Use event player instead of original fPlayer when processing PreLoginEvent</Fix>
+        <Fix>Fixed webhook creator ID comparison (discord)</Fix>
+        <Fix>Optimized message sending with async execution (greeting)</Fix>
+        <Fix>Replaced StringUtils.chop with Strings.CS.removeEnd, fixes [#341](https://github.com/Flectone/FlectonePulse/issues/341)</Fix>
+        <Fix>Generate random UUID for unknown players in DAO methods (database)</Fix>
+        <Fix>Added console player handling and caching logic (player)</Fix>
+        <Fix>Prevented sidebar from being sent if player disabled the setting (sidebar)</Fix>
+        <Fix>Added boundary check to prevent array out of bounds error (bubble)</Fix>
+        <Fix>Added zero ID error messages for unban, unmute, and unwarn (moderation)</Fix>
+        <Fix>Fixed AFK delay condition during migration</Fix>
+        <Fix>Use different player instead of sender for proxy sending (proxy)</Fix>
+        <Fix>Handled chest atlas naming mismatch (sprite)</Fix>
+        <Fix>Fixed initial maxNumber value and default key skip (condition)</Fix>
+        <Fix>Resolved proxy player online status synchronization issue</Fix>
+        <Fix>Fixed simple message sending method in ProxySender (proxy)</Fix>
+        <Fix>Updated version compatibility warnings (minecraft)</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated SQLite JDBC to v3.53.2.0</Dependency>
+        <Dependency>Updated BuildConfig plugin to v6.0.10</Dependency>
+        <Dependency>Updated Hytale server version to 0.5.3</Dependency>
+        <Dependency>Updated PacketEvents Spigot to v2.12.2, transitioned to own Maven repository</Dependency>
+        <Dependency>Updated Netty Buffer to v4.2.15.Final</Dependency>
+        <Dependency>Updated Fabric Loader to v0.19.3 and Fabric Loom to v1.16.3</Dependency>
+        <Dependency>Updated TelegramBots to v10</Dependency>
+        <Dependency>Updated Vanish to v1.6.9+26.1.2</Dependency>
+        <Dependency>Updated MineSkin Java Client to v3.2.6</Dependency>
+        <Dependency>Updated Jackson YAML to v3.1.4</Dependency>
+        <Dependency>Updated Lettuce Core to v7.6.0.RELEASE</Dependency>
+        <Dependency>Updated Shadow plugin to v9.4.2</Dependency>
+        <Dependency>Updated Gradle to v9.5.1</Dependency>
+        <Dependency>Updated Log4j Core to v2.26.0</Dependency>
+        <Dependency>Updated PostgreSQL to v42.7.11</Dependency>
+        <Dependency>Updated Triton API to v4.0.1</Dependency>
+        <Dependency>Updated JDBI Core to v3.53.0</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.9.3" date="2026-04-27" authors={["TheFaser"]}>
     <Title>
         # Version 1.9.3
@@ -1477,7 +1577,247 @@ import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dep
         # Version 0.1.0
     </Title>
     <Features>
-        <Feature>Initial release</Feature>
+        <Feature>Added ability to disable messages to and from Discord/Twitch/Telegram in /chatsetting</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Partial refactoring of the entire project</Refactor>
+        <Refactor>Decoupled from BukkitAPI, the project can now run on any platform</Refactor>
+        <Refactor>New project structure: icons folder renamed to images</Refactor>
+        <Refactor>messages folder renamed to localizations</Refactor>
+        <Refactor>config.yml is now only for project settings</Refactor>
+        <Refactor>Three main modules extracted into separate files: command.yml, integration.yml, and message.yml</Refactor>
+        <Refactor>Improved appearance of settings in files</Refactor>
+        <Refactor>Reworked /tictactoe command</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed integration with legacy PlasmoVoice version</Fix>
+        <Fix>Fixed integration with SuperVanish</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.9" date="2024-12-13" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.0.9
+    </Title>
+    <Features>
+        <Feature>Added Minecraft 1.21.4 support</Feature>
+        <Feature>Added new status section, including server description, icon, players, and version</Feature>
+        <Feature>Added server name change for /maintenance</Feature>
+        <Feature>Added quit, join, and afk message support for proxy</Feature>
+        <Feature>Added Text Display support for bubble messages (1.19.4 and above)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Reworked time formatting</Refactor>
+        <Refactor>Reworked bubble message system and changed duration formula</Refactor>
+        <Refactor>Reworked GUI system using PacketEvents</Refactor>
+        <Refactor>Removed GUIs for /ignorelist, /warnlist, /banlist, /mutelist</Refactor>
+        <Refactor>Removed motd, icon, player-count modules</Refactor>
+        <Refactor>/unban command now only suggests banned players</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed formatting of links with images</Fix>
+        <Fix>Fixed sending of quit messages when the quit module is disabled</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.8" date="2024-11-22" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.0.8
+    </Title>
+    <Features>
+        <Feature>Completely reworked configuration system with splitting into different subfiles</Feature>
+        <Feature>Added ability to edit advancement display range</Feature>
+        <Feature>Added ability to edit death display range</Feature>
+        <Feature>Added player ignore support in SimpleVoice and PlasmoVoice via /ignore</Feature>
+        <Feature>Added configuration link for each module in every file</Feature>
+        <Feature>Added final_clear_message placeholder for integrations</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Completely reworked documentation to reflect new changes</Refactor>
+        <Refactor>Removed separate url tag</Refactor>
+        <Refactor>Removed separate hover for emoji</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed thread handling</Fix>
+        <Fix>Fixed database operation when switching from offline to online mode</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.7" date="2024-11-09" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.0.7
+    </Title>
+    <Features>
+        <Feature>Added Minecraft 1.21.2 and 1.21.3 support</Feature>
+        <Feature>Added Telegram integration</Feature>
+        <Feature>Added ability to subscribe to Twitch stream start</Feature>
+        <Feature>Added ability to customize /gamemode messages</Feature>
+        <Feature>Added ability to customize /advancement messages</Feature>
+        <Feature>Added ability to customize /clear messages</Feature>
+        <Feature>Added ability to customize /op messages</Feature>
+        <Feature>Added ability to customize /deop messages</Feature>
+        <Feature>Added ability to customize /enchant messages</Feature>
+        <Feature>Added ability to customize /seed messages</Feature>
+        <Feature>Added ability to customize /setblock messages</Feature>
+        <Feature>Added ability to customize /spawnpoint messages</Feature>
+        <Feature>Added information output on Velocity and BungeeCord</Feature>
+        <Feature>Merged /firstonline and /lastonline into /online with new last, first, and total modes</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Merged bukkit and paper plugin builds into a single bukkit build</Refactor>
+        <Refactor>Advancement and death messages migrated to PacketEvents</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed table creation on legacy MySQL servers</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.6" date="2024-10-22" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.0.6
+    </Title>
+    <Features>
+        <Feature>Added status setting for Discord bot</Feature>
+        <Feature>Added info channel settings in Discord</Feature>
+        <Feature>Added support for custom ban, mute, and warn reasons</Feature>
+        <Feature>Added Anti-Caps system</Feature>
+        <Feature>Added check that SkinsRestorer is not initialized</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Documentation translated to English</Refactor>
+        <Refactor>Removed permission from world tag</Refactor>
+        <Refactor>Removed prefix, suffix, display, tab tags from player</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed message for right-clicking on unknown players</Fix>
+        <Fix>Fixed inaccuracies in Russian documentation</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.5" date="2024-10-05" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.0.5
+    </Title>
+    <Features>
+        <Feature>Implemented full plugin documentation in Russian</Feature>
+        <Feature>Added bukkit support, base file renamed to flectonepulse-bukkit.jar</Feature>
+        <Feature>Added new tags for PlaceholderAPI %flectonepulse_fcolor_number%</Feature>
+        <Feature>Added validation for correct time in warn and mute commands</Feature>
+        <Feature>Added webhook support in Discord integration</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Reworked message sending and formatting system</Refactor>
+        <Refactor>Below-name disabled by default</Refactor>
+        <Refactor>Changed advancement settings structure</Refactor>
+        <Refactor>Moved disable to chatsetting</Refactor>
+        <Refactor>Moved right-click to interaction</Refactor>
+        <Refactor>Moved player-list-name format to messages</Refactor>
+        <Refactor>Renamed permission flectonepulse.module.server.icon</Refactor>
+        <Refactor>Removed range from commands that didn't need it</Refactor>
+        <Refactor>Removed dimension-based chat setting</Refactor>
+        <Refactor>Removed listener from objective</Refactor>
+        <Refactor>Removed listener from brand</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed operation on spigot</Fix>
+        <Fix>Fixed mention functionality</Fix>
+        <Fix>Fixed /tell notes functionality</Fix>
+        <Fix>Fixed message sending from mail</Fix>
+        <Fix>Fixed incorrect sender for mail</Fix>
+        <Fix>Fixed %item% behavior with empty item</Fix>
+        <Fix>Fixed duplicate reason on moderation</Fix>
+        <Fix>Fixed color conversion after placeholders</Fix>
+        <Fix>Fixed player online status update in database</Fix>
+        <Fix>Fixed color clearing for other players</Fix>
+        <Fix>Fixed Russian localization messages</Fix>
+        <Fix>Fixed null in chatcolor</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.4" date="2024-09-22" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.0.4
+    </Title>
+    <Features>
+        <Feature>Created separate secrets.yml file for storing sensitive data</Feature>
+        <Feature>Added Discord and Twitch integration</Feature>
+        <Feature>Added /rockpaperscissors command (rock-paper-scissors mini-game) with custom value support</Feature>
+        <Feature>Added vault_prefix and vault_suffix placeholder replacement</Feature>
+        <Feature>Added console name setting</Feature>
+        <Feature>Added ability to disable messages from /afk, /poll, /spit, and greeting in /chatsetting</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Reworked message sending system</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed bug with player ban check</Fix>
+        <Fix>Fixed bugs when sending messages</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.3" date="2024-09-11" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.0.3
+    </Title>
+    <Features>
+        <Feature>Entire plugin switched to asynchronous mode</Feature>
+        <Feature>Added Folia core support</Feature>
+        <Feature>Added player message duplication to console</Feature>
+        <Feature>Added message localization support based on player language with use-player-locale option</Feature>
+        <Feature>Added ability to create custom localizations and specify them in config.yml</Feature>
+        <Feature>Added plugin sound functionality</Feature>
+        <Feature>Added integration with PlaceholderAPI, LuckPerms, Vault, SimpleVoice, PlasmoVoice, SuperVanish, PremiumVanish, SkinsRestorer, InteractiveChat</Feature>
+        <Feature>Implemented radius system (range = -2 for proxy and servers, range = -1 for server, range = 0 for sender, range > 0 for radius)</Feature>
+        <Feature>Added /maintenance command for technical work</Feature>
+        <Feature>Added /tictactoe command (tic-tac-toe) with hard mode</Feature>
+        <Feature>Added /mail and /clearmail commands for offline letters</Feature>
+        <Feature>Added /symbol command to search for available unicode characters</Feature>
+        <Feature>Added built-in %tps% and %online% tags</Feature>
+        <Feature>Added death message display with text upon player death</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>/tempban command removed and merged with /ban</Refactor>
+        <Refactor>Rewritten bubble message system, added display speed configuration parameter</Refactor>
+        <Refactor>Config messages organized</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed display of advancements without translation</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.2" date="2024-08-27" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.0.2
+    </Title>
+    <Features>
+        <Feature>Added BungeeCord and Velocity support</Feature>
+        <Feature>Added Console command support</Feature>
+        <Feature>Added tab name color dependency on /chatcolor</Feature>
+        <Feature>Added instant bubble message display when possible</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Removed EntityLib support, Mark and Chat Bubble methods written from scratch</Refactor>
+        <Refactor>Reworked databases (MySQL, SQLite) for independent operation</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed threading issues</Fix>
+        <Fix>Fixed many known bugs</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.1" date="2024-08-14" authors={["TheFaser"]}>
+    <Title >
+        # Version 0.0.1
+    </Title>
+    <Features>
+        <Feature>Initial release of FlectonePulse plugin</Feature>
+        <Feature>MiniMessage (Adventure API) and legacy Minecraft color support</Feature>
+        <Feature>MySQL and SQLite support</Feature>
+        <Feature>Fully asynchronous plugin operation</Feature>
+        <Feature>Elytrium Serializer used for configuration</Feature>
+        <Feature>PacketEvents used for creating artificial entities at packet level</Feature>
+        <Feature>CommandAPI used for creating vanilla plugin commands</Feature>
+        <Feature>Support for all versions from 1.16.5 to 1.21.1</Feature>
     </Features>
 </Version>
 

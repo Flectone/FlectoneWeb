@@ -9,6 +9,20 @@ tag: "hytale"
 
 <br></br>
 
+# <include>../../../../../../parts/words.mdx#localization</include>
+<span><include>../../../../../../parts/words.mdx#path</include> `localizations → language.yml → message.format.moderation.flood`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../../../files/minecraft/localizations/en_us.yml#flood</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../../files/minecraft/localizations/ru_ru.yml#flood</include></Tab>
+</Tabs>
+
+### `format_restrict`
+
+Message if the player flooded too often
+
+<br></br>
+
 # <include>../../../../../../parts/words.en.mdx#setting</include>
 <include>../../../../../../parts/words.en.mdx#path</include> `message.yml → format.moderation.flood`
 
@@ -19,6 +33,14 @@ tag: "hytale"
 ### `trim_to_single`
 
 Whether to replace ALL flood with a single character/word or simply reduce it to the `max_repeated_symbols`/`max_repeated_words` limit
+
+### `violation_limit`
+
+How many times in a row a player must flood to receive a chat restriction
+
+### `violation_reset_time`
+
+How long each violation will be valid in ticks (20 ticks = 1 second)
 
 ### `max_repeated_symbols`
 

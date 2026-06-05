@@ -15,6 +15,24 @@ tag: "minecraft"
 
 <br></br>
 
+# <include>../../../../../parts/words.mdx#localization</include>
+<span><include>../../../../../parts/words.mdx#path</include> `localizations → language.yml → message.scoreboard`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="ru_ru"><include>../../../../../files/minecraft/localizations/ru_ru.yml#scoreboard</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/minecraft/localizations/en_us.yml#scoreboard</include></Tab>
+</Tabs>
+
+### `prefix`
+
+The message displayed before the name above the head
+
+### `suffix`
+
+The message displayed after the name above the head
+
+<br></br>
+
 # <include>../../../../../parts/words.en.mdx#setting</include>
 <span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.scoreboard`</span>
 
@@ -33,14 +51,6 @@ Hides the name above the player if they are sneaking (only works if `name_visibl
 ### `color`
 
 The color of the player's team; if `name_visible` is enabled, the name will be this color
-
-### `prefix`
-
-The message displayed before the name above the head
-
-### `suffix`
-
-The message displayed after the name above the head
 
 <include>../../../../../parts/ticker.en.mdx</include>
 

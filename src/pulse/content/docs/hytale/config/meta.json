@@ -7,9 +7,7 @@
     "language",
     "database",
     "proxy",
-    "command",
-    "module",
-    "editor",
+    "internal",
     "logger",
     "cache",
     "metrics"

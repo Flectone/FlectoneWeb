@@ -640,6 +640,20 @@ command:
       name: "flectonepulse.module.command.warnlist.sound"
       type: "TRUE"
 #endregion warnlist
+#region whitelist
+  whitelist:
+    name: "flectonepulse.module.command.whitelist"
+    type: "OP"
+    bypass:
+      name: "flectonepulse.module.command.whitelist.bypass"
+      type: "OP"
+    cooldown_bypass:
+      name: "flectonepulse.module.command.whitelist.cooldown.bypass"
+      type: "OP"
+    sound:
+      name: "flectonepulse.module.command.whitelist.sound"
+      type: "TRUE"
+#endregion whitelist
 #region integration
 integration:
   name: "flectonepulse.module.integration"
@@ -1042,6 +1056,9 @@ message:
     names:
       name: "flectonepulse.module.message.format.names"
       type: "TRUE"
+      invisible:
+        name: "flectonepulse.module.message.format.names.invisible"
+        type: "TRUE"
 #endregion names
 #region object
     object:
@@ -1183,11 +1200,6 @@ message:
           name: "flectonepulse.module.message.format.replacement.strikethrough"
           type: "TRUE"
 #endregion replacement
-#region scoreboard
-    scoreboard:
-      name: "flectonepulse.module.message.format.scoreboard"
-      type: "TRUE"
-#endregion scoreboard
 #region translate
     translate:
       name: "flectonepulse.module.message.format.translate"
@@ -1214,21 +1226,6 @@ message:
       name: "flectonepulse.module.message.join.sound"
       type: "TRUE"
 #endregion join
-#region objective
-  objective:
-    name: "flectonepulse.module.message.objective"
-    type: "TRUE"
-#endregion objective
-#region belowname
-    belowname:
-      name: "flectonepulse.module.message.objective.belowname"
-      type: "TRUE"
-#endregion belowname
-#region tabname
-    tabname:
-      name: "flectonepulse.module.message.objective.tabname"
-      type: "TRUE"
-#endregion tabname
 #region quit
   quit:
     name: "flectonepulse.module.message.quit"
@@ -1248,6 +1245,31 @@ message:
       name: "flectonepulse.module.message.rightclick.sound"
       type: "TRUE"
 #endregion rightclick
+#region scoreboard
+  scoreboard:
+    name: "flectonepulse.module.message.scoreboard"
+    type: "TRUE"
+#endregion scoreboard
+#region objective
+    objective:
+      name: "flectonepulse.module.message.scoreboard.objective"
+      type: "TRUE"
+#endregion objective
+#region belowname
+      belowname:
+        name: "flectonepulse.module.message.scoreboard.objective.belowname"
+        type: "TRUE"
+#endregion belowname
+#region tabname
+      tabname:
+        name: "flectonepulse.module.message.scoreboard.objective.tabname"
+        type: "TRUE"
+#endregion tabname
+#region serverlink
+  serverlink:
+    name: "flectonepulse.module.message.serverlink"
+    type: "TRUE"
+#endregion serverlink
 #region sidebar
   sidebar:
     name: "flectonepulse.module.message.sidebar"

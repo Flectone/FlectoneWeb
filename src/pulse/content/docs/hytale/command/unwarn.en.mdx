@@ -22,6 +22,10 @@ tag: "hytale"
 
 Message if the entered player is not found
 
+### `null_id`
+
+Message if the entered moderation ID is incorrect
+
 ### `not_warned`
 
 Message if the entered player has no warnings
@@ -29,6 +33,19 @@ Message if the entered player has no warnings
 ### `lower_weight_group`
 
 Message if the command is executed by a player with a group lower than the player being moderated
+
+### `reasons`
+
+A list with keys and values, where the key is a word and the value is a specific reason
+
+<Callout type="info" title="You can add your own reasons, for example">
+    ```yaml
+    random_kek: "Random reason"
+    ```
+    Then if I write `/unwarn Notch random_kek`, the reason will be `Random reason`
+
+    If no reason is specified, `default` will be used
+</Callout>
 
 ### `format`
 

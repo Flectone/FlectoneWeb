@@ -8,6 +8,8 @@ tag: "minecraft"
 ![command maintenance](/pulse/commandmaintenance.png)
 ![command maintenance server](/pulse/commandmaintenanceserver.png)
 
+Технические работы также можно включать/выключать на время с указанием причины
+
 <br></br>
 
 # <include>../../../../parts/words.mdx#localization</include>
@@ -19,6 +21,14 @@ tag: "minecraft"
     <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#maintenance</include></Tab>
 </Tabs>
 
+### `already_true`
+
+Сообщение, если технические работы уже включены
+
+### `already_false`
+
+Сообщение, если технические работы уже выключены
+
 ### `server_description`
 
 Сообщения при просмотре сервера, если включены технические работы
@@ -27,9 +37,18 @@ tag: "minecraft"
 
 Название версии сервера, если включены технические работы
 
-### `kick`
+### `reasons`
 
-Причина исключения с сервера при включении технических работ
+Список с ключами и значениями, где ключом является слово, а значением конкретная причина
+
+<Callout type="info" title="Можно вписывать свои причины, например">
+    ```yaml
+    random_kek: "Random reason"
+    ```
+    Тогда если я напишу `/maintenance start 1d random_kek`, то причиной будет `Random reason`
+
+    Если причина не указана, будет использоваться `default`
+</Callout>
 
 ### `format_true`
 
@@ -38,6 +57,10 @@ tag: "minecraft"
 ### `format_false`
 
 Сообщение при отключении технических работ
+
+### `person`
+
+Сообщение игроку, который попытался подключиться во время технических работ
 
 <br></br>
 
@@ -48,9 +71,9 @@ tag: "minecraft"
 
 <include>../../../../parts/enable.mdx</include>
 
-### `turned_on`
+<include>../../../../parts/filterByServer.mdx</include>
 
-Включение/Отключение технических работ на сервере
+<include>../../../../parts/range.mdx</include>
 
 <include>../../../../parts/aliases.mdx</include>
 

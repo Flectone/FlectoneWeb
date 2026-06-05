@@ -40,6 +40,21 @@ tag: "minecraft"
     ```
 </Callout>
 
+<Callout type="info" title="How to configure chat to work with other plugins? (TownyChat and others)">
+
+    For TownyChat:
+    1. Open the ChatConfig.yml file (in the Towny folder)
+    2. Under the modify_chat section, set `enable: false` (this means it will not modify global type chats)
+    3. At the very end of the file, set allow_exclamation_point_to_shout to false (this is needed to avoid issues with the "!" character)
+
+    Inside FlectonePulse:
+    1. Open message.yml
+    2. In the `chat` module, set `mode: "BUKKIT"` (or `mode: "PAPER"` for some plugins) and `priority: "HIGHEST"` (so that FlectonePulse modifies the chat only at the very last moment)
+
+    This resolves issues with 99% of plugins that interact with chat. As a last resort, you can set `mode: "PACKET"` to have FlectonePulse process chat messages via PacketEvents
+
+</Callout>
+
 <br></br>
 
 # <include>../../../../parts/words.en.mdx#localization</include>

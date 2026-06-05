@@ -1,0 +1,96 @@
+---
+title: Внутренняя
+description: Настройка самого главного модуля FlectonePulse
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+<Callout type="idea" title="Информация">
+    Если при загрузке библиотек возникает ошибка связанная с `ASM`, попробуй включить сервер с флагом `-Dflectonepulse.load-asm-jar=false` (например `java -Dflectonepulse.load-asm-jar=false -jar server.jar`). Это отключает собственную загрузку asm библиотек от FlectonePulse и может решить проблему с кастомными ядрами или плагинами
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `config.yml → module`</span>
+
+<include>../../../../files/minecraft/config.yml#internal</include>
+
+### `enable`
+
+Включает или выключает работу всех модулей
+
+1. Каждый модуль имеет родителя (тот, кто выше находится)
+
+<Callout type="info" title="Например">
+```yaml
+house:
+  door:
+  chair:
+```
+
+`house` является родителем для `door` и `chair`
+</Callout>
+
+2. Каждый модуль зависит от `enable` родителя
+
+<Callout type="info" title="Например">
+```yaml
+house:
+  enable: false
+  door:
+    enable: true
+  chair:
+    enable: true
+```
+
+`house` выключен, значит внезависимости от того, включены ли `door` и `chair` - они тоже будут выключены
+</Callout>
+
+### `always_send_silent_packet`
+
+Если включено, то все пакеты (любые сообщения, ники и т.д.), которые создаёт `FlectonePulse`, будут отправляться в скрытном режиме. Это может решить проблему несовместимости плагинов, которые изменяют пакеты через `PacketEvents`
+
+### `use_paper_message_sender`
+
+Если включено, `FlectonePulse` будет использовать `Paper`, как инструмент для отправки сообщения в чат игроку.
+
+Как это работает? Сначала плагин создаёт сообщение внутри себя и получает `FlectonePulse.Component`, этот объект преобразуется в обычную строчку `String`. Далее используется сам `Paper`, чтобы из этой строчки получить `Paper.Component` и отправить его игроку
+
+<Callout type="warn" title="Предупреждение">
+
+Чтобы это работало, на сервере должен быть ядро `Paper` или его форк
+
+</Callout>
+
+### `use_bukkit_pre_login_listener`
+
+Если включено, то будет использоваться слушатель входа игроков от `Bukkit` вместо пакетов из `PacketEvents`
+
+Это решает проблему плагинов, которые как-либо взаимойдествуют с игроком при входе. Например плагины, которые создают fake игроков, будут работать только с этой включенной настройкой
+
+### `unregister_command_on_reload`
+
+<Callout type="warn" title="Предупреждение">
+    Не рекомендуется включать на старых версиях майнкрафта, иначе могут быть ошибки/предупреждения в консоли от сервера, но они никак не влияют на работу плагина
+</Callout>
+
+Если включено, то `FlectonePulse` будет удалять и снова добавлять собственные команды при `/flectonepulse reload`. Это может вызывать просадки по `tps` и `mspt` из-за большого количество пакетов, поэтому лучше выключить эту настройку если вы сталкиваетесь с подобной проблемой.
+
+
+Если выключено, то для корректного отключения комманды из `FlectonePulse` (в `commands.yml`) нужно будет перезагружать сервер.
+
+### `vanilla_commands_to_remove`
+
+Список команд **не** из `FlectonePulse`, которые должны быть отключены при старте `Fabric` сервера. Это даёт возможность заменять уже занятые команды на `Fabric`, например `/me` или `/ban`
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<include>../../../../parts/words.mdx#path</include> `permission.yml`
+
+ 
+<include>../../../../files/minecraft/permission.yml#module</include>
+
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

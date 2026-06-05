@@ -1,0 +1,93 @@
+---
+title: Internal
+description: Configuration of the most important FlectonePulse module
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+<Callout type="idea" title="Information">
+    If a library loading error related to `ASM` occurs, try starting the server with the `-Dflectonepulse.load-asm-jar=false` flag (e.g., `java -Dflectonepulse.load-asm-jar=false -jar server.jar`). This disables FlectonePulse's own ASM library loading and may resolve issues with custom cores or plugins
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `config.yml → module`</span>
+
+<include>../../../../files/hytale/config.yml#internal</include>
+
+### `enable`
+
+Enables or disables the operation of all modules
+
+1. Each module has a parent (the one above it)
+
+<Callout type="info" title="Example">
+```yaml
+house:
+  door:
+  chair:
+```
+
+`house` is the parent of `door` and `chair`
+</Callout>
+
+2. Each module depends on the parent's `enable` setting
+
+<Callout type="info" title="Example">
+```yaml
+house:
+  enable: false
+  door:
+    enable: true
+  chair:
+    enable: true
+```
+
+`house` is disabled, so regardless of whether `door` and `chair` are enabled, they will also be disabled
+</Callout>
+
+### `always_send_silent_packet`
+
+<Callout type="error" title="">
+    Not supported in Hytale
+</Callout>
+
+### `use_paper_message_sender`
+
+<Callout type="error" title="">
+    Not supported in Hytale
+</Callout>
+
+### `use_bukkit_pre_login_listener`
+
+<Callout type="error" title="">
+    Not supported in Hytale
+</Callout>
+
+### `unregister_command_on_reload`
+
+<Callout type="warn" title="Warning">
+    Not recommended to enable on older Minecraft versions, otherwise there may be errors/warnings in the server console, but they do not affect the plugin's operation in any way
+</Callout>
+
+If enabled, `FlectonePulse` will remove and re-add its own commands upon `/flectonepulse reload`. This can cause `tps` and `mspt` drops due to the large number of packets, so it's better to disable this setting if you encounter such an issue.
+
+If disabled, to properly disable a command from `FlectonePulse` (in `commands.yml`), the server will need to be restarted.
+
+### `vanilla_commands_to_remove`
+
+<Callout type="error" title="">
+    Not supported in Hytale
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<include>../../../../parts/words.mdx#path</include> `permission.yml`
+
+
+<include>../../../../files/hytale/permission.yml#module</include>
+
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

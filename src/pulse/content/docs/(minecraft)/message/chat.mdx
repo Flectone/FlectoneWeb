@@ -40,6 +40,21 @@ tag: "minecraft"
     ```
 </Callout>
 
+<Callout type="info" title="Как настроить чат, чтобы он работал с другими плагинами? (TownyChat и другие)">
+
+    Для TownyChat:
+    1. Зайди в файл ChatConfig.yml (в папке Towny)
+    2. Во вкладке modify_chat поставь `enable: false` (это означает, что он не будет модифицировать global type чаты)
+    3. В самом конце файла allow_exclamation_point_to_shout поставь false (это нужно, чтобы не было проблем с "!" знаком)
+
+    Внутри FlectonePulse:
+    1. Зайди в message.yml
+    2. В модуле `chat` поставь `mode: "BUKKIT"` (или `mode: "PAPER"` для некоторых плагинов) и `priority: "HIGHEST"` (чтобы FlectonePulse изменял чат только в самую последнюю очередь)
+
+    Это решает проблемы с 99% плагинами, которые взаимодействуют с чатом. В крайнем случае можно поставить `mode: "PACKET"`, чтобы FlectonePulse обрабатывал сообщения чата через PacketEvents
+
+</Callout>
+
 <br></br>
 
 # <include>../../../../parts/words.mdx#localization</include>

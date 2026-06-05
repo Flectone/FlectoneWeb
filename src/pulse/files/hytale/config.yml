@@ -8,9 +8,10 @@
 # __/\___  ____/\_____  ___/    \______
 #        \/           \/
 #
-# region version
-version: "1.9.3"
-# endregion version
+#region version
+server: "00000000-0000-0000-0000-000000000000"
+version: "1.10.0"
+#endregion version
 #region language
 language:
   type: "en_us"
@@ -42,10 +43,14 @@ proxy:
     user: ""
     password: ""
 #endregion proxy
-#region command
-command:
-  unregister_on_reload: false
-  disabled_fabric:
+#region internal
+internal:
+  enable: true
+  always_send_silent_packet: false
+  use_paper_message_sender: false
+  use_bukkit_pre_login_listener: true
+  unregister_command_on_reload: false
+  vanilla_commands_to_remove:
   - "msg"
   - "banlist"
   - "kick"
@@ -53,20 +58,9 @@ command:
   - "tell"
   - "me"
   - "pardon"
+  - "whitelist"
   - "ban"
-#endregion command
-#region module
-module:
-  enable: true
-  use_paper_message_sender: false
-  use_bukkit_pre_login_listener: false
-#endregion module
-#region editor
-editor:
-  host: ""
-  https: false
-  port: 25566
-#endregion editor
+#endregion internal
 #region logger
 logger:
   console: "Console"
@@ -94,6 +88,11 @@ logger:
 #region cache
 cache:
   types:
+    ANIMATION:
+      invalidate_on_reload: true
+      duration: 1
+      time_unit: "MINUTES"
+      size: 10000
     COOLDOWN:
       invalidate_on_reload: false
       duration: 5
@@ -154,6 +153,11 @@ cache:
       duration: 1
       time_unit: "HOURS"
       size: 1000
+    PLAYTIME:
+      invalidate_on_reload: true
+      duration: 10
+      time_unit: "MINUTES"
+      size: 100
 #endregion cache
 #region metrics
 metrics:

@@ -1,0 +1,52 @@
+---
+title: Серверная ссылка
+description: Кликабельные серверные ссылки в меню игры у каждого игрока
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+
+![serverlinkmenu](/pulse/serverlinkmenu.png)
+![serverlink](/pulse/serverlink.png)
+
+<Callout type="warn" title="Предупреждение">
+    Это работает только для версий `1.21` и новее
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.serverlink`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#serverlink</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#serverlink</include></Tab>
+</Tabs>
+
+### `values`
+
+Список ссылок и их сообщения, которое будет показываться. Если локализация не будет указана, будет отображаться ссылка
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → serverlink`</span>
+
+<include>../../../../files/minecraft/message.yml#serverlink</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `values`
+
+Список названий ссылок и их значения. Значение должно быть обязательно корректной ссылкой, иначе она не будет отображена
+
+<include>../../../../parts/ticker.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → message.serverlink`</span>
+
+<include>../../../../files/minecraft/permission.yml#serverlink</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>

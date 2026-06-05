@@ -1,0 +1,190 @@
+---
+title: /whitelist
+description: Command to enable/disable the whitelist and add players to it
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+![command whitelist](/pulse/hytale/commandwhitelist.png)
+
+The whitelist can be enabled/disabled temporarily with a reason specified; the server will automatically enable/disable it after the time expires. Players can also be added temporarily.
+
+The command for adding/removing can be used with a name `/whitelistplayer add TheFaser` or with a uuid `/whitelistplayer add cdc5b40e-103a-403b-9f4e-4b58cb02b9f2`.
+
+When adding a player who has not yet played on the server, a record will be created in the database with the specified `name` and `uuid`. If the server is `online-mode=true`, the `name` and `uuid` will be automatically created correctly. If the server is `online-mode=false`, the entered value will be used and will be empty, to be updated upon the player's first login. You may receive a warning that the `uuid` or `name` has changed on login; this should be ignored
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.whitelist`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#whitelist</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#whitelist</include></Tab>
+</Tabs>
+
+### `empty`
+
+Message if no one is on the whitelist
+
+### `null_page`
+
+Message if the entered page does not exist
+
+### `null_player`
+
+Message if the entered player is not found
+
+### `null_type`
+
+Message if the entered type is incorrect
+
+### `reasons`
+
+A list with keys and values, where the key is a word and the value is a specific reason
+
+<Callout type="info" title="You can add your own reasons, for example">
+    ```yaml
+    random_kek: "Random reason"
+    ```
+    Then if I write `/whitelistplayer add Notch 1d random_kek`, the reason will be `Random reason`
+
+    If no reason is specified, `default` will be used
+</Callout>
+
+### `already_add`
+
+Message if the entered player is already on the whitelist
+
+### `already_off`
+
+Message if the whitelist is already disabled
+
+### `already_on`
+
+Message if the whitelist is already enabled
+
+### `already_remove`
+
+Message if the entered player is not on the whitelist
+
+### `format_add`
+
+Message when adding a player to the whitelist
+
+### `format_off`
+
+Message when disabling the whitelist
+
+### `format_on`
+
+Message when enabling the whitelist
+
+### `format_remove`
+
+Message when removing a player from the whitelist
+
+### `person`
+
+Message for the player when they try to join the server
+
+### `connection_attempt`
+
+Message for administrators when a player tries to join the server and is not on the whitelist
+
+### `global`
+
+<Accordions>
+    <Accordion title="Messages for the global whitelist">
+        #### `header`
+
+        Top part of the list message
+
+        #### `line`
+
+        Format of each entry in the list
+
+        #### `footer`
+
+        Bottom part of the list message
+    </Accordion>
+</Accordions>
+
+### `player`
+
+<Accordions>
+    <Accordion title="Messages for player whitelist entries">
+        #### `header`
+
+        Top part of the list message
+
+        #### `line`
+
+        Format of each entry in the list
+
+        #### `footer`
+
+        Bottom part of the list message
+    </Accordion>
+</Accordions>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `command.yml → whitelist`</span>
+
+<include>../../../../files/minecraft/command.yml#whitelist</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `auto_add`
+
+Whether to automatically add players currently on the server to the whitelist
+
+### `auto_add_duration`
+
+How long a player must play to be automatically added to the whitelist. Only works if `auto_add: true`
+
+### `check_duplicate`
+
+Whether to check if the player is already on the whitelist when adding a new entry. If disabled, the same player can be added to the whitelist multiple times
+
+<include>../../../../parts/filterByServer.en.mdx</include>
+
+### `show_connection_attempts`
+
+If enabled, administrators will be shown a message about a login attempt by a player not on the whitelist
+
+<include>../../../../parts/perPage.en.mdx</include>
+
+<include>../../../../parts/range.en.mdx</include>
+
+### `sub_command_player`
+
+The name of the additional command used to interact with a player (it is always appended to the current command name, i.e., it will be `/whitelistplayer`)
+
+<include>../../../../parts/aliases.en.mdx</include>
+
+<include>../../../../parts/destination.en.mdx</include>
+
+<include>../../../../parts/cooldown.en.mdx</include>
+
+<include>../../../../parts/sound.en.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → command.whitelist`</span>
+
+<include>../../../../files/minecraft/permission.yml#whitelist</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `bypass`
+
+Permission to bypass the whitelist check
+
+<include>../../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../../parts/permission/sound.en.mdx</include>

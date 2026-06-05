@@ -43,6 +43,12 @@ If the list is empty, the server receives all messages from other servers.
 
 ### `redis`
 
+<Callout type="warn" title="Warning">
+
+    Redis is used as a `proxy`, not a database. The database is configured [here](/pulse/docs/config/database/)
+
+</Callout>
+
 Used for communication between different servers. For `user` and `password`, you can use environment variables, such as `${VALUE}`.
 
 | Поле       | Объяснение                                                   |

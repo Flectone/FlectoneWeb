@@ -119,7 +119,7 @@ public void init() {
 
 | Событие | Данные | Назначение |
 |---------|--------|------------|
-| `EnableEvent` | `FlectonePulse` | Вызывается при главном включении проекта |
+| `EnableEvent` | `FlectonePulse`, `type` (`INIT`, `READY`) | Вызывается при главном включении проекта |
 | `DisableEvent` | `FlectonePulse` | Вызывается при главном отключении проекта |
 | `StartReloadEvent` |`FlectonePulse` | Вызывается в начале перезагрузки всего проекта (может быть полезно, чтобы её отменить) |
 | `EndReloadEvent` |`FlectonePulse`, `ReloadException` (ошибка при выполнении, если возникла) | Вызывается в конце перезагрузки всего проекта |

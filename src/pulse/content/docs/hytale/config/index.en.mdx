@@ -1,6 +1,6 @@
 ---
 title: Configuration
-description: The main configuration of FlectonePulse, essential for its operation
+description: Main configuration of FlectonePulse, without which operation is impossible
 icon: FileSliders
 authors:
   - TheFaser
@@ -8,15 +8,26 @@ tag: "hytale"
 ---
 <br></br>
 
-# <include>../../../../parts/words.en.mdx#setting</include>
-<span><include>../../../../parts/words.en.mdx#path</include> `config.yml`</span>
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `config.yml`</span>
 
 <include>../../../../files/hytale/config.yml#version</include>
 
-### `version`
+### `server`
 
-The current version of the plugin, used for the correct transition between plugin versions
+The server name, used for identification in proxy mode and in moderation commands. This is a random value generated automatically when the plugin is first enabled
+
+The placeholder `<server>` or `%flectonepulse_setting_server%` can be used to get the server name for a specific player. This can be conveniently used in the `condition` module for displaying messages differently
 
 <Callout type="warn" title="Warning">
-    Do not change the plugin version unless you know what you are doing!
+    1. Different servers must have different `server` values
+    2. Be careful when creating a clean server, because all moderations (bans, whitelist, etc.) are saved relative to this name. If you deleted/cleared the config but left the old database, be sure to keep the `server` value in config.yml
+</Callout>
+
+### `version`
+
+The current plugin version, used for correct migration between plugin versions
+
+<Callout type="warn" title="Warning">
+    Do not change the plugin version if you don't know what you're doing!
 </Callout>

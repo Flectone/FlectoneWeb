@@ -1,0 +1,52 @@
+---
+title: Server Link
+description: Clickable server links in the in-game menu for each player
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+
+![serverlinkmenu](/pulse/serverlinkmenu.png)
+![serverlink](/pulse/serverlink.png)
+
+<Callout type="warn" title="Warning">
+    This only works for versions `1.21` and newer
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.serverlink`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#serverlink</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#serverlink</include></Tab>
+</Tabs>
+
+### `values`
+
+A list of links and their messages that will be displayed. If no localization is specified, the link itself will be displayed
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → serverlink`</span>
+
+<include>../../../../files/minecraft/message.yml#serverlink</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `values`
+
+A list of link names and their values. The value must be a valid link, otherwise it will not be displayed
+
+<include>../../../../parts/ticker.en.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.serverlink`</span>
+
+<include>../../../../files/minecraft/permission.yml#serverlink</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

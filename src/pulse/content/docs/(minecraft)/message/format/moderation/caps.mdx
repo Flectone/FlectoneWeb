@@ -9,12 +9,34 @@ tag: "minecraft"
 
 <br></br>
 
+# <include>../../../../../../parts/words.mdx#localization</include>
+<span><include>../../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.moderation.caps`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../../../files/minecraft/localizations/ru_ru.yml#caps</include></Tab>
+    <Tab value="en_us"><include>../../../../../../files/minecraft/localizations/en_us.yml#caps</include></Tab>
+</Tabs>
+
+### `format_restrict`
+
+Сообщение, если игрок слишком часто писал капсом
+
+<br></br>
+
 # <include>../../../../../../parts/words.mdx#setting</include>
 <span><include>../../../../../../parts/words.mdx#path</include> `message.yml → format.moderation.caps`</span>
 
 <include>../../../../../../files/minecraft/message.yml#caps</include>
 
 <include>../../../../../../parts/enable.mdx</include>
+
+### `violation_limit`
+
+Сколько раз подряд игрок должен написать капсом, чтобы получить ограничение на чат
+
+### `violation_reset_time`
+
+Сколько времени будет действительно каждое нарушение в тиках (20 тиков = 1 секунда)
 
 ### `trigger`
 

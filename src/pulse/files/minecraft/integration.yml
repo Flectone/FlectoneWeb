@@ -169,10 +169,13 @@ simplevoice:
 #region skinsrestorer
 skinsrestorer:
   enable: true
+  load_mojang_skin: false
 #endregion skinsrestorer
 #region supervanish
 supervanish:
   enable: true
+  show_fake_quit: true
+  show_fake_join: true
 #endregion supervanish
 #region tab
 tab:

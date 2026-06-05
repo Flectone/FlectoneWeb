@@ -9,12 +9,34 @@ tag: "minecraft"
 
 <br></br>
 
+# <include>../../../../../../parts/words.mdx#localization</include>
+<span><include>../../../../../../parts/words.mdx#path</include> `localizations → language.yml → message.format.moderation.caps`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../../../files/minecraft/localizations/en_us.yml#caps</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../../files/minecraft/localizations/ru_ru.yml#caps</include></Tab>
+</Tabs>
+
+### `format_restrict`
+
+Message if the player wrote in caps too often
+
+<br></br>
+
 # <include>../../../../../../parts/words.en.mdx#setting</include>
 <span><include>../../../../../../parts/words.en.mdx#path</include> `message.yml → format.moderation.caps`</span>
 
 <include>../../../../../../files/minecraft/message.yml#caps</include>
 
 <include>../../../../../../parts/enable.en.mdx</include>
+
+### `violation_limit`
+
+How many times in a row a player must write in caps to receive a chat restriction
+
+### `violation_reset_time`
+
+How long each violation will be valid in ticks (20 ticks = 1 second)
 
 ### `trigger`
 

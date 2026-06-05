@@ -10,6 +10,106 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.10.0" date="2026-06-05" authors={["TheFaser"]}>
+    <Title >
+        # Версия 1.10.0
+    </Title>
+    <Features>
+        <Feature>Добавлен модуль serverlink (serverlink)</Feature>
+        <Feature>Добавлена команда whitelist</Feature>
+        <Feature>Добавлена поддержка форматирования книг, названий наковальни и событий табличек с компонентами для Paper (book, anvil, sign)</Feature>
+        <Feature>Добавлено поле причин для unban, unmute и unwarn (moderation)</Feature>
+        <Feature>Добавлена конфигурация UUID сервера и серверная фильтрация для банов, мутов и варнов (ban, mute, warn)</Feature>
+        <Feature>Добавлена конфигурация подкоманд (command)</Feature>
+        <Feature>Добавлены расширенные возможности команды технических работ: запуск/остановка, поддержка времени и причины (maintenance)</Feature>
+        <Feature>Добавлена асинхронная загрузка текстур с интеграцией MineSkin (texture)</Feature>
+        <Feature>Добавлена интеграция с MiniPlaceholders API для Fabric (miniplaceholders)</Feature>
+        <Feature>Добавлено форматирование имени консоли (names)</Feature>
+        <Feature>Добавлен парсинг радиуса для команд clearchat и emit (clearchat, emit)</Feature>
+        <Feature>Добавлена опция always_send_silent_packet</Feature>
+        <Feature>Добавлено определение Bedrock-игроков через проверку версии UUID</Feature>
+        <Feature>Добавлены дополнительные плейсхолдеры интеграций (COMMAND_MAINTENANCE_FALSE/TRUE, MESSAGE_AFK_FALSE/TRUE и др.)</Feature>
+        <Feature>Добавлено перечисление Type со значениями INIT и READY в EnableEvent (api)</Feature>
+        <Feature>Добавлены элементы управления фальшивыми сообщениями входа/выхода (supervanish)</Feature>
+        <Feature>Добавлена опция отмены стандартного экрана смерти (vanilla)</Feature>
+        <Feature>Добавлены сообщения о смерти от серного куба (minecraft)</Feature>
+        <Feature>Добавлена конфигурация радиуса для playerlistname (playerlistname)</Feature>
+        <Feature>Добавлена опция загрузки скинов Mojang (skinsrestorer)</Feature>
+        <Feature>Добавлена поддержка скинов аватара и тела для Hytale (hytale)</Feature>
+        <Feature>Добавлена система индексации игроков для быстрого поиска по UUID, имени и IP (player)</Feature>
+        <Feature>Добавлена система отслеживания нарушений с ограничениями за капс, флуд и нецензурную лексику (moderation)</Feature>
+        <Feature>Добавлена поддержка выбора режима для триггеров сообщений newbie (newbie)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Упрощён API планирования задач, runRegion используется только при необходимости (scheduler)</Refactor>
+        <Refactor>Включена серверная фильтрация по умолчанию (moderation)</Refactor>
+        <Refactor>Обновлена система модерации для корректной обработки событий размодерации</Refactor>
+        <Refactor>Заменены Collections на фабричные методы неизменяемых коллекций</Refactor>
+        <Refactor>Заменено устаревшее форматирование на основе Optional на сериализацию компонентов Paper</Refactor>
+        <Refactor>MessageContext переведён на паттерн строитель</Refactor>
+        <Refactor>Разделены слушатели PreLoginEvent для совместимости Bukkit и Paper (bukkit)</Refactor>
+        <Refactor>Заменены прямые методы сериализации компонентов на унифицированный ComponentSerializer</Refactor>
+        <Refactor>Оптимизирована логика разделения сообщений над головой (bubble)</Refactor>
+        <Refactor>Добавлен ComponentDecorator для согласованного форматирования текста (platform)</Refactor>
+        <Refactor>Для сообщений над головой по умолчанию установлены has_shadow: true и see_through: false (bubble)</Refactor>
+        <Refactor>Модуль scoreboard перемещён в правильный пакет (scoreboard)</Refactor>
+        <Refactor>Реализации DAO перенесены в интерфейсы, специфичные для базы данных (database)</Refactor>
+        <Refactor>Отдельные реализации команд модерации заменены централизованным ModerationListSender (moderation)</Refactor>
+        <Refactor>Извлечена логика парсинга UUID в выделенный класс парсера</Refactor>
+        <Refactor>Переработан диспетчер сообщений с улучшенным API и документацией (api)</Refactor>
+        <Refactor>Тип поля модерации изменён с int на string (moderation)</Refactor>
+        <Refactor>Разделены классы интеграций Twitch, Telegram и Discord</Refactor>
+        <Refactor>Оптимизировано управление очередью сообщений над головой с минимальным временем отображения (bubble)</Refactor>
+        <Refactor>Время анимации применяется ко всем современным сообщениям над головой (bubble)</Refactor>
+        <Refactor>Обновлено создание клиента Discord с обработкой присутствия (discord)</Refactor>
+        <Refactor>Проведён общий рефакторинг и оптимизация кода</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлено управление сессиями входа и операции сбора игроков в асинхронных задачах (minecraft)</Fix>
+        <Fix>Реализован метод persist для модулей интеграции (placeholderapi)</Fix>
+        <Fix>Обновлены методы equals и hashCode для сущности FPlayer</Fix>
+        <Fix>Игроки всегда кикаются на прокси по серверу (maintenance)</Fix>
+        <Fix>Добавлена проверка на пустоту полного слова перед вызовом isIgnored (swear)</Fix>
+        <Fix>Исправлены двойные подсказки команд (hytale)</Fix>
+        <Fix>Данные игрока всегда сохраняются после события входа</Fix>
+        <Fix>Используется игрок события вместо исходного fPlayer при обработке PreLoginEvent</Fix>
+        <Fix>Исправлено сравнение ID создателя вебхука (discord)</Fix>
+        <Fix>Оптимизирована отправка сообщений с асинхронным выполнением (greeting)</Fix>
+        <Fix>StringUtils.chop заменён на Strings.CS.removeEnd, исправляет [#341](https://github.com/Flectone/FlectonePulse/issues/341)</Fix>
+        <Fix>Генерируется случайный UUID для неизвестных игроков в методах DAO (database)</Fix>
+        <Fix>Добавлена обработка и логика кэширования консольного игрока (player)</Fix>
+        <Fix>Предотвращена отправка боковой панели, если игрок отключил настройку (sidebar)</Fix>
+        <Fix>Добавлена проверка границ для предотвращения ошибки выхода за пределы массива (bubble)</Fix>
+        <Fix>Добавлены сообщения об ошибках нулевого ID для unban, unmute и unwarn (moderation)</Fix>
+        <Fix>Исправлено условие задержки AFK при миграции</Fix>
+        <Fix>Используется другой игрок вместо отправителя при прокси-отправке (proxy)</Fix>
+        <Fix>Обработано несоответствие именования chest atlas (sprite)</Fix>
+        <Fix>Исправлено начальное значение maxNumber и пропуск ключа по умолчанию (condition)</Fix>
+        <Fix>Решена проблема синхронизации онлайн-статуса прокси-игрока</Fix>
+        <Fix>Исправлен метод отправки простых сообщений в ProxySender (proxy)</Fix>
+        <Fix>Обновлены предупреждения совместимости версий (minecraft)</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Обновлён SQLite JDBC до v3.53.2.0</Dependency>
+        <Dependency>Обновлён плагин BuildConfig до v6.0.10</Dependency>
+        <Dependency>Обновлена версия сервера Hytale до 0.5.3</Dependency>
+        <Dependency>Обновлён PacketEvents Spigot до v2.12.2, осуществлён переход в собственный Maven репозиторий</Dependency>
+        <Dependency>Обновлён Netty Buffer до v4.2.15.Final</Dependency>
+        <Dependency>Обновлён Fabric Loader до v0.19.3 и Fabric Loom до v1.16.3</Dependency>
+        <Dependency>Обновлён TelegramBots до v10</Dependency>
+        <Dependency>Обновлён Vanish до v1.6.9+26.1.2</Dependency>
+        <Dependency>Обновлён MineSkin Java Client до v3.2.6</Dependency>
+        <Dependency>Обновлён Jackson YAML до v3.1.4</Dependency>
+        <Dependency>Обновлён Lettuce Core до v7.6.0.RELEASE</Dependency>
+        <Dependency>Обновлён плагин Shadow до v9.4.2</Dependency>
+        <Dependency>Обновлён Gradle до v9.5.1</Dependency>
+        <Dependency>Обновлён Log4j Core до v2.26.0</Dependency>
+        <Dependency>Обновлён PostgreSQL до v42.7.11</Dependency>
+        <Dependency>Обновлён Triton API до v4.0.1</Dependency>
+        <Dependency>Обновлён JDBI Core до v3.53.0</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.9.3" date="2026-04-27" authors={["TheFaser"]}>
     <Title>
         # Версия 1.9.3
@@ -1477,7 +1577,247 @@ import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dep
         # Версия 0.1.0
     </Title>
     <Features>
-        <Feature>Начальный выпуск</Feature>
+        <Feature>Добавлена возможность отключать сообщения для и из Discord/Twitch/Telegram в /chatsetting</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Частичный рефакторинг всего проекта</Refactor>
+        <Refactor>Отделение от BukkitAPI, проект теперь может работать на любой платформе</Refactor>
+        <Refactor>Новая структура проекта: папка icons переименована в images</Refactor>
+        <Refactor>Папка messages переименована в localizations</Refactor>
+        <Refactor>config.yml теперь только настройка проекта</Refactor>
+        <Refactor>Три главных модуля вынесены в отдельные файлы command.yml, integration.yml и message.yml</Refactor>
+        <Refactor>Улучшен вид настроек в файлах</Refactor>
+        <Refactor>Переделана команда /tictactoe</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлена интеграция с PlasmoVoice старой версии</Fix>
+        <Fix>Исправлена интеграция с SuperVanish</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.9" date="2024-12-13" authors={["TheFaser"]}>
+    <Title >
+        # Версия 0.0.9
+    </Title>
+    <Features>
+        <Feature>Добавлена поддержка Minecraft 1.21.4</Feature>
+        <Feature>Добавлен новый раздел status, включающий описание сервера, иконку, игроков и версию</Feature>
+        <Feature>Добавлена смена названия сервера для /maintenance</Feature>
+        <Feature>Добавлена поддержка сообщений quit, join и afk для прокси</Feature>
+        <Feature>Добавлена поддержка Text Display для сообщений над головой (1.19.4 и выше)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Переработано форматирование времени</Refactor>
+        <Refactor>Переработана система сообщений над головой и изменена формула длительности</Refactor>
+        <Refactor>Переработана система GUI с использованием PacketEvents</Refactor>
+        <Refactor>Удалены GUI для /ignorelist, /warnlist, /banlist, /mutelist</Refactor>
+        <Refactor>Удалены модули motd, icon, player-count</Refactor>
+        <Refactor>У команды /unban теперь подсказываются только заблокированные игроки</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлено форматирование ссылок с изображением</Fix>
+        <Fix>Исправлена отправка сообщений о выходе, если модуль quit выключен</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.8" date="2024-11-22" authors={["TheFaser"]}>
+    <Title >
+        # Версия 0.0.8
+    </Title>
+    <Features>
+        <Feature>Полностью переработана система конфигурации с разделением на разные подфайлы</Feature>
+        <Feature>Добавлена возможность редактирования дальности отображения достижений</Feature>
+        <Feature>Добавлена возможность редактирования дальности отображения смертей</Feature>
+        <Feature>Добавлена поддержка игнорирования игрока в SimpleVoice и PlasmoVoice с помощью /ignore</Feature>
+        <Feature>Добавлена ссылка на конфигурацию каждого модуля в каждом файле</Feature>
+        <Feature>Добавлен плейсхолдер final_clear_message для интеграций</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Полностью переработана документация в связи с новыми изменениями</Refactor>
+        <Refactor>Удалён отдельный тег url</Refactor>
+        <Refactor>Удалён отдельный hover у emoji</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлена работа с потоками</Fix>
+        <Fix>Исправлена работа базы данных при переходе с офлайн-режима на онлайн</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.7" date="2024-11-09" authors={["TheFaser"]}>
+    <Title >
+        # Версия 0.0.7
+    </Title>
+    <Features>
+        <Feature>Добавлена поддержка Minecraft 1.21.2 и 1.21.3</Feature>
+        <Feature>Добавлена интеграция с Telegram</Feature>
+        <Feature>Добавлена возможность подписки на начало стрима Twitch</Feature>
+        <Feature>Добавлена возможность изменять сообщения /gamemode</Feature>
+        <Feature>Добавлена возможность изменять сообщения /advancement</Feature>
+        <Feature>Добавлена возможность изменять сообщения /clear</Feature>
+        <Feature>Добавлена возможность изменять сообщения /op</Feature>
+        <Feature>Добавлена возможность изменять сообщения /deop</Feature>
+        <Feature>Добавлена возможность изменять сообщения /enchant</Feature>
+        <Feature>Добавлена возможность изменять сообщения /seed</Feature>
+        <Feature>Добавлена возможность изменять сообщения /setblock</Feature>
+        <Feature>Добавлена возможность изменять сообщения /spawnpoint</Feature>
+        <Feature>Добавлен вывод информации на Velocity и BungeeCord</Feature>
+        <Feature>Объединены /firstonline и /lastonline в /online с новыми режимами last, first и total</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Объединены образы bukkit и paper плагина в один bukkit</Refactor>
+        <Refactor>Сообщения достижений и смерти переведены на PacketEvents</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлено создание таблиц на старых MySQL серверах</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.6" date="2024-10-22" authors={["TheFaser"]}>
+    <Title >
+        # Версия 0.0.6
+    </Title>
+    <Features>
+        <Feature>Добавлена настройка статуса для Discord бота</Feature>
+        <Feature>Добавлена настройка каналов с информацией в Discord</Feature>
+        <Feature>Добавлена поддержка кастомных причин блокировки, мутов и варнов</Feature>
+        <Feature>Добавлена система Анти-Капс</Feature>
+        <Feature>Добавлена проверка, что SkinsRestorer не инициализирован</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Переведена документация на английский язык</Refactor>
+        <Refactor>Удалён пермишен у world tag</Refactor>
+        <Refactor>Удалены prefix, suffix, display, tab теги у player</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлено сообщение для правого нажатия по неизвестным игрокам</Fix>
+        <Fix>Исправлены неточности в русской документации</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.5" date="2024-10-05" authors={["TheFaser"]}>
+    <Title >
+        # Версия 0.0.5
+    </Title>
+    <Features>
+        <Feature>Реализована полная документация плагина на русском языке</Feature>
+        <Feature>Добавлена поддержка bukkit, базовый файл переименован на flectonepulse-bukkit.jar</Feature>
+        <Feature>Добавлены новые теги для PlaceholderAPI %flectonepulse_fcolor_число%</Feature>
+        <Feature>Добавлена проверка для команд warn и mute на правильное время</Feature>
+        <Feature>Добавлена поддержка вебхуков в интеграции с Discord</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Переделана система отправки и форматирования сообщений</Refactor>
+        <Refactor>Below-name выключен по умолчанию</Refactor>
+        <Refactor>Изменена структура настройки достижений</Refactor>
+        <Refactor>Перенесено disable в chatsetting</Refactor>
+        <Refactor>Перенесён right-click в interaction</Refactor>
+        <Refactor>Перенесён format для player-list-name в messages</Refactor>
+        <Refactor>Переименован пермишен flectonepulse.module.server.icon</Refactor>
+        <Refactor>Убраны range у команд, которые в нём не нуждались</Refactor>
+        <Refactor>Убрана из чата настройка по измерениям</Refactor>
+        <Refactor>Удалён listener из objective</Refactor>
+        <Refactor>Удалён listener из brand</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлена работа на spigot</Fix>
+        <Fix>Исправлена работа упоминаний</Fix>
+        <Fix>Исправлена работа заметок у /tell</Fix>
+        <Fix>Исправлена отправка сообщений из mail</Fix>
+        <Fix>Исправлен неправильный отправитель у mail</Fix>
+        <Fix>Исправлена работа %item% при пустом предмете</Fix>
+        <Fix>Исправлено дублирование причины при модерации</Fix>
+        <Fix>Исправлена конвертация цветов после плейсхолдеров</Fix>
+        <Fix>Исправлено обновление онлайна у игроков в базе данных</Fix>
+        <Fix>Исправлена очистка цвета у другого игрока</Fix>
+        <Fix>Исправлены сообщения русской локализации</Fix>
+        <Fix>Исправлен null в chatcolor</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.4" date="2024-09-22" authors={["TheFaser"]}>
+    <Title >
+        # Версия 0.0.4
+    </Title>
+    <Features>
+        <Feature>Создан отдельный файл secrets.yml для хранения секретных данных</Feature>
+        <Feature>Добавлена интеграция с Discord и Twitch</Feature>
+        <Feature>Добавлена команда /rockpaperscissors (мини-игра камень-ножницы-бумага) с поддержкой кастомных значений</Feature>
+        <Feature>Добавлена замена плейсхолдеров vault_prefix и vault_suffix</Feature>
+        <Feature>Добавлена настройка имени консоли</Feature>
+        <Feature>Добавлена возможность отключать сообщения от /afk, /poll, /spit и greeting в /chatsetting</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Переработана система отправки сообщений</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлен баг с проверкой бана человека</Fix>
+        <Fix>Исправлены баги при отправке сообщений</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.3" date="2024-09-11" authors={["TheFaser"]}>
+    <Title >
+        # Версия 0.0.3
+    </Title>
+    <Features>
+        <Feature>Весь плагин переведён в асинхронный режим</Feature>
+        <Feature>Добавлена поддержка ядра Folia</Feature>
+        <Feature>Добавлено дублирование сообщений игроков в консоль</Feature>
+        <Feature>Добавлена поддержка локализации сообщений в зависимости от языка игрока с опцией use-player-locale</Feature>
+        <Feature>Добавлена возможность создавать свои локализации и указывать их в config.yml</Feature>
+        <Feature>Добавлена работа звуков от плагина</Feature>
+        <Feature>Добавлена интеграция с PlaceholderAPI, LuckPerms, Vault, SimpleVoice, PlasmoVoice, SuperVanish, PremiumVanish, SkinsRestorer, InteractiveChat</Feature>
+        <Feature>Реализована система радиусов (range = -2 для прокси и серверов, range = -1 для сервера, range = 0 для отправителя, range > 0 для радиуса)</Feature>
+        <Feature>Добавлена команда /maintenance для технических работ</Feature>
+        <Feature>Добавлена команда /tictactoe (крестики-нолики) со сложным режимом</Feature>
+        <Feature>Добавлена команда /mail и /clearmail для офлайн-писем</Feature>
+        <Feature>Добавлена команда /symbol для поиска доступных unicode символов</Feature>
+        <Feature>Добавлены встроенные теги %tps% и %online%</Feature>
+        <Feature>Добавлено отображение сообщения с текстом при смерти игрока</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Команда /tempban удалена и совмещена с /ban</Refactor>
+        <Refactor>Переписана система сообщений над головой, добавлен параметр для настройки скорости отображения</Refactor>
+        <Refactor>Сообщения в конфигах упорядочены</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлено отображение достижений, у которых нет перевода</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.2" date="2024-08-27" authors={["TheFaser"]}>
+    <Title >
+        # Версия 0.0.2
+    </Title>
+    <Features>
+        <Feature>Добавлена поддержка BungeeCord и Velocity</Feature>
+        <Feature>Добавлена поддержка команд от Console</Feature>
+        <Feature>Добавлена зависимость цветов ников в табе от /chatcolor</Feature>
+        <Feature>Добавлено моментальное появление сообщений над головой, если возможно</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Удалена поддержка EntityLib, методы Mark и Chat Bubble написаны с нуля</Refactor>
+        <Refactor>Переделаны базы данных (MySQL, SQLite) для независимой работы</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлены проблемы с потоками</Fix>
+        <Fix>Исправлены многие известные баги</Fix>
+    </Fixes>
+</Version>
+
+<Version v="0.0.1" date="2024-08-14" authors={["TheFaser"]}>
+    <Title >
+        # Версия 0.0.1
+    </Title>
+    <Features>
+        <Feature>Начальный выпуск плагина FlectonePulse</Feature>
+        <Feature>Поддержка MiniMessage (Adventure API) и старых цветов майнкрафта</Feature>
+        <Feature>Поддержка MySQL и SQLite</Feature>
+        <Feature>Асинхронная работа всего плагина</Feature>
+        <Feature>Использование Elytrium Serializer для конфигурации</Feature>
+        <Feature>Использование PacketEvents для создания искусственных энтити на уровне пакетов</Feature>
+        <Feature>Использование CommandAPI для создания ванильных команд плагина</Feature>
+        <Feature>Поддержка всех версий от 1.16.5 до 1.21.1</Feature>
     </Features>
 </Version>
 

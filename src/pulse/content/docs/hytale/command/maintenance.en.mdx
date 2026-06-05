@@ -7,6 +7,8 @@ tag: "hytale"
 ---
 ![command maintenance](/pulse/hytale/commandmaintenance.png)
 
+Maintenance mode can also be enabled/disabled temporarily with a reason specified
+
 <br></br>
 
 # <include>../../../../parts/words.en.mdx#localization</include>
@@ -18,25 +20,46 @@ tag: "hytale"
     <Tab value="ru_ru"><include>../../../../files/hytale/localizations/ru_ru.yml#maintenance</include></Tab>
 </Tabs>
 
+### `already_true`
+
+Message if maintenance mode is already enabled
+
+### `already_false`
+
+Message if maintenance mode is already disabled
+
 ### `server_description`
 
-Messages when viewing the server if maintenance mode is enabled
+Messages displayed in the server list when maintenance mode is enabled
 
 ### `server_version`
 
-Server version name if maintenance mode is enabled
+Server version name displayed when maintenance mode is enabled
 
-### `kick`
+### `reasons`
 
-Reason for being kicked from the server when maintenance mode is turned on
+A list with keys and values, where the key is a word and the value is a specific reason
+
+<Callout type="info" title="You can add your own reasons, for example">
+    ```yaml
+    random_kek: "Random reason"
+    ```
+    Then if I write `/maintenance start 1d random_kek`, the reason will be `Random reason`
+
+    If no reason is specified, `default` will be used
+</Callout>
 
 ### `format_true`
 
-Message when maintenance mode is enabled
+Message when enabling maintenance mode
 
 ### `format_false`
 
-Message when maintenance mode is disabled
+Message when disabling maintenance mode
+
+### `person`
+
+Message to a player who tried to connect during maintenance mode
 
 <br></br>
 
@@ -47,9 +70,9 @@ Message when maintenance mode is disabled
 
 <include>../../../../parts/enable.en.mdx</include>
 
-### `turned_on`
+<include>../../../../parts/hytale/filterByServer.en.mdx</include>
 
-Enabling/Disabling server maintenance mode
+<include>../../../../parts/range.en.mdx</include>
 
 <include>../../../../parts/aliases.en.mdx</include>
 
@@ -70,7 +93,7 @@ Enabling/Disabling server maintenance mode
 
 ### `join`
 
-Permission to connect to the server during maintenance
+Permission to connect to the server during maintenance mode
 
 <include>../../../../parts/permission/cooldown.en.mdx</include>
 

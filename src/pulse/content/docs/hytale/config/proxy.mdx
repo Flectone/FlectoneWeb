@@ -42,6 +42,12 @@ clusters:
 
 ### `redis`
 
+<Callout type="warn" title="Предупреждение">
+
+    Редис используется в качестве `proxy`, а не датабазы. Датабаза настраивается [тут](/pulse/docs/config/database/)
+
+</Callout>
+
 Используется в качестве коммуникаций между разными серверами. Для `user` и `password` можно использовать environment variables, например `${VALUE}`
 
 | Поле       | Объяснение                                                            |

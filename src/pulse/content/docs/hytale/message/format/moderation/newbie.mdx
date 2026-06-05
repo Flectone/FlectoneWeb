@@ -5,7 +5,54 @@ authors:
   - TheFaser
 tag: "hytale"
 ---
+<Callout type="warn" title="Предупреждение">
+    Новичком сервера считается тот игрок, который никогда не был на сервере
 
-<Callout type="error" title="">
-    Не поддерживается в Hytale
 </Callout>
+
+<br></br>
+
+# <include>../../../../../../parts/words.mdx#localization</include>
+<span><include>../../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.moderation.newbie`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="en_us"><include>../../../../../../files/hytale/localizations/en_us.yml#newbie</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../../files/hytale/localizations/ru_ru.yml#newbie</include></Tab>
+</Tabs>
+
+### `format_restrict`
+
+Сообщение, если игрок слишком мало наиграл
+
+<br></br>
+
+# <include>../../../../../../parts/words.mdx#setting</include>
+<span><include>../../../../../../parts/words.mdx#path</include> `message.yml → format.moderation.newbie`</span>
+
+<include>../../../../../../files/hytale/message.yml#newbie</include>
+
+<include>../../../../../../parts/enable.mdx</include>
+
+### `mode`
+
+| Режим           | Объяснение                                                     |
+|-----------------|----------------------------------------------------------------|
+| `PLAYED_TIME`   | Сколько наиграно времени на сервере                            |
+| `SINCE_JOIN`    | Сколько прошло времени с момента первого подключения на сервер |
+
+### `timeout`
+
+Время в тиках, сколько новичку нельзя писать сообщение
+
+<br></br>
+
+# <include>../../../../../../parts/words.mdx#permission</include>
+<span><include>../../../../../../parts/words.mdx#path</include> `permission.yml → message.format.moderation.newbie`</span>
+
+<include>../../../../../../files/hytale/permission.yml#newbie</include>
+
+<include>../../../../../../parts/permission/permissionTier3.mdx</include>
+
+### `bypass`
+
+Право для игнорирования этого модуля
