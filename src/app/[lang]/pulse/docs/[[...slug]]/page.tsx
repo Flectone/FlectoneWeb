@@ -12,12 +12,17 @@ import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { Authors } from '@/components/Pulse/Authos';
+import { execSync } from 'child_process';
 
 export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slug]]'>) {
   const params = await props.params;
   const page = source.getPage(params.slug, params.lang);
 
   if (!page) notFound();
+
+  const filePath = `src/pulse/content/docs/${page.path}`;
+  const lastModified = getGitLastModified(filePath);
+
   const MDX = page.data.body;
   const filteredToc = page.data.toc.filter((item) => item.depth <= 3);
   return (
@@ -38,16 +43,27 @@ export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slu
           })}
         />
         <div className='flex justify-between items-center'>
-          {page.data.lastModified && (
-            <PageLastUpdate date={page.data.lastModified} />
-          )}
+          {lastModified && <PageLastUpdate date={lastModified} />}
           <EditOnGitHub
-            href={`https://github.com/Flectone/FlectoneWeb/edit/master/src/pulse/content/docs/${page.path}`}
+              href={`https://github.com/Flectone/FlectoneWeb/edit/master/${filePath}`}
           />
         </div>
       </DocsBody>
     </DocsPage>
   );
+}
+
+export function getGitLastModified(filePath: string): Date | null {
+  try {
+    const result = execSync(
+        `git log -1 --format="%aI" -- "${filePath}"`,
+        { encoding: 'utf8' }
+    ).trim();
+
+    return result ? new Date(result) : null;
+  } catch {
+    return null;
+  }
 }
 
 export async function generateStaticParams() {
