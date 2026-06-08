@@ -41,7 +41,7 @@
     "@tailwindcss/postcss": "4.2.4",
     "@types/js-yaml": "4.0.9",
     "@types/node": "24.12.3",
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.16",
     "@types/react-dom": "19.2.3",
     "@types/unist": "3.0.3",
     "eslint": "9.39.4",
