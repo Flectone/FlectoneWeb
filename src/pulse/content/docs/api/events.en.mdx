@@ -103,6 +103,7 @@ These events manage the message processing pipeline: from formatting to delivery
 | `MessageFormattingEvent` | `MessageContext` (sender, recipient, message, flags) | Modify message content during formatting. Used by formatting modules (e.g., to add `<display_name>` tags) |
 | `MessageReceiveEvent` | `FPlayer`, `Component` (message), `overlay` (whether message is in Action Bar or not) | Notification that a message was received from the server for a specific player (e.g., when gamemode changes or on death). Used to cancel the server message and send a custom one |
 | `MessageSendEvent` | `ModuleName`, `FEntity` (sender), `FPlayer` (recipient), `Component` (format), `Component` (subtext), `EventMetadata` | Deliver a formatted message to a specific recipient. Used for playing sounds, sending packets, logging to console |
+| `ProxyMessageEvent` | `processed` (whether it has been processed), `ModuleName`, `FEntity` (sender), `UUID` (message ID), `payload` (bytes, i.e. arguments of a specific message) | Processing a proxy message from a specific module. Called after receiving a valid message from the Proxy to synchronize module messages between servers. Must have `processed` set after handling, otherwise a warning will appear that the message was not processed |
 | `StatusResponseEvent` | `JsonObject` (response) | Send status message to player when viewing the server. Used to change MOTD/icon, etc. |
 
 ### Player Lifecycle Events

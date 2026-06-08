@@ -10,6 +10,46 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.10.1" date="2026-06-08" authors={["TheFaser", "Ghost-t1"]}>
+    <Title >
+        # Версия 1.10.1
+    </Title>
+    <Features>
+        <Feature>Добавлена возможность удаления ванильных команд (bukkit)</Feature>
+        <Feature>Добавлена функция импорта в whitelist</Feature>
+        <Feature>Добавлена обработка событий входа и подключения игрока для Fabric</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>!!! FPlayer отделён от настроек, игнорирований и цветов, всё вынесено в SocialService (ВАЖНОЕ ИЗМЕНЕНИЕ API: FPlayer больше не содержит поля settings, colors и т.д.) !!!</Refactor>
+        <Refactor>Добавлены слушатели прокси-сообщений для всех модулей (api)</Refactor>
+        <Refactor>Вызов включения прокси-реестра перемещён в корректное место</Refactor>
+        <Refactor>Упрощён процесс инвалидации кеша</Refactor>
+        <Refactor>Удалён параметр имени игрока из обработки предварительного входа</Refactor>
+        <Refactor>Репозиторий игрового времени перенесён из social в отдельный репозиторий</Refactor>
+        <Refactor>Удалена загрузка настроек из запросов игроков (database)</Refactor>
+        <Refactor>FPlayerService разделён на PlaytimeService и ModerationService, добавлен новый кеш для SocialRepository</Refactor>
+        <Refactor>Реструктурированы слушатели</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлено: прямая зависимость от IntegrationModule заменена внедрением через провайдер</Fix>
+        <Fix>Удалён явный выбор полей в запросах к базе данных</Fix>
+        <Fix>AFK по умолчанию убран из игнорирования сообщений (afk)</Fix>
+        <Fix>Добавлена проверка наличия суффикса AFK перед удалением, исправлена двойная отправка сообщения (afk)</Fix>
+        <Fix>Отслеживание сессий входа заменено проверкой онлайн-статуса [#359](https://github.com/Flectone/FlectonePulse/issues/359)</Fix>
+        <Fix>Исправлены «сырые» теги InteractiveChat в Discord [#360](https://github.com/Flectone/FlectonePulse/pull/360)</Fix>
+        <Fix>Исправлена логика проверки голов игроков: сначала проверяется имя, затем UUID и текстуры (object) [#362](https://github.com/Flectone/FlectonePulse/pull/362)</Fix>
+        <Fix>Обработаны дополнительные случаи ошибок миграции базы данных</Fix>
+        <Fix>Привязан извлекатель компонентов (platform)</Fix>
+        <Fix>Консоль исключена из фильтрации по радиусу (filter)</Fix>
+        <Fix>Исправлена задержка инвалидации онлайн-статуса игрока на прокси (proxy)</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Обновлён Fabric Loom до v1.17.3</Dependency>
+        <Dependency>Обновлена зависимость версии сервера Hytale</Dependency>
+        <Dependency>Обновлён SkinsRestorer API до v15.12.2</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.10.0" date="2026-06-05" authors={["TheFaser"]}>
     <Title >
         # Версия 1.10.0

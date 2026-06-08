@@ -10,7 +10,7 @@
 #
 #region version
 server: "00000000-0000-0000-0000-000000000000"
-version: "1.10.0"
+version: "1.10.1"
 #endregion version
 #region language
 language:
@@ -48,7 +48,7 @@ internal:
   enable: true
   always_send_silent_packet: false
   use_paper_message_sender: false
-  use_bukkit_pre_login_listener: true
+  use_packet_login_listener: false
   unregister_command_on_reload: false
   vanilla_commands_to_remove:
   - "msg"
@@ -158,6 +158,21 @@ cache:
       duration: 10
       time_unit: "MINUTES"
       size: 100
+    PLAYER_COLOR:
+      invalidate_on_reload: true
+      duration: 10
+      time_unit: "MINUTES"
+      size: 1000
+    PLAYER_SETTING:
+      invalidate_on_reload: true
+      duration: 10
+      time_unit: "MINUTES"
+      size: 1000
+    PLAYER_IGNORE:
+      invalidate_on_reload: true
+      duration: 1
+      time_unit: "HOURS"
+      size: 1000
 #endregion cache
 #region metrics
 metrics:

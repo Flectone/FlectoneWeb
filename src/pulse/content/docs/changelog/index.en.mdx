@@ -10,6 +10,46 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.10.1" date="2026-06-08" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.10.1
+    </Title>
+    <Features>
+        <Feature>Added vanilla command removal functionality (bukkit)</Feature>
+        <Feature>Added import functionality to whitelist (whitelist)</Feature>
+        <Feature>Added player login and connection event handling for Fabric</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>!!! Separated FPlayer and settings, ignores, colors into SocialService (BREAKING CHANGE API: FPlayer no longer contains these fields) !!!</Refactor>
+        <Refactor>Added proxy message listeners for all modules (api)</Refactor>
+        <Refactor>Moved proxy registry enable call to correct position</Refactor>
+        <Refactor>Streamlined cache invalidation process</Refactor>
+        <Refactor>Removed player name parameter from pre-login processing</Refactor>
+        <Refactor>Moved playtime repository from social to dedicated repository</Refactor>
+        <Refactor>Removed settings loading from player queries (database)</Refactor>
+        <Refactor>Separated FPlayerService into PlaytimeService and ModerationService, added new cache for SocialRepository</Refactor>
+        <Refactor>Restructured listeners</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Replaced direct IntegrationModule dependency with provider injection</Fix>
+        <Fix>Removed explicit field selection from database queries</Fix>
+        <Fix>Removed default AFK from message ignore (afk)</Fix>
+        <Fix>Checked AFK suffix before removal and fixed double message (afk)</Fix>
+        <Fix>Replaced login session tracking with online status validation [#359](https://github.com/Flectone/FlectonePulse/issues/359)</Fix>
+        <Fix>Fixed InteractiveChat raw tags in Discord [#360](https://github.com/Flectone/FlectonePulse/pull/360)</Fix>
+        <Fix>Fixed player head validation logic: check playername first, then UUID and textures (object) [#362](https://github.com/Flectone/FlectonePulse/pull/362)</Fix>
+        <Fix>Handled additional database migration error cases</Fix>
+        <Fix>Bound component extractor (platform)</Fix>
+        <Fix>Excluded console from range filtering (filter)</Fix>
+        <Fix>Delayed player online invalidation on proxy (proxy)</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated Fabric Loom to v1.17.3</Dependency>
+        <Dependency>Updated Hytale server version dependency</Dependency>
+        <Dependency>Updated SkinsRestorer API to v15.12.2</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.10.0" date="2026-06-05" authors={["TheFaser"]}>
     <Title >
         # Version 1.10.0

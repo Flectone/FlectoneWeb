@@ -18,8 +18,7 @@ afk:
   range: "SERVER"
   delay: 36000
   radius: 1.0
-  ignore:
-  - "afk"
+  ignore: []
   destination:
     type: "CHAT"
   ticker:
@@ -401,7 +400,7 @@ scoreboard:
 #endregion scoreboard
 #region objective
   objective:
-    enable: true
+    enable: false
 #endregion objective
 #region belowname
     belowname:
