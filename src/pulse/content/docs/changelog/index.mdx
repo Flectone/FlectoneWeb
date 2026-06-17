@@ -10,6 +10,55 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.10.2" date="2026-06-17" authors={["TheFaser"]}>
+    <Title >
+        # Версия 1.10.2
+    </Title>
+    <Features>
+        <Feature>Реализован единый планировщик задач</Feature>
+        <Feature>Добавлена синхронизация состояния SuperVanish между серверами через прокси</Feature>
+        <Feature>При старте и перезагрузке сервера все игроки в базе отмечаются как оффлайн</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Слушатели прокси-сообщений выделены в отдельные классы</Refactor>
+        <Refactor>Инвалидация кеша игроков на прокси оптимизирована</Refactor>
+        <Refactor>Инициализация прокси перенесена на корректный этап загрузки</Refactor>
+        <Refactor>Библиотека com.alessiodp.libby заменена на внутренние зависимости Flectone</Refactor>
+        <Refactor>Валидация ника игрока вынесена в отдельный класс-валидатор</Refactor>>
+        <Refactor>ArtifactId API теперь динамический (common -> minecraft-common, bukkit -> minecraft-bukkit и т.д.)</Refactor>
+        <Refactor>Обновлена цветовая схема логов и префикс потоков</Refactor>
+        <Refactor>Incendo Cloud Pair заменён на Apache Commons Lang3 Pair</Refactor>
+        <Refactor>Из ModuleController удалены неиспользуемые BiPredicate и импорты</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Устранено состояние гонки в обработке онлайн-статуса игроков</Fix>
+        <Fix>Игрок удаляется из скорборда при выходе с сервера</Fix>
+        <Fix>Обновление локали происходит только для онлайн-игроков</Fix>
+        <Fix>Прокси больше не отправляет сообщения при выключении плагина</Fix>
+        <Fix>В прокси-слушатели добавлена проверка допустимого диапазона</Fix>
+        <Fix>В Bukkit больше не удаляются ванильные команды при дефолтном конфиге</Fix>
+        <Fix>Добавлена совместимость с Folia для работы с пассажирами сущностей</Fix>
+        <Fix>Исправлено форматирование сообщений об ошибках в логах</Fix>
+        <Fix>Прямой ввод номера страницы в модерации обрабатывается корректно</Fix>
+        <Fix>Фейковые сообщения входа/выхода при ванише отображаются с правильной видимостью</Fix>
+        <Fix>Исправлено имя главного класса в bungee.yml</Fix>
+        <Fix>Кеш для неизвестных игроков обновляется корректно</Fix>
+        <Fix>В вайтлисте улучшена проверка имён игроков</Fix>
+        <Fix>Модерация на прокси фильтруется по серверу</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Обновлён Hytale Server до 0.5.5</Dependency>
+        <Dependency>Обновлён SkinsRestorer API до v15.12.3</Dependency>
+        <Dependency>Обновлён LibertyBans до v1.1.3</Dependency>
+        <Dependency>Обновлён Vanish до v1.6.11</Dependency>
+        <Dependency>Обновлён HikariCP до v7.1.0</Dependency>
+        <Dependency>Обновлён Plasmovoice API до v2.1.10</Dependency>
+        <Dependency>Обновлён Fabric Loom до v1.17.11</Dependency>
+        <Dependency>Обновлён MariaDB Java Client до v3.5.9</Dependency>
+        <Dependency>Обновлён Jackson до v3.2.0</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.10.1" date="2026-06-08" authors={["TheFaser", "Ghost-t1"]}>
     <Title >
         # Версия 1.10.1

@@ -10,6 +10,55 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.10.2" date="2026-06-17" authors={["TheFaser"]}>
+    <Title >
+        # Version 1.10.2
+    </Title>
+    <Features>
+        <Feature>Implemented unified task scheduler</Feature>
+        <Feature>Added SuperVanish state synchronization across servers via proxy</Feature>
+        <Feature>On server start and reload, all players in the database are marked as offline</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Proxy message listeners extracted into separate classes</Refactor>
+        <Refactor>Player cache invalidation on the proxy optimized</Refactor>
+        <Refactor>Proxy initialization moved to the correct loading phase</Refactor>
+        <Refactor>Library com.alessiodp.libby replaced with internal Flectone dependencies</Refactor>
+        <Refactor>Player nickname validation extracted to a separate validator class</Refactor>>
+        <Refactor>ArtifactId API is now dynamic (common -> minecraft-common, bukkit -> minecraft-bukkit, etc.)</Refactor>
+        <Refactor>Updated log color scheme and thread prefix</Refactor>
+        <Refactor>Incendo Cloud Pair replaced with Apache Commons Lang3 Pair</Refactor>
+        <Refactor>Removed unused BiPredicate and imports from ModuleController</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed race condition in online status handling</Fix>
+        <Fix>Player removed from scoreboard on server leave</Fix>
+        <Fix>Locale update occurs only for online players</Fix>
+        <Fix>Proxy no longer sends messages on plugin shutdown</Fix>
+        <Fix>Added valid range check to proxy listeners</Fix>
+        <Fix>Vanilla commands are no longer removed in Bukkit with default config</Fix>
+        <Fix>Added Folia compatibility for entity passenger handling</Fix>
+        <Fix>Fixed error message formatting in logs</Fix>
+        <Fix>Direct page number input in moderation is handled correctly</Fix>
+        <Fix>Fake join/leave messages while vanished displayed with correct visibility</Fix>
+        <Fix>Fixed main class name in bungee.yml</Fix>
+        <Fix>Cache for unknown players updates correctly</Fix>
+        <Fix>Improved player name validation in whitelist</Fix>
+        <Fix>Proxy moderation filtered by server</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Updated Hytale Server to 0.5.5</Dependency>
+        <Dependency>Updated SkinsRestorer API to v15.12.3</Dependency>
+        <Dependency>Updated LibertyBans to v1.1.3</Dependency>
+        <Dependency>Updated Vanish to v1.6.11</Dependency>
+        <Dependency>Updated HikariCP to v7.1.0</Dependency>
+        <Dependency>Updated Plasmovoice API to v2.1.10</Dependency>
+        <Dependency>Updated Fabric Loom to v1.17.11</Dependency>
+        <Dependency>Updated MariaDB Java Client to v3.5.9</Dependency>
+        <Dependency>Updated Jackson to v3.2.0</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.10.1" date="2026-06-08" authors={["TheFaser"]}>
     <Title >
         # Version 1.10.1
