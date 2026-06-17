@@ -6,6 +6,7 @@
   "pages": [
     "language",
     "database",
+    "executor",
     "proxy",
     "internal",
     "logger",

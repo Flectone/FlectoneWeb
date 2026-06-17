@@ -1,0 +1,58 @@
+---
+title: Executor
+description: Configuration of the thread pool for executing asynchronous tasks
+authors:
+  - TheFaser
+tag: "hytale"
+---
+<Callout type="info" title="Information">
+    The executor manages the thread pool used by `FlectonePulse` for running asynchronous tasks. Changing these settings can affect performance.
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `config.yml → executor`</span>
+
+<include>../../../../files/hytale/config.yml#executor</include>
+
+### `min_pool_size`
+
+Minimum number of threads in the pool
+
+### `max_pool_size`
+
+Maximum number of threads in the pool. A value of `-1` means no limit — as many threads as needed for current tasks will be created
+
+### `work_queue`
+
+Type of work queue for tasks
+
+| Type                | Explanation                                                                 |
+|---------------------|-----------------------------------------------------------------------------|
+| `SYNCHRONOUS`       | Tasks are executed immediately; if no threads are available, a new one is created up to the limit, otherwise tasks run synchronously |
+| `LINKED_BLOCKING`   | Tasks are queued and wait for threads to become available                    |
+
+### `keep_alive`
+
+Settings for how long idle threads that are doing nothing are kept alive
+
+#### `duration`
+
+Time value for keep alive
+
+#### `time_unit`
+
+Time unit for keep alive
+
+### `shutdown_timeout`
+
+Settings for how long to wait for running tasks to complete during shutdown
+
+#### `duration`
+
+Time value for shutdown timeout
+
+#### `time_unit`
+
+Time unit for shutdown timeout
