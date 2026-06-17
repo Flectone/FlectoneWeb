@@ -350,7 +350,7 @@ export default function ServerFlagsGenerator() {
                 <div className="bg-fd-article border rounded-2xl p-6">
                     <div className="flex flex-col gap-3 relative">
                         <p className="font-bold">
-                            Память: <code className="bg-fd-card py-0.5 px-1 rounded-sm">{formatMemory(memoryMb)}</code>
+                            ${t('memory')}: <code className="bg-fd-card py-0.5 px-1 rounded-sm">{formatMemory(memoryMb)}</code>
                         </p>
                         <Slider
                             value={memoryMb}
