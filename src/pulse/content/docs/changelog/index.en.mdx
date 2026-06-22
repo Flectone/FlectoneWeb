@@ -10,6 +10,45 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.11.0" date="2026-06-22" authors={["TheFaser"]}>
+    <Title>
+        # Version 1.11.0
+    </Title>
+    <Features>
+        <Feature>Added support for Minecraft version 26.2</Feature>
+        <Feature>Started NeoForge support (in development)</Feature>
+        <Feature>Completely reworked the command system in the scoreboard. Added per-player visibility control and support for name display distance</Feature>
+        <Feature>Added distance-based text rendering in belowname</Feature>
+        <Feature>The spy module has been rewritten using packet monitoring (so it works on Fabric too)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>In FPlayer, improved ID generation and type handling; now uses a constant for the console</Refactor>
+        <Refactor>The bubble module uses its own ExecutorService with error handling</Refactor>
+        <Refactor>Objective name generation has been extracted into a separate method</Refactor>
+        <Refactor>In FColor, added comments for SEE and OUT types</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Optimized database connection pool</Fix>
+        <Fix>Handled concurrent player updates in FPlayerDAO</Fix>
+        <Fix>Added client version check in ServerLink</Fix>
+        <Fix>Console excluded from offline player suggestions</Fix>
+        <Fix>Added color context control in objective</Fix>
+        <Fix>getFirst replaced with getInt for compatibility with JVM downgrader</Fix>
+        <Fix>Fixed argument order in sulfur cube death messages</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>PacketEvents updated to 2.13.0</Dependency>
+        <Dependency>VoiceChat API updated to v2.6.20</Dependency>
+        <Dependency>Fabric updated to 26.2</Dependency>
+        <Dependency>Fabric Loom updated to v1.17.12</Dependency>
+        <Dependency>Vanish updated to v1.6.14</Dependency>
+        <Dependency>Cloud Fabric updated to v2.0.0-beta.17</Dependency>
+        <Dependency>Cloud Paper updated to v2.0.0-beta.16</Dependency>
+        <Dependency>Gradle updated to v9.6.0</Dependency>
+        <Dependency>maven.publish plugin updated to v0.37.0</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.10.2" date="2026-06-17" authors={["TheFaser"]}>
     <Title >
         # Version 1.10.2
@@ -24,7 +63,7 @@ import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dep
         <Refactor>Player cache invalidation on the proxy optimized</Refactor>
         <Refactor>Proxy initialization moved to the correct loading phase</Refactor>
         <Refactor>Library com.alessiodp.libby replaced with internal Flectone dependencies</Refactor>
-        <Refactor>Player nickname validation extracted to a separate validator class</Refactor>>
+        <Refactor>Player nickname validation extracted to a separate validator class</Refactor>
         <Refactor>ArtifactId API is now dynamic (common -> minecraft-common, bukkit -> minecraft-bukkit, etc.)</Refactor>
         <Refactor>Updated log color scheme and thread prefix</Refactor>
         <Refactor>Incendo Cloud Pair replaced with Apache Commons Lang3 Pair</Refactor>

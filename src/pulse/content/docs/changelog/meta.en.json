@@ -3,5 +3,9 @@
   "title": "Changelog",
   "icon": "ArrowUpDown",
   "tag": "changelog",
-  "description": "List of changes for all versions"
+  "description": "List of changes for all versions",
+  "pages": [
+    "---Changelog---",
+    "index"
+  ]
 }

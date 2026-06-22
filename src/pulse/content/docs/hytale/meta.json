@@ -5,7 +5,7 @@
   "description": "Документация для Hytale",
   "tag": "hytale",
   "pages": [
-    "---Документация---",
+    "---Документация для Hytale---",
     "index",
     "config",
     "command",

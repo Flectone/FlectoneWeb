@@ -10,6 +10,45 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.11.0" date="2026-06-22" authors={["TheFaser"]}>
+    <Title>
+        # Версия 1.11.0
+    </Title>
+    <Features>
+        <Feature>Добавлена поддержка версии Minecraft 26.2</Feature>
+        <Feature>Начата поддержка NeoForge (в разработке)</Feature>
+        <Feature>Полностью переработан система команд в скорборде. Добавлен контроль видимости на каждого игрока и поддержка дистанции отображения имени</Feature>
+        <Feature>В belowname добавлен рендеринг текста в зависимости от дистанции</Feature>
+        <Feature>Модуль spy переписан на пакетный мониторинг (чтобы работало и на Fabric)</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>В FPlayer улучшена генерация ID и обработка типов, теперь используется константа для консоли</Refactor>
+        <Refactor>Модуль bubble использует собственный ExecutorService с обработкой ошибок</Refactor>
+        <Refactor>Генерация имён objective вынесена в отдельный метод</Refactor>
+        <Refactor>В FColor добавлены комментарии к типам SEE и OUT</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Оптимизирован пул соединений базы данных</Fix>
+        <Fix>Обработаны конкурентные обновления игроков в FPlayerDAO</Fix>
+        <Fix>В ServerLink добавлена проверка версии клиента</Fix>
+        <Fix>Консоль исключена из подсказок оффлайн-игроков</Fix>
+        <Fix>Добавлен контроль цветового контекста в objective</Fix>
+        <Fix>getFirst заменён на getInt для совместимости с JVM downgrader</Fix>
+        <Fix>Исправлен порядок аргументов в сообщениях смерти sulfur cube</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>PacketEvents обновлён до 2.13.0</Dependency>
+        <Dependency>VoiceChat API обновлён до v2.6.20</Dependency>
+        <Dependency>Fabric обновлён до 26.2</Dependency>
+        <Dependency>Fabric Loom обновлён до v1.17.12</Dependency>
+        <Dependency>Vanish обновлён до v1.6.14</Dependency>
+        <Dependency>Cloud Fabric обновлён до v2.0.0-beta.17</Dependency>
+        <Dependency>Cloud Paper обновлён до v2.0.0-beta.16</Dependency>
+        <Dependency>Gradle обновлён до v9.6.0</Dependency>
+        <Dependency>Плагин maven.publish обновлён до v0.37.0</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.10.2" date="2026-06-17" authors={["TheFaser"]}>
     <Title >
         # Версия 1.10.2
@@ -24,7 +63,7 @@ import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dep
         <Refactor>Инвалидация кеша игроков на прокси оптимизирована</Refactor>
         <Refactor>Инициализация прокси перенесена на корректный этап загрузки</Refactor>
         <Refactor>Библиотека com.alessiodp.libby заменена на внутренние зависимости Flectone</Refactor>
-        <Refactor>Валидация ника игрока вынесена в отдельный класс-валидатор</Refactor>>
+        <Refactor>Валидация ника игрока вынесена в отдельный класс-валидатор</Refactor>
         <Refactor>ArtifactId API теперь динамический (common -> minecraft-common, bukkit -> minecraft-bukkit и т.д.)</Refactor>
         <Refactor>Обновлена цветовая схема логов и префикс потоков</Refactor>
         <Refactor>Incendo Cloud Pair заменён на Apache Commons Lang3 Pair</Refactor>

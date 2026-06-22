@@ -3,5 +3,9 @@
   "title": "Metrics",
   "icon": "ChartCandlestick",
   "description": "Main charts on server performance",
-  "tag": "metrics"
+  "tag": "metrics",
+  "pages": [
+    "---Metrics---",
+    "index"
+  ]
 }

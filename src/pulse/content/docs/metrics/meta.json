@@ -3,5 +3,9 @@
   "title": "Аналитика",
   "icon": "ChartCandlestick",
   "description": "Основные графики по работе серверов",
-  "tag": "metrics"
+  "tag": "metrics",
+  "pages": [
+    "---Аналитика---",
+    "index"
+  ]
 }

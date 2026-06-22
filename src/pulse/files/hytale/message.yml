@@ -405,6 +405,7 @@ scoreboard:
 #region belowname
     belowname:
       enable: false
+      distance: 64.0
       ticker:
         enable: true
         period: 100

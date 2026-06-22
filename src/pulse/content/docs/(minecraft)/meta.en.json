@@ -5,7 +5,7 @@
   "description": "Documentation for Minecraft",
   "tag": "minecraft",
   "pages": [
-    "---Documentation---",
+    "---Documentation for Minecraft---",
     "index",
     "config",
     "command",
