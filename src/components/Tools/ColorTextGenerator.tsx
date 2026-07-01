@@ -249,6 +249,59 @@ function parseNodes(raw: string): ParsedNode[] {
     return nodes;
 }
 
+function truncateLineClean(line: string, maxChars: number): string {
+    const re = /(?:&|§)([0-9a-fA-Fklmnor])|(?:&|§)(#[0-9a-fA-F]{6})|<\/([a-zA-Z_]+)>|<([^>]+)>|([^&§<>\n]+|[<>])|(\n)/gi;
+    const tokens: Array<{ raw: string; isText: boolean; text: string }> = [];
+    let m: RegExpExecArray | null;
+    let totalCleanLength = 0;
+
+    while ((m = re.exec(line)) !== null) {
+        const rawToken = m[0];
+        let isText = false;
+        let textContent = "";
+
+        if (m[5] !== undefined) {
+            isText = true;
+            textContent = m[5];
+        } else if (m[4] !== undefined) {
+            const raw_tag = m[4];
+            const tagName = raw_tag.toLowerCase().split(':')[0];
+            if (!KNOWN_TAGS.has(tagName) && resolveColor(raw_tag) === null) {
+                isText = true;
+                textContent = `<${raw_tag}>`;
+            }
+        }
+
+        tokens.push({ raw: rawToken, isText, text: textContent });
+        if (isText) totalCleanLength += textContent.length;
+    }
+
+    if (totalCleanLength <= maxChars) return line;
+
+    let allowedTextChars = maxChars;
+    let result = "";
+
+    for (const token of tokens) {
+        if (token.isText) {
+            if (allowedTextChars <= 0) continue; 
+            if (token.text.length <= allowedTextChars) {
+                result += token.raw;
+                allowedTextChars -= token.text.length;
+            } else {
+                if (token.raw.startsWith('<') && token.raw.endsWith('>')) {
+                    result += token.text.slice(0, allowedTextChars);
+                } else {
+                    result += token.raw.slice(0, allowedTextChars);
+                }
+                allowedTextChars = 0;
+            }
+        } else {
+            result += token.raw;
+        }
+    }
+    return result;
+}
+
 function hexToRgb(hex: string): [number, number, number] {
     const n = Number.parseInt(hex.replace('#', ''), 16);
     return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
@@ -501,22 +554,42 @@ export default function ColorTextGenerator() {
     const tabHeaderRef = useRef<HTMLTextAreaElement>(null);
     const tabFooterRef = useRef<HTMLTextAreaElement>(null);
 
-    let lines = raw.split('\n');
+const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
+    const value = e.target.value;
+    let processedLines = value.split('\n');
 
-    useEffect(() => {
-        if (maxCharsPerLine) {
-            lines = lines.map(line => line.slice(0, maxCharsPerLine));
-        }
+    if (maxCharsPerLine) {
+        processedLines = processedLines.map(line => truncateLineClean(line, maxCharsPerLine));
+    }
 
-        if (maxLines && lines.length > maxLines) {
-            lines = lines.slice(0, maxLines);
-        }
+    if (maxLines && processedLines.length > maxLines) {
+        processedLines = processedLines.slice(0, maxLines);
+    }
 
-        const processed = lines.join('\n');
-        if (processed !== raw) {
-            setRaw(processed);
-        }
-    }, [maxLines, maxCharsPerLine]);
+    setRaw(processedLines.join('\n'));
+};
+
+useEffect(() => {
+    let processedLines = raw.split('\n');
+    let modified = false;
+
+    if (maxCharsPerLine) {
+        processedLines = processedLines.map(line => {
+            const truncated = truncateLineClean(line, maxCharsPerLine);
+            if (truncated !== line) modified = true;
+            return truncated;
+        });
+    }
+
+    if (maxLines && processedLines.length > maxLines) {
+        processedLines = processedLines.slice(0, maxLines);
+        modified = true;
+    }
+
+    if (modified) {
+        setRaw(processedLines.join('\n'));
+    }
+}, [maxLines, maxCharsPerLine]);
 
 
     const isMini = format === 'minimessage';
@@ -759,12 +832,10 @@ export default function ColorTextGenerator() {
                             <p className="">{t('input')}</p>
                             <InputText
                                 value={raw}
-                                onChange={(e) => (setRaw(e.target.value))}
+                                onChange={handleInputChange}
                                 placeholder={t('placeholder')}
                                 textareaRef={textareaRef}
                                 clearText={() => (setRaw(''))}
-                                maxLines={previewMode === 'sign' ? 4 : previewMode === 'book' ? 11 : previewMode === 'motd' ? 2 : previewMode === 'name' ? 1 : null}
-                                maxCharsPerLine={previewMode === 'sign' ? 16 : previewMode === 'book' ? 16 : previewMode === 'motd' ? 29 : previewMode === 'name' ? 16 : null}
                             />
                         </div>
 
