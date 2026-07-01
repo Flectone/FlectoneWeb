@@ -770,7 +770,15 @@ useEffect(() => {
                                                         className="bg-transparent text-xs font-mono outline-none w-full text-fd-foreground"
                                                     />
                                                 </div>
-                                                <button className='w-7 h-7 cursor-pointer hover:bg-fd-muted-gray transition rounded-sm bg-fd-gray shrink-0 flex items-center justify-center' onClick={() => { insert(`&${pickerColor}`, `<${pickerColor}>`); setShowPicker(false); LEGACY_COLORS.push({ code: pickerColor, hex: pickerColor }) }}>
+                                                <button 
+                                                    className='w-7 h-7 cursor-pointer hover:bg-fd-muted-gray transition rounded-sm bg-fd-gray shrink-0 flex items-center justify-center' 
+                                                    onClick={() => { 
+                                                        insert(`&${pickerColor}`, `<${pickerColor}>`); 
+                                                        setShowPicker(false); 
+                                                        LEGACY_COLORS.push({ code: pickerColor, hex: pickerColor }) 
+                                                        LEGACY_CODE_TO_MM[pickerColor] = `${pickerColor}`;
+                                                    }}
+                                                >
                                                     <Plus size={'1.2em'} />
                                                 </button>
                                             </div>
