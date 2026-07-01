@@ -202,9 +202,6 @@ export default function Metric(props: MetricProps) {
     const pieOption = useMemo((): EChartsOption => ({
         tooltip: {
             trigger: 'item',
-            backgroundColor: 'rgba(0,0,0,0.8)',
-            borderColor: '#333',
-            textStyle: { color: '#fff' },
             formatter: (params: TopLevelFormatterParams) => {
                 const p = params as CallbackDataParams
 
@@ -270,9 +267,6 @@ export default function Metric(props: MetricProps) {
         return {
             tooltip: {
                 trigger: 'item',
-                backgroundColor: 'rgba(0,0,0,0.8)',
-                borderColor: '#333',
-                textStyle: { color: '#fff' },
                 formatter: (params: CallbackDataParams) => {
                     const val = params.value || 0;
                     return `
@@ -325,9 +319,6 @@ export default function Metric(props: MetricProps) {
         title: [{ text: data?.first.name, left: '25%', top: '83%', textAlign: 'center', textStyle: { fontSize: 16, color: '#999' } }, { text: data?.second.name, left: '75%', top: '83%', textAlign: 'center', textStyle: { fontSize: 16, color: '#999' } }],
         tooltip: {
             trigger: 'item',
-            backgroundColor: 'rgba(0,0,0,0.8)',
-            borderColor: '#333',
-            textStyle: { color: '#fff' },
             formatter: (params: CallbackDataParams | CallbackDataParams[]) => {
                 const data = Array.isArray(params) ? params[0] : params;
                 return `

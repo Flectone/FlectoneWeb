@@ -17,6 +17,20 @@ const AVAILABLE_FONTS = [
     { value: '10px MinecraftBold', label: 'Minecraft Bold', family: 'MinecraftBold', offsetY: 9 },
 ];
 
+function completeHexColor(hexInput: string) {
+    let cleanHex = hexInput.replace(/[^0-9A-Fa-f]/g, '');
+    if (cleanHex.length === 0) {
+        return '#000000';
+    }
+    if (cleanHex.length === 3) {
+        return '#' + cleanHex.split('').map(char => char + char).join('');
+    }
+    while (cleanHex.length < 6) {
+        cleanHex += cleanHex;
+    }
+    return '#' + cleanHex.substring(0, 6).toLowerCase();
+}
+
 export default function PrefixGenerator() {
     const t = useTranslations('Tools.PrefixGenerator')
     const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -163,7 +177,7 @@ export default function PrefixGenerator() {
         } else {
             borderColor.forEach((color, index) => {
                 const position = index / (borderColor.length - 1);
-                gradient.addColorStop(position, color);
+                gradient.addColorStop(position, completeHexColor(color));
             });
         }
 
@@ -203,7 +217,7 @@ export default function PrefixGenerator() {
         } else {
             bgColor.forEach((color, index) => {
                 const position = index / (bgColor.length - 1);
-                gradient.addColorStop(position, color);
+                gradient.addColorStop(position, completeHexColor(color));
             });
         }
 
@@ -245,7 +259,7 @@ export default function PrefixGenerator() {
         } else {
             textColor.forEach((color, index) => {
                 const position = index / (textColor.length - 1);
-                gradient.addColorStop(position, color);
+                gradient.addColorStop(position, completeHexColor(color));
             });
         }
 
