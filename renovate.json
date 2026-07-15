@@ -4,6 +4,7 @@
   "labels": ["dependencies"],
   "semanticCommitType": "build",
   "commitMessagePrefix": "chore(deps): ",
-  "enabledManagers": ["npm"],
-  "ignorePaths": ["**/package.json", "!package.json"]
+  "lockFileMaintenance": {
+    "enabled": false
+  }
 }
