@@ -3,5 +3,7 @@
   "extends": ["config:best-practices"],
   "labels": ["dependencies"],
   "semanticCommitType": "build",
-  "commitMessagePrefix": "chore(deps): "
+  "commitMessagePrefix": "chore(deps): ",
+  "enabledManagers": ["npm"],
+  "ignorePaths": ["**/package.json", "!package.json"]
 }
