@@ -5,6 +5,5 @@
   "semanticCommitType": "build",
   "commitMessagePrefix": "chore(deps): ",
   "enabledManagers": ["npm"],
-  "ignorePaths": ["**/package.json", "!package.json"],
-  "rangeStrategy": "bump" 
+  "ignorePaths": ["**/package.json", "!package.json"]
 }
