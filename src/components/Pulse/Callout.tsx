@@ -12,10 +12,17 @@ interface CalloutProps {
 }
 
 const typeStyles: Record<CalloutProps["type"], string> = {
-  info: 'bg-fd-info/50',
-  warn: 'bg-fd-warning/50',
-  idea: 'bg-fd-success/50',
-  error: 'bg-fd-error/50'
+  info: 'bg-fd-info/20 border-fd-info/10',
+  warn: 'bg-fd-warning/20 border-fd-warning/10',
+  idea: 'bg-fd-success/20 border-fd-success/10',
+  error: 'bg-fd-error/20 border-fd-error/10'
+}
+
+const titleStyles: Record<CalloutProps["type"], string> = {
+  info: 'text-fd-info',
+  warn: 'text-fd-warning',
+  idea: 'text-fd-success',
+  error: 'text-fd-error'
 }
 
 const typeIcons: Record<CalloutProps["type"], ReactNode> = {
@@ -27,14 +34,14 @@ const typeIcons: Record<CalloutProps["type"], ReactNode> = {
 
 export default function Callout({ type, title, children, margin = 'normal' }: CalloutProps) {
   return (
-    <div className={`pt-3 pr-3 pb-3 w-full flex gap-3 ${margin == 'normal' ? 'mb-4' : ''} bg-fd-card/50 border rounded-lg overflow-hidden`}>
-      <div className={`${typeStyles[type]} w-0.5 ml-1.5 rounded-full shrink-0`}></div>
+    <div className={`p-3 w-full flex gap-3 ${margin == 'normal' ? 'mb-4' : ''} ${typeStyles[type]} border rounded-lg overflow-hidden`}>
+      {/* <div className={`${typeStyles[type]} w-0.5 ml-1.5 rounded-full shrink-0`}></div> */}
       <div className={`flex flex-col ${title ? 'gap-2' : 'gap-0'}`}>
-        <div className='flex items-center text-sm gap-2 font-semibold [&_p]:my-0'>
+        <div className={`${titleStyles[type]} flex items-center text-sm gap-2 font-semibold [&_p]:my-0 `}>
           {typeIcons[type]}
           {title ? title : children}
         </div>
-        <div className="[&_p]:my-0 text-sm">
+        <div className="[&_p]:my-0 [&_p]:!text-fd-foreground text-sm ">
           {title ? children : ''}
         </div>
       </div>
