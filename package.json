@@ -16,7 +16,7 @@
     "clsx": "^2.1.1",
     "echarts": "^6.0.0",
     "echarts-for-react": "^3.0.5",
-    "framer-motion": "^12.23.24",
+    "motion": "^12.23.24",
     "fumadocs-core": "^16.4.1",
     "fumadocs-mdx": "^15.0.0",
     "fumadocs-ui": "^16.4.1",
