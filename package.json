@@ -34,7 +34,7 @@
     "sharp": "^0.35.0",
     "tailwind-merge": "^3.4.0",
     "tailwindcss-animate": "^1.0.7",
-    "takumi-js": "^1.1.2"
+    "takumi-js": "^2.0.0"
   },
   "devDependencies": {
     "@svgr/webpack": "8.1.0",
