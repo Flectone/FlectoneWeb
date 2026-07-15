@@ -101,6 +101,14 @@ p {
   color: var(--color-fd-primary-foreground);
 }
 
+code {
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  font-size: 1.2em;
+}
+
 canvas {
     image-rendering: crisp-edges;
     image-rendering: pixelated;
