@@ -1,5 +1,6 @@
 import {RootProvider} from 'fumadocs-ui/provider/next';
 import '../globals.css';
+import 'lucide-static/font/lucide.css';
 import {Inter} from 'next/font/google';
 import {NextIntlClientProvider} from 'next-intl';
 import {source} from "@/lib/source";
