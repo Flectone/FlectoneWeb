@@ -106,7 +106,8 @@ code {
   margin: 0;
   background: none;
   border: none;
-  font-size: 1.2em;
+  font-size: 1.0em;
+  font-family: Minecraft;
 }
 
 canvas {
