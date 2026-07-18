@@ -4,6 +4,8 @@ import 'lucide-static/font/lucide.css';
 import {Inter} from 'next/font/google';
 import {NextIntlClientProvider} from 'next-intl';
 import {source} from "@/lib/source";
+import { translations } from '@/lib/layout.shared';
+import { i18nProvider } from 'fumadocs-ui/i18n';
 import SearchComponent from "@/components/Search/SearchComponent";
 
 const inter = Inter({
@@ -64,11 +66,7 @@ export default async function Layout({params, children}: {
         search={{
           SearchDialog: SearchComponent,
         }}
-        i18n={{
-          locale: lang,
-          locales: localeNames,
-          translations: myTranslations[lang as keyof typeof myTranslations]
-        }}
+        i18n={i18nProvider(translations, lang)}
       >
         {children}
       </RootProvider>
