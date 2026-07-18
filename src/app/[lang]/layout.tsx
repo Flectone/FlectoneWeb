@@ -12,29 +12,6 @@ const inter = Inter({
   subsets: ['latin'],
 });
 
-const languageNames = {
-  ru: {
-    ru: 'Русский',
-    en: 'Английский'
-  },
-  en: {
-    ru: 'Russian',
-    en: 'English'
-  }
-};
-
-const myTranslations = {
-  ru: {
-    chooseLanguage: 'Выбрать язык',
-    toc: 'На этой странице',
-    search: 'Поиск',
-    lastUpdate: 'Последнее обновление',
-    editOnGithub: 'Редактировать на GitHub',
-    nextPage: 'Следующая страница',
-    previousPage: 'Предыдущая страница'
-  }
-};
-
 export async function generateStaticParams() {
   return source.generateParams();
 }
@@ -44,19 +21,6 @@ export default async function Layout({params, children}: {
   children: React.ReactNode
 }) {
   const {lang} = await params;
-
-  const currentLang = (lang === 'ru' || lang === 'en' ? lang : 'en') as 'ru' | 'en';
-
-  const localeNames = [
-    {
-      name: languageNames[currentLang].ru,
-      locale: 'ru'
-    },
-    {
-      name: languageNames[currentLang].en,
-      locale: 'en'
-    }
-  ];
 
   return (
     <html className={inter.className} suppressHydrationWarning>
