@@ -62,7 +62,7 @@ export default function TimeConvertor() {
         }
     }, [isDragging])
 
-    const [moon, sun] = ['/assets/moon.svg', '/assets/sun.svg']
+    const [moon, sun] = ['/assets/moon.webp', '/assets/sun.webp']
 
     return (
         <div className="w-full justify-center items-start flex max-xl:flex-col-reverse gap-4">
@@ -81,7 +81,7 @@ export default function TimeConvertor() {
                             src={200 < rotate && rotate < 340 ? moon : sun}
                             draggable='false'
                         />
-                        <img src="/assets/time.svg" className='absolute w-sm h-sm rounded-full' alt="" />
+                        <img src="/assets/time.webp" className='absolute w-sm h-sm rounded-full' alt="" />
                     </div>
 
                     {Array.from({ length: 24 }).map((_, index) => {

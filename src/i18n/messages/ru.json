@@ -10,7 +10,7 @@
     "NotFound": {
       "title": "404 | Flectone",
       "description": "Ничего не найдено",
-      "image": "/ogimages/notfoundru.jpg"
+      "image": "/ogimages/not_found.webp"
     },
     "Mix": {
       "title": "FlectoneMix",
@@ -144,7 +144,7 @@
     },
     "Chat": {
       "description": "Отец FlectonePulse, но проект был закрыт",
-      "imagePath": "/chat/chat-ru.svg"
+      "imagePath": "/chat/chat.webp"
     },
     "Tools": {
       "description": "Инструменты для разработчиков серверов"
@@ -185,7 +185,7 @@
   "FlectoneChat": {
     "description": "Упрощает и дополняет игру на сервере добавлением удобных фичей, но проект был закрыт",
     "usePulse": "Используй <strong>FlectonePulse</strong>, так как FlectoneChat более не поддерживается",
-    "imagePath": "/chat/chat-ru.svg"
+    "imagePath": "/chat/chat.webp"
   },
   "Pulse": {
     "Authors": {

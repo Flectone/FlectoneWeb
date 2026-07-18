@@ -29,7 +29,7 @@ export default function WelcomeCard() {
           </ModalButton>
         </div>
       </div>
-      <Image className='max-lg:hidden w-85 rounded-xl' src={'/flectonepulse2.png'} alt={'flectonepulse'} width={1000}
+      <Image className='max-lg:hidden w-85 rounded-xl' src={'/flectonepulse_title.webp'} alt={'flectonepulse'} width={1000}
         height={1000} />
     </div>
   )
