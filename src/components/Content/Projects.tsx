@@ -31,7 +31,7 @@ export default function Projects() {
           />
         </div>
         <div className="flex flex-col gap-4">
-          <h3 className="font-bold text-2xl">Закрытые проекты</h3>
+          <h3 className="font-bold text-2xl">{t('closed')}</h3>
           <div className="flex w-full max-xl:flex-col gap-4">
             <FeatureCard
               link={'/mix'}

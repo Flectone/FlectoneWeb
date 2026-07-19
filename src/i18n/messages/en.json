@@ -134,6 +134,7 @@
   },
   "Projects": {
     "title": "Projects by <b>Flectone</b>",
+    "closed": "Сlosed projects",
     "Pulse": {
       "description": "Project for configuring server messages",
       "button": "More",
