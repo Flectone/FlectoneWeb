@@ -108,14 +108,14 @@ export default function CoordinateCalculator() {
     const stronghold = getIntersection();
 
     const tutorialImages = [
-        '/assets/tutorials/coordinates_1.png',
-        '/assets/tutorials/coordinates_2.png',
-        '/assets/tutorials/coordinates_final.png',
+        '/assets/tutorials/coordinates_1.webp',
+        '/assets/tutorials/coordinates_2.webp',
+        '/assets/tutorials/coordinates_final.webp',
     ];
 
     const modeImage = {
-        nether: '/assets/minecraftnether3.jpg',
-        stronghold: '/assets/minecraftenderportal.jpg',
+        nether: '/assets/minecraft_nether_3.webp',
+        stronghold: '/assets/minecraft_ender_portal.webp',
     };
 
     return (
