@@ -3,7 +3,6 @@ import Card from "../Card/Card";
 import {SiGithub} from "react-icons/si";
 import {SiModrinth} from "react-icons/si";
 import {useTranslations} from "next-intl";
-import Svg from "@/components/Svg/Svg";
 import ThemeImage from "@/components/Image/ThemeImage";
 
 export default function FlectoneChat() {
