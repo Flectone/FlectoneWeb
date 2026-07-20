@@ -7,7 +7,7 @@ import { Leaf, Pickaxe, ChartCandlestick, Cable } from "lucide-react";
 export default function WelcomeCard() {
 
   const t = useTranslations('Pulse')
-
+    
   return (
     <div
       className='w-full max-lg:p-8 rounded-2xl bg-size-[36px] border overflow-hidden bg-fd-card/85 backdrop-blur-3xl flex px-16 py-12 justify-between items-center gap-8'>
@@ -29,7 +29,7 @@ export default function WelcomeCard() {
           </ModalButton>
         </div>
       </div>
-      <Image className='max-lg:hidden w-85 rounded-xl' src={'/flectonepulse_title.webp'} alt={'flectonepulse'} width={1000}
+      <Image className='max-lg:hidden w-85 rounded-xl' src={'/assets/flectonepulse/flectonepulse_title.webp'} alt={'flectonepulse'} width={1000}
         height={1000} />
     </div>
   )

@@ -24,7 +24,7 @@ export default async function Layout({
           tree={tree}
           {...baseOptions()}
           nav={{
-              title: <h1 className='flex justify-center items-center'><Image src="/logo.png" alt="Flectone Logo" width={64} height={64} className='w-6 h-6 mr-1' /> FlectonePulse</h1>,
+              title: <h1 className='flex justify-center items-center'><Image src="/assets/flectone_logo.png" alt="Flectone Logo" width={64} height={64} className='w-6 h-6 mr-1' /> FlectonePulse</h1>,
               url: '/pulse',
           }}
           sidebar={{

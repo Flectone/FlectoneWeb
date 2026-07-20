@@ -1,6 +1,6 @@
 import Card from "@/components/Card/Card";
-import Svg from "@/components/Svg/Svg";
 import { ReactNode } from "react";
+import Image from "next/image";
 
 interface FeatureCardProps {
     className?: string;
@@ -31,7 +31,9 @@ const imageStyles: Record<FeatureCardProps['imagePosition'], string> = {
 export default function FeatureCard({ className, image, title, description, link, glow, imagePosition }: FeatureCardProps) {
     return (
         <Card path={link} className={`${className} not-dark:border`}>
-            <Svg src={image} className={`${imageStyles[imagePosition]} text-fd-primary not-dark:contrast-70 rounded-lg absolute -z-1 `} />
+            <img   src={image}
+                   className={`${imageStyles[imagePosition]} text-fd-primary not-dark:contrast-70 rounded-lg absolute -z-1 `}
+                   alt={"feature"} />
             <div className='text-start flex flex-col gap-1'>
                 {typeof title === 'string' ? <h2 className='font-medium'>{title}</h2> : title}
                 {typeof description === 'string' ? <p className=''>{description}</p> : description}

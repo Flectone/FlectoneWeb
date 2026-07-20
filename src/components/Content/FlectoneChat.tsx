@@ -23,7 +23,7 @@ export default function FlectoneChat() {
         </div>
       </Card>
       <Card className="w-full">
-        <Svg src={t('imagePath')} className='rounded-md border-[0.5px]'/>
+        <img alt='flectonechat' src={t('imagePath')} className='rounded-md border-[0.5px]'/>
       </Card>
     </div>
   )

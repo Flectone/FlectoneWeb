@@ -24,7 +24,7 @@ export default function Projects() {
           <FeatureCard
             link={'/tools'}
             className='w-full items-center flex p-10'
-            image={'/assets/tools.webp'}
+            image={'/assets/flectonetools/flectonetools_preview_dark.webp'}
             title={<h1 className='text-2xl max-md:text-xl font-bold'>Flectone<b>Tools</b></h1>}
             description={<p className={'w-full max-md:text-md'}>{t('Tools.description')}</p>}
             imagePosition={'right'}
@@ -36,7 +36,7 @@ export default function Projects() {
             <FeatureCard
               link={'/mix'}
               className='w-1/2 max-xl:w-full items-center flex p-10'
-              image={'/mix/mix.webp'}
+              image={'/assets/flectonemix/flectonemix_preview_dark.webp'}
               title={<h1 className='text-2xl max-md:text-xl font-bold'>Flectone<b>Mix</b></h1>}
               description={<p className={'w-2/3 max-md:text-md'}>{t('Mix.description')}</p>}
               imagePosition={'right'}

@@ -31,7 +31,7 @@ export const translations = i18n
 export function baseOptions(title?: string, url?: string): BaseLayoutProps {
     return {
         nav: {
-            title: <h1 className='flex justify-center items-center'><Image src="/logo.png" alt="Flectone Logo" width={64} height={64} className='w-6 h-6 mr-1' />{title ? title : 'Flectone'}</h1>,
+            title: <h1 className='flex justify-center items-center'><Image src="/assets/flectone_logo.png" alt="Flectone Logo" width={64} height={64} className='w-6 h-6 mr-1' />{title ? title : 'Flectone'}</h1>,
             url: url ? url : '/'
         },
         i18n: true,
