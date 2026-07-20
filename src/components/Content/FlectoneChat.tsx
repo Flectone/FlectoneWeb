@@ -4,6 +4,7 @@ import {SiGithub} from "react-icons/si";
 import {SiModrinth} from "react-icons/si";
 import {useTranslations} from "next-intl";
 import Svg from "@/components/Svg/Svg";
+import ThemeImage from "@/components/Image/ThemeImage";
 
 export default function FlectoneChat() {
 
@@ -23,7 +24,7 @@ export default function FlectoneChat() {
         </div>
       </Card>
       <Card className="w-full">
-        <img alt='flectonechat' src={t('imagePath')} className='rounded-md border-[0.5px]'/>
+        <ThemeImage width={1000} height={1000} alt='flectonechat' src={t('imagePath')} className='rounded-md border-[0.5px]'/>
       </Card>
     </div>
   )

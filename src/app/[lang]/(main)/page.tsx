@@ -2,6 +2,7 @@ import Projects from "@/components/Content/Projects";
 import { useTranslations } from "next-intl";
 import Title from "@/components/Title/Title";
 import { createMetadata } from "@/lib/create-metadata";
+import ThemeImage from "@/components/Image/ThemeImage";
 
 export const generateMetadata = createMetadata({
   namespace: 'Root'

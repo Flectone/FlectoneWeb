@@ -145,7 +145,7 @@
     },
     "Chat": {
       "description": "Father of FlectonePulse, but it's closed",
-      "imagePath": "/assets/flectonechat/flectonechat_preview_en_dark.webp"
+      "imagePath": "/assets/flectonechat/flectonechat_preview_en.webp"
     },
     "Tools": {
       "description": "Tools for server developers"
@@ -186,7 +186,7 @@
   "FlectoneChat": {
     "description": "Simplified and augmented the server game by adding convenient features, but it's closed",
     "usePulse": "Use <strong>FlectonePulse</strong>, as FlectoneChat is no longer supported.",
-    "imagePath": "/assets/flectonechat/flectonechat_preview_en_dark.webp"
+    "imagePath": "/assets/flectonechat/flectonechat_preview_en.webp"
   },
   "Pulse": {
     "Authors": {
