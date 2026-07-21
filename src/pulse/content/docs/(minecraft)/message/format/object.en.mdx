@@ -17,10 +17,10 @@ tag: "minecraft"
     Heads, sprites, and textures can be colored in config files. To prevent this, you need to use a white color before them. For example `<white><player_head></white>`
 </Callout>
 
-![object](/pulse/object.png)
-![texturemotd](/pulse/texturemotd.png)
-![texture](/pulse/texture.png)
-![texturesidebar](/pulse/texturesidebar.png)
+![object](/pulse/message_format_object.webp)
+![texturemotd](/pulse/message_format_object_texture_motd.webp)
+![texture](/pulse/message_format_object_texture.webp)
+![texturesidebar](/pulse/message_format_object_texture_sidebar.webp)
 
 <br></br>
 
@@ -75,7 +75,7 @@ Enables formatting for the `<sprite:...>` placeholder. It can be used in differe
 - `<sprite_or:...>` returns an icon or the text specified as the first argument if the recipient cannot see icons in chat. For example `<sprite_or:hello:block/oak_log>` returns the oak icon, and in the console, the word `hello` will appear
 
 The easiest way to find atlas and icon names is using the [/sprite command](/pulse/docs/command/sprite/)
-![command sprite](/pulse/commandsprite.png)
+![command sprite](/pulse/command_sprite.webp)
 
 You can also find this in the folder created using the `F3 + S` combination inside Minecraft. There will be files named `minecraft_textures_atlas_...` with `.txt` and `.png` formats, which can help you find a suitable sprite.
 
@@ -85,7 +85,7 @@ There is a `gui` atlas named `minecraft_textures_atlas_gui.png.txt`. In it, you 
 Using these coordinates, you can visually find it in the `.png` atlas (to see what it looks like). To display it inside Minecraft, you need to remove the `minecraft:` prefix.
 
 The result is `<sprite:gui:container/slot>`
-![object slot](/pulse/objectslot.png)
+![object slot](/pulse/message_format_object_slot.webp)
 
 </Callout>
 
@@ -141,7 +141,7 @@ The API key for MineSkin, which will be used to convert the image into a texture
 
 <Callout type="info" title="Information">
     To convert an image without a MineSkin API key, you can use our service [FlectoneTools](https://flectone.net/tools/texture-generator)
-    ![flectonetools](/pulse/flectonetools.png)
+    ![flectonetools](/pulse/flectonetools.webp)
     You only need to put the finished `name.json` file into the `images` folder, and write `name.png` in the config.
 </Callout>
 
