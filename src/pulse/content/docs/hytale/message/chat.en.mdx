@@ -8,8 +8,8 @@ tag: "hytale"
 
 ![chat](/pulse/hytale/message_chat.webp)
 
-<Callout type="info" title="How to disable local chat?">
-    Inside `message.yml` disable `local` using `enable: false`, and also set an empty `trigger: ""` for `global`
+<Callout type="info" title="Information">
+    How to disable local chat? Inside `message.yml` disable `local` using `enable: false`, and also set an empty `trigger: ""` for `global`
 
     ```yaml
     chat:
@@ -73,7 +73,7 @@ List of chats and their format
 
 ### `mode`
 
-<Callout type="error" title="">
+<Callout type="error" title="Attention">
     Not supported in Hytale
 </Callout>
 
@@ -133,7 +133,9 @@ chat_name:
 
         Chat priority used to determine which chat is selected when multiple chats have the same `trigger`. The chat with the higher priority is chosen
 
-        <Callout type="info" title="For example, if there are chats:">
+        <Callout type="info" title="Information">
+            For example, if there are chats:
+
             ```yaml
             admin:
               priority: 20
@@ -150,7 +152,8 @@ chat_name:
 
         The message prefix that must be used to send a message to this chat
 
-        <Callout type="info" title="The `trigger` value can be anything:">
+        <Callout type="info" title="Information">
+            The `trigger` value can be anything:
             - `!`, `admin`, `.f`, etc.
             - empty, i.e., `trigger: ""`, then any message matches this chat
         </Callout>

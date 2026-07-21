@@ -8,8 +8,8 @@ tag: "hytale"
 
 ![chat](/pulse/hytale/message_chat.webp)
 
-<Callout type="info" title="Как отключить локальный чат?">
-Внутри `message.yml` выключи `local` с помощью `enable: false`, а также сделай пустой `trigger: ""` для `global`
+<Callout type="info" title="Информация">
+    Как отключить локальный чат? Внутри `message.yml` выключи `local` с помощью `enable: false`, а также сделай пустой `trigger: ""` для `global`
 
     ```yaml
     chat:
@@ -73,7 +73,7 @@ tag: "hytale"
 
 ### `mode`
 
-<Callout type="error" title="">
+<Callout type="error" title="Внимание">
     Не поддерживается в Hytale
 </Callout>
 
@@ -133,7 +133,9 @@ tag: "hytale"
 
         Приоритет чата, который используется для выбора, когда у нескольких чатов одинаковый `trigger`. Выбирается тот, у кого приоритет больше
 
-        <Callout type="info" title="Например ЕСТЬ ЧАТЫ">
+        <Callout type="info" title="Информация">
+            Например есть чаты
+
             ```yaml
             admin:
               priority: 20
@@ -150,7 +152,8 @@ tag: "hytale"
 
         Сообщение, с которого должно начинаться отправленное сообщение для чата
 
-        <Callout type="info" title="ЗНАЧЕНИЕ `trigger` МОЖЕТ БЫТЬ ЛЮБЫМ:">
+        <Callout type="info" title="Информация">
+            Значение `trigger` может быть любым:
             - `!`, `admin`, `.f` и т.д.
             - пустым т.е. `trigger: ""`, тогда для этого чата подходит любое сообщение
         </Callout>

@@ -22,8 +22,8 @@ tag: "minecraft"
 A list of clusters to which the server should be connected. Used only when proxy mode is enabled.
 If the list is empty, the server receives all messages from other servers.
 
-<Callout type="info" title="How to use?">
-    You need to enter the cluster name on all servers where messages will be received and sent.
+<Callout type="info" title="Information">
+    How to use? You need to enter the cluster name on all servers where messages will be received and sent.
     ```yaml
     clusters:
     - "test_cluster"
@@ -36,7 +36,8 @@ If the list is empty, the server receives all messages from other servers.
 
 Enables communication with `BungeeCord`.
 
-<Callout type="idea" title="How to configure this?">
+<Callout type="idea" title="Note">
+    How to configure this?
     1. The `FlectonePulse-bukkit.jar` file must be placed in the `plugins` folder on `BungeeCord`. Even if you have a Fabric server, you must place `FlectonePulse-bukkit.jar` on `BungeeCord`.
     2. On all servers where communication with `BungeeCord` is required, `bungeecord: true` must be enabled in FlectonePulse.
     3. The selected database must be `MySQL`, `MariaDB`, or `PostgreSQL` (i.e., server-based).
@@ -46,7 +47,8 @@ Enables communication with `BungeeCord`.
 
 Enables communication with `Velocity`.
 
-<Callout type="idea" title="How to configure this?">
+<Callout type="idea" title="Note">
+    How to configure this?
     1. The `FlectonePulse-bukkit.jar` file must be placed in the `plugins` folder on `Velocity`. Even if you have a Fabric server, you must place `FlectonePulse-bukkit.jar` on `Velocity`.
     2. On all servers where communication with `Velocity` is required, `velocity: true` must be enabled in FlectonePulse.
     3. The selected database must be `MySQL`, `MariaDB`, or `PostgreSQL` (i.e., server-based).

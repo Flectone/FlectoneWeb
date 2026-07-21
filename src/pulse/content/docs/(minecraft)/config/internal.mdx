@@ -5,7 +5,7 @@ authors:
   - TheFaser
 tag: "minecraft"
 ---
-<Callout type="idea" title="Информация">
+<Callout type="idea" title="Примечание">
     Если при загрузке библиотек возникает ошибка связанная с `ASM`, попробуй включить сервер с флагом `-Dflectonepulse.load-asm-jar=false` (например `java -Dflectonepulse.load-asm-jar=false -jar server.jar`). Это отключает собственную загрузку asm библиотек от FlectonePulse и может решить проблему с кастомными ядрами или плагинами
 </Callout>
 
@@ -22,7 +22,9 @@ tag: "minecraft"
 
 1. Каждый модуль имеет родителя (тот, кто выше находится)
 
-<Callout type="info" title="Например">
+<Callout type="info" title="Информация">
+Например
+
 ```yaml
 house:
   door:
@@ -34,7 +36,9 @@ house:
 
 2. Каждый модуль зависит от `enable` родителя
 
-<Callout type="info" title="Например">
+<Callout type="info" title="Информация">
+Например
+
 ```yaml
 house:
   enable: false

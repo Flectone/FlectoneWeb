@@ -42,7 +42,8 @@ The message format for the `<reply>` tag when a message is a reply to another on
 
 A list of custom integration commands, where the key is the command name and the value is its message format
 
-<Callout type="info" title="Example">
+<Callout type="info" title="Information">
+Example
 
 ```yaml
 custom_command:
@@ -57,8 +58,8 @@ A command to get the `tps` value on the server. **Don't forget to define it in i
 #### `Placeholders`
 
 You can use all the placeholders that are used in the initial Minecraft message.
-<Callout type="info" title="Example for a ban message">
-There is a `<reason>` placeholder there, which means I can use `<reason>` inside Twitch messages.
+<Callout type="info" title="Information">
+Example for a ban message. There is a `<reason>` placeholder there, which means I can use `<reason>` inside Twitch messages.
 </Callout>
 
 There are also placeholders that are GUARANTEED to be replaced in any message:
@@ -80,7 +81,8 @@ A message sent from Twitch to Minecraft has its own placeholders:
 
 A list of messages with the final message format
 
-<Callout type="info" title="If you want to add another message:">
+<Callout type="info" title="Information">
+If you want to add another message:
 <Steps>
     <Step>
         Take the name from the `message types` list
@@ -131,7 +133,8 @@ A list of custom integration commands; the key is the command name and can be an
 | `need_player` | Whether to check the first argument of the command for a player name, e.g., `!ping TheFaser` |
 | `aliases`     | A list of aliases for using the command                                        |
 
-<Callout type="info" title="Example">
+<Callout type="info" title="Information">
+Example
 
 ```yaml
 custom_command:
@@ -150,7 +153,8 @@ A command to get the `tps` value on the server using `!tps` or `!tickpersecond`.
 
 A list of message types and Twitch channel names
 
-<Callout type="info" title="For example, I want Minecraft `/ban` command messages to be sent to Twitch">
+<Callout type="info" title="Information">
+For example, I want Minecraft `/ban` command messages to be sent to Twitch
 <Steps>
     <Step>
         Copy the Twitch channel names where the message should be sent (`faseri4ka`)
@@ -172,7 +176,8 @@ There can be any number of channels, as long as the connected account has access
 
 A list where the key is the channel name and the value is a list of commands to be executed when the broadcast starts
 
-<Callout type="info" title="For example, I want to track the start of a stream for `faseri4ka` and write `stream start https://twitch.tv/faseri4ka`">
+<Callout type="info" title="Information">
+For example, I want to track the start of a stream for `faseri4ka` and write `stream start https://twitch.tv/faseri4ka`
 <Steps>
     <Step>
         Copy the channel name `faseri4ka`

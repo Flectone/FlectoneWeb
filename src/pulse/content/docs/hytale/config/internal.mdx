@@ -5,7 +5,7 @@ authors:
   - TheFaser
 tag: "minecraft"
 ---
-<Callout type="idea" title="Информация">
+<Callout type="idea" title="Примечание">
     Если при загрузке библиотек возникает ошибка связанная с `ASM`, попробуй включить сервер с флагом `-Dflectonepulse.load-asm-jar=false` (например `java -Dflectonepulse.load-asm-jar=false -jar server.jar`). Это отключает собственную загрузку asm библиотек от FlectonePulse и может решить проблему с кастомными ядрами или плагинами
 </Callout>
 
@@ -22,7 +22,9 @@ tag: "minecraft"
 
 1. Каждый модуль имеет родителя (тот, кто выше находится)
 
-<Callout type="info" title="Например">
+<Callout type="info" title="Информация">
+Например
+
 ```yaml
 house:
   door:
@@ -34,7 +36,9 @@ house:
 
 2. Каждый модуль зависит от `enable` родителя
 
-<Callout type="info" title="Например">
+<Callout type="info" title="Информация">
+Например
+
 ```yaml
 house:
   enable: false
@@ -49,19 +53,19 @@ house:
 
 ### `always_send_silent_packet`
 
-<Callout type="error" title="">
+<Callout type="error" title="Внимание">
     Не поддерживается в Hytale
 </Callout>
 
 ### `use_paper_message_sender`
 
-<Callout type="error" title="">
+<Callout type="error" title="Внимание">
     Не поддерживается в Hytale
 </Callout>
 
 ### `use_bukkit_pre_login_listener`
 
-<Callout type="error" title="">
+<Callout type="error" title="Внимание">
     Не поддерживается в Hytale
 </Callout>
 
@@ -78,7 +82,7 @@ house:
 
 ### `vanilla_commands_to_remove`
 
-<Callout type="error" title="">
+<Callout type="error" title="Внимание">
     Не поддерживается в Hytale
 </Callout>
 
