@@ -616,7 +616,7 @@ useEffect(() => {
     const renderPreview = () => {
         switch (previewMode) {
             case 'tab': return (
-                <div className="h-70 flex items-center justify-center bg-[url('/assets/minecraft_taiga.webp')]  bg-center bg-cover overflow-hidden border rounded-lg">
+                <div className="h-70 flex items-center justify-center bg-[url('/assets/backgrounds/minecraft_taiga.webp')]  bg-center bg-cover overflow-hidden border rounded-lg">
                     <MinecraftTab tabText={
                         <div className='flex items-start gap-1'>
                             <div className='flex items-center gap-1'>
@@ -627,7 +627,7 @@ useEffect(() => {
                 </div>
             );
             case 'chat': return (
-                <div className="h-70 bg-[url('/assets/minecraft_taiga.webp')] bg-center bg-cover overflow-hidden border rounded-lg">
+                <div className="h-70 bg-[url('/assets/backgrounds/minecraft_taiga.webp')] bg-center bg-cover overflow-hidden border rounded-lg">
                     <MinecraftChat addString={
                         <div className='flex items-start gap-1'>
                             <div className='flex items-start gap-1'>
@@ -671,7 +671,7 @@ useEffect(() => {
                     <img src="/assets/backgrounds/minecraft_dirt.webp" className="absolute inset-0 w-full h-full object-cover" />
                     <div className="z-10 flex items-center bg-black/60 p-1 w-full">
                         <div className='flex items-center w-10 h-full shrink-0'>
-                            <img src="/assets/minecraft_server_icon.webp" className='w-full' alt="" />
+                            <img src="/assets/backgrounds/minecraft_server_icon.webp" className='w-full' alt="" />
                         </div>
                         <div className='px-1 gap-1 flex flex-col justify-center w-full h-full text-[1em]'>
                             <div className='flex items-center justify-between w-full'>

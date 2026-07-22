@@ -67,7 +67,7 @@ export default function InventoryPreviewer() {
                     className="relative w-full rounded-2xl border-2 overflow-hidden flex items-center justify-center"
                     style={{
                         minHeight: '680px',
-                        backgroundImage: "url('/assets/minecraft_forest.webp')",
+                        backgroundImage: "url('/assets/backgrounds/minecraft_forest.webp')",
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                     }}

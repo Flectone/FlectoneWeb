@@ -114,8 +114,8 @@ export default function CoordinateCalculator() {
     ];
 
     const modeImage = {
-        nether: '/assets/minecraft_nether_3.webp',
-        stronghold: '/assets/minecraft_ender_portal.webp',
+        nether: '/assets/backgrounds/minecraft_nether_3.webp',
+        stronghold: '/assets/backgrounds/minecraft_ender_portal.webp',
     };
 
     return (

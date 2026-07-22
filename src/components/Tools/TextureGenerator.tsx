@@ -292,7 +292,7 @@ export const TextureGenerator = () => {
     return (
         <div className="flex flex-col w-full gap-4 relative">
             <div className="flex flex-col gap-4">
-                <div className='font-[Minecraft] bg-[url("/assets/minecraft_jungle.webp")] bg-center bg-cover pt-4 relative flex flex-col rounded-2xl border-2 overflow-hidden'>
+                <div className='font-[Minecraft] bg-[url("/assets/backgrounds/minecraft_jungle.webp")] bg-center bg-cover pt-4 relative flex flex-col rounded-2xl border-2 overflow-hidden'>
                     <div className='w-full h-fit flex justify-center pb-12'>
                         <MinecraftTab tabText={isProcessingPreview ? <LoaderCircle className='size-[0.8em] animate-spin text-fd-primary' /> : <Preview inputLabel={t('input')} inputClassName='w-44' inputActiveLabel={t('drag')} />} />
                     </div>
