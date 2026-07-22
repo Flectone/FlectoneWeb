@@ -4,7 +4,7 @@ import {
   DocsDescription,
   DocsPage,
   DocsTitle,
-  EditOnGitHub,
+  // EditOnGitHub,
   PageLastUpdate,
 } from 'fumadocs-ui/layouts/docs/page';
 import { notFound } from 'next/navigation';
@@ -13,6 +13,8 @@ import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { Authors } from '@/components/Pulse/Authos';
 import { execSync } from 'child_process';
+import EditOnGitHub from '@/components/Pulse/EditOnGitHub'
+import {Clock} from "lucide-react";
 
 export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slug]]'>) {
   const params = await props.params;
@@ -43,7 +45,10 @@ export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slu
           })}
         />
         <div className='flex justify-between items-center'>
-          {lastModified && <PageLastUpdate date={lastModified} />}
+          {lastModified && <div className='flex items-center justify-center gap-1 text-fd-muted-foreground'>
+            <Clock size={1.2+'em'}/>
+            <PageLastUpdate date={lastModified} />
+          </div>}
           <EditOnGitHub
               href={`https://github.com/Flectone/FlectoneWeb/edit/master/${filePath}`}
           />
