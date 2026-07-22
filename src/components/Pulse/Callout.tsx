@@ -18,6 +18,13 @@ const typeStyles: Record<CalloutProps["type"], string> = {
   error: 'bg-fd-error/20 border-fd-error/10'
 }
 
+const codeStyles: Record<CalloutProps["type"], string> = {
+  info: '[&_code]:bg-fd-info/40',
+  warn: '[&_code]:bg-fd-warning/40',
+  idea: '[&_code]:bg-fd-success/40',
+  error: '[&_code]:bg-fd-error/40'
+}
+
 const titleStyles: Record<CalloutProps["type"], string> = {
   info: 'text-fd-info',
   warn: 'text-fd-warning',
@@ -40,7 +47,7 @@ export default function Callout({ type, title, children, margin = 'normal' }: Ca
           {typeIcons[type]}
           {title ? title : children}
         </div>
-        <div className={`[&_p]:my-0 [&_p]:text-fd-foreground! text-sm leading-6`}>
+        <div className={`[&_p]:my-0 [&_p]:text-fd-foreground! text-sm leading-6 ${codeStyles[type]}`}>
           {title ? children : ''}
         </div>
       </div>

@@ -102,9 +102,8 @@ p {
 }
 
 code {
-  padding: 0;
-  margin: 0;
-  background: none;
+  padding-left: 0.4em;
+  padding-right: 0.4em;
   border: none;
   font-size: 1.0em;
   font-family: Minecraft;
