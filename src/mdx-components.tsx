@@ -1,6 +1,7 @@
 import defaultMdxComponents from 'fumadocs-ui/mdx';
 import { Step, Steps } from 'fumadocs-ui/components/steps';
 import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
+import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
 import type { MDXComponents } from 'mdx/types';
 import * as TabsComponents from 'fumadocs-ui/components/tabs';
 import Callout from '@/components/Pulse/Callout'
@@ -19,6 +20,11 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     Accordions,
     Callout,
     Metric: ({ ...props }) => <Metric {...props} className='my-6' />,
+    pre: ({ ref: _ref, ...props }) => (
+        <CodeBlock data-line-numbers {...props}>
+          <Pre className={`[&_code]:bg-fd-card!`}>{props.children}</Pre>
+        </CodeBlock>
+    ),
     h1: ({ id, children, ...props }) => (
       <h1
         id={id}
