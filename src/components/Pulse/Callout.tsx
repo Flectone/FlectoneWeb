@@ -41,13 +41,13 @@ const typeIcons: Record<CalloutProps["type"], ReactNode> = {
 
 export default function Callout({ type, title, children, margin = 'normal' }: CalloutProps) {
   return (
-    <div className={`p-3 w-full flex gap-3 ${margin == 'normal' ? 'mb-4' : ''} ${typeStyles[type]} border rounded-lg overflow-hidden`}>
+    <div className={`p-3 w-full flex gap-3 ${margin == 'normal' ? 'mb-4' : ''} ${typeStyles[type]} border rounded-lg overflow-hidden `}>
       <div className={`flex flex-col ${title ? 'gap-2' : 'gap-0'}`}>
         <div className={`${titleStyles[type]} ${title ? '' : '[&_p]:' + titleStyles[type]+ '!'} flex items-center text-sm gap-2 font-semibold [&_p]:my-0 `}>
           {typeIcons[type]}
           {title ? title : children}
         </div>
-        <div className={`[&_p]:my-0 [&_p]:text-fd-foreground! text-sm leading-6 ${codeStyles[type]}`}>
+        <div className={`[&_p]:my-0 [&_p]:text-fd-foreground! [&_.fd-steps]:flex! [&_.fd-steps]:flex-col [&_.fd-steps]:gap-4 [&_.fd-steps]:my-2 text-sm leading-6 ${codeStyles[type]}`}>
           {title ? children : ''}
         </div>
       </div>
