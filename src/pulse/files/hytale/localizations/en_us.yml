@@ -76,6 +76,7 @@ command:
     null_player: "<color:#ff7171>This player does not exist"
     null_time: "<color:#ff7171>Incorrect time"
     lower_weight_group: "<color:#ff7171>You cannot ban a player with equal or higher permissions"
+    already_banned: "<color:#ff7171>Player is already banned"
     reasons:
       default: "You have been banned from this server"
     server: "<color:#ff7171>[!] <moderator> <fcolor:1>has banned <display_name> <br>ID: <id><br>Date: <date><br>Time: <time><br>Time left: <time_left><br>Moderator: <moderator><br>Reason: <reason>"
@@ -313,11 +314,39 @@ command:
   me:
     format: "<fcolor:1>> <display_name> <fcolor:1><message>"
 #endregion me
+#region minesweeper
+  minesweeper:
+    wrong_parameters: "<color:#ff7171><sprite_or:⁉:gui:icon/chat_modified>Cannot create a game with these parameters"
+    wrong_game: "<color:#ff7171><sprite_or:⁉:gui:icon/chat_modified>This game does not exist"
+    wrong_move: "<color:#ff7171><sprite_or:⁉:gui:icon/chat_modified>This move is impossible"
+    cell:
+      unknown: "<fcolor:1><hover:show_text:\"<fcolor:1>Move <row> <column>\"><click:run_command:\"<command> move <row> <column>\">⓪</click></hover>"
+      flag: "<color:#ffb74d><hover:show_text:\"<color:#ffb74d>Remove flag <row> <column>\"><click:run_command:\"<command> move <row> <column>\">⓪</click></hover>"
+      mine: "<color:#ff7171>⓪"
+      number_0: "<color:#c8ccd4>⓪"
+      number_1: "<color:#5b9bd5>①"
+      number_2: "<color:#6aab73>②"
+      number_3: "<color:#3cc4b0>③"
+      number_4: "<color:#7b6fbe>④"
+      number_5: "<color:#b05279>⑤"
+      number_6: "<color:#5599b0>⑥"
+      number_7: "<color:#6b7c8a>⑦"
+      number_8: "<color:#9ba0a8>⑧"
+    line: "<padding:3><fcolor:1>| <line> <fcolor:1>|<br>"
+    flag_enabled: "<hover:show_text:\"<color:#ffb74d>Click to place flags\"><click:run_command:\"<command> flag\"><color:#ffb74d>⚑</color:#ffb74d></click></hover>"
+    flag_disabled: "<hover:show_text:\"<color:#ffb74d>Click to stop placing flags\"><click:run_command:\"<command> flag\"><color:#ffb74d>⚐</color:#ffb74d></click></hover>"
+    seed: "<hover:show_text:\"<fcolor:1>Last move → <row> <column><br>Click to copy seed\"><click:copy_to_clipboard:'<seed>'><fcolor:2>🔑</click></hover>"
+    format_start: "<br><padding:2><seed> <fcolor:2>Minesweeper</fcolor> <color:#ff7171>💣 <remaining></color> <flag><br><br><field>"
+    format_move: "<br><padding:2><seed> <fcolor:2>Minesweeper</fcolor> <color:#ff7171>💣 <remaining></color> <flag><br><br><field>"
+    format_win: "<padding:5><seed> <color:#98FB98>Victory!</color> <color:#ff7171>💣 <remaining></color> <flag><br><br><field>"
+    format_lose: "<padding:5><seed> <color:#ff7171>Defeat!</color> <color:#ff7171>💣 <remaining></color> <flag><br><br><field>"
+#endregion minesweeper
 #region mute
   mute:
     null_player: "<color:#ff7171>This player does not exist"
     null_time: "<color:#ff7171>Incorrect time"
     lower_weight_group: "<color:#ff7171>You cannot mute a player with equal or higher permissions"
+    already_muted: "<color:#ff7171>Player is already muted"
     suffix: " <color:#ff7171>[!]</color>"
     reasons:
       default: "You have been muted on this server"
@@ -585,6 +614,16 @@ command:
       line: "<color:#ff7171>[X] <target> <fcolor:1>Reason: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
 #endregion whitelist
+#region whois
+  whois:
+    empty: "<color:#ff7171>No players with that IP found"
+    null_page: "<color:#ff7171>Page not found"
+    online: "<hover:show_text:\"<color:#98FB98>Online\"><color:#98FB98>[+]</color></hover>"
+    offline: "<hover:show_text:\"<color:#ff7171>Offline\"><color:#ff7171>[-]</color></hover>"
+    header: "<fcolor:2>▋ <fcolor:1>Players with IP <fcolor:2><ip><fcolor:1>: <fcolor:2><count> <br>"
+    line: "<fcolor:1><online><hover:show_text:\"<color:#9955FF>View playtime\"><click:run_command:\"<command_online> total <target_name>\"><color:#9955FF>[PLAYTIME]</color></click></hover><hover:show_text:\"<color:#00FFCC>View geolocation\"><click:run_command:\"<command_geolocate> <ip>\"><color:#00FFCC>[GEOLOCATION]</color></click></hover><hover:show_text:\"<color:#00FF00>View whitelist\"><click:run_command:\"<command_whitelist> list <target_name>\"><color:#00FF00>[WHITELIST]</color></click></hover><hover:show_text:\"<color:#FFEE00>View warnings\"><click:run_command:\"<command_warnlist> <target_name>\"><color:#FFEE00>[WARNINGS]</color></click></hover><hover:show_text:\"<color:#FF8800>View mutes\"><click:run_command:\"<command_mutelist> <target_name>\"><color:#FF8800>[MUTES]</color></click></hover><hover:show_text:\"<color:#FF0000>View bans\"><click:run_command:\"<command_banlist> <target_name>\"><color:#FF0000>[BANS]</color></click></hover><target>"
+    footer: "<br><fcolor:2>▋ <click:run_command:\"<command> <prev_page>\">←</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">→"
+#endregion whois
 #region integration
 integration:
 #endregion integration
@@ -713,6 +752,18 @@ message:
     object:
       default_symbol: ""
 #endregion object
+#region padding
+    padding:
+      values:
+        example_left_5:
+          symbol: "->"
+          start: ""
+          end: ""
+        example_center_10:
+          symbol: "-"
+          start: "="
+          end: "="
+#endregion padding
 #region replacement
     replacement:
       spoiler_symbol: "-"
