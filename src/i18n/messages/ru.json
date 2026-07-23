@@ -118,6 +118,25 @@
     "openSourse": "Весь код проекта имеет <a>открытый исходный код</a>"
   },
   "Header": {
+    "Search" : {
+      "filter": "Фильтр",
+      "Minecraft": {
+        "name": "Minecraft",
+        "description": "Документация для Minecraft"
+      },
+      "Hytale": {
+        "name": "Hytale",
+        "description": "Документация для Hytale"
+      },
+      "API": {
+        "name": "API",
+        "description": "Документация для API"
+      },
+      "Metrics": {
+        "name": "Аналитика",
+        "description": "Документация для Аналитики"
+      }
+    },
     "about": "Про нас",
     "Projects": {
       "title": "Проекты"

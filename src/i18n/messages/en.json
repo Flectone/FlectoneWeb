@@ -118,6 +118,25 @@
     "openSourse": "All project code is <a>open source</a>"
   },
   "Header": {
+    "Search" : {
+      "filter": "Filter",
+      "Minecraft": {
+        "name": "Minecraft",
+        "description": "Documentation for Minecraft"
+      },
+      "Hytale": {
+        "name": "Hytale",
+        "description": "Documentation for Hytale"
+      },
+      "API": {
+        "name": "API",
+        "description": "Documentation for API"
+      },
+      "Metrics": {
+        "name": "Metrics",
+        "description": "Documentation for Metrics"
+      }
+    },
     "about": "About us",
     "Projects": {
       "title": "Projects"
