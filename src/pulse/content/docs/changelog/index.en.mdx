@@ -10,6 +10,63 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.12.0" date="2026-07-23" authors={["TheFaser", "MISQZY"]}>
+    <Title>
+        # Version 1.12.0
+    </Title>
+    <Features>
+        <Feature>Added whois module for searching players by IP</Feature>
+        <Feature>Added Minesweeper game with flag mode</Feature>
+        <Feature>Added padding module for centering and aligning text with characters</Feature>
+        <Feature>Added message context cache with expireAfterWrite option</Feature>
+        <Feature>Added duplicate check setting for bans and mutes</Feature>
+        <Feature>Added offline event handling in Twitch integration</Feature>
+        <Feature>Added timeout setting for main executor threads</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Player inventory on Hytale now uses hotbar component</Refactor>
+        <Refactor>Task queue changed from SYNCHRONOUS to LINKED_BLOCKING executor</Refactor>
+        <Refactor>Player head placeholder replaced with optional format</Refactor>
+        <Refactor>Simplified translation argument handling in ComponentDecorator</Refactor>
+        <Refactor>Added flag to control message caching</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Fixed UUID and nickname mismatch on login in whitelist module</Fix>
+        <Fix>Added disconnect check in proxy mode in quit module</Fix>
+        <Fix>Disabled legacy color conversion and removed query parameters from URLs in stream module</Fix>
+        <Fix>Fixed message sending in Twitch (replaced telegram with twitch sender)</Fix>
+        <Fix>Player tag no longer auto-resolves in usage messages</Fix>
+        <Fix>Fixed hints in mutelist and dice</Fix>
+        <Fix>Online status now correctly updates in cache without race conditions in proxy mode</Fix>
+        <Fix>Unknown server on proxy is now handled</Fix>
+        <Fix>getPacketVersion replaced with getClientVersion for version checks</Fix>
+        <Fix>Added old client version check in object</Fix>
+        <Fix>Added NPE handling in PlaceholderAPI placeholders</Fix>
+        <Fix>Backslashes are now escaped in moderation reasons</Fix>
+        <Fix>Exception when getting ping in player adapters is now handled</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Hytale Server updated to 0.5.7, HyUI to 0.9.8</Dependency>
+        <Dependency>SkinsRestorer API updated to v15.12.5</Dependency>
+        <Dependency>Cloud libraries updated to v2.0.0-beta.17</Dependency>
+        <Dependency>Fabric Loom updated to v1.17.16</Dependency>
+        <Dependency>Vanish updated to v1.6.15</Dependency>
+        <Dependency>LibertyBans updated to v1.1.4</Dependency>
+        <Dependency>Velocity API updated to v4</Dependency>
+        <Dependency>PlaceholderAPI updated to v2.12.3</Dependency>
+        <Dependency>Jackson updated to v3.2.1</Dependency>
+        <Dependency>Log4j updated to v2.26.1</Dependency>
+        <Dependency>PostgreSQL updated to v42.7.13</Dependency>
+        <Dependency>Netty updated to v4.2.16</Dependency>
+        <Dependency>JDBI updated to v3.54.0</Dependency>
+        <Dependency>Triton API updated to v4.1.0</Dependency>
+        <Dependency>SQLite updated to v3.53.2.1</Dependency>
+        <Dependency>TelegramBots updated to v10.1.0</Dependency>
+        <Dependency>fastutil updated to v8.5.19</Dependency>
+        <Dependency>Gradle updated to v9.6.1, Shadow plugin to v9.6.1</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.11.0" date="2026-06-22" authors={["TheFaser"]}>
     <Title>
         # Version 1.11.0
