@@ -172,28 +172,30 @@ message_channel:
 There can be any number of channels, as long as the connected account has access to them. Localization configuration is optional; by default, the message will be sent with the `<final_message>` format.
 </Callout>
 
-### `follow_channel`
+### `channel_action`
 
-A list where the key is the channel name and the value is a list of commands to be executed when the broadcast starts
+A list where the key is the channel name and the value is a list of commands to be executed when the stream starts/ends.
 
-<Callout type="info" title="Information">
-For example, I want to track the start of a stream for `faseri4ka` and write `stream start https://twitch.tv/faseri4ka`
+<Callout type="info" title="Info">
+For example, I want to track when `faseri4ka` starts streaming and run `stream start https://twitch.tv/faseri4ka`
 <Steps>
     <Step>
         Copy the channel name `faseri4ka`
     </Step>
     <Step>
-        Configure it:
+        Set it up:
     </Step>
 </Steps>
 ```yaml
-follow_channel:
+channel_action:
   faseri4ka:
-    - "stream start [https://twitch.tv/faseri4ka](https://twitch.tv/faseri4ka)"
+    online:
+    - "stream start https://twitch.tv/faseri4ka"
+    offline: []
 ```
 
 - Up to 10 channels can be tracked simultaneously, as long as the connected account has access to them
-- There can be any number of commands triggered at the start of the broadcast
+- You can have any number and any type of commands for stream start/end
 </Callout>
 
 <include>../../../../parts/hytale/destination.en.mdx</include>
