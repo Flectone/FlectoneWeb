@@ -17,7 +17,7 @@ export default function LastUpdate({ date }: LastUpdateProps): JSX.Element {
     }).format(date);
 
     return (
-        <div className="flex items-center justify-center gap-1 text-fd-muted-foreground">
+        <div className="flex gap-1 items-center font-normal text-sm text-fd-muted-foreground">
             <Clock size={1.2 + 'em'} />
             <span>{t('LastUpdate')} {formatted}</span>
         </div>
