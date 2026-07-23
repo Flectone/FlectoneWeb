@@ -22,7 +22,7 @@ export default function TagList({children, currentTag}: TagListProps) {
 
     return (
         <div>
-            <button className='text-xs flex gap-2 items-center text-fd-muted-foreground hover:bg-fd-accent rounded-lg px-2 py-1' onClick={() => setIsOpen(!isOpen ? true : false)}>
+            <button className='text-xs flex gap-1 items-center text-fd-muted-foreground hover:bg-fd-accent rounded-lg px-2 py-1' onClick={() => setIsOpen(!isOpen ? true : false)}>
                 {t('filter')}
                 <p className='text-fd-foreground!'>
                     {tagNames[currentTag] || ''}
