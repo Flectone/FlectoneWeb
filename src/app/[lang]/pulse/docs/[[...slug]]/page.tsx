@@ -36,7 +36,7 @@ export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slu
     >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className='!mb-0'>{page.data.description}</DocsDescription>
-      <DocsBody>
+      <DocsBody className='flex flex-col justify-between'>
         <MDX
           components={getMDXComponents({
             a: createRelativeLink(source, page),
