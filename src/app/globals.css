@@ -39,6 +39,8 @@
   --color-fd-muted-red: rgb(231, 66, 66);
   --color-fd-red-foreground: rgb(253, 185, 185);
 
+  --color-fd-transparent: #00000008;
+
 --animate-gradient-flow: gradient-flow 2s linear infinite;
 
   @keyframes gradient-flow {
@@ -86,6 +88,8 @@
   --color-fd-red: #fa4e4e;
   --color-fd-muted-red: #ffa1a1;
   --color-fd-red-foreground: rgb(255, 209, 209);
+
+  --color-fd-transparent: #ffffff08;
 }
 
 b {
@@ -106,6 +110,15 @@ code {
   border: none;
   font-size: 1.0em;
   font-family: Minecraft;
+}
+
+.fd-step::before {
+  background: var(--color-fd-transparent);
+  backdrop-filter: blur(10px);
+}
+
+.fd-steps {
+  border-left: 1px solid var(--color-fd-transparent);
 }
 
 canvas {
