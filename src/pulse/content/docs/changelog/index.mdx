@@ -10,6 +10,63 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
+<Version v="1.12.0" date="2026-07-23" authors={["TheFaser", "MISQZY"]}>
+    <Title>
+        # Версия 1.12.0
+    </Title>
+    <Features>
+        <Feature>Добавлен модуль whois для поиска игроков по IP</Feature>
+        <Feature>Добавлена игра "Сапёр" (minesweeper) с режимом флагов</Feature>
+        <Feature>Добавлен модуль padding для центрирования и выравнивания текста символами</Feature>
+        <Feature>Добавлен кеш контекста сообщений с опцией expireAfterWrite</Feature>
+        <Feature>В банах и мутах добавлена настройка для проверки на дубликаты</Feature>
+        <Feature>В Twitch интеграции добавлена обработка оффлайн-событий</Feature>
+        <Feature>Добавлена настройка таймаута основных потоков executor</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Инвентарь игрока на Hytale теперь использует hotbar компонент</Refactor>
+        <Refactor>Очередь задач исполнителя изменена с SYNCHRONOUS на LINKED_BLOCKING</Refactor>
+        <Refactor>Плейсхолдер головы игрока заменены на опциональный формат</Refactor>
+        <Refactor>Упрощена обработка аргументов перевода в ComponentDecorator</Refactor>
+        <Refactor>Добавлен флаг для контроля кеширования сообщений</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Исправлен несовпадение UUID и ника при входе в модуле вайтлиста</Fix>
+        <Fix>В quit модуле добавлена проверка отключения в прокси режиме</Fix>
+        <Fix>В stream модуле отключена конвертация легаси-цветов и удалены query-параметры из URL</Fix>
+        <Fix>В Twitch исправлена отправка сообщений (замена telegram на twitch sender)</Fix>
+        <Fix>Тег player больше не резолвится автоматически в usage сообщениях</Fix>
+        <Fix>Исправлены подсказки в mutelist и dice</Fix>
+        <Fix>Теперь корректно обновляется онлайн-статус в кеше без гонки состояний в прокси режиме</Fix>
+        <Fix>Теперь обрабатывается неизвестный сервер на прокси</Fix>
+        <Fix>getPacketVersion заменён на getClientVersion для проверок версий</Fix>
+        <Fix>Добавлена проверка старых версий клиента в object</Fix>
+        <Fix>Добавлена обработка NPE в плейсхолдерах PlaceholderAPI</Fix>
+        <Fix>Теперь экранируются обратные слеши в причинах модерации</Fix>
+        <Fix>Теперь обрабатывается исключение при получении пинга в адаптерах игроков</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>Hytale Server обновлён до 0.5.7, HyUI до 0.9.8</Dependency>
+        <Dependency>SkinsRestorer API обновлён до v15.12.5</Dependency>
+        <Dependency>Cloud библиотеки обновлены до v2.0.0-beta.17</Dependency>
+        <Dependency>Fabric Loom обновлён до v1.17.16</Dependency>
+        <Dependency>Vanish обновлён до v1.6.15</Dependency>
+        <Dependency>LibertyBans обновлён до v1.1.4</Dependency>
+        <Dependency>Velocity API обновлён до v4</Dependency>
+        <Dependency>PlaceholderAPI обновлён до v2.12.3</Dependency>
+        <Dependency>Jackson обновлён до v3.2.1</Dependency>
+        <Dependency>Log4j обновлён до v2.26.1</Dependency>
+        <Dependency>PostgreSQL обновлён до v42.7.13</Dependency>
+        <Dependency>Netty обновлён до v4.2.16</Dependency>
+        <Dependency>JDBI обновлён до v3.54.0</Dependency>
+        <Dependency>Triton API обновлён до v4.1.0</Dependency>
+        <Dependency>SQLite обновлён до v3.53.2.1</Dependency>
+        <Dependency>TelegramBots обновлён до v10.1.0</Dependency>
+        <Dependency>fastutil обновлён до v8.5.19</Dependency>
+        <Dependency>Gradle обновлён до v9.6.1, Shadow плагин до v9.6.1</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.11.0" date="2026-06-22" authors={["TheFaser"]}>
     <Title>
         # Версия 1.11.0

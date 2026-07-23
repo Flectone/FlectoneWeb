@@ -389,6 +389,17 @@ command:
       name: "flectonepulse.module.command.me.sound"
       type: "TRUE"
 #endregion me
+#region minesweeper
+  minesweeper:
+    name: "flectonepulse.module.command.minesweeper"
+    type: "TRUE"
+    cooldown_bypass:
+      name: "flectonepulse.module.command.minesweeper.cooldown.bypass"
+      type: "OP"
+    sound:
+      name: "flectonepulse.module.command.minesweeper.sound"
+      type: "TRUE"
+#endregion minesweeper
 #region mute
   mute:
     name: "flectonepulse.module.command.mute"
@@ -654,6 +665,17 @@ command:
       name: "flectonepulse.module.command.whitelist.sound"
       type: "TRUE"
 #endregion whitelist
+#region whois
+  whois:
+    name: "flectonepulse.module.command.whois"
+    type: "OP"
+    cooldown_bypass:
+      name: "flectonepulse.module.command.whois.cooldown.bypass"
+      type: "OP"
+    sound:
+      name: "flectonepulse.module.command.whois.sound"
+      type: "TRUE"
+#endregion whois
 #region integration
 integration:
   name: "flectonepulse.module.integration"
@@ -1074,6 +1096,18 @@ message:
         name: "flectonepulse.module.message.format.object.texture"
         type: "OP"
 #endregion object
+#region padding
+    padding:
+      name: "flectonepulse.module.message.format.padding"
+      type: "OP"
+      values:
+        example_left_5:
+          name: "flectonepulse.module.message.format.padding.example_left_5"
+          type: "TRUE"
+        example_center_10:
+          name: "flectonepulse.module.message.format.padding.example_center_10"
+          type: "TRUE"
+#endregion padding
 #region questionanswer
     question_answer:
       name: "flectonepulse.module.message.format.questionanswer"

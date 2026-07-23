@@ -189,6 +189,7 @@
     "imagePath": "/assets/flectonechat/flectonechat_preview_ru.webp"
   },
   "Pulse": {
+    "LastUpdate": "Последнее изменение",
     "EditOnGitHub": "Редактировать на GitHub",
     "Authors": {
       "title": "Авторы страницы"

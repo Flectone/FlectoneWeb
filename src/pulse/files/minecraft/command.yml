@@ -55,6 +55,7 @@ ban:
   suggest_offline_players: true
   show_connection_attempts: true
   check_group_weight: true
+  check_duplicate: false
   range: "PROXY"
   time_limits:
     0: -1
@@ -619,12 +620,26 @@ me:
   sound:
     enable: false
 #endregion me
+#region minesweeper
+minesweeper:
+  enable: true
+  max_row: 9
+  max_column: 9
+  default_mine: 10
+  aliases:
+  - "minesweeper"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion minesweeper
 #region mute
 mute:
   enable: true
   filter_by_server: true
   suggest_offline_players: true
   check_group_weight: true
+  check_duplicate: false
   range: "PROXY"
   time_limits:
     0: -1
@@ -1005,3 +1020,14 @@ whitelist:
   sound:
     enable: false
 #endregion whitelist
+#region whois
+whois:
+  enable: true
+  per_page: 4
+  aliases:
+  - "whois"
+  cooldown:
+    enable: false
+  sound:
+    enable: false
+#endregion whois

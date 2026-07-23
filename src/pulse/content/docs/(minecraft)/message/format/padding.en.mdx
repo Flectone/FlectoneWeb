@@ -1,0 +1,87 @@
+---
+title: Padding
+description: Module that adds padding
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+
+Usage:
+- `<padding:10>` adds 10 spaces
+- `<padding:10:'hello world'>` adds 10 spaces to the left
+- `<padding:CENTER:10:'hello world'>` adds 5 spaces to the left and right
+
+You can also specify starting and ending characters. For example, `<padding:CENTER:10:'hello world':'Hi, ':'Goodbye'>` adds 5 spaces at the start and end, writes "Hi, " at the beginning, and "Goodbye" at the end
+
+
+You can create a custom template by specifying `type` and `length`, and in the localization file set `symbol` the character used for padding (default is a space). You can also set `start` and `end` characters there. For example: `<padding:example_left_5>`
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.padding`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../../files/minecraft/localizations/ru_ru.yml#padding</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/minecraft/localizations/en_us.yml#padding</include></Tab>
+</Tabs>
+
+### `values`
+
+List of template keys and values with characters
+
+#### `symbol`
+
+Character used for padding, default is a space
+
+#### `start`
+
+Character placed at the beginning of the padding
+
+#### `end`
+
+Character placed at the end of the padding
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.padding`</span>
+
+<include>../../../../../files/minecraft/message.yml#padding</include>
+
+<include>../../../../../parts/enable.en.mdx</include>
+
+### `values`
+
+List of template keys and values with settings
+
+#### `type`
+
+| Type           | Explanation                                                                                          |
+|----------------|------------------------------------------------------------------------------------------------------|
+| `LEFT`         | Padding will be on the left                                                                          |
+| `RIGHT`        | Padding will be on the right                                                                         |
+| `CENTER`       | Padding will be centered (works the same as `CENTER_LEFT`)                                           |
+| `CENTER_LEFT`  | Padding will be centered. If the padding value is odd, the extra character is added to the left      |
+| `CENTER_RIGHT` | Padding will be centered. If the padding value is odd, the extra character is added to the right     |
+
+#### `length`
+
+The padding value, i.e., how many characters will be added
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.padding`</span>
+
+<include>../../../../../files/minecraft/permission.yml#padding</include>
+
+<include>../../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `values`
+
+<Callout type="info" title="Info">
+    If the player doesn't have permission, they won't see the padding
+</Callout>
+
+List of template keys and values with permissions

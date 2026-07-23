@@ -289,6 +289,17 @@ format:
       values:
         example: ""
 #endregion object
+#region padding
+  padding:
+    enable: true
+    values:
+      example_left_5:
+        type: "LEFT"
+        length: 5
+      example_center_10:
+        type: "CENTER"
+        length: 10
+#endregion padding
 #region questionanswer
   question_answer:
     enable: false
@@ -393,6 +404,7 @@ rightclick:
 scoreboard:
   enable: true
   name_visible: false
+  name_distance: -1.0
   hide_name_when_sneaking: false
   color: "<white>"
   ticker:

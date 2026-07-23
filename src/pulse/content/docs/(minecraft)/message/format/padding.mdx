@@ -1,0 +1,87 @@
+---
+title: Расширение
+description: Модуль, который добавляет отступы
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+
+Использовать можно с помощью:
+- `<padding:10>` это добавит 10 пробелов
+- `<padding:10:'hello world'>` это добавит слева 10 пробелов
+- `<padding:CENTER:10:'hello world'>` это добавит слева и справа по 5 пробелов
+
+В конце можно указывать символы, которыми будет начинаться и заканчиваться сообщение. Например `<padding:CENTER:10:'hello world':'Hi, ':'Goodbye'>` добавит в конце и в начале по 5 пробелов, а также в начале напишет Hi, а в конце Goodbye
+
+
+Можно сделать собственный шаблон, указав `type` и `length`, а в файле локализации указать `symbol` т.е. символ, который будет использоваться для расширения, по умолчанию это пробел. Там также можно вписать `start` и `end` символы. Например `<padding:example_left_5>`
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#localization</include>
+<span><include>../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.padding`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../../files/minecraft/localizations/ru_ru.yml#padding</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/minecraft/localizations/en_us.yml#padding</include></Tab>
+</Tabs>
+
+### `values`
+
+Список ключей шаблонов и значений с символами
+
+#### `symbol`
+
+Символ для расширения, по умолчанию это пробел
+
+#### `start`
+
+Символ, с которого будет начинаться расширение
+
+#### `end`
+
+Символ, которым будет заканчиваться расширение
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#setting</include>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.padding`</span>
+
+<include>../../../../../files/minecraft/message.yml#padding</include>
+
+<include>../../../../../parts/enable.mdx</include>
+
+### `values`
+
+Список ключей шаблонов и значений с настройками
+
+#### `type`
+
+| Тип            | Объяснение                                                                                               |
+|----------------|----------------------------------------------------------------------------------------------------------|
+| `LEFT`         | Расширение будет слева                                                                                   |
+| `RIGHT`        | Расширение будет справа                                                                                  |
+| `CENTER`       | Расширение будет по центру (работает также, как `CENTER_LEFT`)                                           |
+| `CENTER_LEFT`  | Расширение будет по центру. Если значение расширение нечётное, то дополнительный символ добавится слева  |
+| `CENTER_RIGHT` | Расширение будет по центру. Если значение расширение нечётное, то дополнительный символ добавится справа |
+
+#### `length`
+
+Значение расширения т.е. сколько символов добавится
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#permission</include>
+<span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.padding`</span>
+
+<include>../../../../../files/minecraft/permission.yml#padding</include>
+
+<include>../../../../../parts/permission/permissionTier3.mdx</include>
+
+### `values`
+
+<Callout type="info" title="Информация">
+    Если игрок не будет иметь права, он не увидит расширение
+</Callout>
+
+Список ключей шаблонов и значений с правами

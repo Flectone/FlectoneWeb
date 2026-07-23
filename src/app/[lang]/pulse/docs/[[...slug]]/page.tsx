@@ -4,17 +4,15 @@ import {
   DocsDescription,
   DocsPage,
   DocsTitle,
-  // EditOnGitHub,
-  PageLastUpdate,
 } from 'fumadocs-ui/layouts/docs/page';
 import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
 import { Authors } from '@/components/Pulse/Authos';
-import { execSync } from 'child_process';
 import EditOnGitHub from '@/components/Pulse/EditOnGitHub'
-import {Clock} from "lucide-react";
+import gitDates from '@/pulse/git-dates.json';
+import LastUpdate from '@/components/Pulse/LastUpdate';
 
 export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slug]]'>) {
   const params = await props.params;
@@ -45,10 +43,7 @@ export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slu
           })}
         />
         <div className='flex justify-between items-center'>
-          {lastModified && <div className='flex items-center justify-center gap-1 text-fd-muted-foreground'>
-            <Clock size={1.2+'em'}/>
-            <PageLastUpdate date={lastModified} />
-          </div>}
+          {lastModified && <LastUpdate date={lastModified} />}
           <EditOnGitHub
               href={`https://github.com/Flectone/FlectoneWeb/edit/master/${filePath}`}
           />
@@ -59,16 +54,8 @@ export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slu
 }
 
 export function getGitLastModified(filePath: string): Date | null {
-  try {
-    const result = execSync(
-        `git log -1 --format="%aI" -- "${filePath}"`,
-        { encoding: 'utf8' }
-    ).trim();
-
-    return result ? new Date(result) : null;
-  } catch {
-    return null;
-  }
+  const iso = (gitDates as Record<string, string>)[filePath];
+  return iso ? new Date(iso) : null;
 }
 
 export async function generateStaticParams() {
