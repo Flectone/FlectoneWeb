@@ -5,43 +5,43 @@
       "description": "Flectone is a brand that unites all TheFaser projects",
       "applicationName": "Flectone",
       "keywords": "flectone, Flectone",
-      "image": "/logo.png"
+      "image": "/assets/flectone_logo.png"
     },
     "NotFound": {
       "title": "404 | Flectone",
       "description": "Not found",
-      "image": "/ogimages/notfounden.jpg"
+      "image": "/ogimages/not_found_en.webp"
     },
     "Mix": {
       "title": "FlectoneMix",
       "description": "Was created to make it easier to find and install things for Minecraft, but the project was closed",
       "applicationName": "FlectoneMix",
-      "image": "/logo.png"
+      "image": "/assets/flectone_logo.png"
     },
     "Chat": {
       "title": "FlectoneChat",
       "description": "Simplifies and complements the game on the server by adding convenient features, but the project was closed",
       "applicationName": "FlectoneChat",
-      "image": "/logo.png"
+      "image": "/assets/flectone_logo.png"
     },
     "About": {
       "title": "About us | Flectone",
       "description": "All these people have contributed to the project",
       "applicationName": "Flectone",
-      "image": "/logo.png"
+      "image": "/assets/flectone_logo.png"
     },
     "Pulse": {
       "title": "FlectonePulse",
       "description": "Every message under your control!",
       "applicationName": "Flectone",
       "keywords": "flectone, Flectone, plugin, minecraft plugin, chat plugin, minecraft chat plugin, chat, minecraft, flectonepulse",
-      "image": "/logo.png",
+      "image": "/assets/flectone_logo.png",
       "Download": {
         "title": "Download | FlectonePulse",
         "description": "Download FlectonePulse right now and start configuring your server!",
         "ApplicationName": "FlectonePulse",
         "keywords": "download flectonepulse, download flectonepulse, download chat plugin, download minecraft chat plugin, download chat, download minecraft, download flectone, download flectone",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       }
     },
     "Tools": {
@@ -55,55 +55,55 @@
         "title": "Texture Generator | FlectoneTools",
         "description": "Allows you to turn any image into a ready-made Minecraft texture by generating a JSON model. Simply upload your image, and the tool will automatically generate the texture as a JSON model file. Copy the finished result and place it into the images folder of the FlectonePulse plugin, after which the texture can be used immediately on your server. Full documentation and examples: https://flectone.net/pulse/docs/message/format/object",
         "applicationName": "TextureGenerator",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "TextAnimation": {
         "title": "Text Animation | FlectoneTools",
         "description": "Creates animated texts with flicker, rainbow, wave, and letter-by-letter appearance effects. Adjust the speed and colors, and the tool will generate ready-to-use settings. Copy them into your plugin (e.g., FlectonePulse). Full documentation and examples: https://flectone.net/pulse/docs/message/format/animation",
         "applicationName": "TextAmination",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "PrefixGenerator": {
         "title": "Prefix Generator | FlectoneTools",
         "description": "A visual editor for creating colored prefixes with gradients, symbols, and separators. The tool generates a ready-made prefix image that you can download and use anywhere, for example, in a Resource Pack, on social media, in videos, or for server branding",
         "applicationName": "PrefixGenerator",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "UuidExtractor": {
         "title": "UUID Extractor | FlectoneTools",
         "description": "Finds a player's UUID by username. Supports offline and online modes. You can also generate a random UUID and copy the result",
         "applicationName": "UuidExtractor",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "InventoryPreviewer": {
         "title": "Inventory Viewer | FlectoneTools",
         "description": "Browse all Minecraft inventory slots — chests, furnaces, crafting tables and other containers",
         "applicationName": "InventoryPreviewer",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "CoordinateCalculator": {
         "title": "Coordinate Calculator | FlectoneTools",
         "description": "Convert coordinates between the Nether and the Overworld, and find the End stronghold using two ender eye throws",
         "applicationName": "CoordinateCalculator",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "ColorTextGenerator": {
         "title": "Color Text Generator | FlectoneTools",
         "description": "Create colored text for Minecraft with support for Legacy and MiniMessage formats",
         "applicationName": "ColorTextGenerator",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "ServerFlagsGenerator": {
         "title": "Server Flags Generator | FlectoneTools",
         "description": "Generate Minecraft server startup scripts with optimal JVM flags for Linux, Windows and Java.",
         "applicationName": "ServerFlagsGenerator",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "TimeConvertor": {
         "title": "Time Converter | FlectoneTools",
         "description": "Description",
         "applicationName": "TimeConvertor",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       }
     }
   },
@@ -118,6 +118,25 @@
     "openSourse": "All project code is <a>open source</a>"
   },
   "Header": {
+    "Search" : {
+      "filter": "Filter",
+      "Minecraft": {
+        "name": "Minecraft",
+        "description": "Documentation for Minecraft"
+      },
+      "Hytale": {
+        "name": "Hytale",
+        "description": "Documentation for Hytale"
+      },
+      "API": {
+        "name": "API",
+        "description": "Documentation for API"
+      },
+      "Metrics": {
+        "name": "Metrics",
+        "description": "Documentation for Metrics"
+      }
+    },
     "about": "About us",
     "Projects": {
       "title": "Projects"
@@ -134,6 +153,7 @@
   },
   "Projects": {
     "title": "Projects by <b>Flectone</b>",
+    "closed": "Сlosed projects",
     "Pulse": {
       "description": "Project for configuring server messages",
       "button": "More",
@@ -144,7 +164,7 @@
     },
     "Chat": {
       "description": "Father of FlectonePulse, but it's closed",
-      "imagePath": "/chat/chat-en.svg"
+      "imagePath": "/assets/flectonechat/flectonechat_preview_en.webp"
     },
     "Tools": {
       "description": "Tools for server developers"
@@ -185,9 +205,11 @@
   "FlectoneChat": {
     "description": "Simplified and augmented the server game by adding convenient features, but it's closed",
     "usePulse": "Use <strong>FlectonePulse</strong>, as FlectoneChat is no longer supported.",
-    "imagePath": "/chat/chat-en.svg"
+    "imagePath": "/assets/flectonechat/flectonechat_preview_en.webp"
   },
   "Pulse": {
+    "LastUpdate": "Last updated",
+    "EditOnGitHub": "Edit on GitHub",
     "Authors": {
       "title": "Authors of page"
     },

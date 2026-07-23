@@ -24,6 +24,10 @@ Minimum number of threads in the pool
 
 Maximum number of threads in the pool. A value of `-1` means no limit — as many threads as needed for current tasks will be created
 
+### `allow_core_thread_timeout`
+
+Allows core threads to be removed after being idle longer than `keep_alive`. Without this setting, core threads are never removed.
+
 ### `work_queue`
 
 Type of work queue for tasks

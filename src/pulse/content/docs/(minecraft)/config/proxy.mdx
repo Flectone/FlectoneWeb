@@ -21,8 +21,8 @@ tag: "minecraft"
 Список кластеров, к которым должен быть подключён сервер. Используется только тогда, когда включен режим прокси.
 Если список пустой, то сервер получает все сообщения с других серверов
 
-<Callout type="info" title="Как использовать?">
-Нужно вписать название кластера на всех серверах, где сообщение будет получено и отправлено
+<Callout type="info" title="Information">
+Как использовать? Нужно вписать название кластера на всех серверах, где сообщение будет получено и отправлено
 ```yaml
 clusters: 
    - "test_cluster"
@@ -35,7 +35,8 @@ clusters:
 
 Включает связь с `BungeeCord`
 
-<Callout type="idea" title="Как это настроить?">
+<Callout type="idea" title="Примечание">
+    Как это настроить?
     1. Файл `FlectonePulse-bukkit.jar` нужно поставить на `BungeeCord` в папку `plugins`. Даже если у вас Fabric сервер, на `BungeeCord` нужно ставить именно `FlectonePulse-bukkit.jar`
     2. На всех серверах, где должна быть связь с `BungeeCord`, должен быть включен `bungeecord: true` в FlectonePulse
     3. Выбранная датабаза должна быть `MySQL` или `MariaDB` или `PostgreSQL` (т.е. серверная)
@@ -45,7 +46,8 @@ clusters:
 
 Включает связь с `Velocity`
 
-<Callout type="idea" title="Как это настроить?">
+<Callout type="idea" title="Примечание">
+    Как это настроить?
     1. Файл `FlectonePulse-bukkit.jar` нужно поставить на `Velocity` в папку `plugins`. Даже если у вас Fabric сервер, на `Velocity` нужно ставить именно `FlectonePulse-bukkit.jar`
     2. На всех серверах, где должна быть связь с `Velocity`, должен быть включен `velocity: true` в FlectonePulse
     3. Выбранная датабаза должна быть `MySQL` или `MariaDB` или `PostgreSQL` (т.е. серверная)

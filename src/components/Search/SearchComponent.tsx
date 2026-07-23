@@ -10,15 +10,16 @@ import {
   SearchDialogInput,
   SearchDialogList,
   SearchDialogOverlay,
-  type SharedProps, TagsList, TagsListItem,
+  type SharedProps,
 } from 'fumadocs-ui/components/dialog/search';
-import { Cable, ChartCandlestick, Leaf, Pickaxe } from 'lucide-react';
+import TagList from "@/components/Search/TagList";
+import TagListItem from "@/components/Search/TagListItem";
 import { useEffect, useMemo, useState } from "react";
 import { useTranslations } from 'next-intl';
 
 export default function SearchComponent(props: SharedProps) {
   const pathname = usePathname();
-  const t = useTranslations()
+  const t = useTranslations('Header.Search')
   const currentTag = useMemo(() => {
     const segments = pathname.split('/');
     const validTags = ['hytale', 'metrics', 'api'];
@@ -40,20 +41,20 @@ export default function SearchComponent(props: SharedProps) {
   return (
     <SearchDialog search={search} onSearchChange={setSearch} isLoading={query.isLoading} {...props}>
       <SearchDialogOverlay />
-      <SearchDialogContent>
+      <SearchDialogContent className='overflow-visible'>
         <SearchDialogHeader>
           <SearchDialogIcon />
           <SearchDialogInput />
           <SearchDialogClose />
         </SearchDialogHeader>
         <SearchDialogList items={query.data !== 'empty' ? query.data : null} />
-        <SearchDialogFooter className="flex flex-row">
-          <TagsList tag={tag} onTagChange={setTag}>
-            <TagsListItem className='px-3 py-1 cursor-pointer flex items-center gap-0.5 hover:bg-fd-accent' value="minecraft"><Pickaxe size={1.1 + 'em'} />Minecraft</TagsListItem>
-            <TagsListItem className='px-3 py-1 cursor-pointer flex items-center gap-0.5 hover:bg-fd-accent' value="hytale"><Leaf size={1.1 + 'em'} />Hytale</TagsListItem>
-            <TagsListItem className='px-3 py-1 cursor-pointer flex items-center gap-0.5 hover:bg-fd-accent' value="metrics"><ChartCandlestick size={1.1 + 'em'} />{t('Pulse.Buttons.metrics')}</TagsListItem>
-            <TagsListItem className='px-3 py-1 cursor-pointer flex items-center gap-0.5 hover:bg-fd-accent' value="api"><Cable size={1.1 + 'em'} />API</TagsListItem>
-          </TagsList>
+        <SearchDialogFooter className="flex flex-row rounded-2xl py-1 px-1">
+          <TagList currentTag={tag || 'minecraft'}>
+            <TagListItem isSelect={tag == 'minecraft'} icon={'pickaxe'} title={t('Minecraft.name')} description={t('Minecraft.description')} onclick={() => setTag('minecraft')} />
+            <TagListItem isSelect={tag == 'hytale'} icon={'leaf'} title={t('Hytale.name')} description={t('Hytale.description')} onclick={() => setTag('hytale')} />
+            <TagListItem isSelect={tag == 'metrics'} icon={'cable'} title={t('Metrics.name')} description={t('Metrics.description')} onclick={() => setTag('metrics')} />
+            <TagListItem isSelect={tag == 'api'} icon={'chart-candlestick'} title={t('API.name')} description={t('API.description')} onclick={() => setTag('api')} />
+          </TagList>
         </SearchDialogFooter>
       </SearchDialogContent>
     </SearchDialog>

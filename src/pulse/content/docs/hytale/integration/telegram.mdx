@@ -5,9 +5,9 @@ authors:
   - TheFaser
 tag: "hytale"
 ---
-![telegram message 1](/pulse/telegrammessage1.png)
-![telegram message 2](/pulse/telegrammessage2.png)
-![minecraft message](/pulse/telegramminecraftmessage.png)
+![telegram message 1](/pulse/integration_telegram_message_1.webp)
+![telegram message 2](/pulse/integration_telegram_message_2.webp)
+![minecraft message](/pulse/integration_telegram_message_minecraft.webp)
 
 <include>../../../../parts/messageTag.mdx</include>
 
@@ -37,7 +37,8 @@ tag: "hytale"
 
 Список кастомных комманд интеграции, где ключом является название комманды, а значением её формат сообщения
 
-<Callout type="info" title="Пример">
+<Callout type="info" title="Информация">
+Пример
 
 ```yaml
 custom_command:
@@ -52,8 +53,8 @@ custom_command:
 #### `Плейсхолдеры`
 
 Ты можешь использовать все плейсхолдеры, которые используются в начальном сообщении для Hytale
-<Callout type="info" title="Например для сообщения о блокировке">
-Там есть плейсхолдер `<reason>`, значит я могу использовать `<reason>` внутри телеграм сообщений
+<Callout type="info" title="Информация">
+    Например для сообщения о блокировке. Там есть плейсхолдер `<reason>`, значит я могу использовать `<reason>` внутри телеграм сообщений
 </Callout>
 
 Также есть плейсхолдеры, которые ТОЧНО будут заменяться в любом сообщении
@@ -83,7 +84,8 @@ custom_command:
 
 Список сообщений с форматом итогового сообщения
 
-<Callout type="info" title="ЕСЛИ ХОЧЕШЬ ДОБАВИТЬ ДРУГОЕ СООБЩЕНИЕ:">
+<Callout type="info" title="Информация">
+Если хочешь добавить другое сообщение:
 <Steps>
     <Step>
         Возьми название из списка `типы сообщений`
@@ -143,7 +145,8 @@ custom_command:
 | `need_player` | Проверять ли первый аргумент комманды на имя игрока, например `!ping TheFaser` |
 | `aliases`     | Список псевдонимов для использования комманды                                  |
 
-<Callout type="info" title="Пример">
+<Callout type="info" title="Информация">
+Пример
 
 ```yaml
 custom_command:
@@ -172,7 +175,9 @@ custom_command:
 
 Список типов сообщений и айди чатов в Telegram
 
-<Callout type="info" title="Например я хочу, чтобы из Hytale отправлялось сообщение комманды `/ban` в Telegram">
+<Callout type="info" title="Информация">
+Например я хочу, чтобы из Hytale отправлялось сообщение комманды `/ban` в Telegram
+
 1. Копирую айди чата, в которое нужно отправить сообщение (`-1002341720267_49`)
 
 Если бот подключён и добавлен в канал, то можно использовать команду `!id` в телеграме, чтобы узнать айди канала
@@ -187,7 +192,7 @@ message_channel:
 Чатов может быть сколько угодно, главное, чтобы к ним был доступ у бота из [секреты](/pulse/docs/secrets/telegram/). Локализацию можно не настраивать, по умолчанию сообщение будет отправляться с форматом `<final_message>`
 </Callout>
 
-<Callout type="warn" title="Важно">
+<Callout type="warn" title="Предупреждение">
 Если ваш канал является Форумом (Топиком), то айди **ГЛАВНОГО** канала нужно указывать без `_`
 
 1. Айди моего главного канала (он всегда заканчивается на `_1`) это `-1002341720267_1`

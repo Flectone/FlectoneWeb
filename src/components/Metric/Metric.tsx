@@ -1,13 +1,13 @@
 'use client';
 
 import * as echarts from 'echarts';
-import React, { useEffect, useMemo, useState, useCallback } from 'react';
+import {EChartsOption} from 'echarts';
+import React, {useCallback, useEffect, useMemo, useState} from 'react';
 import ReactECharts from 'echarts-for-react';
-import { EChartsOption } from 'echarts';
-import { useTheme } from 'next-themes';
-import { darkTheme, lightTheme } from './chartThemes';
-import { useParams } from 'next/navigation';
-import { CallbackDataParams, TopLevelFormatterParams } from "echarts/types/dist/shared";
+import {useTheme} from 'next-themes';
+import {darkTheme, lightTheme} from './chartThemes';
+import {useParams} from 'next/navigation';
+import {CallbackDataParams, TopLevelFormatterParams} from "echarts/types/dist/shared";
 
 if (typeof window !== 'undefined') {
     echarts.registerTheme('dark', darkTheme);
@@ -306,11 +306,15 @@ export default function Metric(props: MetricProps) {
                     return res;
                 }
             },
-            legend: { data: [data?.first.name, data?.second.name], bottom: '93%' },
+            legend: { data: [data?.first.name, data?.second.name], bottom: '93%', formatter: function (name) {
+                    return name === data?.first.name
+                        ? `${data.first.name} – ${firstData.map(item => (item.count))[firstData.length - 1]}`
+                        : `${data?.second.name} – ${secondData.map(item => (item.count))[secondData.length - 1]}`
+                } },
             grid: { left: '3%', right: '3%', bottom: '15%', top: '10%', containLabel: true },
             yAxis: { type: 'value', axisLabel: { inside: true, verticalAlign: 'bottom', padding: [0, 0, 8, 0], fontSize: 12 }, axisLine: { show: false }, axisTick: { show: false } },
             xAxis: { type: 'category', data: firstData.map(item => item.value), axisLabel: { formatter: (value: string) => { const date = new Date(value); return !isNaN(date.getTime()) ? date.toLocaleTimeString('ru-RU', { hour: '2-digit', minute: '2-digit', hour12: false }) : value; }, hideOverlap: true } },
-            series: [{ name: data?.first.name, data: firstData.map(item => item.count + " " + suffix), type: 'line', smooth: true }, { name: data?.second.name, data: secondData.map(item => item.count + " " + suffix), type: 'line', smooth: true }],
+            series: [{ name: data?.first.name, data: firstData.map(item => item.count + " " + suffix), type: 'line', smooth: true, color: '#21d17f' }, { name: data?.second.name, data: secondData.map(item => item.count + " " + suffix), type: 'line', smooth: true, color: '#377ded' }],
             dataZoom: [{ type: 'inside', start: 0, end: 100 }, { type: 'slider', start: 0, end: 100, showDetail: false }]
         } as EChartsOption;
     }, [firstData, secondData, data, lang, suffix]);

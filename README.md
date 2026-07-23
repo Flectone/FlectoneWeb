@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/logo.png" alt="Flectone Logo" width="120" />
+  <img src="public/assets/flectone_logo.png" alt="Flectone Logo" width="120" />
 
 # ⚡️ Flectone Web
 

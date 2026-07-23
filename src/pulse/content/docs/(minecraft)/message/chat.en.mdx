@@ -6,10 +6,10 @@ authors:
 tag: "minecraft"
 ---
 
-![chat](/pulse/chat.png)
+![chat](/pulse/message_chat.webp)
 
-<Callout type="info" title="How to disable local chat?">
-    Inside `message.yml` disable `local` using `enable: false`, and also set an empty `trigger: ""` for `global`
+<Callout type="info" title="Information">
+    How to disable local chat? Inside `message.yml` disable `local` using `enable: false`, and also set an empty `trigger: ""` for `global`
 
     ```yaml
     chat:
@@ -40,7 +40,8 @@ tag: "minecraft"
     ```
 </Callout>
 
-<Callout type="info" title="How to configure chat to work with other plugins? (TownyChat and others)">
+<Callout type="info" title="Information">
+    How to configure chat to work with other plugins?
 
     For TownyChat:
     1. Open the ChatConfig.yml file (in the Towny folder)
@@ -148,7 +149,7 @@ chat_name:
 
         - If `true`, the chat message event is canceled for other plugins
         - If you need another chat-related plugin (like DiscordSRV) to work, set to `false` (this may cause console duplication)
-        ![chat console](/pulse/chatconsole.png)
+        ![chat console](/pulse/message_chat_console.webp)
 
         <include>../../../../parts/range.mdx</include>
 
@@ -156,7 +157,9 @@ chat_name:
 
         Chat priority used to determine which chat is selected when multiple chats have the same `trigger`. The chat with the higher priority is chosen
 
-        <Callout type="info" title="For example, if there are chats:">
+        <Callout type="info" title="Information">
+            For example, if there are chats:
+
             ```yaml
             admin:
               priority: 20
@@ -173,7 +176,8 @@ chat_name:
 
         The message prefix that must be used to send a message to this chat
 
-        <Callout type="info" title="The `trigger` value can be anything:">
+        <Callout type="info" title="Information">
+            The `trigger` value can be anything:
             - `!`, `admin`, `.f`, etc.
             - empty, i.e., `trigger: ""`, then any message matches this chat
         </Callout>

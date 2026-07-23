@@ -5,14 +5,14 @@ authors:
   - TheFaser
 tag: "minecraft"
 ---
-![discord message](/pulse/discordmessage.png)
-![minecraft message](/pulse/discordminecraftmessage.png)
+![discord message](/pulse/integration_discord_message.webp)
+![minecraft message](/pulse/integration_discord_message_minecraft.webp)
 
 <Callout type="info" title="Information">
 
 For the bot to work correctly, enable three settings for your bot in the [Discord Developer Portal](https://discord.com/developers/applications/)
 
-![develop](/pulse/discorddevelopers.png)
+![develop](/pulse/integration_discord_developers.webp)
 
 Also grant the bot permissions for `Read Messages`, `Send Messages`, and `Use Webhooks`
 
@@ -61,8 +61,8 @@ Command to get the `tps` value on the server. **Don't forget to create it in int
 #### `Placeholders`
 
 You can use all placeholders that are used in the initial message for Minecraft
-<Callout type="info" title="EXAMPLE FOR BAN MESSAGE">
-There is a `<reason>` placeholder there, so I can use `<reason>` inside Discord messages
+<Callout type="info" title="Information">
+Example for ban message. There is a `<reason>` placeholder there, so I can use `<reason>` inside Discord messages
 </Callout>
 
 There are also placeholders that will DEFINITELY be replaced in any message
@@ -121,7 +121,7 @@ message_name:
 <Callout type="info" title="Information">
 
     Message with all parameters
-    ![discord](/pulse/discordembedpreview.png)
+    ![discord](/pulse/integration_discord_embed_preview.webp)
 
     If a parameter is empty or not written, it will not be used in the final message
 
@@ -132,7 +132,7 @@ message_name:
         #### `content`
 
         Message content
-        ![discord content](/pulse/discordcontent.png)
+        ![discord content](/pulse/integration_discord_content.webp)
 
         #### `webhook_name`
 
@@ -141,12 +141,12 @@ message_name:
         #### `webhook_avatar`
 
         Enable Discord webhook with the player's avatar. It is best to use `https://mc-heads.net/avatar/<skin>/32.png`
-        ![discord webhook](/pulse/discordwebhook.png)
+        ![discord webhook](/pulse/integration_discord_webhook.webp)
 
         #### `embed`
 
         Discord embed message
-        ![discord embed](/pulse/discordembed.png)
+        ![discord embed](/pulse/integration_discord_embed.webp)
 
         ##### `color`
 
@@ -261,7 +261,7 @@ If enabled, any messages from Discord Webhook will be ignored. Otherwise, only o
 
 ### `proxy`
 
-<include>../../../../parts/proxy.mdx</include>
+<include>../../../../parts/proxy.en.mdx</include>
 
 ### `custom_command`
 
@@ -272,7 +272,8 @@ List of custom integration commands, the key is the command name and it can be a
 | `need_player` | Whether to check the first command argument for a player name, e.g., `!ping TheFaser` |
 | `aliases`     | List of aliases for using the command                                          |
 
-<Callout type="info" title="Example">
+<Callout type="info" title="Information">
+Example
 
 ```yaml
 custom_command:
@@ -289,7 +290,7 @@ Command to get the `tps` value on the server using `!tps` or `!tickpersecond`. *
 
 ### `presence`
 
-![discord presence](/pulse/discordpresence.png)
+![discord presence](/pulse/integration_discord_presence.webp)
 
 <Accordions>
     <Accordion title="Bot status settings">
@@ -339,7 +340,7 @@ Command to get the `tps` value on the server using `!tps` or `!tickpersecond`. *
 
 ### `channel_info`
 
-![discord channel info](/pulse/discordchannelinfo.png)
+![discord channel info](/pulse/integration_discord_channel_info.webp)
 
 <Accordions>
     <Accordion title="Info channels settings">
@@ -355,7 +356,9 @@ Command to get the `tps` value on the server using `!tps` or `!tickpersecond`. *
 
 List of message types and [Channel IDs](https://support.discord.com/hc/en-us/articles/206346498-Where-can-I-find-my-User-Server-Message-ID-) in Discord
 
-<Callout type="info" title="For example, I want a `/ban` command message to be sent from Minecraft to Discord">
+<Callout type="info" title="Information">
+For example, I want a `/ban` command message to be sent from Minecraft to Discord
+
 <Steps>
     <Step>
         Copy the channel ID in Discord `1286666844358316083`

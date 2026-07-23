@@ -1,0 +1,138 @@
+---
+title: /minesweeper
+description: Command to play Minesweeper
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+![command minesweeper](/pulse/command_minesweeper.webp)
+
+You can create a game with custom parameters (all optional): `/minesweeper create <rows> <columns> <mines> <seed>`
+
+
+To place a flag, you need to enable flag mode by clicking the corresponding symbol. After that, each move will count as placing a flag. To exit flag mode, click the corresponding symbol again
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.minesweeper`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#minesweeper</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#minesweeper</include></Tab>
+</Tabs>
+
+### `wrong_parameters`
+
+Message shown when incorrect game parameters are entered. Numbers too large or negative
+
+### `wrong_game`
+
+Message shown when a player tries to play a game that no longer exists
+
+### `wrong_move`
+
+Message shown when a player makes a move with impossible parameters
+
+### `cell`
+
+<Accordions>
+    <Accordion title="Cells for the game field">
+        #### `unknown`
+
+        Cell that hasn't been opened yet and is unknown
+
+        #### `flag`
+
+        Cell where the player has placed a flag
+
+        #### `mine`
+
+        Cell that is a mine
+
+        #### `number_0`
+
+        Opened empty cell
+
+        #### `number_x`
+
+        Opened cell indicating there are `x` mines nearby (max mines = `8`)
+    </Accordion>
+</Accordions>
+
+### `line`
+
+Format for each field line
+
+### `flag_enabled`
+
+Format for the indicator showing flag mode is currently enabled
+
+### `flag_disabled`
+
+Format for the indicator showing flag mode is currently disabled
+
+### `format_start`
+
+Message when a new game starts
+
+### `format_move`
+
+Message on each player move
+
+### `format_win`
+
+Message when the player wins
+
+### `format_lose`
+
+Message when the player loses
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `command.yml → minesweeper`</span>
+
+<include>../../../../files/minecraft/command.yml#minesweeper</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+### `max_row`
+
+<Callout type="error" title="Warning">
+    Setting too large a value is not recommended, the server will take a long time to process it
+</Callout>
+
+Maximum number of rows for creating the game field. Used as the default value if not specified in `/minesweeper create`
+
+### `max_column`
+
+<Callout type="error" title="Warning">
+    Setting too large a value is not recommended, the server will take a long time to process it
+</Callout>
+
+Maximum number of columns for creating the game field. Used as the default value if not specified in `/minesweeper create`
+
+### `default_mine`
+
+Maximum number of mines in the game. Used as the default value if not specified in `/minesweeper create`
+
+<include>../../../../parts/aliases.en.mdx</include>
+
+<include>../../../../parts/cooldown.en.mdx</include>
+
+<include>../../../../parts/sound.en.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → command.minesweeper`</span>
+
+<include>../../../../files/minecraft/permission.yml#minesweeper</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../../parts/permission/sound.en.mdx</include>

@@ -25,7 +25,7 @@ export default function FlectoneTools() {
             icon: "BrickWall",
             path: '/tools/texture-generator',
             preview:
-                <div className="font-[Minecraft] bg-[url(/assets/minecrafttaiga.png)] bg-center h-full bg-cover">
+                <div className="font-[Minecraft] bg-[url(/assets/backgrounds/minecraft_taiga.webp)] bg-center h-full bg-cover">
                     <MinecraftChat prefix={
                         <span className="h-[1em] flex items-center justify-center px-1 bg-linear-to-br from-[#3F51B5] to-[#030D48]">
                             <h5 className="text-transparent bg-clip-text bg-linear-to-r from-[#D4E6F8] to-[#89BDD4]">prefix</h5>
@@ -39,7 +39,7 @@ export default function FlectoneTools() {
             icon: "TextSelect",
             path: "/tools/text-animation",
             preview:
-                <div className=" text-fd-primary h-full bottom-0 p-2 flex justify-center items-center font-[Minecraft] bg-[url(/assets/minecraftlandscape.jpg)] bg-bottom border">
+                <div className=" text-fd-primary h-full bottom-0 p-2 flex justify-center items-center font-[Minecraft] bg-[url(/assets/backgrounds/minecraft_landscape.webp)] bg-bottom border">
                     <div className="bg-black/60">
                         <h3 style={{ backgroundSize: '200% auto' }} className="px-3 text-transparent text-4xl max-sm:text-xl animate-gradient-flow bg-linear-to-r from-fd-red via-fd-primary to-fd-red bg-clip-text">
                             FlectonePulse
@@ -53,7 +53,7 @@ export default function FlectoneTools() {
             icon: "SquareStar",
             path: "/tools/prefix-generator",
             preview:
-                <div className="font-[Minecraft] bg-[url(/assets/minecraftclouds.png)] bg-center h-full bg-cover flex items-center justify-center">
+                <div className="font-[Minecraft] bg-[url(/assets/backgrounds/minecraft_clouds.webp)] bg-center h-full bg-cover flex items-center justify-center">
                     <span className="flex items-center justify-center px-3 bg-linear-to-br from-[#3F51B5] to-[#030D48]"><h5 className="text-transparent bg-clip-text bg-linear-to-r from-[#D4E6F8] to-[#89BDD4] text-6xl max-sm:text-3xl">Admin</h5></span>
                 </div>
         },
@@ -77,9 +77,9 @@ export default function FlectoneTools() {
             icon: "SquareUserRound",
             path: "/tools/inventory-previewer",
             preview:
-                <div className="font-[Minecraft] bg-[url(/assets/minecraftjungle.png)] h-full bg-cover flex items-center justify-center">
+                <div className="font-[Minecraft] bg-[url(/assets/backgrounds/minecraft_jungle.webp)] h-full bg-cover flex items-center justify-center">
                     <div className="w-full h-full bg-black/60 flex items-center justify-center p-2">
-                        <img src="/assets/containers/inventory.png" alt="" className="h-full shrink-0 max-sm:h-2/3" />
+                        <img src="/assets/containers/inventory.webp" alt="" className="h-full shrink-0 max-sm:h-2/3" />
                     </div>
                 </div>
         },
@@ -89,7 +89,7 @@ export default function FlectoneTools() {
             icon: "SquareUserRound",
             path: "/tools/coordinate-calculator",
             preview:
-                <div className="font-[Minecraft] bg-[url(/assets/minecraftnether2.png)] h-full bg-cover flex items-center justify-center">
+                <div className="font-[Minecraft] bg-[url(/assets/backgrounds/minecraft_nether_2.webp)] h-full bg-cover flex items-center justify-center">
                     <div className="w-full h-full flex-col flex items-center justify-center p-2 text-white">
                         <h2 className="text-xl max-sm:text-sm bg-black/50 px-2 ">x: 12, y: 127, z:25</h2>
                         <h2 className="text-xl max-sm:text-sm">↓   ↓</h2>
@@ -130,8 +130,8 @@ export default function FlectoneTools() {
             icon: "SquareUserRound",
             path: "/tools/time-convertor",
             preview:
-                <div className="font-[Minecraft] bg-[url(/assets/time.svg)] bg-center h-full bg-cover flex items-center justify-center">
-                    <img src="/assets/sun.svg" alt="" className="h-full animate-spin [animation-duration:4s]" />
+                <div className="font-[Minecraft] bg-[url(/assets/flectonetools/flectonetools_timeconverter_cycle.webp)] bg-center h-full bg-cover flex items-center justify-center">
+                    <img src="/assets/minecraft_sun.webp" alt="" className="h-full animate-spin [animation-duration:4s]" />
                 </div>
         },
     ]

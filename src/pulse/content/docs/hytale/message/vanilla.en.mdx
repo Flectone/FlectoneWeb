@@ -5,9 +5,9 @@ authors:
   - TheFaser
 tag: "hytale"
 ---
-![death](/pulse/hytale/death.png) \
-![gamemode](/pulse/hytale/gamemode.png)\
-![teleport](/pulse/hytale/teleport.png)
+![death](/pulse/hytale/message_vanilla_death.webp) \
+![gamemode](/pulse/hytale/message_vanilla_gamemode.webp)\
+![teleport](/pulse/hytale/message_vanilla_teleport.webp)
 
 <br></br>
 
@@ -31,8 +31,8 @@ Format for displaying a mob in arguments
 
 List of messages where the key is the translation key
 
-<Callout type="idea" title="YOU CAN ADD ANY MESSAGE">
-You need to use the translation key from the main localization of the server, adding the word `server.` to the beginning of the key, so that the result is `server.key: "hello <argument:0>"`
+<Callout type="idea" title="Note">
+You can add any message. You need to use the translation key from the main localization of the server, adding the word `server.` to the beginning of the key, so that the result is `server.key: "hello <argument:0>"`
 
 </Callout>
 
@@ -47,7 +47,7 @@ You need to use the translation key from the main localization of the server, ad
 
 ### `cancel_default_death_screen`
 
-<Callout type="error" title="">
+<Callout type="error" title="Attention">
     Not supported in Hytale
 </Callout>
 
@@ -62,8 +62,8 @@ A list of message groups organized by common characteristics. Each parameter ins
 
         Whether this message is global for everyone. If enabled, it will be sent once by the sender, and all other duplicate messages will be cancelled. This isn't visible to users but is used for correct integration with `Proxy` and external services
 
-        <Callout type="info" title="Example">
-            Advancement messages are sent to each player individually. If you enable `multi_message`, the message will be sent when the player who earned the achievement receives it. Then, the message is sent to everyone on their behalf, allowing it to be correctly forwarded to the `Proxy` and integrations
+        <Callout type="info" title="Information">
+            For example, Advancement messages are sent to each player individually. If you enable `multi_message`, the message will be sent when the player who earned the achievement receives it. Then, the message is sent to everyone on their behalf, allowing it to be correctly forwarded to the `Proxy` and integrations
 
         </Callout>
 

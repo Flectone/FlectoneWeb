@@ -23,7 +23,7 @@ export default function FlectoneMix() {
         </div>
       </Card>
       <Card className="w-full">
-        <Svg src='/mix/mix.svg' className='rounded-md border' />
+        <img alt='flectonemix' src='/assets/flectonemix/flectonemix_preview_dark.webp' className='rounded-md border' />
       </Card>
     </div>
   )

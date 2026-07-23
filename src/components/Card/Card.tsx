@@ -18,7 +18,7 @@ export default function Card({ className = '', children, path, target }: CardPro
 
   if (path) {
     return (
-      <Link href={path} target={target} className={base}>
+      <Link href={path} target={target} className={base} aria-label="">
         {children}
       </Link>
     )

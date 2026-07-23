@@ -5,7 +5,7 @@ authors:
   - TheFaser
 tag: "minecraft"
 ---
-![auto](/pulse/auto.png)
+![auto](/pulse/message_auto.webp)
 
 <br></br>
 
@@ -38,19 +38,20 @@ Types of automatic messages with a list
 
 Types of automatic messages
 
-<Callout type="info" title="YOU CAN CREATE YOUR OWN">
-    ```yaml
-    types:
+<Callout type="info" title="Information">
+You can create your own type:
+```yaml
+  types:
     newauto:
-    random: true
-    destination:
-    type: "CHAT"
-    ticker:
-    enable: true
-    period: 9000
-    sound:
-    enable: false
-    ```
+      random: true
+      destination:
+        type: "CHAT"
+      ticker:
+        enable: true
+        period: 9000
+      sound:
+        enable: false
+```
 </Callout>
 
 <include>../../../../parts/random.en.mdx</include>

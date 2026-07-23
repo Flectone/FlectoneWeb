@@ -11,8 +11,8 @@ tag: "minecraft"
 - отправлять сообщения из Twitch в Minecraft
 - подписываться на начало трансляции Twitch
 
-![twitch message](/pulse/twitchmessage.png)
-![minecraft message](/pulse/twitchminecraftmessage.png)
+![twitch message](/pulse/integration_twitch_message.webp)
+![minecraft message](/pulse/integration_twitch_message_minecraft.webp)
 
 <include>../../../../parts/messageTag.mdx</include>
 
@@ -42,7 +42,8 @@ tag: "minecraft"
 
 Список кастомных комманд интеграции, где ключом является название комманды, а значением её формат сообщения
 
-<Callout type="info" title="Пример">
+<Callout type="info" title="Информация">
+Пример
 
 ```yaml
 custom_command:
@@ -57,8 +58,8 @@ custom_command:
 #### `Плейсхолдеры`
 
 Ты можешь использовать все плейсхолдеры, которые используются в начальном сообщении для майнкрафта
-<Callout type="info" title="Например для сообщения о блокировке">
-Там есть плейсхолдер `<reason>`, значит я могу использовать `<reason>` внутри твич сообщений
+<Callout type="info" title="Информация">
+Например для сообщения о блокировке. Там есть плейсхолдер `<reason>`, значит я могу использовать `<reason>` внутри твич сообщений
 </Callout>
 
 Также есть плейсхолдеры, которые ТОЧНО будут заменяться в любом сообщении
@@ -80,7 +81,8 @@ custom_command:
 
 Список сообщений с форматом итогового сообщения
 
-<Callout type="info" title="ЕСЛИ ХОЧЕШЬ ДОБАВИТЬ ДРУГОЕ СООБЩЕНИЕ:">
+<Callout type="info" title="Информация">
+Если хочешь добавить другое сообщение:
 <Steps>
     <Step>
         Возьми название из списка `типы сообщений`
@@ -111,12 +113,12 @@ custom_command:
 ### `client_id`
 
 [Идентификатор](https://twitchtokengenerator.com/) пользователя. Можно использовать environment variables, например `${VALUE}`
-![client id](/pulse/twitchclientid.png)
+![client id](/pulse/integration_twitch_client_id.webp)
 
 ### `token`
 
 [Токен](https://twitchtokengenerator.com/) пользователя для подключения. Можно использовать environment variables, например `${VALUE}`
-![token](/pulse/twitchtoken.png)
+![token](/pulse/integration_twitch_token.webp)
 
 ### `proxy`
 
@@ -131,7 +133,8 @@ custom_command:
 | `need_player` | Проверять ли первый аргумент комманды на имя игрока, например `!ping TheFaser` |
 | `aliases`     | Список псевдонимов для использования комманды                                  |
 
-<Callout type="info" title="Пример">
+<Callout type="info" title="Информация">
+Пример
 
 ```yaml
 custom_command:
@@ -150,7 +153,8 @@ custom_command:
 
 Список типов сообщений и названий каналов на Twitch
 
-<Callout type="info" title="Например я хочу, чтобы из Minecraft отправлялось сообщение комманды `/ban` в Twitch">
+<Callout type="info" title="Информация">
+Например я хочу, чтобы из Minecraft отправлялось сообщение комманды `/ban` в Twitch
 <Steps>
     <Step>
         Копирую названия каналов Twitch, в которые нужно отправить сообщение (`faseri4ka`)
@@ -168,11 +172,12 @@ message_channel:
 Каналов может быть сколько угодно, главное, чтобы к ним был доступ у подключенного аккаунта. Локализацию можно не настраивать, по умолчанию сообщение будет отправляться с форматом `<final_message>`
 </Callout>
 
-### `follow_channel`
+### `channel_action`
 
-Список, где ключом является имя канала, а значением список комманд, которые выполняться при старте трансляции
+Список, где ключом является имя канала, а значением список комманд, которые выполняться при старте/конце трансляции
 
-<Callout type="info" title="Например я хочу отслеживать начало стрима у `faseri4ka` и писать `stream start https://twitch.tv/faseri4ka`">
+<Callout type="info" title="Информация">
+Например я хочу отслеживать начало стрима у `faseri4ka` и писать `stream start https://twitch.tv/faseri4ka`
 <Steps>
     <Step>
         Копирую названия канала `faseri4ka`
@@ -182,13 +187,15 @@ message_channel:
     </Step>
 </Steps>
 ```yaml
-follow_channel:
+channel_action:
   faseri4ka:
+    online:
     - "stream start https://twitch.tv/faseri4ka"
+    offline: []
 ```
 
 - Каналов может быть до 10 одновременно, главное, чтобы к ним был доступ у подключенного аккаунта
-- Комманд, при начале трансляции, может быть сколько угодно и какие угодно
+- Комманд, при начале/конце трансляции, может быть сколько угодно и какие угодно
 </Callout>
 
 <include>../../../../parts/destination.mdx</include>

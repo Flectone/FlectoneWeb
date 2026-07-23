@@ -33,7 +33,7 @@ export default function InputText({ ref, value, onChange, onKeyDown, buttonClick
                 onInput={(e) => {
                     const target = e.target as HTMLTextAreaElement;
                     if (onlyLatin) {
-                        target.value = target.value.replace(/[^a-zA-Z_0-9]/g, '');
+                        target.value = target.value.replace(/[^a-zA-Z-_0-9]/g, '');
                     }
                     if (maxLines && target.value.split('\n').length > maxLines) {
                         const lines = target.value.split('\n');
@@ -81,7 +81,7 @@ export default function InputText({ ref, value, onChange, onKeyDown, buttonClick
                 placeholder={placeholder ? placeholder : t('placeholder')}
                 onInput={onlyLatin ? (e) => {
                     const target = e.target as HTMLInputElement;
-                    target.value = target.value.replace(/[^a-zA-Z_0-9]/g, '');
+                    target.value = target.value.replace(/[^a-zA-Z-_0-9]/g, '');
                 } : undefined}
             />
             {clearText && <button

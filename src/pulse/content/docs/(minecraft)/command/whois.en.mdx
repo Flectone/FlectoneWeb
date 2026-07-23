@@ -1,0 +1,81 @@
+---
+title: /whois
+description: Command to view players the same IP
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+![command whois](/pulse/command_whois.webp)
+
+By default, each colored button is used to run the corresponding command: `/online total`, `/geolocate`, `/whitelistplayer list`, `/warnlist`, `/mutelist`, `/banlist`
+
+The command can be used with an IP or a player name. If a player name is entered, their last known IP will be used
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → command.whois`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#whois</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#whois</include></Tab>
+</Tabs>
+
+### `empty`
+
+Message shown when no players are found with the entered IP
+
+### `null_page`
+
+Message shown when the entered page doesn't exist
+
+### `online`
+
+Format for `<online>` when a player with this IP is online
+
+### `offline`
+
+Format for `<online>` when a player with this IP is offline
+
+### `header`
+
+Top part of the list message
+
+### `line`
+
+Format for each entry in the list
+
+### `footer`
+
+Bottom part of the list message
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `command.yml → whois`</span>
+
+<include>../../../../files/minecraft/command.yml#whois</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+<include>../../../../parts/perPage.en.mdx</include>
+
+<include>../../../../parts/aliases.en.mdx</include>
+
+<include>../../../../parts/cooldown.en.mdx</include>
+
+<include>../../../../parts/sound.en.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → command.whois`</span>
+
+<include>../../../../files/minecraft/permission.yml#whois</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>
+
+<include>../../../../parts/permission/cooldown.en.mdx</include>
+
+<include>../../../../parts/permission/sound.en.mdx</include>

@@ -5,7 +5,7 @@ authors:
   - TheFaser
 tag: "minecraft"
 ---
-![command ban](/pulse/commandban.png)
+![command ban](/pulse/command_ban.webp)
 
 <br></br>
 
@@ -30,11 +30,17 @@ Message if an impossible time is entered
 
 Message if the command is executed by a player with a lower group weight than the player being moderated
 
+### `already_banned`
+
+Message shown when `check_duplicate` is enabled and the player being banned already has an active ban
+
 ### `reasons`
 
 A list with keys and values, where the key is a word and the value is a specific reason
 
-<Callout type="info" title="You can add your own reasons, for example">
+<Callout type="info" title="Information">
+    You can add your own reasons, for example
+
     ```yaml
     random_kek: "Random reason"
     ```
@@ -72,11 +78,15 @@ Message if a banned player attempted to connect
 ### `show_connection_attempts`
 
 If enabled, it will show a message that a banned player attempted to connect
-![command ban connect](/pulse/commandbanconnect.png)
+![command ban connect](/pulse/command_ban_connection.webp)
 
 ### `check_group_weight`
 
 Whether player groups will be checked. If the player being moderated has a higher role than the command sender, the command will not execute and the `lower_weight_group` error will occur
+
+### `check_duplicate`
+
+If enabled, a player with an active ban cannot be given another ban
 
 <include>../../../../parts/range.en.mdx</include>
 
@@ -84,7 +94,9 @@ Whether player groups will be checked. If the player being moderated has a highe
 
 Time limits depending on the sender's group. The key is the group weight, and the value is the maximum moderation time in milliseconds (`1` second = `1000` milliseconds)
 
-<Callout type="info" title="Example">
+<Callout type="info" title="Information">
+    Example
+
     ```yaml
     time_limits:
       20: 35000

@@ -5,7 +5,7 @@ authors:
   - TheFaser
 tag: "hytale"
 ---
-![command ban](/pulse/hytale/commandban.png)
+![command ban](/pulse/hytale/command_ban.webp)
 
 <br></br>
 
@@ -30,11 +30,17 @@ tag: "hytale"
 
 Сообщение, если комманда исполняется от игрока с группой ниже, чем у игрока на которого применяется модерация
 
+### `already_banned`
+
+Сообщение, если включен `check_duplicate` и у игрока, которому хотят выдать бан, уже он есть
+
 ### `reasons`
 
 Список с ключами и значениями, где ключом является слово, а значением конкретная причина
 
-<Callout type="info" title="Можно вписывать свои причины, например">
+<Callout type="info" title="Информация">
+    Можно вписывать свои причины, например
+
     ```yaml
     random_kek: "Random reason"
     ```
@@ -71,11 +77,15 @@ tag: "hytale"
 ### `show_connection_attempts`
 
 Если включено, то будет показывать сообщение, что заблокированный игрок пытался подключиться
-![command ban connect](/pulse/hytale/commandbanconnect.png)
+![command ban connect](/pulse/hytale/command_ban_connection.webp)
 
 ### `check_group_weight`
 
 Будут ли проверяться группы игроков. Если игрок, на которого применяется модерация, имеет роль выше, чем отправитель комманды, то комманда не выполнится и будет ошибка `lower_weight_group`
+
+### `check_duplicate`
+
+Если включено, то игроку с активным баном, нельзя будет выдать ещё один бан
 
 <include>../../../../parts/range.mdx</include>
 
@@ -83,7 +93,9 @@ tag: "hytale"
 
 Лимиты по времени в зависимости от группы отправителя. Ключом является вес группы, а значением - максимальное количество времени модерации в милисекундах (`1` секунда = `1000` милисекунд)
 
-<Callout type="info" title="Пример">
+<Callout type="info" title="Информация">
+    Пример
+
     ```yaml
     time_limits:
       20: 35000

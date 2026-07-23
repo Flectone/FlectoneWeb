@@ -5,7 +5,7 @@ authors:
   - TheFaser
 tag: "minecraft"
 ---
-<Callout type="idea" title="Information">
+<Callout type="idea" title="Note">
     If a library loading error related to `ASM` occurs, try starting the server with the `-Dflectonepulse.load-asm-jar=false` flag (e.g., `java -Dflectonepulse.load-asm-jar=false -jar server.jar`). This disables FlectonePulse's own ASM library loading and may resolve issues with custom cores or plugins
 </Callout>
 
@@ -22,7 +22,9 @@ Enables or disables the operation of all modules
 
 1. Each module has a parent (the one above it)
 
-<Callout type="info" title="Example">
+<Callout type="info" title="Information">
+Example
+
 ```yaml
 house:
   door:
@@ -34,7 +36,9 @@ house:
 
 2. Each module depends on the parent's `enable` setting
 
-<Callout type="info" title="Example">
+<Callout type="info" title="Information">
+Example
+
 ```yaml
 house:
   enable: false

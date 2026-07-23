@@ -1,0 +1,138 @@
+---
+title: /minesweeper
+description: Комманда для того, чтобы поиграть в Сапёра
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+![command minesweeper](/pulse/command_minesweeper.webp)
+
+Игру можно создавать с помощью собственных параметров, их необязательно вводить: `/minesweeper create <строки> <столбцы> <мины> <сид>`
+
+
+Чтобы поставить флаг, нужно включить режима флага, нажав на соотвествующий символ. После этого, каждый ход будет считаться за постановку флага. Чтобы выйти из режима флага, нужно опять нажать на соотстветующий символ
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → command.minesweeper`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#minesweeper</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#minesweeper</include></Tab>
+</Tabs>
+
+### `wrong_parameters`
+
+Сообщение, если введены неправильные параметры для игры. Слишком большие или отрицательные числа
+
+### `wrong_game`
+
+Сообщение, если игрок пытается поиграть в игру, которой уже не существует
+
+### `wrong_move`
+
+Сообщение, если игрок делает ход с невозможными параметрами
+
+### `cell`
+
+<Accordions>
+    <Accordion title="Клетки для поля игры">
+        #### `unknown`
+
+        Клетка, которая ещё не открыта и неизвестна
+
+        #### `flag`
+
+        Клетка, на которую игроку поставил флаг
+
+        #### `mine`
+
+        Клетка, которая является миной
+
+        #### `number_0`
+
+        Открытая пустая клетка
+
+        #### `number_x`
+
+        Открытая клетка, которая обозначает, что рядом есть `x` мин (максимальное число мин = `8`)
+    </Accordion>
+</Accordions>
+
+### `line`
+
+Формат для каждой линии поля
+
+### `flag_enabled`
+
+Формат для флага, который обозначает, что сейчас включен режим флага
+
+### `flag_disabled`
+
+Формат для флага, который обозначает, что сейчас выключен режим флага
+
+### `format_start`
+
+Сообщение при старте новой игры
+
+### `format_move`
+
+Сообщение при каждом ходе игрока
+
+### `format_win`
+
+Сообщение, когда игрок победил
+
+### `format_lose`
+
+Сообщение, когда игрок проиграл
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `command.yml → minesweeper`</span>
+
+<include>../../../../files/minecraft/command.yml#minesweeper</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+### `max_row`
+
+<Callout type="error" title="Внимание">
+    Не рекомендуется ставить слишком большое значение, сервер будет долго это обрабатывать
+</Callout>
+
+Максимальное количество строк для создания поля игры. Используется в качестве значения по умолчанию, если не указано в `/minesweeper create`
+
+### `max_column`
+
+<Callout type="error" title="Внимание">
+    Не рекомендуется ставить слишком большое значение, сервер будет долго это обрабатывать
+</Callout>
+
+Максимальное количество столбцов для создания поля игры. Используется в качестве значения по умолчанию, если не указано в `/minesweeper create`
+
+### `default_mine`
+
+Максимальное количество мин в игре. Используется в качестве значения по умолчанию, если не указано в `/minesweeper create`
+
+<include>../../../../parts/aliases.mdx</include>
+
+<include>../../../../parts/cooldown.mdx</include>
+
+<include>../../../../parts/sound.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → command.minesweeper`</span>
+
+<include>../../../../files/minecraft/permission.yml#minesweeper</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../../parts/permission/sound.mdx</include>

@@ -6,10 +6,10 @@ authors:
 tag: "minecraft"
 ---
 
-![chat](/pulse/chat.png)
+![chat](/pulse/message_chat.webp)
 
-<Callout type="info" title="Как отключить локальный чат?">
-Внутри `message.yml` выключи `local` с помощью `enable: false`, а также сделай пустой `trigger: ""` для `global`
+<Callout type="info" title="Информация">
+Как отключить локальный чат? Внутри `message.yml` выключи `local` с помощью `enable: false`, а также сделай пустой `trigger: ""` для `global`
 
     ```yaml
     chat:
@@ -40,7 +40,8 @@ tag: "minecraft"
     ```
 </Callout>
 
-<Callout type="info" title="Как настроить чат, чтобы он работал с другими плагинами? (TownyChat и другие)">
+<Callout type="info" title="Информация">
+    Как настроить чат, чтобы он работал с другими плагинами?
 
     Для TownyChat:
     1. Зайди в файл ChatConfig.yml (в папке Towny)
@@ -149,7 +150,7 @@ tag: "minecraft"
 
         - Если `true`, то ивент сообщения чата отменяется для других плагинов
         - Если необходимо, чтобы другой плагин, связанный с чатом (DiscordSRV например) - работал, то нужно ставить `false` (из-за этого появляется дублирование в консоль)
-        ![chat console](/pulse/chatconsole.png)
+        ![chat console](/pulse/message_chat_console.webp)
 
         <include>../../../../parts/range.mdx</include>
 
@@ -157,7 +158,9 @@ tag: "minecraft"
 
         Приоритет чата, который используется для выбора, когда у нескольких чатов одинаковый `trigger`. Выбирается тот, у кого приоритет больше
 
-        <Callout type="info" title="Например ЕСТЬ ЧАТЫ">
+        <Callout type="info" title="Информация">
+            Например есть чаты:
+
             ```yaml
             admin:
               priority: 20
@@ -174,7 +177,8 @@ tag: "minecraft"
 
         Сообщение, с которого должно начинаться отправленное сообщение для чата
 
-        <Callout type="info" title="ЗНАЧЕНИЕ `trigger` МОЖЕТ БЫТЬ ЛЮБЫМ:">
+        <Callout type="info" title="Информация">
+            Значение `trigger` может быть любым:
             - `!`, `admin`, `.f` и т.д.
             - пустым т.е. `trigger: ""`, тогда для этого чата подходит любое сообщение
         </Callout>

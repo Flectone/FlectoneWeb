@@ -5,43 +5,43 @@
       "description": "Flectone — это бренд, который объединяет все проекты TheFaser",
       "applicationName": "Flectone",
       "keywords": "флектон, Флектон, Flectone, flectone",
-      "image": "/logo.png"
+      "image": "/assets/flectone_logo.png"
     },
     "NotFound": {
       "title": "404 | Flectone",
       "description": "Ничего не найдено",
-      "image": "/ogimages/notfoundru.jpg"
+      "image": "/ogimages/not_found.webp"
     },
     "Mix": {
       "title": "FlectoneMix",
       "description": "Был создан, чтобы облегчить поиск и установку вещей для Minecraft, но проект был закрыт",
       "applicationName": "FlectoneMix",
-      "image": "/logo.png"
+      "image": "/assets/flectone_logo.png"
     },
     "Chat": {
       "title": "FlectoneChat",
       "description": "Упрощает и дополняет игру на сервере добавлением удобных фичей, но проект был закрыт",
       "applicationName": "FlectoneChat",
-      "image": "/logo.png"
+      "image": "/assets/flectone_logo.png"
     },
     "About": {
       "title": "Про нас | Flectone",
       "description": "Все эти люди внесли вклад в проект",
       "applicationName": "Flectone",
-      "image": "/logo.png"
+      "image": "/assets/flectone_logo.png"
     },
     "Pulse": {
       "title": "FlectonePulse",
       "description": "Каждое сообщение под вашим контролем!",
       "applicationName": "Flectone",
       "keywords": "флектон, Флектон, плагин, плагин майнкрафт, плагин на чат, плагин на чат майнкрафт, чат, майнкрафт, флектонпульс flectonepulse",
-      "image": "/logo.png",
+      "image": "/assets/flectone_logo.png",
       "Download": {
         "title": "Скачать | FlectonePulse",
         "description": "Скачайте FlectonePulse прямо сейчас и начните настраивать свой сервер!",
         "applicationName": "FlectonePulse",
         "keywords": "скачать флектонпульс, скачать flectonepulse, скачать плагин на чат, скачать плагин на чат майнкрафт, скачать чат, скачать майнкрафт, скачать флектон, скачать Флектон",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       }
     },
     "Tools": {
@@ -55,55 +55,55 @@
         "title": "Генератор текстур | FlectoneTools",
         "description": "Позволяет превратить любое изображение в готовую текстуру для Minecraft, создавая JSON-модель. Вам достаточно загрузить картинку, и инструмент сам сгенерирует текстуру в JSON-файл модель. Готовый результат нужно скопировать и поместить в папку images плагина FlectonePulse, после чего текстуру можно сразу использовать на сервере. Полная документация и примеры: https://flectone.net/pulse/docs/message/format/object",
         "applicationName": "TextureGenerator",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "TextAnimation": {
         "title": "Анимация текста | FlectoneTools",
         "description": "Создаёт анимированные тексты с эффектами мерцания, радуги, волны и появления по буквам. Настройте скорость и цвета, а инструмент сгенерирует готовые настройки. Скопируйте их в свой плагин (например в FlectonePulse). Полная документация и примеры: https://flectone.net/pulse/docs/message/format/animation",
         "applicationName": "TextAmination",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "PrefixGenerator": {
         "title": "Генератор префиксов | FlectoneTools",
         "description": "Визуальный редактор для создания цветных префиксов с градиентами, символами и разделителями. Инструмент генерирует готовое изображение префикса, которое можно скачать и использовать где угодно, например для РесурсПака, социальных сетей, видео или оформления сервера",
         "applicationName": "PrefixGenerator",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "UuidExtractor": {
         "title": "Получение UUID | FlectoneTools",
         "description": "Находит UUID игрока по нику. Поддерживает оффлайн и онлайн режимы. Можно сгенерировать случайный UUID, а результат скопировать",
         "applicationName": "UuidExtractor",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "InventoryPreviewer": {
         "title": "Просмотр Инвентарей | FlectoneTools",
         "description": "Просматривайте все слоты инвентарей Minecraft — сундуки, печи, верстаки и другие контейнеры",
         "applicationName": "InventoryPreviewer",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "CoordinateCalculator": {
         "title": "Калькулятор Координат | FlectoneTools",
         "description": "Переводи координаты между Незером и обычным миром, а также находи крепость Энда по двум броскам жемчуга",
         "applicationName": "CoordinateCalculator",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "ColorTextGenerator": {
         "title": "Генератор Цветного Текста | FlectoneTools",
         "description": "Создавай цветной текст для Minecraft с поддержкой Legacy и MiniMessage форматов",
         "applicationName": "ColorTextGenerator",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "ServerFlagsGenerator": {
         "title": "Генератор флагов сервера | FlectoneTools",
         "description": "Генерируй скрипты запуска Minecraft сервера с оптимальными JVM флагами для Linux, Windows и Java.",
         "applicationName": "ServerFlagsGenerator",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       },
       "TimeConvertor": {
         "title": "Конвертер времени | FlectoneTools",
         "description": "Описание",
         "applicationName": "TimeConvertor",
-        "image": "/logo.png"
+        "image": "/assets/flectone_logo.png"
       }
     }
   },
@@ -118,6 +118,25 @@
     "openSourse": "Весь код проекта имеет <a>открытый исходный код</a>"
   },
   "Header": {
+    "Search" : {
+      "filter": "Фильтр",
+      "Minecraft": {
+        "name": "Minecraft",
+        "description": "Документация для Minecraft"
+      },
+      "Hytale": {
+        "name": "Hytale",
+        "description": "Документация для Hytale"
+      },
+      "API": {
+        "name": "API",
+        "description": "Документация для API"
+      },
+      "Metrics": {
+        "name": "Аналитика",
+        "description": "Документация для Аналитики"
+      }
+    },
     "about": "Про нас",
     "Projects": {
       "title": "Проекты"
@@ -134,6 +153,7 @@
   },
   "Projects": {
     "title": "Проекты <b>Flectone</b>",
+    "closed": "Закрытые проекты",
     "Pulse": {
       "description": "Проект для настройки сообщений сервера",
       "button": "Подробрее",
@@ -144,7 +164,7 @@
     },
     "Chat": {
       "description": "Отец FlectonePulse, но проект был закрыт",
-      "imagePath": "/chat/chat-ru.svg"
+      "imagePath": "/assets/flectonechat/flectonechat_preview_ru.webp"
     },
     "Tools": {
       "description": "Инструменты для разработчиков серверов"
@@ -185,9 +205,11 @@
   "FlectoneChat": {
     "description": "Упрощает и дополняет игру на сервере добавлением удобных фичей, но проект был закрыт",
     "usePulse": "Используй <strong>FlectonePulse</strong>, так как FlectoneChat более не поддерживается",
-    "imagePath": "/chat/chat-ru.svg"
+    "imagePath": "/assets/flectonechat/flectonechat_preview_ru.webp"
   },
   "Pulse": {
+    "LastUpdate": "Последнее изменение",
+    "EditOnGitHub": "Редактировать на GitHub",
     "Authors": {
       "title": "Авторы страницы"
     },

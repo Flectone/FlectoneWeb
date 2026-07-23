@@ -1,0 +1,82 @@
+---
+title: /whois
+description: Комманда для просмотра игроков с одинаковым айпи
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+![command whois](/pulse/command_whois.webp)
+
+По умолчанию, каждая цветная кнопка используется, чтобы вызвать соответствующую комманду: `/online total`, `/geolocate`, `/whitelistplayer list`, `/warnlist`, `/mutelist`, `/banlist`
+
+
+Комманду можно использовать с айпи, а также с игроком. Если введён игрок, то будет использоваться его последний айпи
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#localization</include>
+
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → command.whois`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#whois</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#whois</include></Tab>
+</Tabs>
+
+### `empty`
+
+Сообщение, если игроков с введённым айпи не найдено
+
+### `null_page`
+
+Сообщение, если введённая страница не существует
+
+### `online`
+
+Формат для `<online>`, если игрок с таким айпи находится в сети
+
+### `offline`
+
+Формат для `<online>`, если игрок с таким айпи не в сети
+
+### `header`
+
+Верхняя часть сообщения списка
+
+### `line`
+
+Формат каждого предупреждения из списка
+
+### `footer`
+
+Нижняя часть сообщения списка
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `command.yml → whois`</span>
+
+<include>../../../../files/minecraft/command.yml#whois</include>
+
+<include>../../../../parts/enable.mdx</include>
+
+<include>../../../../parts/perPage.mdx</include>
+
+<include>../../../../parts/aliases.mdx</include>
+
+<include>../../../../parts/cooldown.mdx</include>
+
+<include>../../../../parts/sound.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#permission</include>
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml → command.whois`</span>
+
+<include>../../../../files/minecraft/permission.yml#whois</include>
+
+<include>../../../../parts/permission/permissionTier3.mdx</include>
+
+<include>../../../../parts/permission/cooldown.mdx</include>
+
+<include>../../../../parts/permission/sound.mdx</include>

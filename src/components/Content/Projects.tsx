@@ -16,30 +16,36 @@ export default function Projects() {
               <h1 className='text-2xl max-md:text-xl font-bold'>Flectone<b>Pulse</b></h1>
               <p className='w-2/3 max-md:text-md'>{t('Pulse.description')}</p>
             </div>
-            <Image width={700} height={400} src="/flectonepulse2.png" className="max-lg:hidden absolute right-20 w-lg mr-10 max-xl:w-md max-lg:w-sm max-md:w-xs z-50" alt='flectonepulse' />
+            <Image width={700} height={400} src="/assets/flectonepulse/flectonepulse_title.webp" className="max-lg:hidden absolute right-20 w-lg mr-10 max-xl:w-md max-lg:w-sm max-md:w-xs z-50" alt='flectonepulse' />
             <div className="max-sm:hidden w-4/5 right-0 mask-[linear-gradient(to_left,white,transparent)] absolute flex items-center justify-center">
-              <Image width={580} height={120} src="/features.png" alt="metrics" className="w-full" />
+              <Image width={580} height={120} src="/assets/flectonepulse/flectonepulse_features.webp" alt="metrics" className="w-full" />
             </div>
           </Card>
           <FeatureCard
             link={'/tools'}
             className='w-full items-center flex p-10'
-            image={'/assets/tools.svg'}
+            image={'/assets/flectonetools/flectonetools_preview.webp'}
             title={<h1 className='text-2xl max-md:text-xl font-bold'>Flectone<b>Tools</b></h1>}
             description={<p className={'w-full max-md:text-md'}>{t('Tools.description')}</p>}
             imagePosition={'right'}
+            imageWidth={1200}
+            imageHeight={1000}
+            imageAlt={'flectonetools'}
           />
         </div>
         <div className="flex flex-col gap-4">
-          <h3 className="font-bold text-2xl">Закрытые проекты</h3>
+          <h3 className="font-bold text-2xl">{t('closed')}</h3>
           <div className="flex w-full max-xl:flex-col gap-4">
             <FeatureCard
               link={'/mix'}
               className='w-1/2 max-xl:w-full items-center flex p-10'
-              image={'/mix/mix.svg'}
+              image={'/assets/flectonemix/flectonemix_preview.webp'}
               title={<h1 className='text-2xl max-md:text-xl font-bold'>Flectone<b>Mix</b></h1>}
               description={<p className={'w-2/3 max-md:text-md'}>{t('Mix.description')}</p>}
               imagePosition={'right'}
+              imageWidth={800}
+              imageHeight={600}
+              imageAlt={'flectonetools'}
             />
             <FeatureCard
               link={'/chat'}
@@ -48,6 +54,9 @@ export default function Projects() {
               title={<h1 className='text-2xl max-md:text-xl font-bold'>Flectone<b>Chat</b></h1>}
               description={<p className={'w-2/3 max-md:text-md'}>{t('Chat.description')}</p>}
               imagePosition={'right'}
+              imageWidth={800}
+              imageHeight={600}
+              imageAlt={'flectonetools'}
             />
           </div>
         </div>

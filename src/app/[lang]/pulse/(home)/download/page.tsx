@@ -14,7 +14,7 @@ export default function HomePage() {
   const t = useTranslations('Pulse.Download')
   return (
     <div className="my-4 w-full max-w-6xl flex gap-8 flex-col justify-center items-center text-center">
-      <img className='w-102' src="/flectonepulse2.png" alt="" />
+      <img className='w-102' src="/assets/flectonepulse/flectonepulse_title.webp" alt="" />
       <div className='w-full flex gap-4 max-lg:flex-col'>
         <div className='bg-fd-card shadow-xl w-full h-fit border border-fd-border/50 rounded-2xl p-4 gap-2 flex flex-col justify-center items-center'>
           <img className='w-2/3 h-26 my-2' src="https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/logos/Global-Header_MCCB-Logo_300x51.svg" alt="" />
