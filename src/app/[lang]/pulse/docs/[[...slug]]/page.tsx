@@ -36,19 +36,19 @@ export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slu
     >
       <DocsTitle>{page.data.title}</DocsTitle>
       <DocsDescription className='!mb-0'>{page.data.description}</DocsDescription>
-      <DocsBody className='flex flex-col justify-between'>
+      <DocsBody>
         <MDX
           components={getMDXComponents({
             a: createRelativeLink(source, page),
           })}
         />
-        <div className='flex justify-between items-center'>
-          {lastModified && <LastUpdate date={lastModified} />}
-          <EditOnGitHub
-              href={`https://github.com/Flectone/FlectoneWeb/edit/master/${filePath}`}
-          />
-        </div>
       </DocsBody>
+      <div className='flex justify-between items-center bottom-0'>
+        {lastModified && <LastUpdate date={lastModified} />}
+        <EditOnGitHub
+            href={`https://github.com/Flectone/FlectoneWeb/edit/master/${filePath}`}
+        />
+      </div>
     </DocsPage>
   );
 }
