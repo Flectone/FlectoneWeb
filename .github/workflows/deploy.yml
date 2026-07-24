@@ -21,15 +21,19 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             set -e
-            if [ ! -d "${{ secrets.REMOTE_TARGET }}/.git" ]; then
+            if [ -d "${{ secrets.REMOTE_TARGET }}/.git" ]; then
+              cd ${{ secrets.REMOTE_TARGET }}
+              git pull origin master
+            else
               rm -rf ${{ secrets.REMOTE_TARGET }}
               git clone https://github.com/Flectone/FlectoneWeb.git ${{ secrets.REMOTE_TARGET }}
+              cd ${{ secrets.REMOTE_TARGET }}
             fi
-            cd ${{ secrets.REMOTE_TARGET }}
             npm ci
             npm run build
             mkdir -p .next/standalone/.next
             cp -r public .next/standalone/public || true
             cp -r .next/static .next/standalone/.next/static || true
             cp .next/BUILD_ID .next/standalone/.next/ 2>/dev/null || true
+            cd .next/standalone
             pm2 reload flectone-web --update-env || pm2 start server.js --name flectone-web
