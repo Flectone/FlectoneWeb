@@ -36,4 +36,6 @@ jobs:
             cp -r .next/static .next/standalone/.next/static || true
             cp .next/BUILD_ID .next/standalone/.next/ 2>/dev/null || true
             cd .next/standalone
+            rm -rf node_modules/sharp
+            npm install --include=optional sharp
             pm2 reload flectone-web --update-env || pm2 start server.js --name flectone-web
