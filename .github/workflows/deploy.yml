@@ -22,6 +22,7 @@ jobs:
           script: |
             set -e
             if [ ! -d "${{ secrets.REMOTE_TARGET }}/.git" ]; then
+              rm -rf ${{ secrets.REMOTE_TARGET }}
               git clone https://github.com/Flectone/FlectoneWeb.git ${{ secrets.REMOTE_TARGET }}
             fi
             cd ${{ secrets.REMOTE_TARGET }}
