@@ -14,8 +14,50 @@ tag: "minecraft"
 
 <br></br>
 
-# <include>../../../../parts/words.mdx#setting</include>
+# <include>../../../../parts/words.mdx#localization</include>
 <span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.afk`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+  <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#afk</include></Tab>
+  <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#afk</include></Tab>
+</Tabs>
+
+### `suffix`
+
+Суффикс, который будет отображатся рядом с ником игрока
+
+### `format_true`
+
+<Accordions>
+    <Accordion title="Настройка формата сообщения, если игрок отошел">
+        #### `global`
+
+        Сообщение, которое увидять все игроки
+
+        #### `local`
+
+        Сообщение, которое увидит только игрок, который отошел
+    </Accordion>
+</Accordions>
+
+### `format_false`
+
+<Accordions>
+    <Accordion title="Настройка формата сообщения, если игрок вернулся">
+        #### `global`
+
+        Сообщение, которое увидять все игроки
+
+        #### `local`
+
+        Сообщение, которое увидит только игрок, который вернулся
+    </Accordion>
+</Accordions>
+
+<br></br>
+
+# <include>../../../../parts/words.mdx#setting</include>
+<span><include>../../../../parts/words.mdx#path</include> `command.yml → afk`</span>
 <include>../../../../files/minecraft/command.yml#afk</include>
 
 <include>../../../../parts/enable.mdx</include>
