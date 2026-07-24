@@ -2,39 +2,35 @@ import { source } from '@/lib/source';
 import { notFound } from 'next/navigation';
 import { ImageResponse } from 'takumi-js/response';
 import DocsTemplate from '@/components/OGImage/DocsTemplate'
-import fs from 'fs';
-import path from 'path';
-
-let fontRegular: ArrayBuffer | null = null;
-let fontBold: ArrayBuffer | null = null;
 
 interface RouteContext {
   params: Promise<{ slug: string[] }>;
 }
 
-function loadFonts() {
-  if (!fontRegular || !fontBold) {
-    fontRegular = fs.readFileSync(
-        path.join(process.cwd(), 'public/fonts/InterNormal.woff2')
-    ).buffer;
+let fontRegular: ArrayBuffer | null = null;
+let fontBold: ArrayBuffer | null = null;
 
-    fontBold = fs.readFileSync(
-        path.join(process.cwd(), 'public/fonts/InterBold.woff2')
-    ).buffer;
+async function loadFonts() {
+  if (!fontRegular || !fontBold) {
+    [fontRegular, fontBold] = await Promise.all([
+      fetch('https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-cyrillic-400-normal.woff')
+          .then(r => r.arrayBuffer()),
+      fetch('https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-cyrillic-700-normal.woff')
+          .then(r => r.arrayBuffer()),
+    ]);
   }
-  return { regular: fontRegular, bold: fontBold };
+  return { regular: fontRegular!, bold: fontBold! };
 }
 
 export async function GET(req: Request, { params }: RouteContext) {
   const { slug } = await params;
-
   const [locale, ...pageSlugs] = slug;
   const actualSlugs = pageSlugs.slice(0, -1);
 
   const page = source.getPage(actualSlugs, locale);
   if (!page) notFound();
 
-  const { regular, bold } = loadFonts();
+  const { regular, bold } = await loadFonts();
 
   return new ImageResponse(
       (<DocsTemplate
