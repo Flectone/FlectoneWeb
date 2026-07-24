@@ -14,8 +14,31 @@ tag: "minecraft"
 
 <br></br>
 
+# <include>../../../../parts/words.mdx#localization</include>
+<include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.afk`
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#afk</include></Tab>
+    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#afk</include></Tab>
+</Tabs>
+
+### `suffix`
+
+Суффикс, который выдаётся игроку, если он встал в АФК
+![afksuffix](/pulse/message_afk_suffix.webp)
+
+### `format_true`
+
+Сообщение, если игрок отошёл
+
+### `format_false`
+
+Сообщение, если игрок вернулся
+
+<br></br>
+
 # <include>../../../../parts/words.mdx#setting</include>
-<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.afk`</span>
+<include>../../../../parts/words.mdx#path</include> `message.yml → afk`
 <include>../../../../files/minecraft/command.yml#afk</include>
 
 <include>../../../../parts/enable.mdx</include>
