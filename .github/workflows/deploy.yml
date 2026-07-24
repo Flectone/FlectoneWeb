@@ -3,9 +3,13 @@ name: Deploy Flectone Web
 on:
   release:
     types: [ published ]
+  push:
+    branches:
+      - master
 
 jobs:
   build-and-deploy:
+    if: github.event_name == 'release' || contains(github.event.head_commit.message, '[deploy]')
     runs-on: ubuntu-latest
 
     steps:
