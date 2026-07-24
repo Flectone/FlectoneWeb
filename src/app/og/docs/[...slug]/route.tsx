@@ -15,11 +15,11 @@ interface RouteContext {
 function loadFonts() {
   if (!fontRegular || !fontBold) {
     fontRegular = fs.readFileSync(
-        path.join(process.cwd(), 'public/fonts/InterNormal.ttf')
+        path.join(process.cwd(), 'public/fonts/InterNormal.woff2')
     ).buffer;
 
     fontBold = fs.readFileSync(
-        path.join(process.cwd(), 'public/fonts/InterBold.ttf')
+        path.join(process.cwd(), 'public/fonts/InterBold.woff2')
     ).buffer;
   }
   return { regular: fontRegular, bold: fontBold };
