@@ -1,5 +1,5 @@
-import LinkButton from "../Button/LinkButton";
-import Card from "../Card/Card";
+import LinkButton from "../../Button/LinkButton";
+import Card from "../../Card/Card";
 import {SiGithub} from "react-icons/si";
 import {SiModrinth} from "react-icons/si";
 import {useTranslations} from "next-intl";

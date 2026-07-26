@@ -1,7 +1,7 @@
 'use client'
 import ToolCard from "@/components/Card/ToolCard";
 import { useTranslations } from "next-intl";
-import MinecraftChat from "../Assets/MinecraftChat";
+import MinecraftChat from "../../Assets/MinecraftChat";
 import { ReactNode } from "react";
 import * as Icons from "lucide-react";
 

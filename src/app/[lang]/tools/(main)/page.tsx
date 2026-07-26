@@ -2,7 +2,7 @@ import Title from "@/components/Title/Title";
 import { Hammer, BrickWall, TextSelect, SquareStar, SquareUserRound } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { createMetadata } from "@/lib/create-metadata";
-import FlectoneTools from "@/components/Content/FlectoneTools";
+import FlectoneTools from "@/components/Content/Tools/FlectoneTools";
 
 export const generateMetadata = createMetadata({
     namespace: 'Tools.Main'

@@ -1,4 +1,4 @@
-import FlectoneMix from "@/components/Content/FlectoneMix";
+import FlectoneMix from "@/components/Content/Mix/FlectoneMix";
 import { createMetadata } from "@/lib/create-metadata";
 
 export const generateMetadata = createMetadata({
