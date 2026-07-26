@@ -9,10 +9,10 @@ import { notFound } from 'next/navigation';
 import { getMDXComponents } from '@/mdx-components';
 import type { Metadata } from 'next';
 import { createRelativeLink } from 'fumadocs-ui/mdx';
-import { Authors } from '@/components/Pulse/Authos';
-import EditOnGitHub from '@/components/Pulse/EditOnGitHub'
+import { Authors } from '@/components/Docs/Authos';
+import EditOnGitHub from '@/components/Docs/EditOnGitHub'
 import gitDates from '@/pulse/git-dates.json';
-import LastUpdate from '@/components/Pulse/LastUpdate';
+import LastUpdate from '@/components/Docs/LastUpdate';
 
 export default async function Page(props: PageProps<'/[lang]/pulse/docs/[[...slug]]'>) {
   const params = await props.params;

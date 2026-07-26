@@ -4,10 +4,10 @@ import { Accordion, Accordions } from 'fumadocs-ui/components/accordion';
 import { CodeBlock, Pre } from 'fumadocs-ui/components/codeblock';
 import type { MDXComponents } from 'mdx/types';
 import * as TabsComponents from 'fumadocs-ui/components/tabs';
-import Callout from '@/components/Pulse/Callout'
+import Callout from '@/components/Docs/Callout'
 import { LinkIcon } from 'lucide-react';
 import Metric from './components/Metric/Metric'
-import ZoomImage from '@/components/Pulse/ZoomImage'
+import ZoomImage from '@/components/Docs/ZoomImage'
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {

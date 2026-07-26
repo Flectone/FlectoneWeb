@@ -1,7 +1,7 @@
 import { TextureGenerator } from '@/components/Tools/TextureGenerator';
 import Title from '@/components/Title/Title';
 import { useTranslations } from 'next-intl';
-import Callout from '@/components/Pulse/Callout';
+import Callout from '@/components/Docs/Callout';
 import { createMetadata } from "@/lib/create-metadata";
 
 export const generateMetadata = createMetadata({
