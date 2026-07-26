@@ -1,7 +1,7 @@
-import LinkButton from "../Button/LinkButton";
+import LinkButton from "../../Button/LinkButton";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import ModalButton from "../Button/ModalButton";
+import ModalButton from "../../Button/ModalButton";
 import { Leaf, Pickaxe, ChartCandlestick, Cable } from "lucide-react";
 
 export default function WelcomeCard() {

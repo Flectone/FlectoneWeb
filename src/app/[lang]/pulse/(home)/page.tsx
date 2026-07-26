@@ -1,5 +1,5 @@
-import Feautures from '@/components/Pulse/Features';
-import WelcomeCard from '@/components/Pulse/WelcomeCard';
+import Feautures from '@/components/Content/Pulse/Features';
+import WelcomeCard from '@/components/Content/Pulse/WelcomeCard';
 import { createMetadata } from "@/lib/create-metadata";
 import Metric from "@/components/Metric/Metric";
 import {useTranslations} from "next-intl";
