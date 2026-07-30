@@ -10,14 +10,24 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
-<Version v="1.12.1" date="2026-07-30" authors={["TheFaser"]}>
+<Version v="1.12.2" date="2026-07-31" authors={["TheFaser"]}>
     <Title>
-        # Версия 1.12.1
-
+        # Версия 1.12.2
         <Callout type="warn" title="Предупреждение">
             Это последняя версия, которая поддерживает миграцию с версий `1.4.3` до `1.11.0`. В следующих обновлениях миграции со старых версий будут удалены
         </Callout>
+    </Title>
+    <Fixes>
+        <Fix>Возвращены плейсхолдеры сообщений в интеграциях</Fix>
+    </Fixes>
+</Version>
 
+<Version v="1.12.1" date="2026-07-30" authors={["TheFaser"]}>
+    <Title>
+        # Версия 1.12.1
+        <Callout type="warn" title="Предупреждение">
+            Это последняя версия, которая поддерживает миграцию с версий `1.4.3` до `1.11.0`. В следующих обновлениях миграции со старых версий будут удалены
+        </Callout>
     </Title>
     <Features>
         <Feature>Классы, которые наследовались от `EventMetadata` были удалены и заменены на композицию `MessageContext`. Это позволяет создавать ключи кэша, которые зависят от контекста, исправляя дублирование сообщений из-за кэша форматирования</Feature>

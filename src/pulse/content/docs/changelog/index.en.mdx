@@ -10,14 +10,24 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Pulse/Changelog";
 
-<Version v="1.12.1" date="2026-07-30" authors={["TheFaser"]}>
+<Version v="1.12.2" date="2026-07-31" authors={["TheFaser"]}>
     <Title>
-        # Version 1.12.1
-
+        # Version 1.12.2
         <Callout type="warn" title="Warning">
             This is the last version that supports migration from versions `1.4.3` to `1.11.0`. In future updates, migrations from old versions will be removed
         </Callout>
+    </Title>
+    <Fixes>
+        <Fix>Reverted message placeholders in integrations</Fix>
+    </Fixes>
+</Version>
 
+<Version v="1.12.1" date="2026-07-30" authors={["TheFaser"]}>
+    <Title>
+        # Version 1.12.1
+        <Callout type="warn" title="Warning">
+            This is the last version that supports migration from versions `1.4.3` to `1.11.0`. In future updates, migrations from old versions will be removed
+        </Callout>
     </Title>
     <Features>
         <Feature>Classes that inherited from `EventMetadata` have been removed and replaced with `MessageContext` composition. This allows creating cache keys that depend on context, fixing message duplication caused by formatting cache</Feature>
