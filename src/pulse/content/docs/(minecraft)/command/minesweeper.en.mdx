@@ -23,6 +23,10 @@ To place a flag, you need to enable flag mode by clicking the corresponding symb
     <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#minesweeper</include></Tab>
 </Tabs>
 
+### `already_in_game`
+
+Message if a player tries to create a new game when one already exists
+
 ### `wrong_parameters`
 
 Message shown when incorrect game parameters are entered. Numbers too large or negative
@@ -97,6 +101,14 @@ Message when the player loses
 <include>../../../../files/minecraft/command.yml#minesweeper</include>
 
 <include>../../../../parts/enable.en.mdx</include>
+
+### `check_duplicate`
+
+<Callout type="info" title="Info">
+    The game may end automatically when a player reconnects to the server
+</Callout>
+
+If enabled, a player with an active game will not be able to create a new one
 
 ### `max_row`
 
