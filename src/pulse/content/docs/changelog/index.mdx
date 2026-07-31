@@ -10,6 +10,54 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Docs/Changelog";
 
+<Version v="1.12.2" date="2026-07-31" authors={["TheFaser"]}>
+    <Title>
+        # Версия 1.12.2
+        <Callout type="warn" title="Предупреждение">
+            Это последняя версия, которая поддерживает миграцию с версий `1.4.3` до `1.11.0`. В следующих обновлениях миграции со старых версий будут удалены
+        </Callout>
+    </Title>
+    <Fixes>
+        <Fix>Возвращены плейсхолдеры сообщений в интеграциях</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.12.1" date="2026-07-30" authors={["TheFaser"]}>
+    <Title>
+        # Версия 1.12.1
+        <Callout type="warn" title="Предупреждение">
+            Это последняя версия, которая поддерживает миграцию с версий `1.4.3` до `1.11.0`. В следующих обновлениях миграции со старых версий будут удалены
+        </Callout>
+    </Title>
+    <Features>
+        <Feature>Классы, которые наследовались от `EventMetadata` были удалены и заменены на композицию `MessageContext`. Это позволяет создавать ключи кэша, которые зависят от контекста, исправляя дублирование сообщений из-за кэша форматирования</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Модули с локализацией больше не содержат generic</Refactor>
+        <Refactor>В сапёре добавлена проверка на дубликат игры</Refactor>
+        <Refactor>VanishMetadata заменён на VanishMessageContext</Refactor>
+        <Refactor>IntegrationMetadata заменён на IntegrationMessageFormat</Refactor>
+        <Refactor>Некоторые зависимости изменены с compileOnly на compileOnlyApi для корректной работы FlectonePulse API</Refactor>
+        <Refactor>Теперь команда whois отключена по умолчанию в Hytale</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Неизвестный UUID больше не ломает отслеживание состояния входа на прокси</Fix>
+        <Fix>Игра сапёра корректно удаляется после победы или проигрыша</Fix>
+        <Fix>Обработана инициализация статуса ваниша для игроков</Fix>
+        <Fix>Синхронизация игроков между кешем и базой данных исправлена</Fix>
+        <Fix>Предотвращено обновление мира для неизвестных игроков</Fix>
+        <Fix>Теперь сообщения над головой не рендерятся во время отключения плагина</Fix>
+        <Fix>Теперь неизвестные игроки корректно обрабатываются в прокси-сообщениях</Fix>
+        <Fix>Теперь никнейм отправляется через прокси</Fix>
+        <Fix>Теперь `/chatcolor` отправляется локально, если прокси не включён</Fix>
+        <Fix>В сообщения над головой добавлен индикатор сообщения пользователя для различения кеша (фикс дубликатов)</Fix>
+        <Fix>Конвертация легаси-цветов в `/stream` заменена новым подходом с тег-резолвером</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>TelegramBots обновлён до v10.1.1</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.12.0" date="2026-07-23" authors={["TheFaser", "MISQZY"]}>
     <Title>
         # Версия 1.12.0

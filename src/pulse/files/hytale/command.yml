@@ -623,6 +623,7 @@ me:
 #region minesweeper
 minesweeper:
   enable: false
+  check_duplicate: true
   max_row: 9
   max_column: 9
   default_mine: 10
@@ -1022,7 +1023,7 @@ whitelist:
 #endregion whitelist
 #region whois
 whois:
-  enable: true
+  enable: false
   per_page: 4
   aliases:
   - "whois"

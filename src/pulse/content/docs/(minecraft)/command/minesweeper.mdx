@@ -23,6 +23,10 @@ tag: "minecraft"
     <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#minesweeper</include></Tab>
 </Tabs>
 
+### `already_in_game`
+
+Сообщение, если игрок пытается создать новую игру, когда она уже существует
+
 ### `wrong_parameters`
 
 Сообщение, если введены неправильные параметры для игры. Слишком большие или отрицательные числа
@@ -97,6 +101,14 @@ tag: "minecraft"
 <include>../../../../files/minecraft/command.yml#minesweeper</include>
 
 <include>../../../../parts/enable.mdx</include>
+
+### `check_duplicate`
+
+<Callout type="info" title="Информация">
+    Игра может закончится автоматически при перезаходе на сервер у игрока
+</Callout>
+
+Если включено, то игроку с активной игрой нельзя будет создать новую
 
 ### `max_row`
 

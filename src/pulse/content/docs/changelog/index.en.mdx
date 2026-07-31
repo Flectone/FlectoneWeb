@@ -10,6 +10,54 @@ tag: "changelog"
 
 import { Version, Title, Features, Feature, Fixes, Fix, Refactors, Refactor, Dependencies, Dependency } from "@/components/Docs/Changelog";
 
+<Version v="1.12.2" date="2026-07-31" authors={["TheFaser"]}>
+    <Title>
+        # Version 1.12.2
+        <Callout type="warn" title="Warning">
+            This is the last version that supports migration from versions `1.4.3` to `1.11.0`. In future updates, migrations from old versions will be removed
+        </Callout>
+    </Title>
+    <Fixes>
+        <Fix>Reverted message placeholders in integrations</Fix>
+    </Fixes>
+</Version>
+
+<Version v="1.12.1" date="2026-07-30" authors={["TheFaser"]}>
+    <Title>
+        # Version 1.12.1
+        <Callout type="warn" title="Warning">
+            This is the last version that supports migration from versions `1.4.3` to `1.11.0`. In future updates, migrations from old versions will be removed
+        </Callout>
+    </Title>
+    <Features>
+        <Feature>Classes that inherited from `EventMetadata` have been removed and replaced with `MessageContext` composition. This allows creating cache keys that depend on context, fixing message duplication caused by formatting cache</Feature>
+    </Features>
+    <Refactors>
+        <Refactor>Localization modules no longer contain generics</Refactor>
+        <Refactor>Added duplicate game check in minesweeper</Refactor>
+        <Refactor>VanishMetadata replaced with VanishMessageContext</Refactor>
+        <Refactor>IntegrationMetadata replaced with IntegrationMessageFormat</Refactor>
+        <Refactor>Some dependencies changed from compileOnly to compileOnlyApi for proper FlectonePulse API functionality</Refactor>
+        <Refactor>Whois command is now disabled by default in Hytale</Refactor>
+    </Refactors>
+    <Fixes>
+        <Fix>Unknown UUID no longer breaks login state tracking on proxy</Fix>
+        <Fix>Minesweeper game is now properly removed after win or loss</Fix>
+        <Fix>Handled vanish status initialization for players</Fix>
+        <Fix>Player synchronization between cache and database fixed</Fix>
+        <Fix>Prevented world update for unknown players</Fix>
+        <Fix>Overhead messages no longer render during plugin shutdown</Fix>
+        <Fix>Unknown players are now properly handled in proxy messages</Fix>
+        <Fix>Nickname is now sent via proxy</Fix>
+        <Fix>`/chatcolor` is now sent locally if proxy is not enabled</Fix>
+        <Fix>Added user message indicator in overhead messages to distinguish cache (fix for duplicates)</Fix>
+        <Fix>Legacy color conversion in `/stream` replaced with new tag resolver approach</Fix>
+    </Fixes>
+    <Dependencies>
+        <Dependency>TelegramBots updated to v10.1.1</Dependency>
+    </Dependencies>
+</Version>
+
 <Version v="1.12.0" date="2026-07-23" authors={["TheFaser", "MISQZY"]}>
     <Title>
         # Version 1.12.0
