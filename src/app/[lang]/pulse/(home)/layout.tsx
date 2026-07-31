@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps<'/[lang]/pulse'>) {
 
   return (
     <HomeLayout
-      {...baseOptions()}
+      {...baseOptions('FlectonePulse', '/')}
       links={[
 
         {
