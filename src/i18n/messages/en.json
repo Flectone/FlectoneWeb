@@ -118,7 +118,7 @@
     "openSourse": "All project code is <a>open source</a>"
   },
   "Header": {
-    "Search" : {
+    "Search": {
       "filter": "Filter",
       "Minecraft": {
         "name": "Minecraft",
@@ -214,6 +214,28 @@
     "EditOnGitHub": "Edit on GitHub",
     "Authors": {
       "title": "Authors of page"
+    },
+    "Navbar": {
+      "Minecraft": {
+        "name": "Minecraft",
+        "description": "Documentation for Minecraft"
+      },
+      "Hytale": {
+        "name": "Hytale",
+        "description": "Documentation for Hytale"
+      },
+      "Api": {
+        "name": "API",
+        "description": "Documentation for API"
+      },
+      "Metrics": {
+        "name": "Metrics",
+        "description": "Metrics page"
+      },
+      "Changelog": {
+        "name": "Changelog",
+        "description": "Changelog page"
+      }
     },
     "WelcomeCard": {
       "slogan": "Every message is under <b>your</b> control!"

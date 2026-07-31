@@ -118,7 +118,7 @@
     "openSourse": "Весь код проекта имеет <a>открытый исходный код</a>"
   },
   "Header": {
-    "Search" : {
+    "Search": {
       "filter": "Фильтр",
       "Minecraft": {
         "name": "Minecraft",
@@ -214,6 +214,28 @@
     "EditOnGitHub": "Редактировать на GitHub",
     "Authors": {
       "title": "Авторы страницы"
+    },
+    "Navbar": {
+      "Minecraft": {
+        "name": "Minecraft",
+        "description": "Документация для Minecraft"
+      },
+      "Hytale": {
+        "name": "Hytale",
+        "description": "Документация для Hytale"
+      },
+      "Api": {
+        "name": "API",
+        "description": "Документация для API"
+      },
+      "Metrics": {
+        "name": "Аналитика",
+        "description": "Страница с аналитикой"
+      },
+      "Changelog": {
+        "name": "История изменений",
+        "description": "Страница с историей изменений"
+      }
     },
     "WelcomeCard": {
       "slogan": "Каждое сообщение под <b>вашим</b> контролем!"
