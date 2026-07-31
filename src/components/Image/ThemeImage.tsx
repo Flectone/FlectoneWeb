@@ -1,8 +1,7 @@
 'use client'
 
-import { useTheme } from 'next-themes'
 import Image from "next/image";
-import { useSyncExternalStore } from 'react';
+import {useCurrentTheme} from "@/lib/current-theme";
 
 interface ThemeImageProps {
     src: string;
@@ -12,18 +11,11 @@ interface ThemeImageProps {
     className?: string;
 }
 
-const emptySubscribe = () => () => {};
 
 export default function ThemeImage({src, width, height, alt, className}: ThemeImageProps) {
-    const isMounted = useSyncExternalStore(
-        emptySubscribe,
-        () => true,
-        () => false
-    );
 
-    const { resolvedTheme } = useTheme();
 
-    const currentTheme = isMounted && resolvedTheme ? resolvedTheme : 'dark';
+    const currentTheme = useCurrentTheme();
     const imageSrc = `${src.split('.')[0]}_${currentTheme}.webp`;
 
     return (
