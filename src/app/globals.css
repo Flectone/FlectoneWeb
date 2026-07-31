@@ -41,11 +41,21 @@
 
   --color-fd-transparent: #00000008;
 
---animate-gradient-flow: gradient-flow 2s linear infinite;
+  --animate-gradient-flow: gradient-flow 2s linear infinite;
+  --animate-bg-diagonal-up: bg-diagonal-up 30s linear infinite;
 
   @keyframes gradient-flow {
     from { background-position: 200% center; }
     to { background-position: -200% center; }
+  }
+
+  @keyframes bg-diagonal-up {
+    0% {
+      background-position: 100% 100%;
+    }
+    100% {
+      background-position: 0 0;
+    }
   }
 
   @keyframes apperance {

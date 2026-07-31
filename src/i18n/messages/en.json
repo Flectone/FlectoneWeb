@@ -262,43 +262,43 @@
   },
   "Tools": {
     "Main": {
-      "title": "FlectoneTools",
-      "description": "A set of online tools for Minecraft server owners. Everything is free, works in your browser, and requires no installation. Helps quickly create resources for plugins, customize designs, and perform technical operations",
+      "title": "Flectone<b>Tools</b>",
+      "description": "A set of free online tools for Minecraft server owners. Works in the browser without installation",
       "TextureGenerator": {
         "title": "Texture Generator",
-        "description": "Converts any image into a Minecraft texture and generates a JSON model"
+        "description": "Converts any image into a Minecraft JSON texture"
       },
       "TextAnimation": {
         "title": "Text Animation",
-        "description": "Creates animated messages with flicker, rainbow, wave, and letter-by-letter appearance effects"
+        "description": "Creates animated messages with various effects"
       },
       "PrefixGenerator": {
         "title": "Prefix Generator",
-        "description": "Builds prefixes using a visual editor. Add icons (symbols/Unicode) and colored text"
+        "description": "Visual prefix editor for Minecraft"
       },
       "UuidExtractor": {
         "title": "UUID Extractor",
-        "description": "Finds a player's UUID by username for Java Edition. Supports offline and online modes"
+        "description": "Gets a player's UUID by nickname (for Java Edition)"
       },
       "InventoryPreviewer": {
-        "title": "Inventory Previewer",
-        "description": "All Minecraft container GUIs collected in one place. Choose the one you need from the list and see its slot numbers"
+        "title": "Inventory Viewer",
+        "description": "View Minecraft GUI containers in one place"
       },
       "CoordinateCalculator": {
         "title": "Coordinate Calculator",
-        "description": "Convert coordinates between the Nether and the Overworld, and find the End Stronghold using two ender pearl throws"
+        "description": "Coordinate calculation for Nether and Stronghold"
       },
       "ColorTextGenerator": {
         "title": "Colored Text Generator",
-        "description": "Create colored text for Minecraft with support for Legacy and MiniMessage formats"
+        "description": "Colored text generator for Minecraft in Legacy and MiniMessage formats"
       },
       "ServerFlagsGenerator": {
         "title": "Server Flags Generator",
-        "description": "Generate Minecraft server startup scripts with optimal JVM flags for Linux, Windows, and Java."
+        "description": "Generation of optimized server startup scripts"
       },
       "TimeConvertor": {
         "title": "Time Converter",
-        "description": "Converts Minecraft ticks to real time and vice versa. Helps quickly get the /time set command"
+        "description": "Convert Minecraft ticks to real time and vice versa"
       }
     },
     "Form": {
