@@ -1,37 +1,41 @@
+'use client'
+
 import Card from "../Card/Card";
 import { useTranslations } from 'next-intl';
 import FeatureCard from "@/components/Card/FeatureCard";
 import Image from "next/image";
+import {useCurrentTheme} from "@/lib/current-theme";
 
 export default function Projects() {
   const t = useTranslations("Projects")
+  const currentTheme = useCurrentTheme();
 
   return (
     <div className="w-full flex flex-col justify-center gap-4">
       <div className="w-full flex gap-8 flex-col">
         <div className="flex gap-4 flex-col">
           <Card path='/pulse' className="w-full h-full max-md:h-fit items-center flex justify-between p-10 relative">
-            <div className="animate-pulse rounded-full [animation-duration:6s] blur-2xl sm:hidden absolute -right-5 bottom-0 h-full w-1/2 bg-fd-primary/20 "></div>
             <div className='flex flex-col gap-1'>
               <h1 className='text-2xl max-md:text-xl font-bold'>Flectone<b>Pulse</b></h1>
               <p className='w-2/3 max-md:text-md'>{t('Pulse.description')}</p>
             </div>
-            <Image width={700} height={400} src="/assets/flectonepulse/flectonepulse_title.webp" className="max-lg:hidden absolute right-20 w-lg mr-10 max-xl:w-md max-lg:w-sm max-md:w-xs z-50" alt='flectonepulse' />
-            <div className="max-sm:hidden w-4/5 right-0 mask-[linear-gradient(to_left,white,transparent)] absolute flex items-center justify-center">
-              <Image width={580} height={120} src="/assets/flectonepulse/flectonepulse_features.webp" alt="metrics" className="w-full" />
+            <div 
+              className="bg-cover bg-center max-md:w-3/5 w-4/5 absolute right-0 top-0 bg-[url('/assets/flectonepulse/flectonepulse_features.webp')] mask-[linear-gradient(to_left,white,transparent)] h-full"
+            >
             </div>
           </Card>
-          <FeatureCard
-            link={'/tools'}
-            className='w-full items-center flex p-10'
-            image={'/assets/flectonetools/flectonetools_preview.webp'}
-            title={<h1 className='text-2xl max-md:text-xl font-bold'>Flectone<b>Tools</b></h1>}
-            description={<p className={'w-full max-md:text-md'}>{t('Tools.description')}</p>}
-            imagePosition={'right'}
-            imageWidth={1200}
-            imageHeight={1000}
-            imageAlt={'flectonetools'}
-          />
+          <Card path='/tools' className="w-full h-full max-md:h-fit items-center flex justify-between p-10 relative">
+            <div className='flex flex-col gap-1'>
+              <h1 className='text-2xl max-md:text-xl font-bold'>Flectone<b>Tools</b></h1>
+              <p className='w-2/3 max-md:text-md'>{t('Tools.description')}</p>
+            </div>
+            <div
+                className={`max-md:w-3/5 max-md:bg-size-[16rem] w-4/5 animate-bg-diagonal-up absolute right-0 top-0 bg-size-[22rem] mask-[linear-gradient(to_left,white,transparent)] h-full`}
+                style={{
+                  backgroundImage: `url("/assets/backgrounds/flectonetools_background_${currentTheme}.webp")`,
+                }}
+            ></div>
+          </Card>
         </div>
         <div className="flex flex-col gap-4">
           <h3 className="font-bold text-2xl">{t('closed')}</h3>
@@ -45,7 +49,7 @@ export default function Projects() {
               imagePosition={'right'}
               imageWidth={800}
               imageHeight={600}
-              imageAlt={'flectonetools'}
+              imageAlt={'flectonemix'}
             />
             <FeatureCard
               link={'/chat'}
@@ -56,7 +60,7 @@ export default function Projects() {
               imagePosition={'right'}
               imageWidth={800}
               imageHeight={600}
-              imageAlt={'flectonetools'}
+              imageAlt={'flectonechat'}
             />
           </div>
         </div>
