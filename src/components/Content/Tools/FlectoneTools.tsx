@@ -71,7 +71,7 @@ export default function FlectoneTools() {
     ]
 
     return (
-        <div className="w-full grid grid-cols-3 max-xl:grid-cols-1 gap-4">
+        <div className="w-full grid grid-cols-3 max-xl:grid-cols-2 max-md:grid-cols-1 gap-4">
             {tools.map((tool, key) => (
                 <ToolCard
                     key={key}
