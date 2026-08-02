@@ -105,6 +105,12 @@
         "applicationName": "TimeConvertor",
         "image": "/assets/flectone_logo.png"
       }
+    },
+    "Vault": {
+      "title": "FlectoneVault",
+      "description": "Все когда-либо выпущенные туториалы с картами и лайтматиками",
+      "applicationName": "FlectoneVault",
+      "image": "/assets/flectone_logo.png"
     }
   },
   "NotFound": {
@@ -569,6 +575,16 @@
         "night": "Ночь",
         "midnight": "Полночь"
       }
+    }
+  },
+  "Vault": {
+    "Main": {
+      "title": "Flectone<b>Vault</b>",
+      "description": "Все когда-либо выпущенные туториалы с картами и лайтматиками"
+    },
+    "Card": {
+      "watch": "Смотреть",
+      "download": "Скачать"
     }
   }
 }
