@@ -102,9 +102,9 @@ export async function GET(request: Request) {
         resourcesUrl: row[2] || "",
         titleRu: row[3] || "",
         titleEn: row[4] || "",
-        date: row[5] || "",
-        views: row[6] || "",
-        duration: row[7] || "",
+        date: (row[5] === "#ERROR!" ? "--.--.--" : row[5]) || "",
+        views: (row[6] === "#ERROR!" ? "-" : row[6]) || "",
+        duration: (row[7] === "#ERROR!" ? "--:--" : row[7]) || "",
       };
     });
 
