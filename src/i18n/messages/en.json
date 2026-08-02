@@ -105,6 +105,12 @@
         "applicationName": "TimeConvertor",
         "image": "/assets/flectone_logo.png"
       }
+    },
+    "Vault": {
+      "title": "FlectoneVault",
+      "description": "All tutorials ever released with maps and litematics",
+      "applicationName": "FlectoneVault",
+      "image": "/assets/flectone_logo.png"
     }
   },
   "NotFound": {
@@ -170,6 +176,9 @@
     },
     "Tools": {
       "description": "Tools for server developers"
+    },
+    "Vault": {
+      "description": "All tutorials ever released with maps and litematics"
     }
   },
   "Members": {
@@ -569,6 +578,16 @@
         "night": "Night",
         "midnight": "Midnight"
       }
+    }
+  },
+  "Vault": {
+    "Main": {
+      "title": "Flectone<b>Vault</b>",
+      "description": "All tutorials ever released with maps and litematics"
+    },
+    "Card": {
+      "watch": "Watch",
+      "download": "Download"
     }
   }
 }
