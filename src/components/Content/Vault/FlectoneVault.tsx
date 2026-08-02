@@ -79,7 +79,7 @@ export default function FlectoneVault() {
               date={item.date}
               duration={item.duration}
               mapUrl={item.resourcesUrl}
-              viewers={item.views}
+              views={item.views}
             />
           ))}
         </div>

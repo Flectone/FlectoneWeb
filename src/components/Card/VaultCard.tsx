@@ -7,7 +7,7 @@ interface VaultCardProps {
   title: string;
   image: string;
   date: string;
-  viewers: string;
+  views: string;
   videoUrl: string;
   mapUrl: string;
   duration: string;
@@ -18,7 +18,7 @@ export default function VaultCard({
   title,
   image,
   date,
-  viewers,
+  views,
   videoUrl,
   mapUrl,
   duration,
@@ -35,7 +35,7 @@ export default function VaultCard({
           <div className="flex justify-between text-sm!">
             <p className="flex gap-1 items-center">
               <Eye size={16 + "px"} />
-              {viewers}
+              {views}
             </p>
             <p className="flex gap-1 items-center">
               <LucideCalendar size={16 + "px"} />
