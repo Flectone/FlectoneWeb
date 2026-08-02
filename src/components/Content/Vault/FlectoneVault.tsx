@@ -6,7 +6,7 @@ import { LoaderCircle } from "lucide-react";
 import VaultCard from "@/components/Card/VaultCard";
 import { useLocale } from "next-intl";
 
-const SHEET_ID = "1QfA_pyIAwBlLxZAUB9wLeljEr0TKi2Ry9N5twdXg67M";
+const SHEET_ID = process.env.GOOGLE_SHEET_ID;
 
 export interface VaultItem {
   image: string;
