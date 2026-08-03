@@ -27,9 +27,13 @@ export default function VaultCard({
   const t = useTranslations("Vault.Card");
 
   return (
-    <Card className={`${className} flex gap-4 justify-between`}>
-      <img src={image} alt="preview" className="w-2/5 rounded-lg" />
-      <div className="flex flex-col gap-4 justify-between w-3/5">
+    <Card className={`${className} flex gap-4 justify-between max-sm:flex-col`}>
+      <img
+        src={image}
+        alt="preview"
+        className="w-2/5 max-xl:w-2/6 rounded-lg max-md:w-2/5 max-sm:w-full"
+      />
+      <div className="flex flex-col gap-4 justify-between w-3/5 max-xl:w-4/6 max-md:gap-2 max-md:w-3/5 max-sm:w-full">
         <h1 className="font-bold line-clamp-2">{title}</h1>
         <div className="flex flex-col gap-4">
           <div className="flex justify-between text-sm!">
