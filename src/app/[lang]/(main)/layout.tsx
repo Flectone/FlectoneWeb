@@ -1,12 +1,11 @@
-import { HomeLayout } from 'fumadocs-ui/layouts/home';
-import { baseOptions } from '@/lib/layout.shared';
-import { SiBoosty, SiDiscord, SiModrinth } from 'react-icons/si';
+import { HomeLayout } from "fumadocs-ui/layouts/home";
+import { baseOptions } from "@/lib/layout.shared";
+import { SiBoosty, SiDiscord, SiModrinth } from "react-icons/si";
 import { useTranslations } from "next-intl";
 import Footer from "@/components/Footer/Footer";
 
-export default function Layout({ children }: LayoutProps<'/[lang]'>) {
-
-  const t = useTranslations('')
+export default function Layout({ children }: LayoutProps<"/[lang]">) {
+  const t = useTranslations("");
 
   return (
     <HomeLayout
@@ -16,46 +15,52 @@ export default function Layout({ children }: LayoutProps<'/[lang]'>) {
       }}
       links={[
         {
-          text: t('Header.about'),
-          url: '/about',
+          text: t("Header.about"),
+          url: "/about",
           secondary: false,
         },
         {
-          text: t('Header.pulse'),
-          url: '/pulse',
+          text: t("Header.pulse"),
+          url: "/pulse",
           secondary: false,
         },
         {
-          text: t('Header.tools'),
-          url: '/tools',
+          text: t("Header.tools"),
+          url: "/tools",
           secondary: false,
         },
         {
-          type: 'icon',
+          text: t("Header.vault"),
+          url: "/vault",
+          secondary: false,
+        },
+        {
+          type: "icon",
           icon: <SiBoosty />,
-          text: 'Boosty',
-          url: 'https://boosty.to/thefaser',
+          text: "Boosty",
+          url: "https://boosty.to/thefaser",
           secondary: true,
         },
         {
-          type: 'icon',
+          type: "icon",
           icon: <SiModrinth />,
-          text: 'Modrinth',
-          url: 'https://modrinth.com/plugin/flectonepulse',
+          text: "Modrinth",
+          url: "https://modrinth.com/plugin/flectonepulse",
           secondary: true,
         },
         {
-          type: 'icon',
+          type: "icon",
           icon: <SiDiscord />,
-          text: 'Discord',
-          url: 'https://discord.flectone.net/',
+          text: "Discord",
+          url: "https://discord.flectone.net/",
           secondary: true,
-        }
+        },
       ]}
     >
-      <div className='min-h-[calc(100vh-56px)] flex justify-center max-xl:px-24 max-lg:px-12 max-sm:px-4'>
+      <div className="min-h-[calc(100vh-56px)] flex justify-center max-xl:px-24 max-lg:px-12 max-sm:px-4">
         {children}
       </div>
       <Footer />
-    </ HomeLayout>)
+    </HomeLayout>
+  );
 }
