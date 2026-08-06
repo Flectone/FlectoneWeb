@@ -27,11 +27,11 @@ export function VaultCardLoading() {
       </div>
       <div className="p-4 flex flex-col gap-4 justify-between h-full max-xl:w-4/6 max-md:gap-2 max-md:w-3/5 max-sm:w-full">
         <div className="flex gap-1 flex-col animate-pulse">
-          <div className="bg-fd-border h-[1em]"></div>
-          <div className="bg-fd-border h-[1em]"></div>
+          <div className="bg-fd-border h-5.5 rounded-sm"></div>
+          <div className="bg-fd-border h-5.5 rounded-sm"></div>
         </div>
         <div className="animate-pulse">
-          <div className="bg-fd-border h-[1em] w-24"></div>
+          <div className="bg-fd-border h-5 w-24 rounded-sm"></div>
         </div>
       </div>
     </Card>
@@ -57,6 +57,7 @@ export function VaultCard({
     <Card className={`${className} flex gap-0! flex-col p-0! border-[1.5px]! `}>
       <Link
         href={videoUrl}
+        target="blank"
         className="relative"
         onMouseOver={() => {
           setYoutubeIsOpen(true);
@@ -93,6 +94,7 @@ export function VaultCard({
       </Link>
       <Link
         href={mapUrl}
+        target="blank"
         className="p-4 max-sm:p-3 flex flex-col gap-4 justify-between h-full transition hover:bg-fd-border cursor-pointer"
         onMouseOver={() => {
           setBoostyIsOpen(true);
