@@ -586,8 +586,14 @@
       "description": "All tutorials ever released with maps and litematics"
     },
     "Card": {
-      "watch": "Watch",
-      "download": "Download"
-    }
+      "watchYoutube": "Go to YouTube",
+      "watchBoosty": "Go to Boosty"
+    },
+    "Sort": {
+      "date": "By date",
+      "views": "By views"
+    },
+    "search": "Search",
+    "error": "Table is empty or data not found"
   }
 }

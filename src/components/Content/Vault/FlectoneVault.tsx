@@ -2,12 +2,12 @@
 
 import { useEffect, useState, useMemo } from "react";
 import Callout from "@/components/Docs/Callout";
-import { ArrowDownUp, LoaderCircle } from "lucide-react";
-import VaultCard from "@/components/Card/VaultCard";
+import { VaultCard, VaultCardLoading } from "@/components/Card/VaultCard";
 import { useLocale } from "next-intl";
 import Pagination from "@/components/Navigation/Pagination";
 import PageSearch from "@/components/Navigation/Search";
 import Sort from "@/components/Navigation/Sort";
+import { useTranslations } from "next-intl";
 
 export interface VaultItem {
   image: string;
@@ -20,7 +20,7 @@ export interface VaultItem {
   duration: string;
 }
 
-const ITEMS_PER_PAGE = 10;
+const ITEMS_PER_PAGE = 18;
 
 function getChunkedArray<T>(array: T[], size: number): T[][] {
   return Array.from({ length: Math.ceil(array.length / size) }, (_, i) =>
@@ -62,6 +62,8 @@ export default function FlectoneVault() {
   const SHEET_ID = "1QfA_pyIAwBlLxZAUB9wLeljEr0TKi2Ry9N5twdXg67M";
   const locale = useLocale();
 
+  const t = useTranslations("Vault");
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -69,13 +71,13 @@ export default function FlectoneVault() {
         setError(null);
 
         const res = await fetch(`/api/sheets?sheetId=${SHEET_ID}`);
-        if (!res.ok) throw new Error("Ошибка загрузки данных");
+        if (!res.ok) throw new Error("Data error");
 
         const data = await res.json();
         setResult(Array.isArray(data) ? data : []);
       } catch (err: unknown) {
         console.error("Fetch data error:", err);
-        setError(err instanceof Error ? err.message : "Ошибка");
+        setError(err instanceof Error ? err.message : "Error");
       } finally {
         setLoading(false);
       }
@@ -116,47 +118,56 @@ export default function FlectoneVault() {
   const currentPageItems = filteredChunkedItems[page] || [];
 
   return (
-    <div className="flex flex-col gap-4">
-      <div className="flex max-sm:flex-col gap-2">
-        <PageSearch
-          value={search}
-          placeholder="Поиск"
-          onChange={(e) => {
-            setSearch(e.target.value);
-            setPage(0);
-          }}
-        />
+    <div className="flex flex-col gap-4 min-h-screen">
+      <div className="flex max-sm:flex-col gap-2 justify-between">
+        <div className="flex gap-2 w-full">
+          <PageSearch
+            value={search}
+            placeholder={t("search")}
+            onChange={(e) => {
+              setSearch(e.target.value);
+              setPage(0);
+            }}
+          />
 
-        <Sort
-          options={[
-            { value: "date", label: "По дате" },
-            { value: "views", label: "По просмотрам" },
-          ]}
-          onChange={(value) => {
-            setSortBy(value);
-            setPage(0);
-          }}
-          onClick={() => {
-            setSortOrder(sortOrder === "desc" ? "asc" : "desc");
-          }}
-          currentSort={sortBy}
+          <Sort
+            options={[
+              { value: "date", label: t("Sort.date") },
+              { value: "views", label: t("Sort.views") },
+            ]}
+            onChange={(value) => {
+              setSortBy(value);
+              setPage(0);
+            }}
+            onClick={() => {
+              setSortOrder(sortOrder === "desc" ? "asc" : "desc");
+            }}
+            currentSort={sortBy}
+          />
+        </div>
+        <Pagination
+          pageCount={filteredChunkedItems.length}
+          page={page}
+          setPage={setPage}
         />
       </div>
 
       {loading && (
-        <div className="text-fd-primary w-full flex justify-center py-8">
-          <LoaderCircle className="animate-spin" size="3em" />
+        <div className="grid grid-cols-3 max-xl:grid-cols-1 gap-4">
+          {Array.from({ length: ITEMS_PER_PAGE }).map((_, index) => (
+            <VaultCardLoading key={index} />
+          ))}
         </div>
       )}
 
       {error && (
         <Callout type="error" title="Ошибка">
-          {error || "Таблица пуста или данные не найдены."}
+          {error || t("error")}
         </Callout>
       )}
 
-      {!loading && !error && currentPageItems.length > 0 && (
-        <div className="grid grid-cols-2 max-xl:grid-cols-1 gap-4">
+      {!error && currentPageItems.length > 0 && (
+        <div className="grid grid-cols-3 max-xl:grid-cols-2 max-md:grid-cols-1 gap-4">
           {currentPageItems.map((item, index) => (
             <VaultCard
               key={`${item.titleEn}-${index}`}
@@ -172,11 +183,13 @@ export default function FlectoneVault() {
         </div>
       )}
 
-      <Pagination
-        pageCount={filteredChunkedItems.length}
-        page={page}
-        setPage={setPage}
-      />
+      <div className="w-full flex justify-end">
+        <Pagination
+          pageCount={filteredChunkedItems.length}
+          page={page}
+          setPage={setPage}
+        />
+      </div>
 
       {!loading &&
         !error &&
