@@ -194,6 +194,13 @@ format:
         value: "minecraft.admin"
         type: "PERMISSION"
 #endregion condition
+#region fading
+  fading:
+    enable: true
+    hide_different_world: true
+    min_distance: 10.0
+    max_distance: 50.0
+#endregion fading
 #region fcolor
   fcolor:
     enable: true

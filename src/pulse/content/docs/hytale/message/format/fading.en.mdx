@@ -1,0 +1,72 @@
+---
+title: Fading
+description: A module responsible for fading messages with distance and the <fading> tag
+authors:
+  - TheFaser
+tag: "hytale"
+---
+![fading](/pulse/message_format_fading.webp)
+
+<Callout type="info" title="Information">
+    For a message to fade, you need to replace `<message>` with `<fading>` in the required format. For example, for the local chat in `localizations → language.yml → message.chat.types.local`
+    ```yaml
+    types:
+      local: "<delete><display_name><fcolor:3>: <fading>"
+    ```
+</Callout>
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.fading`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../../files/hytale/localizations/en_us.yml#fading</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../files/hytale/localizations/ru_ru.yml#fading</include></Tab>
+</Tabs>
+
+### `symbol`
+
+The symbol that the letters in the message are replaced with. Only the first character is used
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.fading`</span>
+
+<include>../../../../../files/hytale/message.yml#fading</include>
+
+<include>../../../../../parts/enable.en.mdx</include>
+
+### `hide_different_world`
+
+Enables full fading of the message if the distance between the players cannot be determined, for example, they are in different worlds or the recipient is on another server when using a proxy. If disabled, such a message will be displayed in full
+
+### `min_distance`
+
+The distance in blocks up to which the message is displayed in full. While the recipient is closer than this value, nothing is replaced
+
+### `max_distance`
+
+The distance in blocks at which the message fades completely. Between `min_distance` and `max_distance` the number of replaced letters grows gradually, the further the recipient is, the fewer letters they will see. Spaces are never replaced
+
+<Callout type="info" title="Information">
+    For example, `min_distance` is `10.0`, and `max_distance` is `50.0`. Then a player standing 10 blocks away will see the message in full, at 30 blocks they will see about half of the letters, and at 50 blocks and further they will not see a single letter
+</Callout>
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.fading`</span>
+
+<include>../../../../../files/hytale/permission.yml#fading</include>
+
+<include>../../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `bypass_send`
+
+Permission for the player's messages not to fade for others
+
+### `bypass_view`
+
+Permission to see other players' messages without fading

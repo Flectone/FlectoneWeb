@@ -55,15 +55,15 @@ house:
 
 If enabled, all packets (any messages, nicknames, etc.) created by `FlectonePulse` will be sent in silent mode. This can resolve compatibility issues with plugins that modify packets via `PacketEvents`
 
-### `use_paper_message_sender`
+### `use_vanilla_message_sender`
 
-If enabled, `FlectonePulse` will use `Paper` as a tool for sending chat messages to a player.
+If enabled, `FlectonePulse` will use the platform (e.g. `Paper`) as a tool to send a chat message to the player.
 
-How does it work? First, the plugin creates a message internally and obtains a `FlectonePulse.Component`, this object is converted to a regular `String`. Then `Paper` itself is used to convert this string into a `Paper.Component` and send it to the player
+How does it work? First, the plugin creates a message internally and obtains a `FlectonePulse.Component`, this object is converted into a regular `String`. Then the platform itself (e.g. `Paper`) is used to obtain a `Paper.Component` from this string and send it to the player.
 
 <Callout type="warn" title="Warning">
 
-For this to work, the server must run on a `Paper` core or its fork
+For this to work, the server must be running `Paper` or its fork, or `Fabric`, or `NeoForge`
 
 </Callout>
 

@@ -10,7 +10,7 @@
 #
 #region version
 server: "00000000-0000-0000-0000-000000000000"
-version: "1.12.1"
+version: "1.13.0"
 #endregion version
 #region language
 language:
@@ -19,7 +19,6 @@ language:
 #endregion language
 #region database
 database:
-  ignore_existing_driver: false
   use_playtime_tracking: true
   type: "H2"
   name: "flectonepulse"
@@ -29,6 +28,12 @@ database:
   password: "1234"
   parameters: "?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=UTF-8"
   prefix: ""
+  pool_settings:
+    max_size: 10
+    min_idle: 10
+    max_lifetime: 1800000
+    keepalive_time: 0
+    connection_timeout: 5000
 #endregion database
 #region executor
 executor:
@@ -60,7 +65,7 @@ proxy:
 internal:
   enable: true
   always_send_silent_packet: false
-  use_paper_message_sender: false
+  use_vanilla_message_sender: false
   use_packet_login_listener: false
   unregister_command_on_reload: false
   vanilla_commands_to_remove:
@@ -144,6 +149,12 @@ cache:
       duration: 10
       time_unit: "MINUTES"
       size: 10000
+    IMAGE_PIXELS:
+      invalidate_on_reload: true
+      expire_after_write: false
+      duration: 10
+      time_unit: "MINUTES"
+      size: 1000
     LEGACY_COLOR_MESSAGE:
       invalidate_on_reload: false
       expire_after_write: false

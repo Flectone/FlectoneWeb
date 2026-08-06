@@ -459,6 +459,8 @@ command:
       message: "private message"
       send: "private message"
       m: "private message"
+      r: "private message"
+      reply: "private message"
       anon: "anonymous message"
       anvil: "item name"
       book: "book text"
@@ -720,8 +722,8 @@ message:
     null_chat: "<color:#ff7171><sprite_or:⁉:gui:icon/chat_modified>Chat is disabled on this server"
     null_receiver: "<color:#ff7171><sprite_or:⁉:gui:icon/chat_modified>Nobody heard you"
     types:
-      global: "<delete><display_name> <world>»<fcolor:4> <message><reset><translation>"
-      local: "<delete><display_name><fcolor:3>: <message><reset><translation>"
+      global: "<delete><display_name> <world>»<fcolor:4> <message>"
+      local: "<delete><display_name><fcolor:3>: <message>"
 #endregion chat
 #region format
   format:
@@ -761,6 +763,10 @@ message:
           "true": "Admin"
           "false": "Player"
 #endregion condition
+#region fading
+    fading:
+      symbol: "▓"
+#endregion fading
 #region object
     object:
       default_symbol: "☐"
@@ -926,10 +932,14 @@ message:
 #region motd
     motd:
       values:
-      - "<fcolor:1>Welcome to our server!"
-      - "<fcolor:1>Join us and enjoy a unique game experience!"
-      - "<fcolor:1>We have a friendly community - be polite and respect each other!"
-      - "<fcolor:1>Enjoy the game! If you have any questions, feel free to contact the administration"
+      - - "<fcolor:1>Welcome to our server!"
+        - ""
+      - - "<fcolor:1>Join us and enjoy a unique game experience!"
+        - ""
+      - - "<fcolor:1>We have a friendly community - be polite and respect each other!"
+        - ""
+      - - "<fcolor:1>Enjoy the game! If you have any questions, feel free to contact the administration"
+        - ""
 #endregion motd
 #region players
     players:

@@ -459,6 +459,8 @@ command:
       message: "личное сообщение"
       send: "личное сообщение"
       m: "личное сообщение"
+      r: "личное сообщение"
+      reply: "личное сообщение"
       anon: "анонимное сообщение"
       anvil: "название предмета"
       book: "текст книги"
@@ -720,8 +722,8 @@ message:
     null_chat: "<color:#ff7171><sprite_or:⁉:gui:icon/chat_modified>На сервер выключен чат"
     null_receiver: "<color:#ff7171><sprite_or:⁉:gui:icon/chat_modified>Тебя никто не услышал"
     types:
-      global: "<delete><display_name> <world>»<fcolor:4> <message><reset><translation>"
-      local: "<delete><display_name><fcolor:3>: <message><reset><translation>"
+      global: "<delete><display_name> <world>»<fcolor:4> <message>"
+      local: "<delete><display_name><fcolor:3>: <message>"
 #endregion chat
 #region format
   format:
@@ -761,6 +763,10 @@ message:
           "true": "Админ"
           "false": "Игрок"
 #endregion condition
+#region fading
+    fading:
+      symbol: "▓"
+#endregion fading
 #region object
     object:
       default_symbol: "☐"
@@ -926,10 +932,14 @@ message:
 #region motd
     motd:
       values:
-      - "<fcolor:1>Добро пожаловать на сервер!"
-      - "<fcolor:1>Присоединяйся и наслаждайся уникальным опытом игры!"
-      - "<fcolor:1>У нас дружелюбное сообщество - будь вежлив и уважай других!"
-      - "<fcolor:1>Приятной игры! Если есть вопросы, обращайся к администрации"
+      - - "<fcolor:1>Добро пожаловать на сервер!"
+        - ""
+      - - "<fcolor:1>Присоединяйся и наслаждайся уникальным опытом игры!"
+        - ""
+      - - "<fcolor:1>У нас дружелюбное сообщество - будь вежлив и уважай других!"
+        - ""
+      - - "<fcolor:1>Приятной игры! Если есть вопросы, обращайся к администрации"
+        - ""
 #endregion motd
 #region players
     players:
