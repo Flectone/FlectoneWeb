@@ -1,36 +1,26 @@
 'use client'
-import { ReactNode } from "react"
 import Card from "./Card"
-import * as Icons from "lucide-react";
-import { LucideIcon } from "lucide-react";
-
-type IconName = keyof typeof Icons;
+import {DynamicIcon, IconName} from "lucide-react/dynamic";
 
 interface ToolCardProps {
-    preview: ReactNode,
     name: string,
     description: string,
     icon: IconName,
-    path: string
+    path: string,
 }
 
-export default function ToolCard({ preview, name, description, icon, path }: ToolCardProps) {
-    const Icon = Icons[icon] as LucideIcon | undefined;
-    if (!Icon) return null;
-
+export default function ToolCard({ name, description, icon, path }: ToolCardProps) {
     return (
         <Card
-            className="flex w-full gap-2"
+            className="flex w-full gap-2 relative h-full"
             path={path}
         >
-            <div className="w-1/2 pr-4">
-                <span className="gap-1 flex items-start justify-between w-full">
-                    <h2 className="font-bold text-xl">{name}</h2>
-                </span>
+            <div className="w-full pr-4">
+                <h2 className="font-bold text-xl flex gap-1 items-center w-full">
+                    <DynamicIcon className="text-fd-primary" size={1.1+'em'} name={icon}/>
+                    {name}
+                </h2>
                 <p className="">{description}</p>
-            </div>
-            <div className="w-1/2 absolute right-0 top-0 h-full rounded-r-2xl">
-                {preview}
             </div>
         </Card>
     )

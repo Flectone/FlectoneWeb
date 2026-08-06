@@ -1,4 +1,4 @@
-import FlectoneChat from "@/components/Content/FlectoneChat";
+import FlectoneChat from "@/components/Content/Chat/FlectoneChat";
 import { createMetadata } from "@/lib/create-metadata";
 
 export const generateMetadata = createMetadata({

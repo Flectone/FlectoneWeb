@@ -21,6 +21,16 @@ export default function Layout({ children }: LayoutProps<'/[lang]'>) {
           secondary: false,
         },
         {
+          text: t('Header.pulse'),
+          url: '/pulse',
+          secondary: false,
+        },
+        {
+          text: t('Header.tools'),
+          url: '/tools',
+          secondary: false,
+        },
+        {
           type: 'icon',
           icon: <SiBoosty />,
           text: 'Boosty',

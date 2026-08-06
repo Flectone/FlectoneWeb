@@ -1,7 +1,7 @@
-import LinkButton from "../Button/LinkButton";
+import LinkButton from "../../Button/LinkButton";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import ModalButton from "../Button/ModalButton";
+import ModalButton from "../../Button/ModalButton";
 import { Leaf, Pickaxe, ChartCandlestick, Cable } from "lucide-react";
 
 export default function WelcomeCard() {
@@ -18,13 +18,7 @@ export default function WelcomeCard() {
         <div className='flex gap-4 max-sm:flex-col'>
           <LinkButton href='https://boosty.to/thefaser' mode='blue' className='h-8'>{t('Buttons.support')}</LinkButton>
           <LinkButton href='/pulse/download' mode='gray' className='h-8'>{t('Buttons.download')}</LinkButton>
-          <ModalButton title={t('Buttons.documentation')} text={t('Buttons.documentation')}>
-            <LinkButton className='gap-1' href='/pulse/docs/'><Pickaxe size='1.1em' />Minecraft</LinkButton>
-            <LinkButton className='gap-1' href='/pulse/docs/hytale'><Leaf size='1.1em' />Hytale</LinkButton>
-            <LinkButton className='gap-1' href='/pulse/docs/metrics'><ChartCandlestick size='1.1em' />{t('Buttons.metrics')}</LinkButton>
-            <LinkButton className='gap-1' href='/pulse/docs/api'><Cable size='1.1em' />API</LinkButton>
-            <LinkButton className='gap-1' href='/pulse/docs/changelog'><Cable size='1.1em' />{t('Buttons.changelog')}</LinkButton>
-          </ModalButton>
+          <LinkButton href='/pulse/docs' mode="gray" className='h-8'>{t('Buttons.documentation')}</LinkButton>
         </div>
       </div>
       <Image className='max-lg:hidden w-85 rounded-xl' src={'/assets/flectonepulse/flectonepulse_title.webp'} alt={'flectonepulse'} width={500}

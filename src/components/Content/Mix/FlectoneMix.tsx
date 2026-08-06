@@ -1,9 +1,9 @@
-import LinkButton from "../Button/LinkButton";
-import Card from "../Card/Card";
+import LinkButton from "../../Button/LinkButton";
+import Card from "../../Card/Card";
 import { SiBoosty } from "react-icons/si";
 import { SiGithub } from "react-icons/si";
 import { useTranslations } from "next-intl";
-import Svg from "@/components/Svg/Svg";
+import ThemeImage from "@/components/Image/ThemeImage";
 
 export default function FlectoneMix() {
 
@@ -23,7 +23,7 @@ export default function FlectoneMix() {
         </div>
       </Card>
       <Card className="w-full">
-        <img alt='flectonemix' src='/assets/flectonemix/flectonemix_preview_dark.webp' className='rounded-md border' />
+        <ThemeImage width={1000} height={400} alt='flectonemix' src='/assets/flectonemix/flectonemix_preview.webp' className='rounded-md border w-full' />
       </Card>
     </div>
   )

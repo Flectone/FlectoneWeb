@@ -1,5 +1,5 @@
-import LinkButton from "../Button/LinkButton";
-import Card from "../Card/Card";
+import LinkButton from "../../Button/LinkButton";
+import Card from "../../Card/Card";
 import {SiGithub} from "react-icons/si";
 import {SiModrinth} from "react-icons/si";
 import {useTranslations} from "next-intl";
@@ -23,7 +23,7 @@ export default function FlectoneChat() {
         </div>
       </Card>
       <Card className="w-full">
-        <ThemeImage width={1000} height={1000} alt='flectonechat' src={t('imagePath')} className='rounded-md border-[0.5px]'/>
+        <ThemeImage width={1000} height={400} alt='flectonechat' src={t('imagePath')} className='rounded-md border-[0.5px]'/>
       </Card>
     </div>
   )

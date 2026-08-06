@@ -1,32 +1,36 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { ReactNode } from 'react'
+import Link from "next/link";
+import { ReactNode } from "react";
 
-type ButtonMode = 'blue' | 'orange' | 'gray' | 'green'
+type ButtonMode = "blue" | "orange" | "gray" | "green" | "red";
 
 interface LinkButtonProps {
-  children?: ReactNode
-  className?: string
-  href: string
-  mode?: ButtonMode
+  children?: ReactNode;
+  className?: string;
+  href: string;
+  mode?: ButtonMode;
+  target?: string;
 }
 
 const modeStyles: Record<ButtonMode, string> = {
-  blue: 'bg-fd-primary text-fd-primary-foreground hover:bg-fd-muted-primary',
-  orange: 'bg-fd-orange text-fd-orange-foreground hover:bg-fd-muted-orange',
-  gray: 'bg-fd-gray text-fd-gray-foreground hover:bg-fd-muted-gray',
-  green: 'bg-fd-green text-fd-green-foreground hover:bg-fd-muted-green',
-}
+  blue: "bg-fd-primary text-fd-primary-foreground hover:bg-fd-muted-primary",
+  orange: "bg-fd-orange text-fd-orange-foreground hover:bg-fd-muted-orange",
+  gray: "bg-fd-gray text-fd-gray-foreground hover:bg-fd-muted-gray",
+  green: "bg-fd-green text-fd-green-foreground hover:bg-fd-muted-green",
+  red: "bg-fd-red text-fd-red-foreground hover:bg-fd-muted-red",
+};
 
 const LinkButton: React.FC<LinkButtonProps> = ({
   children,
-  className = '',
+  className = "",
   href,
-  mode = 'blue',
+  mode = "blue",
+  target,
 }) => {
   return (
     <Link
+      target={target}
       href={href}
       className={`
         ${modeStyles[mode]}
@@ -37,7 +41,7 @@ const LinkButton: React.FC<LinkButtonProps> = ({
     >
       {children}
     </Link>
-  )
-}
+  );
+};
 
-export default LinkButton
+export default LinkButton;

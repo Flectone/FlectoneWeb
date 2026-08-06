@@ -105,6 +105,12 @@
         "applicationName": "TimeConvertor",
         "image": "/assets/flectone_logo.png"
       }
+    },
+    "Vault": {
+      "title": "FlectoneVault",
+      "description": "Все когда-либо выпущенные туториалы с картами и лайтматиками",
+      "applicationName": "FlectoneVault",
+      "image": "/assets/flectone_logo.png"
     }
   },
   "NotFound": {
@@ -118,7 +124,7 @@
     "openSourse": "Весь код проекта имеет <a>открытый исходный код</a>"
   },
   "Header": {
-    "Search" : {
+    "Search": {
       "filter": "Фильтр",
       "Minecraft": {
         "name": "Minecraft",
@@ -138,6 +144,8 @@
       }
     },
     "about": "Про нас",
+    "tools": "Tools",
+    "pulse": "Pulse",
     "Projects": {
       "title": "Проекты"
     }
@@ -168,6 +176,9 @@
     },
     "Tools": {
       "description": "Инструменты для разработчиков серверов"
+    },
+    "Vault": {
+      "description": "Все когда-либо выпущенные туториалы с картами и лайтматиками"
     }
   },
   "Members": {
@@ -212,6 +223,28 @@
     "EditOnGitHub": "Редактировать на GitHub",
     "Authors": {
       "title": "Авторы страницы"
+    },
+    "Navbar": {
+      "Minecraft": {
+        "name": "Minecraft",
+        "description": "Документация для Minecraft"
+      },
+      "Hytale": {
+        "name": "Hytale",
+        "description": "Документация для Hytale"
+      },
+      "Api": {
+        "name": "API",
+        "description": "Документация для API"
+      },
+      "Metrics": {
+        "name": "Аналитика",
+        "description": "Страница с аналитикой"
+      },
+      "Changelog": {
+        "name": "История изменений",
+        "description": "Страница с историей изменений"
+      }
     },
     "WelcomeCard": {
       "slogan": "Каждое сообщение под <b>вашим</b> контролем!"
@@ -262,43 +295,43 @@
   },
   "Tools": {
     "Main": {
-      "title": "FlectoneTools",
-      "description": "Набор онлайн-инструментов для владельцев Minecraft серверов. Всё бесплатно и работает в браузере, не требует установки. Помогает быстро создавать ресурсы для плагинов, настраивать оформление и выполнять технические операции",
+      "title": "Flectone<b>Tools</b>",
+      "description": "Набор бесплатных онлайн-инструментов для владельцев Minecraft-серверов. Работает в браузере без установки",
       "TextureGenerator": {
         "title": "Генератор текстур",
-        "description": "Конвертирует любое изображение в текстуру для Minecraft, создавая JSON-модель"
+        "description": "Конвертирует любое изображение в JSON-текстуру Minecraft"
       },
       "TextAnimation": {
         "title": "Анимация текста",
-        "description": "Создаёт анимированные сообщения с эффектами мерцания, радуги, волны и появления по буквам"
+        "description": "Создаёт анимированные сообщения с различными эффектами"
       },
       "PrefixGenerator": {
         "title": "Генератор префиксов",
-        "description": "Собирает префиксы с помощью визуального редактора. Добавляйте иконки (символы/юникод) и цветной текст"
+        "description": "Визуальный редактор префиксов для Minecraft"
       },
       "UuidExtractor": {
         "title": "Получение UUID",
-        "description": "Находит UUID игрока по нику для Java Edition. Поддерживает оффлайн и онлайн режимы"
+        "description": "Получает UUID игрока по нику (для Java Edition)"
       },
       "InventoryPreviewer": {
         "title": "Просмотр Инвентарей",
-        "description": "Все GUI контейнеров Minecraft собраны в одном месте. Выбери нужный из списка и посмотри какие номера слотов у него"
+        "description": "Просмотр GUI-контейнеров Minecraft в одном месте"
       },
       "CoordinateCalculator": {
         "title": "Калькулятор Координат",
-        "description": "Переводи координаты между Незером и обычным миром, а также находи крепость Энда по двум броскам жемчуга"
+        "description": "Расчет координат для Незера и Эндер-крепости"
       },
       "ColorTextGenerator": {
         "title": "Генератор Цветного Текста",
-        "description": "Создавай цветной текст для Minecraft с поддержкой Legacy и MiniMessage форматов"
+        "description": "Генератор цветного текста для Minecraft в форматах Legacy и MiniMessage"
       },
       "ServerFlagsGenerator": {
         "title": "Генератор флагов сервера",
-        "description": "Генерируй скрипты запуска Minecraft сервера с оптимальными JVM флагами для Linux, Windows и Java."
+        "description": "Генерация оптимизированных скриптов запуска сервера"
       },
       "TimeConvertor": {
         "title": "Конвертер времени",
-        "description": "Конвертирует тики Minecraft в реальное время и наоборот. Помогает быстро получить команду /time set"
+        "description": "Конвертация тиков Minecraft в реальное время и обратно"
       }
     },
     "Form": {
@@ -546,5 +579,21 @@
         "midnight": "Полночь"
       }
     }
+  },
+  "Vault": {
+    "Main": {
+      "title": "Flectone<b>Vault</b>",
+      "description": "Все когда-либо выпущенные туториалы с картами и лайтматиками"
+    },
+    "Card": {
+      "watchYoutube": "Перейти на Youtube",
+      "watchBoosty": "Перейти на Boosty"
+    },
+    "Sort": {
+      "date": "По дате",
+      "views": "По просмотрам"
+    },
+    "search": "Поиск",
+    "error": "Таблица пуста или данные не найдены"
   }
 }

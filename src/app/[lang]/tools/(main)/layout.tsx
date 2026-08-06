@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps<'/[lang]'>) {
 
     return (
         <HomeLayout
-            {...baseOptions('Flectone', '/')}
+            {...baseOptions('FlectoneTools', '/')}
 
             searchToggle={{
                 enabled: false,
