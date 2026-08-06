@@ -11,16 +11,19 @@ export default function Pagination({
   page,
   setPage,
 }: PaginationProps) {
-  let start = Math.max(0, page - 2);
-  let end = Math.min(pageCount, start + 5);
+  if (pageCount <= 1) return null;
 
-  if (end - start < 5) {
-    start = Math.max(0, end - 5);
+  const maxVisiblePages = 3;
+
+  let start = Math.max(0, page - 1);
+  let end = Math.min(pageCount - 1, start + maxVisiblePages);
+
+  if (end - start < maxVisiblePages && pageCount > maxVisiblePages) {
+    start = Math.max(0, end - maxVisiblePages);
   }
 
-  const pages = Array.from({ length: end - start }, (_, i) => start + i);
-
-  if (pageCount <= 1) return null;
+  const visiblePagesCount = Math.min(pageCount - 1, end - start);
+  const pages = Array.from({ length: visiblePagesCount }, (_, i) => start + i);
 
   return (
     <div className="flex items-center gap-1 select-none">
@@ -32,24 +35,44 @@ export default function Pagination({
         <ChevronLeft size={"1em"} />
       </button>
 
-      {pages.map((actualPageKey) => {
-        const isActive = page === actualPageKey;
-
-        return (
-          <div
-            key={actualPageKey}
-            className={`text-sm cursor-pointer flex items-center justify-center w-7 h-7 transition rounded-md
+      <div className="flex gap-1">
+        {pages.map((actualPageKey) => {
+          const isActive = page === actualPageKey;
+          return (
+            <div
+              key={actualPageKey}
+              className={`text-sm cursor-pointer flex items-center justify-center w-7 h-7 transition rounded-md
               ${
                 isActive
                   ? "bg-fd-primary text-fd-primary-foreground font-medium"
                   : "text-fd-muted-foreground bg-fd-card hover:bg-fd-border"
               }`}
-            onClick={() => setPage(actualPageKey)}
-          >
-            {actualPageKey + 1}
-          </div>
-        );
-      })}
+              onClick={() => setPage(actualPageKey)}
+            >
+              {actualPageKey + 1}
+            </div>
+          );
+        })}
+
+        {pageCount > maxVisiblePages + 1 &&
+          start < pageCount - maxVisiblePages - 1 && (
+            <span className="w-7 h-7 flex items-center justify-center text-fd-muted-foreground">
+              ...
+            </span>
+          )}
+
+        <div
+          className={`text-sm cursor-pointer flex items-center justify-center w-7 h-7 transition rounded-md
+              ${
+                page === pageCount - 1
+                  ? "bg-fd-primary text-fd-primary-foreground font-medium"
+                  : "text-fd-muted-foreground bg-fd-card hover:bg-fd-border"
+              }`}
+          onClick={() => setPage(pageCount - 1)}
+        >
+          {pageCount}
+        </div>
+      </div>
 
       <button
         disabled={page === pageCount - 1}
