@@ -13,7 +13,7 @@ export default function Projects() {
   return (
     <div className="w-full flex flex-col justify-center gap-4">
       <div className="w-full flex gap-8 flex-col">
-        <div className="grid grid-cols-2 grid-rows-2 gap-4">
+        <div className="flex flex-col gap-4">
           <Card
             path="/pulse"
             className="col-span-2 w-full h-full max-md:h-fit items-center flex justify-between p-10 relative"
@@ -56,7 +56,7 @@ export default function Projects() {
             <div
               className={`max-md:w-3/5 max-md:bg-size-[16rem] w-4/5 animate-bg-diagonal-up absolute right-0 top-0 bg-size-[22rem] mask-[linear-gradient(to_left,white,transparent)] h-full`}
               style={{
-                backgroundImage: `url("/assets/backgrounds/flectonetools_background_${currentTheme}.webp")`,
+                backgroundImage: `url("/assets/flectonevault/flectonevault_preview_${currentTheme}.webp")`,
               }}
             ></div>
           </Card>

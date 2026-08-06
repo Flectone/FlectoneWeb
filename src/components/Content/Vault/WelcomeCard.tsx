@@ -12,7 +12,7 @@ export default function WelcomeCard() {
       <div
         className={`animate-bg-diagonal-up absolute right-0 top-0 bg-size-[22rem] mask-[linear-gradient(to_left,white,transparent)] w-2/3 max-md:w-2/4 h-full`}
         style={{
-          backgroundImage: `url("/assets/backgrounds/flectonetools_background_${currentTheme}.webp")`,
+          backgroundImage: `url("/assets/flectonevault/flectonevault_preview_${currentTheme}.webp")`,
         }}
       ></div>
       <div className="flex flex-col">
