@@ -33,7 +33,7 @@ function extractImageUrl(
         /(?:v=|youtu\.be\/|shorts\/|embed\/)([\w-]{11})/i,
       );
       if (ytMatch && ytMatch[1]) {
-        return `https://img.youtube.com/vi/${ytMatch[1]}/mqdefault.jpg`;
+        return `https://img.youtube.com/vi_webp/${ytMatch[1]}/maxresdefault.webp`;
       }
     }
 
@@ -68,10 +68,12 @@ export async function GET(request: Request) {
   const urlFormulas = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}?key=${apiKey}&valueRenderOption=FORMULA`;
   const urlValues = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${encodeURIComponent(range)}?key=${apiKey}`;
 
+  const REVALIDATE_TIME = 3600;
+
   try {
     const [resFormulas, resValues] = await Promise.all([
-      fetch(urlFormulas, { cache: "no-store" }),
-      fetch(urlValues, { cache: "no-store" }),
+      fetch(urlFormulas, { next: { revalidate: REVALIDATE_TIME } }),
+      fetch(urlValues, { next: { revalidate: REVALIDATE_TIME } }),
     ]);
 
     if (!resFormulas.ok || !resValues.ok) {
@@ -110,7 +112,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json(formattedData, {
       headers: {
-        "Cache-Control": "no-store, max-age=0",
+        "Cache-Control": "s-maxage=3600, stale-while-revalidate",
       },
     });
   } catch (error) {
