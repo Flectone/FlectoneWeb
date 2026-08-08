@@ -271,14 +271,32 @@
         "description": "Позволь игрокам общаться на разных платформах. Полноценные интеграции с Discord, Twitch и Telegram"
       }
     },
-    "Structure": {
-      "title": "Структура плагина",
-      "description": "├── <b>backups/</b>\n│  ├──<c>version/</c>\n├── <b>images/</b>\n├── <b>libaries/</b>\n├── <b>minecraft/</b>\n├── <b>localizations/</b>\n├── <b>commands.yml</b>\n├── <b>config.yml</b>\n├── <b>integration.yml</b>\n├── <b>message.yml</b>\n├── <b>permission.yml</b>"
-    },
     "Metrics": {
-      "title": "Аналитика",
-      "playersCount": "Количество игроков",
-      "serversCount": "Количество серверов"
+      "title": "Pulse<b>Аналитика</b>",
+      "description": "На этой странице собраны основные графики по работе серверов",
+      "labels": {
+        "serverCount": "Количество серверов",
+        "playerCount": "Количество игроков",
+        "servers": "Серверы",
+        "players": "Игроки"
+      },
+      "items": {
+        "serverCount": "Количество серверов",
+        "serverVersion": "Версия сервера",
+        "cpuCores": "Ядра процессора",
+        "totalRam": "Оперативная память",
+        "modules": "Модули",
+        "projectVersion": "Версия проекта",
+        "projectLanguage": "Язык проекта",
+        "serverCore": "Ядра серверов и игроки",
+        "osArchitecture": "Архитектура ОС",
+        "osName": "Операционная система",
+        "javaVersion": "Версия Java",
+        "proxyMode": "Режим прокси",
+        "onlineMode": "Онлайн режим",
+        "databaseMode": "Режим базы данных",
+        "location": "Геолокация"
+      }
     },
     "Download": {
       "latestrelease": "Последний релиз",
