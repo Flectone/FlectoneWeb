@@ -42,6 +42,12 @@
         "applicationName": "FlectonePulse",
         "keywords": "скачать флектонпульс, скачать flectonepulse, скачать плагин на чат, скачать плагин на чат майнкрафт, скачать чат, скачать майнкрафт, скачать флектон, скачать Флектон",
         "image": "/assets/flectone_logo.png"
+      },
+      "Metrics": {
+        "title": "Аналитика | FlectonePulse",
+        "description": "На этой странице собраны основные графики по работе серверов",
+        "applicationName": "Flectone",
+        "image": "/assets/flectone_logo.png"
       }
     },
     "Tools": {

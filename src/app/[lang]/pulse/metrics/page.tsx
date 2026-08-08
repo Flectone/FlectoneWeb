@@ -11,7 +11,7 @@ export default function VaultPage() {
   return (
     <div className="w-full max-w-7xl flex gap-4 flex-col justify-center my-8">
       <HeaderCard namespace="Pulse.Metrics" />
-      <Callout type="info" title="Информация">
+      <Callout margin="none" type="info" title="Информация">
         Ты в любой момент можешь отключить сбор этих данных на своём сервере{" "}
         <a
           className="text-fd-primary hover:text-fd-muted-primary transition"
@@ -20,6 +20,7 @@ export default function VaultPage() {
           здесь
         </a>
       </Callout>
+      <span className="w-full border-b"></span>
       <PulseMetrics />
     </div>
   );

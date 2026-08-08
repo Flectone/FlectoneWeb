@@ -42,6 +42,12 @@
         "ApplicationName": "FlectonePulse",
         "keywords": "download flectonepulse, download flectonepulse, download chat plugin, download minecraft chat plugin, download chat, download minecraft, download flectone, download flectone",
         "image": "/assets/flectone_logo.png"
+      },
+      "Metrics": {
+        "title": "Analytics | FlectonePulse",
+        "description": "This page contains key server performance graphs",
+        "applicationName": "Flectone",
+        "image": "/assets/flectone_logo.png"
       }
     },
     "Tools": {
