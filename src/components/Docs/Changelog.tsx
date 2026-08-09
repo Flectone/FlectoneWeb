@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Check, Wrench, Package, Zap } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useLocale } from "next-intl";
+import Link from "next/link";
 
 interface VersionProps {
   v: string;
@@ -152,20 +153,20 @@ export function Version({
           <div className="changelog-meta">
             {date && <time className="changelog-date">{formatDate(date)}</time>}
             <div className="changelog-actions">
-              <a
-                href="https://flectone.net/pulse/download"
+              <Link
+                href="/pulse/download"
                 className="changelog-btn changelog-btn-download"
               >
                 {t("download")}
-              </a>
-              <a
+              </Link>
+              <Link
                 href={`https://github.com/Flectone/FlectonePulse/releases/tag/v${v}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="changelog-btn"
               >
                 {t("github")}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
