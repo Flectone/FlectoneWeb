@@ -10,7 +10,10 @@ export const generateMetadata = createMetadata({
 export default function MetricsPage() {
   return (
     <div className="w-full max-w-7xl flex gap-4 flex-col justify-center my-8">
-      <HeaderCard namespace="Pulse.Metrics" />
+      <HeaderCard
+        namespace="Pulse.Metrics"
+        background="/assets/flectonepulse/flectonepulse_metrics_preview_dark.webp"
+      />
       <Callout margin="none" type="info" title="Информация">
         Ты в любой момент можешь отключить сбор этих данных на своём сервере{" "}
         <a
