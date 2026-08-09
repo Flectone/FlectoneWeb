@@ -127,7 +127,7 @@ export default function MetricsPage() {
               className="scroll-mt-20"
             >
               <Title>
-                <h1 className="font-bold">
+                <h1 className="font-bold text-2xl">
                   {locale === "ru" ? "Версия" : "Version"} {item.version}
                 </h1>
                 {item.warning && (
