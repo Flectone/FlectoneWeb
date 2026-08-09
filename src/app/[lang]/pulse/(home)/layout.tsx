@@ -19,56 +19,18 @@ export default function Layout({ children }: LayoutProps<"/[lang]/pulse">) {
       {...baseOptions("FlectonePulse", "/")}
       links={[
         {
-          type: "custom",
-          on: "nav",
-          children: (
-            <NavbarMenu>
-              <NavbarMenuTrigger>
-                {t("Buttons.documentation")}
-              </NavbarMenuTrigger>
-              <NavbarMenuContent className="flex">
-                <NavbarCard
-                  title={t("Navbar.Minecraft.name")}
-                  description={t("Navbar.Minecraft.description")}
-                  icon="pickaxe"
-                  href="/pulse/docs"
-                />
-                <NavbarCard
-                  title={t("Navbar.Hytale.name")}
-                  description={t("Navbar.Hytale.description")}
-                  icon="leaf"
-                  href="/pulse/docs/hytale"
-                />
-                <NavbarCard
-                  title={t("Navbar.Api.name")}
-                  description={t("Navbar.Api.description")}
-                  icon="cable"
-                  href="/pulse/docs/api"
-                />
-                <NavbarCard
-                  title={t("Navbar.Metrics.name")}
-                  description={t("Navbar.Metrics.description")}
-                  icon="chart-candlestick"
-                  href="/pulse/docs/metrics"
-                />
-                <NavbarCard
-                  title={t("Navbar.Changelog.name")}
-                  description={t("Navbar.Changelog.description")}
-                  icon="arrow-down-up"
-                  href="/pulse/docs/changelog"
-                />
-              </NavbarMenuContent>
-            </NavbarMenu>
-          ),
-        },
-        {
-          text: "API",
-          url: "/pulse/docs/api",
+          text: t("Buttons.documentation"),
+          url: "/pulse/docs/",
           secondary: false,
         },
         {
           text: t("Buttons.metrics"),
-          url: "/pulse/docs/metrics",
+          url: "/pulse/metrics",
+          secondary: false,
+        },
+        {
+          text: t("Buttons.changelog"),
+          url: "/pulse/changelog",
           secondary: false,
         },
         {
