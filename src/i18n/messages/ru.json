@@ -48,6 +48,12 @@
         "description": "На этой странице собраны основные графики по работе серверов",
         "applicationName": "Flectone",
         "image": "/assets/flectone_logo.png"
+      },
+      "Changelog": {
+        "title": "Список изменений | FlectonePulse",
+        "description": "Все изменения для каждой версии FlectonePulse",
+        "applicationName": "Flectone",
+        "image": "/assets/flectone_logo.png"
       }
     },
     "Tools": {
@@ -278,7 +284,7 @@
       }
     },
     "Metrics": {
-      "title": "Pulse<b>Аналитика</b>",
+      "title": "Аналитика",
       "description": "На этой странице собраны основные графики по работе серверов",
       "labels": {
         "serverCount": "Количество серверов",
@@ -310,6 +316,8 @@
       "download": "Скачать"
     },
     "Changelog": {
+      "title": "Список изменений",
+      "description": "Все изменения для каждой версии FlectonePulse",
       "download": "Скачать",
       "github": "Гитхаб",
       "features": "Новые возможности",
