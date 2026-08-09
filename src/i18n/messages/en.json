@@ -290,6 +290,10 @@
     "Metrics": {
       "title": "Analytics",
       "description": "This page contains the main server performance charts",
+      "Callout": {
+        "title": "Information",
+        "text": "You can disable the collection of this data on your server at any time <a>here</a>"
+      },
       "labels": {
         "serverCount": "Server count",
         "playerCount": "Player count",

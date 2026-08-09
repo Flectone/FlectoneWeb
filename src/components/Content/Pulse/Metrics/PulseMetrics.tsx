@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Metric from "@/components/Metric/Metric";
 import { useTranslations } from "next-intl";
+import Callout from "@/components/Docs/Callout";
 
 const TOC_KEYS = [
   { id: "server-count", key: "serverCount" },
@@ -61,8 +62,21 @@ export default function PulseMetrics() {
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 relative">
-      <div className="lg:col-span-3 space-y-6">
+    <div className="flex w-full flex-col gap-4">
+      <Callout margin="none" type="info" title={t("Callout.title")}>
+        {t.rich("Callout.text", {
+          a: (chunks) => (
+            <a
+              className="text-fd-primary hover:text-fd-muted-primary transition"
+              href="/pulse/docs/config/metrics"
+            >
+              {chunks}
+            </a>
+          ),
+        })}
+      </Callout>
+      <span className="w-full border-b"></span>
+      <div className="flex flex-col w-full gap-4">
         <div
           id="server-count"
           className="bg-fd-card border rounded-2xl scroll-mt-20"
@@ -263,30 +277,6 @@ export default function PulseMetrics() {
             name={t("labels.serverCount")}
             apiPath="field?name=location"
           />
-        </div>
-      </div>
-
-      <div className="hidden lg:block lg:col-span-1">
-        <div className="sticky top-20 bg-fd-card border rounded-2xl p-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
-          <nav className="flex flex-col space-y-1">
-            {TOC_KEYS.map((item) => {
-              const isActive = activeId === item.id;
-              return (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  onClick={(e) => scrollToSection(e, item.id)}
-                  className={`text-xs px-3 py-2 rounded-lg font-medium transition-all ${
-                    isActive
-                      ? "bg-fd-primary text-fd-primary-foreground font-bold"
-                      : "text-fd-muted-foreground hover:bg-fd-accent hover:text-fd-accent-foreground"
-                  }`}
-                >
-                  {t(`items.${item.key}`)}
-                </a>
-              );
-            })}
-          </nav>
         </div>
       </div>
     </div>

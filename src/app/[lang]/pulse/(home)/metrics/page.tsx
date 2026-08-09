@@ -14,16 +14,6 @@ export default function MetricsPage() {
         namespace="Pulse.Metrics"
         background="/assets/flectonepulse/flectonepulse_metrics_preview_dark.webp"
       />
-      <Callout margin="none" type="info" title="Информация">
-        Ты в любой момент можешь отключить сбор этих данных на своём сервере{" "}
-        <a
-          className="text-fd-primary hover:text-fd-muted-primary transition"
-          href="/pulse/docs/config/metrics"
-        >
-          здесь
-        </a>
-      </Callout>
-      <span className="w-full border-b"></span>
       <PulseMetrics />
     </div>
   );
