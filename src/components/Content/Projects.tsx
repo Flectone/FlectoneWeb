@@ -37,9 +37,9 @@ export default function Projects() {
               <p className="w-2/3 max-md:text-md">{t("Tools.description")}</p>
             </div>
             <div
-              className={`max-md:w-3/5 max-md:bg-size-[16rem] w-4/5 animate-bg-diagonal-up absolute right-0 top-0 bg-size-[22rem] mask-[linear-gradient(to_left,white,transparent)] h-full`}
+              className={`absolute right-0 top-0 bg-cover mask-[linear-gradient(to_left,white,transparent)] max-md:w-3/5 w-4/5 h-full`}
               style={{
-                backgroundImage: `url("/assets/backgrounds/flectonetools_background_${currentTheme}.webp")`,
+                backgroundImage: `url("/assets/flectonetools/flectonetools_preview_${currentTheme}.webp")`,
               }}
             ></div>
           </Card>
@@ -54,9 +54,9 @@ export default function Projects() {
               <p className="w-2/3 max-md:text-md">{t("Vault.description")}</p>
             </div>
             <div
-              className={`max-md:w-3/5 max-md:bg-size-[16rem] w-4/5 animate-bg-diagonal-up absolute right-0 top-0 bg-size-[22rem] mask-[linear-gradient(to_left,white,transparent)] h-full`}
+              className={`absolute right-0 top-0 bg-cover bg-center mask-[linear-gradient(to_left,white,transparent)] max-md:w-3/5 w-4/5 h-full`}
               style={{
-                backgroundImage: `url("/assets/flectonevault/flectonevault_preview_${currentTheme}.webp")`,
+                backgroundImage: `url("/assets/flectonevault/flectonevault_preview.webp")`,
               }}
             ></div>
           </Card>

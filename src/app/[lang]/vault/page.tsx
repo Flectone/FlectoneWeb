@@ -11,7 +11,8 @@ export default function VaultPage() {
     <div className="w-full max-w-7xl flex gap-4 flex-col justify-center my-8">
       <HeaderCard
         namespace="Vault.Main"
-        background="/assets/flectonevault/flectonevault_preview_dark.webp"
+        theming={false}
+        background="/assets/flectonevault/flectonevault_preview.webp"
       />
       <span className="border-b"></span>
       <FlectoneVault />

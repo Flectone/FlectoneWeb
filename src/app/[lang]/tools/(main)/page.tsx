@@ -11,7 +11,7 @@ export default function ToolsPage() {
     <div className="w-full max-w-7xl flex gap-4 flex-col justify-center my-8">
       <HeaderCard
         namespace="Tools.Main"
-        background="/assets/backgrounds/flectonetools_background_dark.webp"
+        background="/assets/flectonetools/flectonetools_preview_dark.webp"
       />
       <span className="border-b"></span>
       <FlectoneTools />
