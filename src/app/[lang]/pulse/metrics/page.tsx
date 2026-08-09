@@ -7,7 +7,7 @@ export const generateMetadata = createMetadata({
   namespace: "Pulse.Metrics",
 });
 
-export default function VaultPage() {
+export default function MetricsPage() {
   return (
     <div className="w-full max-w-7xl flex gap-4 flex-col justify-center my-8">
       <HeaderCard namespace="Pulse.Metrics" />
