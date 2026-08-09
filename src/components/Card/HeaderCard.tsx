@@ -22,13 +22,13 @@ export default function HeaderCard({ namespace, background }: HeaderCardProps) {
           }}
         ></div>
       )}
-      <div className="flex flex-col">
-        <h1 className="text-3xl w-2/3 max-md:w-full text-start font-bold">
+      <div className="flex flex-col w-2/5">
+        <h1 className="text-3xl max-md:w-full text-start font-bold">
           {t.rich("title", {
             b: (chunks) => <b>{chunks}</b>,
           })}
         </h1>
-        <p className="w-2/3">{t("description")}</p>
+        <p>{t("description")}</p>
       </div>
     </div>
   );
