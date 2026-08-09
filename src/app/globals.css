@@ -318,14 +318,13 @@ input[type="checkbox"]:checked {
   font-size: 0.875rem;
   font-weight: 600;
   text-decoration: none;
-  border: 1px solid var(--color-fd-border);
   color: var(--color-fd-foreground);
+  background-color: var(--color-fd-gray);
   transition: all 0.2s;
 }
 
 .changelog-btn:hover {
-  border-color: var(--color-fd-primary);
-  background: color-mix(in srgb, var(--color-fd-primary) 10%, transparent);
+  background: var(--color-fd-muted-gray);
 }
 
 .changelog-btn-download {
