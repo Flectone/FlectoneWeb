@@ -112,6 +112,18 @@ export default function MetricsPage() {
     }
   };
 
+  function parseText(text: string) {
+    return text
+      .replace(
+        /`([^`]*)`/g,
+        "<code class='rounded-sm pr-1 bg-fd-border'>$1</code>",
+      )
+      .replace(
+        /\[#(\d+)\]\(([^)]*)\)/,
+        "<a class=' text-fd-primary! hover:text-fd-muted-primary! transition' href='$2'>#$1</a>",
+      );
+  }
+
   return (
     <div className="w-full flex gap-4">
       <div className="">
@@ -133,9 +145,14 @@ export default function MetricsPage() {
                 {item.warning && (
                   <Callout
                     type="warn"
+                    margin="none"
                     title={locale === "ru" ? "Предупреждение" : "Warning"}
                   >
-                    {item.warning}
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: parseText(item.warning),
+                      }}
+                    />
                   </Callout>
                 )}
               </Title>
@@ -147,7 +164,13 @@ export default function MetricsPage() {
                 return (
                   <Component key={key}>
                     {list.map((text, idx) => (
-                      <ItemComponent key={idx}>{text}</ItemComponent>
+                      <ItemComponent key={idx}>
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: parseText(text),
+                          }}
+                        />
+                      </ItemComponent>
                     ))}
                   </Component>
                 );
