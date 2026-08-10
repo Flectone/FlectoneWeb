@@ -635,12 +635,8 @@ export default function Metric(props: MetricProps) {
     const heightClass =
       type === "geo" || type === "treemap" ? "h-125" : "h-100";
     return (
-      <div
-        className={`bg-fd-article rounded-b-2xl border flex items-center justify-center w-full ${className}`}
-      >
-        <div
-          className={`h-24 w-full bg-fd-primary/10 rounded-md animate-pulse ${heightClass}`}
-        ></div>
+      <div className={`${className}`}>
+        <div className={`bg-fd-primary/10 animate-pulse`}></div>
       </div>
     );
   }
@@ -668,9 +664,7 @@ export default function Metric(props: MetricProps) {
     type === "geo" ? "550px" : type === "treemap" ? "500px" : "400px";
 
   return (
-    <div
-      className={`bg-fd-article rounded-b-xl border overflow-hidden w-full ${className}`}
-    >
+    <div className={`${className}`}>
       <ReactECharts
         option={option}
         style={{ height, width: "100%" }}

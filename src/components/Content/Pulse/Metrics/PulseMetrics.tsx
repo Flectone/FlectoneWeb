@@ -23,43 +23,171 @@ const TOC_KEYS = [
   { id: "location", key: "location" },
 ] as const;
 
+const METRICS_CONFIG = [
+  {
+    id: "server-count",
+    titleKey: "items.serverCount",
+    props: {
+      type: "two-line" as const,
+      slice: true,
+      data: {
+        first: { name: "labels.serverCount", apiPath: "serverCount" },
+        second: { name: "labels.playerCount", apiPath: "playerCount" },
+      },
+    },
+  },
+  {
+    id: "server-version",
+    titleKey: "items.serverVersion",
+    props: {
+      type: "pie" as const,
+      name: "labels.serverCount",
+      apiPath: "field?name=serverVersion",
+      sort: "quickRevers" as const,
+    },
+  },
+  {
+    id: "cpu-cores",
+    titleKey: "items.cpuCores",
+    props: {
+      type: "pie" as const,
+      suffix: "CPU",
+      name: "labels.serverCount",
+      apiPath: "field?name=cpuCores",
+      sort: "quickRevers" as const,
+    },
+  },
+  {
+    id: "total-ram",
+    titleKey: "items.totalRam",
+    props: {
+      type: "pie" as const,
+      name: "labels.serverCount",
+      apiPath: "field?name=totalRam",
+      sort: "quickRevers" as const,
+      convert: "gb" as const,
+      suffix: "ГБ",
+    },
+  },
+  {
+    id: "modules",
+    titleKey: "items.modules",
+    props: {
+      type: "treemap" as const,
+      apiPath: "field?name=modules",
+    },
+  },
+  {
+    id: "project-version",
+    titleKey: "items.projectVersion",
+    props: {
+      type: "pie" as const,
+      sort: "quickRevers" as const,
+      name: "labels.serverCount",
+      apiPath: "field?name=projectVersion",
+    },
+  },
+  {
+    id: "project-language",
+    titleKey: "items.projectLanguage",
+    props: {
+      type: "bar" as const,
+      name: "labels.serverCount",
+      apiPath: "field?name=projectLanguage",
+      sort: "quick" as const,
+    },
+  },
+  {
+    id: "server-core",
+    titleKey: "items.serverCore",
+    props: {
+      type: "two-pie" as const,
+      sort: "quickRevers" as const,
+      data: {
+        first: {
+          name: "labels.servers",
+          apiPath: "field?name=serverCore",
+        },
+        second: {
+          name: "labels.players",
+          apiPath: "field?name=playerCountByServerCore",
+        },
+      },
+    },
+  },
+  {
+    id: "os-architecture",
+    titleKey: "items.osArchitecture",
+    props: {
+      type: "pie" as const,
+      sort: "quickRevers" as const,
+      apiPath: "field?name=osArchitecture",
+      name: "labels.serverCount",
+    },
+  },
+  {
+    id: "os-name",
+    titleKey: "items.osName",
+    props: {
+      type: "pie" as const,
+      sort: "quickRevers" as const,
+      apiPath: "field?name=osName",
+      name: "labels.serverCount",
+    },
+  },
+  {
+    id: "java-version",
+    titleKey: "items.javaVersion",
+    props: {
+      type: "pie" as const,
+      name: "labels.serverCount",
+      apiPath: "field?name=javaVersion",
+      sort: "quickRevers" as const,
+    },
+  },
+  {
+    id: "proxy-mode",
+    titleKey: "items.proxyMode",
+    props: {
+      type: "bar" as const,
+      name: "labels.serverCount",
+      sort: "quick" as const,
+      apiPath: "field?name=proxyMode",
+    },
+  },
+  {
+    id: "online-mode",
+    titleKey: "items.onlineMode",
+    props: {
+      type: "bar" as const,
+      name: "labels.serverCount",
+      sort: "quick" as const,
+      apiPath: "field?name=onlineMode",
+    },
+  },
+  {
+    id: "database-mode",
+    titleKey: "items.databaseMode",
+    props: {
+      type: "bar" as const,
+      name: "labels.serverCount",
+      sort: "quick" as const,
+      apiPath: "field?name=databaseMode",
+    },
+  },
+  {
+    id: "location",
+    titleKey: "items.location",
+    props: {
+      type: "geo" as const,
+      name: "labels.serverCount",
+      apiPath: "field?name=location",
+    },
+  },
+];
+
 export default function PulseMetrics() {
   const t = useTranslations("Pulse.Metrics");
-  const [activeId, setActiveId] = useState<string>("");
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px",
-      },
-    );
-
-    TOC_KEYS.forEach((item) => {
-      const element = document.getElementById(item.id);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    id: string,
-  ) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      window.history.pushState(null, "", `#${id}`);
-    }
-  };
 
   return (
     <div className="flex w-full flex-col gap-4">
@@ -75,209 +203,44 @@ export default function PulseMetrics() {
           ),
         })}
       </Callout>
-      <span className="w-full border-b"></span>
       <div className="flex flex-col w-full gap-4">
-        <div
-          id="server-count"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.serverCount")}</h1>
-          <Metric
-            type="two-line"
-            slice={true}
-            data={{
-              first: { name: t("labels.serverCount"), apiPath: "serverCount" },
-              second: { name: t("labels.playerCount"), apiPath: "playerCount" },
-            }}
-          />
-        </div>
+        {METRICS_CONFIG.map(({ id, titleKey, props }) => {
+          const resolvedProps =
+            typeof props === "object" && props !== null
+              ? Object.entries(props).reduce((acc, [key, value]) => {
+                  if (
+                    key === "name" &&
+                    typeof value === "string" &&
+                    value.startsWith("labels.")
+                  ) {
+                    acc[key] = t(value);
+                  } else if (
+                    key === "data" &&
+                    typeof value === "object" &&
+                    value !== null
+                  ) {
+                    acc[key] = {
+                      first: { ...value.first, name: t(value.first.name) },
+                      second: { ...value.second, name: t(value.second.name) },
+                    };
+                  } else {
+                    acc[key] = value;
+                  }
+                  return acc;
+                }, {} as any)
+              : props;
 
-        <div
-          id="server-version"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.serverVersion")}</h1>
-          <Metric
-            type="pie"
-            name={t("labels.serverCount")}
-            apiPath="field?name=serverVersion"
-            sort="quickRevers"
-          />
-        </div>
-
-        <div
-          id="cpu-cores"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.cpuCores")}</h1>
-          <Metric
-            type="pie"
-            suffix="CPU"
-            name={t("labels.serverCount")}
-            apiPath="field?name=cpuCores"
-            sort="quickRevers"
-          />
-        </div>
-
-        <div
-          id="total-ram"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.totalRam")}</h1>
-          <Metric
-            type="pie"
-            name={t("labels.serverCount")}
-            apiPath="field?name=totalRam"
-            sort="quickRevers"
-            convert="gb"
-            suffix="ГБ"
-          />
-        </div>
-
-        <div
-          id="modules"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.modules")}</h1>
-          <Metric type="treemap" apiPath="field?name=modules" />
-        </div>
-
-        <div
-          id="project-version"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.projectVersion")}</h1>
-          <Metric
-            type="pie"
-            sort="quickRevers"
-            name={t("labels.serverCount")}
-            apiPath="field?name=projectVersion"
-          />
-        </div>
-
-        <div
-          id="project-language"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.projectLanguage")}</h1>
-          <Metric
-            type="bar"
-            name={t("labels.serverCount")}
-            apiPath="field?name=projectLanguage"
-            sort="quick"
-          />
-        </div>
-
-        <div
-          id="server-core"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.serverCore")}</h1>
-          <Metric
-            type="two-pie"
-            sort="quickRevers"
-            data={{
-              first: {
-                name: t("labels.servers"),
-                apiPath: "field?name=serverCore",
-              },
-              second: {
-                name: t("labels.players"),
-                apiPath: "field?name=playerCountByServerCore",
-              },
-            }}
-          />
-        </div>
-
-        <div
-          id="os-architecture"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.osArchitecture")}</h1>
-          <Metric
-            type="pie"
-            sort="quickRevers"
-            apiPath="field?name=osArchitecture"
-            name={t("labels.serverCount")}
-          />
-        </div>
-
-        <div
-          id="os-name"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.osName")}</h1>
-          <Metric
-            type="pie"
-            sort="quickRevers"
-            apiPath="field?name=osName"
-            name={t("labels.serverCount")}
-          />
-        </div>
-
-        <div
-          id="java-version"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.javaVersion")}</h1>
-          <Metric
-            type="pie"
-            name={t("labels.serverCount")}
-            apiPath="field?name=javaVersion"
-            sort="quickRevers"
-          />
-        </div>
-
-        <div
-          id="proxy-mode"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.proxyMode")}</h1>
-          <Metric
-            type="bar"
-            name={t("labels.serverCount")}
-            sort="quick"
-            apiPath="field?name=proxyMode"
-          />
-        </div>
-
-        <div
-          id="online-mode"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.onlineMode")}</h1>
-          <Metric
-            type="bar"
-            name={t("labels.serverCount")}
-            sort="quick"
-            apiPath="field?name=onlineMode"
-          />
-        </div>
-
-        <div
-          id="database-mode"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.databaseMode")}</h1>
-          <Metric
-            type="bar"
-            name={t("labels.serverCount")}
-            sort="quick"
-            apiPath="field?name=databaseMode"
-          />
-        </div>
-
-        <div
-          id="location"
-          className="bg-fd-card border rounded-2xl scroll-mt-20"
-        >
-          <h1 className="m-4 font-bold">{t("items.location")}</h1>
-          <Metric
-            type="geo"
-            name={t("labels.serverCount")}
-            apiPath="field?name=location"
-          />
-        </div>
+          return (
+            <div
+              key={id}
+              id={id}
+              className="bg-fd-article border rounded-2xl scroll-mt-20 shadow-lg"
+            >
+              <h1 className="p-4 font-bold w-full border-b">{t(titleKey)}</h1>
+              <Metric className="rounded-xl min-h-100" {...resolvedProps} />
+            </div>
+          );
+        })}
       </div>
     </div>
   );

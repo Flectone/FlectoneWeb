@@ -89,7 +89,7 @@ export default function PulseChangelog() {
   }
 
   return (
-    <div className="w-full flex flex-col gap-4 relative bg-fd-article p-8 rounded-2xl border ">
+    <div className="w-full flex flex-col gap-4 relative bg-fd-article p-8 rounded-2xl border shadow-lg">
       {data.map((item) => {
         return (
           <Version
