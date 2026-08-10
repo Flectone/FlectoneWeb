@@ -636,7 +636,7 @@ export default function Metric(props: MetricProps) {
       type === "geo" || type === "treemap" ? "h-125" : "h-100";
     return (
       <div
-        className={`bg-fd-border rounded-b-2xl border flex items-center justify-center w-full ${className}`}
+        className={`bg-fd-article rounded-b-2xl border flex items-center justify-center w-full ${className}`}
       >
         <div
           className={`h-24 w-full bg-fd-primary/10 rounded-md animate-pulse ${heightClass}`}
@@ -669,7 +669,7 @@ export default function Metric(props: MetricProps) {
 
   return (
     <div
-      className={`bg-fd-border rounded-b-xl border overflow-hidden w-full ${className}`}
+      className={`bg-fd-article rounded-b-xl border overflow-hidden w-full ${className}`}
     >
       <ReactECharts
         option={option}
