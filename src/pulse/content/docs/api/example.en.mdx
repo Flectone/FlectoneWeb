@@ -1,0 +1,334 @@
+---
+title: Example plugin
+description: A ready Bukkit plugin on the FlectonePulse API with its own tag, a greeting, a command and proxy sync
+tag: "api"
+icon: FileCode
+---
+A small `PulseExample` plugin that brings together everything from the previous pages
+
+- adds its own `<level>` tag to any FlectonePulse message
+- shows a greeting when a player joins
+- registers the `/pulselevel` command
+- sends a notice to the other servers of the network
+- survives `/flectonepulse reload` without trouble
+
+```
+src/main/java/com/example/pulseexample/
+├── PulseExample.java         // the plugin entry point
+├── PulseExampleListener.java // the event listeners
+└── LevelService.java         // your own logic
+src/main/resources/
+└── plugin.yml
+```
+
+<br></br>
+
+# Dependency
+
+<Tabs items={['gradle', 'maven']}>
+  <Tab value="gradle">
+    ```groovy
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly 'net.flectone.pulse:api:1.12.3'
+        compileOnly 'org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT'
+    }
+    ```
+  </Tab>
+  <Tab value="maven">
+    ```xml
+    <dependency>
+        <groupId>net.flectone.pulse</groupId>
+        <artifactId>api</artifactId>
+        <version>1.12.3</version>
+        <scope>provided</scope>
+    </dependency>
+    ```
+  </Tab>
+</Tabs>
+
+```yaml
+# plugin.yml
+name: PulseExample
+version: 1.0.0
+main: com.example.pulseexample.PulseExample
+api-version: '1.13'
+softdepend:
+  - FlectonePulse
+```
+
+<br></br>
+
+# Entry point
+
+```java
+package com.example.pulseexample;
+
+import net.flectone.pulse.FlectonePulse;
+import net.flectone.pulse.FlectonePulseAPI;
+import net.flectone.pulse.logging.FLogger;
+import net.flectone.pulse.platform.registry.ListenerRegistry;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class PulseExample extends JavaPlugin {
+
+    private FlectonePulse flectonePulse;
+
+    @Override
+    public void onEnable() {
+        if (!Bukkit.getPluginManager().isPluginEnabled("FlectonePulse")) {
+            getLogger().warning("FlectonePulse was not found, the integration is off");
+            return;
+        }
+
+        flectonePulse = FlectonePulseAPI.getInstance();
+        if (flectonePulse == null || !flectonePulse.isReady()) {
+            getLogger().warning("FlectonePulse is not ready yet");
+            return;
+        }
+
+        LevelService levelService = new LevelService();
+
+        // registerPermanent survives /flectonepulse reload
+        flectonePulse.get(ListenerRegistry.class)
+                .registerPermanent(new PulseExampleListener(flectonePulse, levelService));
+
+        flectonePulse.get(FLogger.class).info("PulseExample hooked into FlectonePulse");
+    }
+
+}
+```
+
+<Callout type="info" title="Information">
+
+    An ordinary `register()` gets lost on a FlectonePulse reload, while permanent listeners come back on their own. That is why third party plugins need `registerPermanent()`
+
+</Callout>
+
+<br></br>
+
+# Listener
+
+```java
+package com.example.pulseexample;
+
+import net.flectone.pulse.FlectonePulse;
+import net.flectone.pulse.annotation.Pulse;
+import net.flectone.pulse.constant.ModuleName;
+import net.flectone.pulse.dispatcher.MessageDispatcher;
+import net.flectone.pulse.listener.PulseListener;
+import net.flectone.pulse.model.entity.FPlayer;
+import net.flectone.pulse.model.event.Event;
+import net.flectone.pulse.model.event.EventMetadata;
+import net.flectone.pulse.model.event.lifecycle.EnableEvent;
+import net.flectone.pulse.model.event.message.MessageFormattingEvent;
+import net.flectone.pulse.model.event.message.ProxyMessageEvent;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+import net.flectone.pulse.model.event.player.PlayerLoadEvent;
+import net.flectone.pulse.model.value.Destination;
+import net.flectone.pulse.model.value.Range;
+import net.flectone.pulse.platform.registry.CommandRegistry;
+import net.flectone.pulse.platform.registry.ProxyRegistry;
+import net.flectone.pulse.platform.sender.MessageSender;
+import net.flectone.pulse.platform.sender.ProxySender;
+import net.flectone.pulse.util.payload.ProxyPayload;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+
+import java.io.IOException;
+
+public class PulseExampleListener implements PulseListener {
+
+    private final FlectonePulse flectonePulse;
+    private final LevelService levelService;
+
+    public PulseExampleListener(FlectonePulse flectonePulse, LevelService levelService) {
+        this.flectonePulse = flectonePulse;
+        this.levelService = levelService;
+    }
+
+    // 1. Register the command once the whole API is up
+    @Pulse
+    public void onEnable(EnableEvent event) {
+        if (event.type() != EnableEvent.Type.READY) return;
+
+        MessageSender messageSender = flectonePulse.get(MessageSender.class);
+
+        flectonePulse.get(CommandRegistry.class).registerCommand(manager -> manager
+                .commandBuilder("pulselevel")
+                .permission("pulseexample.command.level")
+                .handler(context -> {
+                    FPlayer fPlayer = context.sender();
+                    int level = levelService.getLevel(fPlayer.uuid());
+
+                    messageSender.sendMessage(
+                            fPlayer,
+                            Component.text("Your level is " + level),
+                            false
+                    );
+                })
+        );
+    }
+
+    // 2. Add our own <level> tag to every message
+    @Pulse(priority = Event.Priority.NORMAL)
+    public Event onMessageFormatting(MessageFormattingEvent event) {
+        MessageContext context = event.context();
+
+        TagResolver levelTag = TagResolver.resolver("level", (queue, ctx) -> {
+            int level = levelService.getLevel(context.sender().uuid());
+            return Tag.selfClosingInserting(Component.text(level));
+        });
+
+        return event.withContext(context.addTagResolver(levelTag));
+    }
+
+    // 3. Greet the player once their data is loaded
+    @Pulse(priority = Event.Priority.HIGH)
+    public void onPlayerLoad(PlayerLoadEvent event) {
+        if (event.reload()) return; // no greeting on a plugin reload
+
+        FPlayer fPlayer = event.player();
+        if (fPlayer.isUnknown() || fPlayer.isConsole()) return;
+
+        flectonePulse.get(MessageDispatcher.class).dispatch(
+                ModuleName.ADDON,
+                EventMetadata.builder()
+                        .filter(fPlayer)
+                        .destination(Destination.EMPTY_CHAT)
+                        .range(Range.Type.PLAYER)
+                        .messageContext(receiver -> MessageContext.builder()
+                                .sender(fPlayer)
+                                .receiver(receiver)
+                                .message("<gradient:#FF0000:#00FF00>Welcome</gradient> Your level is <level>")
+                                .build()
+                        )
+                        .build()
+        );
+
+        notifyOtherServers(fPlayer);
+    }
+
+    // 4. Tell the other servers of the network about the join
+    private void notifyOtherServers(FPlayer fPlayer) {
+        ProxyRegistry proxyRegistry = flectonePulse.get(ProxyRegistry.class);
+        if (!proxyRegistry.hasEnabledProxy()) return;
+
+        flectonePulse.get(ProxySender.class).send(
+                fPlayer,
+                ModuleName.ADDON,
+                output -> output.writeInt(levelService.getLevel(fPlayer.uuid()))
+        );
+    }
+
+    // 5. Take the notice from another server
+    @Pulse
+    public Event onProxyMessage(ProxyMessageEvent event) throws IOException {
+        if (event.processed()) return event;
+        if (event.name() != ModuleName.ADDON) return event;
+        if (event.sentByThisServer()) return event.withProcessed(true);
+
+        try (ProxyPayload payload = event.openPayload()) {
+            int level = payload.readInt();
+
+            flectonePulse.get(MessageSender.class).sendToConsole(
+                    event.sender().name() + " joined " + event.server() + " with level " + level
+            );
+        }
+
+        return event.withProcessed(true);
+    }
+
+}
+```
+
+<br></br>
+
+# Your own logic
+
+```java
+package com.example.pulseexample;
+
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class LevelService {
+
+    private final Map<UUID, Integer> levels = new ConcurrentHashMap<>();
+
+    public int getLevel(UUID uuid) {
+        return levels.getOrDefault(uuid, 1);
+    }
+
+    public void setLevel(UUID uuid, int level) {
+        levels.put(uuid, level);
+    }
+
+}
+```
+
+<br></br>
+
+# The tag in the configuration
+
+Once the plugin is installed, the `<level>` tag goes into any message format in the localization files
+
+```yaml
+# localizations/en_us.yml
+message:
+  chat:
+    types:
+      local:
+        format: "<display_name> <gray>[lvl <level>]<white>: <message>"
+```
+
+<br></br>
+
+# What to check before release
+
+<Steps>
+    <Step>
+        The `net.flectone.pulse:api` artifact is added as `provided` or `compileOnly`
+    </Step>
+    <Step>
+        FlectonePulse is listed as a soft dependency in the plugin description
+    </Step>
+    <Step>
+        The `getInstance()` result is checked against `null`, and `isReady()` runs before the first `get()`
+    </Step>
+    <Step>
+        Listeners are registered through `registerPermanent()`
+    </Step>
+    <Step>
+        Commands are registered in an `EnableEvent` handler with the `READY` type
+    </Step>
+    <Step>
+        Changed events come back through `return`
+    </Step>
+    <Step>
+        Heavy work sits in `TaskScheduler.runAsync()`
+    </Step>
+</Steps>
+
+<br></br>
+
+# Where to go next
+
+| Page | What it covers |
+|------|----------------|
+| [Event system](/pulse/docs/api/events/) | Priorities, cancelling, your own events |
+| [Event reference](/pulse/docs/api/events-reference/) | Every event and its fields |
+| [Formatting](/pulse/docs/api/formatting/) | Tags, flags and `MessagePipeline` |
+| [Component reference](/pulse/docs/api/services/) | Every service and utility |
+
+<Callout type="idea" title="Note">
+
+    If something is missing, open an issue in the [FlectonePulse repository](https://github.com/Flectone/FlectonePulse/issues) or drop into [Discord](https://discord.flectone.net/)
+
+</Callout>

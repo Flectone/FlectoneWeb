@@ -1,0 +1,273 @@
+---
+title: Игроки
+description: Модели FEntity и FPlayer, сервис FPlayerService для поиска игроков и SocialService для настроек чата, игнора и почты
+tag: "api"
+icon: Users
+---
+FlectonePulse не работает с платформенными объектами напрямую. Вместо `org.bukkit.entity.Player` он использует свою модель, одинаковую на всех платформах
+
+| Модель | Что описывает |
+|--------|---------------|
+| `FEntity` | Любого отправителя сообщения, будь то игрок, моб, командный блок, консоль или пользователь Discord |
+| `FPlayer` | Игрока или консоль, расширяет `FEntity` данными из базы |
+
+<br></br>
+
+# FEntity
+
+<span>Пакет `net.flectone.pulse.model.entity`</span>
+
+| Метод | Возвращает | Что отдаёт |
+|-------|------------|------------|
+| `name()` | `String` | Отображаемое имя |
+| `uuid()` | `UUID` | Идентификатор |
+| `type()` | `String` | Тип сущности |
+| `showEntityName()` | `Component` | Имя для всплывающей подсказки, может быть `null` |
+| `isUnknown()` | `boolean` | Признак заглушки |
+
+Ещё есть константы `FEntity.UNKNOWN_UUID`, `FEntity.UNKNOWN_NAME`, `FEntity.UNKNOWN_TYPE` и фабрика `FEntity.unknown()`
+
+<br></br>
+
+# FPlayer
+
+| Метод | Возвращает | Что отдаёт |
+|-------|------------|------------|
+| `id()` | `Integer` | Идентификатор в базе данных |
+| `isConsole()` | `boolean` | Признак консоли |
+| `isIntegration()` | `boolean` | Признак отправителя из Discord, Telegram или Twitch |
+| `isOnline()` | `boolean` | Находится ли игрок на сервере прямо сейчас |
+| `ip()` | `String` | Адрес подключения, может быть `null` |
+| `constants()` | `List<Component>` | Заранее посчитанные части имени, которые едут между серверами |
+
+Полезные константы
+
+| Константа | Значение |
+|-----------|----------|
+| `FPlayer.UNKNOWN` | Заглушка, когда настоящий игрок неизвестен |
+| `FPlayer.UNKNOWN_ID` | `Integer.MIN_VALUE` |
+| `FPlayer.CONSOLE_ID` | `-1` |
+| `FPlayer.PLAYER_TYPE` | `PLAYER` |
+| `FPlayer.CONSOLE_TYPE` | `CONSOLE` |
+| `FPlayer.INTEGRATION_TYPE` | `INTEGRATION` |
+
+<Callout type="info" title="Информация">
+
+Заглушка `FPlayer.UNKNOWN` нужна, когда получатель ещё не известен. Например так берут локализацию по умолчанию, `module.localization(FPlayer.UNKNOWN)`
+
+</Callout>
+
+### Неизменяемость
+
+`FPlayer` тоже неизменяем. Методы `withName()`, `withUuid()`, `withOnline()`, `withId()`, `withIp()` и `withConstants()` отдают копию, а `toBuilder()` открывает заполненный билдер
+
+```java
+FPlayer renamed = fPlayer.withName("NewName");
+```
+
+<Callout type="warn" title="Предупреждение">
+
+Изменённая копия живёт только в твоей переменной. Чтобы она попала в кэш FlectonePulse, передай её в `fPlayerService.updateCache(fPlayer)`
+
+</Callout>
+
+<br></br>
+
+# FPlayerService
+
+<span>Пакет `net.flectone.pulse.service`</span>
+
+```java
+import net.flectone.pulse.service.FPlayerService;
+
+FPlayerService fPlayerService = flectonePulse.get(FPlayerService.class);
+```
+
+### Поиск игрока
+
+| Метод | Что ищет |
+|-------|----------|
+| `getFPlayer(UUID)` | По идентификатору аккаунта |
+| `getFPlayer(String name)` | По нику |
+| `getFPlayer(int id)` | По идентификатору в базе |
+| `getFPlayer(InetAddress)` | По адресу подключения |
+| `getFPlayer(FEntity)` | Превращает сущность в игрока |
+| `getFPlayer(Object platformPlayer)` | Из платформенного объекта, например `Player` в Bukkit |
+| `getConsole()` | Отдаёт консоль как `FPlayer` |
+| `getRandomFPlayer()` | Отдаёт случайного игрока |
+
+```java
+Player bukkitPlayer = Bukkit.getPlayer("TheFaser");
+
+// Bukkit
+FPlayer fPlayer = fPlayerService.getFPlayer(bukkitPlayer);
+
+// или через UUID
+FPlayer byUuid = fPlayerService.getFPlayer(bukkitPlayer.getUniqueId());
+```
+
+<Callout type="error" title="Внимание">
+
+Если игрок не нашёлся, вернётся `FPlayer.UNKNOWN`. Проверяй результат через `fPlayer.isUnknown()`, прежде чем что то с ним делать
+
+</Callout>
+
+### Списки игроков
+
+| Метод | Что отдаёт |
+|-------|------------|
+| `getOnlineFPlayers()` | Всех игроков онлайн |
+| `getPlatformFPlayers()` | Игроков, которых видит платформа |
+| `getFPlayersWithConsole()` | Игроков онлайн вместе с консолью |
+| `findAllFPlayers()` | Всех игроков из базы данных |
+| `getFPlayersByIp(String ip, int limit, int offset)` | Игроков с одного адреса постранично |
+| `getTotalFPlayersCountByIp(String ip)` | Количество игроков с одного адреса |
+
+### Кэш и сохранение
+
+| Метод | Что делает |
+|-------|------------|
+| `saveOrUpdate(UUID, String name, String ip, boolean online)` | Создаёт или обновляет игрока в базе |
+| `addCache(FPlayer)` | Кладёт игрока в кэш онлайна |
+| `updateCache(FPlayer)` | Обновляет игрока в кэше |
+| `clearAndSave(FPlayer)` | Помечает игрока офлайн и сохраняет в базу |
+| `invalidate(UUID)` | Сбрасывает кэш одного игрока |
+| `invalidateCache()` | Чистит весь кэш |
+| `loadOnlineCache()` | Загружает игроков онлайн из базы |
+
+<Callout type="warn" title="Предупреждение">
+
+Полный сброс кэша заставит перечитать данные всех игроков из базы. В обычном коде хватает `invalidate(uuid)` для одного игрока
+
+</Callout>
+
+<br></br>
+
+# SocialService
+
+Хранит настройки чата, цвета, игнор, почту и режим невидимости
+
+```java
+import net.flectone.pulse.constant.SettingText;
+import net.flectone.pulse.service.SocialService;
+
+SocialService socialService = flectonePulse.get(SocialService.class);
+
+// язык игрока
+String locale = socialService.getSetting(fPlayer, SettingText.LOCALE);
+```
+
+### Настройки
+
+| Метод | Что делает |
+|-------|------------|
+| `getSetting(FPlayer, SettingText)` | Отдаёт текстовую настройку игрока |
+| `getSetting(FPlayer, ModuleName)` | Отдаёт настройку, привязанную к модулю |
+| `isSetting(FPlayer, ModuleName)` | Проверяет, включена ли настройка модуля |
+| `saveSetting(FPlayer, SettingText, String)` | Сохраняет текстовую настройку |
+| `saveSetting(FPlayer, String, boolean)` | Сохраняет переключатель |
+| `loadSettings(FPlayer)` | Загружает все настройки игрока |
+| `updateLocale(FPlayer, String)` | Меняет язык игрока |
+
+Доступные значения `SettingText`
+
+| Константа | Что хранит |
+|-----------|------------|
+| `LOCALE` | Выбранный язык |
+| `CHAT_NAME` | Активный чат |
+| `NICKNAME` | Установленный никнейм |
+| `WORLD_PREFIX` | Префикс мира |
+| `STREAM_PREFIX` | Префикс стримера |
+| `SERVER` | Сервер в сети прокси |
+| `SPY_STATUS` | Состояние режима слежки |
+| `VANISH_STATUS` | Состояние невидимости |
+| `AFK_SUFFIX` | Суффикс AFK |
+
+### Цвета, игнор и почта
+
+| Метод | Что делает |
+|-------|------------|
+| `loadColors(FPlayer)` | Отдаёт личные цвета игрока |
+| `saveColors(FPlayer, FColor.Type, Set<FColor>)` | Сохраняет цвета выбранного типа |
+| `isIgnored(FPlayer, FPlayer target)` | Проверяет, игнорирует ли игрок другого |
+| `loadIgnores(FPlayer)` | Отдаёт список игнора |
+| `saveIgnore(FPlayer, FPlayer target)` | Добавляет игрока в игнор |
+| `deleteIgnore(FPlayer, Ignore)` | Убирает игрока из игнора |
+| `getReceiverMails(FPlayer)` | Отдаёт полученную почту |
+| `getSenderMails(FPlayer)` | Отдаёт отправленную почту |
+| `saveMail(FPlayer, FPlayer target, String message)` | Отправляет письмо |
+| `deleteMail(Mail)` | Удаляет письмо |
+
+### Невидимость
+
+| Метод | Что делает |
+|-------|------------|
+| `isVanished(FEntity)` | Проверяет, скрыта ли сущность |
+| `isVanished(FEntity, boolean checkVanishIntegration)` | То же самое, но с учётом сторонних vanish плагинов |
+| `canSeeVanished(FEntity target, FEntity viewer)` | Проверяет, видит ли наблюдатель скрытую сущность |
+
+```java
+// не отправляем сообщение о скрытом игроке
+if (socialService.isVanished(fPlayer)) return;
+```
+
+<br></br>
+
+# Время игры и скины
+
+`PlaytimeService` считает наигранное время и AFK сессии
+
+| Метод | Что делает |
+|-------|------------|
+| `getPlayTime(FPlayer)` | Отдаёт статистику игрового времени, может вернуть `null` |
+| `getAllPlayTimes(int limit, int offset)` | Отдаёт топ по времени игры постранично |
+| `getPlayTimesCount()` | Отдаёт количество записей |
+| `saveAfkSession(FPlayer, boolean afk)` | Отмечает вход или выход из AFK |
+
+`SkinService` отдаёт ссылки на внешний вид игрока
+
+| Метод | Что отдаёт |
+|-------|------------|
+| `getSkin(FEntity)` | Текстуру скина |
+| `getAvatarUrl(FEntity)` | Ссылку на аватар |
+| `getBodyUrl(FEntity)` | Ссылку на изображение тела |
+
+<br></br>
+
+# Пример
+
+```java
+import net.flectone.pulse.annotation.Pulse;
+import net.flectone.pulse.constant.SettingText;
+import net.flectone.pulse.listener.PulseListener;
+import net.flectone.pulse.model.entity.FPlayer;
+import net.flectone.pulse.model.event.player.PlayerLoadEvent;
+import net.flectone.pulse.service.SocialService;
+
+public class WelcomeListener implements PulseListener {
+
+    private final SocialService socialService;
+
+    public WelcomeListener(SocialService socialService) {
+        this.socialService = socialService;
+    }
+
+    @Pulse
+    public void onLoad(PlayerLoadEvent event) {
+        if (event.reload()) return;
+
+        FPlayer fPlayer = event.player();
+        if (fPlayer.isUnknown() || fPlayer.isConsole()) return;
+
+        String locale = socialService.getSetting(fPlayer, SettingText.LOCALE);
+        getLogger().info(fPlayer.name() + " зашёл с языком " + locale);
+    }
+
+}
+```
+
+<Callout type="idea" title="Примечание">
+
+`FPlayer` описывает и обычных игроков, и консоль, поэтому перед действиями проверяй `isConsole()`. Обращения к базе вроде `findAllFPlayers()` вызывай в асинхронной задаче [планировщика](/pulse/docs/api/services/)
+
+</Callout>

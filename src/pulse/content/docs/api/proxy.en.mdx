@@ -1,0 +1,225 @@
+---
+title: Proxy and multiserver
+description: Passing data between the servers of a network through ProxySender, ProxyRegistry, the ProxyMessageEvent event and payload reading
+tag: "api"
+icon: Network
+---
+When a server sits in a network under BungeeCord, Velocity or Redis, FlectonePulse syncs messages and caches between the servers over its own channel
+
+<Steps>
+    <Step>
+        The sending server writes a message with a module tag and arbitrary bytes of data
+    </Step>
+    <Step>
+        The `Proxy` transport delivers the bytes to the other servers of the network
+    </Step>
+    <Step>
+        On each server `ProxyMessageEvent` fires, listeners read the data and handle it
+    </Step>
+    <Step>
+        The handler sets `processed` to `true` so that the message does not count as lost
+    </Step>
+</Steps>
+
+The channel tag is built from the module name. A `ModuleName.COMMAND_COIN.toProxyTag()` call gives `FlectonePulse:COMMAND_COIN`
+
+<br></br>
+
+# Checking the network
+
+<span>Package `net.flectone.pulse.platform.registry`</span>
+
+```java
+import net.flectone.pulse.platform.registry.ProxyRegistry;
+
+ProxyRegistry proxyRegistry = flectonePulse.get(ProxyRegistry.class);
+
+if (!proxyRegistry.hasEnabledProxy()) {
+    // the network is not set up, there is nothing to sync
+    return;
+}
+```
+
+| Method | What it does |
+|--------|--------------|
+| `hasEnabledProxy()` | Checks whether at least one transport works |
+| `hasEnabledProxy(Predicate<Proxy>)` | Checks whether a working transport matches a condition |
+| `getProxies()` | Gives every registered transport |
+| `registry(Proxy)` | Adds your own transport |
+| `reload()` | Reopens the transports for the current configuration |
+
+The `Proxy` interface itself describes one transport through the methods `isEnable()`, `onEnable()`, `onDisable()` and `sendMessage(FEntity, ModuleName, byte[])`
+
+<br></br>
+
+# Sending
+
+<span>Package `net.flectone.pulse.platform.sender`</span>
+
+```java
+import net.flectone.pulse.constant.ModuleName;
+import net.flectone.pulse.platform.sender.ProxySender;
+
+ProxySender proxySender = flectonePulse.get(ProxySender.class);
+
+// a simple notice with no data
+proxySender.send(fPlayer, ModuleName.COMMAND_COIN);
+
+// with extra data
+proxySender.send(fPlayer, ModuleName.COMMAND_COIN, output -> {
+    output.writeInt(percent);
+    output.writeUTF("extra text");
+});
+```
+
+| Method | What it does |
+|--------|--------------|
+| `send(FEntity, ModuleName)` | Sends a message with no data |
+| `send(FEntity, ModuleName, ProxyDataConsumer<DataOutputStream>)` | Sends a message with data |
+| `send(FEntity, ModuleName, ProxyDataConsumer<DataOutputStream>, UUID)` | The same, but with a set message identifier |
+| `send(ModuleName, EventMetadata, MessageContext)` | Sends a whole module message |
+
+Every method gives `true` when the message left through at least one transport
+
+<Callout type="info" title="Information">
+
+    Most of the time you do not need the proxy directly. When you send a message through `MessageDispatcher`, a `.proxy()` or `.proxy(output -> ...)` call in the `EventMetadata` builder is enough, the pipeline does the rest
+
+</Callout>
+
+```java
+messageDispatcher.dispatch(ModuleName.COMMAND_COIN, EventMetadata.builder()
+        .range(Range.Type.PROXY)
+        .messageContext(receiver -> /* ... */)
+        .proxy(output -> {
+            output.writeInt(percent);
+            output.writeInt(tps);
+        }) // the data travels with the message
+        .build()
+);
+```
+
+<br></br>
+
+# Receiving
+
+Data is read in a `ProxyMessageEvent` handler through `ProxyPayload`, strictly in the order it was written
+
+```java
+import net.flectone.pulse.annotation.Pulse;
+import net.flectone.pulse.constant.ModuleName;
+import net.flectone.pulse.listener.PulseListener;
+import net.flectone.pulse.model.event.Event;
+import net.flectone.pulse.model.event.message.ProxyMessageEvent;
+import net.flectone.pulse.util.payload.ProxyPayload;
+
+import java.io.IOException;
+
+public class MyProxyListener implements PulseListener {
+
+    @Pulse
+    public Event onProxyMessage(ProxyMessageEvent event) throws IOException {
+        // somebody handled the message already
+        if (event.processed()) return event;
+
+        // only one module interests us
+        if (event.name() != ModuleName.COMMAND_COIN) return event;
+
+        try (ProxyPayload payload = event.openPayload()) {
+            int percent = payload.readInt();
+            int tps = payload.readInt();
+
+            getLogger().info("From server " + event.server() + " came " + percent + " and " + tps);
+        }
+
+        return event.withProcessed(true);
+    }
+
+}
+```
+
+### ProxyPayload methods
+
+| Method | What it reads |
+|--------|---------------|
+| `readString()` | `String` |
+| `readInt()` | `int` |
+| `readLong()` | `long` |
+| `readBoolean()` | `boolean` |
+| `readUUID()` | `UUID` |
+| `readAllBytes()` | The remaining bytes |
+
+`ProxyPayload` implements `Closeable`, so open it in a `try-with-resources` block
+
+<Callout type="error" title="Attention">
+
+    The reading order has to match the writing order. When the sender wrote `writeInt` and then `writeUTF`, you have to read `readInt()` and then `readString()`. Any mismatch gives you an error or garbage
+
+</Callout>
+
+<Callout type="warn" title="Warning">
+
+    When no listener marks a message as handled, FlectonePulse writes a warning to the console. Return `event.withProcessed(true)` even where no handling is needed
+
+</Callout>
+
+<br></br>
+
+# The usual handler shape
+
+```java
+@Pulse
+public Event onProxyMessage(ProxyMessageEvent event) throws IOException {
+    if (event.processed()) return event;
+    if (event.name() != ModuleName.COMMAND_COIN) return event;
+
+    // the module is off, no handling needed, but the message counts as read
+    if (!moduleController.isEnable(coinModule)) return event.withProcessed(true);
+
+    // the module is not set up for the network
+    if (!coinModule.config().range().is(Range.Type.PROXY)) return event.withProcessed(true);
+
+    try (ProxyPayload payload = event.openPayload()) {
+        int percent = payload.readInt();
+
+        // pass the message on to the local players
+        messageDispatcher.dispatch(coinModule, EventMetadata.builder()
+                .range(Range.get(Range.Type.SERVER))
+                .messageContext(receiver -> MessageContext.builder()
+                        .uuid(event.uuid())   // keep the shared identifier
+                        .sender(event.sender())
+                        .receiver(receiver)
+                        .message(coinModule.replaceResult(receiver, percent))
+                        .build()
+                )
+                .build()
+        );
+    }
+
+    return event.withProcessed(true);
+}
+```
+
+<Callout type="error" title="Attention">
+
+    Set `Range.Type.SERVER` when you pass a message on, not `PROXY`, otherwise the message travels in circles
+
+</Callout>
+
+<br></br>
+
+# Registering the handler
+
+Proxy listeners are worth registering only when the network is really set up
+
+```java
+if (proxyRegistry.hasEnabledProxy()) {
+    listenerRegistry.registerPermanent(new MyProxyListener());
+}
+```
+
+<Callout type="idea" title="Note">
+
+    The internal machinery uses this same channel, it drops the caches of punishments, settings, colors and skins through it. The data travels in binary form, so keep the size small. How to set the network up is written on the [proxy](/pulse/docs/config/proxy/) page
+
+</Callout>

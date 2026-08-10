@@ -1,139 +1,244 @@
 ---
-title: Event System
-description: FlectonePulse event mechanism for module communication. Registering listeners via ListenerRegistry and @Pulse annotation
+title: Event system
+description: The @Pulse annotation, the PulseListener interface, handler priorities, cancelling and changing immutable events
 tag: "api"
-icon: SquareChartGantt
+icon: Radio
 ---
+Events are the main way into the work of FlectonePulse. They fire at every stage, from a player joining to the assembly of each message
 
-## Overall Architecture
+| Component | What it is for |
+|-----------|----------------|
+| `Event` | The base interface of every event, it can be cancelled |
+| `EventDispatcher` | Runs an event through the listeners by priority |
+| `ListenerRegistry` | Registers and removes listeners |
+| `@Pulse` | Marks a method as a handler |
+| `PulseListener` | Marks a class that holds handlers |
 
-FlectonePulse provides an event mechanism for interaction between modules and responding to player actions, messages, and project lifecycle. All events inherit from the base class `Event` and support a cancellation mechanism (`cancelled`). Each `Event` is an immutable object, so when adding a new parameter, a new object is created – this must be taken into account when updating the event
+<br></br>
 
-| Component | Purpose |
-|-----------|---------|
-| `EventDispatcher` | Routes events to all listeners respecting priority |
-| `ListenerRegistry` | Manages listener registration and removal |
-| `@Pulse` | Annotation for declaring a handler method |
-| `PulseListener` | Marker interface for classes containing handlers |
+# Events are immutable
 
-## Processing Priorities
+Every event is a `record`. You cannot change a field in place, the `with*` methods give you a new copy, and the handler has to return that copy through `return`
 
-`EventDispatcher` uses six priority levels that determine the execution order of listeners.
+```java
+// does not work, the copy is created but goes nowhere
+@Pulse
+public void onFormatting(MessageFormattingEvent event) {
+    event.withContext(event.context().withMessage("new text"));
+}
 
-| Priority | Order | Typical Use |
-|-----------|---------|----------------------|
-| `LOWEST` | First | Early event cancellation or preprocessing |
-| `LOW` | Second | Data validation |
-| `NORMAL` | Third | Standard event processing |
-| `HIGH` | Fourth | Post-processing |
-| `HIGHEST` | Fifth | Final modifications |
-| `MONITOR` | Last | Logging only |
+// works, the copy reaches the dispatcher
+@Pulse
+public Event onFormatting(MessageFormattingEvent event) {
+    return event.withContext(event.context().withMessage("new text"));
+}
+```
 
-There is also an `ignoreCancelled` parameter; if set to `true`, the handler will be called even if the event has already been marked (default is `false`)
+<Callout type="error" title="Attention">
 
-## Registering Event Handlers
+    If your handler changes nothing, declare it as `void`. If it changes something, the return type has to be `Event` or the concrete event type. The dispatcher picks up the result only when it is an event
 
-To create a listener:
+</Callout>
+
+<br></br>
+
+# Your own listener
+
 <Steps>
     <Step>
-        Implement the `PulseListener` interface (marker)
+        Implement the `PulseListener` interface
     </Step>
     <Step>
-        Inside the class, declare public methods annotated with `@Pulse`, with a single parameter – the desired event type
+        Declare public methods with the `@Pulse` annotation and one parameter, the event type you need
     </Step>
     <Step>
-        Register the listener instance via `ListenerRegistry` (usually through DI, but a regular object also works)
+        Register the listener through `ListenerRegistry`
     </Step>
 </Steps>
 
 ```java
+import net.flectone.pulse.annotation.Pulse;
 import net.flectone.pulse.listener.PulseListener;
 import net.flectone.pulse.model.event.Event;
-import net.flectone.pulse.model.event.Pulse;
+import net.flectone.pulse.model.event.message.MessageFormattingEvent;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+import net.flectone.pulse.model.event.player.PlayerJoinEvent;
 
 public class MyCustomListener implements PulseListener {
 
-    // If the event is modified, it must be returned via return
+    // we change the message during formatting, so return is required
     @Pulse(priority = Event.Priority.NORMAL)
-    public Event onMessagePrepare(MessagePrepareEvent event) {
+    public Event onMessageFormatting(MessageFormattingEvent event) {
         MessageContext messageContext = event.context();
 
-        // Modify the message content during formatting
-        String modifiedMessage = messageContext.getMessage() + " [Modified]";
+        String modifiedMessage = messageContext.message() + " [Modified]";
         return event.withContext(messageContext.withMessage(modifiedMessage));
     }
 
-    // ignoreCancelled = true means the method will be called even if the event is cancelled
+    // with ignoreCancelled the method runs even when the event is already cancelled
     @Pulse(priority = Event.Priority.LOWEST, ignoreCancelled = true)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        // Get player IP on join
         String playerIp = event.player().ip();
     }
 
 }
 ```
 
-Registering the listener:
-
-```java
-// Somewhere in a module or service
-private ListenerRegistry listenerRegistry;
-
-public void init() {
-    listenerRegistry.register(new MyCustomListener());
-}
-```
 <Callout type="warn" title="Warning">
-    When FlectonePulse reloads, it removes all listeners and registers them again. To permanently register a listener, use the `listenerRegistry.registerPermanent(listener);` method
+
+    The method has to be public and take exactly one parameter that extends `Event`. Otherwise registration throws `ListenerRegistrationException`
+
 </Callout>
 
-## Event Types
+<br></br>
 
-### Base Class
+# Registration
 
-All events inherit from the base class `Event`, which supports cancellation. Events can be marked using `.withCancelled(true);`
+`ListenerRegistry` registers listeners
 
-### Message Events
+```java
+import net.flectone.pulse.platform.registry.ListenerRegistry;
 
-These events manage the message processing pipeline: from formatting to delivery.
+ListenerRegistry listenerRegistry = flectonePulse.get(ListenerRegistry.class);
 
-| Event | Data | Purpose |
-|---------|--------|------------|
-| `MessagePrepareEvent` | `MessageType`, `rawFormat`, `EventMetadata` | View message before formatting starts, with the name of the module that calls it |
-| `MessageFormattingEvent` | `MessageContext` (sender, recipient, message, flags) | Modify message content during formatting. Used by formatting modules (e.g., to add `<display_name>` tags) |
-| `MessageReceiveEvent` | `FPlayer`, `Component` (message), `overlay` (whether message is in Action Bar or not) | Notification that a message was received from the server for a specific player (e.g., when gamemode changes or on death). Used to cancel the server message and send a custom one |
-| `MessageSendEvent` | `ModuleName`, `FEntity` (sender), `FPlayer` (recipient), `Component` (format), `Component` (subtext), `EventMetadata` | Deliver a formatted message to a specific recipient. Used for playing sounds, sending packets, logging to console |
-| `ProxyMessageEvent` | `processed` (whether it has been processed), `ModuleName`, `FEntity` (sender), `UUID` (message ID), `payload` (bytes, i.e. arguments of a specific message) | Processing a proxy message from a specific module. Called after receiving a valid message from the Proxy to synchronize module messages between servers. Must have `processed` set after handling, otherwise a warning will appear that the message was not processed |
-| `StatusResponseEvent` | `JsonObject` (response) | Send status message to player when viewing the server. Used to change MOTD/icon, etc. |
+// for your own plugins, survives /flectonepulse reload
+listenerRegistry.registerPermanent(new MyCustomListener());
+```
 
-### Player Lifecycle Events
+| Method | What it does |
+|--------|--------------|
+| `registerPermanent(PulseListener)` | Registers a listener and restores it after a reload |
+| `register(PulseListener)` | Registers a ready instance until the next reload |
+| `register(Class<?>)` | Builds a listener through Guice and registers it |
+| `register(Class<? extends Event>, Priority, UnaryOperator<Event>)` | Registers a single handler without a separate class |
+| `unregisterAll()` | Removes every listener, permanent ones included |
+| `getPulseListeners(Class<? extends Event>)` | Gives the handlers of an event, grouped by priority |
 
-| Event | Data | Purpose |
-|---------|--------|------------|
-| `PlayerPreLoginEvent` | `FPlayer`, `Component` (disconnect reason), `allowed` (whether login is allowed or not) | Load basic player data to either allow or kick them |
-| `PlayerLoadEvent` | `FPlayer`, `reload` (whether this is a reload or not) | Load player data from database (executed only if the player is already on the server or successfully connected) |
-| `PlayerJoinEvent` | `FPlayer` | Player successfully connects to the server |
-| `PlayerQuitEvent` | `FPlayer` | Player leaves the server |
-| `PlayerPersistAndDisposeEvent` | `FPlayer` | Cleanup and save player state. Clear caches, save data to database |
+<Callout type="error" title="Attention">
 
-### Plugin Lifecycle Events
+    `/flectonepulse reload` calls `unregisterAll()` and then registers the default and permanent listeners again. If you used `register()`, your listener disappears after a reload
 
-| Event | Data | Purpose |
-|---------|--------|------------|
-| `EnableEvent` | `FlectonePulse`, `type` (`INIT`, `READY`) | Called when the project is enabled |
-| `DisableEvent` | `FlectonePulse` | Called when the project is disabled |
-| `StartReloadEvent` | `FlectonePulse` | Called at the beginning of reload (may be useful to cancel it) |
-| `EndReloadEvent` | `FlectonePulse`, `ReloadException` (error during execution, if any) | Called at the end of reload |
+</Callout>
 
-### Module Events
+### A handler without a class
 
-| Event | Data | Purpose |
-|---------|--------|------------|
-| `ModuleEnableEvent` | `ModuleSimple` | Called when a module is enabled |
-| `ModuleDisableEvent` | `ModuleSimple` | Called when a module is disabled |
+For one simple handler a separate class is not needed
 
-## Notes
+```java
+import net.flectone.pulse.model.event.Event;
+import net.flectone.pulse.model.event.player.PlayerQuitEvent;
 
-- Events are processed **synchronously** in priority order. Do not perform long operations in handlers unless absolutely necessary
-- Use `ignoreCancelled = true` in the `@Pulse` annotation if your handler should execute even after the event has been cancelled by other listeners
-- For custom events, your classes must inherit `Event` and properly implement the cancellation mechanism
+listenerRegistry.register(PlayerQuitEvent.class, Event.Priority.MONITOR, event -> {
+    PlayerQuitEvent quitEvent = (PlayerQuitEvent) event;
+    getLogger().info(quitEvent.player().name() + " left");
+    return event;
+});
+```
+
+<br></br>
+
+# Priorities
+
+`EventDispatcher` calls handlers in rising order of priority
+
+| Priority | Order | What it fits |
+|----------|-------|--------------|
+| `LOWEST` | First | Early cancelling or data preparation |
+| `LOW` | Second | Data checks |
+| `NORMAL` | Third | Ordinary work, set by default |
+| `HIGH` | Fourth | Work after the main changes |
+| `HIGHEST` | Fifth | Final touches |
+| `MONITOR` | Last | Watching and logging only, no changes |
+
+Inside one priority handlers run in registration order
+
+<br></br>
+
+# Cancelling an event
+
+A cancelled event stops the action it was fired for
+
+```java
+@Pulse(priority = Event.Priority.LOWEST)
+public Event onPreLogin(PlayerPreLoginEvent event) {
+    if (event.player().ip() != null && event.player().ip().startsWith("10.")) {
+        return event.withAllowed(false)
+                .withKickReason(Component.text("Local network login is not allowed"));
+    }
+
+    return event;
+}
+```
+
+You can find out whether someone else cancelled the event through `cancelled()`
+
+```java
+@Pulse(priority = Event.Priority.MONITOR, ignoreCancelled = true)
+public void onSend(MessageSendEvent event) {
+    if (event.cancelled()) {
+        getLogger().info("Another listener cancelled the message");
+    }
+}
+```
+
+### `ignoreCancelled`
+
+| Value | Behaviour |
+|-------|-----------|
+| `false` | The handler does not run when the event is already cancelled. Set by default |
+| `true` | The handler runs in any case |
+
+<br></br>
+
+# Firing by hand
+
+You can run an event through the listeners yourself with `EventDispatcher`
+
+```java
+import net.flectone.pulse.dispatcher.EventDispatcher;
+
+EventDispatcher eventDispatcher = flectonePulse.get(EventDispatcher.class);
+
+MessageReceiveEvent result = eventDispatcher.dispatch(
+        new MessageReceiveEvent(fPlayer, Component.text("Hello"), false)
+);
+
+if (!result.cancelled()) {
+    // nobody cancelled it, you can send
+}
+```
+
+`dispatch()` gives back the event in the shape the listeners left it
+
+<br></br>
+
+# Your own events
+
+Your own event is a `record` that implements `Event`. The Lombok `@With` annotation generates the copy methods for you
+
+```java
+import lombok.With;
+import net.flectone.pulse.model.entity.FPlayer;
+import net.flectone.pulse.model.event.Event;
+
+@With
+public record MyCustomEvent(
+        boolean cancelled,
+        FPlayer player,
+        String data
+) implements Event {
+
+    public MyCustomEvent(FPlayer player, String data) {
+        this(false, player, data);
+    }
+
+}
+```
+
+You fire it through the same `EventDispatcher`, and listeners look exactly like the ones for built in events
+
+<Callout type="idea" title="Note">
+
+    Events run synchronously and in priority order, so move long work into the [scheduler](/pulse/docs/api/services/). A failure inside a handler does not break the chain, FlectonePulse writes a warning to the log and carries on with the original event
+
+</Callout>

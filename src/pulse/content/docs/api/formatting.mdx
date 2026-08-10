@@ -1,0 +1,285 @@
+---
+title: Форматирование
+description: MessageContext, MessagePipeline и MessageFlag, добавление своих MiniMessage тегов и управление этапами форматирования
+tag: "api"
+icon: Palette
+---
+`MessageContext` это одно сообщение на пути к одному игроку. Внутри лежит исходный текст, отправитель, получатель, набор MiniMessage тегов и флаги, которые включают и выключают этапы форматирования
+
+<span>Пакет `net.flectone.pulse.model.event.message.context`</span>
+
+| Метод | Возвращает | Что отдаёт |
+|-------|------------|------------|
+| `message()` | `String` | Исходный текст, ещё не отрисованный |
+| `sender()` | `FEntity` | Того, кто отправил сообщение |
+| `receiver()` | `FPlayer` | Того, кто его прочитает |
+| `uuid()` | `UUID` | Общий идентификатор всех копий сообщения |
+| `tagResolver()` | `TagResolver` | Все теги, доступные при отрисовке |
+| `flags()` | `Map<MessageFlag, Boolean>` | Флаги форматирования |
+| `isFlag(MessageFlag)` | `boolean` | Состояние флага с учётом значения по умолчанию |
+| `base()` | `MessageContext` | Базовый контекст, если текущий работает обёрткой |
+
+<br></br>
+
+# Создание и изменение
+
+```java
+import net.flectone.pulse.model.event.message.context.MessageContext;
+
+MessageContext context = MessageContext.builder()
+        .sender(fPlayer)
+        .receiver(receiver)
+        .message("<display_name> <white>привет")
+        .build();
+```
+
+Контекст неизменяем, поэтому методы `with*` и `add*` отдают копию
+
+| Метод | Что делает |
+|-------|------------|
+| `withMessage(String)` | Отдаёт копию с другим текстом |
+| `withSender(FEntity)` | Отдаёт копию с другим отправителем |
+| `withReceiver(FPlayer)` | Отдаёт копию с другим получателем |
+| `withUuid(UUID)` | Отдаёт копию с другим идентификатором |
+| `addFlag(MessageFlag, boolean)` | Отдаёт копию с изменённым флагом |
+| `addFlags(MessageFlag[], boolean[])` | Отдаёт копию с несколькими изменёнными флагами |
+| `addTagResolver(TagResolver)` | Отдаёт копию с добавленным тегом поверх остальных |
+| `addTagResolvers(TagResolver...)` | Отдаёт копию с несколькими добавленными тегами |
+| `toBuilder()` | Открывает билдер, заполненный текущими значениями |
+
+### Расширенные контексты
+
+Некоторые модули носят с собой дополнительные данные. Такие контексты оборачивают обычный и отдают ему общие поля
+
+| Контекст | Дополнительное поле |
+|----------|---------------------|
+| `ComponentMessageContext` | Метод `component()` отдаёт готовый компонент для вставки |
+| `StringMessageContext` | Метод `string()` отдаёт произвольную строку |
+| `ModerationMessageContext` | Метод `moderation()` отдаёт наказание |
+| `ExternalModerationMessageContext` | Метод `externalModeration()` отдаёт наказание из другого плагина |
+| `VanishMessageContext` | Метод `vanished()` отдаёт признак скрытого отправителя |
+
+```java
+// свой контекст строится поверх базового
+CoinMessageContext.builder()
+        .base(MessageContext.builder()
+                .sender(fPlayer)
+                .receiver(receiver)
+                .message(format)
+                .build()
+        )
+        .percent(percent)
+        .build();
+```
+
+<br></br>
+
+# Свой тег
+
+Самое частое применение API это свой MiniMessage тег, который потом можно вставить в любой формат сообщения в файлах локализации
+
+<Steps>
+    <Step>
+        Подпишись на `MessageFormattingEvent`
+    </Step>
+    <Step>
+        Создай `TagResolver` со своим тегом
+    </Step>
+    <Step>
+        Добавь его в контекст через `addTagResolver()` и верни событие
+    </Step>
+</Steps>
+
+```java
+import net.flectone.pulse.annotation.Pulse;
+import net.flectone.pulse.listener.PulseListener;
+import net.flectone.pulse.model.event.Event;
+import net.flectone.pulse.model.event.message.MessageFormattingEvent;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+
+public class BalanceTagListener implements PulseListener {
+
+    @Pulse(priority = Event.Priority.NORMAL)
+    public Event onFormatting(MessageFormattingEvent event) {
+        MessageContext context = event.context();
+
+        TagResolver balanceTag = TagResolver.resolver("balance", (argumentQueue, ctx) -> {
+            double balance = getBalance(context.sender().uuid());
+            return Tag.selfClosingInserting(Component.text(String.format("%.2f", balance)));
+        });
+
+        return event.withContext(context.addTagResolver(balanceTag));
+    }
+
+}
+```
+
+Теперь в любом формате локализации можно писать `<balance>`
+
+```yaml
+format: "<display_name> <gray>[<balance>$]<white>: <message>"
+```
+
+### Готовые резолверы
+
+`MessagePipeline` умеет создавать резолверы за тебя
+
+```java
+import net.flectone.pulse.pipeline.MessagePipeline;
+
+MessagePipeline messagePipeline = flectonePulse.get(MessagePipeline.class);
+
+// тег с готовым компонентом
+TagResolver serverTag = messagePipeline.resolver("server", Component.text("survival"));
+
+// вычисляемый тег
+TagResolver timeTag = messagePipeline.resolver("time", (queue, ctx) ->
+        Tag.selfClosingInserting(Component.text(LocalTime.now().toString()))
+);
+
+// один тег под несколькими именами
+TagResolver aliases = messagePipeline.resolver(Set.of("money", "balance"), Component.text("100"));
+```
+
+<br></br>
+
+# MessagePipeline
+
+<span>Пакет `net.flectone.pulse.pipeline`</span>
+
+Превращает исходный текст в то, что увидит клиент
+
+| Метод | Возвращает | Что делает |
+|-------|------------|------------|
+| `build(MessageContext)` | `Component` | Отрисовывает компонент |
+| `buildStandard(MessageContext)` | `String` | Отрисовывает обратно в MiniMessage текст |
+| `buildPlain(MessageContext)` | `String` | Отрисовывает текст без форматирования |
+| `buildLegacy(MessageContext)` | `String` | Отрисовывает текст со старыми цветовыми кодами |
+| `buildLegacy(FPlayer, String)` | `Optional<String>` | Отрисовывает произвольную строку для игрока |
+| `buildJson(MessageContext)` | `String` | Отрисовывает JSON форму для протокола |
+| `messageComponent(FEntity, FPlayer, String)` | `Component` | Отрисовывает вложенное сообщение |
+
+```java
+Component component = messagePipeline.build(MessageContext.builder()
+        .sender(fPlayer)
+        .receiver(receiver)
+        .message("<rainbow>Привет, <display_name></rainbow>")
+        .build()
+);
+
+messageSender.sendMessage(receiver, component, false);
+```
+
+### Теги встроенных модулей
+
+Перечисление `MessagePipeline.ReplacementTag` хранит все теги, которые вставляют встроенные модули. Имя тега в сообщении это имя константы в нижнем регистре
+
+| Группа | Теги |
+|--------|------|
+| Имена | `display_name`, `player`, `nickname`, `prefix`, `suffix`, `constant` |
+| Статусы | `afk`, `mute`, `stream`, `server`, `world` |
+| Модерация | `swear`, `delete` |
+| Объекты | `player_head`, `sprite`, `texture` и их варианты с суффиксом `_or` |
+| Остальное | `animation`, `condition`, `mention`, `online`, `toponline`, `padding`, `question`, `replacement`, `translation`, `fading`, `fcolor` |
+
+```java
+// имя тега в сообщении
+String tagName = MessagePipeline.ReplacementTag.DISPLAY_NAME.getTagName(); // display_name
+
+// резолвер, который стирает тег, если твой модуль выключен
+TagResolver empty = MessagePipeline.ReplacementTag.MENTION.emptyResolver();
+```
+
+<br></br>
+
+# Флаги
+
+<span>Пакет `net.flectone.pulse.constant`</span>
+
+`MessageFlag` включает и выключает отдельные этапы обработки для конкретного сообщения
+
+```java
+import net.flectone.pulse.constant.MessageFlag;
+
+// отключаем проверку на мат и кэширование для этого сообщения
+MessageContext context = messageContext
+        .addFlag(MessageFlag.SWEAR_MODULE, false)
+        .addFlag(MessageFlag.USE_CACHE, false);
+```
+
+### Основные флаги
+
+| Флаг | По умолчанию | Что делает |
+|------|--------------|------------|
+| `PLAYER_MESSAGE` | `false` | Значение `true` говорит, что сообщение написал игрок, и включает полную обработку ввода |
+| `USE_CACHE` | `true` | Кэширует отрисованные сообщения |
+| `PLAYER_NAME` | `true` | Обрабатывает тег имени игрока |
+| `REMOVE_DISABLED_TAGS` | `true` | Стирает теги выключенных модулей |
+| `URL_PROCESSING` | `true` | Ищет ссылки |
+| `ITEM_DETECTION` | `true` | Ищет предметы в сообщении |
+| `LEGACY_COLOR_CONVERSION` | `true` | Поддерживает старые цветовые коды |
+| `COLOR_CONTEXT_SENDER` | `true` | Берёт цвета у отправителя, иначе у получателя |
+| `PLACEHOLDER_CONTEXT_SENDER` | `true` | Считает плейсхолдеры от отправителя, иначе от получателя |
+| `INVISIBLE_NAME_DETECTION` | `true` | Проверяет невидимость игрока, чтобы скрывать ник |
+| `INTERACTIVE_CHAT_COMPAT` | `true` | Даёт совместимость с InteractiveChat |
+| `VIOLATION_PROCESSING` | `true` | Учитывает нарушения в системе модерации |
+
+### Флаги модулей
+
+Выключенный флаг пропускает свой модуль форматирования
+
+`CAPS_MODULE`, `DELETE_MODULE`, `FIXATION_MODULE`, `FLOOD_MODULE`, `ICU_MODULE`, `MENTION_MODULE`, `NICKNAME_MODULE`, `PADDING_MODULE`, `QUESTIONANSWER_MODULE`, `REPLACEMENT_MODULE`, `SWEAR_MODULE`, `TRANSLATE_MODULE`
+
+### Флаги объектов
+
+`OBJECT_DEFAULT_VALUE`, `OBJECT_PLAYER_HEAD_PROCESSING`, `OBJECT_SPRITE_PROCESSING`, `OBJECT_TEXTURE_PROCESSING`, `OBJECT_RECEIVER_VALIDATION`
+
+<Callout type="warn" title="Предупреждение">
+
+Если флаг `PLAYER_MESSAGE` стоит в `true`, то флаг `ICU_MODULE` тоже считается включённым, каким бы ни было его собственное значение
+
+</Callout>
+
+<br></br>
+
+# Правка текста
+
+```java
+@Pulse(priority = Event.Priority.HIGH)
+public Event onFormatting(MessageFormattingEvent event) {
+    MessageContext context = event.context();
+
+    // трогаем только сообщения, написанные игроками
+    if (!context.isFlag(MessageFlag.PLAYER_MESSAGE)) return event;
+
+    String message = context.message();
+    if (!message.contains("реклама")) return event;
+
+    // отменяем сообщение целиком
+    return event.withCancelled(true);
+}
+```
+
+<br></br>
+
+# Оформление компонентов
+
+`ComponentDecorator` помогает добавить подсказку или декорацию для всего компонента и дочерних компнентов, не затирая уже существующие стили
+
+<span>Пакет `net.flectone.pulse.decorator`</span>
+
+| Метод | Что делает |
+|-------|------------|
+| `hover(Component, HoverEvent)` | Добавляет всплывающую подсказку |
+| `hoverIfAbsent(Component, HoverEvent)` | Добавляет подсказку, только если её ещё нет |
+| `decorate(Component, TextDecoration, State)` | Применяет декорацию, например жирный или курсив |
+| `decorateIfAbsent(Component, TextDecoration, State)` | Применяет декорацию, только если она не задана |
+
+<Callout type="idea" title="Примечание">
+
+Форматирование идёт для каждого получателя отдельно, помни об этом при тяжёлых вычислениях внутри резолвера. Кэш включён по умолчанию, поэтому для быстро меняющихся данных выключай флаг `USE_CACHE`. Синтаксис самих тегов описан на странице [форматирования сообщений](/pulse/docs/message/format/)
+
+</Callout>
