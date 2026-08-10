@@ -1,9 +1,7 @@
 "use client";
 
 import { useLocale } from "next-intl";
-import React, { useEffect, useState } from "react";
-import { createMetadata } from "@/lib/create-metadata";
-import HeaderCard from "@/components/Card/HeaderCard";
+import React from "react";
 import {
   Version,
   Title,
@@ -69,48 +67,14 @@ const SECTIONS: SectionConfig[] = [
   },
 ];
 
-export default function MetricsPage() {
+export default function ChangelogPage() {
   const locale = useLocale();
-  const [activeId, setActiveId] = useState<string>("");
 
   const ruData = changelogRuData as ChangelogItem[];
   const enData = changelogEnData as ChangelogItem[];
 
   const data = locale === "ru" ? ruData : enData;
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: "-20% 0px -60% 0px",
-      },
-    );
-
-    data.forEach((item) => {
-      const element = document.getElementById(`v-${item.version}`);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, [data]);
-
-  const scrollToSection = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    id: string,
-  ) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      window.history.pushState(null, "", `#${id}`);
-    }
-  };
+  const anchors = Array.from(data.map((item, key) => item.version));
 
   function parseText(text: string) {
     return text
@@ -125,23 +89,23 @@ export default function MetricsPage() {
   }
 
   return (
-    <div className="w-full flex gap-4">
-      <div className="">
+    <div className="w-full flex gap-4 relative bg-fd-article p-8 rounded-2xl border">
+      <div className="flex-1">
         {data.map((item) => {
-          const sectionId = `v-${item.version}`;
           return (
             <Version
               key={item.version}
               v={item.version}
               date={item.date}
               authors={item.authors}
-              id={sectionId}
+              id={item.version}
+              anchors={anchors}
               className="scroll-mt-20"
             >
               <Title>
-                <h1 className="font-bold text-2xl">
+                {/* <h1 className="font-bold text-2xl">
                   {locale === "ru" ? "Версия" : "Version"} {item.version}
-                </h1>
+                </h1> */}
                 {item.warning && (
                   <Callout
                     type="warn"
@@ -178,32 +142,6 @@ export default function MetricsPage() {
             </Version>
           );
         })}
-      </div>
-
-      <div className="max-lg:hidden">
-        <div className="custom-scrollbar sticky top-20 bg-fd-card border rounded-2xl p-4 max-h-[calc(100vh-6rem)] overflow-y-auto">
-          <nav className="flex flex-col space-y-1">
-            {data.map((item) => {
-              const sectionId = `v-${item.version}`;
-              const isActive = activeId === sectionId;
-
-              return (
-                <a
-                  key={item.version}
-                  href={`#${sectionId}`}
-                  onClick={(e) => scrollToSection(e, sectionId)}
-                  className={`text-xs px-3 py-2 rounded-lg font-medium transition-all ${
-                    isActive
-                      ? "bg-fd-primary text-fd-primary-foreground font-bold"
-                      : "text-fd-muted-foreground hover:bg-fd-accent hover:text-fd-accent-foreground"
-                  }`}
-                >
-                  v{item.version}
-                </a>
-              );
-            })}
-          </nav>
-        </div>
       </div>
     </div>
   );
