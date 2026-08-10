@@ -322,6 +322,7 @@
     "Changelog": {
       "title": "Список изменений",
       "description": "Все изменения для каждой версии FlectonePulse",
+      "version": "Версия",
       "download": "Скачать",
       "github": "Гитхаб",
       "features": "Новые возможности",

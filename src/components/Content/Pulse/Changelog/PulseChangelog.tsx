@@ -67,7 +67,7 @@ const SECTIONS: SectionConfig[] = [
   },
 ];
 
-export default function ChangelogPage() {
+export default function PulseChangelog() {
   const locale = useLocale();
 
   const ruData = changelogRuData as ChangelogItem[];
@@ -89,60 +89,55 @@ export default function ChangelogPage() {
   }
 
   return (
-    <div className="w-full flex gap-4 relative bg-fd-article p-8 rounded-2xl border">
-      <div className="flex-1">
-        {data.map((item) => {
-          return (
-            <Version
-              key={item.version}
-              v={item.version}
-              date={item.date}
-              authors={item.authors}
-              id={item.version}
-              anchors={anchors}
-              className="scroll-mt-20"
-            >
-              <Title>
-                {/* <h1 className="font-bold text-2xl">
-                  {locale === "ru" ? "Версия" : "Version"} {item.version}
-                </h1> */}
-                {item.warning && (
-                  <Callout
-                    type="warn"
-                    margin="none"
-                    title={locale === "ru" ? "Предупреждение" : "Warning"}
-                  >
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: parseText(item.warning),
-                      }}
-                    />
-                  </Callout>
-                )}
-              </Title>
+    <div className="w-full flex flex-col gap-4 relative bg-fd-article p-8 rounded-2xl border ">
+      {data.map((item) => {
+        return (
+          <Version
+            key={item.version}
+            v={item.version}
+            date={item.date}
+            authors={item.authors}
+            id={item.version}
+            anchors={anchors}
+            className="scroll-mt-20"
+          >
+            <Title>
+              {item.warning && (
+                <Callout
+                  type="warn"
+                  margin="none"
+                  title={locale === "ru" ? "Предупреждение" : "Warning"}
+                >
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: parseText(item.warning),
+                    }}
+                  />
+                </Callout>
+              )}
+            </Title>
 
-              {SECTIONS.map(({ key, Component, ItemComponent }) => {
-                const list = item[key];
-                if (!list || list.length === 0) return null;
+            {SECTIONS.map(({ key, Component, ItemComponent }) => {
+              const list = item[key];
+              if (!list || list.length === 0) return null;
 
-                return (
-                  <Component key={key}>
-                    {list.map((text, idx) => (
-                      <ItemComponent key={idx}>
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: parseText(text),
-                          }}
-                        />
-                      </ItemComponent>
-                    ))}
-                  </Component>
-                );
-              })}
-            </Version>
-          );
-        })}
-      </div>
+              return (
+                <Component key={key}>
+                  {list.map((text, idx) => (
+                    <ItemComponent key={idx}>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: parseText(text),
+                        }}
+                      />
+                    </ItemComponent>
+                  ))}
+                </Component>
+              );
+            })}
+          </Version>
+        );
+      })}
     </div>
   );
 }

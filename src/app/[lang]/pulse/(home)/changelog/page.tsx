@@ -8,12 +8,12 @@ export const generateMetadata = createMetadata({
   namespace: "Pulse.Changelog",
 });
 
-export default function MetricsPage() {
+export default function ChangelogPage() {
   const anchors = Array.from(data.map((item) => item.version));
 
   return (
     <div className="w-full max-w-7xl flex gap-4 justify-center my-8 relative">
-      <div className="flex gap-4 flex-col justify-center">
+      <div className="flex-1 min-w-0 flex gap-4 flex-col justify-center">
         <HeaderCard
           namespace="Pulse.Changelog"
           background="/assets/flectonepulse/flectonepulse_changelog_preview_dark.webp"

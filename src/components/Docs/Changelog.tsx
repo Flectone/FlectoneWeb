@@ -105,7 +105,7 @@ export function Feature({ children }: Readonly<{ children: ReactNode }>) {
       <span className="w-5 h-6 flex items-center shrink-0 justify-center">
         <span className="border-fd-green border-3 rounded-full" />
       </span>
-      <span>{children}</span>
+      <span className="min-w-0 wrap-break-word w-full">{children}</span>
     </li>
   );
 }
@@ -116,7 +116,7 @@ export function Fix({ children }: Readonly<{ children: ReactNode }>) {
       <span className="w-5 h-6 flex items-center shrink-0 justify-center">
         <span className="border-fd-error border-3 rounded-full" />
       </span>
-      <span>{children}</span>
+      <span className="min-w-0 wrap-break-word w-full">{children}</span>
     </li>
   );
 }
@@ -127,7 +127,7 @@ export function Refactor({ children }: Readonly<{ children: ReactNode }>) {
       <span className="w-5 h-6 flex items-center shrink-0 justify-center">
         <span className="border-fd-warning border-3 rounded-full" />
       </span>
-      <span>{children}</span>
+      <span className="min-w-0 wrap-break-word w-full">{children}</span>
     </li>
   );
 }
@@ -138,7 +138,7 @@ export function Dependency({ children }: Readonly<{ children: ReactNode }>) {
       <span className="w-5 h-6 flex items-center shrink-0 justify-center">
         <span className="border-fd-primary border-3 rounded-full" />
       </span>
-      <span>{children}</span>
+      <span className="min-w-0 wrap-break-word w-full">{children}</span>
     </li>
   );
 }
@@ -188,10 +188,10 @@ export function Version({
         setIsOpen(false);
       }}
     >
-      <div className="relative flex flex-col gap-4">
+      <div className="relative flex flex-col gap-4 shrink-0">
         <div
           ref={headerRef}
-          className={`sticky top-14.25 z-2 flex items-center justify-between gap-2 bg-fd-article/70 backdrop-blur-xl transition-shadow ${
+          className={`sticky top-14.25 max-sm:top-12.25 z-2 flex items-center justify-between gap-2 bg-fd-article/70 backdrop-blur-xl transition-shadow ${
             isStuck ? "py-4" : ""
           }`}
         >
@@ -211,7 +211,9 @@ export function Version({
             )}
           </div>
           <div className="flex gap-4 items-center ml-8">
-            <h2 className="font-bold text-lg">Версия {v}</h2>
+            <h2 className="font-bold text-lg">
+              {t("version")} {v}
+            </h2>
             {date && (
               <time className="text-fd-muted-foreground text-[16px]">
                 {formatDate(date)}
@@ -225,7 +227,7 @@ export function Version({
                 <Download className="" size="22px" strokeWidth={"2px"} />
                 {isOpen && (
                   <motion.span
-                    className="text-sm"
+                    className="text-sm max-sm:hidden"
                     initial={{ opacity: 0, x: -5 }}
                     animate={{ opacity: 1, x: -0 }}
                     exit={{ opacity: 0, x: -5 }}

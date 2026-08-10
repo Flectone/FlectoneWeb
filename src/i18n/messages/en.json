@@ -326,6 +326,7 @@
     "Changelog": {
       "title": "Changelog",
       "description": "All changes for each version of FlectonePulse",
+      "version": "Version",
       "download": "Download",
       "github": "Github",
       "features": "Features",
