@@ -17,7 +17,7 @@ export default function HomePage() {
       <Feautures />
       <div className="flex flex-col gap-3 justify-center items-center w-full">
         <Metric
-          className="backdrop-blur-2xl py-4 bg-fd-card"
+          className="backdrop-blur-2xl py-4 bg-fd-article border shadow-lg w-full rounded-2xl"
           slice={true}
           type="two-line"
           data={{
