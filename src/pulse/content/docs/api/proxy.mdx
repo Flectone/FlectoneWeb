@@ -1,0 +1,225 @@
+---
+title: Прокси и мультисервер
+description: Передача данных между серверами сети через ProxySender, ProxyRegistry, событие ProxyMessageEvent и чтение payload
+tag: "api"
+icon: Network
+---
+Когда сервер стоит в сети под BungeeCord, Velocity или Redis, FlectonePulse синхронизирует сообщения и кэши между серверами по своему каналу
+
+<Steps>
+    <Step>
+        Сервер отправитель пишет сообщение с тегом модуля и произвольными байтами данных
+    </Step>
+    <Step>
+        Транспорт `Proxy` доставляет байты на остальные серверы сети
+    </Step>
+    <Step>
+        На каждом сервере срабатывает `ProxyMessageEvent`, слушатели читают данные и обрабатывают их
+    </Step>
+    <Step>
+        Обработчик ставит `processed` в `true`, чтобы сообщение не считалось потерянным
+    </Step>
+</Steps>
+
+Тег канала собирается из имени модуля. Вызов `ModuleName.COMMAND_COIN.toProxyTag()` отдаст `FlectonePulse:COMMAND_COIN`
+
+<br></br>
+
+# Проверка сети
+
+<span>Пакет `net.flectone.pulse.platform.registry`</span>
+
+```java
+import net.flectone.pulse.platform.registry.ProxyRegistry;
+
+ProxyRegistry proxyRegistry = flectonePulse.get(ProxyRegistry.class);
+
+if (!proxyRegistry.hasEnabledProxy()) {
+    // сеть не настроена, синхронизировать нечего
+    return;
+}
+```
+
+| Метод | Что делает |
+|-------|------------|
+| `hasEnabledProxy()` | Проверяет, есть ли хотя бы один рабочий транспорт |
+| `hasEnabledProxy(Predicate<Proxy>)` | Проверяет, есть ли рабочий транспорт под условие |
+| `getProxies()` | Отдаёт все зарегистрированные транспорты |
+| `registry(Proxy)` | Добавляет свой транспорт |
+| `reload()` | Переоткрывает транспорты по текущей конфигурации |
+
+Сам интерфейс `Proxy` описывает один транспорт методами `isEnable()`, `onEnable()`, `onDisable()` и `sendMessage(FEntity, ModuleName, byte[])`
+
+<br></br>
+
+# Отправка
+
+<span>Пакет `net.flectone.pulse.platform.sender`</span>
+
+```java
+import net.flectone.pulse.constant.ModuleName;
+import net.flectone.pulse.platform.sender.ProxySender;
+
+ProxySender proxySender = flectonePulse.get(ProxySender.class);
+
+// простое уведомление без данных
+proxySender.send(fPlayer, ModuleName.COMMAND_COIN);
+
+// с дополнительными данными
+proxySender.send(fPlayer, ModuleName.COMMAND_COIN, output -> {
+    output.writeInt(percent);
+    output.writeUTF("дополнительный текст");
+});
+```
+
+| Метод | Что делает |
+|-------|------------|
+| `send(FEntity, ModuleName)` | Отправляет сообщение без данных |
+| `send(FEntity, ModuleName, ProxyDataConsumer<DataOutputStream>)` | Отправляет сообщение с данными |
+| `send(FEntity, ModuleName, ProxyDataConsumer<DataOutputStream>, UUID)` | То же самое, но с заданным идентификатором сообщения |
+| `send(ModuleName, EventMetadata, MessageContext)` | Отправляет сообщение модуля целиком |
+
+Все методы отдают `true`, если сообщение ушло хотя бы через один транспорт
+
+<Callout type="info" title="Информация">
+
+Чаще всего прокси напрямую не нужен. Если ты отправляешь сообщение через `MessageDispatcher`, хватит вызова `.proxy()` или `.proxy(output -> ...)` в билдере `EventMetadata`, остальное сделает конвейер
+
+</Callout>
+
+```java
+messageDispatcher.dispatch(ModuleName.COMMAND_COIN, EventMetadata.builder()
+        .range(Range.Type.PROXY)
+        .messageContext(receiver -> /* ... */)
+        .proxy(output -> {
+            output.writeInt(percent);
+            output.writeInt(tps);
+        }) // данные уедут вместе с сообщением
+        .build()
+);
+```
+
+<br></br>
+
+# Приём
+
+Данные читаются в обработчике `ProxyMessageEvent` через `ProxyPayload` строго в том же порядке, в котором их записали
+
+```java
+import net.flectone.pulse.annotation.Pulse;
+import net.flectone.pulse.constant.ModuleName;
+import net.flectone.pulse.listener.PulseListener;
+import net.flectone.pulse.model.event.Event;
+import net.flectone.pulse.model.event.message.ProxyMessageEvent;
+import net.flectone.pulse.util.payload.ProxyPayload;
+
+import java.io.IOException;
+
+public class MyProxyListener implements PulseListener {
+
+    @Pulse
+    public Event onProxyMessage(ProxyMessageEvent event) throws IOException {
+        // кто то уже обработал сообщение
+        if (event.processed()) return event;
+
+        // нас интересует только один модуль
+        if (event.name() != ModuleName.COMMAND_COIN) return event;
+
+        try (ProxyPayload payload = event.openPayload()) {
+            int percent = payload.readInt();
+            int tps = payload.readInt();
+
+            getLogger().info("С сервера " + event.server() + " пришло " + percent + " и " + tps);
+        }
+
+        return event.withProcessed(true);
+    }
+
+}
+```
+
+### Методы ProxyPayload
+
+| Метод | Что читает |
+|-------|------------|
+| `readString()` | `String` |
+| `readInt()` | `int` |
+| `readLong()` | `long` |
+| `readBoolean()` | `boolean` |
+| `readUUID()` | `UUID` |
+| `readAllBytes()` | Оставшиеся байты |
+
+`ProxyPayload` реализует `Closeable`, поэтому открывай его в блоке `try-with-resources`
+
+<Callout type="error" title="Внимание">
+
+Порядок чтения обязан совпадать с порядком записи. Если отправитель записал `writeInt`, а потом `writeUTF`, то читать надо `readInt()`, а потом `readString()`. Любое расхождение даст ошибку или мусор
+
+</Callout>
+
+<Callout type="warn" title="Предупреждение">
+
+Если ни один слушатель не пометил сообщение обработанным, FlectonePulse напишет предупреждение в консоль. Возвращай `event.withProcessed(true)` даже там, где обработка не нужна
+
+</Callout>
+
+<br></br>
+
+# Обычный шаблон обработчика
+
+```java
+@Pulse
+public Event onProxyMessage(ProxyMessageEvent event) throws IOException {
+    if (event.processed()) return event;
+    if (event.name() != ModuleName.COMMAND_COIN) return event;
+
+    // модуль выключен, обработка не нужна, но сообщение считаем разобранным
+    if (!moduleController.isEnable(coinModule)) return event.withProcessed(true);
+
+    // модуль не настроен на сеть
+    if (!coinModule.config().range().is(Range.Type.PROXY)) return event.withProcessed(true);
+
+    try (ProxyPayload payload = event.openPayload()) {
+        int percent = payload.readInt();
+
+        // пересылаем сообщение локальным игрокам
+        messageDispatcher.dispatch(coinModule, EventMetadata.builder()
+                .range(Range.get(Range.Type.SERVER))
+                .messageContext(receiver -> MessageContext.builder()
+                        .uuid(event.uuid())   // сохраняем общий идентификатор
+                        .sender(event.sender())
+                        .receiver(receiver)
+                        .message(coinModule.replaceResult(receiver, percent))
+                        .build()
+                )
+                .build()
+        );
+    }
+
+    return event.withProcessed(true);
+}
+```
+
+<Callout type="error" title="Внимание">
+
+При пересылке ставь `Range.Type.SERVER`, а не `PROXY`, иначе сообщение уйдёт по кругу
+
+</Callout>
+
+<br></br>
+
+# Регистрация обработчика
+
+Прокси слушателей стоит регистрировать, только когда сеть действительно настроена
+
+```java
+if (proxyRegistry.hasEnabledProxy()) {
+    listenerRegistry.registerPermanent(new MyProxyListener());
+}
+```
+
+<Callout type="idea" title="Примечание">
+
+Этим же каналом пользуются внутренние механизмы, через него сбрасываются кэши наказаний, настроек, цветов и скинов. Данные едут в бинарном виде, поэтому держи объём небольшим. Как настроить саму сеть, написано на странице [прокси](/pulse/docs/config/proxy/)
+
+</Callout>

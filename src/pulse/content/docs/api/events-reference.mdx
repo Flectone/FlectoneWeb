@@ -1,0 +1,222 @@
+---
+title: Справочник событий
+description: Все события FlectonePulse с описанием полей, от сообщений и игроков до жизненного цикла, модулей и прокси
+tag: "api"
+icon: ListTree
+---
+Все события лежат в пакете `net.flectone.pulse.model.event` и написаны как `record`. Поле `cancelled` есть у каждого события, поэтому в таблицах оно не повторяется
+
+Имена полей совпадают с именами методов. Поле `player` читается через `event.player()`, а копия с новым значением получается через `event.withPlayer(...)`
+
+<br></br>
+
+# События сообщений
+
+<span>Пакет `net.flectone.pulse.model.event.message`</span>
+
+Эти события идут по конвейеру подряд, от подготовки до отправки каждому получателю
+
+### `MessagePrepareEvent`
+
+Срабатывает, когда список получателей уже посчитан, но ничего ещё не ушло. Последний момент, когда можно поменять аудиторию, метаданные или текст
+
+| Поле | Тип | Что хранит |
+|------|-----|------------|
+| `moduleName` | `ModuleName` | Модуль, который отправил сообщение |
+| `eventMetadata` | `EventMetadata` | Как сообщение будет доставлено |
+| `messageContext` | `MessageContext` | Само сообщение |
+| `integrationMessageFormat` | `IntegrationMessageFormat` | Формат для Discord, Telegram и Twitch, либо `null` |
+| `receivers` | `Set<FPlayer>` | Итоговый список получателей |
+
+```java
+@Pulse
+public Event onPrepare(MessagePrepareEvent event) {
+    if (event.moduleName() != ModuleName.MESSAGE_CHAT) return event;
+
+    // убираем из получателей всех, кто в творческом режиме
+    Set<FPlayer> filtered = event.receivers().stream()
+            .filter(receiver -> !isCreative(receiver))
+            .collect(Collectors.toSet());
+
+    return event.withReceivers(filtered);
+}
+```
+
+### `MessageFormattingEvent`
+
+Срабатывает, когда текст превращается в компонент. Главная точка для своих MiniMessage тегов и правки текста
+
+| Поле | Тип | Что хранит |
+|------|-----|------------|
+| `context` | `MessageContext` | Отправитель, получатель, текст, флаги и теги |
+
+Подробности лежат на странице [форматирования](/pulse/docs/api/formatting/)
+
+### `MessageSendEvent`
+
+Срабатывает для каждого получателя в момент отправки готового сообщения
+
+| Поле | Тип | Что хранит |
+|------|-----|------------|
+| `moduleName` | `ModuleName` | Модуль, который отправил сообщение |
+| `message` | `Component` | Основной текст |
+| `submessage` | `Component` | Второй текст, например подзаголовок титула |
+| `eventMetadata` | `EventMetadata` | Параметры доставки |
+| `messageContext` | `MessageContext` | Контекст этого получателя |
+
+```java
+@Pulse(priority = Event.Priority.MONITOR, ignoreCancelled = true)
+public void onSend(MessageSendEvent event) {
+    FPlayer receiver = event.messageContext().receiver();
+    getLogger().info(receiver.name() + " получил сообщение");
+}
+```
+
+### `MessageReceiveEvent`
+
+Срабатывает, когда сервер собирается показать игроку какое-то сообщение. Например про смерть, смену режима или достижение
+
+| Поле | Тип | Что хранит |
+|------|-----|------------|
+| `player` | `FPlayer` | Получатель |
+| `component` | `Component` | Сообщение |
+| `overlay` | `boolean` | Значение `true` рисует сообщение над хотбаром, `false` в чате |
+
+Ещё у события есть метод `getTranslatableComponent()`. Он отдаёт сообщение как `TranslatableComponent`, а если сообщение не переводимое, то `null`
+
+```java
+@Pulse
+public Event onReceive(MessageReceiveEvent event) {
+    TranslatableComponent translatable = event.getTranslatableComponent();
+    if (translatable == null) return event;
+
+    if (translatable.key().startsWith("death.")) {
+        return event.withCancelled(true); // прячем сообщения о смерти
+    }
+
+    return event;
+}
+```
+
+### `ProxyMessageEvent`
+
+Срабатывает, когда по каналу FlectonePulse приходит сообщение с другого сервера
+
+| Поле | Тип | Что хранит |
+|------|-----|------------|
+| `processed` | `boolean` | Обработано ли сообщение |
+| `sentByThisServer` | `boolean` | Пришло ли сообщение эхом с этого же сервера |
+| `server` | `String` | Имя сервера отправителя |
+| `name` | `ModuleName` | Модуль, который отправил сообщение |
+| `sender` | `FEntity` | Отправитель |
+| `uuid` | `UUID` | Общий идентификатор всех копий сообщения |
+| `payload` | `byte[]` | Дополнительные данные |
+
+Метод `openPayload()` открывает `ProxyPayload` и читает данные в том же порядке, в котором их записали. Подробности лежат на странице [прокси](/pulse/docs/api/proxy/)
+
+### `StatusResponseEvent`
+
+Срабатывает при ответе на status пинг сервера, то есть когда игрок смотрит на сервер в списке. Позволяет переписать MOTD, иконку и счётчик игроков
+
+| Поле | Тип | Что хранит |
+|------|-----|------------|
+| `response` | `Object` | Объект ответа, свой на каждой платформе |
+
+<Callout type="warn" title="Предупреждение">
+
+Тип `response` отличается на разных платформах, поэтому приводи его к нужному типу только после проверки `instanceof`
+
+</Callout>
+
+<br></br>
+
+# События игроков
+
+<span>Пакет `net.flectone.pulse.model.event.player`</span>
+
+Все они реализуют `PlayerEvent` с методами `player()` и `withPlayer(FPlayer)`
+
+| Событие | Дополнительные поля | Когда срабатывает |
+|---------|---------------------|-------------------|
+| `PlayerPreLoginEvent` | `kickReason`, `allowed` | Перед входом игрока, пока подключение ещё можно отклонить |
+| `PlayerLoadEvent` | `reload` | Данные игрока прочитаны из базы и ему уже можно писать |
+| `PlayerJoinEvent` | нет | Игрок подключился к серверу |
+| `PlayerQuitEvent` | нет | Игрок вышел с сервера |
+| `PlayerPersistAndDisposeEvent` | нет | Данные игрока сохраняются, а кэш чистится |
+
+<Callout type="info" title="Информация">
+
+`PlayerLoadEvent` срабатывает после чтения данных из базы и ещё раз при перезагрузке плагина, тогда `reload()` отдаст `true`. Бери его, если тебе нужны настройки и цвета игрока. `PlayerJoinEvent` срабатывает только при настоящем входе
+
+</Callout>
+
+```java
+@Pulse(priority = Event.Priority.HIGH)
+public void onLoad(PlayerLoadEvent event) {
+    if (event.reload()) return; // не здороваемся после reload
+
+    FPlayer fPlayer = event.player();
+    getLogger().info("Загружен игрок " + fPlayer.name());
+}
+```
+
+<br></br>
+
+# События жизненного цикла
+
+<span>Пакет `net.flectone.pulse.model.event.lifecycle`</span>
+
+| Событие | Поля | Когда срабатывает |
+|---------|------|-------------------|
+| `EnableEvent` | `type`, `flectonePulse` | При запуске проекта. Тип `INIT` идёт до старта сервисов, тип `READY` когда всё уже работает |
+| `DisableEvent` | `flectonePulse` | При выключении проекта, до разбора компонентов |
+| `ReloadEvent` | `type`, `flectonePulse`, `reloadException` | В начале перезагрузки с типом `START` и в конце с типом `END` |
+
+У `ReloadEvent` есть метод `isSuccessful()`, он отдаёт `true`, когда поле `reloadException` пустое
+
+```java
+@Pulse
+public Event onReload(ReloadEvent event) {
+    if (event.type() == ReloadEvent.Type.START) {
+        // перезагрузку можно отменить целиком
+        return maintenanceInProgress ? event.withCancelled(true) : event;
+    }
+
+    if (!event.isSuccessful()) {
+        getLogger().severe("Перезагрузка не удалась");
+    }
+
+    return event;
+}
+```
+
+<br></br>
+
+# События модулей
+
+<span>Пакет `net.flectone.pulse.model.event.module`</span>
+
+Оба реализуют `ModuleEvent` с методами `module()` и `withModule(ModuleSimple)`
+
+| Событие | Когда срабатывает |
+|---------|-------------------|
+| `ModuleEnableEvent` | Перед включением модуля. Отмена оставит модуль выключенным |
+| `ModuleDisableEvent` | Перед выключением модуля. Отмена оставит модуль работать |
+
+```java
+@Pulse(priority = Event.Priority.LOWEST)
+public Event onModuleEnable(ModuleEnableEvent event) {
+    // не даём включить модуль сообщений над головой
+    if (event.module().name() == ModuleName.MESSAGE_BUBBLE) {
+        return event.withCancelled(true);
+    }
+
+    return event;
+}
+```
+
+<Callout type="idea" title="Примечание">
+
+Не забывай возвращать событие из обработчика, если ты его изменил. Как работают регистрация и приоритеты, написано на странице [системы событий](/pulse/docs/api/events/)
+
+</Callout>

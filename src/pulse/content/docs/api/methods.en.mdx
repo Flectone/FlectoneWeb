@@ -1,26 +1,15 @@
 ---
-title: Main methods
-description: The FlectonePulse interface is the main entry point for interacting with the project. It provides access to the dependency injection system (Google Guice) and manages the lifecycle.
+title: Entry point
+description: The FlectonePulse interface, dependency injection through Google Guice, project lifecycle and error handling
 tag: "api"
-icon: SearchAlert
+icon: Rocket
 ---
+Work with the API starts from two classes
 
-## Methods Table
-
-| Method | Returns |
-|--------|---------|
-| `get(Class<T>)` | `T` |
-| `isReady()` | `boolean` |
-| `getInjector()` | `Injector` or `null` |
-| `reload()` | `void` |
-| `closeUIs()` | `void` |
-| `initPacketAdapter()` | `void` |
-| `terminatePacketAdapter()` | `void` |
-| `terminateFailedPacketAdapter()` | `void` |
-| `throwInitException(Exception)` | `void` |
-| `onEnable()` / `onDisable()` / `reload()` | `void` |
-
-## Getting an Instance
+| Class | What it is for |
+|-------|----------------|
+| `net.flectone.pulse.FlectonePulseAPI` | Holds the running instance and drives its lifecycle |
+| `net.flectone.pulse.FlectonePulse` | Gives dependency injection, reload and access to the platform |
 
 ```java
 import net.flectone.pulse.FlectonePulse;
@@ -29,91 +18,192 @@ import net.flectone.pulse.FlectonePulseAPI;
 FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
 ```
 
-## Main Methods
+<br></br>
+
+# FlectonePulseAPI
+
+| Method | Returns | What it does |
+|--------|---------|--------------|
+| `getInstance()` | `FlectonePulse` | Gives the running instance, or `null` while the project has not loaded |
+| `isDisabling()` | `boolean` | Gives `true` while the project is shutting down |
+
+<Callout type="info" title="Information">
+
+    While `isDisabling()` gives `true`, do not start new tasks and do not touch the database. The project is already winding down at that point
+
+</Callout>
+
+<br></br>
+
+# FlectonePulse
+
+| Method | Returns | What it does |
+|--------|---------|--------------|
+| `get(Class<T>)` | `T` | Gives a component from Guice |
+| `isReady()` | `boolean` | Checks whether the injector is ready |
+| `reload()` | `void` | Rereads the configuration and throws `ReloadException` on failure |
+| `getLoader()` | `Object` | Gives the native plugin or mod object of the platform |
+| `hook(HookType, Object...)` | `void` | Calls a platform extension point |
+| `onLoad()`, `onEnable()`, `onDisable()` | `void` | Internal lifecycle, called by the platform |
+| `throwInitException(Exception)` | `void` | Wraps an error into `InitException` |
 
 ### `get(Class<T> type)`
 
-<Callout type="warn" title="Warning">
-    Before calling `get()`, make sure the injector is ready using `isReady()`
-</Callout>
-
-Returns an instance of the specified class via Guice. Most services are marked as `@Singleton`
+Gives a component from the injector. Almost every component is declared as an interface, and implementations are marked `@Singleton`, so repeated calls give you the same object
 
 ```java
-FLogger logger = flectonePulse.get(FLogger.class);
-MessageModule messageModule = flectonePulse.get(MessageModule.class);
+import net.flectone.pulse.dispatcher.MessageDispatcher;
+import net.flectone.pulse.logging.FLogger;
+import net.flectone.pulse.platform.registry.ListenerRegistry;
+import net.flectone.pulse.service.FPlayerService;
+
+FLogger fLogger = flectonePulse.get(FLogger.class);
+
+FPlayerService fPlayerService = flectonePulse.get(FPlayerService.class);
+
+MessageDispatcher messageDispatcher = flectonePulse.get(MessageDispatcher.class);
+
+ListenerRegistry listenerRegistry = flectonePulse.get(ListenerRegistry.class);
+```
+
+<Callout type="error" title="Attention">
+
+    Check readiness through `isReady()` before calling `get()`, otherwise you get `InjectorNotInitializedException`
+
+</Callout>
+
+Ask for the interface, not the implementation. Implementations live in closed modules and differ between platforms
+
+```java
+// correct
+FPlayerService service = flectonePulse.get(FPlayerService.class);
+
+// wrong, there is no FPlayerServiceImpl class in the api artifact
+FPlayerServiceImpl service = flectonePulse.get(FPlayerServiceImpl.class);
 ```
 
 ### `isReady()`
 
-Checks if the dependency injector is initialized
+Checks whether the dependency injector is up
 
 ```java
 if (flectonePulse.isReady()) {
-    // safe to call get()
-    FLogger logger = flectonePulse.get(FLogger.class);
-    logger.info("API is ready");
-} else {
-    // FlectonePulse is not loaded yet
+    FLogger fLogger = flectonePulse.get(FLogger.class);
+    fLogger.info("API is ready");
 }
 ```
-
-### `getInjector()`
-
-Returns the `Injector` object itself (may be `null` before initialization). Usually not needed directly.
 
 ### `reload()`
 
-Reloads the plugin configuration. Throws `ReloadException` on error
+Reloads the configuration, the same thing the `/flectonepulse reload` command does
 
 ```java
+import net.flectone.pulse.exception.ReloadException;
+
 try {
     flectonePulse.reload();
-    getLogger().info("Plugin reloaded");
+    getLogger().info("FlectonePulse reloaded");
 } catch (ReloadException e) {
-    getLogger().severe("Reload error: " + e.getMessage());
+    getLogger().severe("Reload failed " + e.getMessage());
 }
 ```
 
-### `closeUIs()`
+<Callout type="warn" title="Warning">
 
-Closes all open user interfaces (inventories, dialogs)
+    Reload drops every listener except those added through `registerPermanent()`. Details live on the [event system](/pulse/docs/api/events/) page
+
+</Callout>
+
+### `getLoader()`
+
+Gives the native loader object of the current platform. Handy when you need a platform API that FlectonePulse does not abstract
+
+| Platform | Object type |
+|----------|-------------|
+| Bukkit and Paper | `org.bukkit.plugin.java.JavaPlugin` |
+| BungeeCord | `net.md_5.bungee.api.plugin.Plugin` |
+| Velocity | the Velocity plugin object |
+| Fabric and NeoForge | the mod container |
+| Hytale | the Hytale mod loader |
+
+```java
+JavaPlugin pulsePlugin = (JavaPlugin) flectonePulse.getLoader();
+```
+
+### `hook(HookType type, Object... args)`
+
+Extension points through which the core calls the platform layer. The project calls them itself, and you need them by hand only for low level integration
+
+| `HookType` | When it fires |
+|------------|---------------|
+| `CONFIGURE_SERIALIZATION` | Platform serialization setup |
+| `PRE_NEW_PLAYER_PLACE` | Before a new player is placed in the world |
+| `ON_PLAYER_PRE_LOGIN` | Player check before login |
+| `ON_PLAYER_LOGIN` | Player login |
+| `POST_RESPAWN` | After a player respawns |
+| `INIT_PACKET_ADAPTER` | Packet adapter startup |
+| `TERMINATE_PACKET_ADAPTER` | Normal packet adapter shutdown |
+| `TERMINATE_FAILED_PACKET_ADAPTER` | Adapter shutdown after a failed startup |
+| `CLOSE_UIS` | Closing every open interface |
+| `SIMPLEVOICE_ENTITY_SOUND_PACKET` | Simple Voice Chat entity sound packet |
+| `SIMPLEVOICE_MICROPHONE_PACKET` | Simple Voice Chat microphone packet |
+
+```java
+import net.flectone.pulse.constant.HookType;
+
+// close every open FlectonePulse interface
+flectonePulse.hook(HookType.CLOSE_UIS);
+```
 
 ### `throwInitException(Exception e)`
 
-Helper method to throw an `InitException` with truncation of long messages (up to 25 lines in production mode)
+Wraps an error into `InitException`. In normal mode the message is cut down to 25 lines, and in debug mode it stays whole
 
 ```java
 try {
-    // dangerous operation
-    throw new RuntimeException("Very long text");
+    // risky startup work
 } catch (Exception e) {
     flectonePulse.throwInitException(e); // always throws InitException
 }
 ```
 
-## `PacketAdapter` Methods
+<br></br>
 
-Used to initialize and shut down the network adapter (called automatically)
+# Debugging
 
-```java
-// Initialization
-flectonePulse.initPacketAdapter();
+Debug mode turns on with a system property at server startup
 
-// Force termination on initialization error
-flectonePulse.terminateFailedPacketAdapter();
-
-// Normal termination
-flectonePulse.terminatePacketAdapter();
+```bash
+java -Dflectonepulse.debug=true -jar server.jar
 ```
 
-## Internal Methods (`onEnable`, `onDisable`, `reload`)
+In this mode FlectonePulse keeps error messages whole and writes detailed startup logs
 
-These methods are called by the plugin itself during enable/disable or reload
+<br></br>
 
-## Notes
+# Exceptions
 
-- For 95% of tasks, you only need `get(Class)` and occasionally `reload()`
-- Always check `isReady()` before calling `get()`
-- The `PacketAdapter` and `throwInitException` methods are only needed for low-level integration
-- `ReloadException` and `InitException` require handling or propagation
+Every exception lives in the `net.flectone.pulse.exception` package
+
+| Exception | When it arrives |
+|-----------|-----------------|
+| `InjectorNotInitializedException` | `get()` was called before the injector was ready |
+| `InitException` | Failure during project startup |
+| `ReloadException` | Failure during a `reload()` call |
+| `LoadingException` | Failure while loading the project |
+| `LibraryLoadException` | A library could not be downloaded or attached |
+| `FileLoadException` | Failure while reading the configuration |
+| `FileWriteException` | Failure while writing the configuration |
+| `ListenerRegistrationException` | A broken listener or `@Pulse` method |
+| `CacheRegistrationException` | Failure while registering a cache |
+| `DatabaseNotInitializedException` | The database was used before it was connected |
+| `UnsupportedDatabaseOperationException` | The chosen database does not support the operation |
+| `ProxyMessageCreateException` | Failure while building a proxy message |
+| `SchedulerTaskException` | Failure inside a scheduler task |
+| `ReflectionException` | Reflection failure in the platform layer |
+
+<Callout type="idea" title="Note">
+
+    `ReloadException` and `SchedulerTaskException` extend `Exception`, so you have to handle or rethrow them. Every other one extends `RuntimeException`
+
+</Callout>

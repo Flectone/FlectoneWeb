@@ -1,0 +1,282 @@
+---
+title: Отправка сообщений
+description: MessageDispatcher и EventMetadata, отправка сообщений через конвейер FlectonePulse с фильтрами, дистанцией, звуком и назначением
+tag: "api"
+icon: Send
+---
+Отправить сообщение можно двумя способами
+
+| Способ | Когда подходит |
+|--------|----------------|
+| `MessageSender` | Нужно просто отдать готовый `Component` одному игроку или в консоль |
+| `MessageDispatcher` | Нужен весь конвейер с локализацией, форматированием, фильтрами, дистанцией, звуком, прокси и интеграциями |
+
+<br></br>
+
+# MessageSender
+
+<span>Пакет `net.flectone.pulse.platform.sender`</span>
+
+```java
+import net.flectone.pulse.platform.sender.MessageSender;
+import net.kyori.adventure.text.Component;
+
+MessageSender messageSender = flectonePulse.get(MessageSender.class);
+
+messageSender.sendMessage(fPlayer, Component.text("Привет"), false);
+messageSender.sendToConsole(Component.text("Сообщение в консоль"));
+messageSender.sendToConsole("Строку тоже можно");
+```
+
+| Метод | Что делает |
+|-------|------------|
+| `sendMessage(FPlayer, Component, boolean silent)` | Отправляет сообщение игроку или консоли |
+| `sendToConsole(Component)` | Отправляет компонент в консоль |
+| `sendToConsole(String)` | Отправляет строку в консоль |
+
+Параметр `silent` отправляет пакет тихо, без сопутствующих эффектов клиента
+
+<br></br>
+
+# MessageDispatcher
+
+<span>Пакет `net.flectone.pulse.dispatcher`</span>
+
+Собирает сообщение, считает получателей, форматирует текст лично для каждого и отправляет
+
+```java
+import net.flectone.pulse.dispatcher.MessageDispatcher;
+
+MessageDispatcher messageDispatcher = flectonePulse.get(MessageDispatcher.class);
+```
+
+| Метод | Что делает |
+|-------|------------|
+| `dispatch(ModuleLocalization, EventMetadata)` | Отправляет от имени модуля и берёт локализацию из него |
+| `dispatch(ModuleName, EventMetadata)` | Отправляет по имени модуля |
+| `dispatch(ModuleName, EventMetadata, Set<FPlayer>)` | Отправляет заранее посчитанному списку получателей |
+| `dispatch(MessageSendEvent)` | Отправляет уже собранное событие |
+| `createReceivers(ModuleName, EventMetadata)` | Считает получателей и ничего не отправляет |
+| `createMessageEvent(FPlayer, ModuleName, EventMetadata)` | Собирает событие для одного получателя |
+
+Все методы возвращают набор игроков, до которых сообщение дошло
+
+<br></br>
+
+# EventMetadata
+
+Описывает, как доставить сообщение. Кому, куда на экране, на какое расстояние, с каким звуком и надо ли дублировать его в Discord или на другие серверы
+
+```java
+import net.flectone.pulse.constant.ModuleName;
+import net.flectone.pulse.model.event.EventMetadata;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+import net.flectone.pulse.model.value.Destination;
+import net.flectone.pulse.model.value.Range;
+
+messageDispatcher.dispatch(ModuleName.ADDON, EventMetadata.builder()
+        .range(Range.Type.SERVER)
+        .destination(Destination.EMPTY_CHAT)
+        .filter(receiver -> receiver.isOnline())
+        .messageContext(receiver -> MessageContext.builder()
+                .sender(fPlayer)
+                .receiver(receiver)
+                .message("<display_name> <white>привет всем")
+                .build()
+        )
+        .build()
+);
+```
+
+<Callout type="error" title="Внимание">
+
+Без вызова `messageContext(...)` метод `build()` бросит `NullPointerException`. Это единственное обязательное поле
+
+</Callout>
+
+### Методы билдера
+
+| Метод | Что задаёт |
+|-------|------------|
+| `messageContext(Function<FPlayer, MessageContext>)` | Строит контекст сообщения для каждого получателя, обязателен |
+| `filter(FPlayer)` | Отправку только одному игроку |
+| `filter(Collection<FPlayer>)` | Отправку перечисленным игрокам |
+| `filter(Predicate<FPlayer>)` | Произвольное условие |
+| `destination(Destination)` | Место на экране |
+| `range(Range)` | Дистанцию распространения |
+| `sound(Pair<Sound, PermissionSetting>)` | Звук и право на его прослушивание |
+| `proxy()` | Отправку на другие серверы |
+| `proxy(ProxyDataConsumer<DataOutputStream>)` | Отправку на другие серверы вместе с данными |
+| `integration()` | Дублирование в Discord, Telegram и Twitch |
+
+<Callout type="info" title="Информация">
+
+Каждый вызов `filter()` сужает аудиторию, условия складываются через `and` и не заменяют друг друга
+
+</Callout>
+
+### Контекст для каждого получателя
+
+Параметр метода `messageContext` это функция от получателя. Она вызывается отдельно для каждого игрока, поэтому текст можно подобрать под язык и настройки конкретного человека
+
+```java
+.messageContext(receiver -> MessageContext.builder()
+        .sender(fPlayer)
+        .receiver(receiver)
+        .message(localization(receiver).format()) // свой перевод каждому
+        .build()
+)
+```
+
+<br></br>
+
+# Destination
+
+<span>Пакет `net.flectone.pulse.model.value`</span>
+
+Определяет, куда именно клиенту придёт сообщение
+
+| `Destination.Type` | Где рисуется |
+|--------------------|--------------|
+| `CHAT` | Обычный чат |
+| `ACTION_BAR` | Строка над хотбаром |
+| `BOSS_BAR` | Полоса босса |
+| `TITLE` | Заголовок по центру экрана |
+| `SUBTITLE` | Подзаголовок по центру экрана |
+| `TAB_HEADER` | Верх списка игроков |
+| `TAB_FOOTER` | Низ списка игроков |
+| `TOAST` | Всплывающее уведомление о достижении |
+| `TEXT_SCREEN` | Плавающий текст |
+| `BRAND` | Название сервера в отладочном экране |
+
+Для назначений со значениями по умолчанию есть готовые константы, например `Destination.EMPTY_CHAT`, `Destination.EMPTY_TITLE` и `Destination.EMPTY_TOAST`. Если нужны свои параметры, у `Destination` есть поля `subtext`, `bossBar`, `times`, `toast` и `textScreen`, заполняются только те, что относятся к выбранному типу
+
+<br></br>
+
+# Range
+
+Определяет, кто вообще увидит сообщение
+
+| `Range.Type` | Кто увидит |
+|--------------|------------|
+| `PLAYER` | Только сам отправитель |
+| `BLOCKS` | Игроки в радиусе N блоков |
+| `WORLD_NAME` | Игроки в том же мире |
+| `WORLD_TYPE` | Игроки в мире того же типа |
+| `SERVER` | Все игроки этого сервера |
+| `PROXY` | Все игроки сети прокси |
+
+```java
+// именованная область
+Range serverRange = Range.get(Range.Type.SERVER);
+
+// радиус в блоках
+Range blocksRange = Range.get(100);
+```
+
+<br></br>
+
+# Звук
+
+Звук идёт парой вместе с правом, и игрок услышит его, только если это право у него есть
+
+```java
+import net.flectone.pulse.model.value.Pair;
+import net.flectone.pulse.model.value.Sound;
+
+// у модулей звук берётся из конфигурации
+.sound(module.soundOrThrow())
+```
+
+Отдельно звук проигрывает `SoundPlayer`
+
+```java
+import net.flectone.pulse.platform.sender.SoundPlayer;
+
+SoundPlayer soundPlayer = flectonePulse.get(SoundPlayer.class);
+soundPlayer.play(soundPermission, sender, receiver);
+```
+
+Запись `Sound` хранит поля `enable`, `volume`, `pitch`, `category` и `name`
+
+<br></br>
+
+# Прокси и интеграции
+
+```java
+// продублировать сообщение на другие серверы сети
+.proxy()
+
+// то же самое, но с дополнительными данными
+.proxy(output -> output.writeInt(percent))
+
+// продублировать в Discord, Telegram и Twitch
+.integration()
+```
+
+Про передачу данных между серверами написано на странице [прокси](/pulse/docs/api/proxy/)
+
+<br></br>
+
+# Пример
+
+Объявление всем игрокам сервера, заголовком и с уходом в сеть
+
+```java
+import net.flectone.pulse.constant.ModuleName;
+import net.flectone.pulse.model.entity.FPlayer;
+import net.flectone.pulse.model.event.EventMetadata;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+import net.flectone.pulse.model.value.Destination;
+import net.flectone.pulse.model.value.Range;
+
+import java.util.Set;
+
+public void announce(FPlayer sender, String text) {
+    Set<FPlayer> received = messageDispatcher.dispatch(
+            ModuleName.ADDON,
+            EventMetadata.builder()
+                    .range(Range.Type.SERVER)
+                    .destination(Destination.EMPTY_TITLE)
+                    .filter(receiver -> !receiver.isConsole())
+                    .messageContext(receiver -> MessageContext.builder()
+                            .sender(sender)
+                            .receiver(receiver)
+                            .message("<gradient:#FF0000:#00FF00>" + text + "</gradient>")
+                            .build()
+                    )
+                    .proxy()
+                    .build()
+    );
+
+    getLogger().info("Сообщение получили " + received.size() + " игроков");
+}
+```
+
+<br></br>
+
+# Что происходит внутри
+
+<Steps>
+    <Step>
+        Метод `createReceivers()` считает получателей, применяет фильтры с дистанцией и смотрит, включён ли модуль для каждого игрока
+    </Step>
+    <Step>
+        Срабатывает `MessagePrepareEvent`, тут список получателей ещё можно поменять
+    </Step>
+    <Step>
+        Для каждого получателя собирается `MessageContext` и срабатывает `MessageFormattingEvent`
+    </Step>
+    <Step>
+        Текст проходит `MessagePipeline` и становится `Component`
+    </Step>
+    <Step>
+        Срабатывает `MessageSendEvent`, после чего сообщение уходит игроку
+    </Step>
+</Steps>
+
+<Callout type="idea" title="Примечание">
+
+`ModuleName` это перечисление, свой элемент туда добавить нельзя. Для своих сообщений бери `ModuleName.ADDON` или существующий модуль или отправляй через `MessageSender`. Как настроить сам текст, написано на странице [форматирования](/pulse/docs/api/formatting/)
+
+</Callout>

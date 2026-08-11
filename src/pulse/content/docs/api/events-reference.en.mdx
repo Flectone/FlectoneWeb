@@ -1,0 +1,222 @@
+---
+title: Event reference
+description: Every FlectonePulse event with its fields, from messages and players to lifecycle, modules and proxy
+tag: "api"
+icon: ListTree
+---
+Every event lives in the `net.flectone.pulse.model.event` package and is written as a `record`. The `cancelled` field belongs to every event, so the tables do not repeat it
+
+Field names match method names. The `player` field is read through `event.player()`, and a copy with a new value comes from `event.withPlayer(...)`
+
+<br></br>
+
+# Message events
+
+<span>Package `net.flectone.pulse.model.event.message`</span>
+
+These events run through the pipeline one after another, from preparation to delivery to each receiver
+
+### `MessagePrepareEvent`
+
+Fires once the receivers are counted but nothing has gone out yet. The last moment where you can still change the audience, the metadata or the text
+
+| Field | Type | What it holds |
+|-------|------|---------------|
+| `moduleName` | `ModuleName` | The module that sent the message |
+| `eventMetadata` | `EventMetadata` | How the message will be delivered |
+| `messageContext` | `MessageContext` | The message itself |
+| `integrationMessageFormat` | `IntegrationMessageFormat` | The format for Discord, Telegram and Twitch, or `null` |
+| `receivers` | `Set<FPlayer>` | The final list of receivers |
+
+```java
+@Pulse
+public Event onPrepare(MessagePrepareEvent event) {
+    if (event.moduleName() != ModuleName.MESSAGE_CHAT) return event;
+
+    // drop everyone in creative mode from the receivers
+    Set<FPlayer> filtered = event.receivers().stream()
+            .filter(receiver -> !isCreative(receiver))
+            .collect(Collectors.toSet());
+
+    return event.withReceivers(filtered);
+}
+```
+
+### `MessageFormattingEvent`
+
+Fires while the text turns into a component. The main spot for your own MiniMessage tags and text edits
+
+| Field | Type | What it holds |
+|-------|------|---------------|
+| `context` | `MessageContext` | Sender, receiver, text, flags and tags |
+
+Details live on the [formatting](/pulse/docs/api/formatting/) page
+
+### `MessageSendEvent`
+
+Fires for each receiver as the finished message goes out
+
+| Field | Type | What it holds |
+|-------|------|---------------|
+| `moduleName` | `ModuleName` | The module that sent the message |
+| `message` | `Component` | The main text |
+| `submessage` | `Component` | The second text, for example a title subtext |
+| `eventMetadata` | `EventMetadata` | Delivery parameters |
+| `messageContext` | `MessageContext` | The context of this receiver |
+
+```java
+@Pulse(priority = Event.Priority.MONITOR, ignoreCancelled = true)
+public void onSend(MessageSendEvent event) {
+    FPlayer receiver = event.messageContext().receiver();
+    getLogger().info(receiver.name() + " got a message");
+}
+```
+
+### `MessageReceiveEvent`
+
+Fires when the server is about to show a message to a player. Death, gamemode change or an advancement for example
+
+| Field | Type | What it holds |
+|-------|------|---------------|
+| `player` | `FPlayer` | The receiver |
+| `component` | `Component` | The message |
+| `overlay` | `boolean` | The value `true` draws the message above the hotbar, `false` puts it in chat |
+
+The event also has a `getTranslatableComponent()` method. It gives the message as a `TranslatableComponent`, and `null` when the message is not translatable
+
+```java
+@Pulse
+public Event onReceive(MessageReceiveEvent event) {
+    TranslatableComponent translatable = event.getTranslatableComponent();
+    if (translatable == null) return event;
+
+    if (translatable.key().startsWith("death.")) {
+        return event.withCancelled(true); // hide death messages
+    }
+
+    return event;
+}
+```
+
+### `ProxyMessageEvent`
+
+Fires when a message from another server arrives over the FlectonePulse channel
+
+| Field | Type | What it holds |
+|-------|------|---------------|
+| `processed` | `boolean` | Whether the message was handled |
+| `sentByThisServer` | `boolean` | Whether the message came back as an echo from this same server |
+| `server` | `String` | The name of the sending server |
+| `name` | `ModuleName` | The module that sent the message |
+| `sender` | `FEntity` | The sender |
+| `uuid` | `UUID` | The shared identifier of every copy of the message |
+| `payload` | `byte[]` | Extra data |
+
+The `openPayload()` method opens a `ProxyPayload` and reads the data in the same order it was written. Details live on the [proxy](/pulse/docs/api/proxy/) page
+
+### `StatusResponseEvent`
+
+Fires when the server answers a status ping, that is when a player looks at the server in the list. Lets you rewrite the MOTD, the icon and the player counter
+
+| Field | Type | What it holds |
+|-------|------|---------------|
+| `response` | `Object` | The response object, different on each platform |
+
+<Callout type="warn" title="Warning">
+
+    The type of `response` differs between platforms, so cast it only after an `instanceof` check
+
+</Callout>
+
+<br></br>
+
+# Player events
+
+<span>Package `net.flectone.pulse.model.event.player`</span>
+
+All of them implement `PlayerEvent` with the `player()` and `withPlayer(FPlayer)` methods
+
+| Event | Extra fields | When it fires |
+|-------|--------------|---------------|
+| `PlayerPreLoginEvent` | `kickReason`, `allowed` | Before a player joins, while the connection can still be refused |
+| `PlayerLoadEvent` | `reload` | Player data has been read from the database and you can already write to them |
+| `PlayerJoinEvent` | none | A player joined the server |
+| `PlayerQuitEvent` | none | A player left the server |
+| `PlayerPersistAndDisposeEvent` | none | Player data is being saved and the cache is cleared |
+
+<Callout type="info" title="Information">
+
+    `PlayerLoadEvent` fires after data is read from the database and once more on a plugin reload, where `reload()` gives `true`. Take it when you need the settings and colors of a player. `PlayerJoinEvent` fires only on a real join
+
+</Callout>
+
+```java
+@Pulse(priority = Event.Priority.HIGH)
+public void onLoad(PlayerLoadEvent event) {
+    if (event.reload()) return; // no greeting after a reload
+
+    FPlayer fPlayer = event.player();
+    getLogger().info("Loaded player " + fPlayer.name());
+}
+```
+
+<br></br>
+
+# Lifecycle events
+
+<span>Package `net.flectone.pulse.model.event.lifecycle`</span>
+
+| Event | Fields | When it fires |
+|-------|--------|---------------|
+| `EnableEvent` | `type`, `flectonePulse` | On project startup. The `INIT` type comes before the services start, the `READY` type once everything already runs |
+| `DisableEvent` | `flectonePulse` | On project shutdown, before components are torn down |
+| `ReloadEvent` | `type`, `flectonePulse`, `reloadException` | At the start of a reload with the `START` type and at the end with the `END` type |
+
+`ReloadEvent` also has an `isSuccessful()` method, it gives `true` when the `reloadException` field is empty
+
+```java
+@Pulse
+public Event onReload(ReloadEvent event) {
+    if (event.type() == ReloadEvent.Type.START) {
+        // the whole reload can be cancelled
+        return maintenanceInProgress ? event.withCancelled(true) : event;
+    }
+
+    if (!event.isSuccessful()) {
+        getLogger().severe("Reload failed");
+    }
+
+    return event;
+}
+```
+
+<br></br>
+
+# Module events
+
+<span>Package `net.flectone.pulse.model.event.module`</span>
+
+Both implement `ModuleEvent` with the `module()` and `withModule(ModuleSimple)` methods
+
+| Event | When it fires |
+|-------|---------------|
+| `ModuleEnableEvent` | Before a module turns on. Cancelling leaves the module off |
+| `ModuleDisableEvent` | Before a module turns off. Cancelling leaves the module running |
+
+```java
+@Pulse(priority = Event.Priority.LOWEST)
+public Event onModuleEnable(ModuleEnableEvent event) {
+    // do not let the bubble module turn on
+    if (event.module().name() == ModuleName.MESSAGE_BUBBLE) {
+        return event.withCancelled(true);
+    }
+
+    return event;
+}
+```
+
+<Callout type="idea" title="Note">
+
+    Do not forget to return the event from your handler once you change it. How registration and priorities work is written on the [event system](/pulse/docs/api/events/) page
+
+</Callout>

@@ -1,139 +1,244 @@
 ---
 title: Система событий
-description: Механизм событий FlectonePulse для связи модулей. Регистрация слушателей через ListenerRegistry и аннотацию @Pulse
+description: Аннотация @Pulse, интерфейс PulseListener, приоритеты обработки, отмена и изменение неизменяемых событий
 tag: "api"
-icon: SquareChartGantt
+icon: Radio
 ---
+События это главный способ вмешаться в работу FlectonePulse. Они срабатывают на всех этапах, от входа игрока до сборки каждого сообщения
 
-## Общая архитектура
+| Компонент | Зачем нужен |
+|-----------|-------------|
+| `Event` | Базовый интерфейс всех событий, умеет отменяться |
+| `EventDispatcher` | Прогоняет событие через слушателей по приоритету |
+| `ListenerRegistry` | Регистрирует и удаляет слушателей |
+| `@Pulse` | Помечает метод обработчиком |
+| `PulseListener` | Помечает класс, в котором лежат обработчики |
 
-FlectonePulse предоставляет механизм событий для взаимодействия между модулями и реагирования на действия игроков, сообщения и жизненный цикл проекта. Все события наследуются от базового класса `Event` и поддерживают механизм отмены (`cancelled`). Каждый `Event` является неизменяемым объектом, поэтому при внесении нового параметра создаётся новый объект, это нужно учитывать при обновлении ивента
+<br></br>
 
-| Компонент | Назначение |
-|-----------|------------|
-| `EventDispatcher` | Маршрутизация событий всем слушателям с учётом приоритета |
-| `ListenerRegistry` | Управление регистрацией и удалением слушателей |
-| `@Pulse` | Аннотация для объявления метода-обработчика |
-| `PulseListener` | Интерфейс-маркер для классов, содержащих обработчики |
+# События неизменяемы
 
-## Приоритеты обработки
+Каждое событие это `record`. Поменять поле на месте нельзя, методы `with*` отдают новую копию, и эту копию обработчик обязан вернуть через `return`
 
-`EventDispatcher` использует шесть уровней приоритета, определяющих порядок выполнения слушателей.
+```java
+// не работает, копия создана, но никуда не передана
+@Pulse
+public void onFormatting(MessageFormattingEvent event) {
+    event.withContext(event.context().withMessage("новый текст"));
+}
 
-| Приоритет | Порядок | Типичное применение |
-|-----------|---------|----------------------|
-| `LOWEST` | Первый | Ранняя отмена события или предварительная обработка |
-| `LOW` | Второй | Валидация данных |
-| `NORMAL` | Третий | Стандартная обработка события |
-| `HIGH` | Четвёртый | Пост-обработка |
-| `HIGHEST` | Пятый | Финальные модификации |
-| `MONITOR` | Последний | Только для логирования |
+// работает, копия уходит диспетчеру
+@Pulse
+public Event onFormatting(MessageFormattingEvent event) {
+    return event.withContext(event.context().withMessage("новый текст"));
+}
+```
 
-Также есть параметр `ignoreCancelled` и если он `true`, обработчик будет вызван, даже если событие уже отмечено (по умолчанию `false`)
+<Callout type="error" title="Внимание">
 
-## Регистрация обработчиков событий
+Если обработчик ничего не меняет, объявляй его как `void`. Если меняет, тип возвращаемого значения должен быть `Event` или конкретный тип события. Диспетчер подхватит результат, только когда это событие
 
-Для создания слушателя необходимо
+</Callout>
+
+<br></br>
+
+# Свой слушатель
+
 <Steps>
     <Step>
-        Реализовать интерфейс `PulseListener` (маркер)
+        Реализуй интерфейс `PulseListener`
     </Step>
     <Step>
-        Внутри класса объявить публичные методы, помеченные аннотацией `@Pulse`, с одним параметром — типом нужного события
+        Объяви публичные методы с аннотацией `@Pulse` и одним параметром, типом нужного события
     </Step>
     <Step>
-        Зарегистрировать экземпляр слушателя через `ListenerRegistry` (обычно через DI, но можно и обычный объект)
+        Зарегистрируй слушателя через `ListenerRegistry`
     </Step>
 </Steps>
 
 ```java
+import net.flectone.pulse.annotation.Pulse;
 import net.flectone.pulse.listener.PulseListener;
 import net.flectone.pulse.model.event.Event;
-import net.flectone.pulse.model.event.Pulse;
+import net.flectone.pulse.model.event.message.MessageFormattingEvent;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+import net.flectone.pulse.model.event.player.PlayerJoinEvent;
 
 public class MyCustomListener implements PulseListener {
 
-    // Если ивент изменяется, его обязательно нужно вернуть через return
+    // меняем сообщение во время форматирования, поэтому нужен return
     @Pulse(priority = Event.Priority.NORMAL)
-    public Event onMessagePrepare(MessagePrepareEvent event) {
+    public Event onMessageFormatting(MessageFormattingEvent event) {
         MessageContext messageContext = event.context();
 
-        // Изменяем содержимое сообщения во время форматирования
-        String modifiedMessage = messageContext.getMessage() + " [Modified]";
+        String modifiedMessage = messageContext.message() + " [Modified]";
         return event.withContext(messageContext.withMessage(modifiedMessage));
     }
 
-    // ignoreCancelled = true означает, что метод будет вызван, даже если событие отменено
+    // с ignoreCancelled метод вызовется, даже если событие уже отменено
     @Pulse(priority = Event.Priority.LOWEST, ignoreCancelled = true)
     public void onPlayerJoin(PlayerJoinEvent event) {
-        // Получаем айпи игрока при входе
         String playerIp = event.player().ip();
     }
 
 }
 ```
 
-Регистрация слушателя:
-
-```java
-// Где-то в модуле или сервисе
-private ListenerRegistry listenerRegistry;
-
-public void init() {
-    listenerRegistry.register(new MyCustomListener());
-}
-```
 <Callout type="warn" title="Предупреждение">
-    При перезагрузке FlectonePulse удаляет все слушатели и регистрирует их снова. Чтобы навсегда зарегистрировать слушатель, используй метод `listenerRegistry.registerPermanent(listener);`
+
+Метод должен быть публичным и принимать ровно один параметр, наследующий `Event`. Иначе при регистрации прилетит `ListenerRegistrationException`
+
 </Callout>
 
-## Типы событий
+<br></br>
 
-### Базовый класс
+# Регистрация
 
-Все события наследуются от базового класса `Event`, который поддерживает отмену. События могут быть отмечены с помощью `.withCancelled(true);`
+Слушателей регистрирует `ListenerRegistry`
 
-### События сообщений
+```java
+import net.flectone.pulse.platform.registry.ListenerRegistry;
 
-Эти события управляют конвейером обработки сообщений: от форматирования до доставки.
+ListenerRegistry listenerRegistry = flectonePulse.get(ListenerRegistry.class);
 
-| Событие | Данные | Назначение |
-|---------|--------|------------|
-| `MessagePrepareEvent` | `MessageType`, `rawFormat`, `EventMetadata`  | Просмотр сообщения до начала форматирования, с названием модуля который его вызывает |
-| `MessageFormattingEvent` | `MessageContext` (отправитель, получатель, сообщение, флаги) | Изменение содержимого сообщения на этапе форматирования. Используется форматирующими модулями (например, для добавления тегов `<display_name>`) |
-| `MessageReceiveEvent` | `FPlayer`, `Component` (сообщение), `overlay` (сообщение в Action Bar или нет) | Уведомление о том, что было получено сообщение от сервера конкретному игроку (например при изменение режима gamemode или смерти). Используется, чтобы отменить сообщение от сервера и отправить собственное |
-| `MessageSendEvent` | `ModuleName`, `FEntity` (отправитель), `FPlayer` (получатель), `Component` (формат), `Component` (подтекст), `EventMetadata` | Доставка форматированного сообщения конкретному получателю. Используется для воспроизведения звуков, отправки пакетов, логирования в консоль |
-| `ProxyMessageEvent` | `processed` (обработано ли), `ModuleName`, `FEntity` (отправитель), `UUID` (айди сообщения), `payload` (байты т.е. аргументы конкретного сообщения) | Обработка прокси сообщения от конкретного модуля. Вызывается после получения корректного сообщения от Proxy, чтобы синхронизировать сообщения модулей между серверами. Обязательно должно быть `processed` после обработки, иначе появится предупреждение, что сообщение не обработалось |
-| `StatusResponseEvent` | `JsonObject` (ответ) | Отправка status сообщения игроку при просмотре сервера. Используется для изменения MOTD/icon и т.д. |
+// для своих плагинов, переживёт /flectonepulse reload
+listenerRegistry.registerPermanent(new MyCustomListener());
+```
 
-### События жизненного цикла игрока
+| Метод | Что делает |
+|-------|------------|
+| `registerPermanent(PulseListener)` | Регистрирует слушателя и восстанавливает его после перезагрузки |
+| `register(PulseListener)` | Регистрирует готовый экземпляр до ближайшей перезагрузки |
+| `register(Class<?>)` | Создаёт слушателя через Guice и регистрирует его |
+| `register(Class<? extends Event>, Priority, UnaryOperator<Event>)` | Регистрирует одиночный обработчик без отдельного класса |
+| `unregisterAll()` | Удаляет всех слушателей, включая постоянных |
+| `getPulseListeners(Class<? extends Event>)` | Отдаёт обработчики события, разложенные по приоритетам |
 
-| Событие | Данные | Назначение |
-|---------|--------|------------|
-| `PlayerPreLoginEvent` | `FPlayer`, `Component` (причина отключения), `allowed` (разрешён вход или нет) | Загрузка основных данных игрока для того, чтобы впустить или кикнуть его |
-| `PlayerLoadEvent` | `FPlayer`, `reload` (это перезагрузка или нет) | Загрузка данных игрока из базы данных (выполняется только если игрок уже на сервере или был успешно подключен) |
-| `PlayerJoinEvent` | `FPlayer` | Успешное подключение игрока к серверу |
-| `PlayerQuitEvent` | `FPlayer` | Выход игрока с сервера |
-| `PlayerPersistAndDisposeEvent` | `FPlayer` | Очистка и сохранение состояния игрока. Очистка кэшей, сохранение данных в базу |
+<Callout type="error" title="Внимание">
 
-### События жизненного цикла плагина
+При `/flectonepulse reload` вызывается `unregisterAll()`, после чего заново регистрируются стандартные и постоянные слушатели. Если ты использовал `register()`, твой слушатель после перезагрузки пропадёт
 
-| Событие | Данные | Назначение |
-|---------|--------|------------|
-| `EnableEvent` | `FlectonePulse`, `type` (`INIT`, `READY`) | Вызывается при главном включении проекта |
-| `DisableEvent` | `FlectonePulse` | Вызывается при главном отключении проекта |
-| `StartReloadEvent` |`FlectonePulse` | Вызывается в начале перезагрузки всего проекта (может быть полезно, чтобы её отменить) |
-| `EndReloadEvent` |`FlectonePulse`, `ReloadException` (ошибка при выполнении, если возникла) | Вызывается в конце перезагрузки всего проекта |
+</Callout>
 
-### События модулей
+### Обработчик без класса
 
-| Событие | Данные | Назначение |
-|---------|--------|------------|
-| `ModuleEnableEvent` | `ModuleSimple` | Вызывается при включении модуля |
-| `ModuleDisableEvent` | `ModuleSimple` | Вызывается при отключении модуля |
+Ради одного простого обработчика отдельный класс заводить не обязательно
 
-## Примечания
+```java
+import net.flectone.pulse.model.event.Event;
+import net.flectone.pulse.model.event.player.PlayerQuitEvent;
 
-- События обрабатываются **синхронно** в порядке приоритета. Не выполняйте долгих операций в обработчиках без крайней необходимости
-- Используйте `ignoreCancelled = true` в аннотации `@Pulse`, если ваш обработчик должен выполниться даже после отмены события другими слушателями
-- Для кастомных событий ваши классы должны наследовать `Event` и корректно реализовать механизм отмены.
+listenerRegistry.register(PlayerQuitEvent.class, Event.Priority.MONITOR, event -> {
+    PlayerQuitEvent quitEvent = (PlayerQuitEvent) event;
+    getLogger().info(quitEvent.player().name() + " вышел");
+    return event;
+});
+```
+
+<br></br>
+
+# Приоритеты
+
+`EventDispatcher` вызывает обработчики по возрастанию приоритета
+
+| Приоритет | Порядок | Для чего подходит |
+|-----------|---------|-------------------|
+| `LOWEST` | Первый | Ранняя отмена события или подготовка данных |
+| `LOW` | Второй | Проверка данных |
+| `NORMAL` | Третий | Обычная обработка, стоит по умолчанию |
+| `HIGH` | Четвёртый | Обработка после основных изменений |
+| `HIGHEST` | Пятый | Финальные правки |
+| `MONITOR` | Последний | Только наблюдение и логирование, без изменений |
+
+Внутри одного приоритета обработчики идут в порядке регистрации
+
+<br></br>
+
+# Отмена события
+
+Отменённое событие останавливает действие, ради которого его вызвали
+
+```java
+@Pulse(priority = Event.Priority.LOWEST)
+public Event onPreLogin(PlayerPreLoginEvent event) {
+    if (event.player().ip() != null && event.player().ip().startsWith("10.")) {
+        return event.withAllowed(false)
+                .withKickReason(Component.text("Вход из локальной сети запрещён"));
+    }
+
+    return event;
+}
+```
+
+Узнать, отменил ли событие кто то другой, можно через `cancelled()`
+
+```java
+@Pulse(priority = Event.Priority.MONITOR, ignoreCancelled = true)
+public void onSend(MessageSendEvent event) {
+    if (event.cancelled()) {
+        getLogger().info("Сообщение отменил другой слушатель");
+    }
+}
+```
+
+### `ignoreCancelled`
+
+| Значение | Поведение |
+|----------|-----------|
+| `false` | Обработчик не вызовется, если событие уже отменено. Стоит по умолчанию |
+| `true` | Обработчик вызовется в любом случае |
+
+<br></br>
+
+# Ручная отправка
+
+Прогнать событие через слушателей можно самому, для этого есть `EventDispatcher`
+
+```java
+import net.flectone.pulse.dispatcher.EventDispatcher;
+
+EventDispatcher eventDispatcher = flectonePulse.get(EventDispatcher.class);
+
+MessageReceiveEvent result = eventDispatcher.dispatch(
+        new MessageReceiveEvent(fPlayer, Component.text("Привет"), false)
+);
+
+if (!result.cancelled()) {
+    // никто не отменил, можно отправлять
+}
+```
+
+`dispatch()` отдаёт событие в том виде, в котором его оставили слушатели
+
+<br></br>
+
+# Свои события
+
+Своё событие пишется как `record`, реализующий `Event`. Аннотация Lombok `@With` сама сгенерирует методы копирования
+
+```java
+import lombok.With;
+import net.flectone.pulse.model.entity.FPlayer;
+import net.flectone.pulse.model.event.Event;
+
+@With
+public record MyCustomEvent(
+        boolean cancelled,
+        FPlayer player,
+        String data
+) implements Event {
+
+    public MyCustomEvent(FPlayer player, String data) {
+        this(false, player, data);
+    }
+
+}
+```
+
+Отправляется оно тем же `EventDispatcher`, а слушатели пишутся точно так же, как для встроенных событий
+
+<Callout type="idea" title="Примечание">
+
+События обрабатываются синхронно и по порядку приоритета, поэтому долгие операции выноси в [планировщик](/pulse/docs/api/services/). Ошибка внутри обработчика не роняет цепочку, FlectonePulse запишет предупреждение в лог и продолжит с исходным событием
+
+</Callout>

@@ -1,0 +1,273 @@
+---
+title: Players
+description: The FEntity and FPlayer models, the FPlayerService lookup service and SocialService for chat settings, ignores and mail
+tag: "api"
+icon: Users
+---
+FlectonePulse does not work with platform objects directly. Instead of `org.bukkit.entity.Player` it uses its own model, the same on every platform
+
+| Model | What it describes |
+|-------|-------------------|
+| `FEntity` | Any message sender, be it a player, a mob, a command block, the console or a Discord user |
+| `FPlayer` | A player or the console, extends `FEntity` with data from the database |
+
+<br></br>
+
+# FEntity
+
+<span>Package `net.flectone.pulse.model.entity`</span>
+
+| Method | Returns | What it gives |
+|--------|---------|---------------|
+| `name()` | `String` | The display name |
+| `uuid()` | `UUID` | The identifier |
+| `type()` | `String` | The entity type |
+| `showEntityName()` | `Component` | The name for a hover tooltip, can be `null` |
+| `isUnknown()` | `boolean` | The placeholder marker |
+
+There are also the constants `FEntity.UNKNOWN_UUID`, `FEntity.UNKNOWN_NAME`, `FEntity.UNKNOWN_TYPE` and the `FEntity.unknown()` factory
+
+<br></br>
+
+# FPlayer
+
+| Method | Returns | What it gives |
+|--------|---------|---------------|
+| `id()` | `Integer` | The database identifier |
+| `isConsole()` | `boolean` | The console marker |
+| `isIntegration()` | `boolean` | The marker of a sender from Discord, Telegram or Twitch |
+| `isOnline()` | `boolean` | Whether the player is on the server right now |
+| `ip()` | `String` | The connection address, can be `null` |
+| `constants()` | `List<Component>` | Prebuilt name parts that travel between servers |
+
+Useful constants
+
+| Constant | Value |
+|----------|-------|
+| `FPlayer.UNKNOWN` | The placeholder used when the real player is not known |
+| `FPlayer.UNKNOWN_ID` | `Integer.MIN_VALUE` |
+| `FPlayer.CONSOLE_ID` | `-1` |
+| `FPlayer.PLAYER_TYPE` | `PLAYER` |
+| `FPlayer.CONSOLE_TYPE` | `CONSOLE` |
+| `FPlayer.INTEGRATION_TYPE` | `INTEGRATION` |
+
+<Callout type="info" title="Information">
+
+    The `FPlayer.UNKNOWN` placeholder is there for the moment when the receiver is not known yet. This is how the default localization is taken, `module.localization(FPlayer.UNKNOWN)`
+
+</Callout>
+
+### Immutability
+
+`FPlayer` is immutable as well. The methods `withName()`, `withUuid()`, `withOnline()`, `withId()`, `withIp()` and `withConstants()` give a copy, and `toBuilder()` opens a prefilled builder
+
+```java
+FPlayer renamed = fPlayer.withName("NewName");
+```
+
+<Callout type="warn" title="Warning">
+
+    The changed copy lives only in your variable. To put it into the FlectonePulse cache, pass it to `fPlayerService.updateCache(fPlayer)`
+
+</Callout>
+
+<br></br>
+
+# FPlayerService
+
+<span>Package `net.flectone.pulse.service`</span>
+
+```java
+import net.flectone.pulse.service.FPlayerService;
+
+FPlayerService fPlayerService = flectonePulse.get(FPlayerService.class);
+```
+
+### Looking up a player
+
+| Method | What it looks up |
+|--------|------------------|
+| `getFPlayer(UUID)` | By account identifier |
+| `getFPlayer(String name)` | By nickname |
+| `getFPlayer(int id)` | By database identifier |
+| `getFPlayer(InetAddress)` | By connection address |
+| `getFPlayer(FEntity)` | Turns an entity into a player |
+| `getFPlayer(Object platformPlayer)` | From a platform object, for example `Player` in Bukkit |
+| `getConsole()` | Gives the console as an `FPlayer` |
+| `getRandomFPlayer()` | Gives a random player |
+
+```java
+Player bukkitPlayer = Bukkit.getPlayer("TheFaser");
+
+// Bukkit
+FPlayer fPlayer = fPlayerService.getFPlayer(bukkitPlayer);
+
+// or through UUID
+FPlayer byUuid = fPlayerService.getFPlayer(bukkitPlayer.getUniqueId());
+```
+
+<Callout type="error" title="Attention">
+
+    When the player is not found you get `FPlayer.UNKNOWN` back. Check the result through `fPlayer.isUnknown()` before you do anything with it
+
+</Callout>
+
+### Player lists
+
+| Method | What it gives |
+|--------|---------------|
+| `getOnlineFPlayers()` | Every player online |
+| `getPlatformFPlayers()` | Players the platform can see |
+| `getFPlayersWithConsole()` | Players online together with the console |
+| `findAllFPlayers()` | Every player from the database |
+| `getFPlayersByIp(String ip, int limit, int offset)` | Players from one address page by page |
+| `getTotalFPlayersCountByIp(String ip)` | The number of players from one address |
+
+### Cache and saving
+
+| Method | What it does |
+|--------|--------------|
+| `saveOrUpdate(UUID, String name, String ip, boolean online)` | Creates or updates a player in the database |
+| `addCache(FPlayer)` | Puts a player into the online cache |
+| `updateCache(FPlayer)` | Updates a player in the cache |
+| `clearAndSave(FPlayer)` | Marks a player offline and saves them to the database |
+| `invalidate(UUID)` | Drops the cache of one player |
+| `invalidateCache()` | Clears the whole cache |
+| `loadOnlineCache()` | Loads online players from the database |
+
+<Callout type="warn" title="Warning">
+
+    A full cache drop makes FlectonePulse reread the data of every player from the database. In ordinary code `invalidate(uuid)` for one player is enough
+
+</Callout>
+
+<br></br>
+
+# SocialService
+
+Holds chat settings, colors, ignores, mail and the vanish state
+
+```java
+import net.flectone.pulse.constant.SettingText;
+import net.flectone.pulse.service.SocialService;
+
+SocialService socialService = flectonePulse.get(SocialService.class);
+
+// the language of a player
+String locale = socialService.getSetting(fPlayer, SettingText.LOCALE);
+```
+
+### Settings
+
+| Method | What it does |
+|--------|--------------|
+| `getSetting(FPlayer, SettingText)` | Gives a text setting of a player |
+| `getSetting(FPlayer, ModuleName)` | Gives a setting bound to a module |
+| `isSetting(FPlayer, ModuleName)` | Checks whether a module setting is on |
+| `saveSetting(FPlayer, SettingText, String)` | Saves a text setting |
+| `saveSetting(FPlayer, String, boolean)` | Saves a toggle |
+| `loadSettings(FPlayer)` | Loads every setting of a player |
+| `updateLocale(FPlayer, String)` | Changes the language of a player |
+
+Available `SettingText` values
+
+| Constant | What it holds |
+|----------|---------------|
+| `LOCALE` | The chosen language |
+| `CHAT_NAME` | The active chat |
+| `NICKNAME` | The set nickname |
+| `WORLD_PREFIX` | The world prefix |
+| `STREAM_PREFIX` | The streamer prefix |
+| `SERVER` | The server in the proxy network |
+| `SPY_STATUS` | The spy mode state |
+| `VANISH_STATUS` | The vanish state |
+| `AFK_SUFFIX` | The AFK suffix |
+
+### Colors, ignores and mail
+
+| Method | What it does |
+|--------|--------------|
+| `loadColors(FPlayer)` | Gives the personal colors of a player |
+| `saveColors(FPlayer, FColor.Type, Set<FColor>)` | Saves the colors of a chosen type |
+| `isIgnored(FPlayer, FPlayer target)` | Checks whether one player ignores another |
+| `loadIgnores(FPlayer)` | Gives the ignore list |
+| `saveIgnore(FPlayer, FPlayer target)` | Adds a player to the ignore list |
+| `deleteIgnore(FPlayer, Ignore)` | Removes a player from the ignore list |
+| `getReceiverMails(FPlayer)` | Gives received mail |
+| `getSenderMails(FPlayer)` | Gives sent mail |
+| `saveMail(FPlayer, FPlayer target, String message)` | Sends a letter |
+| `deleteMail(Mail)` | Deletes a letter |
+
+### Vanish
+
+| Method | What it does |
+|--------|--------------|
+| `isVanished(FEntity)` | Checks whether an entity is hidden |
+| `isVanished(FEntity, boolean checkVanishIntegration)` | The same, but with third party vanish plugins in mind |
+| `canSeeVanished(FEntity target, FEntity viewer)` | Checks whether a viewer sees a hidden entity |
+
+```java
+// do not send a message about a hidden player
+if (socialService.isVanished(fPlayer)) return;
+```
+
+<br></br>
+
+# Playtime and skins
+
+`PlaytimeService` counts played time and AFK sessions
+
+| Method | What it does |
+|--------|--------------|
+| `getPlayTime(FPlayer)` | Gives playtime statistics, can return `null` |
+| `getAllPlayTimes(int limit, int offset)` | Gives the playtime top page by page |
+| `getPlayTimesCount()` | Gives the number of records |
+| `saveAfkSession(FPlayer, boolean afk)` | Marks entering or leaving AFK |
+
+`SkinService` gives links to the look of a player
+
+| Method | What it gives |
+|--------|---------------|
+| `getSkin(FEntity)` | The skin texture |
+| `getAvatarUrl(FEntity)` | A link to the avatar |
+| `getBodyUrl(FEntity)` | A link to the body image |
+
+<br></br>
+
+# Example
+
+```java
+import net.flectone.pulse.annotation.Pulse;
+import net.flectone.pulse.constant.SettingText;
+import net.flectone.pulse.listener.PulseListener;
+import net.flectone.pulse.model.entity.FPlayer;
+import net.flectone.pulse.model.event.player.PlayerLoadEvent;
+import net.flectone.pulse.service.SocialService;
+
+public class WelcomeListener implements PulseListener {
+
+    private final SocialService socialService;
+
+    public WelcomeListener(SocialService socialService) {
+        this.socialService = socialService;
+    }
+
+    @Pulse
+    public void onLoad(PlayerLoadEvent event) {
+        if (event.reload()) return;
+
+        FPlayer fPlayer = event.player();
+        if (fPlayer.isUnknown() || fPlayer.isConsole()) return;
+
+        String locale = socialService.getSetting(fPlayer, SettingText.LOCALE);
+        getLogger().info(fPlayer.name() + " joined with the language " + locale);
+    }
+
+}
+```
+
+<Callout type="idea" title="Note">
+
+    `FPlayer` describes both ordinary players and the console, so check `isConsole()` before you act. Database calls such as `findAllFPlayers()` belong in an async task of the [scheduler](/pulse/docs/api/services/)
+
+</Callout>

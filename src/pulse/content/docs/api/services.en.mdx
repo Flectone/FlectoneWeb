@@ -1,0 +1,350 @@
+---
+title: Component reference
+description: Every service, registry, adapter, the scheduler and the utilities of the FlectonePulse API and where they live
+tag: "api"
+icon: Boxes
+---
+Any component comes from the injector, building implementations by hand is not allowed
+
+```java
+FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
+
+FPlayerService fPlayerService = flectonePulse.get(FPlayerService.class);
+```
+
+Every component lives as a single instance, so a repeated `get()` gives the same object back
+
+<br></br>
+
+# Package map
+
+| Package | What is inside |
+|---------|----------------|
+| `net.flectone.pulse` | `FlectonePulse` and `FlectonePulseAPI` |
+| `net.flectone.pulse.annotation` | The `@Pulse` annotation |
+| `net.flectone.pulse.listener` | The `PulseListener` interface |
+| `net.flectone.pulse.dispatcher` | `EventDispatcher` and `MessageDispatcher` |
+| `net.flectone.pulse.model.event` | Every event and `EventMetadata` |
+| `net.flectone.pulse.model.entity` | `FEntity` and `FPlayer` |
+| `net.flectone.pulse.model.value` | `Range`, `Destination`, `Sound`, `Moderation`, `Cooldown`, `FColor` and other values |
+| `net.flectone.pulse.constant` | `ModuleName`, `MessageFlag`, `SettingText`, `HookType`, `PlatformType` |
+| `net.flectone.pulse.service` | The data services |
+| `net.flectone.pulse.platform.registry` | The registries of listeners, commands, permissions, caches and proxies |
+| `net.flectone.pulse.platform.controller` | Module and command control |
+| `net.flectone.pulse.platform.sender` | Ready senders and checks |
+| `net.flectone.pulse.platform.adapter` | Access to the platform |
+| `net.flectone.pulse.platform.formatter` | Formatting of time, links and punishments |
+| `net.flectone.pulse.pipeline` | `MessagePipeline` |
+| `net.flectone.pulse.checker` | Pinpoint checks |
+| `net.flectone.pulse.scheduler` | `TaskScheduler` |
+| `net.flectone.pulse.module` | The module interfaces |
+| `net.flectone.pulse.file` | `FileFacade` |
+| `net.flectone.pulse.logging` | `FLogger` |
+| `net.flectone.pulse.exception` | The exceptions |
+
+<br></br>
+
+# Services
+
+<span>Package `net.flectone.pulse.service`</span>
+
+| Service | What it is for |
+|---------|----------------|
+| `FPlayerService` | Player lookup, cache and saving, described on the [players](/pulse/docs/api/players/) page |
+| `SocialService` | Chat settings, colors, ignores, mail and vanish |
+| `ModerationService` | Bans, mutes, warns, kicks, whitelist and violations |
+| `PlaytimeService` | Played time and AFK sessions |
+| `SkinService` | Skins, avatars and body images |
+| `TranslationService` | Loading of the platform translations |
+| `MetricsService` | Collecting and sending statistics |
+
+### ModerationService
+
+One place for all the work with punishments
+
+```java
+import net.flectone.pulse.model.value.Moderation;
+import net.flectone.pulse.service.ModerationService;
+
+ModerationService moderationService = flectonePulse.get(ModerationService.class);
+
+// give an hour long mute
+moderationService.mute(fPlayer, System.currentTimeMillis() + 3_600_000L, "Spam", moderatorId);
+
+// check for an active ban
+boolean banned = moderationService.hasValid(fPlayer, Moderation.Type.BAN);
+
+// take an active punishment
+Optional<Moderation> mute = moderationService.getValid(fPlayer, Moderation.Type.MUTE);
+```
+
+| Method group | Examples |
+|--------------|----------|
+| Giving | `ban`, `mute`, `warn`, `kick`, `maintenance`, `whitelist`, `add` |
+| Checking | `hasValid`, `getValid`, `getValidNames`, `getTotalValidCount` |
+| Lifting | `remove` |
+| Violations | `addViolation`, `isViolationRestricted`, `getFirstViolationTimestamp` |
+| Limits | `isAllowedTime`, `hasHigherGroupThan` |
+| Cache | `invalidate` |
+
+The punishment types in `Moderation.Type` are `BAN`, `MUTE`, `WARN`, `KICK`, `WHITELIST`, `MAINTENANCE` and their paired liftings `UNBAN`, `UNMUTE`, `UNWARN`, `UNWHITELIST`, `UNMAINTENANCE`
+
+<br></br>
+
+# Registries
+
+<span>Package `net.flectone.pulse.platform.registry`</span>
+
+| Registry | What it is for |
+|----------|----------------|
+| `ListenerRegistry` | Registers listeners, described on the [events](/pulse/docs/api/events/) page |
+| `CommandRegistry` | Registers commands, described on the [modules](/pulse/docs/api/modules/) page |
+| `PermissionRegistry` | Registers permissions with the platform |
+| `ProxyRegistry` | Holds the network transports, described on the [proxy](/pulse/docs/api/proxy/) page |
+| `CacheRegistry` | Holds the internal caches of the project |
+
+<br></br>
+
+# Controllers
+
+<span>Package `net.flectone.pulse.platform.controller`</span>
+
+| Controller | What it is for |
+|------------|----------------|
+| `ModuleController` | Turns modules on and off and checks them |
+| `ModuleCommandController` | Registers module commands and translatable argument names |
+
+<br></br>
+
+# Senders
+
+<span>Package `net.flectone.pulse.platform.sender`</span>
+
+| Component | What it is for |
+|-----------|----------------|
+| `MessageSender` | Sends a ready component to a player or the console |
+| `ProxySender` | Sends data to other servers |
+| `SoundPlayer` | Plays a sound with a permission check |
+| `CooldownSender` | Checks the cooldown and writes to the player |
+| `MuteSender` | Checks the mute and writes to the player |
+| `DisableSender` | Checks a disabled module and writes to the player |
+| `IgnoreSender` | Checks the ignore and writes to the player |
+| `ModerationListSender` | Prints punishment lists |
+| `MetricsSender` | Sends statistics |
+
+<br></br>
+
+# Checks
+
+<span>Package `net.flectone.pulse.checker`</span>
+
+| Component | Method | What it checks |
+|-----------|--------|----------------|
+| `PermissionChecker` | `check(FEntity, String)` | Whether an entity holds a permission |
+| `CooldownChecker` | `check(UUID, Cooldown, String)` | Whether the cooldown ran out |
+| `MuteChecker` | `check(FPlayer)` | Whether a player is muted |
+| `ValidNameChecker` | `check(String)` | Whether a nickname is correct |
+
+<br></br>
+
+# Platform adapters
+
+<span>Package `net.flectone.pulse.platform.adapter`</span>
+
+They give the same access to server and player data on every platform
+
+### `PlatformPlayerAdapter`
+
+| Method | What it gives |
+|--------|---------------|
+| `getName(UUID)` | The nickname of a player |
+| `getPing(FPlayer)` | The latency |
+| `getWorldName(UUID)` | The world name |
+| `getWorldEnvironment(UUID)` | The world type |
+| `getLocale(UUID)` | The client language |
+| `getIp(UUID)` | The connection address |
+| `getGamemode(UUID)` | The gamemode |
+| `getCoordinates(UUID)` | The coordinates |
+| `distance(UUID, UUID)` | The distance between players |
+| `getStatistics(UUID)` | The statistics of a player |
+| `getPlayedTime(FPlayer)` | The played time |
+| `getOnlinePlayers()` | Every player online |
+| `findPlayersWhoCanSee(UUID, double, double, double)` | Those who can see a point |
+| `convertToPlatformPlayer(UUID)` | The platform object of a player |
+| `kick(FPlayer, Component)` | Disconnects a player |
+
+There are also state checks, `isOnline`, `isDead`, `isSneaking`, `isOperator`, `hasPlayedBefore` and `hasPotionEffect`
+
+### `PlatformServerAdapter`
+
+| Method | What it gives |
+|--------|---------------|
+| `getPlatformType()` | The current platform |
+| `getServerCore()` | The server core |
+| `getServerVersionName()` | The server version |
+| `getTPS(FEntity)` | The current TPS |
+| `getMaxPlayers()` | The player limit |
+| `getOnlinePlayerCount()` | The number of players online |
+| `isOnlineMode()` | Whether the license check is on |
+| `isPrimaryThread()` | Whether the code runs on the main thread |
+| `hasProject(String)` | Whether a named plugin or mod is installed |
+| `dispatchCommand(String)` | Runs a command as the console |
+| `getMOTD()` | The data for a status response |
+| `getIcon()` | The server icon |
+| `getItemName(Object)` | The name of an item |
+
+```java
+import net.flectone.pulse.platform.adapter.PlatformServerAdapter;
+
+PlatformServerAdapter serverAdapter = flectonePulse.get(PlatformServerAdapter.class);
+
+if (serverAdapter.hasProject("LuckPerms")) {
+    // LuckPerms is installed on the server
+}
+```
+
+<br></br>
+
+# Formatters
+
+<span>Package `net.flectone.pulse.platform.formatter`</span>
+
+| Component | What it is for |
+|-----------|----------------|
+| `TimeFormatter` | Formats a duration and a date in the language of a player |
+| `UrlFormatter` | Escapes and converts links |
+| `ModerationMessageFormatter` | Builds the texts of punishment messages |
+| `IntegrationFormatter` | Formats text for Discord, Telegram and Twitch |
+
+```java
+import net.flectone.pulse.platform.formatter.TimeFormatter;
+
+TimeFormatter timeFormatter = flectonePulse.get(TimeFormatter.class);
+
+String duration = timeFormatter.format(fPlayer, 3_600_000L);
+String date = timeFormatter.formatDate(System.currentTimeMillis());
+```
+
+<br></br>
+
+# Scheduler
+
+<span>Package `net.flectone.pulse.scheduler`</span>
+
+`TaskScheduler` works the same on every platform, Folia included. Time is set in ticks
+
+```java
+import net.flectone.pulse.scheduler.TaskScheduler;
+
+TaskScheduler taskScheduler = flectonePulse.get(TaskScheduler.class);
+
+// async right now
+taskScheduler.runAsync(() -> loadDataFromDatabase());
+
+// async in 5 seconds
+taskScheduler.runAsyncLater(() -> sendDelayedMessage(), 100L);
+
+// every 30 seconds
+taskScheduler.runAsyncTimer(() -> updateStatistics(), 600L);
+```
+
+| Method | What it does |
+|--------|--------------|
+| `runAsync(SchedulerRunnable)` | Runs a task async |
+| `runAsync(SchedulerRunnable, boolean independent)` | The same, but the `false` value runs it right away when the thread is already async |
+| `runAsyncLater(SchedulerRunnable, long delay)` | Runs async after a delay, 20 ticks by default |
+| `runAsyncTimer(SchedulerRunnable, long period)` | Runs async on a schedule |
+| `runSync(SchedulerRunnable)` | Runs a task sync |
+| `runSyncLater(SchedulerRunnable, long delay)` | Runs sync after a delay |
+| `getExecutorService()` | Gives the thread pool of the scheduler |
+
+Every method gives a `CompletableFuture<Void>`. For repeating tasks it never completes on its own, so cancel it once the task is no longer needed
+
+<Callout type="error" title="Attention">
+
+    Do not block the main thread. Put every database call and network request into `runAsync`, because event handlers run synchronously against the message pipeline
+
+</Callout>
+
+<br></br>
+
+# Configuration
+
+<span>Package `net.flectone.pulse.file`</span>
+
+`FileFacade` gives access to every settings file
+
+```java
+import net.flectone.pulse.file.FileFacade;
+
+FileFacade fileFacade = flectonePulse.get(FileFacade.class);
+
+// config.yml
+var config = fileFacade.config();
+// message.yml
+var message = fileFacade.message();
+// command.yml
+var command = fileFacade.command();
+// integration.yml
+var integration = fileFacade.integration();
+// permission.yml
+var permission = fileFacade.permission();
+// localizations/ru_ru.yml
+var localization = fileFacade.localization("ru_ru");
+```
+
+| Method | What it gives |
+|--------|---------------|
+| `config()`, `message()`, `command()`, `integration()`, `permission()` | The sections of their files |
+| `localization()` | The default localization |
+| `localization(String locale)` | The localization of one language |
+| `localizations()` | Every loaded localization |
+| `saveFiles()`, `updateFiles()` | Save and update the files |
+
+<Callout type="warn" title="Warning">
+
+    Treat the configuration as read only. Changing FlectonePulse settings from your own plugin is a bad idea
+
+</Callout>
+
+<br></br>
+
+# Logging
+
+<span>Package `net.flectone.pulse.logging`</span>
+
+`FLogger` can write colored text to the console
+
+```java
+import net.flectone.pulse.logging.FLogger;
+
+FLogger fLogger = flectonePulse.get(FLogger.class);
+
+fLogger.info("A message");
+fLogger.warning("A warning");
+
+if (FLogger.DEBUG_ENABLED) {
+    // debug mode is on through -Dflectonepulse.debug=true
+}
+```
+
+<br></br>
+
+# Utilities
+
+| Component | What it is for |
+|-----------|----------------|
+| `net.flectone.pulse.util.payload.ProxyPayload` | Reads the data of a proxy message |
+| `net.flectone.pulse.util.random.RandomGenerator` | Generates random values |
+| `net.flectone.pulse.util.WebUtil` | Makes HTTP requests |
+| `net.flectone.pulse.decorator.ComponentDecorator` | Safely adds tooltips and decorations to components |
+| `net.flectone.pulse.resolver.ReflectionResolver` | Works with platform classes through reflection |
+| `net.flectone.pulse.resolver.SystemVariableResolver` | Reads environment variables and system properties |
+| `net.flectone.pulse.resolver.ProfileResolver` | Fetches Mojang player profiles |
+| `net.flectone.pulse.resolver.LibraryResolver` | Downloads external libraries |
+
+<Callout type="idea" title="Note">
+
+    The artifact carries only interfaces, their implementations are closed and differ between platforms. Javadoc is published together with the artifact, so the description of any method shows up right in your IDE
+
+</Callout>
