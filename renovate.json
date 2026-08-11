@@ -4,7 +4,9 @@
   "labels": ["dependencies"],
   "semanticCommitType": "build",
   "commitMessagePrefix": "chore(deps): ",
-  "baseBranches": ["dev"],
+  "baseBranchPatterns": [
+    "dev"
+  ],
   "lockFileMaintenance": {
     "enabled": false
   }
