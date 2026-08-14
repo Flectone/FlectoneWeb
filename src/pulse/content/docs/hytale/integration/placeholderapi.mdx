@@ -30,14 +30,14 @@ tag: "hytale"
 | `%flectonepulse_fcolor_число%`              | Возвращает [кастомный цвет](/pulse/docs/message/format/fcolor/) игрока     |
 | `%flectonepulse_fcolor_out_число%`          | Возвращает [кастомный цвет OUT](/pulse/docs/message/format/fcolor/) игрока |
 | `%flectonepulse_fcolor_see_число%`          | Возвращает [кастомный цвет SEE](/pulse/docs/message/format/fcolor/) игрока |
-| `%flectonepulse_setting_название%`          | Возвращает значение конкретной настройки у игрока <br/><br/>Если `setting` является [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/core/src/main/java/net/flectone/pulse/util/constant/SettingText.java), то вернётся его значение. <br/>Иначе проверяется [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/api/src/main/java/net/flectone/pulse/constant/ModuleName.java), если включено то `yes`, иначе `no` <br/><br/>Например, `%flectonepulse_setting_afk_suffix%` вернёт АФК суффикс, а `%flectonepulse_setting_module_message_chat%` вернёт `yes`, если у игрока включен чат, и `no` если нет             |
+| `%flectonepulse_setting_название%`          | Возвращает значение конкретной настройки у игрока <br/><br/>Если `setting` является [SettingText](https://github.com/Flectone/FlectonePulse/blob/master/api/src/main/java/net/flectone/pulse/constant/SettingText.java), то вернётся его значение. <br/>Иначе проверяется [ModuleName](https://github.com/Flectone/FlectonePulse/blob/master/api/src/main/java/net/flectone/pulse/constant/ModuleName.java), если включено то `yes`, иначе `no` <br/><br/>Например, `%flectonepulse_setting_afk_suffix%` вернёт АФК суффикс, а `%flectonepulse_setting_module_message_chat%` вернёт `yes`, если у игрока включен чат, и `no` если нет             |
 
 <br></br>
 
 # <include>../../../../parts/words.mdx#setting</include>
 <span><include>../../../../parts/words.mdx#path</include> `integration.yml → placeholderapi`</span>
 
-<include>../../../../files/minecraft/integration.yml#placeholderapi</include>
+<include>../../../../files/hytale/integration.yml#placeholderapi</include>
 
 <include>../../../../parts/enable.mdx</include>
 
@@ -46,7 +46,7 @@ tag: "hytale"
 # <include>../../../../parts/words.mdx#permission</include>
 <span><include>../../../../parts/words.mdx#path</include> `permission.yml → integration.placeholderapi`</span>
 
-<include>../../../../files/minecraft/permission.yml#placeholderapi</include>
+<include>../../../../files/hytale/permission.yml#placeholderapi</include>
 
 <include>../../../../parts/permission/permissionTier3.mdx</include>
 

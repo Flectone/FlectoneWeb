@@ -3,7 +3,7 @@ title: International Formatting
 description: Integration with the ICU library (International Components for Unicode), which allows proper formatting of unsupported languages (e.g., Arabic)
 authors:
   - TheFaser
-tag: "minecraft"
+tag: "hytale"
 ---
 
 ![icu](/pulse/integration_icu.webp)
@@ -13,7 +13,7 @@ tag: "minecraft"
 # <include>../../../../parts/words.en.mdx#setting</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `integration.yml → icu`</span>
 
-<include>../../../../files/minecraft/integration.yml#icu</include>
+<include>../../../../files/hytale/integration.yml#icu</include>
 
 <include>../../../../parts/enable.en.mdx</include>
 
@@ -25,11 +25,11 @@ Universal text formatting
 
 Enables support for bidirectional text. This is necessary for the correct display of mixed text in right-to-left (Arabic, Hebrew) and left-to-right (Latin, Cyrillic) scripts
 
-### `arabic`
+### `arabic_shaping`
 
 Formatting for Arabic text
 
-#### `shaping`
+#### `enable`
 
 Converts logical Arabic characters into visual glyphs with proper letter connections (initial, medial, final, isolated forms)
 
@@ -89,6 +89,6 @@ Text normalization form
 # <include>../../../../parts/words.en.mdx#permission</include>
 <span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → integration.icu`</span>
 
-<include>../../../../files/minecraft/permission.yml#icu</include>
+<include>../../../../files/hytale/permission.yml#icu</include>
 
 <include>../../../../parts/permission/permissionTier3.en.mdx</include>

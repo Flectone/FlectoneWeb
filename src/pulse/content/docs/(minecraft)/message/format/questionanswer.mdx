@@ -7,6 +7,49 @@ tag: "minecraft"
 ---
 ![question](/pulse/message_format_questionanswer.webp)
 
+<Callout type="info" title="Информация">
+    Как сделать свой вопрос? Например ответ на вопрос про донат
+
+    <Steps>
+        <Step>
+            В `message.yml` добавь вопрос в `format.question_answer.questions`
+            ```yaml
+            questions:
+              donate:
+                range: "PLAYER"
+                destination:
+                  type: "CHAT"
+                cooldown:
+                  enable: false
+                sound:
+                  enable: false
+                target: "(?i)\\b(донат|привилегии|как купить)\\b"
+            ```
+        </Step>
+        <Step>
+            В `localizations → язык.yml` добавь ответ в `message.format.question_answer.questions`
+            ```yaml
+            questions:
+              donate: "<fcolor:2>[Вопрос-Ответ] @<player><fcolor:1>, привилегии можно купить на flectone.net"
+            ```
+        </Step>
+        <Step>
+            В `permission.yml` добавь право в `message.format.question_answer.questions`
+            ```yaml
+            questions:
+              donate:
+                name: "flectonepulse.module.message.format.questionanswer.donate"
+                type: "TRUE"
+            ```
+        </Step>
+        <Step>
+            Перезагрузи FlectonePulse с помощью `/flectonepulse reload`
+        </Step>
+    </Steps>
+
+    С `range: "PLAYER"` ответ увидит только тот, кто задал вопрос, а с `range: "SERVER"` его увидят все
+</Callout>
+
 <br></br>
 
 # <include>../../../../../parts/words.mdx#localization</include> 
@@ -24,7 +67,7 @@ tag: "minecraft"
 <br></br>
 
 # <include>../../../../../parts/words.mdx#setting</include>
-<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.questionanswer`</span>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.question_answer`</span>
 
 <include>../../../../../files/minecraft/message.yml#questionanswer</include>
 
@@ -32,7 +75,11 @@ tag: "minecraft"
 
 ### `questions`
 
-Список вопросов с их настройкой
+Список вопросов с их настройкой, где ключом является название вопроса. Названия могут быть любыми и их может быть сколько угодно, главное, чтобы для каждого была локализация
+
+#### `target`
+
+[Регулярное выражение](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) для поиска вопроса в сообщении игрока
 
 <include>../../../../../parts/range.mdx</include>
 
@@ -41,9 +88,6 @@ tag: "minecraft"
 <include>../../../../../parts/cooldown.mdx</include>
 
 <include>../../../../../parts/sound.mdx</include>
-### `target`
-
-[Регулярное выражение](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) для поиска вопроса
 
 <br></br>
 

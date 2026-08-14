@@ -56,6 +56,54 @@ tag: "minecraft"
 
 </Callout>
 
+<Callout type="info" title="Information">
+    How to make your own chat? For example an admin chat that is visible on all servers and is read only by admins
+
+    <Steps>
+        <Step>
+            In `message.yml` add a new chat to `chat.types`, here `!!` is what the message must start with
+            ```yaml
+            types:
+              admin:
+                enable: true
+                cancel: true
+                range: "PROXY"
+                priority: 10
+                trigger: "!!"
+                null_receiver:
+                  enable: false
+                destination:
+                  type: "CHAT"
+                cooldown:
+                  enable: false
+                sound:
+                  enable: false
+            ```
+        </Step>
+        <Step>
+            In `localizations → language.yml` add the format of this chat to `message.chat.types`
+            ```yaml
+            types:
+              admin: "<delete><color:#ff7171>[A] <display_name><fcolor:3>: <message>"
+            ```
+        </Step>
+        <Step>
+            In `permission.yml` add a permission to `message.chat.types`, otherwise the chat is available to everyone
+            ```yaml
+            types:
+              admin:
+                name: "flectonepulse.module.message.chat.admin"
+                type: "OP"
+            ```
+        </Step>
+        <Step>
+            Reload FlectonePulse with `/flectonepulse reload` and write `!!hello`
+        </Step>
+    </Steps>
+
+    The chat name is used in other places too, for example for sending to Discord it will be `MESSAGE_CHAT_ADMIN`
+</Callout>
+
 <br></br>
 
 # <include>../../../../parts/words.en.mdx#localization</include>

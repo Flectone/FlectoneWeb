@@ -3,7 +3,7 @@ title: Расширение
 description: Модуль, который добавляет отступы
 authors:
   - TheFaser
-tag: "minecraft"
+tag: "hytale"
 ---
 
 Использовать можно с помощью:
@@ -15,6 +15,35 @@ tag: "minecraft"
 
 
 Можно сделать собственный шаблон, указав `type` и `length`, а в файле локализации указать `symbol` т.е. символ, который будет использоваться для расширения, по умолчанию это пробел. Там также можно вписать `start` и `end` символы. Например `<padding:example_left_5>`
+
+<Callout type="info" title="Информация">
+    Как сделать свой шаблон? Например разделитель на всю строчку
+
+    <Steps>
+        <Step>
+            В `message.yml` добавь шаблон в `format.padding.values`
+            ```yaml
+            values:
+              line_50:
+                type: "LEFT"
+                length: 50
+            ```
+        </Step>
+        <Step>
+            В `localizations → язык.yml` добавь символы в `message.format.padding.values`
+            ```yaml
+            values:
+              line_50:
+                symbol: "─"
+                start: "<fcolor:1>"
+                end: ""
+            ```
+        </Step>
+        <Step>
+            Вставь `<padding:line_50>` в любое сообщение и перезагрузи FlectonePulse с помощью `/flectonepulse reload`
+        </Step>
+    </Steps>
+</Callout>
 
 <br></br>
 

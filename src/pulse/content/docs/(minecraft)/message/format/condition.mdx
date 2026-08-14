@@ -9,6 +9,43 @@ tag: "minecraft"
 
 ![condition](/pulse/message_format_condition.webp)
 
+<Callout type="info" title="Информация">
+    Как сделать своё условие? Например значок для тех, у кого есть право `server.donate`
+
+    <Steps>
+        <Step>
+            В `message.yml` добавь условие в `format.condition.values`
+            ```yaml
+            values:
+              is_donate:
+                value: "server.donate"
+                type: "PERMISSION"
+            ```
+        </Step>
+        <Step>
+            В `localizations → язык.yml` добавь значения в `message.format.condition.values`
+            ```yaml
+            values:
+              is_donate:
+                "true": "<color:#FFD700>★ "
+                "false": ""
+            ```
+        </Step>
+        <Step>
+            Вставь `<condition:is_donate>` в любое сообщение, например в формат имени в `message.format.names.display`
+            ```yaml
+            display:
+            - "<condition:is_donate><nickname>"
+            ```
+        </Step>
+        <Step>
+            Перезагрузи FlectonePulse с помощью `/flectonepulse reload`
+        </Step>
+    </Steps>
+
+    Для `type: "NUMBER"` значения указываются промежутками (`0`, `50`, `100`), а для `type: "STRING"` конкретным текстом в нижнем регистре
+</Callout>
+
 <br></br>
 
 # <include>../../../../../parts/words.mdx#localization</include>
@@ -50,7 +87,7 @@ tag: "minecraft"
 
 Тип условия
 
-| Type               | Explanation                                  |
+| Тип                | Объяснение                                   |
 |--------------------|----------------------------------------------|
 | `STRING`           | Строка, которая будет форматировариться и значение которой будет проверяться         |
 | `NUMBER`           | Число, которое будет форматироваться и парситься, значение которого проверяется в промежутке             |

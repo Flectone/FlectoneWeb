@@ -21,7 +21,13 @@ Link to the API for displaying the player's head. The final link will look like 
 
 ### `body_api_url`
 
-Link to the API for displaying the player's entire skin. The final link will look like this https://mc-heads.net/player/59c987a2-4ef3-48e5-a291-00abe9ca8f12/8.png
+Link to the API for displaying the player's entire skin. The final link will look like this https://mc-heads.net/player/59c987a2-4ef3-48e5-a291-00abe9ca8f12/16.png
+
+<Callout type="info" title="Information">
+    `<skin>` is replaced with the skin link from an integration (for example `SkinsRestorer`), and if there is none, with the player's `uuid`
+
+    `avatar_api_url` is used in the [greeting](/pulse/docs/message/greeting/) module, and `body_api_url` in the `<skin>` tag of the [replacement](/pulse/docs/message/format/replacement/) module
+</Callout>
 
 <br></br>
 

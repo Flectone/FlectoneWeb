@@ -33,17 +33,17 @@ FlectonePulse is a plugin for Minecraft and Hytale servers that allows full cust
 
 | File                | Documentation link                                                              | Explanation                                                                                                                                                                   |
 |---------------------|--------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `config.yml`        | [Configuration](/pulse/docs/config/)                                           | The main configuration of FlectonePulse, essential for proper operation. Here you set up the database, plugin language, proxy mode, etc.                                     |
-| `command.yml`       | [Commands](/pulse/docs/command/)                                               | Configuration of all **built-in** commands                                                                     |
-| `integration.yml`   | [Integrations](/pulse/docs/integration/)                                       | Configuration of interactions with external plugins and services.                                                                                                             |
-| `message.yml`       | [Messages](/pulse/docs/message/)                                               | Configuration of FlectonePulse messages (their trigger conditions and content).<br/> **Not to be confused with message formatting**, which is done in `/localizations/...` files. |
+| `config.yml`        | [Configuration](/pulse/docs/hytale/config/)                                           | The main configuration of FlectonePulse, essential for proper operation. Here you set up the database, plugin language, proxy mode, etc.                                     |
+| `command.yml`       | [Commands](/pulse/docs/hytale/command/)                                               | Configuration of all **built-in** commands                                                                     |
+| `integration.yml`   | [Integrations](/pulse/docs/hytale/integration/)                                       | Configuration of interactions with external plugins and services.                                                                                                             |
+| `message.yml`       | [Messages](/pulse/docs/hytale/message/)                                               | Configuration of FlectonePulse messages (their trigger conditions and content).<br/> **Not to be confused with message formatting**, which is done in `/localizations/...` files. |
 | `localizations/...` | Referenced in the documentation for each command and message section           | This folder contains configuration files for each player language ([see language](/pulse/docs/hytale/config/language/)). Here you configure the **format** of messages, i.e., the text.             |
 | `permission.yml`    | Referenced in the documentation for each command, message, and integration     | Permission configuration. By default, permissions are set so that most features are accessible to all players without additional setup.                                        |
 
 <br></br>
 
 # How to configure message formatting?
-FlectonePulse features a universal text formatting system that supports various color formats—from classic codes to modern gradients.
+FlectonePulse features a universal text formatting system that supports various color formats–from classic codes to modern gradients.
 
 <include>../../../parts/legacyColors.en.mdx</include>
 
@@ -69,6 +69,63 @@ If the `by_player` option is enabled in `config.yml`, the plugin automatically d
 
 # What integrations does FlectonePulse support?
 The plugin integrates with Discord, Telegram, and Twitch, allowing players to communicate across different platforms. Integration configuration is done in `integration.yml`. Details in the [integration documentation](/pulse/docs/hytale/integration/).
+
+<br></br>
+
+# Why do commands or messages not work for regular players?
+Most likely it is about permissions. All permissions are in `permission.yml`, each one has a `name` (the permission itself) and a `type` (who has it by default). To give a permission to a group, take the `name` of the permission from `permission.yml` and grant it to the players
+
+<br></br>
+
+# A message does not appear, what should I check?
+<Steps>
+    <Step>
+        Whether the module itself and its parent are enabled in `message.yml` or `command.yml` (`enable: true`)
+    </Step>
+    <Step>
+        Whether the player has the module's permission from `permission.yml`
+    </Step>
+    <Step>
+        Whether the `range` fits, for example with `range: 100` only nearby players see the message
+    </Step>
+    <Step>
+        Whether the line in the localization file is not empty, because an empty message is not sent
+    </Step>
+    <Step>
+        Reload the plugin with `/flectonepulse reload` and look at the console
+    </Step>
+</Steps>
+
+<br></br>
+
+# How to move all settings to another server?
+<Steps>
+    <Step>
+        On the first server write `/flectonepulse export`, this creates a `.zip` archive in the `FlectonePulse` folder
+    </Step>
+    <Step>
+        Move this archive to the `FlectonePulse` folder on the other server
+    </Step>
+    <Step>
+        Write `/flectonepulse import archive_name`, after which the plugin reloads with the new settings
+    </Step>
+</Steps>
+
+Details in the [command documentation](/pulse/docs/hytale/command/flectonepulse/)
+
+<br></br>
+
+# Can configs be edited outside of the files?
+Yes, there is a web editor for that. Put `host` and `port` into `command.yml`, then write `/flectonepulse editor` and open the returned link
+
+<br></br>
+
+# What happens to the configs when the plugin updates?
+FlectonePulse adds new settings and carries over old values itself, so there is no need to delete the configs. Before that, a copy of the old files and of the database is created in the `FlectonePulse/backups/old_version` folder
+
+<Callout type="warn" title="Warning">
+    Do not change `version` in `config.yml` manually, the plugin uses it to know which version to migrate the settings from
+</Callout>
 
 <br></br>
 

@@ -18,7 +18,7 @@ tag: "minecraft"
 
 ### `use_playtime_tracking`
 
-Whether to store the player's playtime in the database. If disabled, the `/online` and `/toponline` commands will not work
+Whether to store the player's playtime in the database. If disabled, the `/online` and `/toponline` commands will not work, the `newbie` module will not be able to detect a newcomer, and `join` will not know that the player has already been on the server
 
 ### `type`
 
@@ -39,6 +39,10 @@ Database name
 ### `host`
 
 Address of the server where the database is located
+
+<Callout type="info" title="Information">
+    `host`, `port`, `user`, `password` and `parameters` are only needed for server databases (`MySQL`, `MariaDB`, `PostgreSQL`). For `SQLite` and `H2` only `name` is used, because the database is created as a file in the `FlectonePulse` folder
+</Callout>
 
 ### `port`
 

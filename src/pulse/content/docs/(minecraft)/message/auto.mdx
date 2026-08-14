@@ -7,6 +7,49 @@ tag: "minecraft"
 ---
 ![auto](/pulse/message_auto.webp)
 
+<Callout type="info" title="Информация">
+    Как сделать своё автоматическое сообщение? Например напоминание про правила раз в 5 минут
+
+    <Steps>
+        <Step>
+            В `message.yml` добавь новый тип в `auto.types`, где `period` это `6000` тиков т.е. 5 минут
+            ```yaml
+            types:
+              rules:
+                random: false
+                destination:
+                  type: "CHAT"
+                ticker:
+                  enable: true
+                  period: 6000
+                sound:
+                  enable: false
+            ```
+        </Step>
+        <Step>
+            В `localizations → язык.yml` добавь список сообщений в `message.auto.types`. Они будут показываться по очереди, а с `random: true` в случайном порядке
+            ```yaml
+            types:
+              rules:
+              - "<fcolor:1>◇ Не ругайся в чате"
+              - "<fcolor:1>◇ Не проси у админов вещи"
+            ```
+        </Step>
+        <Step>
+            В `permission.yml` добавь право на звук в `message.auto.types`
+            ```yaml
+            types:
+              rules:
+                name: "flectonepulse.module.message.auto.sound"
+                type: "TRUE"
+            ```
+        </Step>
+        <Step>
+            Перезагрузи FlectonePulse с помощью `/flectonepulse reload`
+        </Step>
+    </Steps>
+</Callout>
+
 <br></br>
 
 # <include>../../../../parts/words.mdx#localization</include>

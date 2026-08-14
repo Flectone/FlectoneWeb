@@ -3,11 +3,48 @@ title: Условие
 description: Тег condition используется для отображения текста по определённому условию
 authors:
   - TheFaser
-tag: "minecraft"
+tag: "hytale"
 ---
 Использование: `<condition:название>`
 
 ![condition](/pulse/hytale/message_format_condition.webp)
+
+<Callout type="info" title="Информация">
+    Как сделать своё условие? Например значок для тех, у кого есть право `server.donate`
+
+    <Steps>
+        <Step>
+            В `message.yml` добавь условие в `format.condition.values`
+            ```yaml
+            values:
+              is_donate:
+                value: "server.donate"
+                type: "PERMISSION"
+            ```
+        </Step>
+        <Step>
+            В `localizations → язык.yml` добавь значения в `message.format.condition.values`
+            ```yaml
+            values:
+              is_donate:
+                "true": "<color:#FFD700>★ "
+                "false": ""
+            ```
+        </Step>
+        <Step>
+            Вставь `<condition:is_donate>` в любое сообщение, например в формат имени в `message.format.names.display`
+            ```yaml
+            display:
+            - "<condition:is_donate><nickname>"
+            ```
+        </Step>
+        <Step>
+            Перезагрузи FlectonePulse с помощью `/flectonepulse reload`
+        </Step>
+    </Steps>
+
+    Для `type: "NUMBER"` значения указываются промежутками (`0`, `50`, `100`), а для `type: "STRING"` конкретным текстом в нижнем регистре
+</Callout>
 
 <br></br>
 
@@ -15,8 +52,8 @@ tag: "minecraft"
 <span><include>../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.condition`</span>
 
 <Tabs items={['ru_ru', 'en_us']}>
-    <Tab value="ru_ru"><include>../../../../../files/minecraft/localizations/ru_ru.yml#condition</include></Tab>
-    <Tab value="en_us"><include>../../../../../files/minecraft/localizations/en_us.yml#condition</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../files/hytale/localizations/ru_ru.yml#condition</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/hytale/localizations/en_us.yml#condition</include></Tab>
 </Tabs>
 
 ### `values`
@@ -34,7 +71,7 @@ tag: "minecraft"
 # <include>../../../../../parts/words.mdx#setting</include>
 <span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.condition`</span>
 
-<include>../../../../../files/minecraft/message.yml#condition</include>
+<include>../../../../../files/hytale/message.yml#condition</include>
 
 <include>../../../../../parts/enable.mdx</include>
 
@@ -50,7 +87,7 @@ tag: "minecraft"
 
 Тип условия
 
-| Type               | Explanation                                  |
+| Тип                | Объяснение                                   |
 |--------------------|----------------------------------------------|
 | `STRING`           | Строка, которая будет форматировариться и значение которой будет проверяться         |
 | `NUMBER`           | Число, которое будет форматироваться и парситься, значение которого проверяется в промежутке             |
@@ -61,7 +98,7 @@ tag: "minecraft"
 # <include>../../../../../parts/words.mdx#permission</include>
 <span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.condition`</span>
 
-<include>../../../../../files/minecraft/permission.yml#condition</include>
+<include>../../../../../files/hytale/permission.yml#condition</include>
 
 <include>../../../../../parts/permission/permissionTier3.mdx</include>
 

@@ -64,7 +64,11 @@ Enables communication with `Velocity`.
 
 Used for communication between different servers. For `user` and `password`, you can use environment variables, such as `${VALUE}`.
 
-| Поле       | Объяснение                                                   |
+<Callout type="warn" title="Warning">
+    As with `bungeecord`/`velocity`, the selected database must be a server one (`MySQL`, `MariaDB` or `PostgreSQL`). With `SQLite` and `H2` every server writes to its own file, so a warning will appear in the console
+</Callout>
+
+| Field      | Explanation                                                  |
 |------------|--------------------------------------------------------------|
 | `enable`   | Enables `Redis` operation                                    |
 | `host`     | The host (IP) of the server where `Redis` is running         |

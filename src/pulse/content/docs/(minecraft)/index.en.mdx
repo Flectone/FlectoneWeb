@@ -10,7 +10,23 @@ tag: "minecraft"
 <br></br>
 
 # What is FlectonePulse and what is it for?
-FlectonePulse is a Minecraft server plugin that allows full customization of messages, chat, commands, and integrations. It supports all popular platforms (Bukkit, Spigot, Paper, Purpur, Folia, BungeeCord, Velocity, and even Fabric) and provides a flexible text formatting system, automatic player language detection, and integrations with Discord, Telegram, and Twitch. FlectonePulse works on all versions from 1.8.8 to the very latest.
+FlectonePulse is a Minecraft server plugin that allows full customization of messages, chat, commands, and integrations. It provides a flexible text formatting system, automatic player language detection, and integrations with Discord, Telegram, and Twitch
+
+| Platform                                     | Versions                      |
+|----------------------------------------------|-------------------------------|
+| Bukkit / Spigot / Paper / Purpur / Folia     | 1.8.8 up to the latest        |
+| Fabric                                       | Latest Minecraft version      |
+| NeoForge                                     | Latest Minecraft version      |
+| BungeeCord / Waterfall                       | Latest version                |
+| Velocity                                     | Latest version                |
+
+<Callout type="warn" title="Warning">
+    Java 17 or higher is required. Older Minecraft versions, such as 1.8.8, can also run on Java 17 (check [PandaSpigot](https://github.com/hpfxd/pandaspigot))
+</Callout>
+
+<Callout type="info" title="Information">
+    There is also a version for [Hytale](/pulse/docs/hytale/), it has its own documentation because some modules work differently there
+</Callout>
 
 <br></br>
 
@@ -32,13 +48,13 @@ FlectonePulse is a Minecraft server plugin that allows full customization of mes
     </Step>
 </Steps>
 
-- ### Fabric
+- ### Fabric and NeoForge
 <Steps>
     <Step>
         Download the mod from [Modrinth](https://modrinth.com/plugin/flectonepulse)
     </Step>
     <Step>
-        Place the mod file into your server's `mods` folder, and also install `PacketEvents` and `Fabric-API`
+        Place the mod file into your server's `mods` folder, and also install `PacketEvents` (for Fabric you also need `Fabric-API`)
     </Step>
     <Step>
         Restart the server
@@ -60,11 +76,11 @@ FlectonePulse is a Minecraft server plugin that allows full customization of mes
 <br></br>
 
 # How to configure message formatting?
-FlectonePulse features a universal text formatting system supporting various color formats — from classic codes to modern gradients.
+FlectonePulse has a universal text formatting system that supports different color formats – from classic codes to modern gradients.
 
 <include>../../../parts/legacyColors.en.mdx</include>
 
-*For flexibility, you can use `&` or `§` as interchangeable symbols.*
+*For flexibility, you can use `&` or `§` interchangeably.*
 
 ```yaml
 welcome-message: "<gradient:#FF0000:#00FF00>&lHello</gradient> <rainbow><player></rainbow>!"
@@ -74,8 +90,12 @@ welcome-message: "<gradient:#FF0000:#00FF00>&lHello</gradient> <rainbow><player>
 
 <br></br>
 
-# Can I disable certain plugin features?
-Yes, FlectonePulse uses a modular system. Any feature (commands, messages, or integrations) can be disabled in the `command.yml`, `message.yml`, or `integration.yml` files respectively. After making changes, restart the plugin with the `/flectonepulse reload` command.
+# Can certain plugin features be disabled?
+Yes, FlectonePulse uses a modular system. Any feature (commands, messages, or integrations) can be disabled in `command.yml`, `message.yml`, or `integration.yml` respectively. After making changes, reload the plugin with `/flectonepulse reload`.
+
+<Callout type="info" title="Information">
+    Every module depends on the parent above it. If `message.enable` is disabled, all messages inside are disabled too, even if they have `enable: true`. More details in the [configuration](/pulse/docs/config/internal/)
+</Callout>
 
 <br></br>
 
@@ -84,32 +104,131 @@ If the `by_player` option is enabled in `config.yml`, the plugin automatically d
 
 <br></br>
 
-# Which integrations does FlectonePulse support?
-The plugin integrates with Discord, Telegram, and Twitch, allowing players to communicate across different platforms. Third-party Minecraft plugins are also supported, for example, to prevent muted players from speaking in PlasmoVoice and SimpleVoice. Integrations are configured in the `integration.yml` file. Details in the [integration documentation](/pulse/docs/integration/).
+# What integrations does FlectonePulse support?
+The plugin integrates with Discord, Telegram, and Twitch, allowing players to communicate across platforms. Third-party Minecraft plugins are supported too, for example `LuckPerms` and `Vault` for permissions and groups, `PlaceholderAPI` and `MiniPlaceholders` for placeholders, `SkinsRestorer` for skins, `PlasmoVoice` and `SimpleVoice` to stop muted players from talking, `LiteBans`, `LibertyBans`, `AdvancedBan` and `CMI` for moderation. Integrations are configured in `integration.yml`. Details in the [integrations documentation](/pulse/docs/integration/).
 
 <br></br>
 
-# How to use the `/chatsetting` command?
-Type the `/chatsetting` command in chat to configure chat and related features (e.g., color, style, notifications).
+# Why do commands or messages not work for regular players?
+Most likely it is about permissions. All permissions are in `permission.yml`, each one has a `name` (the permission itself) and a `type` (who has it by default).
 
-![commandchatsetting](/pulse/command_chatsetting.webp)
+<Callout type="warn" title="Warning">
+    If `LuckPerms` has the `* false` rule (all permissions are disabled and given manually), permissions with `type: "TRUE"` stop working too. There is the [`always_have_true`](/pulse/docs/integration/luckperms/) setting in `integration.yml` for this
+</Callout>
+
+To give a permission to a specific group, take the `name` of the permission from `permission.yml` and grant it, for example `/lp group default permission set flectonepulse.module.command.me true`
+
+<br></br>
+
+# A message does not appear, what should I check?
+<Steps>
+    <Step>
+        Whether the module itself and its parent are enabled in `message.yml` or `command.yml` (`enable: true`)
+    </Step>
+    <Step>
+        Whether the player has the module's permission from `permission.yml`
+    </Step>
+    <Step>
+        Whether the `range` fits, for example with `range: 100` only nearby players see the message
+    </Step>
+    <Step>
+        Whether the line in the localization file is not empty, because an empty message is not sent
+    </Step>
+    <Step>
+        Reload the plugin with `/flectonepulse reload` and look at the console
+    </Step>
+</Steps>
+
+<br></br>
+
+# How to send messages from Minecraft to Discord or Telegram?
+Put the bot token into `integration.yml`, enable the integration and add the message type to `message_channel`, where the value is the channel ID
+
+```yaml
+message_channel:
+  MESSAGE_CHAT_GLOBAL:
+    - "123456"
+  COMMAND_BAN:
+    - "123456"
+```
+
+Message type names match module names, for example `COMMAND_BAN` or `MESSAGE_CHAT_GLOBAL`. For your own chat named `admin` it will be `MESSAGE_CHAT_ADMIN`
+
+<Callout type="info" title="Information">
+    The Telegram channel ID can be found with the `!id` command right in the chat if the bot is added there. Details in the [Discord](/pulse/docs/integration/discord/), [Telegram](/pulse/docs/integration/telegram/) and [Twitch](/pulse/docs/integration/twitch/) documentation
+</Callout>
+
+<br></br>
+
+# Why are heads, sprites and textures not displayed in chat?
+The [object](/pulse/docs/message/format/object/) module only works for players on version `1.21.9` and above. Everyone else sees the plain symbol from `default_symbol` instead of a head or an icon
+
+<br></br>
+
+# Why are chat messages duplicated?
+Most often it is another plugin that also sends the message. Check `cancel` of the chat in `message.yml` – with `cancel: false` FlectonePulse does not cancel the event, so the message can be sent by the server and by another plugin.
+
+Duplication also happens with plugins that modify chat packets (for example `InteractiveChat`) or with `DiscordSRV` if it has its own Webhook messages enabled. Details in the [chat](/pulse/docs/message/chat/#mode)
+
+<br></br>
+
+# How to move all settings to another server?
+There are ready commands for this
+<Steps>
+    <Step>
+        On the first server write `/flectonepulse export`, this creates a `.zip` archive in the `FlectonePulse` folder
+    </Step>
+    <Step>
+        Move this archive to the `FlectonePulse` folder on the other server
+    </Step>
+    <Step>
+        Write `/flectonepulse import archive_name`, after which the plugin reloads with the new settings
+    </Step>
+</Steps>
+
+Details in the [command documentation](/pulse/docs/command/flectonepulse/)
+
+<br></br>
+
+# Can configs be edited outside of the files?
+Yes, there is a web editor for that. Put `host` and `port` into `command.yml`, then write `/flectonepulse editor` and open the returned link
+
+![editor](/pulse/command_flectonepulse_editor.webp)
+
+<br></br>
+
+# What happens to the configs when the plugin updates?
+FlectonePulse adds new settings and carries over old values itself, so there is no need to delete the configs. Before that, a copy of the old files and of the database is created in the `FlectonePulse/backups/old_version` folder
+
+<Callout type="warn" title="Warning">
+    Do not change `version` in `config.yml` manually, the plugin uses it to know which version to migrate the settings from
+</Callout>
 
 <br></br>
 
 # Does FlectonePulse support PlaceholderAPI?
 Yes, FlectonePulse is fully compatible with PlaceholderAPI and MiniPlaceholders. Use placeholders in messages.
 
+FlectonePulse adds its own placeholders too, for example `%flectonepulse_ping%` or `%flectonepulse_online_total_formatted%`. The full list is in the [PlaceholderAPI](/pulse/docs/integration/placeholderapi/) and [MiniPlaceholders](/pulse/docs/integration/miniplaceholders/) documentation
+
+<br></br>
+
+# How to use the `/chatsetting` command?
+Type `/chatsetting` in chat to configure the chat and related features (for example color, style, notifications).
+
+![commandchatsetting](/pulse/command_chatsetting.webp)
+
 <br></br>
 
 # How to use the `/symbol` command?
-Type the `/symbol` command in chat to search for and use Unicode emojis.
+Type `/symbol` in chat to search for and use Unicode emojis.
 
 ![commandsymbol](/pulse/command_symbol.webp)
 
 <br></br>
 
 # Is there support for chat mini-games?
-Yes, players can use built-in mini-games such as Tic-Tac-Toe or Rock-Paper-Scissors.
+Yes, players can use built-in mini-games such as tic-tac-toe or rock-paper-scissors.
 
 ![commandtictactoe](/pulse/command_tictactoe.webp)
 ![commandrockpaperscissors](/pulse/command_rockpaperscissors.webp)
@@ -117,46 +236,46 @@ Yes, players can use built-in mini-games such as Tic-Tac-Toe or Rock-Paper-Sciss
 <br></br>
 
 # How is FlectonePulse different from FlectoneChat?
-FlectonePulse is a new project, not an improved version of FlectoneChat. FlectoneChat was an experiment, and FlectonePulse was created considering past mistakes, offering more features and customization.
+FlectonePulse is a new project, not an improved version of FlectoneChat. FlectoneChat was an experiment, while FlectonePulse was created with past mistakes in mind, offering more features and customization.
 
 <br></br>
 
-# How to enable name display above the player?
-Enable the `name_visible` setting in the `message.yml` file:
+# How to enable the name display above a player?
+Enable the `name_visible` setting in `message.yml`:
 
 <include>../../../files/minecraft/message.yml#scoreboard</include>
 
-After changing, run the `/flectonepulse reload` command. Details in the [configuration documentation](/pulse/docs/message/scoreboard/).
+After the change, run `/flectonepulse reload`. Details in the [settings documentation](/pulse/docs/message/scoreboard/).
 
 <br></br>
 
-# How to configure the player's name display?
-Player name configuration (`display`) is done in the `localizations/...` file:
+# How to configure the player name display?
+The player name (`display`) is configured in the `localizations/...` file:
 
 <Tabs items={['en_us', 'ru_ru']}>
-    <Tab value="en_us"><include>../../../files/minecraft/localizations/en_us.yml#names</include></Tab>
-    <Tab value="ru_ru"><include>../../../files/minecraft/localizations/ru_ru.yml#names</include></Tab>
+  <Tab value="en_us"><include>../../../files/minecraft/localizations/en_us.yml#names</include></Tab>
+  <Tab value="ru_ru"><include>../../../files/minecraft/localizations/ru_ru.yml#names</include></Tab>
 </Tabs>
 
-After changes, run `/flectonepulse reload`. Details in the [localization documentation](/pulse/docs/message/format/names/).
+After the changes, run `/flectonepulse reload`. Details in the [localization documentation](/pulse/docs/message/format/names/).
 
 <br></br>
 
 # How to configure colors in messages and the interface?
-Colors are configured in the `message.yml` file using the `fcolor` module:
+Colors are configured in `message.yml` with the `fcolor` module:
 
 <include>../../../files/minecraft/message.yml#fcolor</include>
 
-This sets the default colors if the player hasn't chosen their own in `/chatsetting` or `/chatcolor`. You can prohibit changing colors in the respective commands. Details in the [formatting guide](/pulse/docs/message/format/fcolor/).
+Here the default colors are set, used if the player has not chosen their own in `/chatsetting` or `/chatcolor`. You can also forbid changing colors in those commands. Details in the [formatting guide](/pulse/docs/message/format/fcolor/).
 
 <Callout type="idea" title="Note">
-    It's easier to change 4 colors here than to replace `<fcolor:...>` in all plugin settings.
+It is easier to change 4 colors here than to replace `<fcolor:...>` everywhere in the plugin settings.
 </Callout>
 
 <br></br>
 
 # How to configure the TAB (player list)?
-To enable/disable TAB modules, configure the `message.yml` file:
+To enable/disable TAB modules, configure `message.yml`:
 
 ```yaml
 tab:
@@ -169,13 +288,13 @@ tab:
     enable: true
 ```
 
-To change messages, edit the localization file `localizations/...`:
+To change the messages, edit the `localizations/...` file:
 
 ```yaml
 tab:
   header:
     lists:
-     - - " "
+    - - " "
       - "<fcolor:1>👾"
       - " "
     - - " "
@@ -194,25 +313,32 @@ tab:
 ```
 
 <Callout type="warn" title="Warning">
-    To sort the TAB by donation groups, enable [`tab_sort`](/pulse/docs/integration/luckperms/#tab-sort).
+To sort the TAB by donation groups, enable [`tab_sort`](/pulse/docs/integration/luckperms/#tab-sort).
 </Callout>
 
-After changes, run `/flectonepulse reload`. Details in the [TAB documentation](/pulse/docs/message/tab/).
+After the changes, run `/flectonepulse reload`. Details in the [TAB documentation](/pulse/docs/message/tab/).
 
 <br></br>
 
 # What to do if errors occur?
 <Steps>
     <Step>
-        Check the server console for errors and send them to the [Discord community](https://discord.com/channels/861147957365964810/1271850075064369152) for help.
+        Check the server console for errors
     </Step>
     <Step>
-        Ensure you are using the latest version of the plugin.
+        Make sure you are using the latest version of the plugin
     </Step>
     <Step>
-        Check the documentation or get personal technical support for boosters on [Boosty](https://boosty.to/thefaser).
+        Write `/flectonepulse dump`, this command collects information about the server and the plugin and returns a link, which is convenient to send to support
+    </Step>
+    <Step>
+        Send the error and the link to the [Discord community](https://discord.com/channels/861147957365964810/1271850075064369152) or get personal technical support for boosters on [Boosty](https://boosty.to/thefaser)
     </Step>
 </Steps>
+
+<Callout type="info" title="Information">
+    If the server does not start and the log is cut off, run it with the `-Dflectonepulse.debug=true` flag, then there will be more information in the console
+</Callout>
 
 <br></br>
 
@@ -222,38 +348,43 @@ Join the [Discord community](https://discord.flectone.net/) for support and sugg
 <br></br>
 
 # When will a new version of FlectonePulse with support for the latest Minecraft version be released?
-Most likely, FlectonePulse already supports the latest Minecraft version. Experimental versions are available for download on [GitHub](https://github.com/Flectone/FlectonePulse/actions/) or in the [Discord channel for testers](https://discord.com/channels/861147957365964810/1357058707011272926). If a Minecraft version is already out but the FlectonePulse update is missing, it is due to waiting for the release of PacketEvents — the core library used by FlectonePulse to interact with the server. Once PacketEvents is released, FlectonePulse will be updated.
+Most likely FlectonePulse already supports the newest Minecraft version. Experimental builds are available on [GitHub](https://github.com/Flectone/FlectonePulse/actions/) or in the [Discord channel for testers](https://discord.com/channels/861147957365964810/1357058707011272926). If a Minecraft version is already out but the FlectonePulse update is missing, it is because of waiting for the PacketEvents release – the main library FlectonePulse uses to work with the server. As soon as PacketEvents is released, FlectonePulse will be updated.
 
 <Callout type="warn" title="Warning">
-    Use test versions at your own risk. These versions are often not designed for production use; they might be broken or break your previous FlectonePulse version.
+Use test builds at your own risk. These builds are usually not made for production, they can be broken or break your previous FlectonePulse version
 </Callout>
 
 <br></br>
 
-# Does FlectonePulse work with proxies and how to configure it?
-FlectonePulse supports proxy servers, including BungeeCord and Velocity. To use the plugin, you must install the same plugin file on both the proxy and the server. No configuration files are created on the proxy — it acts as a bridge. All settings are performed in the files on the servers. For correct operation, a connection to a MySQL database is required, which must be configured in the `config.yml` file on the servers. You also need to enable one of the modes `velocity` or `bungeecord`, details in the [configuration documentation](/pulse/docs/config/proxy/).
-
-<br></br>
-
-# Does FlectonePulse support cores that run mods and plugins simultaneously, such as Arclight or Mohist, and does it work on Fabric?
-
-FlectonePulse has not been tested on cores that support both mods and plugins (e.g., Arclight or Mohist), and support for them is not intended. The main issue lies with the Libby library used for loading dependencies, which does not work on such cores. Theoretically, you could build FlectonePulse with all necessary dependencies to run on these cores, but there is no guarantee that PacketEvents will work correctly. FlectonePulse works on Fabric, but only on the very latest version of Minecraft due to the complexity of multi-version support.
-<Callout type="info" title="Information">
-    The main issue has been fixed in recent Mohist versions, so FlectonePulse works there without major problems
-</Callout>
-
-<br></br>
-
-# Is your plugin that uses chat incompatible with FlectonePulse?
-
-By default, `FlectonePulse` has the setting `mode: "PACKET"` for [chats](/pulse/docs/message/chat/#mode). This prevents your plugin from working correctly.
+# Does FlectonePulse work with a proxy and how to set it up?
+FlectonePulse supports proxy servers, including BungeeCord and Velocity. The same plugin file must be installed both on the proxy and on the servers. Configuration files are not created on the proxy – it acts as a bridge. All settings are made in the files on the servers. A server database (`MySQL`, `MariaDB` or `PostgreSQL`) is required and must be configured in `config.yml` on the servers. You also need to enable either the `velocity` or the `bungeecord` mode, details in the [configuration documentation](/pulse/docs/config/proxy/).
 
 <Callout type="info" title="Information">
-    This can be changed to `mode: "BUKKIT"` so that other plugins can work with chat. In rare cases, you can use `mode: "PAPER"` if your plugin uses `Paper` listeners.
+    Instead of `BungeeCord` and `Velocity`, `Redis` can be used to link the servers, then the servers do not even need a shared proxy
 </Callout>
+
+<br></br>
+
+# Does FlectonePulse support cores that run both mods and plugins, such as Arclight or Mohist?
+
+FlectonePulse has not been tested on cores that support both mods and plugins (such as Arclight or Mohist), and it is not intended to support them, but it may work. The main issue is the PacketEvents library, as with Fabirc/NeoForge, where some mods may create their own protocols or modify existing ones, causing players to crash
+
+The separate `Fabric` and `NeoForge` builds only work on the very latest Minecraft version because of how hard multi-version support is
+
+<br></br>
+
+# My plugin that uses chat is incompatible with FlectonePulse?
+
+By default `FlectonePulse` uses `mode: "BUKKIT"` for [chats](/pulse/docs/message/chat/#mode), with it other plugins also see chat messages
+
+<Callout type="info" title="Information">
+    In rare cases, if your plugin uses `Paper` listeners, you need to set `mode: "PAPER"`. And `mode: "PACKET"` on the contrary takes the chat over completely through `PacketEvents`, with it other plugins do not see the messages
+</Callout>
+
+If the plugin still conflicts, try changing the chat `priority`, for example to `HIGHEST`, so that FlectonePulse modifies the message last
 
 {/* <div align="center">
-<h3>🚀 Start using FlectonePulse today!</h3>
+  <h3>🚀 Start using FlectonePulse today!</h3>
   <br/>
   <a href="https://modrinth.com/plugin/flectonepulse"><img src="https://flectone.net/assets/badges/modrinth.webp" alt="modrinth" className="hover-brightness"/></a>
   <a href="https://discord.flectone.net/"><img src="https://flectone.net/assets/badges/discord.webp" alt="discord" className="hover-brightness"/></a>
