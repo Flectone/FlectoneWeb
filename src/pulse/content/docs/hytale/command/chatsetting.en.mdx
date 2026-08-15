@@ -186,8 +186,7 @@ Title for the main GUI
 | View             | Description                                                                                                                                                                                                                                |
 |------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | for `CHAT`       | The `name` field is the title, and `material` is the item type that will be in the inventory for this chat                                                                                                                                 |
-| for `SEE` and `OUT` | The `name` field is the title, and `material` is the item type that will be in the inventory for this chat. It also has `colors`, where the key is a number and the value is the color to be applied. Use `""` to keep the color unchanged |
-
+| for `SEE` and `OUT` | The `name` field is the title, and `material` is the item type that will be in the inventory for this chat. It also has `colors`, where the key is a number and the value is the color that will be applied. The value `"null"` is used so that the color doesn't change, and an empty value `""` will replace that color with the default color from the message.yml of fcolor module |
 
 <include>../../../../parts/cooldown.en.mdx</include>
 
