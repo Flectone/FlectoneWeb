@@ -48,7 +48,7 @@ Flectone Web is a high-performance web solution for **Flectone Network**. It uti
 | Category       | Technologies                                                                 |
 |----------------|------------------------------------------------|
 | **Core**       | ![Next.js](https://img.shields.io/badge/Next.js-000000?logo=next.js&logoColor=white) ![React](https://img.shields.io/badge/React-61DAFB?logo=react&logoColor=black) |
-| **Styling**    | ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white) |
+| **Styling**    | ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?logo=tailwind-css&logoColor=white) ![shadcn/ui](https://img.shields.io/badge/shadcn/ui-000000?logo=shadcnui&logoColor=white) |
 | **Language**   | ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white) |
 | **Docs**       | ![Fumadocs](https://img.shields.io/badge/Fumadocs-blue?style=flat) |
 
