@@ -257,6 +257,7 @@
       "Features": {
         "title": "What <b>FlectonePulse</b> can do",
         "description": "Main plugin features — scroll through and check the documentation for any of them",
+        "button": "Go to documentation",
         "more": "Learn more",
         "Format": {
           "title": "Text formatting",
@@ -329,6 +330,14 @@
         "latestrelease": "Latest release",
         "devbuilds": "Snapshot versions",
         "download": "Download"
+      },
+      "Metrics": {
+        "title": "Servers <b>right now</b>",
+        "description": "How many servers and players are using FlectonePulse",
+        "button": "Go to analytic",
+        "serverCount": "Servers",
+        "playerCount": "Players",
+        "activity": "Activity"
       }
     },
     "Docs": {
@@ -344,13 +353,11 @@
         "text": "You can disable the collection of this data on your server at any time <a>here</a>"
       },
       "labels": {
-        "serverCount": "Server count",
-        "playerCount": "Player count",
         "servers": "Servers",
         "players": "Players"
       },
       "items": {
-        "serverCount": "Server count",
+        "activity": "Activity",
         "serverVersion": "Server version",
         "cpuCores": "CPU cores",
         "totalRam": "RAM",

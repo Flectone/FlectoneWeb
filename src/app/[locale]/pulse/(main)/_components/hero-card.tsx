@@ -22,7 +22,7 @@ const scrollToSection = (
 }
 
 export default function HeroCard() {
-  const t = useTranslations("Main.HeroCard")
+  const t = useTranslations("FlectonePulse.Main.HeroCard")
   const currentTheme = useCurrentTheme()
   return (
     <Container className="relative flex w-full overflow-hidden rounded-xl border bg-card p-6">
@@ -47,26 +47,25 @@ export default function HeroCard() {
         transparent
       />
       <div className="z-1 flex w-1/2 flex-col gap-4 max-md:w-4/5">
-        <Badge>Плагин для Minecraft и Hytale</Badge>
+        <Badge>{t("badge")}</Badge>
         <h1 className="text-3xl font-bold">
-          Каждое сообщение в чате под <b>вашем</b> контролем!
+          {t.rich("slogan", {
+            b: (chunks) => <b>{chunks}</b>,
+          })}
         </h1>
-        <p>
-          Настраивай чат, команды, ТАБ и интеграции без десятка сторонних
-          плагинов
-        </p>
+        <p>{t("description")}</p>
         <div className="flex gap-2 max-md:flex-col">
           <Link href={"https://boosty.to/thefaser"}>
             <Button>
               <SiBoosty />
-              Поддержка
+              {t("support")}
             </Button>
           </Link>
           <div className="flex gap-2">
             <Link href={"/pulse/docs"}>
               <Button variant={"secondary"}>
                 <BookOpen />
-                Документация
+                {t("documentation")}
               </Button>
             </Link>
             <Link
@@ -75,7 +74,7 @@ export default function HeroCard() {
             >
               <Button variant={"secondary"}>
                 <Download />
-                Скачать
+                {t("download")}
               </Button>
             </Link>
           </div>

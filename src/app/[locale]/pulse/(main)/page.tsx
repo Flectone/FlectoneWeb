@@ -7,34 +7,64 @@ import { Separator } from "@/components/ui/separator"
 import Modules from "./_components/modules"
 import Download from "./_components/download"
 import { createMetadata } from "@/lib/create-metadata"
+import TwoAreaChart from "../(info)/metrics/_components/charts"
+import { getTranslations } from "next-intl/server"
 
 export const generateMetadata = createMetadata({
   namespace: "Pulse",
 })
 
 export default async function PulseHomePage() {
+  const t = await getTranslations("FlectonePulse.Main")
   return (
     <PageTemplate>
       <HeroCard />
       <Stats />
       <Separator />
       <Title
-        titleKey={"FlectonePulse.Main.Features.title"}
-        descriptionKey={"FlectonePulse.Main.Features.description"}
+        title={t.raw("Features.title")}
+        description={t("Features.description")}
+        button={{
+          text: t("Features.button"),
+          href: "/pulse/docs",
+          icon: "book-open",
+        }}
       />
       <Features />
       <Separator />
       <Title
-        titleKey={"FlectonePulse.Main.Modules.title"}
-        descriptionKey={"FlectonePulse.Main.Modules.description"}
+        title={t.raw("Modules.title")}
+        description={t("Modules.description")}
+        button={{
+          text: t("Features.button"),
+          href: "/pulse/docs",
+          icon: "book-open",
+        }}
       />
       <Modules />
       <Separator />
       <Title
-        titleKey="FlectonePulse.Main.Download.title"
-        descriptionKey="FlectonePulse.Main.Download.description"
+        title={t.raw("Download.title")}
+        description={t("Download.description")}
       />
       <Download />
+      <Separator />
+      <Title
+        title={t.raw("Metrics.title")}
+        description={t("Metrics.description")}
+        button={{
+          text: t("Metrics.button"),
+          href: "/pulse/metrics",
+          icon: "chart-no-axes-combined",
+        }}
+      />
+      <TwoAreaChart
+        title={t("Metrics.activity")}
+        firstAreaPath="serverCount"
+        secondAreaPath="playerCount"
+        firstAreaLabel={t("Metrics.serverCount")}
+        secondAreaLabel={t("Metrics.playerCount")}
+      />
     </PageTemplate>
   )
 }

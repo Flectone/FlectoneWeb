@@ -1,20 +1,35 @@
-import { useTranslations } from "next-intl"
+import { Button } from "@/components/ui/button"
+import parse from "html-react-parser"
+import Link from "next/link"
+import { DynamicIcon, IconName } from "lucide-react/dynamic"
 
 export default function Title({
-  titleKey,
-  descriptionKey,
+  title,
+  description,
+  button,
 }: {
-  titleKey: string
-  descriptionKey: string
+  title: string
+  description: string
+  button?: {
+    href: string
+    text: string
+    icon?: IconName
+  }
 }) {
-  const t = useTranslations()
-
   return (
-    <div className="flex w-full flex-col gap-1">
-      <h2 className="text-2xl font-bold">
-        {t.rich(titleKey, { b: (chunks) => <b>{chunks}</b> })}
-      </h2>
-      <p>{t(descriptionKey)}</p>
+    <div className="flex w-full items-center justify-between">
+      <div className="flex flex-col gap-1">
+        <h2 className="text-2xl font-bold">{parse(String(title))}</h2>
+        <p>{description}</p>
+      </div>
+      {button && (
+        <Link href={button.href}>
+          <Button size={"sm"} variant={"secondary"}>
+            {button.icon && <DynamicIcon name={button.icon} />}
+            {button.text}
+          </Button>
+        </Link>
+      )}
     </div>
   )
 }
