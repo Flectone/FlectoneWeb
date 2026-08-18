@@ -32,7 +32,7 @@ export default async function HomePage() {
             align="vertical"
             title={t("FlectoneTools.title")}
             description={t("FlectoneTools.description")}
-            src="/assets/flectonetools/flectonetools_preview_dark.webp"
+            src={t("FlectoneTools.background")}
           />
           <ProjectCard
             href="/vault"

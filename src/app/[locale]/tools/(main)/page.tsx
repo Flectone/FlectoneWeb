@@ -100,10 +100,7 @@ export default function ToolsPage() {
 
   return (
     <PageTemplate>
-      <HeroCard
-        namespace="FlectoneTools.Main"
-        background="/assets/flectonetools/flectonetools_preview_dark.webp"
-      />
+      <HeroCard namespace="FlectoneTools.Main" background={t("background")} />
       <div className="grid w-full grid-cols-3 gap-6 max-xl:grid-cols-2 max-md:grid-cols-1">
         {TOOLS.map((tool) => (
           <ToolCard

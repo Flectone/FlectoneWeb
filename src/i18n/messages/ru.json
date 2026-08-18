@@ -206,7 +206,8 @@
     },
     "FlectoneTools": {
       "title": "Tools",
-      "description": "Инструменты для разработчиков серверов"
+      "description": "Инструменты для разработчиков серверов",
+      "background": "/assets/flectonetools/flectonetools_preview_ru.webp"
     },
     "FlectoneVault": {
       "title": "Vault",
@@ -382,6 +383,7 @@
     "Main": {
       "title": "Flectone<b>Tools</b>",
       "description": "Набор бесплатных онлайн-инструментов для владельцев Minecraft-серверов. Работает в браузере без установки",
+      "background": "/assets/flectonetools/flectonetools_preview_ru.webp",
       "TextureGenerator": {
         "title": "Генератор текстур",
         "description": "Конвертирует любое изображение в JSON-текстуру Minecraft"
