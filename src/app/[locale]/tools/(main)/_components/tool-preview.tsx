@@ -15,15 +15,17 @@ export function TexturePreview() {
       <span className="font-[Minecraft] text-lg text-fd-muted-foreground">
         &rarr;
       </span>
-      <code className="text-xs leading-4 text-fd-muted-foreground">
-        {'{ "texture": '}
-        <br />
-        <span className="text-fd-primary">
-          &nbsp;&nbsp;&quot;flectone&quot;
-        </span>
-        <br />
-        {" }"}
-      </code>
+      <div className="flex w-14 flex-col-reverse gap-[2px]">
+        {[...Array(4)].map((_, index) => (
+          <Image
+            key={index}
+            width={100}
+            height={100}
+            src={`/assets/flectonetools/flectonetools_texturegenerator_slicesimage_${index + 1}.webp`}
+            alt={String(index)}
+          />
+        ))}
+      </div>
     </div>
   )
 }
@@ -73,7 +75,7 @@ export function InventoryPreview() {
         height={100}
         alt=""
         src={
-          "/assets/flectonetools/flectonetools_inventorypreviewer_preview.png"
+          "/assets/flectonetools/flectonetools_inventorypreviewer_preview.webp"
         }
       />
     </div>
