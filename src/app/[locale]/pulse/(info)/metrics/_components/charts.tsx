@@ -264,7 +264,6 @@ function useCategoryChartData({
   )
 
   const chartConfig = useMemo(() => buildChartConfig(data), [data])
-  console.log(fullData)
   return {
     loading,
     data,
