@@ -4,7 +4,7 @@ import Image from "next/image"
 export function TexturePreview() {
   return (
     <div className="flex items-center gap-4">
-      <div className="h-14 w-14">
+      <div className="h-10 w-10">
         <Image
           width={60}
           height={60}
@@ -15,7 +15,7 @@ export function TexturePreview() {
       <span className="font-[Minecraft] text-lg text-fd-muted-foreground">
         &rarr;
       </span>
-      <div className="flex w-14 flex-col-reverse gap-[2px]">
+      <div className="flex w-8 flex-col-reverse gap-[2px]">
         {[...Array(4)].map((_, index) => (
           <Image
             key={index}
@@ -74,6 +74,7 @@ export function InventoryPreview() {
         width={200}
         height={100}
         alt=""
+        className="w-full"
         src={
           "/assets/flectonetools/flectonetools_inventorypreviewer_preview.webp"
         }

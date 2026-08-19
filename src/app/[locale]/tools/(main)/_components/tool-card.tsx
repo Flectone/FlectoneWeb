@@ -49,7 +49,7 @@ export default function ToolCard({
       </div>
 
       {preview && (
-        <div className="z-20 mt-auto flex h-24 w-full items-center justify-center overflow-hidden rounded-xl border bg-background/40 py-3">
+        <div className="z-20 mt-auto flex h-16 w-full items-center justify-center overflow-hidden rounded-xl border bg-background/40 py-3">
           {preview}
         </div>
       )}
