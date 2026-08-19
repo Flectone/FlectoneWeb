@@ -3,9 +3,9 @@ import { useTranslations } from "next-intl"
 
 const STATS = [
   { key: "versions", value: "1.8.8+" },
-  { key: "commands", value: "~51" },
-  { key: "integrations", value: "~30" },
-  { key: "platforms", value: "12" },
+  { key: "commands", value: "50+" },
+  { key: "integrations", value: "30+" },
+  { key: "messages", value: "20+" },
 ]
 
 export default function Stats() {

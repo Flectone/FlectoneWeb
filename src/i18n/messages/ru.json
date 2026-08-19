@@ -252,7 +252,7 @@
         "commands": "Команд в чате",
         "integrations": "Интеграций",
         "versions": "Версии Minecraft",
-        "platforms": "Площадок скачивания"
+        "messages": "Видов сообщений"
       },
       "Features": {
         "title": "Что умеет <b>FlectonePulse</b>",
