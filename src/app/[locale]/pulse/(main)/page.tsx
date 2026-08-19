@@ -12,6 +12,7 @@ import { getTranslations } from "next-intl/server"
 
 export const generateMetadata = createMetadata({
   namespace: "Pulse",
+  path: "/pulse",
 })
 
 export default async function PulseHomePage() {

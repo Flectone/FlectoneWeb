@@ -1,5 +1,5 @@
 "use client"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import Image from "next/image"
 import * as SimpleIcons from "react-icons/si"
 import { IconType } from "react-icons"
@@ -90,7 +90,10 @@ export function Header({
             <NavigationMenuList className={"gap-2"}>
               {links.map((item, key) => (
                 <NavigationMenuItem key={key}>
-                  <NavigationMenuLink className={"h-8"} href={item.href}>
+                  <NavigationMenuLink
+                    className={"h-8"}
+                    render={<Link href={item.href} />}
+                  >
                     {item.label}
                   </NavigationMenuLink>
                 </NavigationMenuItem>

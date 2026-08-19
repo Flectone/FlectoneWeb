@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 
 export const generateMetadata = createMetadata({
   namespace: "Tools.CoordinateCalculator",
+  path: "/tools/coordinate-calculator",
 })
 
 export default function CoordinateCalculatorPage() {

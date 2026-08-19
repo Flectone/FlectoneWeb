@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import Container from "@/components/shared/container"
 import PageTemplate from "@/components/shared/page-template"
 import LayoutTemplate from "@/components/shared/layout-template"
+import { routing } from "@/i18n/routing"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -20,6 +21,7 @@ export default function NotFound() {
   const t = useTranslations("NotFound")
   return (
     <html
+      lang={routing.defaultLocale}
       suppressHydrationWarning
       className={cn(
         "antialiased",

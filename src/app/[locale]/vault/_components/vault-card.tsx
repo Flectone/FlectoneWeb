@@ -5,7 +5,7 @@ import { FaYoutube } from "react-icons/fa"
 import { SiBoosty } from "react-icons/si"
 import { useTranslations } from "next-intl"
 import { motion, AnimatePresence } from "motion/react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { useState } from "react"
 import {
   Card,
@@ -81,7 +81,13 @@ export function VaultCard({
             {t("watchYoutube")}
           </Badge>
         </motion.div>
-        <img src={image} alt="Event cover" className="aspect-video" />
+        <img
+          src={image}
+          alt="Event cover"
+          loading="lazy"
+          decoding="async"
+          className="aspect-video"
+        />
         <Badge
           className="absolute right-0 bottom-0 m-2 rounded-sm bg-secondary/70"
           variant={"secondary"}

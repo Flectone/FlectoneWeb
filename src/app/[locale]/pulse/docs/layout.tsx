@@ -14,7 +14,7 @@ export default async function Layout({
   return (
     <DocsLayout
       tree={source.getPageTree(locale)}
-      {...baseOptions()}
+      {...baseOptions(locale)}
       sidebar={{
         tabs: {
           transform: (option, node) => ({

@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 
 export const generateMetadata = createMetadata({
   namespace: "Tools.ServerFlagsGenerator",
+  path: "/tools/server-flags-generator",
 })
 
 export default function ServerFlagsGeneratorPage() {

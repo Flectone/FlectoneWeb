@@ -1,3 +1,4 @@
+import { Link } from "@/i18n/navigation"
 import HeroCard from "@/components/shared/hero-card"
 import PageTemplate from "@/components/shared/page-template"
 import { createMetadata } from "@/lib/create-metadata"
@@ -14,6 +15,7 @@ import { getTranslations } from "next-intl/server"
 
 export const generateMetadata = createMetadata({
   namespace: "Pulse.Metrics",
+  path: "/pulse/metrics",
 })
 
 export default async function MetricsPage() {
@@ -27,12 +29,12 @@ export default async function MetricsPage() {
       <Callout margin="none" type="info" title={t("Callout.title")}>
         {t.rich("Callout.text", {
           a: (chunks) => (
-            <a
+            <Link
               className="hover:text-fd-muted-primary text-fd-primary transition"
               href="/pulse/docs/config/metrics"
             >
               {chunks}
-            </a>
+            </Link>
           ),
         })}
       </Callout>

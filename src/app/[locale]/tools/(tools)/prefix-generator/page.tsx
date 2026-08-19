@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 
 export const generateMetadata = createMetadata({
   namespace: "Tools.PrefixGenerator",
+  path: "/tools/prefix-generator",
 })
 
 export default function PrefixGeneratorPage() {

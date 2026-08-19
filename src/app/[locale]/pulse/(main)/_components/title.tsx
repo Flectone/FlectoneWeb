@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import parse from "html-react-parser"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { DynamicIcon, IconName } from "lucide-react/dynamic"
 
 export default function Title({

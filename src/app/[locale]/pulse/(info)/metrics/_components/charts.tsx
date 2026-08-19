@@ -523,7 +523,7 @@ export function TwoAreaChartComponent({
                 content={
                   <ChartTooltipContent
                     labelFormatter={(value) =>
-                      new Date(value).toLocaleDateString(locale, {
+                      new Date(value as string).toLocaleDateString(locale, {
                         month: "short",
                         day: "numeric",
                         hour: "numeric",

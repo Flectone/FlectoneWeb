@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 
 export const generateMetadata = createMetadata({
   namespace: "Tools.InventoryPreviewer",
+  path: "/tools/inventory-viewer",
 })
 
 export default function InventoryViewerPage() {

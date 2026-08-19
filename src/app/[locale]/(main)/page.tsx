@@ -7,6 +7,7 @@ import { createMetadata } from "@/lib/create-metadata"
 
 export const generateMetadata = createMetadata({
   namespace: "Root",
+  path: "",
 })
 
 export default async function HomePage() {

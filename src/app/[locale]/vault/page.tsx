@@ -5,6 +5,7 @@ import { createMetadata } from "@/lib/create-metadata"
 
 export const generateMetadata = createMetadata({
   namespace: "Vault",
+  path: "/vault",
 })
 
 export default function FlectoneVaultPage() {

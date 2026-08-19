@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 
 export const generateMetadata = createMetadata({
   namespace: "Tools.TextAnimation",
+  path: "/tools/text-animation",
 })
 
 export default function TabAnimationPage() {

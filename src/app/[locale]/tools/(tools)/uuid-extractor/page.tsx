@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 
 export const generateMetadata = createMetadata({
   namespace: "Tools.UuidExtractor",
+  path: "/tools/uuid-extractor",
 })
 
 export default function UuidExtractorPage() {

@@ -9,6 +9,7 @@ import { SiGithub, SiModrinth } from "react-icons/si"
 
 export const generateMetadata = createMetadata({
   namespace: "Chat",
+  path: "/chat",
 })
 
 export default function ChatPage() {

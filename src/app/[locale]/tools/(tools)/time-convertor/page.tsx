@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 
 export const generateMetadata = createMetadata({
   namespace: "Tools.TimeConvertor",
+  path: "/tools/time-convertor",
 })
 
 export default function TimeConvertorPage() {

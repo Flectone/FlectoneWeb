@@ -14,6 +14,18 @@ import LastUpdate from "./_components/last-update"
 import gitDates from "@/pulse/git-dates.json"
 import EditOnGitHub from "./_components/edit-on-github"
 import { Authors } from "./_components/authors"
+import { localeAlternates, siteUrl } from "@/lib/create-metadata"
+import { i18n } from "@/i18n/i18n"
+import type { ComponentProps } from "react"
+
+function withLocale(href: string | undefined, locale: string) {
+  if (!href || !href.startsWith("/") || href.startsWith("//")) return href
+
+  const [first] = href.slice(1).split("/")
+  if ((i18n.languages as readonly string[]).includes(first)) return href
+
+  return `/${locale}${href}`
+}
 
 export function getGitLastModified(filePath: string): Date | null {
   const iso = (gitDates as Record<string, string>)[filePath]
@@ -33,6 +45,7 @@ export default async function Page({
   const lastModified = getGitLastModified(filePath)
 
   const MDX = page.data.body
+  const MdxLink = createRelativeLink(source, page)
 
   const filteredToc = page.data.toc.filter((item) => item.depth <= 3)
   return (
@@ -53,7 +66,9 @@ export default async function Page({
       <DocsBody>
         <MDX
           components={getMDXComponents({
-            a: createRelativeLink(source, page),
+            a: (props: ComponentProps<typeof MdxLink>) => (
+              <MdxLink {...props} href={withLocale(props.href, locale)} />
+            ),
           })}
         />
       </DocsBody>
@@ -78,11 +93,31 @@ export async function generateMetadata(
   const page = source.getPage(params.slug, params.locale)
   if (!page) notFound()
 
+  const path = `/pulse/docs${page.slugs.length > 0 ? `/${page.slugs.join("/")}` : ""}`
+  const image = getPageImage(page).url
+
   return {
+    metadataBase: new URL(siteUrl),
     title: page.data.title + " | FlectonePulse",
     description: page.data.description,
+    alternates: {
+      canonical: `/${params.locale}${path}`,
+      languages: localeAlternates(path),
+    },
     openGraph: {
-      images: getPageImage(page).url,
+      type: "article",
+      siteName: "FlectonePulse",
+      url: `/${params.locale}${path}`,
+      title: page.data.title,
+      description: page.data.description,
+      locale: params.locale,
+      images: image,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: page.data.title,
+      description: page.data.description,
+      images: image,
     },
   }
 }

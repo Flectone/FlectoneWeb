@@ -6,6 +6,7 @@ import GithubCard from "./_components/github-card"
 
 export const generateMetadata = createMetadata({
   namespace: "About",
+  path: "/members",
 })
 
 const MEMBERS = ["TheFaser", "FunnyBars", "fxdsu", "vplend"]

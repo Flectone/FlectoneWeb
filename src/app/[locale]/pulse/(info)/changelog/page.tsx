@@ -7,6 +7,7 @@ import { createMetadata } from "@/lib/create-metadata"
 
 export const generateMetadata = createMetadata({
   namespace: "Pulse.Changelog",
+  path: "/pulse/changelog",
 })
 
 export default async function ChangelogPage() {

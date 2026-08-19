@@ -6,7 +6,7 @@ import { Wrench, Package, Zap, Bug, Download, ChevronUp } from "lucide-react"
 import { useTranslations, useLocale } from "next-intl"
 import { motion, AnimatePresence } from "framer-motion"
 import { useIsStuck } from "@/hooks/use-is-stuck"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 
 interface VersionProps {
   v: string
@@ -26,10 +26,14 @@ export function Title({
   date,
   children,
 }: Readonly<{ date?: string; children: ReactNode }>) {
+  const locale = useLocale()
+
   return (
     <>
       {children}
-      {date && <time className="changelog-date">{formatDate(date)}</time>}
+      {date && (
+        <time className="changelog-date">{formatDate(date, locale)}</time>
+      )}
     </>
   )
 }
@@ -144,8 +148,7 @@ export function Dependency({ children }: Readonly<{ children: ReactNode }>) {
   )
 }
 
-function formatDate(dateStr: string) {
-  const localeValue = useLocale()
+function formatDate(dateStr: string, localeValue: string) {
   const userLocale = localeValue === "en" ? "en-US" : "ru-RU"
 
   return new Date(dateStr).toLocaleDateString(userLocale, {
@@ -165,6 +168,7 @@ export function Version({
   className,
 }: VersionProps) {
   const t = useTranslations("FlectonePulse.Changelog")
+  const locale = useLocale()
 
   const [headerRef, isStuck] = useIsStuck<HTMLDivElement>(58)
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -217,11 +221,11 @@ export function Version({
             </h2>
             {date && (
               <time className="text-[16px] text-muted-foreground">
-                {formatDate(date)}
+                {formatDate(date, locale)}
               </time>
             )}
             <AnimatePresence>
-              <a
+              <Link
                 href="/pulse/download"
                 className="hover:text-muted-primary flex cursor-pointer items-center justify-center gap-1 rounded-md text-primary transition"
               >
@@ -237,7 +241,7 @@ export function Version({
                     {t("download")}
                   </motion.span>
                 )}
-              </a>
+              </Link>
             </AnimatePresence>
           </div>
         </div>

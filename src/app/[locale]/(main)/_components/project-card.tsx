@@ -2,7 +2,7 @@
 import { Badge } from "@/components/ui/badge"
 import { Archive, ArrowRight } from "lucide-react"
 import Image from "next/image"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { useTranslations } from "next-intl"
 import { cn } from "@/lib/utils"
 import Container from "@/components/shared/container"

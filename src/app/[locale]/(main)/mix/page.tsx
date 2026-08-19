@@ -9,6 +9,7 @@ import { SiBoosty, SiGithub } from "react-icons/si"
 
 export const generateMetadata = createMetadata({
   namespace: "Mix",
+  path: "/mix",
 })
 
 export default function MixPage() {

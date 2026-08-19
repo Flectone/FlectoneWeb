@@ -7,6 +7,7 @@ import TextureGenerator from "./_components/texture-generator"
 
 export const generateMetadata = createMetadata({
   namespace: "Tools.TextureGenerator",
+  path: "/tools/texture-generator",
 })
 
 export default function TextureGeneratorPage() {

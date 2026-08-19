@@ -93,6 +93,7 @@ const TOOLS: ToolConfig[] = [
 
 export const generateMetadata = createMetadata({
   namespace: "Tools.Main",
+  path: "/tools",
 })
 
 export default function ToolsPage() {

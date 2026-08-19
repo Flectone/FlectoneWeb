@@ -6,7 +6,7 @@ import PixelBlast from "./pixel-blast"
 import { Button } from "@/components/ui/button"
 import { SiBoosty } from "react-icons/si"
 import { BookOpen, Download } from "lucide-react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import Container from "@/components/shared/container"
 
 const scrollToSection = (

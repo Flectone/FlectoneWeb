@@ -81,7 +81,7 @@ export default function FlectoneVault() {
         setError(err instanceof Error ? err.message : "Error")
         toast.add({
           type: "error",
-          description: error || t("error"),
+          description: t("error"),
         })
       } finally {
         setLoading(false)

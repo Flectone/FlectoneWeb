@@ -27,11 +27,11 @@ export const translations = i18n
     },
   })
 
-export function baseOptions(): BaseLayoutProps {
+export function baseOptions(locale?: string): BaseLayoutProps {
   return {
     nav: {
       title: (
-        <h1 className="flex items-center justify-center font-bold">
+        <span className="flex items-center justify-center font-bold">
           <Image
             src="/assets/flectone_logo.png"
             alt="Flectone Logo"
@@ -40,9 +40,9 @@ export function baseOptions(): BaseLayoutProps {
             className="mr-1 h-6 w-6"
           />
           FlectonePulse
-        </h1>
+        </span>
       ),
-      url: "/pulse",
+      url: locale ? `/${locale}/pulse` : "/pulse",
     },
     i18n: true,
     links: [

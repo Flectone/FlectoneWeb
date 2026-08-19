@@ -2,7 +2,7 @@ import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { Button } from "../ui/button"
 import { Separator } from "../ui/separator"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 
 export default function Footer() {
   const t = useTranslations("Footer")

@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl"
 
 export const generateMetadata = createMetadata({
   namespace: "Tools.ColorTextGenerator",
+  path: "/tools/color-text-generator",
 })
 
 export default function ColorTextGeneratorPage() {
