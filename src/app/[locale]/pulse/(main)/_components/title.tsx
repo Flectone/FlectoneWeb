@@ -17,7 +17,7 @@ export default function Title({
   }
 }) {
   return (
-    <div className="flex w-full items-center justify-between">
+    <div className="flex w-full items-center justify-between gap-2 max-lg:flex-col max-lg:items-start">
       <div className="flex flex-col gap-1">
         <h2 className="text-2xl font-bold">{parse(String(title))}</h2>
         <p>{description}</p>

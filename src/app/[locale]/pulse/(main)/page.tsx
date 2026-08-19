@@ -7,7 +7,7 @@ import { Separator } from "@/components/ui/separator"
 import Modules from "./_components/modules"
 import Download from "./_components/download"
 import { createMetadata } from "@/lib/create-metadata"
-import TwoAreaChart from "../(info)/metrics/_components/charts"
+import { TwoAreaChartComponent } from "../(info)/metrics/_components/charts"
 import { getTranslations } from "next-intl/server"
 
 export const generateMetadata = createMetadata({
@@ -58,7 +58,7 @@ export default async function PulseHomePage() {
           icon: "chart-no-axes-combined",
         }}
       />
-      <TwoAreaChart
+      <TwoAreaChartComponent
         title={t("Metrics.activity")}
         firstAreaPath="serverCount"
         secondAreaPath="playerCount"

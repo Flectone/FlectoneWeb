@@ -1,6 +1,7 @@
 import Footer from "@/components/shared/footer"
 import { Header } from "@/components/shared/header"
 import LayoutTemplate from "@/components/shared/layout-template"
+import { Toaster } from "@/components/ui/toast"
 import { getTranslations } from "next-intl/server"
 
 export default async function Layout({ children }: LayoutProps<"/[locale]">) {
@@ -18,6 +19,7 @@ export default async function Layout({ children }: LayoutProps<"/[locale]">) {
       />
       {children}
       <Footer />
+      <Toaster />
     </LayoutTemplate>
   )
 }

@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils"
 import { translations } from "@/lib/layout.shared"
 import { i18nProvider } from "fumadocs-ui/i18n"
 import SearchComponent from "@/components/features/search-component"
+import { TooltipProvider } from "@/components/ui/tooltip"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -45,7 +46,7 @@ export default async function RootLayout({
               }}
               i18n={i18nProvider(translations, locale)}
             >
-              {children}
+              <TooltipProvider>{children}</TooltipProvider>
             </RootProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

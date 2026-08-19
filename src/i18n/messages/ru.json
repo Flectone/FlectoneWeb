@@ -354,13 +354,16 @@
       },
       "labels": {
         "servers": "Серверы",
-        "players": "Игроки"
+        "players": "Игроки",
+        "count": "Количество",
+        "hideEssentials": "Показать несущественные",
+        "showEssentials": "Скрыть несущественные"
       },
       "items": {
         "activity": "Активность",
         "serverVersion": "Версия сервера",
-        "cpuCores": "Ядра процессора",
-        "totalRam": "Оперативная память",
+        "cpuCores": "Количество CPU",
+        "totalRam": "Объем RAM",
         "modules": "Модули",
         "projectVersion": "Версия проекта",
         "projectLanguage": "Язык проекта",

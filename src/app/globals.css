@@ -90,16 +90,16 @@
   --border: oklch(0.93 0 0);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.546 0.135 258.4);
-  --chart-1: oklch(0.65 0.15 258);
-  --chart-2: oklch(0.6 0.12 200);
-  --chart-3: oklch(0.55 0.18 300);
-  --chart-4: oklch(0.7 0.15 140);
-  --chart-5: oklch(0.65 0.2 40);
-  --info: oklch(62.3% 0.214 259.815);
-  --warning: oklch(76.9% 0.188 70.08);
-  --error: oklch(63.7% 0.237 25.331);
-  --success: oklch(72.3% 0.219 149.579);
-  --idea: oklch(70.5% 0.209 60.849);
+  --chart-1: oklch(0.269 0.135 258.4);
+  --chart-2: oklch(0.571 0.135 258.4);
+  --chart-3: oklch(0.639 0.135 258.4);
+  --chart-4: oklch(0.856 0.135 258.4);
+  --chart-5: oklch(0.97 0.135 258.4);
+  --info: oklch(0.62 0.214 259.815);
+  --warning: oklch(0.76 0.188 70.08);
+  --error: oklch(0.63 0.237 25.331);
+  --success: oklch(0.72 0.219 149.579);
+  --idea: oklch(0.7 0.209 60.849);
   --radius: 0.625rem;
   --sidebar: oklch(0.98 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -133,16 +133,16 @@
   --border: oklch(1 0 0 / 5%);
   --input: oklch(1 0 0 / 15%);
   --ring: oklch(0.7794 0.106 238.01);
-  --chart-1: oklch(0.7 0.14 258);
-  --chart-2: oklch(0.65 0.12 200);
-  --chart-3: oklch(0.6 0.16 300);
-  --chart-4: oklch(0.72 0.15 140);
-  --chart-5: oklch(0.68 0.18 40);
-  --info: oklch(62.3% 0.214 259.815);
-  --warning: oklch(76.9% 0.188 70.08);
-  --error: oklch(63.7% 0.237 25.331);
-  --success: oklch(72.3% 0.219 149.579);
-  --idea: oklch(70.5% 0.209 60.849);
+  --chart-1: oklch(0.87 0.135 258.4);
+  --chart-2: oklch(0.556 0.135 258.4);
+  --chart-3: oklch(0.439 0.135 258.4);
+  --chart-4: oklch(0.371 0.135 258.4);
+  --chart-5: oklch(0.269 0.135 258.4);
+  --info: oklch(0.62 0.214 259.815);
+  --warning: oklch(0.76 0.188 70.08);
+  --error: oklch(0.63 0.237 25.331);
+  --success: oklch(0.72 0.219 149.579);
+  --idea: oklch(0.7 0.209 60.849);
   --sidebar: oklch(0.2 0 0);
   --sidebar-foreground: oklch(0.985 0 0);
   --sidebar-primary: oklch(0.7794 0.106 238.01);
@@ -184,6 +184,13 @@
     background: var(--color-primary);
     color: var(--color-primary-foreground);
   }
+}
+
+.recharts-wrapper path:focus,
+.recharts-wrapper path:focus-visible,
+.recharts-surface:focus,
+.recharts-surface:focus-visible {
+  outline: none;
 }
 
 .container {

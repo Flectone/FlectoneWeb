@@ -354,7 +354,10 @@
       },
       "labels": {
         "servers": "Servers",
-        "players": "Players"
+        "players": "Players",
+        "count": "Count",
+        "hideEssentials": "Show nonessentials",
+        "showEssentials": "Hide nonessentials"
       },
       "items": {
         "activity": "Activity",
