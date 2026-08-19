@@ -171,8 +171,8 @@
       "description": "A project for configuring server messages",
       "Badges": {
         "versions": "1.8.8+",
-        "commands": "~52 commands",
-        "integrations": "~30 integrations"
+        "commands": "50+ commands",
+        "integrations": "30+ integrations"
       }
     },
     "Members": {
@@ -255,7 +255,7 @@
       },
       "Features": {
         "title": "What <b>FlectonePulse</b> can do",
-        "description": "Main plugin features — scroll through and check the documentation for any of them",
+        "description": "Scroll through and check documentation for any of these features",
         "button": "Go to documentation",
         "more": "Learn more",
         "Format": {
@@ -276,7 +276,7 @@
         },
         "Status": {
           "title": "MOTD and server icon",
-          "description": "Custom ping response: description, icon, version, and player list in the multiplayer menu"
+          "description": "Description, icon, version, and list of players for the server"
         }
       },
       "Modules": {
@@ -296,7 +296,7 @@
         },
         "Destination": {
           "title": "Where the message goes",
-          "description": "Chat, titles, actionbar, bossbar, or popup notification — your choice"
+          "description": "Chat, titles, actionbar, bossbar, or popup notification – your choice"
         },
         "Tab": {
           "title": "TAB and scoreboard",
@@ -304,7 +304,7 @@
         },
         "Vanilla": {
           "title": "Vanilla events",
-          "description": "Joins, leaves, deaths, and welcomes — all system messages under control"
+          "description": "Joins, leaves, deaths, and welcomes – all system messages under control"
         },
         "Replacement": {
           "title": "Message replacements",
@@ -333,7 +333,7 @@
         "download": "Download"
       },
       "Metrics": {
-        "title": "Servers <b>right now</b>",
+        "title": "Analytics <b>right now</b>",
         "description": "How many servers and players are using FlectonePulse",
         "button": "Go to analytic",
         "serverCount": "Servers",

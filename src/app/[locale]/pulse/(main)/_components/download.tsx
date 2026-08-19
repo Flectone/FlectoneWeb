@@ -100,7 +100,7 @@ export default function Download() {
           </div>
         </div>
         <div className="flex h-fit w-full flex-col gap-3">
-          <Title title={t.raw("minecraft")} />
+          <Title title={t.raw("hytale")} />
           <div className="grid w-full grid-cols-3 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
             <DownloadCard
               button={t("download")}
