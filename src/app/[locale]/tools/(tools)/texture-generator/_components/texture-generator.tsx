@@ -13,6 +13,7 @@ interface ImageData {
   y: number
   skin: string
   imageBlock: string
+  signature?: string
 }
 
 interface ActionData {
@@ -158,6 +159,7 @@ export const TextureGenerator = () => {
       try {
         const formData = new FormData()
         formData.append("skin", item.skin)
+        formData.append("signature", item.signature ?? "")
 
         const res = await fetch("/api/mineskin/generate", {
           method: "POST",
@@ -186,19 +188,19 @@ export const TextureGenerator = () => {
           setTimeout(() => {
             animatedKeysRef.current.add(key)
           }, 500)
+        }
 
-          if (data.delay && !isStoppedRef.current) {
-            await new Promise<void>((resolve) => {
-              const timeout = setTimeout(resolve, data.delay)
-              const check = setInterval(() => {
-                if (isStoppedRef.current) {
-                  clearTimeout(timeout)
-                  clearInterval(check)
-                  resolve()
-                }
-              }, 100)
-            })
-          }
+        if (!isStoppedRef.current) {
+          await new Promise<void>((resolve) => {
+            const timeout = setTimeout(resolve, data.delay || 1000)
+            const check = setInterval(() => {
+              if (isStoppedRef.current) {
+                clearTimeout(timeout)
+                clearInterval(check)
+                resolve()
+              }
+            }, 100)
+          })
         }
       } catch (err) {
         console.error(`Frame error ${item.x}:${item.y}:`, err)

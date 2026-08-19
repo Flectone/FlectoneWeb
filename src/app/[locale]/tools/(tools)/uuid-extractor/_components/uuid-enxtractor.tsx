@@ -38,7 +38,9 @@ export default function UuidExtractor() {
     nickname: string
   ): Promise<string | null> {
     try {
-      const response = await fetch(`/api/mojang/info?username=${nickname}`)
+      const response = await fetch(
+        `/api/mojang/info?username=${encodeURIComponent(nickname)}`
+      )
 
       if (!response.ok) {
         console.error(`Error request: ${response.statusText}`)

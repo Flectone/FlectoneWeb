@@ -7,18 +7,30 @@ interface RouteContext {
   params: Promise<{ slug: string[] }>
 }
 
+const FONT_TIMEOUT_MS = 10_000
+
 let fontRegular: ArrayBuffer | null = null
 let fontBold: ArrayBuffer | null = null
+
+async function fetchFont(url: string) {
+  const response = await fetch(url, {
+    signal: AbortSignal.timeout(FONT_TIMEOUT_MS),
+  })
+
+  if (!response.ok) throw new Error(`Failed to load font: ${response.status}`)
+
+  return response.arrayBuffer()
+}
 
 async function loadFonts() {
   if (!fontRegular || !fontBold) {
     ;[fontRegular, fontBold] = await Promise.all([
-      fetch(
+      fetchFont(
         "https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-cyrillic-400-normal.woff"
-      ).then((r) => r.arrayBuffer()),
-      fetch(
+      ),
+      fetchFont(
         "https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-cyrillic-700-normal.woff"
-      ).then((r) => r.arrayBuffer()),
+      ),
     ])
   }
   return { regular: fontRegular!, bold: fontBold! }

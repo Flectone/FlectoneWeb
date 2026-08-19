@@ -61,7 +61,6 @@ export default function FlectoneVault() {
   const [sortOrder, setSortOrder] = useState<string>("desc")
   const [sortBy, setSortBy] = useState("date")
 
-  const SHEET_ID = "1QfA_pyIAwBlLxZAUB9wLeljEr0TKi2Ry9N5twdXg67M"
   const locale = useLocale()
 
   const t = useTranslations("FlectoneVault")
@@ -72,7 +71,7 @@ export default function FlectoneVault() {
         setLoading(true)
         setError(null)
 
-        const res = await fetch(`/api/sheets?sheetId=${SHEET_ID}`)
+        const res = await fetch("/api/sheets")
         if (!res.ok) throw new Error("Data error")
 
         const data = await res.json()
