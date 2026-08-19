@@ -327,6 +327,8 @@
       "Download": {
         "title": "Скачай <b>бесплатно</b>",
         "description": "Выбирай удобную площадку — файл везде один и тот же",
+        "minecraft": "Скачать для <b>Minecraft</b>",
+        "hytale": "Скачать для <b>Hytale</b>",
         "latestrelease": "Последний релиз",
         "devbuilds": "Снапшот версии",
         "download": "Скачать"

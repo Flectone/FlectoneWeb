@@ -327,6 +327,8 @@
       "Download": {
         "title": "Download for <b>free</b>",
         "description": "Choose a convenient platform — the file is the same everywhere",
+        "minecraft": "Download for <b>Minecraft</b>",
+        "hytale": "Download for <b>Hytale</b>",
         "latestrelease": "Latest release",
         "devbuilds": "Snapshot versions",
         "download": "Download"

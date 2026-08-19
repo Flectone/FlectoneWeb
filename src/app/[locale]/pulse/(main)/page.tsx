@@ -43,10 +43,6 @@ export default async function PulseHomePage() {
       />
       <Modules />
       <Separator />
-      <Title
-        title={t.raw("Download.title")}
-        description={t("Download.description")}
-      />
       <Download />
       <Separator />
       <Title

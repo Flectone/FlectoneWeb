@@ -9,6 +9,7 @@ import { FaCode } from "react-icons/fa"
 import { TbBrandGithubFilled } from "react-icons/tb"
 import { BsHexagonFill } from "react-icons/bs"
 import DownloadCard from "./download-card"
+import Title from "./title"
 
 export default function Download() {
   const t = useTranslations("FlectonePulse.Main.Download")
@@ -17,9 +18,7 @@ export default function Download() {
     <div id="download" className="flex w-full scroll-mt-20 flex-col gap-4">
       <div className="flex w-full flex-col gap-6">
         <div className="flex h-fit w-full flex-col gap-3">
-          <h4 className="text-fd-muted-foreground text-start text-lg font-bold">
-            Minecraft
-          </h4>
+          <Title title={t.raw("minecraft")} />
           <div className="grid w-full grid-cols-3 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
             <DownloadCard
               button={t("download")}
@@ -101,9 +100,7 @@ export default function Download() {
           </div>
         </div>
         <div className="flex h-fit w-full flex-col gap-3">
-          <h4 className="text-fd-muted-foreground text-start text-lg font-bold">
-            Hytale
-          </h4>
+          <Title title={t.raw("minecraft")} />
           <div className="grid w-full grid-cols-3 gap-3 max-lg:grid-cols-2 max-sm:grid-cols-1">
             <DownloadCard
               button={t("download")}

@@ -9,7 +9,7 @@ export default function Title({
   button,
 }: {
   title: string
-  description: string
+  description?: string
   button?: {
     href: string
     text: string
