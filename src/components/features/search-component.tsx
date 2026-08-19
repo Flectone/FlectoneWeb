@@ -16,10 +16,11 @@ import {
 import TagList from "./tag-list"
 import TagListItem from "./tag-list-item"
 import { useEffect, useMemo, useState } from "react"
-import { useTranslations } from "next-intl"
+import { useLocale, useTranslations } from "next-intl"
 
 export default function SearchComponent(props: SharedProps) {
   const pathname = usePathname()
+  const locale = useLocale()
   const t = useTranslations("Header.Search")
   const currentTag = useMemo(() => {
     const segments = pathname.split("/")
@@ -37,6 +38,7 @@ export default function SearchComponent(props: SharedProps) {
   const { search, setSearch, query } = useDocsSearch({
     type: "fetch",
     tag,
+    locale,
     api: "/api/search",
   })
   return (
