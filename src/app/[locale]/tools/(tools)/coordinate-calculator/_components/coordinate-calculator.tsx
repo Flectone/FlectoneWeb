@@ -105,8 +105,6 @@ export default function CoordinateCalculator() {
   const [throw1, setThrow1] = useState(["", "", ""])
   const [throw2, setThrow2] = useState(["", "", ""])
 
-  const [tutorialStep, setTutorialStep] = useState(1)
-
   const toNum = (v: string) => (v === "" || isNaN(Number(v)) ? null : Number(v))
 
   useEffect(() => {
@@ -341,40 +339,42 @@ export default function CoordinateCalculator() {
           </CardContent>
         </Card>
       </div>
-      <Card className="">
-        <CardHeader>
-          <CardTitle>{t("tutorial")}</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <Carousel>
-            <CarouselContent>
-              {TUTORIAL.map((item, key) => (
-                <CarouselItem
-                  key={key}
-                  className="flex gap-6 max-xl:flex-col-reverse"
-                >
-                  <Image
-                    src={item.image}
-                    width={600}
-                    height={300}
-                    className="w-full rounded-md"
-                    alt=""
-                  />
-                  <div className="flex flex-col gap-2">
-                    <Badge>{item.badge}</Badge>
-                    <h2 className="text-lg font-bold">{item.text}</h2>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="mt-2 flex w-full items-center justify-center gap-2">
-              <CarouselPrevious />
-              <CarouselBreadcrumbs className="" />
-              <CarouselNext />
-            </div>
-          </Carousel>
-        </CardContent>
-      </Card>
+      {mode === "stronghold" && (
+        <Card>
+          <CardHeader>
+            <CardTitle>{t("tutorial")}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Carousel>
+              <CarouselContent>
+                {TUTORIAL.map((item, key) => (
+                  <CarouselItem
+                    key={key}
+                    className="flex gap-6 max-xl:flex-col-reverse"
+                  >
+                    <Image
+                      src={item.image}
+                      width={600}
+                      height={300}
+                      className="w-full rounded-md"
+                      alt=""
+                    />
+                    <div className="flex flex-col gap-2">
+                      <Badge>{item.badge}</Badge>
+                      <h2 className="text-lg font-bold">{item.text}</h2>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="mt-2 flex w-full items-center justify-center gap-2">
+                <CarouselPrevious />
+                <CarouselBreadcrumbs className="" />
+                <CarouselNext />
+              </div>
+            </Carousel>
+          </CardContent>
+        </Card>
+      )}
     </div>
   )
 }
