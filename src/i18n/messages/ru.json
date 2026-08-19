@@ -155,10 +155,9 @@
   },
   "Main": {
     "HeaderLinks": {
-      "pulse": "Пульс",
-      "tools": "Инструменты",
-      "vault": "Хранилище",
-      "about": "Про нас"
+      "pulse": "FlectonePulse",
+      "tools": "FlectoneTools",
+      "vault": "FlectoneVault"
     },
     "HeroCard": {
       "badge": "с 2019 года ● открытый код",
@@ -710,6 +709,7 @@
     "button": "Перейти на главную"
   },
   "Footer": {
+    "authors": "Авторы",
     "answer": "Не является официальным сервисом Minecraft или Hytale. Не одобрено и не связано с компанией Mojang, Microsoft или Hypixel Studios.",
     "date": "Существует с 2019 года",
     "openSourse": "Весь код проекта имеет <a>открытый исходный код</a>"

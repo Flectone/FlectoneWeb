@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl"
 import Image from "next/image"
 import { Button } from "../ui/button"
+import { Separator } from "../ui/separator"
+import Link from "next/link"
 
 export default function Footer() {
   const t = useTranslations("Footer")
@@ -10,14 +12,22 @@ export default function Footer() {
       <div className="container flex w-full flex-col gap-4 border-t py-4">
         <div className="flex flex-col gap-4">
           <div className="flex w-full justify-between">
-            <div className="flex items-center gap-1">
-              <Image
-                alt="FlectoneLogo"
-                src={"/assets/flectone_logo.png"}
-                width={24}
-                height={24}
-              />
-              <span className="font-bold">Flectone</span>
+            <div className="flex w-full items-center justify-between gap-2">
+              <div className="flex items-center gap-1">
+                <Image
+                  alt="FlectoneLogo"
+                  src={"/assets/flectone_logo.png"}
+                  width={24}
+                  height={24}
+                />
+                <span className="font-bold">Flectone</span>
+              </div>
+              <Link
+                href="/members"
+                className="mt-[1px] flex h-[24px] items-center text-sm text-muted-foreground transition hover:text-primary"
+              >
+                {t("authors")}
+              </Link>
             </div>
           </div>
           <div className="flex w-full items-start justify-between text-muted-foreground max-md:flex-col-reverse max-md:gap-4">

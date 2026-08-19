@@ -155,10 +155,9 @@
   },
   "Main": {
     "HeaderLinks": {
-      "pulse": "Pulse",
-      "tools": "Tools",
-      "vault": "Vault",
-      "about": "About Us"
+      "pulse": "FlectonePulse",
+      "tools": "FlectoneTools",
+      "vault": "FlectoneVault"
     },
     "HeroCard": {
       "badge": "since 2019 ● open source",
@@ -710,6 +709,7 @@
     "button": "Go to the main page"
   },
   "Footer": {
+    "authors": "Authors",
     "answer": "Not an official Minecraft or Hytale service. Not approved by or associated with Mojang, Microsoft, or Hypixel Studios.",
     "date": "Established in 2019",
     "openSourse": "All project code is <a>open source</a>"
