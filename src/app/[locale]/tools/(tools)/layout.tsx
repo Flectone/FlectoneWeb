@@ -16,7 +16,6 @@ export default async function MainLayout({
           { label: t("pulse"), href: "/pulse" },
           { label: t("tools"), href: "/tools" },
           { label: t("vault"), href: "/vault" },
-          { label: t("about"), href: "/members" },
         ]}
       />
       {children}
