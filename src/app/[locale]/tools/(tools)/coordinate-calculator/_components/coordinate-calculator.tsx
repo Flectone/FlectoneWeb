@@ -271,73 +271,75 @@ export default function CoordinateCalculator() {
             )}
           </div>
         </div>
-        <Card className="col-span-2 row-start-2 w-full shrink-0 max-lg:w-full">
-          <CardHeader>
-            <CardTitle>{t("stronghold")}</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Field>
-              <FieldContent className="flex w-full flex-row">
-                <div className="flex w-full gap-2">
-                  <InputGroup>
-                    <InputGroupInput
-                      type="text"
-                      disabled
-                      value={stronghold?.x ?? ""}
-                    />
-                    <InputGroupAddon align="inline-end">
-                      <Button
-                        size={"icon-xs"}
-                        variant={"secondary"}
-                        disabled={copied}
-                        onClick={async () => {
-                          try {
-                            await navigator.clipboard.writeText(
-                              stronghold?.x ?? ""
-                            )
-                            setCopied(true)
-                            setTimeout(() => setCopied(false), 100)
-                          } catch (err) {
-                            console.error("Не удалось скопировать:", err)
-                          }
-                        }}
-                      >
-                        <Copy />
-                      </Button>
-                    </InputGroupAddon>
-                  </InputGroup>
-                  <InputGroup>
-                    <InputGroupInput
-                      type="text"
-                      disabled
-                      value={stronghold?.z ?? ""}
-                    />
-                    <InputGroupAddon align="inline-end">
-                      <Button
-                        size={"icon-xs"}
-                        variant={"secondary"}
-                        disabled={copied}
-                        onClick={async () => {
-                          try {
-                            await navigator.clipboard.writeText(
-                              stronghold?.z ?? ""
-                            )
-                            setCopied(true)
-                            setTimeout(() => setCopied(false), 100)
-                          } catch (err) {
-                            console.error("Не удалось скопировать:", err)
-                          }
-                        }}
-                      >
-                        <Copy />
-                      </Button>
-                    </InputGroupAddon>
-                  </InputGroup>
-                </div>
-              </FieldContent>
-            </Field>
-          </CardContent>
-        </Card>
+        {mode === "stronghold" && (
+          <Card className="col-span-2 row-start-2 w-full shrink-0 max-lg:w-full">
+            <CardHeader>
+              <CardTitle>{t("stronghold")}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <Field>
+                <FieldContent className="flex w-full flex-row">
+                  <div className="flex w-full gap-2">
+                    <InputGroup>
+                      <InputGroupInput
+                        type="text"
+                        disabled
+                        value={stronghold?.x ?? ""}
+                      />
+                      <InputGroupAddon align="inline-end">
+                        <Button
+                          size={"icon-xs"}
+                          variant={"secondary"}
+                          disabled={copied}
+                          onClick={async () => {
+                            try {
+                              await navigator.clipboard.writeText(
+                                stronghold?.x ?? ""
+                              )
+                              setCopied(true)
+                              setTimeout(() => setCopied(false), 100)
+                            } catch (err) {
+                              console.error("Не удалось скопировать:", err)
+                            }
+                          }}
+                        >
+                          <Copy />
+                        </Button>
+                      </InputGroupAddon>
+                    </InputGroup>
+                    <InputGroup>
+                      <InputGroupInput
+                        type="text"
+                        disabled
+                        value={stronghold?.z ?? ""}
+                      />
+                      <InputGroupAddon align="inline-end">
+                        <Button
+                          size={"icon-xs"}
+                          variant={"secondary"}
+                          disabled={copied}
+                          onClick={async () => {
+                            try {
+                              await navigator.clipboard.writeText(
+                                stronghold?.z ?? ""
+                              )
+                              setCopied(true)
+                              setTimeout(() => setCopied(false), 100)
+                            } catch (err) {
+                              console.error("Не удалось скопировать:", err)
+                            }
+                          }}
+                        >
+                          <Copy />
+                        </Button>
+                      </InputGroupAddon>
+                    </InputGroup>
+                  </div>
+                </FieldContent>
+              </Field>
+            </CardContent>
+          </Card>
+        )}
       </div>
       {mode === "stronghold" && (
         <Card>

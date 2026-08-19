@@ -10,13 +10,16 @@ export const generateMetadata = createMetadata({
 })
 
 export default function TextureGeneratorPage() {
-  const t = useTranslations("FlectoneTools.TextureGenerator")
+  const t = useTranslations("FlectoneTools")
 
   return (
     <PageTemplate>
-      <HeroCard contentWidth="md" namespace="FlectoneTools.TextureGenerator" />
+      <HeroCard
+        namespace="FlectoneTools.TextureGenerator"
+        background={t("Main.background")}
+      />
       <Callout margin="none" title="" type="warn">
-        {t("warn")}
+        {t("TextureGenerator.warn")}
       </Callout>
       <TextureGenerator />
     </PageTemplate>
