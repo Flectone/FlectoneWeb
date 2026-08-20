@@ -47,6 +47,9 @@ executor:
   shutdown_timeout:
     duration: 5
     time_unit: "SECONDS"
+  stall_timeout:
+    duration: 30
+    time_unit: "SECONDS"
 #endregion executor
 #region proxy
 proxy:

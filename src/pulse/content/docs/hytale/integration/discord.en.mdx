@@ -97,6 +97,13 @@ message_name:
   content: ""
   webhook_name: "<player>"
   webhook_avatar: ""
+  allowed_mentions:
+    types:
+      - ""
+    users:
+      - ""
+    roles:
+      - ""
   embed:
     color: ""
     title: ""
@@ -142,6 +149,41 @@ message_name:
 
         Enable Discord webhook with the player's avatar
         ![discord webhook](/pulse/integration_discord_webhook.webp)
+
+        #### `allowed_mentions`
+
+        Who of the mentioned in the message is allowed to be pinged. If the parameter is not written, nobody will be pinged, even if the message contains `@everyone`
+
+        ##### `types`
+
+        A list of mention types that are allowed
+
+        | Type                | What it allows                      |
+        |---------------------|-------------------------------------|
+        | `USER`              | User mentions                       |
+        | `ROLE`              | Role mentions                       |
+        | `EVERYONE_AND_HERE` | `@everyone` and `@here` mentions    |
+
+        ##### `users`
+
+        A list of user IDs that are allowed to be pinged
+
+        ##### `roles`
+
+        A list of role IDs that are allowed to be pinged
+
+        <Callout type="info" title="Information">
+            An example where only two people from the list are pinged, while the other mentions stay plain text
+
+            ```yaml
+            allowed_mentions:
+              users:
+                - "266531368914092042"
+                - "735603638272000000"
+            ```
+
+            `types` and `users` (`roles`) work together, `types` allows a whole kind of mention, while `users` and `roles` allow specific users and roles
+        </Callout>
 
         #### `embed`
 

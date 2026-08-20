@@ -7,6 +7,23 @@ tag: "hytale"
 ---
 ![command flectonepulse](/pulse/hytale/command_flectonepulse.webp)
 
+The command is used as `/flectonepulse type [file]`, where type is one of the actions below
+
+| Type         | Explanation                                                                                                                                    |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| `reload`     | Reloads `FlectonePulse` together with all configs                                                                                              |
+| `dump`       | Uploads information about the server and the plugin to `pastes.dev` and returns a link. It is convenient to send it to support if something does not work |
+| `editor`     | Starts the web editor for configs and returns a link to it. `host` and `port` must be configured in `command.yml`                               |
+| `export`     | Saves the `FlectonePulse` folder into a `.zip` archive next to the configs, without the `libraries`, `backups`, `minecraft` folders and `.db` database files |
+| `export_all` | The same as `export`, but with all files                                                                                                        |
+| `import`     | Unpacks a `.zip` archive back into the `FlectonePulse` folder and reloads the plugin. The archive must be in the `FlectonePulse` folder          |
+| `database_export` | Saves the database into a `.json` file next to the configs                                                                                 |
+| `database_import` | Loads the database from a `.json` file and reloads the plugin. The file must be in the `FlectonePulse` folder                              |
+
+<Callout type="info" title="Information">
+    The second argument can be the file name for `export`, `export_all`, `import`, `database_export` and `database_import`, for example `/flectonepulse export myconfig`. If it is not written, the name `export_date_time` or `database_date_time` for the database will be used
+</Callout>
+
 <br></br>
 
 # <include>../../../../parts/words.en.mdx#localization</include>
@@ -21,6 +38,10 @@ tag: "hytale"
 ### `dump_error`
 
 Message when a dump upload error occurs
+
+### `database_error`
+
+Message when an error occurs while exporting or importing the database
 
 ### `null_host_editor`
 
@@ -65,6 +86,14 @@ Format of the message that will be sent upon successful export
 ### `format_import`
 
 Format of the message that will be sent upon successful import
+
+### `format_database_export`
+
+Format of the message that will be sent upon successful database export
+
+### `format_database_import`
+
+Format of the message that will be sent upon successful database import
 
 <br></br>
 

@@ -23,9 +23,11 @@ The command is used as `/flectonepulse type [file]`, where type is one of the ac
 | `export`     | Saves the `FlectonePulse` folder into a `.zip` archive next to the configs, without the `libraries`, `backups`, `minecraft` folders and `.db` database files |
 | `export_all` | The same as `export`, but with all files                                                                                                        |
 | `import`     | Unpacks a `.zip` archive back into the `FlectonePulse` folder and reloads the plugin. The archive must be in the `FlectonePulse` folder          |
+| `database_export` | Saves the database into a `.json` file next to the configs                                                                                 |
+| `database_import` | Loads the database from a `.json` file and reloads the plugin. The file must be in the `FlectonePulse` folder                              |
 
 <Callout type="info" title="Information">
-    The second argument can be the file name for `export`, `export_all` and `import`, for example `/flectonepulse export myconfig`. If it is not written, the name `export_date_time` will be used
+    The second argument can be the file name for `export`, `export_all`, `import`, `database_export` and `database_import`, for example `/flectonepulse export myconfig`. If it is not written, the name `export_date_time` or `database_date_time` for the database will be used
 </Callout>
 
 <br></br>
@@ -42,6 +44,10 @@ The command is used as `/flectonepulse type [file]`, where type is one of the ac
 ### `dump_error`
 
 Message when a dump upload error occurs
+
+### `database_error`
+
+Message when an error occurs while exporting or importing the database
 
 ### `null_host_editor`
 
@@ -86,6 +92,14 @@ The format of the message that will be sent upon a successful file export
 ### `format_import`
 
 The format of the message that will be sent upon a successful file import
+
+### `format_database_export`
+
+The format of the message that will be sent upon a successful database export
+
+### `format_database_import`
+
+The format of the message that will be sent upon a successful database import
 
 <br></br>
 

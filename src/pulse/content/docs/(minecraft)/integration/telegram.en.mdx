@@ -127,6 +127,14 @@ The mode in which the message will be sent to Telegram
 | `HTML`        | The message will be formatted according to the HTML format                |
 | `NONE`        | The message will not be formatted at all                                  |
 
+### `disable_notification`
+
+If enabled, messages will arrive in Telegram silently, without a notification
+
+### `protect_content`
+
+If enabled, messages cannot be forwarded or copied
+
 ### `token`
 
 The bot [token](https://core.telegram.org/bots/faq#how-do-i-create-a-bot) for connection. Environment variables can be used, e.g., `${VALUE}`
