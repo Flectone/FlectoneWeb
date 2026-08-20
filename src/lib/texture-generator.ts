@@ -15,22 +15,27 @@ const ALLOWED_TEXTURE_HOSTS = new Set([
   "assets.mojang.com",
 ])
 
-function isAllowedTextureUrl(url: string): boolean {
+function resolveTextureUrl(url: string): string | null {
   try {
     const parsed = new URL(url)
-    return (
-      parsed.protocol === "https:" && ALLOWED_TEXTURE_HOSTS.has(parsed.hostname)
-    )
+
+    if (parsed.protocol !== "https:" && parsed.protocol !== "http:") return null
+    if (!ALLOWED_TEXTURE_HOSTS.has(parsed.hostname)) return null
+
+    parsed.protocol = "https:"
+
+    return parsed.toString()
   } catch {
-    return false
+    return null
   }
 }
 
 export async function getSkinHead(url: string) {
-  if (!isAllowedTextureUrl(url)) return null
+  const textureUrl = resolveTextureUrl(url)
+  if (!textureUrl) return null
 
   try {
-    const response = await fetch(url, {
+    const response = await fetch(textureUrl, {
       signal: AbortSignal.timeout(SKIN_FETCH_TIMEOUT_MS),
       redirect: "error",
     })
