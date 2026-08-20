@@ -1,0 +1,282 @@
+---
+title: Sending messages
+description: MessageDispatcher and EventMetadata, sending messages through the FlectonePulse pipeline with filters, range, sound and destination
+tag: "api"
+icon: Send
+---
+There are two ways to send a message
+
+| Way | When it fits |
+|-----|--------------|
+| `MessageSender` | You just need to hand a ready `Component` to one player or to the console |
+| `MessageDispatcher` | You need the whole pipeline with localization, formatting, filters, range, sound, proxy and integrations |
+
+<br></br>
+
+# MessageSender
+
+<span>Package `net.flectone.pulse.platform.sender`</span>
+
+```java
+import net.flectone.pulse.platform.sender.MessageSender;
+import net.kyori.adventure.text.Component;
+
+MessageSender messageSender = flectonePulse.get(MessageSender.class);
+
+messageSender.sendMessage(fPlayer, Component.text("Hello"), false);
+messageSender.sendToConsole(Component.text("A message to the console"));
+messageSender.sendToConsole("A plain string works too");
+```
+
+| Method | What it does |
+|--------|--------------|
+| `sendMessage(FPlayer, Component, boolean silent)` | Sends a message to a player or the console |
+| `sendToConsole(Component)` | Sends a component to the console |
+| `sendToConsole(String)` | Sends a string to the console |
+
+The `silent` parameter sends the packet quietly, without the client side effects that go with it
+
+<br></br>
+
+# MessageDispatcher
+
+<span>Package `net.flectone.pulse.dispatcher`</span>
+
+It builds the message, counts the receivers, formats the text personally for each of them and sends it
+
+```java
+import net.flectone.pulse.dispatcher.MessageDispatcher;
+
+MessageDispatcher messageDispatcher = flectonePulse.get(MessageDispatcher.class);
+```
+
+| Method | What it does |
+|--------|--------------|
+| `dispatch(ModuleLocalization, EventMetadata)` | Sends on behalf of a module and takes the localization from it |
+| `dispatch(ModuleName, EventMetadata)` | Sends by module name |
+| `dispatch(ModuleName, EventMetadata, Set<FPlayer>)` | Sends to a receiver list you counted yourself |
+| `dispatch(MessageSendEvent)` | Sends an already built event |
+| `createReceivers(ModuleName, EventMetadata)` | Counts the receivers and sends nothing |
+| `createMessageEvent(FPlayer, ModuleName, EventMetadata)` | Builds the event for one receiver |
+
+Every method gives back the set of players the message reached
+
+<br></br>
+
+# EventMetadata
+
+It describes how to deliver a message. To whom, where on the screen, how far it travels, with which sound and whether it has to be mirrored to Discord or to other servers
+
+```java
+import net.flectone.pulse.constant.ModuleName;
+import net.flectone.pulse.model.event.EventMetadata;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+import net.flectone.pulse.model.value.Destination;
+import net.flectone.pulse.model.value.Range;
+
+messageDispatcher.dispatch(ModuleName.ADDON, EventMetadata.builder()
+        .range(Range.Type.SERVER)
+        .destination(Destination.EMPTY_CHAT)
+        .filter(receiver -> receiver.isOnline())
+        .messageContext(receiver -> MessageContext.builder()
+                .sender(fPlayer)
+                .receiver(receiver)
+                .message("<display_name> <white>hello everyone")
+                .build()
+        )
+        .build()
+);
+```
+
+<Callout type="error" title="Attention">
+
+    Without a `messageContext(...)` call the `build()` method throws `NullPointerException`. This is the only required field
+
+</Callout>
+
+### Builder methods
+
+| Method | What it sets |
+|--------|--------------|
+| `messageContext(Function<FPlayer, MessageContext>)` | Builds the message context for each receiver, required |
+| `filter(FPlayer)` | Delivery to one player only |
+| `filter(Collection<FPlayer>)` | Delivery to the listed players |
+| `filter(Predicate<FPlayer>)` | Any condition you like |
+| `destination(Destination)` | The place on the screen |
+| `range(Range)` | The travel distance |
+| `sound(Pair<Sound, PermissionSetting>)` | The sound and the permission to hear it |
+| `proxy()` | Delivery to other servers |
+| `proxy(ProxyDataConsumer<DataOutputStream>)` | Delivery to other servers together with data |
+| `integration()` | Mirroring to Discord, Telegram and Twitch |
+
+<Callout type="info" title="Information">
+
+    Every `filter()` call narrows the audience, the conditions stack through `and` and do not replace each other
+
+</Callout>
+
+### A context for each receiver
+
+The parameter of the `messageContext` method is a function of the receiver. It runs separately for each player, so you can pick the text for the language and the settings of one person
+
+```java
+.messageContext(receiver -> MessageContext.builder()
+        .sender(fPlayer)
+        .receiver(receiver)
+        .message(localization(receiver).format()) // a personal translation for everyone
+        .build()
+)
+```
+
+<br></br>
+
+# Destination
+
+<span>Package `net.flectone.pulse.model.value`</span>
+
+It decides where exactly the client shows the message
+
+| `Destination.Type` | Where it is drawn |
+|--------------------|-------------------|
+| `CHAT` | Ordinary chat |
+| `ACTION_BAR` | The line above the hotbar |
+| `BOSS_BAR` | The boss bar |
+| `TITLE` | The title in the middle of the screen |
+| `SUBTITLE` | The subtitle in the middle of the screen |
+| `TAB_HEADER` | The top of the player list |
+| `TAB_FOOTER` | The bottom of the player list |
+| `TOAST` | The advancement popup |
+| `TEXT_SCREEN` | Floating text |
+| `BRAND` | The server name in the debug screen |
+
+Destinations with default values come as ready constants, for example `Destination.EMPTY_CHAT`, `Destination.EMPTY_TITLE` and `Destination.EMPTY_TOAST`. When you need your own parameters, `Destination` carries the fields `subtext`, `bossBar`, `times`, `toast` and `textScreen`, and only the ones that belong to the chosen type get filled
+
+<br></br>
+
+# Range
+
+It decides who sees the message at all
+
+| `Range.Type` | Who sees it |
+|--------------|-------------|
+| `PLAYER` | The sender only |
+| `BLOCKS` | Players within N blocks |
+| `WORLD_NAME` | Players in the same world |
+| `WORLD_TYPE` | Players in a world of the same type |
+| `SERVER` | Every player of this server |
+| `PROXY` | Every player of the proxy network |
+
+```java
+// a named scope
+Range serverRange = Range.get(Range.Type.SERVER);
+
+// a radius in blocks
+Range blocksRange = Range.get(100);
+```
+
+<br></br>
+
+# Sound
+
+A sound travels in a pair with a permission, and a player hears it only when they hold that permission
+
+```java
+import net.flectone.pulse.model.value.Pair;
+import net.flectone.pulse.model.value.Sound;
+
+// modules take the sound from the configuration
+.sound(module.soundOrThrow())
+```
+
+`SoundPlayer` plays a sound on its own
+
+```java
+import net.flectone.pulse.platform.sender.SoundPlayer;
+
+SoundPlayer soundPlayer = flectonePulse.get(SoundPlayer.class);
+soundPlayer.play(soundPermission, sender, receiver);
+```
+
+The `Sound` record holds the fields `enable`, `volume`, `pitch`, `category` and `name`
+
+<br></br>
+
+# Proxy and integrations
+
+```java
+// mirror the message to the other servers of the network
+.proxy()
+
+// the same, but with extra data
+.proxy(output -> output.writeInt(percent))
+
+// mirror it to Discord, Telegram and Twitch
+.integration()
+```
+
+Data transfer between servers is written up on the [proxy](/pulse/docs/api/proxy/) page
+
+<br></br>
+
+# Example
+
+An announcement to every player of the server, as a title and with a trip into the network
+
+```java
+import net.flectone.pulse.constant.ModuleName;
+import net.flectone.pulse.model.entity.FPlayer;
+import net.flectone.pulse.model.event.EventMetadata;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+import net.flectone.pulse.model.value.Destination;
+import net.flectone.pulse.model.value.Range;
+
+import java.util.Set;
+
+public void announce(FPlayer sender, String text) {
+    Set<FPlayer> received = messageDispatcher.dispatch(
+            ModuleName.ADDON,
+            EventMetadata.builder()
+                    .range(Range.Type.SERVER)
+                    .destination(Destination.EMPTY_TITLE)
+                    .filter(receiver -> !receiver.isConsole())
+                    .messageContext(receiver -> MessageContext.builder()
+                            .sender(sender)
+                            .receiver(receiver)
+                            .message("<gradient:#FF0000:#00FF00>" + text + "</gradient>")
+                            .build()
+                    )
+                    .proxy()
+                    .build()
+    );
+
+    getLogger().info("The message reached " + received.size() + " players");
+}
+```
+
+<br></br>
+
+# What happens inside
+
+<Steps>
+    <Step>
+        The `createReceivers()` method counts the receivers, applies the filters with the range and checks whether the module is on for each player
+    </Step>
+    <Step>
+        `MessagePrepareEvent` fires, the receiver list can still be changed here
+    </Step>
+    <Step>
+        A `MessageContext` is built for each receiver and `MessageFormattingEvent` fires
+    </Step>
+    <Step>
+        The text goes through `MessagePipeline` and becomes a `Component`
+    </Step>
+    <Step>
+        `MessageSendEvent` fires and the message goes to the player
+    </Step>
+</Steps>
+
+<Callout type="idea" title="Note">
+
+    `ModuleName` is an enum and you cannot add your own entry to it. For your own messages take a fitting `ModuleName.ADDON` or existing module or send through `MessageSender`. How to shape the text itself is written on the [formatting](/pulse/docs/api/formatting/) page
+
+</Callout>

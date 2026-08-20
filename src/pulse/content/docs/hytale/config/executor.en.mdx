@@ -22,7 +22,7 @@ Minimum number of threads in the pool
 
 ### `max_pool_size`
 
-Maximum number of threads in the pool. A value of `-1` means no limit — as many threads as needed for current tasks will be created
+Maximum number of threads in the pool. A value of `-1` means no limit – as many threads as needed for current tasks will be created
 
 ### `allow_core_thread_timeout`
 
@@ -60,3 +60,19 @@ Time value for shutdown timeout
 #### `time_unit`
 
 Time unit for shutdown timeout
+
+### `stall_timeout`
+
+Settings for how long the task queue may hang before it is considered stalled
+
+<Callout type="info" title="Information">
+If there are tasks in the queue but none of them has finished during this time, the queue is cleared, the `FlectonePulse` threads are restarted and a warning is written to the console
+</Callout>
+
+#### `duration`
+
+Time value for stall timeout
+
+#### `time_unit`
+
+Time unit for stall timeout

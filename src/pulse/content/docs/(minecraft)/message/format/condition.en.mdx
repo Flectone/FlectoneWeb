@@ -9,6 +9,43 @@ Usage: `<condition:name>`
 
 ![condition](/pulse/message_format_condition.webp)
 
+<Callout type="info" title="Information">
+    How to make your own condition? For example an icon for those who have the `server.donate` permission
+
+    <Steps>
+        <Step>
+            In `message.yml` add the condition to `format.condition.values`
+            ```yaml
+            values:
+              is_donate:
+                value: "server.donate"
+                type: "PERMISSION"
+            ```
+        </Step>
+        <Step>
+            In `localizations → language.yml` add the values to `message.format.condition.values`
+            ```yaml
+            values:
+              is_donate:
+                "true": "<color:#FFD700>★ "
+                "false": ""
+            ```
+        </Step>
+        <Step>
+            Insert `<condition:is_donate>` into any message, for example into the name format in `message.format.names.display`
+            ```yaml
+            display:
+            - "<condition:is_donate><nickname>"
+            ```
+        </Step>
+        <Step>
+            Reload FlectonePulse with `/flectonepulse reload`
+        </Step>
+    </Steps>
+
+    For `type: "NUMBER"` the values are set as ranges (`0`, `50`, `100`), and for `type: "STRING"` as exact lowercase text
+</Callout>
+
 <br></br>
 
 # <include>../../../../../parts/words.en.mdx#localization</include>

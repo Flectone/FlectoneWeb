@@ -1,9 +1,3 @@
 {
-  "pages": [
-    "(minecraft)",
-    "hytale",
-    "api",
-    "metrics",
-    "changelog"
-  ]
+  "pages": ["(minecraft)", "hytale", "api"]
 }

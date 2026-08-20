@@ -13,6 +13,30 @@ tag: "minecraft"
     This only works for versions `1.21` and newer
 </Callout>
 
+<Callout type="info" title="Information">
+    How to add your own link?
+
+    <Steps>
+        <Step>
+            In `message.yml` add the name and the link itself to `serverlink.values`
+            ```yaml
+            values:
+              discord: "https://discord.flectone.net"
+            ```
+        </Step>
+        <Step>
+            In `localizations → language.yml` add the button text to `message.serverlink.values`. If it is not added, the link itself is shown
+            ```yaml
+            values:
+              discord: "<fcolor:2>Our discord"
+            ```
+        </Step>
+        <Step>
+            Reload FlectonePulse with `/flectonepulse reload` and open the pause menu
+        </Step>
+    </Steps>
+</Callout>
+
 <br></br>
 
 # <include>../../../../parts/words.en.mdx#localization</include>

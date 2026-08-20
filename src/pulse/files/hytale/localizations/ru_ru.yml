@@ -240,6 +240,7 @@ command:
 #region flectonepulse
   flectonepulse:
     dump_error: "<color:#ff7171>Возникла проблема при загрузке дампа: <error>"
+    database_error: "<color:#ff7171>Возникла проблема при работе с файлом базы данных <file>"
     null_host_editor: "<color:#ff7171>Параметр host должен быть настроен в command.yml в строке port"
     null_port_editor: "<color:#ff7171>Порт <port> недоступен, выбери другой в command.yml в строке port"
     null_file: "<color:#ff7171>Файл <file> не существует"
@@ -251,6 +252,8 @@ command:
     format_editor: "<fcolor:1>[*] Ссылка для веб-редактирования <fcolor:2><click:open_url:\"<url>\"><hover:show_text:\"<fcolor:2><url>\"><url>"
     format_export: "<fcolor:1>[*] Файлы экспортированы в <fcolor:2><file>"
     format_import: "<fcolor:1>[*] Файлы импортированы из <fcolor:2><file>"
+    format_database_export: "<fcolor:1>[*] База данных экспортирована в <fcolor:2><file>"
+    format_database_import: "<fcolor:1>[*] База данных импортирована из <fcolor:2><file>"
 #endregion flectonepulse
 #region geolocate
   geolocate:
@@ -459,6 +462,8 @@ command:
       message: "личное сообщение"
       send: "личное сообщение"
       m: "личное сообщение"
+      r: "личное сообщение"
+      reply: "личное сообщение"
       anon: "анонимное сообщение"
       anvil: "название предмета"
       book: "текст книги"
@@ -752,6 +757,10 @@ message:
           "true": "Админ"
           "false": "Игрок"
 #endregion condition
+#region fading
+    fading:
+      symbol: "▓"
+#endregion fading
 #region object
     object:
       default_symbol: ""
@@ -899,10 +908,14 @@ message:
 #region motd
     motd:
       values:
-      - "<fcolor:1>Добро пожаловать на сервер!"
-      - "<fcolor:1>Присоединяйся и наслаждайся уникальным опытом игры!"
-      - "<fcolor:1>У нас дружелюбное сообщество - будь вежлив и уважай других!"
-      - "<fcolor:1>Приятной игры! Если есть вопросы, обращайся к администрации"
+      - - "<fcolor:1>Добро пожаловать на сервер!"
+        - ""
+      - - "<fcolor:1>Присоединяйся и наслаждайся уникальным опытом игры!"
+        - ""
+      - - "<fcolor:1>У нас дружелюбное сообщество - будь вежлив и уважай других!"
+        - ""
+      - - "<fcolor:1>Приятной игры! Если есть вопросы, обращайся к администрации"
+        - ""
 #endregion motd
 #region players
     players:

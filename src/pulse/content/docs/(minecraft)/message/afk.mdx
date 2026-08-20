@@ -5,6 +5,7 @@ authors:
   - TheFaser
 tag: "minecraft"
 ---
+
 ![afk global message](/pulse/message_afk.webp)
 
 Если человек АФК, то ему выдаётся определённый суффикс
@@ -15,11 +16,16 @@ tag: "minecraft"
 <br></br>
 
 # <include>../../../../parts/words.mdx#localization</include>
-<include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.afk`
 
-<Tabs items={['ru_ru', 'en_us']}>
-    <Tab value="ru_ru"><include>../../../../files/minecraft/localizations/ru_ru.yml#afk</include></Tab>
-    <Tab value="en_us"><include>../../../../files/minecraft/localizations/en_us.yml#afk</include></Tab>
+<span><include>../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.afk`</span>
+
+<Tabs items={["ru_ru", "en_us"]}>
+  <Tab value="ru_ru">
+    <include>../../../../files/minecraft/localizations/ru_ru.yml#afk</include>
+  </Tab>
+  <Tab value="en_us">
+    <include>../../../../files/minecraft/localizations/en_us.yml#afk</include>
+  </Tab>
 </Tabs>
 
 ### `suffix`
@@ -38,7 +44,8 @@ tag: "minecraft"
 <br></br>
 
 # <include>../../../../parts/words.mdx#setting</include>
-<include>../../../../parts/words.mdx#path</include> `message.yml → afk`
+
+<span><include>../../../../parts/words.mdx#path</include> `message.yml → afk`</span>
 
 <include>../../../../files/minecraft/message.yml#afk</include>
 
@@ -63,13 +70,13 @@ tag: "minecraft"
 Список действий, которые игнорируются и не влияют на режим АФК
 
 | Действия, которые можно игнорировать |
-|--------------------------------------|
+| ------------------------------------ |
 | Любые названия комманд               |
 | `chat` - когда игрок пишет в чат     |
 | `quit` - когда игрок выходит         |
 
 <Callout type="info" title="Информация">
-    Например, если я впишу в список комманду `tell` и игрок будет в режиме АФК, то он сможет использовать комманду `tell` и его не выкинет с режима АФК
+  Например, если я впишу в список комманду `tell` и игрок будет в режиме АФК, то он сможет использовать комманду `tell` и его не выкинет с режима АФК
 </Callout>
 
 <include>../../../../parts/destination.mdx</include>
@@ -81,7 +88,8 @@ tag: "minecraft"
 <br></br>
 
 # <include>../../../../parts/words.mdx#permission</include>
-<include>../../../../parts/words.mdx#path</include> `permission.yml → message.afk`
+
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml →message.afk`</span>
 
 <include>../../../../files/minecraft/permission.yml#afk</include>
 

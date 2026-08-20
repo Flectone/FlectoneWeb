@@ -1,26 +1,15 @@
 ---
-title: Основные методы
-description: Интерфейс FlectonePulse является главной точкой входа для взаимодействия с проектом. Он предоставляет доступ к системе внедрения зависимостей (Google Guice) и управляет жизненным циклом.
+title: Точка входа
+description: Интерфейс FlectonePulse, внедрение зависимостей через Google Guice, жизненный цикл проекта и обработка ошибок
 tag: "api"
-icon: SearchAlert
+icon: Rocket
 ---
+Работа с API начинается с двух классов
 
-## Таблица методов
-
-| Метод | Возвращает |
-|-------|------------|
-| `get(Class<T>)` | `T` |
-| `isReady()` | `boolean` |
-| `getInjector()` | `Injector` или `null` |
-| `reload()` | `void` |
-| `closeUIs()` | `void` |
-| `initPacketAdapter()` | `void` |
-| `terminatePacketAdapter()` | `void` |
-| `terminateFailedPacketAdapter()` | `void` |
-| `throwInitException(Exception)` | `void` |
-| `onEnable()` / `onDisable()` / `reload()` | `void` |
-
-## Получение экземпляра
+| Класс | Зачем нужен |
+|-------|-------------|
+| `net.flectone.pulse.FlectonePulseAPI` | Хранит запущенный экземпляр и управляет его жизненным циклом |
+| `net.flectone.pulse.FlectonePulse` | Даёт внедрение зависимостей, перезагрузку и доступ к платформе |
 
 ```java
 import net.flectone.pulse.FlectonePulse;
@@ -29,92 +18,192 @@ import net.flectone.pulse.FlectonePulseAPI;
 FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
 ```
 
-## Основные методы
+<br></br>
+
+# FlectonePulseAPI
+
+| Метод | Возвращает | Что делает |
+|-------|------------|------------|
+| `getInstance()` | `FlectonePulse` | Отдаёт запущенный экземпляр или `null`, если проект ещё не загрузился |
+| `isDisabling()` | `boolean` | Отдаёт `true`, пока идёт выключение проекта |
+
+<Callout type="info" title="Информация">
+
+Пока `isDisabling()` отдаёт `true`, не создавай новые задачи и не трогай базу данных. Проект в этот момент уже сворачивается
+
+</Callout>
+
+<br></br>
+
+# FlectonePulse
+
+| Метод | Возвращает | Что делает |
+|-------|------------|------------|
+| `get(Class<T>)` | `T` | Отдаёт компонент из Guice |
+| `isReady()` | `boolean` | Проверяет готовность инжектора |
+| `reload()` | `void` | Перечитывает конфигурацию и бросает `ReloadException` при ошибке |
+| `getLoader()` | `Object` | Отдаёт нативный объект плагина или мода платформы |
+| `hook(HookType, Object...)` | `void` | Вызывает платформенную точку расширения |
+| `onLoad()`, `onEnable()`, `onDisable()` | `void` | Внутренний жизненный цикл, вызывается платформой |
+| `throwInitException(Exception)` | `void` | Заворачивает ошибку в `InitException` |
 
 ### `get(Class<T> type)`
 
-
-<Callout type="warn" title="Предупреждение">
-    Перед вызовом `get()` убедись, что инжектор готов, используя `isReady()`
-</Callout>
-
-Возвращает экземпляр указанного класса через Guice. Большинство сервисов помечены как `@Singleton`
+Отдаёт компонент из инжектора. Почти все компоненты объявлены интерфейсами, а их реализации помечены `@Singleton`, поэтому повторные вызовы отдают один и тот же объект
 
 ```java
-FLogger logger = flectonePulse.get(FLogger.class);
-MessageModule messageModule = flectonePulse.get(MessageModule.class);
+import net.flectone.pulse.dispatcher.MessageDispatcher;
+import net.flectone.pulse.logging.FLogger;
+import net.flectone.pulse.platform.registry.ListenerRegistry;
+import net.flectone.pulse.service.FPlayerService;
+
+FLogger fLogger = flectonePulse.get(FLogger.class);
+
+FPlayerService fPlayerService = flectonePulse.get(FPlayerService.class);
+
+MessageDispatcher messageDispatcher = flectonePulse.get(MessageDispatcher.class);
+
+ListenerRegistry listenerRegistry = flectonePulse.get(ListenerRegistry.class);
+```
+
+<Callout type="error" title="Внимание">
+
+Перед вызовом `get()` проверяй готовность через `isReady()`, иначе получишь `InjectorNotInitializedException`
+
+</Callout>
+
+Запрашивай интерфейс, а не реализацию. Реализации лежат в закрытых модулях и отличаются на разных платформах
+
+```java
+// правильно
+FPlayerService service = flectonePulse.get(FPlayerService.class);
+
+// неправильно, класса FPlayerServiceImpl нет в артефакте api
+FPlayerServiceImpl service = flectonePulse.get(FPlayerServiceImpl.class);
 ```
 
 ### `isReady()`
 
-Проверяет, инициализирован ли инжектор зависимостей
+Проверяет, поднялся ли инжектор зависимостей
 
 ```java
 if (flectonePulse.isReady()) {
-    // безопасно вызываем get()
-    FLogger logger = flectonePulse.get(FLogger.class);
-    logger.info("API готов к работе");
-} else {
-    // FlectonePulse ещё не загружен
+    FLogger fLogger = flectonePulse.get(FLogger.class);
+    fLogger.info("API готов к работе");
 }
 ```
-
-### `getInjector()`
-
-Возвращает сам объект `Injector` (может быть `null` до инициализации). Обычно не требуется напрямую
 
 ### `reload()`
 
-Перезагружает конфигурацию плагина. Выбрасывает `ReloadException` при ошибке
+Перезагружает конфигурацию, то же самое делает команда `/flectonepulse reload`
 
 ```java
+import net.flectone.pulse.exception.ReloadException;
+
 try {
     flectonePulse.reload();
-    getLogger().info("Плагин перезагружен");
+    getLogger().info("FlectonePulse перезагружен");
 } catch (ReloadException e) {
-    getLogger().severe("Ошибка перезагрузки: " + e.getMessage());
+    getLogger().severe("Ошибка перезагрузки " + e.getMessage());
 }
 ```
 
-### `closeUIs()`
+<Callout type="warn" title="Предупреждение">
 
-Закрывает все открытые пользовательские интерфейсы (инвентари, диалоги)
+Перезагрузка удаляет все слушатели, кроме добавленных через `registerPermanent()`. Подробности на странице [системы событий](/pulse/docs/api/events/)
+
+</Callout>
+
+### `getLoader()`
+
+Отдаёт нативный объект загрузчика текущей платформы. Пригодится, когда нужен платформенный API, которого нет в абстракциях FlectonePulse
+
+| Платформа | Тип объекта |
+|-----------|-------------|
+| Bukkit и Paper | `org.bukkit.plugin.java.JavaPlugin` |
+| BungeeCord | `net.md_5.bungee.api.plugin.Plugin` |
+| Velocity | объект плагина Velocity |
+| Fabric и NeoForge | контейнер мода |
+| Hytale | загрузчик мода Hytale |
+
+```java
+JavaPlugin pulsePlugin = (JavaPlugin) flectonePulse.getLoader();
+```
+
+### `hook(HookType type, Object... args)`
+
+Точки расширения, через которые ядро дёргает платформенный слой. Проект вызывает их сам, вручную они нужны только для низкоуровневой интеграции
+
+| `HookType` | Когда срабатывает |
+|------------|-------------------|
+| `CONFIGURE_SERIALIZATION` | Настройка сериализации платформы |
+| `PRE_NEW_PLAYER_PLACE` | Перед размещением нового игрока в мире |
+| `ON_PLAYER_PRE_LOGIN` | Проверка игрока до входа |
+| `ON_PLAYER_LOGIN` | Вход игрока |
+| `POST_RESPAWN` | После возрождения игрока |
+| `INIT_PACKET_ADAPTER` | Запуск пакетного адаптера |
+| `TERMINATE_PACKET_ADAPTER` | Штатная остановка пакетного адаптера |
+| `TERMINATE_FAILED_PACKET_ADAPTER` | Остановка адаптера после ошибки запуска |
+| `CLOSE_UIS` | Закрытие всех открытых интерфейсов |
+| `SIMPLEVOICE_ENTITY_SOUND_PACKET` | Пакет звука сущности Simple Voice Chat |
+| `SIMPLEVOICE_MICROPHONE_PACKET` | Пакет микрофона Simple Voice Chat |
+
+```java
+import net.flectone.pulse.constant.HookType;
+
+// закрыть все открытые интерфейсы FlectonePulse
+flectonePulse.hook(HookType.CLOSE_UIS);
+```
 
 ### `throwInitException(Exception e)`
 
-Вспомогательный метод для выброса `InitException` с усечением длинных сообщений (до 25 строк в production-режиме)
+Заворачивает ошибку в `InitException`. В обычном режиме сообщение обрезается до 25 строк, а в debug режиме сохраняется целиком
 
 ```java
 try {
-    // опасная операция
-    throw new RuntimeException("Очень длинный текст");
+    // опасная операция при запуске
 } catch (Exception e) {
-    flectonePulse.throwInitException(e); // всегда выбрасывает InitException
+    flectonePulse.throwInitException(e); // всегда бросает InitException
 }
 ```
 
-## Методы `PacketAdapter`
+<br></br>
 
-Используются для инициализации и завершения работы сетевого адаптера (вызываются автоматически)
+# Отладка
 
-```java
-// Инициализация
-flectonePulse.initPacketAdapter();
+Debug режим включается системным свойством при запуске сервера
 
-// Принудительное завершение при ошибке инициализации
-flectonePulse.terminateFailedPacketAdapter();
-
-// Нормальное завершение
-flectonePulse.terminatePacketAdapter();
+```bash
+java -Dflectonepulse.debug=true -jar server.jar
 ```
 
-## Внутренние методы (`onEnable`, `onDisable`, `reload`)
+В нём FlectonePulse не обрезает сообщения об ошибках и пишет подробные логи при старте
 
-Эти методы вызываются самим плагином во время включения/выключения или перезагрузки
+<br></br>
 
-## Примечания
+# Исключения
 
-- Для 95% задач вам достаточно `get(Class)` и изредка `reload()`
-- Всегда проверяйте `isReady()` перед вызовом `get()`
-- Методы `PacketAdapter` и `throwInitException` нужны только для низкоуровневой интеграции
-- Исключения `ReloadException` и `InitException` требуют обработки или проброса
+Все исключения лежат в пакете `net.flectone.pulse.exception`
+
+| Исключение | Когда прилетает |
+|------------|-----------------|
+| `InjectorNotInitializedException` | `get()` вызван до готовности инжектора |
+| `InitException` | Ошибка при запуске проекта |
+| `ReloadException` | Ошибка при вызове `reload()` |
+| `LoadingException` | Ошибка загрузки проекта |
+| `LibraryLoadException` | Не получилось скачать или подключить библиотеку |
+| `FileLoadException` | Ошибка чтения конфигурации |
+| `FileWriteException` | Ошибка записи конфигурации |
+| `ListenerRegistrationException` | Кривой слушатель или метод `@Pulse` |
+| `CacheRegistrationException` | Ошибка регистрации кэша |
+| `DatabaseNotInitializedException` | Обращение к базе до её подключения |
+| `UnsupportedDatabaseOperationException` | Операция не поддерживается выбранной базой |
+| `ProxyMessageCreateException` | Ошибка при сборке прокси сообщения |
+| `SchedulerTaskException` | Ошибка внутри задачи планировщика |
+| `ReflectionException` | Ошибка рефлексии в платформенном слое |
+
+<Callout type="idea" title="Примечание">
+
+`ReloadException` и `SchedulerTaskException` наследуют `Exception`, поэтому их придётся обработать или пробросить. Все остальные наследуют `RuntimeException`
+
+</Callout>

@@ -13,6 +13,23 @@ tag: "minecraft"
 
 </Callout>
 
+The command is used as `/flectonepulse type [file]`, where type is one of the actions below
+
+| Type         | Explanation                                                                                                                                    |
+|--------------|------------------------------------------------------------------------------------------------------------------------------------------------|
+| `reload`     | Reloads `FlectonePulse` together with all configs                                                                                              |
+| `dump`       | Uploads information about the server and the plugin to `pastes.dev` and returns a link. It is convenient to send it to support if something does not work |
+| `editor`     | Starts the web editor for configs and returns a link to it. `host` and `port` must be configured in `command.yml`                               |
+| `export`     | Saves the `FlectonePulse` folder into a `.zip` archive next to the configs, without the `libraries`, `backups`, `minecraft` folders and `.db` database files |
+| `export_all` | The same as `export`, but with all files                                                                                                        |
+| `import`     | Unpacks a `.zip` archive back into the `FlectonePulse` folder and reloads the plugin. The archive must be in the `FlectonePulse` folder          |
+| `database_export` | Saves the database into a `.json` file next to the configs                                                                                 |
+| `database_import` | Loads the database from a `.json` file and reloads the plugin. The file must be in the `FlectonePulse` folder                              |
+
+<Callout type="info" title="Information">
+    The second argument can be the file name for `export`, `export_all`, `import`, `database_export` and `database_import`, for example `/flectonepulse export myconfig`. If it is not written, the name `export_date_time` or `database_date_time` for the database will be used
+</Callout>
+
 <br></br>
 
 # <include>../../../../parts/words.en.mdx#localization</include>
@@ -28,13 +45,25 @@ tag: "minecraft"
 
 Message when a dump upload error occurs
 
+### `database_error`
+
+Message when an error occurs while exporting or importing the database
+
 ### `null_host_editor`
 
-Message when the `host` field in config.yml is empty
+Message when the `host` field in `command.yml` is empty
 
 ### `null_port_editor`
 
-Message when the `port` specified in config.yml is occupied or unavailable
+Message when the `port` specified in `command.yml` is occupied or unavailable
+
+### `null_file`
+
+Message when the file for `import` is not found in the `FlectonePulse` folder
+
+### `file_exist`
+
+Message when the file for `export` already exists in the `FlectonePulse` folder
 
 ### `format_false`
 
@@ -48,13 +77,29 @@ The format of the message that will be sent upon reloading the entire `FlectoneP
 
 The format of the message that will be sent upon successful dump upload
 
-### `format_web_starting`
+### `format_starting`
 
-The format of the message that will be sent when the web server starts
+The format of the message that will be sent when an action starts, where `<type>` is replaced with its name
 
 ### `format_editor`
 
 The format of the message that will be sent upon a successful web server launch
+
+### `format_export`
+
+The format of the message that will be sent upon a successful file export
+
+### `format_import`
+
+The format of the message that will be sent upon a successful file import
+
+### `format_database_export`
+
+The format of the message that will be sent upon a successful database export
+
+### `format_database_import`
+
+The format of the message that will be sent upon a successful database import
 
 <br></br>
 

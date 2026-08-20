@@ -2,6 +2,7 @@
     "pages": [
         "animation",
         "condition",
+        "fading",
         "fcolor",
         "fixation",
         "mention",

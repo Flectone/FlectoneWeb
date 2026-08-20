@@ -49,6 +49,41 @@ tag: "minecraft"
 
 ![strikethrough](/pulse/message_format_replacement_strikethrough.webp)
 
+<Callout type="info" title="Information">
+    How to make your own replacement? For example `:ip:`, which is replaced with the server address
+
+    <Steps>
+        <Step>
+            In `message.yml` add the trigger to `format.replacement.triggers`
+            ```yaml
+            triggers:
+              server_ip: "(?<!\\\\)(?<!\\S)(?i):ip:(?!\\S)"
+            ```
+        </Step>
+        <Step>
+            In `localizations → language.yml` add what the trigger is replaced with to `message.format.replacement.values`
+            ```yaml
+            values:
+              server_ip: "<fcolor:2><u><click:copy_to_clipboard:'flectone.net'>flectone.net</click></u>"
+            ```
+        </Step>
+        <Step>
+            In `permission.yml` add a permission to `message.format.replacement.values`
+            ```yaml
+            values:
+              server_ip:
+                name: "flectonepulse.module.message.format.replacement.server_ip"
+                type: "TRUE"
+            ```
+        </Step>
+        <Step>
+            Reload FlectonePulse with `/flectonepulse reload` and write `:ip:` in chat
+        </Step>
+    </Steps>
+
+    `(?<!\\\\)(?<!\\S)` and `(?!\\S)` are needed so that the trigger only works as a separate word and can be escaped with `\\`
+</Callout>
+
 <br></br>
 
 # <include>../../../../../parts/words.en.mdx#localization</include>
@@ -67,6 +102,17 @@ The symbol that will replace each letter of the words in a `spoiler`
 
 A list of messages where the key is the name and the value is what will be shown instead of the trigger
 
+Inside the values you can use placeholders that depend on the replacement
+
+| Placeholder                                | Where it is used                                                       |
+|--------------------------------------------|------------------------------------------------------------------------|
+| `<value>`                                  | `ping`, `tps`, `online` – the value itself                             |
+| `<x>`, `<y>`, `<z>`                        | `coords` – the player's coordinates                                    |
+| `<hp>`, `<armor>`, `<attack>`, `<exp>`, `<food>` | `stats` – the player's statistics                                |
+| `<pixels>`                                 | `skin` and `image` – the image itself, built out of symbols            |
+| `<message_1>`                              | The text found by the trigger (a link, an item name and so on)         |
+| `<symbols>`                                | `spoiler` – the hidden text where every letter is replaced with `spoiler_symbol` |
+
 <br></br>
 
 # <include>../../../../../parts/words.en.mdx#setting</include>
@@ -77,6 +123,11 @@ A list of messages where the key is the name and the value is what will be shown
 <include>../../../../../parts/enable.en.mdx</include>
 
 ### `triggers`
+
+<Callout type="info" title="Information">
+    A replacement can also be inserted manually into any message with the `<replacement:name>` tag, for example `<replacement:ping>` or `<replacement:tps>`. For `url`, `image` and `spoiler` a second argument is required, for example `<replacement:url:'https://flectone.net'>`
+</Callout>
+
 
 A list of all available triggers, where the key is the name and the value is the `trigger` itself in regular expression format
 

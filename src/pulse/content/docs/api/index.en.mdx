@@ -1,109 +1,230 @@
 ---
-title: Connection
-description: Instructions for connecting the FlectonePulse API to your project. Example of integration with a Bukkit plugin and obtaining services via Guice
+title: Getting started
+description: How to add FlectonePulse API to your project and write your first working code
 tag: "api"
 icon: Plug
 ---
+<Callout type="warn" title="Warning">
 
-## Connecting Dependency
+    Up to and including version `FlectonePulse 1.12.2` the artifact was named `core`. Starting from `1.13.0` it is named `api` and holds only the public API of the project
 
-FlectonePulse is available in Maven Central. Below are the configurations for connecting in a project via Maven, Gradle (Groovy), or Gradle (Kotlin DSL).
+</Callout>
 
-<Tabs items={['xml', 'groovy', 'kotlin']}>
-    <Tab value="xml">
-        ```xml
-        <dependency>
-            <groupId>net.flectone.pulse</groupId>
-            <artifactId>core</artifactId>
-            <version>1.12.2</version>
-            <scope>provided</scope>
-        </dependency>
-        ```
-    </Tab>
-    <Tab value="groovy">
-        ```groovy
-        repositories {
-            mavenCentral()
-        }
+The `api` artifact holds interfaces, models and constants. The implementation lives inside the plugin itself, so your project builds with `api` and works with real FlectonePulse objects on the server
 
-        dependencies {
-            compileOnly 'net.flectone.pulse:core:1.12.2' // Replace with the current version
-        }
-        ```
-    </Tab>
-    <Tab value="kotlin">
-        ```kotlin
-        repositories {
-            mavenCentral()
-        }
+With the API you can
 
-        dependencies {
-            compileOnly("net.flectone.pulse:core:1.12.2") // Replace with the current version
-        }
-        ```
-    </Tab>
-</Tabs>
+- listen to messages and change them before a player sees them
+- add your own MiniMessage tags to chat and any other message
+- send messages through the FlectonePulse pipeline with all formatting, sounds, range and proxy
+- read and change player data, punishments and chat settings
+- turn modules on and off, register your own commands and listeners
+- sync your own data between the servers of a network
 
-For snapshot versions:
+<Callout type="info" title="Information">
 
+    The whole API stands on three things. Dependency injection through Google Guice, events with the `@Pulse` annotation and modules. Once you know them, you can work with any part of the project
+
+</Callout>
+
+<br></br>
+
+# Dependency
+
+The artifact is named `net.flectone.pulse:api` and lives in Maven Central
 
 <Tabs items={['xml', 'groovy', 'kotlin']}>
-    <Tab value="xml">
-        ```xml
-        <dependency>
-            <groupId>net.flectone.pulse</groupId>
-            <artifactId>core</artifactId>
-            <version>1.12.3-SNAPSHOT</version>
-            <scope>provided</scope>
-        </dependency>
-        ```
-    </Tab>
-    <Tab value="groovy">
-        ```groovy
-        repositories {
-            maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
-        }
+  <Tab value="xml">
+    ```xml
+    <dependency>
+        <groupId>net.flectone.pulse</groupId>
+        <artifactId>api</artifactId>
+        <version>1.13.0</version> <!-- Replace with the current version -->
+        <scope>provided</scope>
+    </dependency>
+    ```
+  </Tab>
+  <Tab value="groovy">
+    ```groovy
+    repositories {
+        mavenCentral()
+    }
 
-        dependencies {
-            compileOnly 'net.flectone.pulse:core:1.12.3-SNAPSHOT' // Replace with the current version
-        }
-        ```
-    </Tab>
-    <Tab value="kotlin">
-        ```kotlin
-        repositories {
-            maven { url = uri("https://central.sonatype.com/repository/maven-snapshots/") }
-        }
+    dependencies {
+        compileOnly 'net.flectone.pulse:api:1.13.0' // Replace with the current version
+    }
+    ```
+  </Tab>
+  <Tab value="kotlin">
+    ```kotlin
+    repositories {
+        mavenCentral()
+    }
 
-        dependencies {
-            compileOnly("net.flectone.pulse:core:1.12.3-SNAPSHOT") // Replace with the current version
-        }
-        ```
-    </Tab>
+    dependencies {
+        compileOnly("net.flectone.pulse:api:1.13.0") // Replace with the current version
+    }
+    ```
+  </Tab>
 </Tabs>
 
+Snapshot versions need a separate repository
 
-## Example for Bukkit
+<Tabs items={['xml', 'groovy', 'kotlin']}>
+  <Tab value="xml">
+    ```xml
+    <repositories>
+        <repository>
+            <id>central-snapshots</id>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+        </repository>
+    </repositories>
 
-An example of a Bukkit plugin using FlectonePulse to output the message "Hello from FlectonePulse".
+    <dependency>
+        <groupId>net.flectone.pulse</groupId>
+        <artifactId>api</artifactId>
+        <version>1.13.1-SNAPSHOT</version> <!-- Replace with the current version -->
+        <scope>provided</scope>
+    </dependency>
+    ```
+  </Tab>
+  <Tab value="groovy">
+    ```groovy
+    repositories {
+        maven { url 'https://central.sonatype.com/repository/maven-snapshots/' }
+    }
 
-### plugin.yml
-```yaml
-name: MyPlugin
-version: 1.0.0
-main: com.example.myplugin.MyPlugin
-api-version: 1.13
-softdepend:
-  - FlectonePulse
+    dependencies {
+        compileOnly 'net.flectone.pulse:api:1.13.1-SNAPSHOT' // Replace with the current version
+    }
+    ```
+  </Tab>
+  <Tab value="kotlin">
+    ```kotlin
+    repositories {
+        maven { url = uri("https://central.sonatype.com/repository/maven-snapshots/") }
+    }
+
+    dependencies {
+        compileOnly("net.flectone.pulse:api:1.13.1-SNAPSHOT") // Replace with the current version
+    }
+    ```
+  </Tab>
+</Tabs>
+
+<Callout type="error" title="Attention">
+
+    Add the API as `provided` or `compileOnly`. The FlectonePulse file on the server already carries these classes, and putting them into your jar as well gives you a conflict
+
+</Callout>
+
+Adventure and Cloud come along with the dependency, you do not need to add them separately
+
+<br></br>
+
+# Soft dependency
+
+Declare FlectonePulse in your plugin description so that it loads first
+
+<Tabs items={['Bukkit', 'Fabric', 'Hytale']}>
+  <Tab value="Bukkit">
+    ```yaml
+    # plugin.yml
+    name: MyPlugin
+    version: 1.0.0
+    main: com.example.myplugin.MyPlugin
+    api-version: '1.13'
+    softdepend:
+      - FlectonePulse
+    ```
+  </Tab>
+  <Tab value="Fabric">
+    ```json
+    // fabric.mod.json
+    {
+      "suggests": {
+        "flectonepulse": "*"
+      }
+    }
+    ```
+  </Tab>
+  <Tab value="Hytale">
+    It is enough that FlectonePulse sits in the `mods` folder. Check availability through `FlectonePulseAPI.getInstance()` and `isReady()`
+  </Tab>
+</Tabs>
+
+<br></br>
+
+# Getting the instance
+
+Everything starts with the static method `FlectonePulseAPI.getInstance()`. It gives you the `FlectonePulse` interface, and through it you get any component of the project
+
+```java
+import net.flectone.pulse.FlectonePulse;
+import net.flectone.pulse.FlectonePulseAPI;
+import net.flectone.pulse.logging.FLogger;
+
+FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
+
+// the injector may not be ready yet, so we check
+if (flectonePulse != null && flectonePulse.isReady()) {
+    FLogger fLogger = flectonePulse.get(FLogger.class);
+    fLogger.info("Hello from FlectonePulse");
+}
 ```
 
-### Plugin Code Example
+<Callout type="error" title="Attention">
+
+    `getInstance()` returns `null` while FlectonePulse has not loaded, and `get()` throws `InjectorNotInitializedException` while the injector is not ready
+
+</Callout>
+
+<br></br>
+
+# First example
+
+A Bukkit plugin that appends `[Modified]` to every message
+
+<Steps>
+    <Step>
+        Create a listener class and mark the method with the `@Pulse` annotation
+    </Step>
+    <Step>
+        Return the changed event through `return`, because events are immutable
+    </Step>
+    <Step>
+        Register the listener through `ListenerRegistry`
+    </Step>
+</Steps>
+
+```java
+package com.example.myplugin;
+
+import net.flectone.pulse.annotation.Pulse;
+import net.flectone.pulse.listener.PulseListener;
+import net.flectone.pulse.model.event.Event;
+import net.flectone.pulse.model.event.message.MessageFormattingEvent;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+
+public class MyPulseListener implements PulseListener {
+
+    @Pulse(priority = Event.Priority.NORMAL)
+    public Event onMessageFormatting(MessageFormattingEvent event) {
+        MessageContext context = event.context();
+
+        // the context is immutable, so we create a copy with new text
+        return event.withContext(context.withMessage(context.message() + " [Modified]"));
+    }
+
+}
+```
+
 ```java
 package com.example.myplugin;
 
 import net.flectone.pulse.FlectonePulse;
 import net.flectone.pulse.FlectonePulseAPI;
-import net.flectone.pulse.util.logging.FLogger;
+import net.flectone.pulse.platform.registry.ListenerRegistry;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -111,17 +232,43 @@ public class MyPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        if (Bukkit.getPluginManager().isPluginEnabled("FlectonePulse")) {
-            FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
+        if (!Bukkit.getPluginManager().isPluginEnabled("FlectonePulse")) return;
 
-            FLogger fLogger = flectonePulse.get(FLogger.class);
-            fLogger.info("Hello from FlectonePulse");
-        }
+        FlectonePulse flectonePulse = FlectonePulseAPI.getInstance();
+        if (flectonePulse == null || !flectonePulse.isReady()) return;
+
+        ListenerRegistry listenerRegistry = flectonePulse.get(ListenerRegistry.class);
+
+        // registerPermanent survives /flectonepulse reload
+        listenerRegistry.registerPermanent(new MyPulseListener());
     }
+
 }
 ```
 
-## Notes
+<Callout type="warn" title="Warning">
 
-- Ensure that FlectonePulse is installed on the server and listed as a softdepend in `plugin.yml`.
-- Use `isReady()` to check the readiness of the injector before calling `get()`.
+    FlectonePulse drops every listener on reload. Use `registerPermanent()` in your plugins, otherwise your listener stops working after `/flectonepulse reload`
+
+</Callout>
+
+<br></br>
+
+# What to read next
+
+- [Entry point](/pulse/docs/api/methods/) - `FlectonePulse` interface, lifecycle, getting components
+- [Event system](/pulse/docs/api/events/) - `@Pulse` annotation, priorities, cancelling and changing events
+- [Event reference](/pulse/docs/api/events-reference/) - all events and their fields
+- [Players](/pulse/docs/api/players/) - `FPlayer`, `FEntity`, `FPlayerService`, chat settings
+- [Sending messages](/pulse/docs/api/messages/) - `MessageDispatcher`, `EventMetadata`, range, sounds
+- [Formatting](/pulse/docs/api/formatting/) - `MessagePipeline`, custom tags, formatting flags
+- [Modules and commands](/pulse/docs/api/modules/) - `ModuleSimple`, `ModuleController`, command registration
+- [Proxy](/pulse/docs/api/proxy/) - data sync between servers
+- [Component reference](/pulse/docs/api/services/) - all services, adapters and utilities
+- [Example plugin](/pulse/docs/api/example/) - complete plugin from scratch
+
+<Callout type="idea" title="Note">
+
+    Sources and Javadoc are published together with the artifact, so the description of any method shows up right in your IDE
+
+</Callout>

@@ -126,6 +126,14 @@ The mode in which the message will be sent to Telegram
 | `HTML`        | The message will be formatted according to the HTML format                |
 | `NONE`        | The message will not be formatted at all                                  |
 
+### `disable_notification`
+
+If enabled, messages will arrive in Telegram silently, without a notification
+
+### `protect_content`
+
+If enabled, messages cannot be forwarded or copied
+
 ### `token`
 
 The bot [token](https://core.telegram.org/bots/faq#how-do-i-create-a-bot) for connection. Environment variables can be used, e.g., `${VALUE}`
@@ -187,7 +195,7 @@ message_channel:
     - "-1002341720267_49"
 ```
 
-There can be any number of chats, as long as the bot has access to them from [secrets](/pulse/docs/secrets/telegram/). Localization configuration is optional; by default, the message will be sent with the `<final_message>` format.
+There can be any number of chats, as long as the bot from [`token`](/pulse/docs/hytale/integration/telegram/#token) has access to them. Localization configuration is optional; by default, the message will be sent with the `<final_message>` format.
 </Callout>
 
 <Callout type="warn" title="Warning">

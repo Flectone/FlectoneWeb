@@ -3,11 +3,45 @@ title: Анимация
 description: Тег animation используется для плавного изменения текста
 authors:
   - TheFaser
-tag: "minecraft"
+tag: "hytale"
 ---
 Использовать можно в любых сообщениях, которые изменяются через время (например в header/footer или sidebar) с помощью: `<animation:название>`
 
 ![animation](/pulse/hytale/message_format_animation.webp)
+
+<Callout type="info" title="Информация">
+    Как сделать свою анимацию? Например бегущую точку в ТАБе
+
+    <Steps>
+        <Step>
+            В `message.yml` добавь анимацию в `format.animation.values`
+            ```yaml
+            values:
+              loading:
+                raw: false
+                interval: 1
+            ```
+        </Step>
+        <Step>
+            В `localizations → язык.yml` добавь кадры в `message.format.animation.values`. Каждая строчка это один кадр, а после последнего анимация начинается заново
+            ```yaml
+            values:
+              loading:
+              - "<fcolor:2>● <fcolor:1>● ●"
+              - "<fcolor:1>● <fcolor:2>● <fcolor:1>●"
+              - "<fcolor:1>● ● <fcolor:2>●"
+            ```
+        </Step>
+        <Step>
+            Вставь `<animation:loading>` в сообщение, которое обновляется по времени, например в `message.tab.header`
+        </Step>
+        <Step>
+            Перезагрузи FlectonePulse с помощью `/flectonepulse reload`
+        </Step>
+    </Steps>
+
+    Кадр меняется только тогда, когда сообщение обновляется, поэтому у `ticker` этого сообщения период должен быть маленьким
+</Callout>
 
 <br></br>
 
@@ -15,8 +49,8 @@ tag: "minecraft"
 <span><include>../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.animation`</span>
 
 <Tabs items={['ru_ru', 'en_us']}>
-    <Tab value="ru_ru"><include>../../../../../files/minecraft/localizations/ru_ru.yml#animation</include></Tab>
-    <Tab value="en_us"><include>../../../../../files/minecraft/localizations/en_us.yml#animation</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../files/hytale/localizations/ru_ru.yml#animation</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/hytale/localizations/en_us.yml#animation</include></Tab>
 </Tabs>
 
 ### `values`
@@ -31,17 +65,13 @@ tag: "minecraft"
 # <include>../../../../../parts/words.mdx#setting</include>
 <span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.animation`</span>
 
-<include>../../../../../files/minecraft/message.yml#animation</include>
+<include>../../../../../files/hytale/message.yml#animation</include>
 
 <include>../../../../../parts/enable.mdx</include>
 
 ### `values`
 
 Список всех анимаций с настройкой, где ключом является название
-
-#### `raw`
-
-Будет ли текст таким, которым написан т.е. **не будет** применено форматирование
 
 #### `interval`
 
@@ -57,7 +87,7 @@ tag: "minecraft"
 # <include>../../../../../parts/words.mdx#permission</include>
 <span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.animation`</span>
 
-<include>../../../../../files/minecraft/permission.yml#animation</include>
+<include>../../../../../files/hytale/permission.yml#animation</include>
 
 <include>../../../../../parts/permission/permissionTier3.mdx</include>
 

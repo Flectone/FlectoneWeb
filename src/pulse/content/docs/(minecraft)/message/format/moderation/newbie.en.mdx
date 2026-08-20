@@ -6,7 +6,11 @@ authors:
 tag: "minecraft"
 ---
 <Callout type="warn" title="Warning">
-    A server newcomer is considered a player who has never been on the server before.
+    A newcomer is a player whose time from `mode` is less than `timeout`. As soon as that time passes, the player is no longer a newcomer
+</Callout>
+
+<Callout type="warn" title="Warning">
+    The module only works with [`use_playtime_tracking`](/pulse/docs/config/database/) enabled, because the player's time is taken from the database
 </Callout>
 
 <br></br>
@@ -41,7 +45,7 @@ Message if the player has played too little
 
 ### `timeout`
 
-Time in ticks during which a newcomer cannot send messages.
+Time in ticks (20 ticks = 1 second) during which a newcomer cannot send messages. For example `72000` ticks is 1 hour
 
 <br></br>
 

@@ -191,6 +191,8 @@ telegram:
   enable: false
   ignore_all_bots: true
   parse_mode: "NONE"
+  disable_notification: false
+  protect_content: false
   token: ""
   proxy:
     type: "DIRECT"
@@ -259,7 +261,7 @@ twitch:
 #endregion twitch
 #region vault
 vault:
-  enable: true
+  enable: false
 #endregion vault
 #region yandex
 yandex:

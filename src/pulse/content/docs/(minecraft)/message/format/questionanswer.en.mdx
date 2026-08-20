@@ -7,6 +7,49 @@ tag: "minecraft"
 ---
 ![question](/pulse/message_format_questionanswer.webp)
 
+<Callout type="info" title="Information">
+    How to make your own question? For example an answer about donations
+
+    <Steps>
+        <Step>
+            In `message.yml` add the question to `format.question_answer.questions`
+            ```yaml
+            questions:
+              donate:
+                range: "PLAYER"
+                destination:
+                  type: "CHAT"
+                cooldown:
+                  enable: false
+                sound:
+                  enable: false
+                target: "(?i)\\b(donate|ranks|how to buy)\\b"
+            ```
+        </Step>
+        <Step>
+            In `localizations → language.yml` add the answer to `message.format.question_answer.questions`
+            ```yaml
+            questions:
+              donate: "<fcolor:2>[Question-Answer] @<player><fcolor:1>, ranks can be bought at flectone.net"
+            ```
+        </Step>
+        <Step>
+            In `permission.yml` add a permission to `message.format.question_answer.questions`
+            ```yaml
+            questions:
+              donate:
+                name: "flectonepulse.module.message.format.questionanswer.donate"
+                type: "TRUE"
+            ```
+        </Step>
+        <Step>
+            Reload FlectonePulse with `/flectonepulse reload`
+        </Step>
+    </Steps>
+
+    With `range: "PLAYER"` only the player who asked sees the answer, and with `range: "SERVER"` everyone sees it
+</Callout>
+
 <br></br>
 
 # <include>../../../../../parts/words.en.mdx#localization</include>
@@ -24,7 +67,7 @@ A list of questions and their corresponding answers
 <br></br>
 
 # <include>../../../../../parts/words.en.mdx#setting</include>
-<span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.questionanswer`</span>
+<span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.question_answer`</span>
 
 <include>../../../../../files/minecraft/message.yml#questionanswer</include>
 
@@ -32,7 +75,11 @@ A list of questions and their corresponding answers
 
 ### `questions`
 
-A list of questions and their settings
+A list of questions and their settings, where the key is the question name. Names can be anything and there can be as many as you want, the main thing is that each one has a localization
+
+#### `target`
+
+A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) used to search for the question in the player's message
 
 <include>../../../../../parts/range.en.mdx</include>
 
@@ -41,10 +88,6 @@ A list of questions and their settings
 <include>../../../../../parts/cooldown.en.mdx</include>
 
 <include>../../../../../parts/sound.en.mdx</include>
-
-### `target`
-
-A [regular expression](https://en.wikipedia.org/wiki/Regular_expression) used to search for the question
 
 <br></br>
 

@@ -240,6 +240,7 @@ command:
 #region flectonepulse
   flectonepulse:
     dump_error: "<color:#ff7171>An error occurred while uploading the dump: <error>"
+    database_error: "<color:#ff7171>An error occurred while working with the database file <file>"
     null_host_editor: "<color:#ff7171>Host parameter must be configured in command.yml, field port"
     null_port_editor: "<color:#ff7171>Port <port> is unavailable, choose another one in command.yml, field port"
     null_file: "<color:#ff7171>File <file> does not exist"
@@ -251,6 +252,8 @@ command:
     format_editor: "<fcolor:1>[*] Web editing link <fcolor:2><click:open_url:\"<url>\"><hover:show_text:\"<fcolor:2><url>\"><url>"
     format_export: "<fcolor:1>[*] Files exported to <fcolor:2><file>"
     format_import: "<fcolor:1>[*] Files imported from <fcolor:2><file>"
+    format_database_export: "<fcolor:1>[*] Database exported to <fcolor:2><file>"
+    format_database_import: "<fcolor:1>[*] Database imported from <fcolor:2><file>"
 #endregion flectonepulse
 #region geolocate
   geolocate:
@@ -459,6 +462,8 @@ command:
       message: "private message"
       send: "private message"
       m: "private message"
+      r: "private message"
+      reply: "private message"
       anon: "anonymous message"
       anvil: "item name"
       book: "book text"
@@ -749,6 +754,10 @@ message:
           "true": "Admin"
           "false": "Player"
 #endregion condition
+#region fading
+    fading:
+      symbol: "▓"
+#endregion fading
 #region object
     object:
       default_symbol: ""
@@ -896,10 +905,14 @@ message:
 #region motd
     motd:
       values:
-      - "<fcolor:1>Welcome to our server!"
-      - "<fcolor:1>Join us and enjoy a unique game experience!"
-      - "<fcolor:1>We have a friendly community - be polite and respect each other!"
-      - "<fcolor:1>Enjoy the game! If you have any questions, feel free to contact the administration"
+      - - "<fcolor:1>Welcome to our server!"
+        - ""
+      - - "<fcolor:1>Join us and enjoy a unique game experience!"
+        - ""
+      - - "<fcolor:1>We have a friendly community - be polite and respect each other!"
+        - ""
+      - - "<fcolor:1>Enjoy the game! If you have any questions, feel free to contact the administration"
+        - ""
 #endregion motd
 #region players
     players:

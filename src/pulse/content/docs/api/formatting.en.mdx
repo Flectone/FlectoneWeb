@@ -1,0 +1,285 @@
+---
+title: Formatting
+description: MessageContext, MessagePipeline and MessageFlag, adding your own MiniMessage tags and driving the formatting stages
+tag: "api"
+icon: Palette
+---
+`MessageContext` is one message on its way to one player. Inside sit the raw text, the sender, the receiver, a set of MiniMessage tags and the flags that switch formatting stages on and off
+
+<span>Package `net.flectone.pulse.model.event.message.context`</span>
+
+| Method | Returns | What it gives |
+|--------|---------|---------------|
+| `message()` | `String` | The raw text, not rendered yet |
+| `sender()` | `FEntity` | The one who sent the message |
+| `receiver()` | `FPlayer` | The one who will read it |
+| `uuid()` | `UUID` | The shared identifier of every copy of the message |
+| `tagResolver()` | `TagResolver` | Every tag available while rendering |
+| `flags()` | `Map<MessageFlag, Boolean>` | The formatting flags |
+| `isFlag(MessageFlag)` | `boolean` | The flag state with its default value in mind |
+| `base()` | `MessageContext` | The base context, when the current one works as a wrapper |
+
+<br></br>
+
+# Creating and changing
+
+```java
+import net.flectone.pulse.model.event.message.context.MessageContext;
+
+MessageContext context = MessageContext.builder()
+        .sender(fPlayer)
+        .receiver(receiver)
+        .message("<display_name> <white>hello")
+        .build();
+```
+
+The context is immutable, so the `with*` and `add*` methods give a copy
+
+| Method | What it does |
+|--------|--------------|
+| `withMessage(String)` | Gives a copy with other text |
+| `withSender(FEntity)` | Gives a copy with another sender |
+| `withReceiver(FPlayer)` | Gives a copy with another receiver |
+| `withUuid(UUID)` | Gives a copy with another identifier |
+| `addFlag(MessageFlag, boolean)` | Gives a copy with a changed flag |
+| `addFlags(MessageFlag[], boolean[])` | Gives a copy with several changed flags |
+| `addTagResolver(TagResolver)` | Gives a copy with one more tag on top of the rest |
+| `addTagResolvers(TagResolver...)` | Gives a copy with several more tags |
+| `toBuilder()` | Opens a builder filled with the current values |
+
+### Extended contexts
+
+Some modules carry extra data along. Such contexts wrap the ordinary one and hand it the shared fields
+
+| Context | Extra field |
+|---------|-------------|
+| `ComponentMessageContext` | The `component()` method gives a ready component to insert |
+| `StringMessageContext` | The `string()` method gives an arbitrary string |
+| `ModerationMessageContext` | The `moderation()` method gives a punishment |
+| `ExternalModerationMessageContext` | The `externalModeration()` method gives a punishment from another plugin |
+| `VanishMessageContext` | The `vanished()` method gives the hidden sender marker |
+
+```java
+// your own context is built on top of the base one
+CoinMessageContext.builder()
+        .base(MessageContext.builder()
+                .sender(fPlayer)
+                .receiver(receiver)
+                .message(format)
+                .build()
+        )
+        .percent(percent)
+        .build();
+```
+
+<br></br>
+
+# Your own tag
+
+The most common use of the API is your own MiniMessage tag, which you can then put into any message format in the localization files
+
+<Steps>
+    <Step>
+        Subscribe to `MessageFormattingEvent`
+    </Step>
+    <Step>
+        Create a `TagResolver` with your tag
+    </Step>
+    <Step>
+        Add it to the context through `addTagResolver()` and return the event
+    </Step>
+</Steps>
+
+```java
+import net.flectone.pulse.annotation.Pulse;
+import net.flectone.pulse.listener.PulseListener;
+import net.flectone.pulse.model.event.Event;
+import net.flectone.pulse.model.event.message.MessageFormattingEvent;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+
+public class BalanceTagListener implements PulseListener {
+
+    @Pulse(priority = Event.Priority.NORMAL)
+    public Event onFormatting(MessageFormattingEvent event) {
+        MessageContext context = event.context();
+
+        TagResolver balanceTag = TagResolver.resolver("balance", (argumentQueue, ctx) -> {
+            double balance = getBalance(context.sender().uuid());
+            return Tag.selfClosingInserting(Component.text(String.format("%.2f", balance)));
+        });
+
+        return event.withContext(context.addTagResolver(balanceTag));
+    }
+
+}
+```
+
+Now you can write `<balance>` in any localization format
+
+```yaml
+format: "<display_name> <gray>[<balance>$]<white>: <message>"
+```
+
+### Ready resolvers
+
+`MessagePipeline` can build resolvers for you
+
+```java
+import net.flectone.pulse.pipeline.MessagePipeline;
+
+MessagePipeline messagePipeline = flectonePulse.get(MessagePipeline.class);
+
+// a tag with a ready component
+TagResolver serverTag = messagePipeline.resolver("server", Component.text("survival"));
+
+// a computed tag
+TagResolver timeTag = messagePipeline.resolver("time", (queue, ctx) ->
+        Tag.selfClosingInserting(Component.text(LocalTime.now().toString()))
+);
+
+// one tag under several names
+TagResolver aliases = messagePipeline.resolver(Set.of("money", "balance"), Component.text("100"));
+```
+
+<br></br>
+
+# MessagePipeline
+
+<span>Package `net.flectone.pulse.pipeline`</span>
+
+It turns the raw text into what the client sees
+
+| Method | Returns | What it does |
+|--------|---------|--------------|
+| `build(MessageContext)` | `Component` | Renders a component |
+| `buildStandard(MessageContext)` | `String` | Renders back into MiniMessage text |
+| `buildPlain(MessageContext)` | `String` | Renders text with formatting stripped |
+| `buildLegacy(MessageContext)` | `String` | Renders text with legacy color codes |
+| `buildLegacy(FPlayer, String)` | `Optional<String>` | Renders a loose string for a player |
+| `buildJson(MessageContext)` | `String` | Renders the JSON form used by the protocol |
+| `messageComponent(FEntity, FPlayer, String)` | `Component` | Renders a nested message |
+
+```java
+Component component = messagePipeline.build(MessageContext.builder()
+        .sender(fPlayer)
+        .receiver(receiver)
+        .message("<rainbow>Hello, <display_name></rainbow>")
+        .build()
+);
+
+messageSender.sendMessage(receiver, component, false);
+```
+
+### Tags of the built in modules
+
+The `MessagePipeline.ReplacementTag` enum holds every tag the built in modules insert. The tag name in a message is the constant name in lower case
+
+| Group | Tags |
+|-------|------|
+| Names | `display_name`, `player`, `nickname`, `prefix`, `suffix`, `constant` |
+| Statuses | `afk`, `mute`, `stream`, `server`, `world` |
+| Moderation | `swear`, `delete` |
+| Objects | `player_head`, `sprite`, `texture` and their variants with the `_or` suffix |
+| The rest | `animation`, `condition`, `mention`, `online`, `toponline`, `padding`, `question`, `replacement`, `translation`, `fading`, `fcolor` |
+
+```java
+// the tag name in a message
+String tagName = MessagePipeline.ReplacementTag.DISPLAY_NAME.getTagName(); // display_name
+
+// a resolver that erases the tag when your module is off
+TagResolver empty = MessagePipeline.ReplacementTag.MENTION.emptyResolver();
+```
+
+<br></br>
+
+# Flags
+
+<span>Package `net.flectone.pulse.constant`</span>
+
+`MessageFlag` switches single processing stages on and off for one message
+
+```java
+import net.flectone.pulse.constant.MessageFlag;
+
+// turn off the swear check and the cache for this message
+MessageContext context = messageContext
+        .addFlag(MessageFlag.SWEAR_MODULE, false)
+        .addFlag(MessageFlag.USE_CACHE, false);
+```
+
+### Main flags
+
+| Flag | Default | What it does |
+|------|---------|--------------|
+| `PLAYER_MESSAGE` | `false` | The value `true` says a player wrote the message and turns on the full input processing |
+| `USE_CACHE` | `true` | Caches rendered messages |
+| `PLAYER_NAME` | `true` | Processes the player name tag |
+| `REMOVE_DISABLED_TAGS` | `true` | Erases the tags of disabled modules |
+| `URL_PROCESSING` | `true` | Looks for links |
+| `ITEM_DETECTION` | `true` | Looks for items in the message |
+| `LEGACY_COLOR_CONVERSION` | `true` | Supports legacy color codes |
+| `COLOR_CONTEXT_SENDER` | `true` | Takes colors from the sender, otherwise from the receiver |
+| `PLACEHOLDER_CONTEXT_SENDER` | `true` | Resolves placeholders from the sender, otherwise from the receiver |
+| `INVISIBLE_NAME_DETECTION` | `true` | Check player invisible name |
+| `INTERACTIVE_CHAT_COMPAT` | `true` | Gives compatibility with InteractiveChat |
+| `VIOLATION_PROCESSING` | `true` | Counts violations in the moderation system |
+
+### Module flags
+
+A flag turned off skips its formatting module
+
+`CAPS_MODULE`, `DELETE_MODULE`, `FIXATION_MODULE`, `FLOOD_MODULE`, `ICU_MODULE`, `MENTION_MODULE`, `NICKNAME_MODULE`, `PADDING_MODULE`, `QUESTIONANSWER_MODULE`, `REPLACEMENT_MODULE`, `SWEAR_MODULE`, `TRANSLATE_MODULE`
+
+### Object flags
+
+`OBJECT_DEFAULT_VALUE`, `OBJECT_PLAYER_HEAD_PROCESSING`, `OBJECT_SPRITE_PROCESSING`, `OBJECT_TEXTURE_PROCESSING`, `OBJECT_RECEIVER_VALIDATION`
+
+<Callout type="warn" title="Warning">
+
+    When the `PLAYER_MESSAGE` flag stands at `true`, the `ICU_MODULE` flag counts as on as well, whatever its own value happens to be
+
+</Callout>
+
+<br></br>
+
+# Editing the text
+
+```java
+@Pulse(priority = Event.Priority.HIGH)
+public Event onFormatting(MessageFormattingEvent event) {
+    MessageContext context = event.context();
+
+    // touch only the messages players wrote
+    if (!context.isFlag(MessageFlag.PLAYER_MESSAGE)) return event;
+
+    String message = context.message();
+    if (!message.contains("advertisement")) return event;
+
+    // cancel the whole message
+    return event.withCancelled(true);
+}
+```
+
+<br></br>
+
+# Decorating components
+
+`ComponentDecorator` helps you add a tooltip or a decoration for component and child components without wiping the existing ones
+
+<span>Package `net.flectone.pulse.decorator`</span>
+
+| Method | What it does |
+|--------|--------------|
+| `hover(Component, HoverEvent)` | Adds a hover tooltip |
+| `hoverIfAbsent(Component, HoverEvent)` | Adds a tooltip only when there is none yet |
+| `decorate(Component, TextDecoration, State)` | Applies a decoration, bold or italic for example |
+| `decorateIfAbsent(Component, TextDecoration, State)` | Applies a decoration only when it is not set |
+
+<Callout type="idea" title="Note">
+
+    Formatting runs for each receiver separately, keep that in mind with heavy work inside a resolver. The cache is on by default, so turn the `USE_CACHE` flag off for fast changing data. The syntax of the tags themselves is described on the [message formatting](/pulse/docs/message/format/) page
+
+</Callout>

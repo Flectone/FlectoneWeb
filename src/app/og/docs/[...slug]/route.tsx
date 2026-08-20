@@ -1,71 +1,87 @@
-import { source } from '@/lib/source';
-import { notFound } from 'next/navigation';
-import { ImageResponse } from 'takumi-js/response';
-import DocsTemplate from '@/components/OGImage/DocsTemplate'
+import { source } from "@/lib/source"
+import { notFound } from "next/navigation"
+import { ImageResponse } from "takumi-js/response"
+import OgImageDocsTemplate from "./_components/og-image-docs-template"
 
 interface RouteContext {
-  params: Promise<{ slug: string[] }>;
+  params: Promise<{ slug: string[] }>
 }
 
-let fontRegular: ArrayBuffer | null = null;
-let fontBold: ArrayBuffer | null = null;
+const FONT_TIMEOUT_MS = 10_000
+
+let fontRegular: ArrayBuffer | null = null
+let fontBold: ArrayBuffer | null = null
+
+async function fetchFont(url: string) {
+  const response = await fetch(url, {
+    signal: AbortSignal.timeout(FONT_TIMEOUT_MS),
+  })
+
+  if (!response.ok) throw new Error(`Failed to load font: ${response.status}`)
+
+  return response.arrayBuffer()
+}
 
 async function loadFonts() {
   if (!fontRegular || !fontBold) {
-    [fontRegular, fontBold] = await Promise.all([
-      fetch('https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-cyrillic-400-normal.woff')
-          .then(r => r.arrayBuffer()),
-      fetch('https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-cyrillic-700-normal.woff')
-          .then(r => r.arrayBuffer()),
-    ]);
+    ;[fontRegular, fontBold] = await Promise.all([
+      fetchFont(
+        "https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-cyrillic-400-normal.woff"
+      ),
+      fetchFont(
+        "https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.18/files/inter-cyrillic-700-normal.woff"
+      ),
+    ])
   }
-  return { regular: fontRegular!, bold: fontBold! };
+  return { regular: fontRegular!, bold: fontBold! }
 }
 
 export async function GET(req: Request, { params }: RouteContext) {
-  const { slug } = await params;
-  const [locale, ...pageSlugs] = slug;
-  const actualSlugs = pageSlugs.slice(0, -1);
+  const { slug } = await params
+  const [locale, ...pageSlugs] = slug
+  const actualSlugs = pageSlugs.slice(0, -1)
 
-  const page = source.getPage(actualSlugs, locale);
-  if (!page) notFound();
+  const page = source.getPage(actualSlugs, locale)
+  if (!page) notFound()
 
-  const { regular, bold } = await loadFonts();
+  const { regular, bold } = await loadFonts()
 
   return new ImageResponse(
-      (<DocsTemplate
-          title={page.data.title}
-          description={page.data.description}
-          icon={<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTEwIDktMyAzIDMgMyIvPjxwYXRoIGQ9Im0xNCAxNSAzLTMtMy0zIi8+PHBhdGggZD0iTTIuOTkyIDE2LjM0MmEyIDIgMCAwIDEgLjA5NCAxLjE2N2wtMS4wNjUgMy4yOWExIDEgMCAwIDAgMS4yMzYgMS4xNjhsMy40MTMtLjk5OGEyIDIgMCAwIDEgMS4wOTkuMDkyIDEwIDEwIDAgMSAwLTQuNzc3LTQuNzE5Ii8+PC9zdmc+" />}
-          primaryColor="hsla(210, 100%, 65%, 0.6)"
-          primaryTextColor="hsl(210, 100%, 65%)"
-          site="FlectonePulse"
-          mutedPrimaryColor='hsla(210, 100%, 65%, 0.2)'
-      />),
-      {
-        width: 1200,
-        height: 630,
-        format: "webp",
-        fonts: [
-          {
-            name: 'Inter',
-            data: regular,
-            weight: 400,
-            style: 'normal',
-          },
-          {
-            name: 'Inter',
-            data: bold,
-            weight: 700,
-            style: 'normal',
-          },
-        ],
-      },
-  );
+    <OgImageDocsTemplate
+      title={page.data.title}
+      description={page.data.description}
+      icon={
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2NCIgaGVpZ2h0PSI2NCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCI+PHBhdGggZD0ibTEwIDktMyAzIDMgMyIvPjxwYXRoIGQ9Im0xNCAxNSAzLTMtMy0zIi8+PHBhdGggZD0iTTIuOTkyIDE2LjM0MmEyIDIgMCAwIDEgLjA5NCAxLjE2N2wtMS4wNjUgMy4yOWExIDEgMCAwIDAgMS4yMzYgMS4xNjhsMy40MTMtLjk5OGEyIDIgMCAwIDEgMS4wOTkuMDkyIDEwIDEwIDAgMSAwLTQuNzc3LTQuNzE5Ii8+PC9zdmc+" />
+      }
+      primaryColor="hsla(210, 100%, 65%, 0.6)"
+      primaryTextColor="hsl(210, 100%, 65%)"
+      site="FlectonePulse"
+      mutedPrimaryColor="hsla(210, 100%, 65%, 0.2)"
+    />,
+    {
+      width: 1200,
+      height: 630,
+      format: "webp",
+      fonts: [
+        {
+          name: "Inter",
+          data: regular,
+          weight: 400,
+          style: "normal",
+        },
+        {
+          name: "Inter",
+          data: bold,
+          weight: 700,
+          style: "normal",
+        },
+      ],
+    }
+  )
 }
 
 export function generateStaticParams() {
   return source.getPages().map((page) => ({
-    slug: [page.locale ?? 'en', ...page.slugs, 'image.webp'],
-  }));
+    slug: [page.locale ?? "en", ...page.slugs, "image.webp"],
+  }))
 }

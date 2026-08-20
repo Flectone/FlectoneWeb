@@ -56,6 +56,54 @@ tag: "minecraft"
 
 </Callout>
 
+<Callout type="info" title="Информация">
+    Как сделать свой чат? Например админ-чат, который видно на всех серверах и который читают только админы
+
+    <Steps>
+        <Step>
+            В `message.yml` добавь новый чат в `chat.types`, здесь `!!` это то, с чего должно начинаться сообщение
+            ```yaml
+            types:
+              admin:
+                enable: true
+                cancel: true
+                range: "PROXY"
+                priority: 10
+                trigger: "!!"
+                null_receiver:
+                  enable: false
+                destination:
+                  type: "CHAT"
+                cooldown:
+                  enable: false
+                sound:
+                  enable: false
+            ```
+        </Step>
+        <Step>
+            В `localizations → язык.yml` добавь формат этого чата в `message.chat.types`
+            ```yaml
+            types:
+              admin: "<delete><color:#ff7171>[A] <display_name><fcolor:3>: <message>"
+            ```
+        </Step>
+        <Step>
+            В `permission.yml` добавь право в `message.chat.types`, иначе чат будет доступен всем
+            ```yaml
+            types:
+              admin:
+                name: "flectonepulse.module.message.chat.admin"
+                type: "OP"
+            ```
+        </Step>
+        <Step>
+            Перезагрузи FlectonePulse с помощью `/flectonepulse reload` и напиши `!!привет`
+        </Step>
+    </Steps>
+
+    Название чата используется и в других местах, например для отправки в Discord это будет `MESSAGE_CHAT_ADMIN`
+</Callout>
+
 <br></br>
 
 # <include>../../../../parts/words.mdx#localization</include>
@@ -112,7 +160,7 @@ tag: "minecraft"
 | `LOW`     | Сообщение в чате будет обработано после плагинов, у которых приоритет `LOWEST`  |
 | `NORMAL`  | Сообщение в чате будет обработано после плагинов, у которых приоритет `LOW`     |
 | `HIGH`    | Сообщение в чате будет обработано после плагинов, у которых приоритет `NORMAL`  |
-| `HIGHEST` | Сообщение в чате будет обработано после плагинов, у которых приоритет `HIGHEST` |
+| `HIGHEST` | Сообщение в чате будет обработано после плагинов, у которых приоритет `HIGH`    |
 | `MONITOR` | Сообщение в чате будет только просмотрено                                       |
 
 ### `types`

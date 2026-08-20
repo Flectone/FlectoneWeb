@@ -998,6 +998,17 @@ message:
           name: "flectonepulse.module.message.format.condition.is_admin"
           type: "TRUE"
 #endregion condition
+#region fading
+    fading:
+      name: "flectonepulse.module.message.format.fading"
+      type: "TRUE"
+      bypass_send:
+        name: "flectonepulse.module.message.format.fading.bypass_send"
+        type: "OP"
+      bypass_view:
+        name: "flectonepulse.module.message.format.fading.bypass_view"
+        type: "OP"
+#endregion fading
 #region fcolor
     fcolor:
       name: "flectonepulse.module.message.format.fcolor"

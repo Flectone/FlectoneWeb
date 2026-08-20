@@ -7,6 +7,49 @@ tag: "hytale"
 ---
 ![auto](/pulse/hytale/message_auto.webp)
 
+<Callout type="info" title="Information">
+    How to make your own automatic message? For example a reminder about the rules every 5 minutes
+
+    <Steps>
+        <Step>
+            In `message.yml` add a new type to `auto.types`, where `period` is `6000` ticks, i.e. 5 minutes
+            ```yaml
+            types:
+              rules:
+                random: false
+                destination:
+                  type: "CHAT"
+                ticker:
+                  enable: true
+                  period: 6000
+                sound:
+                  enable: false
+            ```
+        </Step>
+        <Step>
+            In `localizations → language.yml` add a list of messages to `message.auto.types`. They are shown one after another, and with `random: true` in random order
+            ```yaml
+            types:
+              rules:
+              - "<fcolor:1>◇ Do not swear in chat"
+              - "<fcolor:1>◇ Do not ask admins for items"
+            ```
+        </Step>
+        <Step>
+            In `permission.yml` add the sound permission to `message.auto.types`
+            ```yaml
+            types:
+              rules:
+                name: "flectonepulse.module.message.auto.sound"
+                type: "TRUE"
+            ```
+        </Step>
+        <Step>
+            Reload FlectonePulse with `/flectonepulse reload`
+        </Step>
+    </Steps>
+</Callout>
+
 <br></br>
 
 # <include>../../../../parts/words.en.mdx#localization</include>

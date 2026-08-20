@@ -1,38 +1,37 @@
-import createNextIntlPlugin from 'next-intl/plugin';
-import { createMDX } from 'fumadocs-mdx/next';
+import createNextIntlPlugin from "next-intl/plugin"
+import { createMDX } from "fumadocs-mdx/next"
 
-
-const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts")
 
 /** @type {import('next').NextConfig} */
 const config = {
   async rewrites() {
     return [
       {
-        source: '/api/:path*',
-        destination: 'https://flectone.net/api/:path*',
+        source: "/api/:path*",
+        destination: "https://flectone.net/api/:path*",
       },
     ]
   },
   serverExternalPackages: ["@takumi-rs/core"],
   reactStrictMode: true,
-  output: 'standalone',
+  output: "standalone",
   images: {
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'github.com',
+        protocol: "https",
+        hostname: "github.com",
       },
       {
-        protocol: 'https',
-        hostname: 'flectone.net',
-      }
+        protocol: "https",
+        hostname: "flectone.net",
+      },
     ],
   },
-};
+}
 
 const withMDX = createMDX({
-  configPath: "source.config.ts"
-});
+  configPath: "source.config.ts",
+})
 
-export default withNextIntl(withMDX(config));
+export default withNextIntl(withMDX(config))

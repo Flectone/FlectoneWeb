@@ -55,15 +55,15 @@ house:
 
 Если включено, то все пакеты (любые сообщения, ники и т.д.), которые создаёт `FlectonePulse`, будут отправляться в скрытном режиме. Это может решить проблему несовместимости плагинов, которые изменяют пакеты через `PacketEvents`
 
-### `use_paper_message_sender`
+### `use_vanilla_message_sender`
 
-Если включено, `FlectonePulse` будет использовать `Paper`, как инструмент для отправки сообщения в чат игроку.
+Если включено, `FlectonePulse` будет использовать платформу (например `Paper`), как инструмент для отправки сообщения в чат игроку.
 
-Как это работает? Сначала плагин создаёт сообщение внутри себя и получает `FlectonePulse.Component`, этот объект преобразуется в обычную строчку `String`. Далее используется сам `Paper`, чтобы из этой строчки получить `Paper.Component` и отправить его игроку
+Как это работает? Сначала плагин создаёт сообщение внутри себя и получает `FlectonePulse.Component`, этот объект преобразуется в обычную строчку `String`. Далее используется сама платформа (например `Paper`), чтобы из этой строчки получить `Paper.Component` и отправить его игроку
 
 <Callout type="warn" title="Предупреждение">
 
-Чтобы это работало, на сервере должен быть ядро `Paper` или его форк
+Чтобы это работало, на сервере должен быть ядро `Paper` или его форк или `Fabric` или `NeoForge`
 
 </Callout>
 
@@ -91,7 +91,8 @@ house:
 <br></br>
 
 # <include>../../../../parts/words.mdx#permission</include>
-<include>../../../../parts/words.mdx#path</include> `permission.yml`
+
+<span><include>../../../../parts/words.mdx#path</include> `permission.yml`</span>
 
  
 <include>../../../../files/minecraft/permission.yml#module</include>

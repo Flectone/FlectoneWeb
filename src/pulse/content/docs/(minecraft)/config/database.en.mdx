@@ -16,19 +16,9 @@ tag: "minecraft"
 
 <include>../../../../files/minecraft/config.yml#database</include>
 
-### `ignore_existing_driver`
-
-Whether to download the database library even if it already exists on the server.
-
-<Callout type="info" title="Information">
-
-    This can solve issues where other plugins use an outdated library and `FlectonePulse` cannot start correctly.
-
-</Callout>
-
 ### `use_playtime_tracking`
 
-Whether to store the player's playtime in the database. If disabled, the `/online` and `/toponline` commands will not work
+Whether to store the player's playtime in the database. If disabled, the `/online` and `/toponline` commands will not work, the `newbie` module will not be able to detect a newcomer, and `join` will not know that the player has already been on the server
 
 ### `type`
 
@@ -49,6 +39,10 @@ Database name
 ### `host`
 
 Address of the server where the database is located
+
+<Callout type="info" title="Information">
+    `host`, `port`, `user`, `password` and `parameters` are only needed for server databases (`MySQL`, `MariaDB`, `PostgreSQL`). For `SQLite` and `H2` only `name` is used, because the database is created as a file in the `FlectonePulse` folder
+</Callout>
 
 ### `port`
 
@@ -75,3 +69,27 @@ Database connection parameters
 </Callout>
 
 Prefix for database tables; if empty, the `fp_` prefix will be used.
+
+### `pool_settings`
+
+Database connection pool settings
+
+#### `max_size`
+
+Maximum number of connections in the pool
+
+#### `min_idle`
+
+Minimum number of idle connections that the pool will try to maintain
+
+#### `max_lifetime`
+
+Maximum lifetime of a single connection in milliseconds, after which it will be closed and replaced with a new one
+
+#### `keepalive_time`
+
+Health check interval for idle connections in milliseconds. If `0`, the check will be disabled
+
+#### `connection_timeout`
+
+Maximum time to wait for a connection from the pool in milliseconds before an error is thrown

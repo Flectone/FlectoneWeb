@@ -49,7 +49,14 @@ A list of actions with their localization for `format_log`. If an action does no
 
 ### `categories`
 
-List of action categories that are being tracked
+| Category  | Explanation                                                                                                                    |
+|-----------|----------------------------------------------------------------------------------------------------------------------------------|
+| `command` | The list of command names that are being spied on, for example `tell` or `anon`                                                 |
+| `action`  | The list of other actions that are being spied on: `anvil`, `book`, `sign` and chat names, for example `local` (`chat` for proxy) |
+
+<Callout type="info" title="Information">
+    The action name can be translated in the localization under `actions`, otherwise it will be shown exactly as written here
+</Callout>
 
 <include>../../../../parts/destination.en.mdx</include>
 

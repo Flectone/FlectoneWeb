@@ -5,9 +5,21 @@
   "tag": "api",
   "description": "API Documentation",
   "pages": [
-    "---API Documentation---",
+    "---Basics---",
     "index",
     "methods",
-    "events"
+    "---Events---",
+    "events",
+    "events-reference",
+    "---Working with data---",
+    "players",
+    "messages",
+    "formatting",
+    "---Extending---",
+    "modules",
+    "proxy",
+    "---Reference---",
+    "services",
+    "example"
   ]
 }

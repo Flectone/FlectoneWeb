@@ -1,0 +1,334 @@
+---
+title: Пример плагина
+description: Готовый плагин для Bukkit на FlectonePulse API со своим тегом, приветствием, командой и синхронизацией через прокси
+tag: "api"
+icon: FileCode
+---
+Небольшой плагин `PulseExample`, который собирает вместе всё из предыдущих страниц
+
+- добавляет свой тег `<level>` в любые сообщения FlectonePulse
+- показывает приветствие при входе игрока
+- регистрирует команду `/pulselevel`
+- отправляет уведомление на другие серверы сети
+- спокойно переживает `/flectonepulse reload`
+
+```
+src/main/java/com/example/pulseexample/
+├── PulseExample.java         // точка входа плагина
+├── PulseExampleListener.java // слушатели событий
+└── LevelService.java         // своя логика
+src/main/resources/
+└── plugin.yml
+```
+
+<br></br>
+
+# Зависимость
+
+<Tabs items={['gradle', 'maven']}>
+  <Tab value="gradle">
+    ```groovy
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compileOnly 'net.flectone.pulse:api:1.12.3'
+        compileOnly 'org.spigotmc:spigot-api:1.21-R0.1-SNAPSHOT'
+    }
+    ```
+  </Tab>
+  <Tab value="maven">
+    ```xml
+    <dependency>
+        <groupId>net.flectone.pulse</groupId>
+        <artifactId>api</artifactId>
+        <version>1.12.3</version>
+        <scope>provided</scope>
+    </dependency>
+    ```
+  </Tab>
+</Tabs>
+
+```yaml
+# plugin.yml
+name: PulseExample
+version: 1.0.0
+main: com.example.pulseexample.PulseExample
+api-version: '1.13'
+softdepend:
+  - FlectonePulse
+```
+
+<br></br>
+
+# Точка входа
+
+```java
+package com.example.pulseexample;
+
+import net.flectone.pulse.FlectonePulse;
+import net.flectone.pulse.FlectonePulseAPI;
+import net.flectone.pulse.logging.FLogger;
+import net.flectone.pulse.platform.registry.ListenerRegistry;
+import org.bukkit.Bukkit;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class PulseExample extends JavaPlugin {
+
+    private FlectonePulse flectonePulse;
+
+    @Override
+    public void onEnable() {
+        if (!Bukkit.getPluginManager().isPluginEnabled("FlectonePulse")) {
+            getLogger().warning("FlectonePulse не найден, интеграция выключена");
+            return;
+        }
+
+        flectonePulse = FlectonePulseAPI.getInstance();
+        if (flectonePulse == null || !flectonePulse.isReady()) {
+            getLogger().warning("FlectonePulse ещё не готов");
+            return;
+        }
+
+        LevelService levelService = new LevelService();
+
+        // registerPermanent переживёт /flectonepulse reload
+        flectonePulse.get(ListenerRegistry.class)
+                .registerPermanent(new PulseExampleListener(flectonePulse, levelService));
+
+        flectonePulse.get(FLogger.class).info("PulseExample подключился к FlectonePulse");
+    }
+
+}
+```
+
+<Callout type="info" title="Информация">
+
+Обычный `register()` теряется при перезагрузке FlectonePulse, а постоянные слушатели восстанавливаются сами. Поэтому сторонним плагинам нужен именно `registerPermanent()`
+
+</Callout>
+
+<br></br>
+
+# Слушатель
+
+```java
+package com.example.pulseexample;
+
+import net.flectone.pulse.FlectonePulse;
+import net.flectone.pulse.annotation.Pulse;
+import net.flectone.pulse.constant.ModuleName;
+import net.flectone.pulse.dispatcher.MessageDispatcher;
+import net.flectone.pulse.listener.PulseListener;
+import net.flectone.pulse.model.entity.FPlayer;
+import net.flectone.pulse.model.event.Event;
+import net.flectone.pulse.model.event.EventMetadata;
+import net.flectone.pulse.model.event.lifecycle.EnableEvent;
+import net.flectone.pulse.model.event.message.MessageFormattingEvent;
+import net.flectone.pulse.model.event.message.ProxyMessageEvent;
+import net.flectone.pulse.model.event.message.context.MessageContext;
+import net.flectone.pulse.model.event.player.PlayerLoadEvent;
+import net.flectone.pulse.model.value.Destination;
+import net.flectone.pulse.model.value.Range;
+import net.flectone.pulse.platform.registry.CommandRegistry;
+import net.flectone.pulse.platform.registry.ProxyRegistry;
+import net.flectone.pulse.platform.sender.MessageSender;
+import net.flectone.pulse.platform.sender.ProxySender;
+import net.flectone.pulse.util.payload.ProxyPayload;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.tag.Tag;
+import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;
+
+import java.io.IOException;
+
+public class PulseExampleListener implements PulseListener {
+
+    private final FlectonePulse flectonePulse;
+    private final LevelService levelService;
+
+    public PulseExampleListener(FlectonePulse flectonePulse, LevelService levelService) {
+        this.flectonePulse = flectonePulse;
+        this.levelService = levelService;
+    }
+
+    // 1. Регистрируем команду, когда всё API уже поднялось
+    @Pulse
+    public void onEnable(EnableEvent event) {
+        if (event.type() != EnableEvent.Type.READY) return;
+
+        MessageSender messageSender = flectonePulse.get(MessageSender.class);
+
+        flectonePulse.get(CommandRegistry.class).registerCommand(manager -> manager
+                .commandBuilder("pulselevel")
+                .permission("pulseexample.command.level")
+                .handler(context -> {
+                    FPlayer fPlayer = context.sender();
+                    int level = levelService.getLevel(fPlayer.uuid());
+
+                    messageSender.sendMessage(
+                            fPlayer,
+                            Component.text("Твой уровень " + level),
+                            false
+                    );
+                })
+        );
+    }
+
+    // 2. Добавляем свой тег <level> во все сообщения
+    @Pulse(priority = Event.Priority.NORMAL)
+    public Event onMessageFormatting(MessageFormattingEvent event) {
+        MessageContext context = event.context();
+
+        TagResolver levelTag = TagResolver.resolver("level", (queue, ctx) -> {
+            int level = levelService.getLevel(context.sender().uuid());
+            return Tag.selfClosingInserting(Component.text(level));
+        });
+
+        return event.withContext(context.addTagResolver(levelTag));
+    }
+
+    // 3. Здороваемся с игроком после загрузки его данных
+    @Pulse(priority = Event.Priority.HIGH)
+    public void onPlayerLoad(PlayerLoadEvent event) {
+        if (event.reload()) return; // не здороваемся при перезагрузке плагина
+
+        FPlayer fPlayer = event.player();
+        if (fPlayer.isUnknown() || fPlayer.isConsole()) return;
+
+        flectonePulse.get(MessageDispatcher.class).dispatch(
+                ModuleName.ADDON,
+                EventMetadata.builder()
+                        .filter(fPlayer)
+                        .destination(Destination.EMPTY_CHAT)
+                        .range(Range.Type.PLAYER)
+                        .messageContext(receiver -> MessageContext.builder()
+                                .sender(fPlayer)
+                                .receiver(receiver)
+                                .message("<gradient:#FF0000:#00FF00>Добро пожаловать</gradient> Твой уровень <level>")
+                                .build()
+                        )
+                        .build()
+        );
+
+        notifyOtherServers(fPlayer);
+    }
+
+    // 4. Сообщаем другим серверам сети о входе игрока
+    private void notifyOtherServers(FPlayer fPlayer) {
+        ProxyRegistry proxyRegistry = flectonePulse.get(ProxyRegistry.class);
+        if (!proxyRegistry.hasEnabledProxy()) return;
+
+        flectonePulse.get(ProxySender.class).send(
+                fPlayer,
+                ModuleName.ADDON,
+                output -> output.writeInt(levelService.getLevel(fPlayer.uuid()))
+        );
+    }
+
+    // 5. Принимаем уведомление с другого сервера
+    @Pulse
+    public Event onProxyMessage(ProxyMessageEvent event) throws IOException {
+        if (event.processed()) return event;
+        if (event.name() != ModuleName.ADDON) return event;
+        if (event.sentByThisServer()) return event.withProcessed(true);
+
+        try (ProxyPayload payload = event.openPayload()) {
+            int level = payload.readInt();
+
+            flectonePulse.get(MessageSender.class).sendToConsole(
+                    event.sender().name() + " зашёл на " + event.server() + " с уровнем " + level
+            );
+        }
+
+        return event.withProcessed(true);
+    }
+
+}
+```
+
+<br></br>
+
+# Своя логика
+
+```java
+package com.example.pulseexample;
+
+import java.util.Map;
+import java.util.UUID;
+import java.util.concurrent.ConcurrentHashMap;
+
+public class LevelService {
+
+    private final Map<UUID, Integer> levels = new ConcurrentHashMap<>();
+
+    public int getLevel(UUID uuid) {
+        return levels.getOrDefault(uuid, 1);
+    }
+
+    public void setLevel(UUID uuid, int level) {
+        levels.put(uuid, level);
+    }
+
+}
+```
+
+<br></br>
+
+# Тег в конфигурации
+
+После установки плагина тег `<level>` можно вставить в любой формат сообщения в файлах локализации
+
+```yaml
+# localizations/ru_ru.yml
+message:
+  chat:
+    types:
+      local:
+        format: "<display_name> <gray>[ур. <level>]<white>: <message>"
+```
+
+<br></br>
+
+# Что проверить перед релизом
+
+<Steps>
+    <Step>
+        Артефакт `net.flectone.pulse:api` подключён как `provided` или `compileOnly`
+    </Step>
+    <Step>
+        FlectonePulse указан мягкой зависимостью в описании плагина
+    </Step>
+    <Step>
+        Результат `getInstance()` проверен на `null`, а `isReady()` вызван до первого `get()`
+    </Step>
+    <Step>
+        Слушатели зарегистрированы через `registerPermanent()`
+    </Step>
+    <Step>
+        Команды зарегистрированы в обработчике `EnableEvent` с типом `READY`
+    </Step>
+    <Step>
+        Изменённые события возвращаются через `return`
+    </Step>
+    <Step>
+        Тяжёлые операции вынесены в `TaskScheduler.runAsync()`
+    </Step>
+</Steps>
+
+<br></br>
+
+# Куда идти дальше
+
+| Страница | Про что |
+|----------|---------|
+| [Система событий](/pulse/docs/api/events/) | Приоритеты, отмена, свои события |
+| [Справочник событий](/pulse/docs/api/events-reference/) | Все события и их поля |
+| [Форматирование](/pulse/docs/api/formatting/) | Теги, флаги и `MessagePipeline` |
+| [Справочник компонентов](/pulse/docs/api/services/) | Все сервисы и утилиты |
+
+<Callout type="idea" title="Примечание">
+
+Если чего то не хватает, открывай issue в [репозитории FlectonePulse](https://github.com/Flectone/FlectonePulse/issues) или заходи в [Discord](https://discord.flectone.net/)
+
+</Callout>

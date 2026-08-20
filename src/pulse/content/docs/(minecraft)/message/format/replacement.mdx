@@ -49,6 +49,41 @@ tag: "minecraft"
 
 ![strikethrough](/pulse/message_format_replacement_strikethrough.webp)
 
+<Callout type="info" title="Информация">
+    Как сделать свою замену? Например `:ip:`, которое заменяется на айпи сервера
+
+    <Steps>
+        <Step>
+            В `message.yml` добавь триггер в `format.replacement.triggers`
+            ```yaml
+            triggers:
+              server_ip: "(?<!\\\\)(?<!\\S)(?i):ip:(?!\\S)"
+            ```
+        </Step>
+        <Step>
+            В `localizations → язык.yml` добавь то, на что триггер заменится, в `message.format.replacement.values`
+            ```yaml
+            values:
+              server_ip: "<fcolor:2><u><click:copy_to_clipboard:'flectone.net'>flectone.net</click></u>"
+            ```
+        </Step>
+        <Step>
+            В `permission.yml` добавь право в `message.format.replacement.values`
+            ```yaml
+            values:
+              server_ip:
+                name: "flectonepulse.module.message.format.replacement.server_ip"
+                type: "TRUE"
+            ```
+        </Step>
+        <Step>
+            Перезагрузи FlectonePulse с помощью `/flectonepulse reload` и напиши в чат `:ip:`
+        </Step>
+    </Steps>
+
+    `(?<!\\\\)(?<!\\S)` и `(?!\\S)` нужны для того, чтобы триггер срабатывал только отдельным словом и его можно было экранировать с помощью `\\`
+</Callout>
+
 <br></br>
 
 # <include>../../../../../parts/words.mdx#localization</include> 
@@ -67,6 +102,17 @@ tag: "minecraft"
 
 Список сообщений, где ключом является название, а значением, что будет показано вместо триггера
 
+Внутри значений можно использовать плейсхолдеры, которые зависят от замены
+
+| Плейсхолдер                                | Где используется                                                          |
+|--------------------------------------------|---------------------------------------------------------------------------|
+| `<value>`                                  | `ping`, `tps`, `online` – само значение                                    |
+| `<x>`, `<y>`, `<z>`                        | `coords` – координаты игрока                                              |
+| `<hp>`, `<armor>`, `<attack>`, `<exp>`, `<food>` | `stats` – статистика игрока                                        |
+| `<pixels>`                                 | `skin` и `image` – само изображение, которое собрано из символов          |
+| `<message_1>`                              | Текст, который был найден по триггеру (ссылка, название предмета и т.д.)  |
+| `<symbols>`                                | `spoiler` – скрытый текст, где каждая буква заменена на `spoiler_symbol`  |
+
 <br></br>
 
 # <include>../../../../../parts/words.mdx#setting</include>
@@ -79,6 +125,10 @@ tag: "minecraft"
 ### `triggers`
 
 Список всех доступных триггеров, где ключом является название, а значением сам `trigger` в формате регулярного выражения
+
+<Callout type="info" title="Информация">
+    Замену можно вставить и вручную в любое сообщение с помощью тега `<replacement:название>`, например `<replacement:ping>` или `<replacement:tps>`. Для `url`, `image` и `spoiler` нужно указать второй аргумент, например `<replacement:url:'https://flectone.net'>`
+</Callout>
 
 <Callout type="warn" title="Предупреждение">
 Если ты добавляшеь новый триггер, то обязательно добавь его также и в файл локализации, т.е. на что он будет заменяться

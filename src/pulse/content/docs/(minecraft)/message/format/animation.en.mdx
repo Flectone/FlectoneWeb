@@ -9,6 +9,40 @@ It can be used in any messages that change over time (for example, in header/foo
 
 ![animation](/pulse/message_format_animation.webp)
 
+<Callout type="info" title="Information">
+    How to make your own animation? For example a running dot in the TAB
+
+    <Steps>
+        <Step>
+            In `message.yml` add the animation to `format.animation.values`
+            ```yaml
+            values:
+              loading:
+                raw: false
+                interval: 1
+            ```
+        </Step>
+        <Step>
+            In `localizations → language.yml` add the frames to `message.format.animation.values`. Every line is one frame, and after the last one the animation starts again
+            ```yaml
+            values:
+              loading:
+              - "<fcolor:2>● <fcolor:1>● ●"
+              - "<fcolor:1>● <fcolor:2>● <fcolor:1>●"
+              - "<fcolor:1>● ● <fcolor:2>●"
+            ```
+        </Step>
+        <Step>
+            Insert `<animation:loading>` into a message that updates over time, for example into `message.tab.header`
+        </Step>
+        <Step>
+            Reload FlectonePulse with `/flectonepulse reload`
+        </Step>
+    </Steps>
+
+    A frame changes only when the message itself updates, so the `ticker` period of that message should be small
+</Callout>
+
 <br></br>
 
 # <include>../../../../../parts/words.en.mdx#localization</include>

@@ -1,0 +1,254 @@
+---
+title: Модули и команды
+description: Модульная архитектура FlectonePulse, ModuleSimple и ModuleController, права доступа и регистрация своих команд
+tag: "api"
+icon: Blocks
+---
+Каждая функция FlectonePulse живёт в отдельном модуле. Модули собраны в дерево, и выключение родителя выключает всё, что под ним
+
+```
+MODULE
+├── COMMAND
+│   ├── COMMAND_BAN
+│   └── COMMAND_COIN
+├── MESSAGE
+│   ├── MESSAGE_CHAT
+│   └── MESSAGE_FORMAT
+│       └── MESSAGE_FORMAT_MENTION
+└── INTEGRATION
+    └── INTEGRATION_DISCORD
+```
+
+<span>Пакет `net.flectone.pulse.module`</span>
+
+| Интерфейс | Что добавляет |
+|-----------|---------------|
+| `ModuleSimple` | Имя, конфигурацию, право, включение и выключение |
+| `ModuleLocalization` | Переводимые тексты, кулдаун и звук |
+| `ModuleCommand` | Регистрацию чат команды |
+| `Module` | Корневой модуль проекта |
+
+<br></br>
+
+# ModuleSimple
+
+| Метод | Возвращает | Что отдаёт |
+|-------|------------|------------|
+| `name()` | `ModuleName` | Идентификатор в конфигурации, правах и прокси канале |
+| `config()` | `EnableSetting` | Секцию настроек модуля |
+| `permission()` | `PermissionSetting` | Право, которое управляет модулем |
+| `onEnable()` | `void` | Вызывается при включении модуля |
+| `onDisable()` | `void` | Вызывается при выключении модуля |
+| `isDisable()` | `BiPredicate<FEntity, Boolean>` | Дополнительное условие отключения для конкретной сущности |
+| `children()` | `Set<Class<? extends ModuleSimple>>` | Вложенные модули |
+| `permissions()` | `Set<PermissionSetting>` | Все права, которые регистрирует модуль |
+
+<br></br>
+
+# ModuleLocalization
+
+Добавляет к модулю переводы, кулдаун и звук
+
+| Метод | Что делает |
+|-------|------------|
+| `localization(FPlayer)` | Отдаёт секцию локализации на языке конкретного игрока |
+| `cooldown()` | Отдаёт `Optional` с кулдауном и правом обхода |
+| `cooldownOrThrow()` | То же самое, но бросает исключение, если кулдаун не настроен |
+| `sound()` | Отдаёт `Optional` со звуком и правом на его прослушивание |
+| `soundOrThrow()` | То же самое, но бросает исключение, если звук не настроен |
+
+```java
+// текст на языке получателя
+String format = module.localization(receiver).format();
+
+// текст на языке по умолчанию
+String defaultFormat = module.localization(FPlayer.UNKNOWN).format();
+```
+
+<br></br>
+
+# ModuleController
+
+<span>Пакет `net.flectone.pulse.platform.controller`</span>
+
+Управляет всем деревом модулей
+
+```java
+import net.flectone.pulse.platform.controller.ModuleController;
+
+ModuleController moduleController = flectonePulse.get(ModuleController.class);
+```
+
+| Метод | Что делает |
+|-------|------------|
+| `isEnable(ModuleSimple)` | Проверяет, включён ли модуль |
+| `isEnable(ModuleName)` | То же самое, но по имени модуля |
+| `isDisabledFor(ModuleSimple, FEntity)` | Проверяет модуль для конкретной сущности с учётом конфигурации, права и своего условия модуля |
+| `isDisabledFor(ModuleSimple, FEntity, boolean checkLocalizationModule)` | То же самое, но ещё проверяет локализацию |
+| `enable(ModuleSimple, Predicate<ModuleSimple>)` | Включает модуль |
+| `disable(ModuleSimple)` | Выключает модуль |
+| `containsChild(ModuleSimple, ModuleName)` | Ищет модуль среди потомков |
+| `collectModuleStatuses()` | Отдаёт состояния всех модулей |
+| `isInstanceOfAny(ModuleSimple, Set<Class<? extends ModuleSimple>>)` | Проверяет принадлежность модуля к одной из групп |
+
+<Callout type="info" title="Информация">
+
+Метод `isDisabledFor()` учитывает всё сразу. Включён ли модуль, есть ли у игрока право и не отключил ли модуль сам себя для этой сущности. Вызывай его перед любым действием от имени модуля
+
+</Callout>
+
+```java
+import net.flectone.pulse.module.message.chat.ChatModule;
+
+ChatModule chatModule = flectonePulse.get(ChatModule.class);
+
+if (moduleController.isDisabledFor(chatModule, fPlayer)) {
+    return; // модуль выключен или у игрока нет права
+}
+```
+
+### Получение модуля
+
+Модуль это обычный компонент, поэтому берётся через `get()`
+
+```java
+import net.flectone.pulse.module.command.ban.BanModule;
+import net.flectone.pulse.module.message.bubble.BubbleModule;
+
+BanModule banModule = flectonePulse.get(BanModule.class);
+BubbleModule bubbleModule = flectonePulse.get(BubbleModule.class);
+```
+
+### Реакция на переключение
+
+```java
+@Pulse(priority = Event.Priority.MONITOR, ignoreCancelled = true)
+public void onModuleDisable(ModuleDisableEvent event) {
+    if (event.module().name() == ModuleName.INTEGRATION_DISCORD) {
+        getLogger().info("Интеграция с Discord отключена");
+    }
+}
+```
+
+<Callout type="error" title="Внимание">
+
+`ModuleName` это перечисление, и добавить туда свой элемент нельзя. Сторонние плагины не создают свои модули FlectonePulse, они цепляются к существующим через события и регистрируют свои команды напрямую
+
+</Callout>
+
+<br></br>
+
+# Права
+
+<span>Пакет `net.flectone.pulse.platform.registry`</span>
+
+`PermissionRegistry` регистрирует права в платформе, чтобы плагины прав видели их в автодополнении и применяли значения по умолчанию
+
+```java
+import net.flectone.pulse.config.Permission;
+import net.flectone.pulse.platform.registry.PermissionRegistry;
+
+PermissionRegistry permissionRegistry = flectonePulse.get(PermissionRegistry.class);
+
+permissionRegistry.register("myplugin.command.use", Permission.Type.TRUE);
+```
+
+| `Permission.Type` | Кому выдаётся |
+|-------------------|---------------|
+| `TRUE` | Всем |
+| `FALSE` | Никому |
+| `OP` | Только операторам |
+| `NOT_OP` | Всем, кроме операторов |
+
+Проверяет права `PermissionChecker`, он работает и с игроками, и с консолью, и с сущностями из интеграций
+
+```java
+import net.flectone.pulse.checker.PermissionChecker;
+
+PermissionChecker permissionChecker = flectonePulse.get(PermissionChecker.class);
+
+if (permissionChecker.check(fPlayer, "myplugin.command.use")) {
+    // право есть
+}
+```
+
+<br></br>
+
+# Команды
+
+FlectonePulse использует [Cloud](https://cloud.incendo.org/) и даёт один способ регистрации команд для всех платформ. Отправителем команды выступает `FPlayer`
+
+```java
+import net.flectone.pulse.model.entity.FPlayer;
+import net.flectone.pulse.platform.registry.CommandRegistry;
+
+CommandRegistry commandRegistry = flectonePulse.get(CommandRegistry.class);
+
+commandRegistry.registerCommand(manager -> manager
+        .commandBuilder("mycommand")
+        .permission("myplugin.command.use")
+        .handler(context -> {
+            FPlayer fPlayer = context.sender();
+            messageSender.sendMessage(fPlayer, Component.text("Команда выполнена"), false);
+        })
+);
+```
+
+| Метод | Что делает |
+|-------|------------|
+| `registerCommand(Function<CommandManager<FPlayer>, Command.Builder<FPlayer>>)` | Регистрирует команду |
+| `unregisterCommand(String name)` | Удаляет команду по имени |
+| `init()` | Поднимает менеджер команд, вызывается самим проектом |
+
+### Аргументы
+
+```java
+import org.incendo.cloud.parser.standard.StringParser;
+
+commandRegistry.registerCommand(manager -> manager
+        .commandBuilder("greet")
+        .required("target", StringParser.stringParser())
+        .handler(context -> {
+            String target = context.get("target");
+            FPlayer fPlayer = context.sender();
+        })
+);
+```
+
+В пакете `net.flectone.pulse.parser` лежат готовые парсеры, которые знают о моделях FlectonePulse. Игроки, наказания, числа и строки с особыми правилами. Бери их вместо ручного разбора аргументов
+
+<Callout type="warn" title="Предупреждение">
+
+Команды, как и слушатели, перерегистрируются при перезагрузке FlectonePulse. Регистрируй их в обработчике `EnableEvent` с типом `READY`, тогда они восстановятся сами
+
+</Callout>
+
+<br></br>
+
+# Проверки перед действием
+
+Эти компоненты сразу и проверяют, и пишут игроку. Они отдают `true`, когда действие надо прервать
+
+<span>Пакет `net.flectone.pulse.platform.sender`</span>
+
+| Компонент | Метод | Что проверяет |
+|-----------|-------|---------------|
+| `CooldownSender` | `sendIfCooldown(...)` | Истёк ли кулдаун |
+| `MuteSender` | `sendIfMuted(FEntity)` | Заглушён ли игрок |
+| `DisableSender` | `sendIfDisabled(FEntity, FEntity, ModuleName)` | Выключен ли модуль для игрока |
+| `IgnoreSender` | `sendIfIgnored(FPlayer, FPlayer)` | Игнорирует ли получатель отправителя |
+
+```java
+if (muteSender.sendIfMuted(fPlayer)) return;
+if (cooldownSender.sendIfCooldown(fPlayer, module.cooldownOrThrow(), "mycommand")) return;
+
+// все проверки прошли, выполняем команду
+```
+
+Если сообщение игроку не нужно, кулдаун можно проверить через `CooldownChecker`
+
+<Callout type="idea" title="Примечание">
+
+Перед действием от имени модуля всегда вызывай `isDisabledFor()`, иначе ты обойдёшь настройки администратора сервера. Полный список компонентов лежит в [справочнике](/pulse/docs/api/services/)
+
+</Callout>

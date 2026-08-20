@@ -13,6 +13,30 @@ tag: "minecraft"
     Это работает только для версий `1.21` и новее
 </Callout>
 
+<Callout type="info" title="Информация">
+    Как добавить свою ссылку?
+
+    <Steps>
+        <Step>
+            В `message.yml` добавь название и саму ссылку в `serverlink.values`
+            ```yaml
+            values:
+              discord: "https://discord.flectone.net"
+            ```
+        </Step>
+        <Step>
+            В `localizations → язык.yml` добавь текст кнопки в `message.serverlink.values`. Если его не добавить, то будет показана сама ссылка
+            ```yaml
+            values:
+              discord: "<fcolor:2>Наш дискорд"
+            ```
+        </Step>
+        <Step>
+            Перезагрузи FlectonePulse с помощью `/flectonepulse reload` и открой меню паузы
+        </Step>
+    </Steps>
+</Callout>
+
 <br></br>
 
 # <include>../../../../parts/words.mdx#localization</include>

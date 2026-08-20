@@ -42,6 +42,18 @@
         "applicationName": "FlectonePulse",
         "keywords": "скачать флектонпульс, скачать flectonepulse, скачать плагин на чат, скачать плагин на чат майнкрафт, скачать чат, скачать майнкрафт, скачать флектон, скачать Флектон",
         "image": "/assets/flectone_logo.png"
+      },
+      "Metrics": {
+        "title": "Аналитика | FlectonePulse",
+        "description": "На этой странице собраны основные графики по работе серверов",
+        "applicationName": "Flectone",
+        "image": "/assets/flectone_logo.png"
+      },
+      "Changelog": {
+        "title": "Список изменений | FlectonePulse",
+        "description": "Все изменения для каждой версии FlectonePulse",
+        "applicationName": "Flectone",
+        "image": "/assets/flectone_logo.png"
       }
     },
     "Tools": {
@@ -105,20 +117,23 @@
         "applicationName": "TimeConvertor",
         "image": "/assets/flectone_logo.png"
       }
+    },
+    "Vault": {
+      "title": "FlectoneVault",
+      "description": "Все когда-либо выпущенные туториалы с картами и лайтматиками",
+      "applicationName": "FlectoneVault",
+      "image": "/assets/flectone_logo.png"
     }
   },
-  "NotFound": {
-    "title": "404",
-    "description": "То что вы ищете, не найдено",
-    "button": "Перейти на главную"
-  },
-  "Footer": {
-    "answer": "Не является официальным сервисом Minecraft или Hytale. Не одобрено и не связано с компанией Mojang, Microsoft или Hypixel Studios.",
-    "date": "Существует с 2019 года",
-    "openSourse": "Весь код проекта имеет <a>открытый исходный код</a>"
-  },
   "Header": {
-    "Search" : {
+    "LanguageToggle": {
+      "language": "Язык",
+      "Locales": {
+        "russian": "Русский",
+        "english": "Английский"
+      }
+    },
+    "Search": {
       "filter": "Фильтр",
       "Minecraft": {
         "name": "Minecraft",
@@ -136,65 +151,74 @@
         "name": "Аналитика",
         "description": "Документация для Аналитики"
       }
-    },
-    "about": "Про нас",
-    "Projects": {
-      "title": "Проекты"
     }
   },
-  "ThemeSwitcher": {
-    "light": "Светлая",
-    "dark": "Темная",
-    "system": "Как в системе"
-  },
-  "LanguageSwitcher": {
-    "ru": "Русский",
-    "en": "Английский"
-  },
-  "Projects": {
-    "title": "Проекты <b>Flectone</b>",
-    "closed": "Закрытые проекты",
-    "Pulse": {
-      "description": "Проект для настройки сообщений сервера",
-      "button": "Подробрее",
-      "buttonPath": "https://flectone.net/pulse"
+  "Main": {
+    "HeaderLinks": {
+      "pulse": "FlectonePulse",
+      "tools": "FlectoneTools",
+      "vault": "FlectoneVault"
     },
-    "Mix": {
+    "HeroCard": {
+      "badge": "с 2019 года ● открытый код",
+      "title": "Flectone",
+      "description": "Плагины, онлайн-инструменты и туториалы для Minecraft. Бесплатно, без подписок и с открытым кодом"
+    },
+    "more": "Подробнее",
+    "archive": "Архив",
+    "FlectonePulse": {
+      "title": "Pulse",
+      "description": "Проект для настройки сообщений сервера",
+      "Badges": {
+        "versions": "1.8.8+",
+        "commands": "50+ команды",
+        "integrations": "30+ интеграций"
+      }
+    },
+    "Members": {
+      "title": "Команда <b>Flectone</b>",
+      "description": "Все эти люди внесли вклад в проект",
+      "TheFaser": {
+        "name": "TheFaser",
+        "description": "Инициатор проектов Flectone, ютубер и разработчик",
+        "avatar": "https://github.com/TheFaser.png",
+        "link": "https://github.com/TheFaser"
+      },
+      "FunnyBars": {
+        "name": "FunnyBars",
+        "description": "Контрибьютор всех проектов и создатель плагина CookieClicker",
+        "avatar": "https://github.com/FunnyBars.png",
+        "link": "https://github.com/FunnyBars"
+      },
+      "fxdsu": {
+        "name": "fxdsu",
+        "description": "Создатель плагина FlectoneChat и главный помощник",
+        "avatar": "https://github.com/fxdsu.png",
+        "link": "https://github.com/fxdsu"
+      },
+      "vplend": {
+        "name": "vplend",
+        "description": "Разработчик сайта",
+        "avatar": "https://github.com/vplend.png",
+        "link": "https://github.com/vplend"
+      }
+    },
+    "FlectoneTools": {
+      "title": "Tools",
+      "description": "Инструменты для разработчиков серверов",
+      "background": "/assets/flectonetools/flectonetools_preview_ru.webp"
+    },
+    "FlectoneVault": {
+      "title": "Vault",
+      "description": "Все когда-либо выпущенные туториалы"
+    },
+    "FlectoneMix": {
+      "title": "Mix",
       "description": "Использовался для скачивания ресурсов"
     },
-    "Chat": {
-      "description": "Отец FlectonePulse, но проект был закрыт",
-      "imagePath": "/assets/flectonechat/flectonechat_preview_ru.webp"
-    },
-    "Tools": {
-      "description": "Инструменты для разработчиков серверов"
-    }
-  },
-  "Members": {
-    "title": "Команда <b>Flectone</b>",
-    "TheFaser": {
-      "name": "TheFaser",
-      "description": "Инициатор проектов Flectone, ютубер и разработчик",
-      "avatar": "https://github.com/TheFaser.png",
-      "link": "https://github.com/TheFaser"
-    },
-    "FunnyBars": {
-      "name": "FunnyBars",
-      "description": "Контрибьютор всех проектов и создатель плагина CookieClicker",
-      "avatar": "https://github.com/FunnyBars.png",
-      "link": "https://github.com/FunnyBars"
-    },
-    "fxdsu": {
-      "name": "fxdsu",
-      "description": "Создатель плагина FlectoneChat и главный помощник",
-      "avatar": "https://github.com/fxdsu.png",
-      "link": "https://github.com/fxdsu"
-    },
-    "vplend": {
-      "name": "vplend",
-      "description": "Разработчик сайта",
-      "avatar": "https://github.com/vplend.png",
-      "link": "https://github.com/vplend"
+    "FlectoneChat": {
+      "title": "Chat",
+      "description": "Отец FlectonePulse, но проект был закрыт"
     }
   },
   "FlectoneMix": {
@@ -207,51 +231,157 @@
     "usePulse": "Используй <strong>FlectonePulse</strong>, так как FlectoneChat более не поддерживается",
     "imagePath": "/assets/flectonechat/flectonechat_preview_ru.webp"
   },
-  "Pulse": {
-    "LastUpdate": "Последнее изменение",
-    "EditOnGitHub": "Редактировать на GitHub",
-    "Authors": {
-      "title": "Авторы страницы"
-    },
-    "WelcomeCard": {
-      "slogan": "Каждое сообщение под <b>вашим</b> контролем!"
-    },
-    "Buttons": {
-      "support": "Поддержка",
+  "FlectonePulse": {
+    "HeaderLinks": {
       "documentation": "Документация",
-      "metrics": "Аналитика",
-      "download": "Скачать",
-      "changelog": "Изменения"
+      "analytics": "Аналитика",
+      "changelog": "Изменения",
+      "download": "Скачать"
     },
-    "Features": {
-      "Message": {
-        "title": "Настройка множества сообщений",
-        "description": "Настрой почти любое сообщение, которое видит твой игрок. Любое действие FlectonePulse можно отключить"
+    "Main": {
+      "HeroCard": {
+        "badge": "Плагин для Minecraft и Hytale",
+        "slogan": "Каждое сообщение под <b>вашим</b> контролем!",
+        "description": "Настраивай чат, команды, ТАБ и интеграции без десятка сторонних плагинов",
+        "support": "Поддержка",
+        "documentation": "Документация",
+        "download": "Скачать"
       },
-      "Command": {
-        "title": "Более 30 интересных комманд",
-        "description": "Сделай чат более удобным в использовании. Игроки также смогут использовать встроенные мини-игры"
+      "Stats": {
+        "commands": "Команд в чате",
+        "integrations": "Интеграций",
+        "versions": "Версии Minecraft",
+        "messages": "Видов сообщений"
       },
-      "Integration": {
-        "title": "Интеграция с другими проектами",
-        "description": "Позволь игрокам общаться на разных платформах. Полноценные интеграции с Discord, Twitch и Telegram"
+      "Features": {
+        "title": "Что умеет <b>FlectonePulse</b>",
+        "button": "Перейти к документации",
+        "description": "Пролистай и загляни в документацию по любой из этих возможностей",
+        "more": "Подробнее",
+        "Format": {
+          "title": "Форматирование текста",
+          "description": "Градиенты, радуга, анимации и цвета в любом сообщении. От версии 1.8.8 до самой последней"
+        },
+        "Command": {
+          "title": "Более 30 интересных комманд",
+          "description": "Сделай чат более удобным в использовании. Игроки также смогут использовать встроенные мини-игры"
+        },
+        "Integration": {
+          "title": "Интеграция с другими проектами",
+          "description": "Позволь игрокам общаться на разных платформах. Полноценные интеграции с Discord, Twitch и Telegram"
+        },
+        "Symbol": {
+          "title": "Эмодзи и символы",
+          "description": "Игроки находят и вставляют Unicode-символы прямо в чате, по категориям"
+        },
+        "Status": {
+          "title": "MOTD и иконка сервера",
+          "description": "Описание, иконка, версия и список игроков для сервера"
+        }
+      },
+      "Modules": {
+        "title": "Всё разбито на <b>модули</b>",
+        "description": "Каждый конфиг настраивается или отключается в конфиге. Вот основные из них",
+        "Chat": {
+          "title": "Чаты и их типы",
+          "description": "Локальный, глобальный и чат по мирам. У каждого свой формат, радиус и права"
+        },
+        "Minigame": {
+          "title": "Мини-игры в чате",
+          "description": "Сапёр, кости, камень-ножницы-бумага и шар предсказаний прямо в сообщениях"
+        },
+        "Moderation": {
+          "title": "Фильтры сообщений",
+          "description": "Мат, капс, флуд и повторы плагин поправит или удалит сам"
+        },
+        "Destination": {
+          "title": "Куда придёт сообщение",
+          "description": "Чат, титры, экшнбар, боссбар или всплывающее уведомление – на твой выбор"
+        },
+        "Tab": {
+          "title": "ТАБ и скорборд",
+          "description": "Заголовок, футер, имена игроков, сайдбар и значения под ником"
+        },
+        "Vanilla": {
+          "title": "Ванильные события",
+          "description": "Вход, выход, смерти и приветствия – все системные сообщения под контролем"
+        },
+        "Replacement": {
+          "title": "Замены в сообщениях",
+          "description": "Предмет из руки, скин, координаты, ссылки и статистика прямо в чате"
+        },
+        "Object": {
+          "title": "Свои текстуры",
+          "description": "Добавляй картинки и иконки в чат, MOTD и интерфейс через объекты"
+        },
+        "Bubble": {
+          "title": "Сообщения в мире",
+          "description": "Текст над головой и подсказка при клике по игроку"
+        },
+        "Punishment": {
+          "title": "Наказания",
+          "description": "Муты, баны, кики и предупреждения со своими причинами и историей"
+        }
+      },
+      "Download": {
+        "title": "Скачай <b>бесплатно</b>",
+        "description": "Выбирай удобную площадку — файл везде один и тот же",
+        "minecraft": "Скачать для <b>Minecraft</b>",
+        "hytale": "Скачать для <b>Hytale</b>",
+        "latestrelease": "Последний релиз",
+        "devbuilds": "Снапшот версии",
+        "download": "Скачать"
+      },
+      "Metrics": {
+        "title": "Аналитика в <b>реальном времени</b>",
+        "description": "Сколько серверов и игроков используют FlectonePulse",
+        "button": "Перейти к аналитике",
+        "serverCount": "Серверы",
+        "playerCount": "Игроки",
+        "activity": "Активность"
       }
     },
-    "Structure": {
-      "title": "Структура плагина",
-      "description": "├── <b>backups/</b>\n│  ├──<c>version/</c>\n├── <b>images/</b>\n├── <b>libaries/</b>\n├── <b>minecraft/</b>\n├── <b>localizations/</b>\n├── <b>commands.yml</b>\n├── <b>config.yml</b>\n├── <b>integration.yml</b>\n├── <b>message.yml</b>\n├── <b>permission.yml</b>"
+    "Docs": {
+      "editOnGithub": "Редактировать на GitHub",
+      "lastUpdate": "Последнее изменение",
+      "authorsOfPage": "Авторы страницы"
     },
     "Metrics": {
       "title": "Аналитика",
-      "playersCount": "Количество игроков",
-      "serversCount": "Количество серверов"
-    },
-    "Download": {
-      "latestrelease": "Последний релиз",
-      "devbuilds": "Снапшот версии",
-      "download": "Скачать"
+      "description": "На этой странице собраны основные графики по работе серверов",
+      "Callout": {
+        "title": "Информация",
+        "text": "Ты в любой момент можешь отключить сбор этих данных на своём сервере <a>здесь</a>"
+      },
+      "labels": {
+        "servers": "Серверы",
+        "players": "Игроки",
+        "count": "Количество",
+        "hideEssentials": "Показать несущественные",
+        "showEssentials": "Скрыть несущественные"
+      },
+      "items": {
+        "activity": "Активность",
+        "serverVersion": "Версия сервера",
+        "cpuCores": "Количество CPU",
+        "totalRam": "Объем RAM",
+        "modules": "Модули",
+        "projectVersion": "Версия проекта",
+        "projectLanguage": "Язык проекта",
+        "serverCore": "Ядра серверов и игроки",
+        "osArchitecture": "Архитектура ОС",
+        "osName": "Операционная система",
+        "javaVersion": "Версия Java",
+        "proxyMode": "Режим прокси",
+        "onlineMode": "Онлайн режим",
+        "databaseMode": "Режим базы данных",
+        "location": "Геолокация"
+      }
     },
     "Changelog": {
+      "title": "Список изменений",
+      "description": "Все изменения для каждой версии FlectonePulse",
+      "version": "Версия",
       "download": "Скачать",
       "github": "Гитхаб",
       "features": "Новые возможности",
@@ -260,45 +390,46 @@
       "dependencies": "Зависимости"
     }
   },
-  "Tools": {
+  "FlectoneTools": {
     "Main": {
-      "title": "FlectoneTools",
-      "description": "Набор онлайн-инструментов для владельцев Minecraft серверов. Всё бесплатно и работает в браузере, не требует установки. Помогает быстро создавать ресурсы для плагинов, настраивать оформление и выполнять технические операции",
+      "title": "Flectone<b>Tools</b>",
+      "description": "Набор бесплатных онлайн-инструментов для владельцев Minecraft-серверов. Работает в браузере без установки",
+      "background": "/assets/flectonetools/flectonetools_preview_ru.webp",
       "TextureGenerator": {
         "title": "Генератор текстур",
-        "description": "Конвертирует любое изображение в текстуру для Minecraft, создавая JSON-модель"
+        "description": "Конвертирует любое изображение в JSON-текстуру Minecraft"
       },
       "TextAnimation": {
         "title": "Анимация текста",
-        "description": "Создаёт анимированные сообщения с эффектами мерцания, радуги, волны и появления по буквам"
+        "description": "Создаёт анимированные сообщения с различными эффектами"
       },
       "PrefixGenerator": {
         "title": "Генератор префиксов",
-        "description": "Собирает префиксы с помощью визуального редактора. Добавляйте иконки (символы/юникод) и цветной текст"
+        "description": "Визуальный редактор префиксов для Minecraft"
       },
       "UuidExtractor": {
         "title": "Получение UUID",
-        "description": "Находит UUID игрока по нику для Java Edition. Поддерживает оффлайн и онлайн режимы"
+        "description": "Получает UUID игрока по нику (для Java Edition)"
       },
       "InventoryPreviewer": {
         "title": "Просмотр Инвентарей",
-        "description": "Все GUI контейнеров Minecraft собраны в одном месте. Выбери нужный из списка и посмотри какие номера слотов у него"
+        "description": "Просмотр GUI-контейнеров Minecraft в одном месте"
       },
       "CoordinateCalculator": {
         "title": "Калькулятор Координат",
-        "description": "Переводи координаты между Незером и обычным миром, а также находи крепость Энда по двум броскам жемчуга"
+        "description": "Расчет координат для Незера и Эндер-крепости"
       },
       "ColorTextGenerator": {
         "title": "Генератор Цветного Текста",
-        "description": "Создавай цветной текст для Minecraft с поддержкой Legacy и MiniMessage форматов"
+        "description": "Генератор цветного текста в форматах Legacy и MiniMessage"
       },
       "ServerFlagsGenerator": {
         "title": "Генератор флагов сервера",
-        "description": "Генерируй скрипты запуска Minecraft сервера с оптимальными JVM флагами для Linux, Windows и Java."
+        "description": "Генерация оптимизированных скриптов запуска сервера"
       },
       "TimeConvertor": {
         "title": "Конвертер времени",
-        "description": "Конвертирует тики Minecraft в реальное время и наоборот. Помогает быстро получить команду /time set"
+        "description": "Конвертация тиков Minecraft в реальное время и обратно"
       }
     },
     "Form": {
@@ -311,7 +442,7 @@
     },
     "TextureGenerator": {
       "title": "Генератор текстур",
-      "description": "Позволяет превратить любое изображение в готовую текстуру для Minecraft, создавая JSON-модель. Вам достаточно загрузить картинку, и инструмент сам сгенерирует текстуру в JSON-файл модель. Готовый результат нужно скопировать и поместить в папку images плагина FlectonePulse, после чего текстуру можно сразу использовать на сервере.",
+      "description": "Позволяет превратить любое изображение в готовую текстуру для Minecraft, создавая JSON-модель.",
       "fullDocs": "Полная документация и примеры",
       "warn": "Размеры изображения должны быть кратны 8 (например, 16x16, 32x32, 64x16, 64x32 и т.д.). Чем больше изображение, тем дольше оно будет конвертироваться",
       "input": "Перетащите изображение или нажмите",
@@ -327,7 +458,7 @@
     },
     "TextAnimation": {
       "title": "Анимация текста",
-      "description": "Создаёт анимированные тексты с эффектами мерцания, радуги, волны и появления по буквам. Настройте скорость и цвета, а инструмент сгенерирует готовые настройки. Скопируйте их в свой плагин (например в FlectonePulse).",
+      "description": "Создаёт анимированные тексты с эффектами мерцания, радуги, волны и появления по буквам.",
       "fullDocs": "Полная документация и примеры",
       "Settings": {
         "text": "Текст",
@@ -349,7 +480,7 @@
     },
     "PrefixGenerator": {
       "title": "Генератор префиксов",
-      "description": "Визуальный редактор для создания цветных префиксов с градиентами, символами и разделителями. Инструмент генерирует готовое изображение префикса, которое можно скачать и использовать где угодно, например для РесурсПака, социальных сетей, видео или оформления сервера",
+      "description": "Визуальный редактор для создания цветных префиксов с градиентами, символами и разделителями.",
       "Settings": {
         "text": "Текст",
         "font": "Шрифт",
@@ -389,6 +520,7 @@
       "onlineUuid": "Онлайн UUID",
       "offlineUuid": "Оффлайн UUID",
       "randomUuid": "Случайный UUID",
+      "coppied": "Скопировано в буфер обмена",
       "Errors": {
         "enterNickname": "Введите никнейм",
         "dataError": "Ошибка при обработке данных",
@@ -396,11 +528,13 @@
         "searchError": "Произошла ошибка при поиске"
       }
     },
-    "InventoryPreviewer": {
+    "InventoryViewer": {
       "title": "Просмотр Инвентарей",
       "description": "Все GUI контейнеров Minecraft собраны в одном месте. Выбери нужный из списка и посмотри какие номера слотов у него",
       "container": "Инвентарь",
       "allContainers": "Виды инвентарей",
+      "search": "Поиск",
+      "notFound": "Ничего не найдено",
       "Containers": {
         "anvil": "Наковальня",
         "barrel": "Бочка",
@@ -441,6 +575,11 @@
       "firstThrow": "Первый бросок",
       "secondThrow": "Второй бросок",
       "tutorial": "Обучение",
+      "Step": {
+        "one": "Шаг первый",
+        "two": "Шаг второй",
+        "three": "Шаг третий"
+      },
       "tutorialStep1": "Бросьте жемчуг Края и запомните координаты X, Z и угол полёта",
       "tutorialStep2": "Отойдите на несколько блоков (250 - 500) и бросьте второй жемчуг, записав новые координаты и угол",
       "tutorialStep3": "Калькулятор вычислит пересечение и покажет координаты крепости"
@@ -468,6 +607,7 @@
       "reset": "Сбросить",
       "newline": "Новая строка",
       "display": "Отображение",
+      "copied": "Скопировано в буфер обмена",
       "previews": {
         "text": "Текст",
         "tab": "Таб",
@@ -535,7 +675,7 @@
     },
     "TimeConvertor": {
       "title": "Конвертер времени",
-      "description": "Конвертирует тики Minecraft в реальное время и наоборот. Помогает быстро получить команду /time set",
+      "description": "Конвертирует тики Minecraft в привычное время и наоборот",
       "command": "Комманда",
       "sunAngle": "Угол солнца",
       "Presets": {
@@ -546,5 +686,32 @@
         "midnight": "Полночь"
       }
     }
+  },
+  "FlectoneVault": {
+    "Main": {
+      "title": "Flectone<b>Vault</b>",
+      "description": "Все когда-либо выпущенные туториалы с картами и лайтматиками"
+    },
+    "Card": {
+      "watchYoutube": "Перейти на Youtube",
+      "watchBoosty": "Перейти на Boosty"
+    },
+    "Sort": {
+      "date": "По дате",
+      "views": "По просмотрам"
+    },
+    "search": "Поиск",
+    "error": "Таблица пуста или данные не найдены"
+  },
+  "NotFound": {
+    "title": "404",
+    "description": "То что вы ищете, не найдено",
+    "button": "Перейти на главную"
+  },
+  "Footer": {
+    "authors": "Авторы",
+    "answer": "Не является официальным сервисом Minecraft или Hytale. Не одобрено и не связано с компанией Mojang, Microsoft или Hypixel Studios.",
+    "date": "Существует с 2019 года",
+    "openSourse": "Весь код проекта имеет <a>открытый исходный код</a>"
   }
 }

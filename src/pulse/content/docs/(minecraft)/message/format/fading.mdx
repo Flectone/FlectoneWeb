@@ -1,0 +1,72 @@
+---
+title: Затухание
+description: Модуль, отвечающий за затухание сообщения с расстоянием и тег <fading>
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+![fading](/pulse/message_format_fading.webp)
+
+<Callout type="info" title="Информация">
+    Чтобы сообщение затухало, нужно заменить `<message>` на `<fading>` в нужном формате. Например для локального чата в `localizations → язык.yml → message.chat.types.local`
+    ```yaml
+    types:
+      local: "<delete><display_name><fcolor:3>: <fading>"
+    ```
+</Callout>
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#localization</include>
+<span><include>../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.fading`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../../files/minecraft/localizations/ru_ru.yml#fading</include></Tab>
+    <Tab value="en_us"><include>../../../../../files/minecraft/localizations/en_us.yml#fading</include></Tab>
+</Tabs>
+
+### `symbol`
+
+Символ, на который заменяются буквы в сообщении. Используется только первый символ
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#setting</include>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.fading`</span>
+
+<include>../../../../../files/minecraft/message.yml#fading</include>
+
+<include>../../../../../parts/enable.mdx</include>
+
+### `hide_different_world`
+
+Включает полное затухание сообщения, если расстояние между игроками невозможно определить, например они находятся в разных мирах или получатель находится на другом сервере при использовании прокси. Если выключено, то такое сообщение будет отображаться полностью
+
+### `min_distance`
+
+Расстояние в блоках, до которого сообщение отображается полностью. Пока получатель ближе этого значения, ничего не заменяется
+
+### `max_distance`
+
+Расстояние в блоках, на котором сообщение затухает полностью. Между `min_distance` и `max_distance` количество заменённых букв растёт постепенно, чем дальше получатель, тем меньше букв он увидит. Пробелы не заменяются никогда
+
+<Callout type="info" title="Информация">
+    Например, `min_distance` равен `10.0`, а `max_distance` равен `50.0`. Тогда игрок, который стоит в 10 блоках, увидит сообщение полностью, в 30 блоках увидит примерно половину букв, а в 50 блоках и дальше не увидит ни одной буквы
+</Callout>
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#permission</include>
+<span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.fading`</span>
+
+<include>../../../../../files/minecraft/permission.yml#fading</include>
+
+<include>../../../../../parts/permission/permissionTier3.mdx</include>
+
+### `bypass_send`
+
+Право для того, чтобы сообщения игрока не затухали для остальных
+
+### `bypass_view`
+
+Право для того, чтобы видеть чужие сообщения без затухания

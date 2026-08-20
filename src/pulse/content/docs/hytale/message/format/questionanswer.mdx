@@ -7,6 +7,49 @@ tag: "hytale"
 ---
 ![question](/pulse/hytale/message_format_questionanswer.webp)
 
+<Callout type="info" title="Информация">
+    Как сделать свой вопрос? Например ответ на вопрос про донат
+
+    <Steps>
+        <Step>
+            В `message.yml` добавь вопрос в `format.question_answer.questions`
+            ```yaml
+            questions:
+              donate:
+                range: "PLAYER"
+                destination:
+                  type: "CHAT"
+                cooldown:
+                  enable: false
+                sound:
+                  enable: false
+                target: "(?i)\\b(донат|привилегии|как купить)\\b"
+            ```
+        </Step>
+        <Step>
+            В `localizations → язык.yml` добавь ответ в `message.format.question_answer.questions`
+            ```yaml
+            questions:
+              donate: "<fcolor:2>[Вопрос-Ответ] @<player><fcolor:1>, привилегии можно купить на flectone.net"
+            ```
+        </Step>
+        <Step>
+            В `permission.yml` добавь право в `message.format.question_answer.questions`
+            ```yaml
+            questions:
+              donate:
+                name: "flectonepulse.module.message.format.questionanswer.donate"
+                type: "TRUE"
+            ```
+        </Step>
+        <Step>
+            Перезагрузи FlectonePulse с помощью `/flectonepulse reload`
+        </Step>
+    </Steps>
+
+    С `range: "PLAYER"` ответ увидит только тот, кто задал вопрос, а с `range: "SERVER"` его увидят все
+</Callout>
+
 <br></br>
 
 # <include>../../../../../parts/words.mdx#localization</include>
@@ -24,7 +67,7 @@ tag: "hytale"
 <br></br>
 
 # <include>../../../../../parts/words.mdx#setting</include>
-<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.questionanswer`</span>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.question_answer`</span>
 
 <include>../../../../../files/hytale/message.yml#questionanswer</include>
 

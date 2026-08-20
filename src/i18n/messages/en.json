@@ -42,6 +42,18 @@
         "ApplicationName": "FlectonePulse",
         "keywords": "download flectonepulse, download flectonepulse, download chat plugin, download minecraft chat plugin, download chat, download minecraft, download flectone, download flectone",
         "image": "/assets/flectone_logo.png"
+      },
+      "Metrics": {
+        "title": "Analytics | FlectonePulse",
+        "description": "This page contains key server performance graphs",
+        "applicationName": "Flectone",
+        "image": "/assets/flectone_logo.png"
+      },
+      "Changelog": {
+        "title": "Changelog | FlectonePulse",
+        "description": "All changes for each version of FlectonePulse",
+        "applicationName": "Flectone",
+        "image": "/assets/flectone_logo.png"
       }
     },
     "Tools": {
@@ -105,20 +117,23 @@
         "applicationName": "TimeConvertor",
         "image": "/assets/flectone_logo.png"
       }
+    },
+    "Vault": {
+      "title": "FlectoneVault",
+      "description": "All tutorials ever released with maps and litematics",
+      "applicationName": "FlectoneVault",
+      "image": "/assets/flectone_logo.png"
     }
   },
-  "NotFound": {
-    "title": "404",
-    "description": "What you are looking for has not been found.",
-    "button": "Go to the main page"
-  },
-  "Footer": {
-    "answer": "Not an official Minecraft or Hypixel service. Not approved by or associated with Mojang, Microsoft or Hypixel Studios.",
-    "date": "Established in 2019",
-    "openSourse": "All project code is <a>open source</a>"
-  },
   "Header": {
-    "Search" : {
+    "LanguageToggle": {
+      "language": "Language",
+      "Locales": {
+        "russian": "Russian",
+        "english": "English"
+      }
+    },
+    "Search": {
       "filter": "Filter",
       "Minecraft": {
         "name": "Minecraft",
@@ -136,65 +151,74 @@
         "name": "Metrics",
         "description": "Documentation for Metrics"
       }
-    },
-    "about": "About us",
-    "Projects": {
-      "title": "Projects"
     }
   },
-  "ThemeSwitcher": {
-    "light": "Light",
-    "dark": "Dark",
-    "system": "System"
-  },
-  "LanguageSwitcher": {
-    "ru": "Russian",
-    "en": "English"
-  },
-  "Projects": {
-    "title": "Projects by <b>Flectone</b>",
-    "closed": "Сlosed projects",
-    "Pulse": {
-      "description": "Project for configuring server messages",
-      "button": "More",
-      "buttonPath": "https://flectone.net/en/pulse"
+  "Main": {
+    "HeaderLinks": {
+      "pulse": "FlectonePulse",
+      "tools": "FlectoneTools",
+      "vault": "FlectoneVault"
     },
-    "Mix": {
-      "description": "Previously used to download stuff from videos"
+    "HeroCard": {
+      "badge": "since 2019 ● open source",
+      "title": "Flectone",
+      "description": "Plugins, online tools, and tutorials for Minecraft. Free, subscription-free, and open source"
     },
-    "Chat": {
-      "description": "Father of FlectonePulse, but it's closed",
-      "imagePath": "/assets/flectonechat/flectonechat_preview_en.webp"
+    "more": "Learn more",
+    "archive": "Archive",
+    "FlectonePulse": {
+      "title": "Pulse",
+      "description": "A project for configuring server messages",
+      "Badges": {
+        "versions": "1.8.8+",
+        "commands": "50+ commands",
+        "integrations": "30+ integrations"
+      }
     },
-    "Tools": {
-      "description": "Tools for server developers"
-    }
-  },
-  "Members": {
-    "title": "The <b>Flectone</b> Team",
-    "TheFaser": {
-      "name": "TheFaser",
-      "description": "Initiator of Flectone projects, YouTuber, and developer",
-      "avatar": "https://github.com/TheFaser.png",
-      "link": "https://github.com/TheFaser"
+    "Members": {
+      "title": "The <b>Flectone</b> Team",
+      "description": "All these people have contributed to the project",
+      "TheFaser": {
+        "name": "TheFaser",
+        "description": "Initiator of Flectone projects, YouTuber, and developer",
+        "avatar": "https://github.com/TheFaser.png",
+        "link": "https://github.com/TheFaser"
+      },
+      "FunnyBars": {
+        "name": "FunnyBars",
+        "description": "Contributor to all projects and creator of the CookieClicker plugin",
+        "avatar": "https://github.com/FunnyBars.png",
+        "link": "https://github.com/FunnyBars"
+      },
+      "fxdsu": {
+        "name": "fxdsu",
+        "description": "Creator of the FlectoneChat plugin and main assistant",
+        "avatar": "https://github.com/fxdsu.png",
+        "link": "https://github.com/fxdsu"
+      },
+      "vplend": {
+        "name": "vplend",
+        "description": "Website developer",
+        "avatar": "https://github.com/vplend.png",
+        "link": "https://github.com/vplend"
+      }
     },
-    "FunnyBars": {
-      "name": "FunnyBars",
-      "description": "Contributor to all projects and creator of the CookieClicker plugin",
-      "avatar": "https://github.com/FunnyBars.png",
-      "link": "https://github.com/FunnyBars"
+    "FlectoneTools": {
+      "title": "Tools",
+      "description": "Tools for server developers",
+      "background": "/assets/flectonetools/flectonetools_preview_en.webp"
     },
-    "fxdsu": {
-      "name": "fxdsu",
-      "description": "Creator of the FlectoneChat plugin and main assistant",
-      "avatar": "https://github.com/fxdsu.png",
-      "link": "https://github.com/fxdsu"
+    "FlectoneVault": {
+      "title": "Vault",
+      "description": "All tutorials ever released"
     },
-    "vplend": {
-      "name": "vplend",
-      "description": "Website developer",
-      "avatar": "https://github.com/vplend.png",
-      "link": "https://github.com/vplend"
+    "FlectoneMix": {
+      "title": "Mix",
+      "description": "Used for downloading resources"
+    },
+    "FlectoneChat": {
+      "title": "Chat",
+      "description": "Father of FlectonePulse, but the project was closed"
     }
   },
   "FlectoneMix": {
@@ -207,51 +231,157 @@
     "usePulse": "Use <strong>FlectonePulse</strong>, as FlectoneChat is no longer supported.",
     "imagePath": "/assets/flectonechat/flectonechat_preview_en.webp"
   },
-  "Pulse": {
-    "LastUpdate": "Last updated",
-    "EditOnGitHub": "Edit on GitHub",
-    "Authors": {
-      "title": "Authors of page"
-    },
-    "WelcomeCard": {
-      "slogan": "Every message is under <b>your</b> control!"
-    },
-    "Buttons": {
-      "support": "Support",
+  "FlectonePulse": {
+    "HeaderLinks": {
       "documentation": "Documentation",
-      "metrics": "Metrics",
-      "download": "Download",
-      "changelog": "Changelog"
+      "analytics": "Analytics",
+      "changelog": "Changelog",
+      "download": "Download"
     },
-    "Features": {
-      "Message": {
-        "title": "Multiple Message Setup",
-        "description": "Customize almost every message your player sees. Any FlectonePulse action can be disabled."
+    "Main": {
+      "HeroCard": {
+        "badge": "Plugin for Minecraft and Hytale",
+        "slogan": "Every message under <b>your</b> control!",
+        "description": "Configure chat, commands, TAB, and integrations without a dozen third-party plugins",
+        "support": "Support",
+        "documentation": "Documentation",
+        "download": "Download"
       },
-      "Command": {
-        "title": "Over 30 Exciting Commands",
-        "description": "Make the chat more user-friendly. Players can also enjoy built-in mini-games."
+      "Stats": {
+        "commands": "Сhat commands",
+        "integrations": "Integrations",
+        "versions": "Minecraft versions",
+        "messages": "Types of messages"
       },
-      "Integration": {
-        "title": "Integration with Other Projects",
-        "description": "Allow players to communicate across different platforms. Full integrations with Discord, Twitch, and Telegram."
+      "Features": {
+        "title": "What <b>FlectonePulse</b> can do",
+        "description": "Scroll through and check documentation for any of these features",
+        "button": "Go to documentation",
+        "more": "Learn more",
+        "Format": {
+          "title": "Text formatting",
+          "description": "Gradients, rainbow, animations, and colors in any message. From version 1.8.8 to the latest"
+        },
+        "Command": {
+          "title": "Over 30 interesting commands",
+          "description": "Make chat more convenient to use. Players can also use built-in mini-games"
+        },
+        "Integration": {
+          "title": "Integration with other projects",
+          "description": "Allow players to communicate across different platforms. Full integrations with Discord, Twitch, and Telegram"
+        },
+        "Symbol": {
+          "title": "Emoji and symbols",
+          "description": "Players can find and paste Unicode symbols directly in chat by category"
+        },
+        "Status": {
+          "title": "MOTD and server icon",
+          "description": "Description, icon, version, and list of players for the server"
+        }
+      },
+      "Modules": {
+        "title": "Everything split into <b>modules</b>",
+        "description": "Each module is configured or disabled in the config. Here are the main ones",
+        "Chat": {
+          "title": "Chats and their types",
+          "description": "Local, global, and world chat. Each has its own format, radius, and permissions"
+        },
+        "Minigame": {
+          "title": "Chat mini-games",
+          "description": "Minesweeper, dice, rock-paper-scissors, and magic 8-ball right in messages"
+        },
+        "Moderation": {
+          "title": "Message filters",
+          "description": "Profanity, caps, flood, and repetitions will be corrected or removed automatically by the plugin"
+        },
+        "Destination": {
+          "title": "Where the message goes",
+          "description": "Chat, titles, actionbar, bossbar, or popup notification – your choice"
+        },
+        "Tab": {
+          "title": "TAB and scoreboard",
+          "description": "Header, footer, player names, sidebar, and values under the nickname"
+        },
+        "Vanilla": {
+          "title": "Vanilla events",
+          "description": "Joins, leaves, deaths, and welcomes – all system messages under control"
+        },
+        "Replacement": {
+          "title": "Message replacements",
+          "description": "Held item, skin, coordinates, links, and stats right in chat"
+        },
+        "Object": {
+          "title": "Custom textures",
+          "description": "Add images and icons to chat, MOTD, and interface via objects"
+        },
+        "Bubble": {
+          "title": "In-world messages",
+          "description": "Text bubbles above heads and a tooltip when clicking a player"
+        },
+        "Punishment": {
+          "title": "Punishments",
+          "description": "Mutes, bans, kicks, and warnings with custom reasons and history"
+        }
+      },
+      "Download": {
+        "title": "Download for <b>free</b>",
+        "description": "Choose a convenient platform — the file is the same everywhere",
+        "minecraft": "Download for <b>Minecraft</b>",
+        "hytale": "Download for <b>Hytale</b>",
+        "latestrelease": "Latest release",
+        "devbuilds": "Snapshot versions",
+        "download": "Download"
+      },
+      "Metrics": {
+        "title": "Analytics <b>right now</b>",
+        "description": "How many servers and players are using FlectonePulse",
+        "button": "Go to analytic",
+        "serverCount": "Servers",
+        "playerCount": "Players",
+        "activity": "Activity"
       }
     },
-    "Structure": {
-      "title": "Plugin Structure",
-      "description": " • The <b>images</b> folder contains all images used in the plugin, such as avatars and icons.\n          • The <b>libraries</b> folder contains third-party libraries required for the plugin to function.\n          • The <b>localizations</b> folder contains localization files for multi-language support. Includes <b>en_us.yml</b> and <b>ru_ru.yml</b>.\n          • The <b>commands.yml</b> file contains settings for all commands available in the plugin.\n          • The <b>config.yml</b> file contains the main plugin settings, including connection parameters and general options.\n          • The <b>integration.yml</b> file contains integration settings for other plugins and services.\n          • The <b>message.yml</b> file allows you to customize all messages displayed to players in-game.\n          • The <b>permission.yml</b> file contains permission settings for various plugin features."
+    "Docs": {
+      "editOnGithub": "Edit on Github",
+      "lastUpdate": "Last update",
+      "authorsOfPage": "Authors of page"
     },
     "Metrics": {
       "title": "Analytics",
-      "playersCount": "Player count",
-      "serversCount": "Server count"
-    },
-    "Download": {
-      "latestrelease": "Latest release",
-      "devbuilds": "Dev bulds",
-      "download": "Download"
+      "description": "This page contains the main server performance charts",
+      "Callout": {
+        "title": "Information",
+        "text": "You can disable the collection of this data on your server at any time <a>here</a>"
+      },
+      "labels": {
+        "servers": "Servers",
+        "players": "Players",
+        "count": "Count",
+        "hideEssentials": "Show nonessentials",
+        "showEssentials": "Hide nonessentials"
+      },
+      "items": {
+        "activity": "Activity",
+        "serverVersion": "Server version",
+        "cpuCores": "CPU cores",
+        "totalRam": "RAM",
+        "modules": "Modules",
+        "projectVersion": "Project version",
+        "projectLanguage": "Project language",
+        "serverCore": "Server cores and players",
+        "osArchitecture": "OS architecture",
+        "osName": "Operating system",
+        "javaVersion": "Java version",
+        "proxyMode": "Proxy mode",
+        "onlineMode": "Online mode",
+        "databaseMode": "Database mode",
+        "location": "Geolocation"
+      }
     },
     "Changelog": {
+      "title": "Changelog",
+      "description": "All changes for each version of FlectonePulse",
+      "version": "Version",
       "download": "Download",
       "github": "Github",
       "features": "Features",
@@ -260,45 +390,46 @@
       "dependencies": "Dependencies"
     }
   },
-  "Tools": {
+  "FlectoneTools": {
     "Main": {
-      "title": "FlectoneTools",
-      "description": "A set of online tools for Minecraft server owners. Everything is free, works in your browser, and requires no installation. Helps quickly create resources for plugins, customize designs, and perform technical operations",
+      "title": "Flectone<b>Tools</b>",
+      "description": "A set of free online tools for Minecraft server owners. Works in the browser without installation",
+      "background": "/assets/flectonetools/flectonetools_preview_en.webp",
       "TextureGenerator": {
         "title": "Texture Generator",
-        "description": "Converts any image into a Minecraft texture and generates a JSON model"
+        "description": "Converts any image into a Minecraft JSON texture"
       },
       "TextAnimation": {
         "title": "Text Animation",
-        "description": "Creates animated messages with flicker, rainbow, wave, and letter-by-letter appearance effects"
+        "description": "Creates animated messages with various effects"
       },
       "PrefixGenerator": {
         "title": "Prefix Generator",
-        "description": "Builds prefixes using a visual editor. Add icons (symbols/Unicode) and colored text"
+        "description": "Visual prefix editor for Minecraft"
       },
       "UuidExtractor": {
-        "title": "UUID Extractor",
-        "description": "Finds a player's UUID by username for Java Edition. Supports offline and online modes"
+        "title": "Get UUID",
+        "description": "Gets a player's UUID by nickname (for Java Edition)"
       },
       "InventoryPreviewer": {
-        "title": "Inventory Previewer",
-        "description": "All Minecraft container GUIs collected in one place. Choose the one you need from the list and see its slot numbers"
+        "title": "Inventory Viewer",
+        "description": "View Minecraft container GUIs in one place"
       },
       "CoordinateCalculator": {
         "title": "Coordinate Calculator",
-        "description": "Convert coordinates between the Nether and the Overworld, and find the End Stronghold using two ender pearl throws"
+        "description": "Coordinate calculation for Nether and Stronghold"
       },
       "ColorTextGenerator": {
-        "title": "Colored Text Generator",
-        "description": "Create colored text for Minecraft with support for Legacy and MiniMessage formats"
+        "title": "Color Text Generator",
+        "description": "Color text generator in Legacy and MiniMessage formats"
       },
       "ServerFlagsGenerator": {
         "title": "Server Flags Generator",
-        "description": "Generate Minecraft server startup scripts with optimal JVM flags for Linux, Windows, and Java."
+        "description": "Generates optimized server startup scripts"
       },
       "TimeConvertor": {
         "title": "Time Converter",
-        "description": "Converts Minecraft ticks to real time and vice versa. Helps quickly get the /time set command"
+        "description": "Converts Minecraft ticks to real time and vice versa"
       }
     },
     "Form": {
@@ -311,23 +442,23 @@
     },
     "TextureGenerator": {
       "title": "Texture Generator",
-      "description": "Allows you to turn any image into a ready-made Minecraft texture by generating a JSON model. Simply upload your image, and the tool will automatically generate the texture as a JSON model file. Copy the finished result and place it into the images folder of the FlectonePulse plugin, after which the texture can be used immediately on your server.",
+      "description": "Allows you to convert any image into a ready-made texture for Minecraft by creating a JSON model.",
       "fullDocs": "Full documentation and examples",
-      "warn": "Image dimensions must be multiples of 8 (e.g., 16x16, 32x32, 64x16, 64x32, etc.). The larger the image, the longer it will take to convert",
+      "warn": "Image dimensions must be multiples of 8 (e.g., 16x16, 32x32, 64x16, 64x32, etc.). The larger the image, the longer it takes to convert",
       "input": "Drag and drop an image or click",
-      "drag": "Drag",
+      "drag": "Release",
       "startGeneration": "Generate JSON",
       "resume": "Resume",
       "generation": "Processing...",
       "previewGeneration": "Generating preview...",
       "reset": "Reset",
       "Errors": {
-        "422": "The image resolution must be a multiple of 8"
+        "422": "Image resolution must be a multiple of 8"
       }
     },
     "TextAnimation": {
       "title": "Text Animation",
-      "description": "Creates animated texts with flicker, rainbow, wave, and letter-by-letter appearance effects. Adjust the speed and colors, and the tool will generate ready-to-use settings. Copy them into your plugin (e.g., FlectonePulse).",
+      "description": "Creates animated texts with flickering, rainbow, wave, and typewriter effects.",
       "fullDocs": "Full documentation and examples",
       "Settings": {
         "text": "Text",
@@ -335,7 +466,7 @@
         "ticks": "ticks",
         "ms": "ms",
         "gradientBlur": "Gradient blur",
-        "symbols": "Symbols per color",
+        "symbols": "Characters per color",
         "colors": "Colors",
         "gradientMode": "Gradient mode",
         "ltr": "Left to right",
@@ -349,7 +480,7 @@
     },
     "PrefixGenerator": {
       "title": "Prefix Generator",
-      "description": "A visual editor for creating colored prefixes with gradients, symbols, and separators. The tool generates a ready-made prefix image that you can download and use anywhere, for example, in a Resource Pack, on social media, in videos, or for server branding",
+      "description": "Visual editor for creating colored prefixes with gradients, symbols, and separators.",
       "Settings": {
         "text": "Text",
         "font": "Font",
@@ -372,7 +503,7 @@
         "overText": "Over text",
         "strokeColor": "Stroke color",
         "thicknessStroke": "Stroke thickness",
-        "same": "Same on each side",
+        "same": "Same on all sides",
         "up": "Top",
         "bottom": "Bottom",
         "right": "Right",
@@ -382,13 +513,14 @@
       "download": "Download PNG"
     },
     "UuidExtractor": {
-      "title": "UUID Extractor",
-      "description": "Finds a player's UUID by username. Supports offline and online modes. You can also generate a random UUID and copy the result",
+      "title": "Get UUID",
+      "description": "Finds a player's UUID by nickname — supports offline and online modes",
       "nicknameOrUuid": "Nickname or online UUID",
       "placeHolder": "Enter nickname or online UUID",
       "onlineUuid": "Online UUID",
       "offlineUuid": "Offline UUID",
       "randomUuid": "Random UUID",
+      "coppied": "Copied to clipboard",
       "Errors": {
         "enterNickname": "Enter nickname",
         "dataError": "Error processing data",
@@ -396,11 +528,13 @@
         "searchError": "An error occurred during search"
       }
     },
-    "InventoryPreviewer": {
+    "InventoryViewer": {
       "title": "Inventory Viewer",
-      "description": "All Minecraft container GUIs collected in one place. Pick the one you need from the list and see what slot numbers it has",
+      "description": "All Minecraft container GUIs gathered in one place. Choose the one you need from the list and see its slot numbers",
       "container": "Inventory",
-      "allContainers": "Inventory types",
+      "allContainers": "Container types",
+      "search": "Search",
+      "notFound": "Nothing found",
       "Containers": {
         "anvil": "Anvil",
         "barrel": "Barrel",
@@ -433,20 +567,25 @@
     },
     "CoordinateCalculator": {
       "title": "Coordinate Calculator",
-      "description": "Convert coordinates between the Nether and the Overworld, and find the End stronghold using two Ender pearl throws",
+      "description": "Convert coordinates between the Nether and the Overworld, and find the Stronghold using two Ender Pearl throws",
       "nether": "Nether",
-      "stronghold": "End Stronghold",
+      "stronghold": "Stronghold",
       "angle": "Angle",
       "overworld": "Overworld",
-      "firstThrow": "First Throw",
-      "secondThrow": "Second Throw",
+      "firstThrow": "First throw",
+      "secondThrow": "Second throw",
       "tutorial": "Tutorial",
-      "tutorialStep1": "Throw an Ender pearl and record the X, Z coordinates and the angle of flight",
-      "tutorialStep2": "Move several blocks away (250–500) and throw the second pearl, recording the new coordinates and angle",
-      "tutorialStep3": "The calculator will compute the intersection and show the stronghold coordinates"
+      "Step": {
+        "one": "Step one",
+        "two": "Step two",
+        "three": "Step three"
+      },
+      "tutorialStep1": "Throw an Ender Pearl and remember the X, Z coordinates and flight angle",
+      "tutorialStep2": "Move a few blocks away (250 - 500) and throw a second pearl, recording the new coordinates and angle",
+      "tutorialStep3": "The calculator will calculate the intersection and show the coordinates of the stronghold"
     },
     "ColorTextGenerator": {
-      "title": "Colored Text Generator",
+      "title": "Color Text Generator",
       "description": "Create colored text for Minecraft with support for Legacy and MiniMessage formats",
       "settings": "Settings",
       "colors": "Colors",
@@ -463,11 +602,12 @@
       "bold": "Bold",
       "italic": "Italic",
       "magic": "Magic",
-      "underline": "Underlined",
+      "underline": "Underline",
       "strike": "Strikethrough",
       "reset": "Reset",
       "newline": "New line",
       "display": "Display",
+      "copied": "Copied to clipboard",
       "previews": {
         "text": "Text",
         "tab": "Tab",
@@ -477,7 +617,7 @@
         "motd": "MOTD",
         "name": "Nickname",
         "lore": "Lore",
-        "kick": "Disconnected"
+        "kick": "Kick"
       },
       "convertOutput": "Convert output",
       "miniTags": "MiniMessage tags",
@@ -487,20 +627,20 @@
         "hover": "Hover",
         "insertion": "Insertion",
         "keybind": "Other",
-        "newline": "Line break"
+        "newline": "New line"
       }
     },
     "ServerFlagsGenerator": {
       "title": "Server Flags Generator",
-      "description": "Generate Minecraft server startup scripts with optimal JVM flags for Linux, Windows and Java.",
+      "description": "Generate Minecraft server startup scripts with optimal JVM flags for Linux, Windows, and Java.",
       "filename": "Server file",
-      "filenameHint": "The .jar file to launch. Must be in the same directory as the script.",
+      "filenameHint": "The .jar file to run. Must be in the same folder as the script.",
       "memory": "Memory",
       "flags": "Flags",
       "Presets": {
         "None": {
           "label": "Basic",
-          "description": "Running Java without special flags (default settings)",
+          "description": "Runs Java without special flags (default settings)",
           "link": ""
         },
         "Aikars": {
@@ -510,12 +650,12 @@
         },
         "Zgc": {
           "label": "ZGC",
-          "description": "Modern flags with low GC latency but higher memory usage (Java 21+)",
+          "description": "Modern flags with low GC latency, but higher memory consumption (Java 21+)",
           "link": "https://obydux.github.io/Minecraft-startup-flags/"
         },
         "Shenandoah": {
           "label": "Shenandoah",
-          "description": "Alternative low-latency GC flags (Temurin JDK recommended)",
+          "description": "Alternative flags with low GC latency (Temurin JDK recommended)",
           "link": "https://github.com/brucethemoose/Minecraft-Performance-Flags-Benchmarks"
         },
         "Velocity": {
@@ -524,18 +664,18 @@
           "link": "https://docs.papermc.io/velocity/getting-started"
         }
       },
-      "more": "More",
+      "more": "Learn more",
       "options": "Options",
       "result": "Result",
-      "guiHint": "Control panel",
+      "guiHint": "Control Panel",
       "autoRestart": "Auto-restart",
-      "autoRestartHint": "Restart after stop",
+      "autoRestartHint": "Restart after stopping",
       "ignoreJavaVersion": "Ignore Java version",
-      "ignoreJavaVersionHint": "Add -Dpaper.ignoreJavaVersion=true flag"
+      "ignoreJavaVersionHint": "Adds the -Dpaper.ignoreJavaVersion=true flag"
     },
     "TimeConvertor": {
       "title": "Time Converter",
-      "description": "Converts Minecraft ticks to real time and vice versa. Helps quickly get the /time set command",
+      "description": "Converts Minecraft ticks to regular time and vice versa",
       "command": "Command",
       "sunAngle": "Sun angle",
       "Presets": {
@@ -546,5 +686,32 @@
         "midnight": "Midnight"
       }
     }
+  },
+  "FlectoneVault": {
+    "Main": {
+      "title": "Flectone<b>Vault</b>",
+      "description": "All tutorials ever released with maps and litematics"
+    },
+    "Card": {
+      "watchYoutube": "Go to YouTube",
+      "watchBoosty": "Go to Boosty"
+    },
+    "Sort": {
+      "date": "By date",
+      "views": "By views"
+    },
+    "search": "Search",
+    "error": "Table is empty or data not found"
+  },
+  "NotFound": {
+    "title": "404",
+    "description": "What you are looking for has not been found.",
+    "button": "Go to the main page"
+  },
+  "Footer": {
+    "authors": "Authors",
+    "answer": "Not an official Minecraft or Hytale service. Not approved by or associated with Mojang, Microsoft, or Hypixel Studios.",
+    "date": "Established in 2019",
+    "openSourse": "All project code is <a>open source</a>"
   }
 }

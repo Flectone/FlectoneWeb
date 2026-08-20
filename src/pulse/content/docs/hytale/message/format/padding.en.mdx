@@ -16,6 +16,35 @@ You can also specify starting and ending characters. For example, `<padding:CENT
 
 You can create a custom template by specifying `type` and `length`, and in the localization file set `symbol` the character used for padding (default is a space). You can also set `start` and `end` characters there. For example: `<padding:example_left_5>`
 
+<Callout type="info" title="Information">
+    How to make your own template? For example a separator across the whole line
+
+    <Steps>
+        <Step>
+            In `message.yml` add the template to `format.padding.values`
+            ```yaml
+            values:
+              line_50:
+                type: "LEFT"
+                length: 50
+            ```
+        </Step>
+        <Step>
+            In `localizations → language.yml` add the symbols to `message.format.padding.values`
+            ```yaml
+            values:
+              line_50:
+                symbol: "─"
+                start: "<fcolor:1>"
+                end: ""
+            ```
+        </Step>
+        <Step>
+            Insert `<padding:line_50>` into any message and reload FlectonePulse with `/flectonepulse reload`
+        </Step>
+    </Steps>
+</Callout>
+
 <br></br>
 
 # <include>../../../../../parts/words.en.mdx#localization</include>

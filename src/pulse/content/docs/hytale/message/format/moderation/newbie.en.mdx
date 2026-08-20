@@ -6,7 +6,7 @@ authors:
 tag: "hytale"
 ---
 <Callout type="warn" title="Warning">
-    A server newcomer is considered a player who has never been on the server before.
+    A newcomer is a player whose time from `mode` is less than `timeout`. As soon as that time passes, the player is no longer a newcomer
 </Callout>
 
 <br></br>
@@ -41,7 +41,7 @@ Message if the player has played too little
 
 ### `timeout`
 
-Time in ticks during which a newcomer cannot send messages.
+Time in ticks (20 ticks = 1 second) during which a newcomer cannot send messages. For example `72000` ticks is 1 hour
 
 <br></br>
 
