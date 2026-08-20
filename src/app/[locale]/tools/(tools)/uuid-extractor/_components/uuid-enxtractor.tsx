@@ -1,7 +1,7 @@
 "use client"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useTranslations } from "next-intl"
-import { Field, FieldDescription, FieldLabel } from "@/components/ui/field"
+import { Field, FieldLabel } from "@/components/ui/field"
 import Container from "@/components/shared/container"
 import { Button } from "@/components/ui/button"
 import {
@@ -12,17 +12,22 @@ import {
 import { Copy, CornerDownLeft } from "lucide-react"
 import { toast } from "@/components/ui/toast"
 
+const NICKNAME_MAX_LENGTH = 36
+
+function sanitizeNickname(value: string) {
+  return value.replace(/[^a-zA-Z-_0-9]/g, "").slice(0, NICKNAME_MAX_LENGTH)
+}
+
 interface Data {
   status: number
   nickname: string
   uuid: string
   offlineUuid: string
-  headSrc: string
+  headSrc: string | null
 }
 
 export default function UuidExtractor() {
   const [nickname, setNickname] = useState("")
-  const [valueLenght, setValueLenght] = useState(0)
   const [data, setData] = useState<Data>({
     status: 400,
     nickname: "player",
@@ -115,15 +120,6 @@ export default function UuidExtractor() {
     getUUID(randomNickname)
   }
 
-  useEffect(() => {
-    if (data.status === 404 && !loading) {
-      toast.add({
-        type: "error",
-        description: t("Errors.playerNotFound"),
-      })
-    }
-  }, [data])
-
   return (
     <div className="flex w-full flex-col gap-6">
       <Container className="flex flex-col gap-2">
@@ -133,19 +129,12 @@ export default function UuidExtractor() {
             <InputGroup>
               <InputGroupInput
                 type="text"
-                onChange={(e) => setNickname(e.target.value)}
+                onChange={(e) => setNickname(sanitizeNickname(e.target.value))}
                 disabled={loading}
                 value={nickname}
                 onKeyDown={(e) => e.key === "Enter" && getUUID()}
                 placeholder={t("placeHolder")}
-                onInput={(e) => {
-                  const target = e.target as HTMLInputElement
-                  setValueLenght(target.value.length)
-                  target.value = target.value.replace(/[^a-zA-Z-_0-9]/g, "")
-                  if (target.value.slice(0, 16)[1].length > 0) {
-                    target.value = target.value.slice(0, 16)
-                  }
-                }}
+                maxLength={NICKNAME_MAX_LENGTH}
               />
               <InputGroupAddon align="inline-end">
                 <Button
@@ -173,7 +162,7 @@ export default function UuidExtractor() {
         className={`flex h-fit items-center gap-6 transition max-md:flex-col ${loading ? "opacity-40" : ""}`}
       >
         <div className="flex w-fit shrink-0 flex-col items-center gap-2">
-          {data.status === 200 ? (
+          {data.status === 200 && data.headSrc ? (
             <img
               src={data.headSrc}
               alt={data.nickname}
