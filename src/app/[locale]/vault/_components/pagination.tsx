@@ -69,7 +69,7 @@ export default function Pagination({
       </div>
 
       <Button
-        disabled={page === page - 1}
+        disabled={pageCount === page + 1}
         onClick={() => setPage(page + 1)}
         size={"icon-xs"}
         variant={"ghost"}
