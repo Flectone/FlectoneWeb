@@ -219,7 +219,7 @@ export default function FlectoneVault() {
         result.length > 0 &&
         currentPageItems.length === 0 && (
           <div className="py-8 text-center text-muted-foreground">
-            Ничего не найдено по вашему запросу.
+            {t("notFound")}
           </div>
         )}
     </div>
