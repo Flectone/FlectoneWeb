@@ -17,7 +17,7 @@ export default function MixPage() {
   return (
     <PageTemplate className="flex w-full max-w-6xl flex-col justify-center py-4 max-xl:items-center">
       <div className="flex gap-6 max-xl:flex-col">
-        <Container className="flex w-2/5 flex-col justify-between">
+        <Container className="flex w-2/5 flex-col justify-between max-xl:w-full">
           <div>
             <h1 className="text-2xl font-bold">
               Flectone<b>Mix</b>

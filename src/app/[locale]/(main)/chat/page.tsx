@@ -17,7 +17,7 @@ export default function ChatPage() {
   return (
     <PageTemplate>
       <div className="flex gap-6 max-xl:flex-col">
-        <Container className="flex w-2/5 flex-col justify-between">
+        <Container className="flex w-2/5 flex-col justify-between max-xl:w-full">
           <div>
             <h1 className="text-2xl font-bold">
               Flectone<b>Chat</b>

@@ -28,7 +28,9 @@ export default function ThemeToggle() {
         size="icon-sm"
         className="h-8 w-8"
         aria-hidden="true"
-      />
+      >
+        <Moon fill="currentColor" />
+      </Button>
     )
   }
 
