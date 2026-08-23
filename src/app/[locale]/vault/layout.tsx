@@ -6,12 +6,12 @@ import { getTranslations } from "next-intl/server"
 
 export default async function FlectoneVaultLayout({
   children,
-}: LayoutProps<"/[locale]/tools">) {
+}: LayoutProps<"/[locale]/vault">) {
   const t = await getTranslations("Main.HeaderLinks")
   return (
     <LayoutTemplate>
       <Header
-        title={["FlectoneTools", "/"]}
+        title={["FlectoneVault", "/"]}
         links={[
           { label: t("pulse"), href: "/pulse" },
           { label: t("tools"), href: "/tools" },

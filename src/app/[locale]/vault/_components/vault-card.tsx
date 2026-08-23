@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
+import { Skeleton } from "@/components/ui/skeleton"
 
 interface VaultCardProps {
   title: string
@@ -31,20 +32,20 @@ interface VaultCardProps {
 
 export function VaultCardLoading() {
   return (
-    <Container className={`flex flex-col gap-0! border-[1.5px]! p-0!`}>
-      <div className="relative">
-        <div className="h-58 w-103.5 animate-pulse bg-fd-border"></div>
+    <Card>
+      <div className="-mt-(--card-spacing) aspect-video">
+        <Skeleton className="aspect-video rounded-b-none" />
       </div>
-      <div className="flex h-full flex-col justify-between gap-4 p-4 max-xl:w-4/6 max-md:w-3/5 max-md:gap-2 max-sm:w-full">
-        <div className="flex animate-pulse flex-col gap-1">
-          <div className="h-5.5 rounded-sm bg-fd-border"></div>
-          <div className="h-5.5 rounded-sm bg-fd-border"></div>
-        </div>
-        <div className="animate-pulse">
-          <div className="h-5 w-24 rounded-sm bg-fd-border"></div>
-        </div>
+      <div className="mx-(--card-spacing) flex flex-col gap-4">
+        <CardTitle className="flex flex-col gap-1">
+          <Skeleton className="h-5 w-full" />
+          <Skeleton className="h-5 w-full" />
+        </CardTitle>
+        <CardDescription>
+          <Skeleton className="h-4 w-2/3" />
+        </CardDescription>
       </div>
-    </Container>
+    </Card>
   )
 }
 

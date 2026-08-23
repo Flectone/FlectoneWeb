@@ -33,17 +33,6 @@ export default function ProjectCard({
 }: ProjectCardProps) {
   const t = useTranslations("Main")
 
-  const [width, setWidth] = useState<number>(0)
-
-  useEffect(() => {
-    setWidth(window.innerWidth)
-
-    const handleResize = () => setWidth(window.innerWidth)
-    window.addEventListener("resize", handleResize)
-
-    return () => window.removeEventListener("resize", handleResize)
-  }, [])
-
   return (
     <Container
       href={href}
@@ -83,36 +72,41 @@ export default function ProjectCard({
             ))}
           </div>
         )}
-        {moreButton && align === "horizontal" && width >= 736 && (
-          <span className="flex items-center gap-1 text-sm text-primary transition-all group-hover:gap-2">
+        {moreButton && align === "horizontal" && (
+          <span className="flex items-center gap-1 text-sm text-primary transition-all group-hover:gap-2 max-md:hidden">
             <span>{t("more")}</span> <ArrowRight size={18} strokeWidth={1.5} />
           </span>
         )}
       </div>
       {!archive &&
-        (align === "horizontal" && width >= 736 ? (
-          <div className={"relative flex-1 overflow-hidden rounded-md"}>
+        (align === "horizontal" ? (
+          <div
+            className={
+              "relative overflow-hidden rounded-sm max-md:h-31 max-md:w-full md:flex-1"
+            }
+          >
             <Image
               src={src}
               alt={src.split("/")[src.split("/").length - 1].split(".")[0]}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover"
             />
           </div>
         ) : (
-          <div className={"relative w-full overflow-hidden rounded-md"}>
+          <div className={"relative h-31 w-full overflow-hidden rounded-sm"}>
             <Image
               src={src}
               alt={src.split("/")[src.split("/").length - 1].split(".")[0]}
-              width={500}
-              height={100}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="w-full object-cover"
             />
           </div>
         ))}
 
-      {moreButton && (align === "vertical" || width <= 736) && (
-        <span className="flex items-center gap-1 text-sm text-primary transition-all group-hover:gap-2">
+      {moreButton && align === "vertical" && (
+        <span className="flex items-center gap-1 text-sm text-primary transition-all group-hover:gap-2 max-md:hidden">
           <span>{t("more")}</span> <ArrowRight size={18} strokeWidth={1.5} />
         </span>
       )}

@@ -125,7 +125,7 @@ export default function FlectoneVault() {
   return (
     <div className="flex min-h-screen flex-col gap-6">
       <div className="flex justify-between gap-2 max-sm:flex-col">
-        <div className="flex w-full gap-2">
+        <div className="flex w-full gap-2 max-md:flex-col">
           <Input
             value={search}
             placeholder={t("search")}
@@ -134,44 +134,46 @@ export default function FlectoneVault() {
               setPage(0)
             }}
           />
-          <div className="flex h-9 items-center gap-2 rounded-md bg-card px-2">
-            <Button
-              variant={"ghost"}
-              size={"icon-xs"}
-              onClick={() => {
-                setSortOrder(sortOrder === "desc" ? "asc" : "desc")
-              }}
-            >
-              <ArrowDownUp />
-            </Button>
-            <ButtonGroup>
+          <div className="flex gap-2 max-md:w-full max-md:justify-between">
+            <div className="flex h-9 items-center gap-2 rounded-md bg-card px-2">
               <Button
-                variant={sortBy === "date" ? "default" : "secondary"}
-                size={"xs"}
+                variant={"ghost"}
+                size={"icon-xs"}
                 onClick={() => {
-                  setSortBy("date")
-                  setPage(0)
+                  setSortOrder(sortOrder === "desc" ? "asc" : "desc")
                 }}
               >
-                {t("Sort.date")}
+                <ArrowDownUp />
               </Button>
-              <Button
-                size={"xs"}
-                variant={sortBy === "views" ? "default" : "secondary"}
-                onClick={() => {
-                  setSortBy("views")
-                  setPage(0)
-                }}
-              >
-                {t("Sort.views")}
-              </Button>
-            </ButtonGroup>
+              <ButtonGroup>
+                <Button
+                  variant={sortBy === "date" ? "default" : "secondary"}
+                  size={"xs"}
+                  onClick={() => {
+                    setSortBy("date")
+                    setPage(0)
+                  }}
+                >
+                  {t("Sort.date")}
+                </Button>
+                <Button
+                  size={"xs"}
+                  variant={sortBy === "views" ? "default" : "secondary"}
+                  onClick={() => {
+                    setSortBy("views")
+                    setPage(0)
+                  }}
+                >
+                  {t("Sort.views")}
+                </Button>
+              </ButtonGroup>
+            </div>
+            <Pagination
+              pageCount={filteredChunkedItems.length}
+              page={page}
+              setPage={setPage}
+            />
           </div>
-          <Pagination
-            pageCount={filteredChunkedItems.length}
-            page={page}
-            setPage={setPage}
-          />
         </div>
       </div>
 
@@ -182,12 +184,6 @@ export default function FlectoneVault() {
           ))}
         </div>
       )}
-
-      {/* {error && (
-        <Callout type="error" title="Ошибка">
-          {error || t("error")}
-        </Callout>
-      )} */}
 
       {!error && currentPageItems.length > 0 && (
         <div className="grid grid-cols-3 gap-4 max-xl:grid-cols-2 max-md:grid-cols-1">
@@ -219,7 +215,7 @@ export default function FlectoneVault() {
         result.length > 0 &&
         currentPageItems.length === 0 && (
           <div className="py-8 text-center text-muted-foreground">
-            Ничего не найдено по вашему запросу.
+            {t("notFound")}
           </div>
         )}
     </div>
