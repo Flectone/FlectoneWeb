@@ -20,6 +20,12 @@ import changelogRuData from "@/data/changelog-ru.json"
 import changelogEnData from "@/data/changelog-en.json"
 import parse from "html-react-parser"
 
+const inlineCode = (text: string) =>
+  text.replace(
+    /`([^`]+)`/g,
+    '<code class="rounded-sm bg-fd-card px-1 py-0.5">$1</code>'
+  )
+
 export interface ChangelogItem {
   version: string
   date: string
@@ -97,7 +103,7 @@ export default function Changelog() {
                   margin="none"
                   title={locale === "ru" ? "Предупреждение" : "Warning"}
                 >
-                  {parse(item.warning)}
+                  {parse(inlineCode(item.warning))}
                 </Callout>
               )}
             </Title>
@@ -109,7 +115,7 @@ export default function Changelog() {
               return (
                 <Component key={key}>
                   {list.map((text, idx) => (
-                    <ItemComponent key={idx}>{parse(text)}</ItemComponent>
+                    <ItemComponent key={idx}>{parse(inlineCode(text))}</ItemComponent>
                   ))}
                 </Component>
               )

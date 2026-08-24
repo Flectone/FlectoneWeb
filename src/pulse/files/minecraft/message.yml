@@ -290,6 +290,9 @@ format:
   names:
     enable: true
     should_check_invisibility: false
+    ticker:
+      enable: true
+      period: 20
 #endregion names
 #region object
   object:

@@ -155,6 +155,7 @@ TagResolver aliases = messagePipeline.resolver(Set.of("money", "balance"), Compo
 | Метод | Возвращает | Что делает |
 |-------|------------|------------|
 | `build(MessageContext)` | `Component` | Отрисовывает компонент |
+| `parse(MessageContext)` | `String` | Прогоняет сообщение через модули форматирования и отдаёт получившийся текст, не превращая его в компонент |
 | `buildStandard(MessageContext)` | `String` | Отрисовывает обратно в MiniMessage текст |
 | `buildPlain(MessageContext)` | `String` | Отрисовывает текст без форматирования |
 | `buildLegacy(MessageContext)` | `String` | Отрисовывает текст со старыми цветовыми кодами |
