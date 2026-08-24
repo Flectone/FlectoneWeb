@@ -193,7 +193,7 @@ export function Version({
         setIsOpen(false)
       }}
     >
-      <span id={v.replaceAll(".", "")} aria-hidden className="block scroll-mt-20" />
+      <span id={"version-" + v.replaceAll(".", "")} aria-hidden className="block scroll-mt-20" />
       <div className="relative flex shrink-0 flex-col gap-4">
         <div
           ref={headerRef}
