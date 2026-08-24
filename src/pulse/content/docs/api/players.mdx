@@ -38,7 +38,6 @@ FlectonePulse не работает с платформенными объект
 | `isIntegration()` | `boolean` | Признак отправителя из Discord, Telegram или Twitch |
 | `isOnline()` | `boolean` | Находится ли игрок на сервере прямо сейчас |
 | `ip()` | `String` | Адрес подключения, может быть `null` |
-| `constants()` | `List<Component>` | Заранее посчитанные части имени, которые едут между серверами |
 
 Полезные константы
 
@@ -59,7 +58,7 @@ FlectonePulse не работает с платформенными объект
 
 ### Неизменяемость
 
-`FPlayer` тоже неизменяем. Методы `withName()`, `withUuid()`, `withOnline()`, `withId()`, `withIp()` и `withConstants()` отдают копию, а `toBuilder()` открывает заполненный билдер
+`FPlayer` тоже неизменяем. Методы `withName()`, `withUuid()`, `withOnline()`, `withId()` и `withIp()` отдают копию, а `toBuilder()` открывает заполненный билдер
 
 ```java
 FPlayer renamed = fPlayer.withName("NewName");
@@ -162,9 +161,11 @@ String locale = socialService.getSetting(fPlayer, SettingText.LOCALE);
 | Метод | Что делает |
 |-------|------------|
 | `getSetting(FPlayer, SettingText)` | Отдаёт текстовую настройку игрока |
-| `getSetting(FPlayer, ModuleName)` | Отдаёт настройку, привязанную к модулю |
+| `getSetting(FPlayer, String)` | Отдаёт настройку по ключу, под которым она лежит |
 | `isSetting(FPlayer, ModuleName)` | Проверяет, включена ли настройка модуля |
+| `isSetting(FPlayer, String)` | Проверяет настройку по ключу |
 | `saveSetting(FPlayer, SettingText, String)` | Сохраняет текстовую настройку |
+| `saveSetting(FPlayer, String, String)` | Сохраняет настройку по ключу |
 | `saveSetting(FPlayer, String, boolean)` | Сохраняет переключатель |
 | `loadSettings(FPlayer)` | Загружает все настройки игрока |
 | `updateLocale(FPlayer, String)` | Меняет язык игрока |
@@ -182,6 +183,7 @@ String locale = socialService.getSetting(fPlayer, SettingText.LOCALE);
 | `SPY_STATUS` | Состояние режима слежки |
 | `VANISH_STATUS` | Состояние невидимости |
 | `AFK_SUFFIX` | Суффикс AFK |
+| `CONSTANT` | Константы имени |
 
 ### Цвета, игнор и почта
 

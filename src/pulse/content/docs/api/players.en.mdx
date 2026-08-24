@@ -38,7 +38,6 @@ There are also the constants `FEntity.UNKNOWN_UUID`, `FEntity.UNKNOWN_NAME`, `FE
 | `isIntegration()` | `boolean` | The marker of a sender from Discord, Telegram or Twitch |
 | `isOnline()` | `boolean` | Whether the player is on the server right now |
 | `ip()` | `String` | The connection address, can be `null` |
-| `constants()` | `List<Component>` | Prebuilt name parts that travel between servers |
 
 Useful constants
 
@@ -59,7 +58,7 @@ Useful constants
 
 ### Immutability
 
-`FPlayer` is immutable as well. The methods `withName()`, `withUuid()`, `withOnline()`, `withId()`, `withIp()` and `withConstants()` give a copy, and `toBuilder()` opens a prefilled builder
+`FPlayer` is immutable as well. The methods `withName()`, `withUuid()`, `withOnline()`, `withId()` and `withIp()` give a copy, and `toBuilder()` opens a prefilled builder
 
 ```java
 FPlayer renamed = fPlayer.withName("NewName");
@@ -162,9 +161,11 @@ String locale = socialService.getSetting(fPlayer, SettingText.LOCALE);
 | Method | What it does |
 |--------|--------------|
 | `getSetting(FPlayer, SettingText)` | Gives a text setting of a player |
-| `getSetting(FPlayer, ModuleName)` | Gives a setting bound to a module |
+| `getSetting(FPlayer, String)` | Gives a setting by the key it is stored under |
 | `isSetting(FPlayer, ModuleName)` | Checks whether a module setting is on |
+| `isSetting(FPlayer, String)` | Checks a setting by its key |
 | `saveSetting(FPlayer, SettingText, String)` | Saves a text setting |
+| `saveSetting(FPlayer, String, String)` | Saves a setting by its key |
 | `saveSetting(FPlayer, String, boolean)` | Saves a toggle |
 | `loadSettings(FPlayer)` | Loads every setting of a player |
 | `updateLocale(FPlayer, String)` | Changes the language of a player |
@@ -182,6 +183,7 @@ Available `SettingText` values
 | `SPY_STATUS` | The spy mode state |
 | `VANISH_STATUS` | The vanish state |
 | `AFK_SUFFIX` | The AFK suffix |
+| `CONSTANT` | The name constants |
 
 ### Colors, ignores and mail
 

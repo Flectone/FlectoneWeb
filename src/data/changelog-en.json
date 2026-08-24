@@ -1,5 +1,79 @@
 [
   {
+    "version": "1.13.0",
+    "date": "2026-08-24",
+    "authors": [
+      "TheFaser",
+      "RandomShel"
+    ],
+    "warning": "Migrations from versions `1.4.3` to `1.11.0` are removed, as promised in `1.12.2`. If you are updating from one of them, install `1.12.2` first, let it start once, and only then install `1.13.0`",
+    "features": [
+      "Added NeoForge platform support",
+      "The core is split into the `api` and `common` modules, so addons now depend on `api` alone",
+      "Added the `fading` module for fading a message with distance and the `<fading>` tag",
+      "Added a cache for the punishments the integrations with other punishment plugins report, so every punishment is no longer asked about on every lookup",
+      "Added database export and import to the `/flectonepulse` command, along with file suggestions for `import` and `database_import`",
+      "Added H2 database migration from legacy store formats",
+      "Added database connection pool settings",
+      "Added notification and content protection options to the Telegram integration",
+      "Added an allowed mentions option to the Discord integration",
+      "Added a name pattern regex to the `mention` module",
+      "Added a maintenance placeholder to PlaceholderAPI and MiniPlaceholders",
+      "Added multiline support to `motd`",
+      "Added stall detection and recovery for the task queue",
+      "Added async task awaiting with a timeout",
+      "Added caching and lazy loading for tag resolvers",
+      "Improved error handling and type conversion when reading yml"
+    ],
+    "refactors": [
+      "Name constants are now worked out on the player's own server and kept in the database, so they also work in the player list across a proxy. How often to work them out again is set by the new `ticker` in the `names` module settings",
+      "Player settings storage is unified, and `getSetting`, `isSetting` and `saveSetting` now also take the key a setting is stored under",
+      "`ExternalMuteService` renamed to `ExternalModerationService`",
+      "Caches moved from Guava to Caffeine",
+      "PacketEvents replaced with packeteventsmodern",
+      "Every platform is now built with Jar in Jar",
+      "The fastutil library is dropped in favour of the standard collections",
+      "Logging moved to platform adapters",
+      "The Vault integration is disabled by default",
+      "A mention is now always formatted, but the sound only reaches those who are not vanished",
+      "`r` and `reply` are added to `spy` by default",
+      "The reload events are merged into a single `ReloadEvent` with a type",
+      "Adjusted the default cache sizes",
+      "Simplified the CMI integration logic",
+      "Added timeouts for https requests",
+      "The database backup is now taken with DatabaseExporter"
+    ],
+    "fixes": [
+      "The vanish state of SuperVanish is now handled, so it changes along with the plugin",
+      "Added timeouts for Discord, Telegram and Twitch, so a stuck integration no longer holds up the startup",
+      "A failed H2 database migration no longer breaks the startup",
+      "The Bukkit scheduler now validates an entity before processing it",
+      "Bubbles are no longer rendered for dead players and are cleaned up on teleport",
+      "The player's world is only updated on a real teleport",
+      "Fixed duplicate objectives being created for the scoreboard",
+      "The plugin no longer forwards its own messages to clients on Velocity and proxies",
+      "Fixed command suggestions and parsers",
+      "`tictactoe` now handles empty input and validates move coordinates",
+      "A rock paper scissors game is cleaned up when a player disconnects",
+      "`swear` now handles an empty trigger and no longer allows apostrophe injection",
+      "The sidebar drops the leftover line when the new content is shorter"
+    ],
+    "dependencies": [
+      "Hytale Server updated to 0.5.8",
+      "Fabric Loom updated to v1.17.19",
+      "TelegramBots updated to v10.2.0",
+      "DeepL updated to v1.17.0",
+      "Jackson updated to v3.2.2",
+      "Log4j API updated to v2.26.1",
+      "Netty updated to v4.2.17",
+      "MariaDB driver updated to v3.5.10",
+      "Commons IO updated to v2.22.0",
+      "JSpecify updated to v1.0.1",
+      "CodeMirror updated to v5.65.21",
+      "Gradle updated to v9.7.0"
+    ]
+  },
+  {
     "version": "1.12.2",
     "date": "2026-07-31",
     "authors": [

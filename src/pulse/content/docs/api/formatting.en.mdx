@@ -155,6 +155,7 @@ It turns the raw text into what the client sees
 | Method | Returns | What it does |
 |--------|---------|--------------|
 | `build(MessageContext)` | `Component` | Renders a component |
+| `parse(MessageContext)` | `String` | Runs a message through the formatting modules and gives back the text they produced, without turning it into a component |
 | `buildStandard(MessageContext)` | `String` | Renders back into MiniMessage text |
 | `buildPlain(MessageContext)` | `String` | Renders text with formatting stripped |
 | `buildLegacy(MessageContext)` | `String` | Renders text with legacy color codes |

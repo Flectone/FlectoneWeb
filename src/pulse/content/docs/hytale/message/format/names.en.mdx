@@ -20,7 +20,7 @@ tag: "hytale"
 
 ### `constant`
 
-Messages that will be formatted from sender on server from where it was sent. They can be used in any message using `<constant:index>` (starting from 0). If an uncorrected index is specified or not, the first constant will be used
+Messages that will be formatted from sender on server from where it was sent. They can be used in any message using `<constant:index>` (starting from 0). If an uncorrected index is specified or not, the first constant will be used. Constants are formatted every time the `ticker` is updated
 
 <Callout type="info" title="Information">
     If you are having issues with messages for `Velocity` or `BungeeCord`, this is the solution to your problem:
@@ -74,6 +74,10 @@ Responsible for the player's name if they are under an invisibility potion
 <Callout type="error" title="Attention">
     Not supported in Hytale
 </Callout>
+
+<include>../../../../../parts/ticker.en.mdx</include>
+
+Works the player's constants out again. Only runs in proxy mode, because without one the constants are worked out as the message is sent
 
 <br></br>
 
