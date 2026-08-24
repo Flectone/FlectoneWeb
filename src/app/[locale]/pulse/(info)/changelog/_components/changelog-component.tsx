@@ -195,7 +195,11 @@ export function Version({
         setIsOpen(false)
       }}
     >
-      <span id={(locale == "en" ? "version-" : "версия-") + v.replaceAll(".", "")} aria-hidden className="block scroll-mt-20" />
+      <span
+        id={`${t("version").toLowerCase()}-${v.replaceAll(".", "")}`}
+        aria-hidden
+        className="block scroll-mt-20"
+      />
       <div className="relative flex shrink-0 flex-col gap-4">
         <div
           ref={headerRef}
