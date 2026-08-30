@@ -6,7 +6,7 @@ import { ReactNode } from "react"
 
 interface CalloutProps {
   type: "info" | "warn" | "idea" | "error"
-  title: string
+  title?: string
   children?: ReactNode
   margin?: "none" | "normal"
 }
@@ -33,10 +33,10 @@ const titleStyles: Record<CalloutProps["type"], string> = {
 }
 
 const typeIcons: Record<CalloutProps["type"], ReactNode> = {
-  info: <FaInfoCircle className="text-info w-[1em] shrink-0" />,
-  warn: <TiWarning className="text-warning w-[1em] shrink-0" />,
-  idea: <IoMdBulb className="text-success w-[1em] shrink-0" />,
-  error: <BiSolidErrorAlt className="text-error w-[1em] shrink-0" />,
+  info: <FaInfoCircle className="w-[1em] shrink-0 text-info" />,
+  warn: <TiWarning className="w-[1em] shrink-0 text-warning" />,
+  idea: <IoMdBulb className="w-[1em] shrink-0 text-success" />,
+  error: <BiSolidErrorAlt className="w-[1em] shrink-0 text-error" />,
 }
 
 export default function Callout({

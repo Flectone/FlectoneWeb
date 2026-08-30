@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button"
 import { ArrowDownUp } from "lucide-react"
 import Pagination from "./pagination"
 import { toast } from "@/components/ui/toast"
+import Callout from "@/components/shared/callout"
+import Link from "next/link"
 
 export interface VaultItem {
   image: string
@@ -124,6 +126,18 @@ export default function FlectoneVault() {
 
   return (
     <div className="flex min-h-screen flex-col gap-6">
+      <Callout margin="none" type="info">
+        <span>
+          Так же можно посмотреть в виде{" "}
+          <Link
+            href="https://docs.google.com/spreadsheets/d/1QfA_pyIAwBlLxZAUB9wLeljEr0TKi2Ry9N5twdXg67M"
+            className="border-b-2 border-primary text-foreground transition hover:border-primary/50 hover:text-muted-foreground"
+          >
+            таблицы
+          </Link>
+        </span>
+      </Callout>
+
       <div className="flex justify-between gap-2 max-sm:flex-col">
         <div className="flex w-full gap-2 max-md:flex-col">
           <Input
