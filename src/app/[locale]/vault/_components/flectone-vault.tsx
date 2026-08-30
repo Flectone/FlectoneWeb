@@ -143,45 +143,44 @@ export default function FlectoneVault() {
           <Input
             value={search}
             placeholder={t("search")}
+            className="h-8"
             onChange={(e) => {
               setSearch(e.target.value)
               setPage(0)
             }}
           />
           <div className="flex gap-2 max-md:w-full max-md:justify-between">
-            <div className="flex h-9 items-center gap-2 rounded-md bg-card px-2">
+            <Button
+              variant={"secondary"}
+              size={"icon-sm"}
+              onClick={() => {
+                setSortOrder(sortOrder === "desc" ? "asc" : "desc")
+              }}
+            >
+              <ArrowDownUp />
+            </Button>
+            <ButtonGroup>
               <Button
-                variant={"ghost"}
-                size={"icon-xs"}
+                variant={sortBy === "date" ? "default" : "secondary"}
+                size={"sm"}
                 onClick={() => {
-                  setSortOrder(sortOrder === "desc" ? "asc" : "desc")
+                  setSortBy("date")
+                  setPage(0)
                 }}
               >
-                <ArrowDownUp />
+                {t("Sort.date")}
               </Button>
-              <ButtonGroup>
-                <Button
-                  variant={sortBy === "date" ? "default" : "secondary"}
-                  size={"xs"}
-                  onClick={() => {
-                    setSortBy("date")
-                    setPage(0)
-                  }}
-                >
-                  {t("Sort.date")}
-                </Button>
-                <Button
-                  size={"xs"}
-                  variant={sortBy === "views" ? "default" : "secondary"}
-                  onClick={() => {
-                    setSortBy("views")
-                    setPage(0)
-                  }}
-                >
-                  {t("Sort.views")}
-                </Button>
-              </ButtonGroup>
-            </div>
+              <Button
+                variant={sortBy === "views" ? "default" : "secondary"}
+                size={"sm"}
+                onClick={() => {
+                  setSortBy("views")
+                  setPage(0)
+                }}
+              >
+                {t("Sort.views")}
+              </Button>
+            </ButtonGroup>
             <Pagination
               pageCount={filteredChunkedItems.length}
               page={page}
