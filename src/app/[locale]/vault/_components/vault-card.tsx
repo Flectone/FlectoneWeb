@@ -1,6 +1,6 @@
 "use client"
 import Container from "@/components/shared/container"
-import { LucideCalendar, Clock, Eye, Download, Calendar } from "lucide-react"
+import { Clock, Eye, Download, Calendar } from "lucide-react"
 import { FaYoutube } from "react-icons/fa"
 import { SiBoosty } from "react-icons/si"
 import { useTranslations } from "next-intl"
@@ -118,19 +118,36 @@ export function VaultCard({
           </AnimatePresence>
           <AnimatePresence>
             {!boostyIsOpen && (
-              <motion.div className="flex gap-1" exit={{ opacity: 0 }}>
-                <Badge className="text-muted-foreground" variant={"secondary"}>
-                  <Calendar />
-                  {date}
-                </Badge>
-                <Badge className="text-muted-foreground" variant={"secondary"}>
-                  <Eye />
-                  {views}
-                </Badge>
-                <Badge className="text-muted-foreground" variant={"secondary"}>
-                  <Clock />
-                  {duration}
-                </Badge>
+              <motion.div
+                className="flex items-center justify-between gap-1"
+                exit={{ opacity: 0 }}
+              >
+                <div className="flex gap-1">
+                  <Badge
+                    className="text-muted-foreground"
+                    variant={"secondary"}
+                  >
+                    <Calendar />
+                    {date}
+                  </Badge>
+                  <Badge
+                    className="text-muted-foreground"
+                    variant={"secondary"}
+                  >
+                    <Eye />
+                    {views}
+                  </Badge>
+                  <Badge
+                    className="text-muted-foreground"
+                    variant={"secondary"}
+                  >
+                    <Clock />
+                    {duration}
+                  </Badge>
+                </div>
+                <div>
+                  <Download size={18} />
+                </div>
               </motion.div>
             )}
           </AnimatePresence>
