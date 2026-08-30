@@ -61,7 +61,6 @@ export function VaultCard({
 }: VaultCardProps) {
   const t = useTranslations("FlectoneVault.Card")
 
-  const [youtubeIsOpen, setYoutubeIsOpen] = useState<boolean>(false)
   const [boostyIsOpen, setBoostyIsOpen] = useState<boolean>(false)
 
   return (
@@ -70,7 +69,7 @@ export function VaultCard({
         target="blank"
         rel="noopener noreferrer"
         href={videoUrl}
-        className="relative -mt-(--card-spacing)"
+        className="relative -mt-(--card-spacing) aspect-video"
       >
         <motion.div
           whileHover={{ opacity: 1 }}
