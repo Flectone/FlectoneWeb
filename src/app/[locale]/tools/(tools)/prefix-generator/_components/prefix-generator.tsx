@@ -49,6 +49,12 @@ const AVAILABLE_FONTS = [
     family: "MinecraftBold",
     offsetY: 9,
   },
+  {
+    value: "8px MinecraftSmallCaps",
+    label: "Minecraft Small Caps",
+    family: "MinecraftSmallCaps",
+    offsetY: 7,
+  },
 ]
 
 function completeHexColor(hexInput: string) {
@@ -74,16 +80,15 @@ function completeHexColor(hexInput: string) {
 export default function PrefixGenerator() {
   const t = useTranslations("FlectoneTools.PrefixGenerator")
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const [text, setText] = useState("flectone")
-  const [font, setFont] = useState(AVAILABLE_FONTS[0].value)
-  const [fontOffset, setFontOffset] = useState(AVAILABLE_FONTS[0].offsetY)
+  const [text, setText] = useState("admin")
+  const [font, setFont] = useState(AVAILABLE_FONTS[2].value)
+  const [fontOffset, setFontOffset] = useState(AVAILABLE_FONTS[2].offsetY)
   const [fontsLoaded, setFontsLoaded] = useState(false)
   const [paddingX, setPaddingX] = useState(0)
   const [paddingY, setPaddingY] = useState(0)
-  const [bgColor, setBgColor] = useState(["#3f51b5"])
-  const [textColor, setTextColor] = useState(["#B0D3EA"])
+  const [bgColor, setBgColor] = useState(["#C96439", "#FFB800"])
+  const [textColor, setTextColor] = useState(["#EBDFB0"])
   const [useGrid, setUseGrid] = useState(true)
-
   const [bgGradientAngle, setBgGradientAngle] = useState(0)
 
   const [enableShadow, setEnableShadow] = useState(true)
@@ -111,13 +116,13 @@ export default function PrefixGenerator() {
   const userAgent = typeof navigator !== "undefined" ? navigator.userAgent : ""
 
   function resetAll() {
-    setText("flectone")
-    setFont(AVAILABLE_FONTS[0].value)
-    setFontOffset(AVAILABLE_FONTS[0].offsetY)
+    setText("admin")
+    setFont(AVAILABLE_FONTS[2].value)
+    setFontOffset(AVAILABLE_FONTS[2].offsetY)
     setPaddingX(0)
     setPaddingY(0)
-    setBgColor(["#3f51b5"])
-    setTextColor(["#B0D3EA"])
+    setBgColor(["#C96439", "#FFB800"])
+    setTextColor(["#EBDFB0"])
     setUseGrid(true)
 
     setBgGradientAngle(0)

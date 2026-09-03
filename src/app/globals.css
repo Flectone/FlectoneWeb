@@ -18,6 +18,12 @@
   font-display: block;
 }
 
+@font-face {
+  font-family: "MinecraftSmallCaps";
+  src: url("/fonts/MinecraftSmallCaps.woff2") format("woff2");
+  font-display: block;
+}
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
