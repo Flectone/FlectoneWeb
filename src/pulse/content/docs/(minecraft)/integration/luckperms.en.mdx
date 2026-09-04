@@ -8,7 +8,7 @@ tag: "minecraft"
 Allows:
 
 - Checking permissions for **offline players**
-- Sorting players in TAB by [group weight](https://luckperms.net/wiki/Weight)
+- Sorting players in TAB by [group weight](https://luckperms.net/wiki/Weight) or by your own group order
 
 <br></br>
 
@@ -28,6 +28,24 @@ If enabled, all permissions that have `type: "TRUE"` in permission.yml will be g
 ### `tab_sort`
 
 Enables or disables sorting in TAB by [group weight](https://luckperms.net/wiki/Weight)
+
+### `group_order`
+
+Your own group order for sorting in TAB. The first group in the list will be above everyone, and those that are not in the list will end up below everyone. If the list is empty, the [group weight](https://luckperms.net/wiki/Weight) is used
+
+<Callout type="info" title="Information">
+    Example
+
+    ```yaml
+     group_order:
+       - "owner"
+       - "admin"
+       - "moderator"
+    ```
+
+    This order is used only for TAB, the group check in moderation commands is still counted by the group weight
+
+</Callout>
 
 <br></br>
 

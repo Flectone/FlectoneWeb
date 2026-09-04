@@ -114,6 +114,28 @@ Time limits depending on the sender's group. The key is the group weight, and th
 </Callout>
 
 
+### `reason_times`
+
+Punishment time for the reasons from `reasons` in the localization. The key is the reason and the value is its time (`1d2h3m4s`)
+
+<Callout type="info" title="Information">
+    Example
+
+    ```yaml
+     reason_times:
+       default: "1h"
+       1.1.1: "60m"
+       1.2.1: "7d"
+    ```
+
+    - The reason `1.1.1` gives `60` minutes, and `1.2.1` gives `7` days
+    - A reason that is not listed here gives `1` hour from `default`
+    - The time entered in the command is always more important than the time from here
+
+    For unlimited time, use the value `-1`
+
+</Callout>
+
 <include>../../../../parts/aliases.en.mdx</include>
 
 <include>../../../../parts/destination.en.mdx</include>

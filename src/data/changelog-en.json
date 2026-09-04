@@ -1,5 +1,59 @@
 [
   {
+    "version": "1.13.1",
+    "date": "2026-09-04",
+    "authors": [
+      "TheFaser"
+    ],
+    "warning": null,
+    "features": [
+      "Reason keys now carry a time, it is set by `reason_times` in the settings of `ban`, `mute`, `warn`, `maintenance` and `whitelist`. If no time is entered in the command, it is taken by the reason, and `default` is used when the reason is not listed",
+      "Added `group_order` to the LuckPerms integration, to sort TAB by your own group order instead of the group weight",
+      "Added `check_group_weight` to the `/whois` command, a player with the same or higher permissions cannot be viewed and is hidden from the list",
+      "The punishment lists got the `line_not_active` format, the list of a player now also shows the inactive punishments",
+      "The `condition` tag now works in sidebar messages with string list",
+      "Added sequential execution of the async tasks of one module, they no longer overtake each other"
+    ],
+    "refactors": [
+      "TAB, scoreboard and objectives send packets only when something has changed, what was sent is remembered",
+      "The name updates in TAB now go player by player instead of everyone at once",
+      "Name constants are updated always, not only in proxy mode",
+      "The signature is removed from the `player_head` textures",
+      "Database queries and indexes are optimized, `/whois` now makes one query instead of two",
+      "The punishment cache is reworked",
+      "The `runAsync` with `independent` is removed from the scheduler",
+      "Vanish handling is simplified, a separate SuperVanish check is no longer needed",
+      "The priorities of the join and quit events on Bukkit are changed"
+    ],
+    "fixes": [
+      "`player_head` takes the head by `uuid` instead of the name, which crashed the client of the players",
+      "Join and quit messages no longer reach the integrations several times in proxy mode",
+      "Discord, Telegram and Twitch no longer connect several times on a fast `/flectonepulse reload`",
+      "A player who is not in the database yet no longer gets into the online cache, which broke saving their settings",
+      "Broken yaml no longer stays on disk after saving through the editor, the file is restored to the previous one",
+      "The dump is validated before the import, an empty file no longer wipes the database",
+      "A busy editor port no longer shuts the server down",
+      "The stuck queue detection no longer clears it, because of this the async tasks of a module stopped forever",
+      "The executor overload warning no longer appears on shutdown",
+      "A permanent mute is detected in CMI",
+      "The online status of a player is updated correctly in the database",
+      "Negative time is no longer shown",
+      "Updated the metrics link in config.yml"
+    ],
+    "dependencies": [
+      "Hytale Server updated to 0.6.3",
+      "Velocity API updated to v4.1.0",
+      "Fabric Loader updated to v0.19.5",
+      "Fabric Loom updated to v1.17.20",
+      "Discord4J updated to v3.3.3",
+      "TelegramBots updated to v10.2.1",
+      "PlasmoVoice updated to v2.1.16",
+      "Lettuce updated to v7.7.0",
+      "SQLite driver updated to v3.53.4.0",
+      "Gradle updated to v9.7.1"
+    ]
+  },
+  {
     "version": "1.13.0",
     "date": "2026-08-24",
     "authors": [

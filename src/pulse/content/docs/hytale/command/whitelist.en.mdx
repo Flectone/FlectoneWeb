@@ -13,6 +13,8 @@ The command for adding/removing can be used with a name `/whitelistplayer add Th
 
 When adding a player who has not yet played on the server, a record will be created in the database with the specified `name` and `uuid`. If the server is `online-mode=true`, the `name` and `uuid` will be automatically created correctly. If the server is `online-mode=false`, the entered value will be used and will be empty, to be updated upon the player's first login. You may receive a warning that the `uuid` or `name` has changed on login; this should be ignored
 
+The list for a player shows all entries, including the inactive ones, they use the `line_not_active` format
+
 <br></br>
 
 # <include>../../../../parts/words.en.mdx#localization</include>
@@ -107,6 +109,10 @@ Message for administrators when a player tries to join the server and is not on 
 
         Format of each entry in the list
 
+        #### `line_not_active`
+
+        Format of each inactive entry in the list
+
         #### `footer`
 
         Bottom part of the list message
@@ -124,6 +130,10 @@ Message for administrators when a player tries to join the server and is not on 
         #### `line`
 
         Format of each entry in the list
+
+        #### `line_not_active`
+
+        Format of each inactive entry in the list
 
         #### `footer`
 
@@ -165,6 +175,28 @@ If enabled, administrators will be shown a message about a login attempt by a pl
 ### `sub_command_player`
 
 The name of the additional command used to interact with a player (it is always appended to the current command name, i.e., it will be `/whitelistplayer`)
+
+### `reason_times`
+
+Punishment time for the reasons from `reasons` in the localization. The key is the reason and the value is its time (`1d2h3m4s`)
+
+<Callout type="info" title="Information">
+    Example
+
+    ```yaml
+     reason_times:
+       default: "1h"
+       1.1.1: "60m"
+       1.2.1: "7d"
+    ```
+
+    - The reason `1.1.1` gives `60` minutes, and `1.2.1` gives `7` days
+    - A reason that is not listed here gives `1` hour from `default`
+    - The time entered in the command is always more important than the time from here
+
+    For unlimited time, use the value `-1`
+
+</Callout>
 
 <include>../../../../parts/aliases.en.mdx</include>
 

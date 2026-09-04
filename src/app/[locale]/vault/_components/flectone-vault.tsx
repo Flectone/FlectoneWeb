@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/button"
 import { ArrowDownUp } from "lucide-react"
 import Pagination from "./pagination"
 import { toast } from "@/components/ui/toast"
+import Callout from "@/components/shared/callout"
+import Link from "next/link"
 
 export interface VaultItem {
   image: string
@@ -124,50 +126,61 @@ export default function FlectoneVault() {
 
   return (
     <div className="flex min-h-screen flex-col gap-6">
+      <Callout margin="none" type="info">
+        <span>
+          Так же можно посмотреть в виде{" "}
+          <Link
+            href="https://docs.google.com/spreadsheets/d/1QfA_pyIAwBlLxZAUB9wLeljEr0TKi2Ry9N5twdXg67M"
+            className="border-b-2 border-primary text-foreground transition hover:border-primary/50 hover:text-muted-foreground"
+          >
+            таблицы
+          </Link>
+        </span>
+      </Callout>
+
       <div className="flex justify-between gap-2 max-sm:flex-col">
         <div className="flex w-full gap-2 max-md:flex-col">
           <Input
             value={search}
             placeholder={t("search")}
+            className="h-8"
             onChange={(e) => {
               setSearch(e.target.value)
               setPage(0)
             }}
           />
           <div className="flex gap-2 max-md:w-full max-md:justify-between">
-            <div className="flex h-9 items-center gap-2 rounded-md bg-card px-2">
+            <Button
+              variant={"secondary"}
+              size={"icon-sm"}
+              onClick={() => {
+                setSortOrder(sortOrder === "desc" ? "asc" : "desc")
+              }}
+            >
+              <ArrowDownUp />
+            </Button>
+            <ButtonGroup>
               <Button
-                variant={"ghost"}
-                size={"icon-xs"}
+                variant={sortBy === "date" ? "default" : "secondary"}
+                size={"sm"}
                 onClick={() => {
-                  setSortOrder(sortOrder === "desc" ? "asc" : "desc")
+                  setSortBy("date")
+                  setPage(0)
                 }}
               >
-                <ArrowDownUp />
+                {t("Sort.date")}
               </Button>
-              <ButtonGroup>
-                <Button
-                  variant={sortBy === "date" ? "default" : "secondary"}
-                  size={"xs"}
-                  onClick={() => {
-                    setSortBy("date")
-                    setPage(0)
-                  }}
-                >
-                  {t("Sort.date")}
-                </Button>
-                <Button
-                  size={"xs"}
-                  variant={sortBy === "views" ? "default" : "secondary"}
-                  onClick={() => {
-                    setSortBy("views")
-                    setPage(0)
-                  }}
-                >
-                  {t("Sort.views")}
-                </Button>
-              </ButtonGroup>
-            </div>
+              <Button
+                variant={sortBy === "views" ? "default" : "secondary"}
+                size={"sm"}
+                onClick={() => {
+                  setSortBy("views")
+                  setPage(0)
+                }}
+              >
+                {t("Sort.views")}
+              </Button>
+            </ButtonGroup>
             <Pagination
               pageCount={filteredChunkedItems.length}
               page={page}

@@ -30,6 +30,10 @@ Message shown when no players are found with the entered IP
 
 Message shown when the entered page doesn't exist
 
+### `lower_weight_group`
+
+Message shown when the player has the same or higher permissions than the command sender
+
 ### `online`
 
 Format for `<online>` when a player with this IP is online
@@ -58,6 +62,10 @@ Bottom part of the list message
 <include>../../../../files/minecraft/command.yml#whois</include>
 
 <include>../../../../parts/enable.en.mdx</include>
+
+### `check_group_weight`
+
+Whether player groups will be checked. If the player being viewed has a higher or the same role as the command sender, the command will not execute and a `lower_weight_group` error will occur. Players with the same or higher permissions are also hidden from the list
 
 <include>../../../../parts/perPage.en.mdx</include>
 

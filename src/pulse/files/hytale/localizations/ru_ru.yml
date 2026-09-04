@@ -91,10 +91,12 @@ command:
     global:
       header: "<fcolor:2>| Блокировки: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Причина: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Причина: <reason>"
       footer: "<br><fcolor:2>| <fcolor:2><click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
     player:
       header: "<fcolor:2>| Все блокировки: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Причина: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Причина: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
 #endregion banlist
 #region broadcast
@@ -365,10 +367,12 @@ command:
     global:
       header: "<fcolor:2>| Муты: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Причина: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Причина: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Страница: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
     player:
       header: "<fcolor:2>| Все муты: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Причина: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Причина: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Страница: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
 #endregion mutelist
 #region nickname
@@ -584,10 +588,12 @@ command:
     global:
       header: "<fcolor:2>| Предупреждения: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Причина: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Причина: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Страница: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
     player:
       header: "<fcolor:2>| Все предупреждения: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Причина: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Причина: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Страница: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
 #endregion warnlist
 #region whitelist
@@ -614,16 +620,19 @@ command:
     global:
       header: "<fcolor:2>| Игроки в белом списке: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Причина: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Причина: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Страница: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
     player:
       header: "<fcolor:2>| Записи игрока в белом списке: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Причина: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Причина: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Страница: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
 #endregion whitelist
 #region whois
   whois:
     empty: "<color:#ff7171>Игроков с таким айпи не найдено"
     null_page: "<color:#ff7171>Страница не найдена"
+    lower_weight_group: "<color:#ff7171>Ты не можешь посмотреть игрока с такими же или большими правами"
     online: "<hover:show_text:\"<color:#98FB98>В сети\"><color:#98FB98>[+]</color></hover>"
     offline: "<hover:show_text:\"<color:#ff7171>Не в сети\"><color:#ff7171>[-]</color></hover>"
     header: "<fcolor:2>▋ <fcolor:1>Игроков с IP <fcolor:2><ip><fcolor:1>: <fcolor:2><count> <br>"
