@@ -91,10 +91,12 @@ command:
     global:
       header: "<fcolor:2>| Bans: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Reason: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Reason: <reason>"
       footer: "<br><fcolor:2>| <fcolor:2><click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
     player:
       header: "<fcolor:2>| All bans: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Reason: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Reason: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
 #endregion banlist
 #region broadcast
@@ -365,10 +367,12 @@ command:
     global:
       header: "<fcolor:2>| Mutes: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Reason: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Reason: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
     player:
       header: "<fcolor:2>| All mutes: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Reason: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Reason: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
 #endregion mutelist
 #region nickname
@@ -584,10 +588,12 @@ command:
     global:
       header: "<fcolor:2>| Warns: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Reason: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Reason: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
     player:
       header: "<fcolor:2>| All warns: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Reason: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Reason: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
 #endregion warnlist
 #region whitelist
@@ -614,16 +620,19 @@ command:
     global:
       header: "<fcolor:2>| Whitelisted players: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Reason: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Reason: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
     player:
       header: "<fcolor:2>| Player whitelist records: <count> <br>"
       line: "<color:#ff7171>[X] <target> <fcolor:1>Reason: <reason>"
+      line_not_active: "<color:#929493>[ ]</color:#929493> <target> <fcolor:1>Reason: <reason>"
       footer: "<br><fcolor:2>| <click:run_command:\"<command> <prev_page>\">[<]</click> <fcolor:1>Page: <current_page>/<last_page> <fcolor:2><click:run_command:\"<command> <next_page>\">[>]"
 #endregion whitelist
 #region whois
   whois:
     empty: "<color:#ff7171>No players with that IP found"
     null_page: "<color:#ff7171>Page not found"
+    lower_weight_group: "<color:#ff7171>You cannot view a player with equal or higher permissions"
     online: "<hover:show_text:\"<color:#98FB98>Online\"><color:#98FB98>[+]</color></hover>"
     offline: "<hover:show_text:\"<color:#ff7171>Offline\"><color:#ff7171>[-]</color></hover>"
     header: "<fcolor:2>▋ <fcolor:1>Players with IP <fcolor:2><ip><fcolor:1>: <fcolor:2><count> <br>"

@@ -134,6 +134,7 @@ luckperms:
   enable: true
   always_have_true: false
   tab_sort: true
+  group_order: []
 #endregion luckperms
 #region maintenance
 maintenance:

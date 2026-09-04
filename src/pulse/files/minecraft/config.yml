@@ -10,7 +10,7 @@
 #
 #region version
 server: "00000000-0000-0000-0000-000000000000"
-version: "1.13.0"
+version: "1.13.1"
 #endregion version
 #region language
 language:
