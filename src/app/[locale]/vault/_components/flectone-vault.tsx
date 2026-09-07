@@ -7,11 +7,16 @@ import { useTranslations } from "next-intl"
 import { Input } from "@/components/ui/input"
 import { ButtonGroup } from "@/components/ui/button-group"
 import { Button } from "@/components/ui/button"
-import { ArrowDownUp } from "lucide-react"
+import { ArrowDownUp, Search } from "lucide-react"
 import Pagination from "./pagination"
 import { toast } from "@/components/ui/toast"
 import Callout from "@/components/shared/callout"
 import Link from "next/link"
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupInput,
+} from "@/components/ui/input-group"
 
 export interface VaultItem {
   image: string
@@ -143,15 +148,20 @@ export default function FlectoneVault() {
 
       <div className="flex justify-between gap-2 max-sm:flex-col">
         <div className="flex w-full gap-2 max-md:flex-col">
-          <Input
-            value={search}
-            placeholder={t("search")}
-            className="h-8"
-            onChange={(e) => {
-              setSearch(e.target.value)
-              setPage(0)
-            }}
-          />
+          <InputGroup className="h-8 border border-border">
+            <InputGroupInput
+              value={search}
+              placeholder={t("search")}
+              className="h-8"
+              onChange={(e) => {
+                setSearch(e.target.value)
+                setPage(0)
+              }}
+            />
+            <InputGroupAddon>
+              <Search />
+            </InputGroupAddon>
+          </InputGroup>
           <div className="flex gap-2 max-md:w-full max-md:justify-between">
             <Button
               variant={"secondary"}
