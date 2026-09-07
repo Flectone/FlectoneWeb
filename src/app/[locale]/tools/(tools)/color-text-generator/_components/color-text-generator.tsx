@@ -1075,7 +1075,7 @@ export default function ColorTextGenerator() {
             <div className="z-10 flex w-full items-center bg-black/60 p-1">
               <div className="flex h-full w-10 shrink-0 items-center">
                 <img
-                  src="/assets/backgrounds/minecraft_server_icon.webp"
+                  src="/assets/minecraft_server_icon.webp"
                   className="w-full"
                   alt=""
                 />
