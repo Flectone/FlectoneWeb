@@ -128,13 +128,16 @@ export default function FlectoneVault() {
     <div className="flex min-h-screen flex-col gap-6">
       <Callout margin="none" type="info">
         <span>
-          Так же можно посмотреть в виде{" "}
-          <Link
-            href="https://docs.google.com/spreadsheets/d/1QfA_pyIAwBlLxZAUB9wLeljEr0TKi2Ry9N5twdXg67M"
-            className="border-b-2 border-primary text-foreground transition hover:border-primary/50 hover:text-muted-foreground"
-          >
-            таблицы
-          </Link>
+          {t.rich("callout", {
+            a: (chunks) => (
+              <a
+                href="https://docs.google.com/spreadsheets/d/1QfA_pyIAwBlLxZAUB9wLeljEr0TKi2Ry9N5twdXg67M"
+                className="text-primary"
+              >
+                {chunks}
+              </a>
+            ),
+          })}
         </span>
       </Callout>
 
