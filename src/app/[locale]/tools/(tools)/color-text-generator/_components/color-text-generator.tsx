@@ -1271,12 +1271,14 @@ export default function ColorTextGenerator() {
                     <Button
                       variant={"outline"}
                       size={"sm"}
+                      className={"font-bold"}
                       onClick={() => insert("&l", "<bold>")}
                     >
                       {t("bold")}
                     </Button>
                     <Button
                       variant={"outline"}
+                      className={"italic"}
                       size={"sm"}
                       onClick={() => insert("&o", "<italic>")}
                     >
@@ -1288,6 +1290,7 @@ export default function ColorTextGenerator() {
                     />
                     <Button
                       variant={"outline"}
+                      className={"underline"}
                       size={"sm"}
                       onClick={() => insert("&n", "<underlined>")}
                     >
@@ -1295,6 +1298,7 @@ export default function ColorTextGenerator() {
                     </Button>
                     <Button
                       variant={"outline"}
+                      className={"line-through"}
                       size={"sm"}
                       onClick={() => insert("&m", "<strikethrough>")}
                     >
