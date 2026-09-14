@@ -355,7 +355,7 @@ function CategoryLegend({
         />
         <TooltipContent side="top">
           <p>
-            {showEssentials
+            {!showEssentials
               ? t("FlectonePulse.Metrics.labels.hideEssentials")
               : t("FlectonePulse.Metrics.labels.showEssentials")}
           </p>
