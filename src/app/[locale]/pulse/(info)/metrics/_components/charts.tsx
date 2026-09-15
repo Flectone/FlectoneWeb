@@ -355,7 +355,7 @@ function CategoryLegend({
         />
         <TooltipContent side="top">
           <p>
-            {showEssentials
+            {!showEssentials
               ? t("FlectonePulse.Metrics.labels.hideEssentials")
               : t("FlectonePulse.Metrics.labels.showEssentials")}
           </p>
@@ -535,20 +535,20 @@ export function TwoAreaChartComponent({
                 }
               />
               <Area
-                dataKey="firstValue"
-                className="outline-none"
-                type="natural"
-                fill="url(#fillFirstValue)"
-                stroke="var(--color-firstValue)"
-                strokeWidth={2}
-                stackId="a"
-              />
-              <Area
                 dataKey="secondValue"
                 className="outline-none"
                 type="natural"
                 fill="url(#fillSecondValue)"
                 stroke="var(--color-secondValue)"
+                strokeWidth={2}
+                stackId="b"
+              />
+              <Area
+                dataKey="firstValue"
+                className="outline-none"
+                type="natural"
+                fill="url(#fillFirstValue)"
+                stroke="var(--color-firstValue)"
                 strokeWidth={2}
                 stackId="a"
               />

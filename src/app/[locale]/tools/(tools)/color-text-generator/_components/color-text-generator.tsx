@@ -164,16 +164,16 @@ const KNOWN_TAGS = new Set([
 ])
 
 type PreviewMode =
-  "chat" | "sign" | "book" | "motd" | "name" | "lore" | "kick" | "tab"
+  "Chat" | "Sign" | "Book" | "Motd" | "Nickname" | "Lore" | "Kick" | "Tab"
 const PREVIEW_MODES: PreviewMode[] = [
-  "chat",
-  "sign",
-  "book",
-  "motd",
-  "name",
-  "lore",
-  "kick",
-  "tab",
+  "Chat",
+  "Sign",
+  "Book",
+  "Motd",
+  "Nickname",
+  "Lore",
+  "Kick",
+  "Tab",
 ]
 
 interface ParsedNode {
@@ -618,9 +618,11 @@ function RenderedText({
   style?: React.CSSProperties
   isSignMode?: boolean
 }>) {
+  const t = useTranslations("FlectoneTools.ColorTextGenerator")
+
   const nodes = parseNodes(raw)
   if (!nodes.length || !raw.trim())
-    return <span style={{ ...style, opacity: 0.3 }}>Preview</span>
+    return <span style={{ ...style, opacity: 0.3 }}>{t("preview")}</span>
   return (
     <span style={style}>
       {nodes.map((node, i) => {
@@ -877,7 +879,7 @@ export default function ColorTextGenerator() {
   const [tabFooter, setTabFooter] = useState("")
   const [format, setFormat] = useState<"legacy" | "minimessage">("legacy")
   const [convertOutput, setConvertOutput] = useState(true)
-  const [previewMode, setPreviewMode] = useState<PreviewMode>("chat")
+  const [previewMode, setPreviewMode] = useState<PreviewMode>("Chat")
   const [pickerColor, setPickerColor] = useState("#ff0000")
   const [showPicker, setShowPicker] = useState(false)
   const [maxLines, setMaxLines] = useState<number>()
@@ -963,8 +965,9 @@ export default function ColorTextGenerator() {
   }
 
   const renderPreview = () => {
+    const t = useTranslations("FlectoneTools.ColorTextGenerator.Previews")
     switch (previewMode) {
-      case "tab":
+      case "Tab":
         return (
           <div className="flex h-70 items-center justify-center overflow-hidden rounded-lg bg-[url('/assets/backgrounds/minecraft_taiga.webp')] bg-cover bg-center">
             <MinecraftTab
@@ -987,7 +990,7 @@ export default function ColorTextGenerator() {
             />
           </div>
         )
-      case "chat":
+      case "Chat":
         return (
           <div className="h-70 overflow-hidden rounded-lg bg-[url('/assets/backgrounds/minecraft_taiga.webp')] bg-cover bg-center">
             <MinecraftChat
@@ -1013,7 +1016,7 @@ export default function ColorTextGenerator() {
             />
           </div>
         )
-      case "sign":
+      case "Sign":
         return (
           <div className="relative flex h-70 w-full items-center justify-center overflow-hidden rounded-lg bg-black">
             <img
@@ -1040,7 +1043,7 @@ export default function ColorTextGenerator() {
             </div>
           </div>
         )
-      case "book":
+      case "Book":
         return (
           <div className="-fd- relative flex h-70 w-full items-center justify-center overflow-hidden rounded-lg bg-black">
             <img
@@ -1065,7 +1068,7 @@ export default function ColorTextGenerator() {
             </div>
           </div>
         )
-      case "motd":
+      case "Motd":
         return (
           <div className="as relative flex h-70 w-full items-center justify-center overflow-hidden rounded-lg bg-black p-6 font-[Minecraft]">
             <img
@@ -1075,14 +1078,16 @@ export default function ColorTextGenerator() {
             <div className="z-10 flex w-full items-center bg-black/60 p-1">
               <div className="flex h-full w-10 shrink-0 items-center">
                 <img
-                  src="/assets/backgrounds/minecraft_server_icon.webp"
+                  src="/assets/minecraft_server_icon.webp"
                   className="w-full"
                   alt=""
                 />
               </div>
               <div className="flex h-full w-full flex-col justify-center gap-1 px-1 text-[1em]">
                 <div className="flex w-full items-center justify-between">
-                  <p className="leading-3 text-white!">Server Name</p>
+                  <p className="leading-3 text-white!">
+                    {t("Motd.Content.serverName")}
+                  </p>
                   <p className="leading-3 text-white/50!">0/6</p>
                 </div>
                 <div className="justify start flex h-6 flex-col leading-3">
@@ -1095,7 +1100,7 @@ export default function ColorTextGenerator() {
             </div>
           </div>
         )
-      case "name":
+      case "Nickname":
         return (
           <div className="relative flex h-70 w-full items-center justify-center overflow-hidden rounded-lg bg-black">
             <img
@@ -1114,7 +1119,7 @@ export default function ColorTextGenerator() {
             </div>
           </div>
         )
-      case "lore":
+      case "Lore":
         return (
           <div className="relative h-70 w-full overflow-hidden rounded-lg bg-black">
             <img
@@ -1126,23 +1131,25 @@ export default function ColorTextGenerator() {
                 className="flex flex-col gap-0.5 rounded border border-[#2d0a63] bg-[#100010]/95 px-3 py-2"
                 style={{ boxShadow: "0 0 8px #2d0a6380" }}
               >
-                <span style={{ ...mc, color: "#FFFFFF" }}>Diamond Sword</span>
+                <span style={{ ...mc, color: "#FFFFFF" }}>
+                  {t("Lore.Content.sword")}
+                </span>
                 <div className="my-1 h-px w-full bg-[#2d0a63]" />
                 <RenderedText
                   raw={raw}
                   style={{ ...mc, color: "#BE00BE", fontSize: "12px" }}
                 />
                 <span style={{ ...mc, color: "#AAAAAA", fontSize: "11px" }}>
-                  When in Main Hand:
+                  {t("Lore.Content.mainHand")}:
                 </span>
                 <span style={{ ...mc, color: "#AAAAAA", fontSize: "11px" }}>
-                  7 Attack Damage
+                  7 {t("Lore.Content.damage")}
                 </span>
               </div>
             </div>
           </div>
         )
-      case "kick":
+      case "Kick":
         return (
           <div className="relative h-70 w-full overflow-hidden rounded-lg font-[Minecraft]">
             <img
@@ -1151,7 +1158,7 @@ export default function ColorTextGenerator() {
             />
             <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-4 px-8 text-center">
               <span className="leading-[1em] text-white/50 [text-shadow:2px_2px_0px_#212121]">
-                Connection Lost
+                {t("Kick.Content.connection")}
               </span>
               <RenderedText
                 raw={raw}
@@ -1164,7 +1171,7 @@ export default function ColorTextGenerator() {
               />
               <div className="border border-black">
                 <div className="border bg-[#858585] px-6 py-0.5 text-white shadow-[inset_-2px_-4px_0px_1px_rgba(0,0,0,0.1)] [text-shadow:2px_2px_0px_#505050]">
-                  Back to server list
+                  {t("Kick.Content.back")}
                 </div>
               </div>
             </div>
@@ -1271,12 +1278,14 @@ export default function ColorTextGenerator() {
                     <Button
                       variant={"outline"}
                       size={"sm"}
+                      className={"font-bold"}
                       onClick={() => insert("&l", "<bold>")}
                     >
                       {t("bold")}
                     </Button>
                     <Button
                       variant={"outline"}
+                      className={"italic"}
                       size={"sm"}
                       onClick={() => insert("&o", "<italic>")}
                     >
@@ -1288,6 +1297,7 @@ export default function ColorTextGenerator() {
                     />
                     <Button
                       variant={"outline"}
+                      className={"underline"}
                       size={"sm"}
                       onClick={() => insert("&n", "<underlined>")}
                     >
@@ -1295,6 +1305,7 @@ export default function ColorTextGenerator() {
                     </Button>
                     <Button
                       variant={"outline"}
+                      className={"line-through"}
                       size={"sm"}
                       onClick={() => insert("&m", "<strikethrough>")}
                     >
@@ -1464,44 +1475,36 @@ export default function ColorTextGenerator() {
                       onClick={() => {
                         setPreviewMode(m)
                         setMaxLines(
-                          m === "sign"
+                          m === "Sign"
                             ? 4
-                            : m === "book"
+                            : m === "Book"
                               ? 11
-                              : m === "motd"
+                              : m === "Motd"
                                 ? 2
-                                : m === "name"
+                                : m === "Nickname"
                                   ? 1
                                   : undefined
                         )
                         setMaxCharsPerLine(
-                          m === "sign"
+                          m === "Sign"
                             ? 16
-                            : m === "book"
+                            : m === "Book"
                               ? 16
-                              : m === "motd"
+                              : m === "Motd"
                                 ? 29
-                                : m === "name"
+                                : m === "Nickname"
                                   ? 16
                                   : undefined
                         )
                       }}
                     >
-                      {t(`previews.${m}`)}
+                      {t(`Previews.${m}.label`)}
                     </Button>
                   ))}
                 </div>
               </CardContent>
             </Card>
           </div>
-
-          {/* <div className="bg-fd-article flex w-1/3 flex-col gap-2 rounded-2xl border p-6 max-lg:w-full">
-            <p className="font-bold">{t("preview")}</p>
-            <div className="shrink-0">{renderPreview()}</div>
-            <div className="flex flex-col gap-2">
-              <p>{t("display")}</p>
-            </div>
-          </div> */}
         </div>
       </div>
     </div>
