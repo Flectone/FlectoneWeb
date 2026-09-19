@@ -1,4 +1,5 @@
 "use client"
+import { useTranslations } from "next-intl"
 import { ReactNode } from "react"
 
 interface MinecraftTabProps {
@@ -6,6 +7,7 @@ interface MinecraftTabProps {
 }
 
 export default function MinecraftTab({ tabText }: MinecraftTabProps) {
+  const t = useTranslations()
   return (
     <div className="flex h-fit w-fit flex-col items-center justify-center gap-2 bg-black/60 p-3 font-[Minecraft]">
       {tabText}
@@ -45,7 +47,10 @@ export default function MinecraftTab({ tabText }: MinecraftTabProps) {
       <div className="mt-1 flex w-full justify-center">
         <p className="text-[1.28em] text-[#85CCF7]! [text-shadow:1.2px_1.2px_0px_#212F38]">
           <b className="font-normal text-[#ABD5E3]!">TPS</b> 20.0,{" "}
-          <b className="font-normal text-[#ABD5E3]!">Online</b> 4
+          <b className="font-normal text-[#ABD5E3]!">
+            {t("FlectoneTools.ColorTextGenerator.Previews.Tab.Content.online")}
+          </b>{" "}
+          4
         </p>
       </div>
     </div>

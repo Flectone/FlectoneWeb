@@ -608,16 +608,51 @@
       "newline": "New line",
       "display": "Display",
       "copied": "Copied to clipboard",
-      "previews": {
-        "text": "Text",
-        "tab": "Tab",
-        "sign": "Sign",
-        "book": "Book",
-        "chat": "Chat",
-        "motd": "MOTD",
-        "name": "Nickname",
-        "lore": "Lore",
-        "kick": "Kick"
+      "Previews": {
+        "Chat": {
+          "label": "Chat",
+          "Content": {
+            "hello": "hello",
+            "hi": "hi",
+            "qq": "qq"
+          }
+        },
+        "Sign": {
+          "label": "Sign"
+        },
+        "Book": {
+          "label": "Book"
+        },
+        "Tab": {
+          "label": "Tab",
+          "Content": {
+            "online": "Online"
+          }
+        },
+        "Motd": {
+          "label": "MOTD",
+          "Content": {
+            "serverName": "Server name"
+          }
+        },
+        "Nickname": {
+          "label": "Nickname"
+        },
+        "Lore": {
+          "label": "Lore",
+          "Content": {
+            "sword": "Diamond sword",
+            "mainHand": "When in hand",
+            "damage": "Attack damage"
+          }
+        },
+        "Kick": {
+          "label": "Disconnection",
+          "Content": {
+            "connection": "Connection lost",
+            "back": "Back to server list"
+          }
+        }
       },
       "convertOutput": "Convert output",
       "miniTags": "MiniMessage tags",
@@ -702,6 +737,7 @@
       "views": "By views"
     },
     "search": "Search",
+    "callout": "You can also view it in the form of a <a>table</a>",
     "error": "Table is empty or data not found"
   },
   "NotFound": {

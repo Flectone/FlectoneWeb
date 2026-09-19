@@ -608,16 +608,51 @@
       "newline": "Новая строка",
       "display": "Отображение",
       "copied": "Скопировано в буфер обмена",
-      "previews": {
-        "text": "Текст",
-        "tab": "Таб",
-        "sign": "Табличка",
-        "book": "Книга",
-        "chat": "Чат",
-        "motd": "MOTD",
-        "name": "Никнейм",
-        "lore": "Лор",
-        "kick": "Отключение"
+      "Previews": {
+        "Chat": {
+          "label": "Чат",
+          "Content": {
+            "hello": "привет",
+            "hi": "здарова",
+            "qq": "ку"
+          }
+        },
+        "Sign": {
+          "label": "Табличка"
+        },
+        "Book": {
+          "label": "Книга"
+        },
+        "Tab": {
+          "label": "Таб",
+          "Content": {
+            "online": "Онлайн"
+          }
+        },
+        "Motd": {
+          "label": "MOTD",
+          "Content": {
+            "serverName": "Название сервера"
+          }
+        },
+        "Nickname": {
+          "label": "Никнейм"
+        },
+        "Lore": {
+          "label": "Лор",
+          "Content": {
+            "sword": "Алмазный меч",
+            "mainHand": "Когда в руке",
+            "damage": "Урона от атаки"
+          }
+        },
+        "Kick": {
+          "label": "Отключение",
+          "Content": {
+            "connection": "Соединение потеряно",
+            "back": "К списку серверов"
+          }
+        }
       },
       "convertOutput": "Конвертировать вывод",
       "miniTags": "MiniMessage теги",
@@ -702,6 +737,7 @@
       "views": "По просмотрам"
     },
     "search": "Поиск",
+    "callout": "Так же можно посмотреть в виде <a>таблицы</a>",
     "error": "Таблица пуста или данные не найдены"
   },
   "NotFound": {
