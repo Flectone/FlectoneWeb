@@ -131,13 +131,13 @@ export default function FlectoneVault() {
 
   return (
     <div className="flex min-h-screen flex-col gap-6">
-      <Callout margin="none" type="info">
+      <Callout margin="none" type="info" title={t("note")}>
         <span>
           {t.rich("callout", {
             a: (chunks) => (
               <a
                 href="https://docs.google.com/spreadsheets/d/1QfA_pyIAwBlLxZAUB9wLeljEr0TKi2Ry9N5twdXg67M"
-                className="text-primary"
+                className="text-foreground hover:opacity-80 transition border-b-2 border-primary"
               >
                 {chunks}
               </a>

@@ -737,6 +737,7 @@
       "views": "By views"
     },
     "search": "Search",
+    "note": "Note",
     "callout": "You can also view it in the form of a <a>table</a>",
     "error": "Table is empty or data not found"
   },
