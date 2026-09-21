@@ -11,6 +11,7 @@
 #region message
 cooldown: "<color:#ff7171>Too fast, you'll be able to use it in <time>"
 time:
+  date: "yyyy.MM.dd HH:mm:ss"
   format: "dd'd' HH'h' mm'm' ss.SSS's'"
   permanent: "PERMANENT"
   zero: "0s"
@@ -722,8 +723,8 @@ message:
     null_chat: "<color:#ff7171>Chat is disabled on this server"
     null_receiver: "<color:#ff7171>Nobody heard you"
     types:
-      global: "<delete><display_name> <world>»<fcolor:4> <message><reset><translation>"
-      local: "<delete><display_name><fcolor:3>: <message><reset><translation>"
+      global: "<delete><display_name> <world>»<fcolor:4> <message><reset>"
+      local: "<delete><display_name><fcolor:3>: <message><reset>"
 #endregion chat
 #region format
   format:
