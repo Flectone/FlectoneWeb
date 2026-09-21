@@ -21,9 +21,14 @@ import changelogEnData from "@/data/changelog-en.json"
 import parse from "html-react-parser"
 
 const inlineCode = (text: string) =>
-  text.replace(
+  text
+  .replace(
     /`([^`]+)`/g,
-    '<code class="rounded-sm bg-fd-card px-1 py-0.5">$1</code>'
+    '<code class="rounded-sm bg-card px-1 py-0.5">$1</code>'
+  )
+  .replace(
+      /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+      '<a href="$2" target="_blank" rel="noopener noreferrer" class="text-foreground hover:opacity-80 transition border-b-2 border-primary">$1</a>'
   )
 
 export interface ChangelogItem {
