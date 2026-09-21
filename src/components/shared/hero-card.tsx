@@ -4,12 +4,14 @@ import { useTranslations } from "next-intl"
 import { useCurrentTheme } from "@/hooks/use-current-theme"
 import Container from "./container"
 import { cn } from "@/lib/utils"
+import Link from "next/link"
 
 interface HeroCardProps {
   namespace: string
   background?: string
   theming?: boolean
   contentWidth?: "sm" | "md" | "lg"
+  docs?: string
 }
 
 export default function HeroCard({
@@ -17,6 +19,7 @@ export default function HeroCard({
   background,
   theming = true,
   contentWidth = "sm",
+  docs,
 }: HeroCardProps) {
   const t = useTranslations(namespace)
   const currentTheme = useCurrentTheme()
@@ -54,7 +57,15 @@ export default function HeroCard({
         <p>
           {t.rich("description", {
             b: (chunks) => <b>{chunks}</b>,
-          })}
+          })}{" "}
+          {docs && (
+            <Link
+              className="border-b-2 border-primary text-foreground transition hover:opacity-80"
+              href={docs}
+            >
+              {t("fullDocs")}
+            </Link>
+          )}
         </p>
       </div>
     </Container>

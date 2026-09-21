@@ -18,6 +18,7 @@ export default function TextureGeneratorPage() {
       <HeroCard
         namespace="FlectoneTools.TextureGenerator"
         background={t("Main.background")}
+        docs="/pulse/docs/message/format/object"
       />
       <Callout margin="none" title="" type="warn">
         {t("TextureGenerator.warn")}
