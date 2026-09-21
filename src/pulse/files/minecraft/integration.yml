@@ -191,9 +191,9 @@ tab:
 telegram:
   enable: false
   ignore_all_bots: true
-  parse_mode: "NONE"
   disable_notification: false
   protect_content: false
+  parse_mode: "NONE"
   token: ""
   proxy:
     type: "DIRECT"

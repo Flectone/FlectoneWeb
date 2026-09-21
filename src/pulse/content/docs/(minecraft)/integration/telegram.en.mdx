@@ -63,17 +63,18 @@ There are also placeholders that are GUARANTEED to be replaced in any message:
 - `<final_clear_message>` the message sent to Minecraft without unicode emojis
 - `<player>` the nickname of the player who sent the message
 - `<reply>` the formatted reply message; it will be empty if the main message is not a reply
-- Obviously, all placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
+- All placeholders from `PlaceholderAPI` and `FlectonePulse` will also work
 
 A message sent from Telegram to Minecraft has its own placeholders:
 
-| Placeholder    | What it returns                                            |
+| Placeholder    | What it returns                                           |
 |----------------|-----------------------------------------------------------|
 | `<name>`       | Telegram username handle                                  |
 | `<user_name>`  | Telegram username handle                                  |
 | `<first_name>` | Telegram user's first name                                |
 | `<last_name>`  | Telegram user's last name                                 |
 | `<chat>`       | Telegram chat title (where the message originated)        |
+| `<role>`       | Telegram user's status (role)                             |
 
 ### `info_channel`
 

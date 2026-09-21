@@ -1,11 +1,44 @@
 [
   {
+    "version": "1.14.0",
+    "date": "2026-09-21",
+    "authors": [
+      "TheFaser"
+    ],
+    "features": [
+      "Added support for Minecraft 26.3",
+      "Added support for Hytale 0.6.8",
+      "Added role tag support in Discord",
+      "Added anonymous admin and role tag support in Telegram",
+      "Added date formatting with player-specific localization"
+    ],
+    "refactors": [
+      "Replaced platform world checking with ticker"
+    ],
+    "fixes": [
+      "Fixed handling of invalid player playtime data",
+      "Fixed Micrometer relocation in Discord integration [#474](https://github.com/Flectone/FlectonePulse/issues/474)"
+    ],
+    "dependencies": [
+      "Cloud Fabric updated to v2.1.0",
+      "Cloud NeoForge updated to v2.1.0",
+      "Cloud Paper updated to v2.0.1",
+      "Fabric Loom updated to v1.18.2",
+      "Velocity API updated to v4.2.0",
+      "Placeholder API updated to v3.2.0+26.3",
+      "PlasmoVoice API updated to v2.1.17",
+      "TelegramBots updated to v10.3.0",
+      "Lombok updated to v1.18.48",
+      "H2 updated to v2.5.250",
+      "BuildConfig updated to v6.1.1"
+    ]
+  },
+  {
     "version": "1.13.1",
     "date": "2026-09-04",
     "authors": [
       "TheFaser"
     ],
-    "warning": null,
     "features": [
       "Reason keys now carry a time, it is set by `reason_times` in the settings of `ban`, `mute`, `warn`, `maintenance` and `whitelist`. If no time is entered in the command, it is taken by the reason, and `default` is used when the reason is not listed",
       "Added `group_order` to the LuckPerms integration, to sort TAB by your own group order instead of the group weight",
