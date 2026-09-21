@@ -16,6 +16,7 @@ export default function TabAnimationPage() {
       <HeroCard
         namespace="FlectoneTools.TextAnimation"
         background={t("background")}
+        docs="/pulse/docs/message/format/animation"
       />
       <TextAnimation />
     </PageTemplate>
