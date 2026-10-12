@@ -88,9 +88,12 @@ proxySender.send(fPlayer, ModuleName.COMMAND_COIN, output -> {
 </Callout>
 
 ```java
-messageDispatcher.dispatch(ModuleName.COMMAND_COIN, EventMetadata.builder()
+messageDispatcher.dispatch(EventMetadata.builder()
         .range(Range.Type.PROXY)
-        .messageContext(receiver -> /* ... */)
+        .messageContext(fResolver -> MessageContext.builder()
+                .module(ModuleName.ModuleName.COMMAND_COIN)
+                /* ... */
+        )
         .proxy(output -> {
             output.writeInt(percent);
             output.writeInt(tps);
@@ -183,9 +186,10 @@ public Event onProxyMessage(ProxyMessageEvent event) throws IOException {
         int percent = payload.readInt();
 
         // пересылаем сообщение локальным игрокам
-        messageDispatcher.dispatch(coinModule, EventMetadata.builder()
+        messageDispatcher.dispatch(EventMetadata.builder()
                 .range(Range.get(Range.Type.SERVER))
                 .messageContext(receiver -> MessageContext.builder()
+                        .module(coinModule.name())
                         .uuid(event.uuid())   // сохраняем общий идентификатор
                         .sender(event.sender())
                         .receiver(receiver)

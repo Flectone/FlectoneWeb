@@ -52,14 +52,18 @@ MessageDispatcher messageDispatcher = flectonePulse.get(MessageDispatcher.class)
 
 | Метод | Что делает |
 |-------|------------|
-| `dispatch(ModuleLocalization, EventMetadata)` | Отправляет от имени модуля и берёт локализацию из него |
-| `dispatch(ModuleName, EventMetadata)` | Отправляет по имени модуля |
-| `dispatch(ModuleName, EventMetadata, Set<FPlayer>)` | Отправляет заранее посчитанному списку получателей |
-| `dispatch(MessageSendEvent)` | Отправляет уже собранное событие |
-| `createReceivers(ModuleName, EventMetadata)` | Считает получателей и ничего не отправляет |
-| `createMessageEvent(FPlayer, ModuleName, EventMetadata)` | Собирает событие для одного получателя |
+| `dispatch(EventMetadata, Set<FPlayer>)` | Асинхронно рассылает событие сообщения указанному набору получателей. |
+| `dispatch(MessageSendEvent)` | Напрямую рассылает уже собранное событие сообщения. |
+| `dispatch(EventMetadata)` | Рассылает событие сообщения подходящим получателям, вычисляя их через `createReceivers(EventMetadata)`. |
+| ~~`dispatch(ModuleLocalization, EventMetadata)`~~ (устарел) | Рассылает событие сообщения от имени модуля и берёт локализацию из него. |
+| ~~`dispatch(ModuleName, EventMetadata)`~~ (устарел) | Рассылает событие сообщения по имени модуля. |
+| ~~`dispatch(ModuleName, EventMetadata, Set<FPlayer>)`~~ (устарел) | Рассылает событие сообщения заранее посчитанному набору получателей. |
+| `createReceivers(EventMetadata)` | Создаёт набор получателей для события сообщения на основе фильтров игроков, радиуса и настроек модуля. |
+| ~~`createReceivers(ModuleName, EventMetadata)`~~ (устарел) | Создаёт набор получателей для события сообщения по имени модуля. |
+| `createMessageEvent(FPlayer, EventMetadata)` | Создаёт событие сообщения для конкретного получателя. |
+| ~~`createMessageEvent(FPlayer, ModuleName, EventMetadata)`~~ (устарел) | Создаёт событие сообщения для конкретного получателя по имени модуля. |
 
-Все методы возвращают набор игроков, до которых сообщение дошло
+Все методы возвращают набор игроков или событие с игроками, до которых сообщение дошло
 
 <br></br>
 
@@ -74,14 +78,15 @@ import net.flectone.pulse.model.event.message.context.MessageContext;
 import net.flectone.pulse.model.value.Destination;
 import net.flectone.pulse.model.value.Range;
 
-messageDispatcher.dispatch(ModuleName.ADDON, EventMetadata.builder()
+messageDispatcher.dispatch(EventMetadata.builder()
         .range(Range.Type.SERVER)
         .destination(Destination.EMPTY_CHAT)
         .filter(receiver -> receiver.isOnline())
         .messageContext(receiver -> MessageContext.builder()
+                .module(ModuleName.ADDON)
                 .sender(fPlayer)
                 .receiver(receiver)
-                .message("<display_name> <white>привет всем")
+                .message("<display_name> <white>hello everyone")
                 .build()
         )
         .build()
@@ -121,6 +126,7 @@ messageDispatcher.dispatch(ModuleName.ADDON, EventMetadata.builder()
 
 ```java
 .messageContext(receiver -> MessageContext.builder()
+        .module(ModuleName.ADDON) // какой модуль отправляет сообщение, указывать необязательно
         .sender(fPlayer)
         .receiver(receiver)
         .message(localization(receiver).format()) // свой перевод каждому
@@ -159,6 +165,7 @@ messageDispatcher.dispatch(ModuleName.ADDON, EventMetadata.builder()
 
 | `Range.Type` | Кто увидит |
 |--------------|------------|
+| `PERMISSION` | Игроки, которые имеют указанное право |
 | `PLAYER` | Только сам отправитель |
 | `BLOCKS` | Игроки в радиусе N блоков |
 | `WORLD_NAME` | Игроки в том же мире |
@@ -233,20 +240,19 @@ import net.flectone.pulse.model.value.Range;
 import java.util.Set;
 
 public void announce(FPlayer sender, String text) {
-    Set<FPlayer> received = messageDispatcher.dispatch(
-            ModuleName.ADDON,
-            EventMetadata.builder()
-                    .range(Range.Type.SERVER)
-                    .destination(Destination.EMPTY_TITLE)
-                    .filter(receiver -> !receiver.isConsole())
-                    .messageContext(receiver -> MessageContext.builder()
-                            .sender(sender)
-                            .receiver(receiver)
-                            .message("<gradient:#FF0000:#00FF00>" + text + "</gradient>")
-                            .build()
-                    )
-                    .proxy()
+    Set<FPlayer> received = messageDispatcher.dispatch(EventMetadata.builder()
+            .range(Range.Type.SERVER)
+            .destination(Destination.EMPTY_TITLE)
+            .filter(receiver -> !receiver.isConsole())
+            .messageContext(receiver -> MessageContext.builder()
+                    .module(ModuleName.ANON)
+                    .sender(sender)
+                    .receiver(receiver)
+                    .message("<gradient:#FF0000:#00FF00>" + text + "</gradient>")
                     .build()
+            )
+            .proxy()
+            .build()
     );
 
     getLogger().info("Сообщение получили " + received.size() + " игроков");

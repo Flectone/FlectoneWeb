@@ -88,9 +88,12 @@ Every method gives `true` when the message left through at least one transport
 </Callout>
 
 ```java
-messageDispatcher.dispatch(ModuleName.COMMAND_COIN, EventMetadata.builder()
+messageDispatcher.dispatch(EventMetadata.builder()
         .range(Range.Type.PROXY)
-        .messageContext(receiver -> /* ... */)
+        .messageContext(fResolver -> MessageContext.builder()
+                .module(ModuleName.ModuleName.COMMAND_COIN)
+                /* ... */
+        )
         .proxy(output -> {
             output.writeInt(percent);
             output.writeInt(tps);
@@ -183,9 +186,10 @@ public Event onProxyMessage(ProxyMessageEvent event) throws IOException {
         int percent = payload.readInt();
 
         // pass the message on to the local players
-        messageDispatcher.dispatch(coinModule, EventMetadata.builder()
+        messageDispatcher.dispatch(EventMetadata.builder()
                 .range(Range.get(Range.Type.SERVER))
                 .messageContext(receiver -> MessageContext.builder()
+                        .module(coinModule.name())
                         .uuid(event.uuid())   // keep the shared identifier
                         .sender(event.sender())
                         .receiver(receiver)

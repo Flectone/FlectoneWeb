@@ -784,6 +784,7 @@ sprite:
 #region spy
 spy:
   enable: true
+  check_group_weight: false
   range: "PROXY"
   aliases:
   - "spy"

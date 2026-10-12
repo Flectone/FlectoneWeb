@@ -451,6 +451,7 @@ scoreboard:
   enable: true
   name_visible: false
   name_distance: -1.0
+  player_collisions: true
   hide_name_when_sneaking: false
   color: "<white>"
   ticker:
@@ -700,6 +701,7 @@ vanilla:
     - "death.attack.sting.item"
     - "death.attack.sting.player"
     - "death.attack.sulfurCubeHot"
+    - "death.attack.sulfurCubeHot.item"
     - "death.attack.sulfurCubeHot.player"
     - "death.attack.sweetBerryBush"
     - "death.attack.sweetBerryBush.player"

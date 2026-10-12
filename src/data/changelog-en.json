@@ -1,5 +1,49 @@
 [
   {
+    "version": "1.14.1",
+    "date": "2026-10-12",
+    "authors": ["TheFaser"],
+    "features": [
+      "Added module names in the message context in the API",
+      "Added the ability to specify a link domain for url and image in the replacement module",
+      "Added group weight check to the spy module",
+      "Added support for custom permissions for `range`, so that the message is shown only to those players who have this permission",
+      "Added a player collision option to the scoreboard module"
+    ],
+    "refactors": [
+      "In Discord and Telegram, manual executor management has been replaced with a proper resource release mechanism",
+      "Optimized Discord client resource management",
+      "Separated pet death messages for integrations. To display them, you need to use `DEATH_PET` or add `.pet` at the end of the localization key",
+      "Improved URL syntax validation"
+    ],
+    "fixes": [
+      "Fixed recipient caching in MessageContext, now its `id` also affects the cache",
+      "Fixed error handling when downloading files",
+      "Added item death messages for sulfur cube",
+      "Telegram and Discord channel info updates have been moved to an asynchronous task scheduler"
+    ],
+    "dependencies": [
+      "Hytale Server updated to 0.7.0",
+      "Gradle updated to v9.8.1",
+      "Fabric Loom updated to v1.18.3",
+      "Triton API updated to v4.2.0",
+      "PostgreSQL updated to v42.7.14",
+      "Netty Buffer updated to v4.2.19.Final",
+      "BuildConfig updated to v6.1.2",
+      "NeoForge ModDev updated to v2.0.148",
+      "Caffeine updated to v3.3.0",
+      "Lettuce Core updated to v7.8.0.RELEASE",
+      "Jdbi3 Core updated to v3.55.0",
+      "PacketEvents Spigot updated to v2.14.0",
+      "Lombok updated to v9.8.0",
+      "VoiceChat API updated to v2.6.24",
+      "Jackson Dataformat YAML updated to v3.2.3",
+      "SkinsRestorer API updated to v15.12.6",
+      "Vanish updated to v1.6.16+26.3",
+      "H2 updated to v2.5.252"
+    ]
+  },
+  {
     "version": "1.14.0",
     "date": "2026-09-21",
     "authors": [
