@@ -72,10 +72,10 @@ house:
 ### `unregister_command_on_reload`
 
 <Callout type="warn" title="Warning">
-    Not recommended to enable on older Minecraft versions, otherwise there may be errors/warnings in the server console, but they do not affect the plugin's operation in any way
+    Not recommended to enable, otherwise there may be errors/warnings in the server console, but they do not affect the plugin's operation in any way
 </Callout>
 
-If enabled, `FlectonePulse` will remove and re-add its own commands upon `/flectonepulse reload`. This can cause `tps` and `mspt` drops due to the large number of packets, so it's better to disable this setting if you encounter such an issue.
+If enabled, `FlectonePulse` will remove and re-add its own commands upon `/flectonepulse reload`. This can cause `tps` drops due to the large number of packets, so it's better to disable this setting if you encounter such an issue.
 
 If disabled, to properly disable a command from `FlectonePulse` (in `commands.yml`), the server will need to be restarted.
 

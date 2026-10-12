@@ -52,6 +52,14 @@ Enables the display of the name above the player
 
 The distance at which the player's name is visible. A value of `-1.0` disables this change.
 
+### `player_collisions`
+
+<Callout type="idea" title="Note">
+  This parameter exists to solve the compatibility problem with other plugins (or servers) that disable collision between players. A player in Minecraft can only have 1 team and FlectonePulse can override an already existing one, so such a parameter is necessary
+</Callout>
+
+Whether there will be collision between players
+
 ### `hide_name_when_sneaking`
 
 Hides the name above the player if they are sneaking (only works if `name_visible` is enabled)

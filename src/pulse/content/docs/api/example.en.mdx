@@ -196,19 +196,18 @@ public class PulseExampleListener implements PulseListener {
         FPlayer fPlayer = event.player();
         if (fPlayer.isUnknown() || fPlayer.isConsole()) return;
 
-        flectonePulse.get(MessageDispatcher.class).dispatch(
-                ModuleName.ADDON,
-                EventMetadata.builder()
-                        .filter(fPlayer)
-                        .destination(Destination.EMPTY_CHAT)
-                        .range(Range.Type.PLAYER)
-                        .messageContext(receiver -> MessageContext.builder()
-                                .sender(fPlayer)
-                                .receiver(receiver)
-                                .message("<gradient:#FF0000:#00FF00>Welcome</gradient> Your level is <level>")
-                                .build()
-                        )
+        flectonePulse.get(MessageDispatcher.class).dispatch(EventMetadata.builder()
+                .filter(fPlayer)
+                .destination(Destination.EMPTY_CHAT)
+                .range(Range.Type.PLAYER)
+                .messageContext(receiver -> MessageContext.builder()
+                .module(ModuleName.ADDON)
+                .sender(fPlayer)
+                .receiver(receiver)
+                        .message("<gradient:#FF0000:#00FF00>Welcome</gradient> Your level is <level>")
                         .build()
+                )
+                .build()
         );
 
         notifyOtherServers(fPlayer);
