@@ -34,6 +34,10 @@ If enabled, the image will be selected randomly, otherwise in order.
 
 List of image names to be displayed.
 
+Each name must match a file in `FlectonePulse/images/`, including the extension. For example, `server-icon-1.png` in `values` refers to `FlectonePulse/images/server-icon-1.png`.
+
+Before uploading a custom image, crop it to a square, resize it to 64x64 pixels, and export it as PNG. Renaming a JPEG file to `.png` does not convert it. You can use any image editor with PNG export, or [ServerBuddy's icon maker](https://serverbuddy.net/tools/minecraft-server-icon-maker) to crop and export a 64x64 PNG in your browser. Rename the downloaded file to match the name you put in `values`, then upload it to `FlectonePulse/images/`.
+
 <Callout type="error" title="Attention">
     Image must:
     1. Be located inside the `/FlectonePulse/images/` folder
