@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl"
 import { useCurrentTheme } from "@/hooks/use-current-theme"
 import Container from "./container"
 import { cn } from "@/lib/utils"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 
 interface HeroCardProps {
   namespace: string

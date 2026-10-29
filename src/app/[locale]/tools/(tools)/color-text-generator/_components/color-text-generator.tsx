@@ -873,6 +873,7 @@ function RainbowButton({
 
 export default function ColorTextGenerator() {
   const t = useTranslations("FlectoneTools.ColorTextGenerator")
+  const tPreviews = useTranslations("FlectoneTools.ColorTextGenerator.Previews")
 
   const [raw, setRaw] = useState("")
   const [tabHeader, setTabHeader] = useState("")
@@ -965,7 +966,6 @@ export default function ColorTextGenerator() {
   }
 
   const renderPreview = () => {
-    const t = useTranslations("FlectoneTools.ColorTextGenerator.Previews")
     switch (previewMode) {
       case "Tab":
         return (
@@ -1086,7 +1086,7 @@ export default function ColorTextGenerator() {
               <div className="flex h-full w-full flex-col justify-center gap-1 px-1 text-[1em]">
                 <div className="flex w-full items-center justify-between">
                   <p className="leading-3 text-white!">
-                    {t("Motd.Content.serverName")}
+                    {tPreviews("Motd.Content.serverName")}
                   </p>
                   <p className="leading-3 text-white/50!">0/6</p>
                 </div>
@@ -1132,7 +1132,7 @@ export default function ColorTextGenerator() {
                 style={{ boxShadow: "0 0 8px #2d0a6380" }}
               >
                 <span style={{ ...mc, color: "#FFFFFF" }}>
-                  {t("Lore.Content.sword")}
+                  {tPreviews("Lore.Content.sword")}
                 </span>
                 <div className="my-1 h-px w-full bg-[#2d0a63]" />
                 <RenderedText
@@ -1140,10 +1140,10 @@ export default function ColorTextGenerator() {
                   style={{ ...mc, color: "#BE00BE", fontSize: "12px" }}
                 />
                 <span style={{ ...mc, color: "#AAAAAA", fontSize: "11px" }}>
-                  {t("Lore.Content.mainHand")}:
+                  {tPreviews("Lore.Content.mainHand")}:
                 </span>
                 <span style={{ ...mc, color: "#AAAAAA", fontSize: "11px" }}>
-                  7 {t("Lore.Content.damage")}
+                  7 {tPreviews("Lore.Content.damage")}
                 </span>
               </div>
             </div>
@@ -1158,7 +1158,7 @@ export default function ColorTextGenerator() {
             />
             <div className="relative z-10 flex h-full w-full flex-col items-center justify-center gap-4 px-8 text-center">
               <span className="leading-[1em] text-white/50 [text-shadow:2px_2px_0px_#212121]">
-                {t("Kick.Content.connection")}
+                {tPreviews("Kick.Content.connection")}
               </span>
               <RenderedText
                 raw={raw}
@@ -1171,7 +1171,7 @@ export default function ColorTextGenerator() {
               />
               <div className="border border-black">
                 <div className="border bg-[#858585] px-6 py-0.5 text-white shadow-[inset_-2px_-4px_0px_1px_rgba(0,0,0,0.1)] [text-shadow:2px_2px_0px_#505050]">
-                  {t("Kick.Content.back")}
+                  {tPreviews("Kick.Content.back")}
                 </div>
               </div>
             </div>
