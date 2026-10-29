@@ -226,13 +226,16 @@ if (socialService.isVanished(fPlayer)) return;
 | `getPlayTimesCount()` | Отдаёт количество записей |
 | `saveAfkSession(FPlayer, boolean afk)` | Отмечает вход или выход из AFK |
 
-`SkinService` отдаёт ссылки на внешний вид игрока
+`SkinService` отдаёт ссылки на внешний вид игрока и хранит его скин
 
 | Метод | Что отдаёт |
 |-------|------------|
 | `getSkin(FEntity)` | Текстуру скина |
 | `getAvatarUrl(FEntity)` | Ссылку на аватар |
 | `getBodyUrl(FEntity)` | Ссылку на изображение тела |
+| `updateProfileProperty(FPlayer)` | Заново читает скин игрока, сохраняет его и обновляет ник в табе |
+| `updateProfileProperty(FPlayer, boolean)` | То же самое, но обновление ника в табе можно отключить |
+| `invalidateProfileProperty(UUID)` | Удаляет сохранённый скин, он прочитается заново при следующем использовании |
 
 <br></br>
 

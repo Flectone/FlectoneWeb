@@ -152,10 +152,10 @@ messageDispatcher.dispatch(EventMetadata.builder()
 | `TAB_HEADER` | Верх списка игроков |
 | `TAB_FOOTER` | Низ списка игроков |
 | `TOAST` | Всплывающее уведомление о достижении |
-| `TEXT_SCREEN` | Плавающий текст |
+| `HEAD_TEXT` | Текст над головой отправителя |
 | `BRAND` | Название сервера в отладочном экране |
 
-Для назначений со значениями по умолчанию есть готовые константы, например `Destination.EMPTY_CHAT`, `Destination.EMPTY_TITLE` и `Destination.EMPTY_TOAST`. Если нужны свои параметры, у `Destination` есть поля `subtext`, `bossBar`, `times`, `toast` и `textScreen`, заполняются только те, что относятся к выбранному типу
+Для назначений со значениями по умолчанию есть готовые константы, например `Destination.EMPTY_CHAT`, `Destination.EMPTY_TITLE` и `Destination.EMPTY_TOAST`. Если нужны свои параметры, у `Destination` есть поля `subtext`, `bossBar`, `times`, `toast` и `headText`, заполняются только те, что относятся к выбранному типу. Настройки `HEAD_TEXT` хранятся в `HeadText`, а значения по умолчанию лежат в `Destination.DEFAULT_HEAD_TEXT`
 
 <br></br>
 

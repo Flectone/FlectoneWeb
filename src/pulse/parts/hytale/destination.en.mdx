@@ -6,6 +6,7 @@ Where the message will be sent
 |---------------|----------------------------------------------|-----------------------------------|
 | `ACTION_BAR`  | Message above the player's inventory         | Yes                               |
 | `CHAT`        | Message to chat                              | No                               |
+| `HEAD_TEXT`   | Message above the player's head              | Yes                               |
 | `TITLE`       | Fullscreen message                          | Yes                               |
 | `SUBTITLE`    | Fullscreen message (top line)               | Yes                               |
 | `TOAST`       | Notification in the bottom right corner     | Yes                               |
@@ -43,6 +44,95 @@ Where the message will be sent
                     | Field      | Explanation                          |
                     |------------|--------------------------------------|
                     | `stay`     | Time in ticks to hold the message    |
+                </Accordion>
+            </Accordions>
+
+            <Accordions>
+                <Accordion title={<code>HEAD_TEXT</code>}>
+                    ![head text](/pulse/hytale/destination_head_text.webp)
+
+                    <Callout type='info' title="Information">
+                        The text appears above the sender's head, so it only works for messages sent by a player
+                    </Callout>
+
+                    ```yaml
+                    destination:
+                      type: "HEAD_TEXT"
+                      visible_to_self: true
+                      hide_when_sneaking: false
+                      filter_ignores: false
+                      movable: true
+                      row: 0
+                      max_count: 1
+                      distance: 30.0
+                      life_time: 0
+                      modern:
+                        enable: true
+                        has_shadow: true
+                        see_through: false
+                        disable_see_through_when_sneaking: true
+                        background: "#00000040"
+                        animation_time: 5
+                        offset_x: 0.0
+                        offset_y: 1.8
+                        offset_z: 0.0
+                        scale: 1.0
+                        scale_with_player: false
+                        space: 0.25
+                        billboard: "CENTER"
+                    ```
+
+                    `visible_to_self`
+
+                    Not supported in Hytale
+
+                    `hide_when_sneaking`
+
+                    Whether the text will be hidden while the player is sneaking
+
+                    `filter_ignores`
+
+                    Not supported in Hytale
+
+                    `movable`
+
+                    Whether the text can be moved. If `true`, each new text pushes the old ones higher. If `false`, the text always stays on its `row` and is simply updated
+
+                    `row`
+
+                    The row above the head where the text starts. `0` is the lowest row
+
+                    `max_count`
+
+                    Maximum number of texts from one module above the head at the same time
+
+                    `distance`
+
+                    Not supported in Hytale
+
+                    `life_time`
+
+                    Time in ticks (20 ticks = 1 second) for the text to be displayed. If `0`, the time is calculated automatically, and if `-1`, the text will always be shown
+
+                    `modern`
+
+                    Additional text display settings
+
+                    | Field | Explanation |
+                    |------|------------|
+                    | `enable` | Enables functionality |
+                    | `has_shadow` | Not supported in Hytale |
+                    | `see_through` | Not supported in Hytale |
+                    | `disable_see_through_when_sneaking` | Not supported in Hytale |
+                    | `background` | Not supported in Hytale |
+                    | `animation_time` | Not supported in Hytale |
+                    | `offset_x` | Offset along the X coordinate relative to the player's head |
+                    | `offset_y` | Offset along the Y coordinate (up +, down -) relative to the player's head |
+                    | `offset_z` | Offset along the Z coordinate relative to the player's head |
+                    | `scale` | Not supported in Hytale |
+                    | `scale_with_player` | Not supported in Hytale |
+                    | `space` | Distance between rows |
+                    | `billboard` | Not supported in Hytale |
                 </Accordion>
             </Accordions>
 

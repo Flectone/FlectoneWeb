@@ -152,10 +152,10 @@ It decides where exactly the client shows the message
 | `TAB_HEADER` | The top of the player list |
 | `TAB_FOOTER` | The bottom of the player list |
 | `TOAST` | The advancement popup |
-| `TEXT_SCREEN` | Floating text |
+| `HEAD_TEXT` | Text above the sender's head |
 | `BRAND` | The server name in the debug screen |
 
-Destinations with default values come as ready constants, for example `Destination.EMPTY_CHAT`, `Destination.EMPTY_TITLE` and `Destination.EMPTY_TOAST`. When you need your own parameters, `Destination` carries the fields `subtext`, `bossBar`, `times`, `toast` and `textScreen`, and only the ones that belong to the chosen type get filled
+Destinations with default values come as ready constants, for example `Destination.EMPTY_CHAT`, `Destination.EMPTY_TITLE` and `Destination.EMPTY_TOAST`. When you need your own parameters, `Destination` carries the fields `subtext`, `bossBar`, `times`, `toast` and `headText`, and only the ones that belong to the chosen type get filled. The `HEAD_TEXT` settings live in `HeadText`, and the default values are in `Destination.DEFAULT_HEAD_TEXT`
 
 <br></br>
 

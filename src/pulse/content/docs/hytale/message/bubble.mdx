@@ -36,33 +36,13 @@ long duration = (countWords + handicapChars) / readSpeed * 60;
 
 <include>../../../../parts/enable.mdx</include>
 
-### `visible_to_self`
-
-<Callout type="error" title="Внимание">
-    Не поддерживается в Hytale
-</Callout>
-
 ### `disallowed_input`
 
 [Регулярное выражение](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) для того, чтобы не показывать сообщения над головой. Например, `disallowed_input: "^!.*"` запретит сообщения над головой, которые начинаются с `!` знака
 
-### `max_count`
-
-Максимальное количество сообщений над головой одновременно
-
 ### `max_length`
 
 Максимальная длинна одного сообщения над головой. Если текст длиннее, то он будет разделён на несколько
-
-### `elevation`
-
-Насколько высоко над головой будет сообщение
-
-### `distance`
-
-<Callout type="error" title="Внимание">
-    Не поддерживается в Hytale
-</Callout>
 
 ### `read_speed`
 
@@ -78,31 +58,13 @@ long duration = (countWords + handicapChars) / readSpeed * 60;
 
 ### `word_break_hint`
 
-Символ-подсказка, который ставится когда слово разрывается на две строки
-
-### `interaction`
-
-Позволяет изменять расстояние между сообщениями друг от друга
-
-<Accordions>
-    <Accordion title="Настройка">
-        ##### `enable`
-
-        Включает работоспособность
-
-        ##### `height`
-
-        Расстояние между каждым сообщением друг от друга
-    </Accordion>
-</Accordions>
-
-### `modern`
-
-<Callout type="error" title="Внимание">
-    Не поддерживается в Hytale
+<Callout type="warn" title="Предупреждение">
+  Сообщения над головой работают только с `type: "HEAD_TEXT"`. Если `life_time: 0`, то длительность сообщения считается по формуле выше, а количество сообщений над головой одновременно задаётся через `max_count`
 </Callout>
 
-<include>../../../../parts/ticker.mdx</include>
+Символ-подсказка, который ставится когда слово разрывается на две строки
+
+<include>../../../../parts/hytale/destination.mdx</include>
 
 <br></br>
 

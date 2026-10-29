@@ -15,13 +15,24 @@ FlectonePulse is a Minecraft server plugin that allows full customization of mes
 | Platform                                     | Versions                      |
 |----------------------------------------------|-------------------------------|
 | Bukkit / Spigot / Paper / Purpur / Folia     | 1.8.8 up to the latest        |
-| Fabric                                       | Latest Minecraft version      |
-| NeoForge                                     | Latest Minecraft version      |
+| Fabric                                       | 1.14.4 up to the latest       |
+| NeoForge                                     | 1.21.1 up to the latest       |
+| Sponge                                       | 1.21.10 up to the latest      |
 | BungeeCord / Waterfall                       | Latest version                |
 | Velocity                                     | Latest version                |
 
 <Callout type="warn" title="Warning">
-    Java 17 or higher is required. Older Minecraft versions, such as 1.8.8, can also run on Java 17 (check [PandaSpigot](https://github.com/hpfxd/pandaspigot))
+    Java 21 or higher is required on every platform. Older Minecraft versions, such as 1.8.8, can also run on Java 21 (check [PandaSpigot](https://github.com/hpfxd/pandaspigot))
+</Callout>
+
+<Callout type="info" title="Information">
+    Paper 1.16.5 and 1.17.x refuse to start on newer Java and print `Unsupported Java detected (...). Only up to Java 16 is supported`. To skip this check, add the `-DPaper.IgnoreJavaVersion=true` flag
+
+    ```bash
+    java -DPaper.IgnoreJavaVersion=true -jar paper.jar nogui
+    ```
+
+    Paper 1.18 and newer starts on Java 21 without this flag
 </Callout>
 
 <Callout type="info" title="Information">
@@ -54,7 +65,7 @@ FlectonePulse is a Minecraft server plugin that allows full customization of mes
         Download the mod from [Modrinth](https://modrinth.com/plugin/flectonepulse)
     </Step>
     <Step>
-        Place the mod file into your server's `mods` folder, and also install `PacketEvents` (for Fabric you also need `Fabric-API`)
+        Place the mod file into your server's `mods` folder (for Fabric you also need `Fabric-API`)
     </Step>
     <Step>
         Restart the server
@@ -369,7 +380,7 @@ FlectonePulse supports proxy servers, including BungeeCord and Velocity. The sam
 
 FlectonePulse has not been tested on cores that support both mods and plugins (such as Arclight or Mohist), and it is not intended to support them, but it may work. The main issue is the PacketEvents library, as with Fabirc/NeoForge, where some mods may create their own protocols or modify existing ones, causing players to crash
 
-The separate `Fabric` and `NeoForge` builds only work on the very latest Minecraft version because of how hard multi-version support is
+The `Fabric` and `NeoForge` builds support several Minecraft versions at once: `Fabric` from `1.14.4`, and `NeoForge` from `1.21.1` up to the latest
 
 <br></br>
 

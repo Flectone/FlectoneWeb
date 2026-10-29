@@ -858,6 +858,10 @@ message:
       newbie:
         format_restrict: "<color:#ff7171>🔒 You cannot communicate because you have played little on the server (<time_left> remaining)"
 #endregion newbie
+#region spam
+      spam:
+        format_restrict: "<color:#ff7171>🔒 You cannot communicate because you often spammed (<time_left> remaining)"
+#endregion spam
 #region swear
       swear:
         symbol: "❤"
@@ -893,6 +897,12 @@ message:
     format: "<color:#4eff52>→ <display_name>"
     format_first_time: "<color:#4eff52>→ <display_name> <fcolor:1>welcome!"
 #endregion join
+#region nameplate
+  nameplate:
+    values:
+      - "<display_name>"
+      - "<fcolor:2><replacement:ping> <fcolor:1>ms"
+#endregion nameplate
 #region quit
   quit:
     format: "<color:#ff4e4e>← <display_name>"

@@ -56,6 +56,7 @@ FPlayerService fPlayerService = flectonePulse.get(FPlayerService.class);
 | `ExternalModerationService` | Наказания, о которых сообщают другие плагины наказаний |
 | `PlaytimeService` | Наигранное время и AFK сессии |
 | `SkinService` | Скины, аватары и изображения тела |
+| `NearbyService` | Поиск игроков рядом |
 | `TranslationService` | Загрузка переводов платформы |
 | `MetricsService` | Сбор и отправка статистики |
 
@@ -89,6 +90,24 @@ Optional<Moderation> mute = moderationService.getValid(fPlayer, Moderation.Type.
 | Кэш | `invalidate` |
 
 Типы наказаний в `Moderation.Type` это `BAN`, `MUTE`, `WARN`, `KICK`, `WHITELIST`, `MAINTENANCE` и парные им снятия `UNBAN`, `UNMUTE`, `UNWARN`, `UNWHITELIST`, `UNMAINTENANCE`
+
+### NearbyService
+
+Быстро находит игроков рядом с другим игроком, без перебора всех игроков на сервере
+
+```java
+import net.flectone.pulse.service.NearbyService;
+
+NearbyService nearbyService = flectonePulse.get(NearbyService.class);
+
+// игроки в радиусе 30 блоков
+Set<UUID> nearbyPlayers = nearbyService.getNearbyPlayers(fPlayer.uuid(), 30);
+```
+
+| Метод | Что делает |
+|-------|------------|
+| `getNearbyPlayers(UUID player, double radius)` | Отдаёт UUID игроков в радиусе, или пустой набор |
+| `reload()` | Пересобирает список игроков |
 
 <br></br>
 

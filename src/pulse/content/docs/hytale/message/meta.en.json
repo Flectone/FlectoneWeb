@@ -13,6 +13,7 @@
         "format",
         "greeting",
         "join",
+        "nameplate",
         "quit",
         "rightclick",
         "scoreboard",

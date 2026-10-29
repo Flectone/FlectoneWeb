@@ -226,13 +226,16 @@ if (socialService.isVanished(fPlayer)) return;
 | `getPlayTimesCount()` | Gives the number of records |
 | `saveAfkSession(FPlayer, boolean afk)` | Marks entering or leaving AFK |
 
-`SkinService` gives links to the look of a player
+`SkinService` gives links to the look of a player and stores their skin
 
 | Method | What it gives |
 |--------|---------------|
 | `getSkin(FEntity)` | The skin texture |
 | `getAvatarUrl(FEntity)` | A link to the avatar |
 | `getBodyUrl(FEntity)` | A link to the body image |
+| `updateProfileProperty(FPlayer)` | Reads the player's skin again, stores it and updates the name in the tab list |
+| `updateProfileProperty(FPlayer, boolean)` | The same, but updating the name in the tab list can be turned off |
+| `invalidateProfileProperty(UUID)` | Drops the stored skin, it will be read again on the next use |
 
 <br></br>
 

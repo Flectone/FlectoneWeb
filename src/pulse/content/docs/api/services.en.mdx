@@ -56,6 +56,7 @@ Every component lives as a single instance, so a repeated `get()` gives the same
 | `ExternalModerationService` | The punishments other punishment plugins report |
 | `PlaytimeService` | Played time and AFK sessions |
 | `SkinService` | Skins, avatars and body images |
+| `NearbyService` | Finding nearby players |
 | `TranslationService` | Loading of the platform translations |
 | `MetricsService` | Collecting and sending statistics |
 
@@ -89,6 +90,24 @@ Optional<Moderation> mute = moderationService.getValid(fPlayer, Moderation.Type.
 | Cache | `invalidate` |
 
 The punishment types in `Moderation.Type` are `BAN`, `MUTE`, `WARN`, `KICK`, `WHITELIST`, `MAINTENANCE` and their paired liftings `UNBAN`, `UNMUTE`, `UNWARN`, `UNWHITELIST`, `UNMAINTENANCE`
+
+### NearbyService
+
+Quickly finds players near another player, without going through every player on the server
+
+```java
+import net.flectone.pulse.service.NearbyService;
+
+NearbyService nearbyService = flectonePulse.get(NearbyService.class);
+
+// players within 30 blocks
+Set<UUID> nearbyPlayers = nearbyService.getNearbyPlayers(fPlayer.uuid(), 30);
+```
+
+| Method | What it does |
+|--------|--------------|
+| `getNearbyPlayers(UUID player, double radius)` | Gives the UUIDs of players within the radius, or an empty set |
+| `reload()` | Rebuilds the list of players |
 
 <br></br>
 

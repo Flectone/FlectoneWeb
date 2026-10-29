@@ -858,6 +858,10 @@ message:
       newbie:
         format_restrict: "<color:#ff7171>🔒 Ты не можешь общаться, потому что мало играл на сервере (<time_left> осталось)"
 #endregion newbie
+#region spam
+      spam:
+        format_restrict: "<color:#ff7171>🔒 Ты не можешь общаться, потому что часто спамил (<time_left> осталось)"
+#endregion spam
 #region swear
       swear:
         symbol: "❤"
@@ -893,6 +897,12 @@ message:
     format: "<color:#4eff52>→ <display_name>"
     format_first_time: "<color:#4eff52>→ <display_name> <fcolor:1>впервые тут!"
 #endregion join
+#region nameplate
+  nameplate:
+    values:
+      - "<display_name>"
+      - "<fcolor:2><replacement:ping> <fcolor:1>мс"
+#endregion nameplate
 #region quit
   quit:
     format: "<color:#ff4e4e>← <display_name>"
