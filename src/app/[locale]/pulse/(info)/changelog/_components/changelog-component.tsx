@@ -4,7 +4,7 @@ import { type ReactNode, useEffect, useState } from "react"
 import Image from "next/image"
 import { Wrench, Package, Zap, Bug, Download, ChevronUp } from "lucide-react"
 import { useTranslations, useLocale } from "next-intl"
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "motion/react"
 import { useIsStuck } from "@/hooks/use-is-stuck"
 import { Link } from "@/i18n/navigation"
 
