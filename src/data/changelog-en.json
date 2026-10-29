@@ -1,5 +1,67 @@
 [
   {
+    "version": "1.15.0",
+    "date": "2026-10-29",
+    "authors": ["TheFaser"],
+    "warning": "Java 21 or higher is now required on every platform",
+    "features": [
+      "Added support for `Sponge` (from 1.21.10)",
+      "Added support for multiple Minecraft versions for Fabric (from 1.14.4) and NeoForge (from 1.21.1)",
+      "Added the nameplate module, which shows permanent text above the player's head. When updating from older versions it will be disabled",
+      "Added the spam module, which restricts players for messages that are too frequent or identical",
+      "Added the `HEAD_TEXT` `destination`, now any message can be shown above the sender's head",
+      "Added `NearbyService` to the API for quickly finding nearby players",
+      "Added methods to `SkinService` in the API for updating and resetting the stored skin"
+    ],
+    "refactors": [
+      "`TEXT_SCREEN` has been replaced with `HEAD_TEXT`",
+      "The bubble module has been rewritten to a universal head text system with permanent lines, all display settings are now in `destination`",
+      "In the API, `TextScreenRender` has been replaced with `HeadTextRender`",
+      "Adventure API updated to 5.x",
+      "PacketEvents has been removed, now only [PacketEventsModern](https://github.com/Flectone/PacketEventsModern) is used",
+      "The cloud implementations for Bukkit, Paper, Fabric and NeoForge have been replaced with our own",
+      "Improved permission checking on platforms",
+      "The player's skin is now updated when joining the server and through the proxy, and is also sent to the proxy"
+    ],
+    "fixes": [
+      "Fixed violation counting in the moderation modules, now identical messages are counted too, even if they are taken from the cache",
+      "Fixed the module status check in playerlistname",
+      "Added a team creation delay for scoreboard in Hytale",
+      "Fixed time formatting in geolocate",
+      "Improved the nickname change message",
+      "Fixed command and chat message handling in Minecraft",
+      "Fixed compatibility with Minecraft 1.17 and 1.19.3",
+      "Fixed the action bar message color",
+      "Added the missing `/` in command names",
+      "Fixed detection of the `overlay` message type",
+      "Fixed AFK status synchronization between threads",
+      "Improved message caching in the delete module and added their normalization",
+      "Fixed the author of forwarded messages in Discord",
+      "Fixed a typo in the `nessage_quit` permission of the chatsetting module, it is now called `message_quit`",
+      "On Bukkit, FlectonePulse now loads after Essentials",
+      "Fixed publishing the API to Maven Central, now the relocated Adventure and sources without Lombok are uploaded there"
+    ],
+    "dependencies": [
+      "Hytale Server updated to 0.7.2",
+      "Gradle updated to v9.8.2",
+      "Fabric Loom updated to v1.18.4",
+      "Fabric Loader updated to v0.20.1",
+      "Lettuce Core updated to v7.9.0.RELEASE",
+      "Lombok updated to v9.8.2",
+      "Caffeine updated to v3.3.1",
+      "Velocity API updated to v4.3.1",
+      "Jackson Dataformat YAML updated to v3.2.4",
+      "MariaDB Java Client updated to v4.0.0",
+      "VoiceChat API updated to v2.6.27",
+      "ICU4J updated to v79.1",
+      "Gson updated to v2.15.0",
+      "MineSkin Client updated to v3.2.7",
+      "Adventure API updated to v5.2.0",
+      "PacketEventsModern updated to v2.14.2",
+      "Added MixinExtras v0.4.1 and SLF4J API v2.0.17"
+    ]
+  },
+  {
     "version": "1.14.1",
     "date": "2026-10-12",
     "authors": ["TheFaser"],
