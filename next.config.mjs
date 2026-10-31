@@ -5,6 +5,20 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts")
 
 /** @type {import('next').NextConfig} */
 const config = {
+  async redirects() {
+    return [
+      {
+        source: "/pulse/docs/changelog",
+        destination: "/pulse/changelog",
+        permanent: true,
+      },
+      {
+        source: "/:locale(en|ru)/pulse/docs/changelog",
+        destination: "/:locale/pulse/changelog",
+        permanent: true,
+      },
+    ]
+  },
   async rewrites() {
     return [
       {

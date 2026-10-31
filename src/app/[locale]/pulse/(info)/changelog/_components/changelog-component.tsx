@@ -182,6 +182,8 @@ export function Version({
     }
   }
 
+
+
   return (
     <section
       className={`${className} group rounded-tl-md border-l-2 pb-8 transition hover:border-l-primary`}
@@ -193,6 +195,11 @@ export function Version({
         setIsOpen(false)
       }}
     >
+      <span
+        id={`${t("version").toLowerCase()}-${v.replaceAll(".", "")}`}
+        aria-hidden
+        className="block scroll-mt-20"
+      />
       <div className="relative flex shrink-0 flex-col gap-4">
         <div
           ref={headerRef}
