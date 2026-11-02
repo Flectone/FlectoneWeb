@@ -9,6 +9,7 @@ import { translations } from "@/lib/layout.shared"
 import { i18nProvider } from "fumadocs-ui/i18n"
 import SearchComponent from "@/components/features/search-component"
 import { TooltipProvider } from "@/components/ui/tooltip"
+import NextTopLoader from "nextjs-toploader"
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -46,7 +47,15 @@ export default async function RootLayout({
               }}
               i18n={i18nProvider(translations, locale)}
             >
-              <TooltipProvider>{children}</TooltipProvider>
+              <TooltipProvider>
+                <NextTopLoader
+                  color="var(--primary)"
+                  shadow={false}
+                  height={2}
+                  showSpinner={false}
+                />
+                {children}
+              </TooltipProvider>
             </RootProvider>
           </ThemeProvider>
         </NextIntlClientProvider>

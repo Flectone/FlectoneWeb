@@ -36,29 +36,13 @@ Format of the message above the head
 
 <include>../../../../parts/enable.en.mdx</include>
 
-### `visible_to_self`
-
-Whether the message sender will see their own message above their head
-
 ### `disallowed_input`
 
 A [regular expression](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) to prevent showing messages. For example, `disallowed_input: "^!.*"` will block messages that start with the `!` character
 
-### `max_count`
-
-Maximum number of overhead messages simultaneously
-
 ### `max_length`
 
 Maximum length of a single overhead message. If the text is longer, it will be split into several
-
-### `elevation`
-
-How high above the head the message will be
-
-### `distance`
-
-How far away a player's overhead message can be seen
 
 ### `read_speed`
 
@@ -66,7 +50,7 @@ Reading speed in words per minute
 
 ### `handicap_chars`
 
-Extra time for short messages
+Additional time for short messages
 
 ### `hint_buffer_length`
 
@@ -74,74 +58,13 @@ Buffer length that determines how many characters to check before and after the 
 
 ### `word_break_hint`
 
+<Callout type="warn" title="Warning">
+  Overhead messages only work with `type: "HEAD_TEXT"`. If `life_time: 0`, the message duration is calculated using the formula above, and the number of overhead messages at the same time is set via `max_count`
+</Callout>
+
 A hint symbol placed when a word is broken into two lines
 
-### `interaction`
-
-Allows changing the distance between messages from each other, otherwise the legacy `area effect cloud` is used
-
-<Callout type="warn" title="Warning">
-    This will only be used for servers with version `1.21.3` and higher
-</Callout>
-
-<Accordions>
-    <Accordion title="Setting">
-        ##### `enable`
-
-        Enables functionality
-
-        ##### `height`
-
-        The distance between each message from one another
-    </Accordion>
-</Accordions>
-
-### `modern`
-
-Overhead messages via Text Display
-
-<Callout type="warn" title="Warning">
-    This will only be used for servers with version `1.19.4` and higher
-</Callout>
-
-<Accordions>
-    <Accordion title="Setting">
-        ##### `enable`
-
-        Enables functionality
-
-        ##### `has_shadow`
-
-        Enables text shadow
-
-        ##### `animation_time`
-
-        Time in ticks (20 ticks = 1 second) for the message appearance and disappearance animation. If 0 or less, there will be no animation
-
-        ##### `see_through`
-
-        Enables text transparency against water and clouds (so it cannot be seen through water)
-
-        ##### `scale`
-
-        How large the message will be
-
-        ##### `background`
-
-        Background color of the message, it has transparency i.e. an alpha channel. [Website for color selection](https://rgbacolorpicker.com/color-wheel-picker)
-
-        ##### `billboard`
-
-        | Type           | Explanation                                               |
-        |----------------|-----------------------------------------------------------|
-        | `FIXED`        | Position does not change                                  |
-        | `VERTICAL`     | Position changes relative to the vertical axis            |
-        | `HORIZONTAL`   | Position changes relative to the horizontal axis          |
-        | `CENTER`       | Position changes relative to horizontal and vertical axes |
-    </Accordion>
-</Accordions>
-
-<include>../../../../parts/ticker.en.mdx</include>
+<include>../../../../parts/destination.en.mdx</include>
 
 <br></br>
 

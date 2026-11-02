@@ -1,0 +1,52 @@
+---
+title: Nameplate
+description: Module responsible for the permanent text above the player's head
+authors:
+  - TheFaser
+tag: "hytale"
+---
+![nameplate](/pulse/hytale/message_nameplate.webp)
+
+<Callout type="info" title="Information">
+    The lines are always shown above the head and are updated via `ticker`, so `life_time` will always be `-1`, and `max_count` is always equal to the number of lines in `values`
+</Callout>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.nameplate`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../files/hytale/localizations/en_us.yml#nameplate</include></Tab>
+    <Tab value="ru_ru"><include>../../../../files/hytale/localizations/ru_ru.yml#nameplate</include></Tab>
+</Tabs>
+
+### `values`
+
+Lines above the player's head, the first line will be the topmost
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `message.yml → nameplate`</span>
+
+<include>../../../../files/hytale/message.yml#nameplate</include>
+
+<include>../../../../parts/enable.en.mdx</include>
+
+<Callout type="warn" title="Warning">
+  The nameplate only works with `type: "HEAD_TEXT"`
+</Callout>
+
+<include>../../../../parts/hytale/destination.en.mdx</include>
+
+<include>../../../../parts/ticker.en.mdx</include>
+
+<br></br>
+
+# <include>../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../parts/words.en.mdx#path</include> `permission.yml → message.nameplate`</span>
+
+<include>../../../../files/hytale/permission.yml#nameplate</include>
+
+<include>../../../../parts/permission/permissionTier3.en.mdx</include>

@@ -13,6 +13,7 @@
         "format",
         "greeting",
         "join",
+        "nameplate",
         "quit",
         "rightclick",
         "scoreboard",
@@ -21,6 +22,7 @@
         "sign",
         "status",
         "tab",
+        "translate",
         "update",
         "vanilla"
     ],

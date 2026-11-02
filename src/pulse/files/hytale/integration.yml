@@ -170,6 +170,7 @@ simplevoice:
 #region skinsrestorer
 skinsrestorer:
   enable: true
+  load_profile_property: true
   load_mojang_skin: false
 #endregion skinsrestorer
 #region supervanish

@@ -6,6 +6,7 @@
 |---------------|----------------------------------------------|-----------------------------------|
 | `ACTION_BAR`  | Сообщение над инвентарём игрока              | Да                                |
 | `CHAT`        | Сообщение в чат                              | Нет                               |
+| `HEAD_TEXT`   | Сообщение над головой игрока                 | Да                                |
 | `TITLE`       | Сообщение на весь экран                      | Да                                |
 | `SUBTITLE`    | Сообщение на весь экран (верхняя строчка)     | Да                                |
 | `TOAST`       | Сообщение в правом нижнем углу (уведомления) | Да                                |
@@ -43,6 +44,95 @@
                     | Поле       | Объяснение                            |
                     |------------|--------------------------------------|
                     | `stay`     | Время в тиках на удержание сообщения |
+                </Accordion>
+            </Accordions>
+
+            <Accordions>
+                <Accordion title={<code>HEAD_TEXT</code>}>
+                    ![head text](/pulse/hytale/destination_head_text.webp)
+
+                    <Callout type='info' title="Информация">
+                        Текст появляется над головой отправителя, поэтому работает только для сообщений от игрока
+                    </Callout>
+
+                    ```yaml
+                    destination:
+                      type: "HEAD_TEXT"
+                      visible_to_self: true
+                      hide_when_sneaking: false
+                      filter_ignores: false
+                      movable: true
+                      row: 0
+                      max_count: 1
+                      distance: 30.0
+                      life_time: 0
+                      modern:
+                        enable: true
+                        has_shadow: true
+                        see_through: false
+                        disable_see_through_when_sneaking: true
+                        background: "#00000040"
+                        animation_time: 5
+                        offset_x: 0.0
+                        offset_y: 1.8
+                        offset_z: 0.0
+                        scale: 1.0
+                        scale_with_player: false
+                        space: 0.25
+                        billboard: "CENTER"
+                    ```
+
+                    `visible_to_self`
+
+                    Не поддерживается в Hytale
+
+                    `hide_when_sneaking`
+
+                    Будет ли текст скрываться, когда игрок присел
+
+                    `filter_ignores`
+
+                    Не поддерживается в Hytale
+
+                    `movable`
+
+                    Можно ли сдвигать текст. Если `true`, то каждый новый текст поднимает старые выше. Если `false`, то текст всегда остаётся на своей строке `row` и просто обновляется
+
+                    `row`
+
+                    Строка над головой, с которой начинается текст. `0` – самая нижняя строка
+
+                    `max_count`
+
+                    Максимальное количество текстов от одного модуля над головой одновременно
+
+                    `distance`
+
+                    Не поддерживается в Hytale
+
+                    `life_time`
+
+                    Время в тиках (20 тиков = 1 секунда), сколько будет показываться текст. Если будет `0`, то время рассчитывается автоматически, а если `-1`, то текст будет показываться всегда
+
+                    `modern`
+
+                    Дополнительные настройки отображения текста
+
+                    | Поле | Объяснение |
+                    |------|------------|
+                    | `enable` | Включает работоспособность |
+                    | `has_shadow` | Не поддерживается в Hytale |
+                    | `see_through` | Не поддерживается в Hytale |
+                    | `disable_see_through_when_sneaking` | Не поддерживается в Hytale |
+                    | `background` | Не поддерживается в Hytale |
+                    | `animation_time` | Не поддерживается в Hytale |
+                    | `offset_x` | Смещение по координате X относительно головы игрока |
+                    | `offset_y` | Смещение по координате Y (вверх +, вниз -) относительно головы игрока |
+                    | `offset_z` | Смещение по координате Z относительно головы игрока |
+                    | `scale` | Не поддерживается в Hytale |
+                    | `scale_with_player` | Не поддерживается в Hytale |
+                    | `space` | Расстояние между строками |
+                    | `billboard` | Не поддерживается в Hytale |
                 </Accordion>
             </Accordions>
 

@@ -1,0 +1,60 @@
+---
+title: Spam
+description: This formatting restricts players who spam messages
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+![spam](/pulse/message_format_moderation_spam.webp)
+
+<br></br>
+
+# <include>../../../../../../parts/words.en.mdx#localization</include>
+<span><include>../../../../../../parts/words.en.mdx#path</include> `localizations → language.yml → message.format.moderation.spam`</span>
+
+<Tabs items={['en_us', 'ru_ru']}>
+    <Tab value="en_us"><include>../../../../../../files/minecraft/localizations/en_us.yml#spam</include></Tab>
+    <Tab value="ru_ru"><include>../../../../../../files/minecraft/localizations/ru_ru.yml#spam</include></Tab>
+</Tabs>
+
+### `format_restrict`
+
+Message if the player spammed too often
+
+<br></br>
+
+# <include>../../../../../../parts/words.en.mdx#setting</include>
+<include>../../../../../../parts/words.en.mdx#path</include> `message.yml → format.moderation.spam`
+
+<include>../../../../../../files/minecraft/message.yml#spam</include>
+
+<include>../../../../../../parts/enable.en.mdx</include>
+
+### `same_message`
+
+Whether only identical messages are considered spam. If `false`, any message sent too often will be considered spam
+
+### `violation_limit`
+
+How many times in a row a player must spam to receive a chat restriction
+
+### `violation_reset_time`
+
+How long each violation will be valid in ticks (20 ticks = 1 second)
+
+### `interval`
+
+The minimum time between messages in ticks (20 ticks = 1 second). If the player sends a message faster, it will be a violation
+
+<br></br>
+
+# <include>../../../../../../parts/words.en.mdx#permission</include>
+<include>../../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.moderation.spam`
+
+<include>../../../../../../files/minecraft/permission.yml#spam</include>
+
+<include>../../../../../../parts/permission/permissionTier3.en.mdx</include>
+
+### `bypass`
+
+Permission to bypass this formatting

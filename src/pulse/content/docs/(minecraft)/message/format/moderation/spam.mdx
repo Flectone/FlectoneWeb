@@ -1,0 +1,60 @@
+---
+title: Спам
+description: Это форматирование ограничивает игроков, которые спамят сообщениями
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+![spam](/pulse/message_format_moderation_spam.webp)
+
+<br></br>
+
+# <include>../../../../../../parts/words.mdx#localization</include>
+<span><include>../../../../../../parts/words.mdx#path</include> `localizations → язык.yml → message.format.moderation.spam`</span>
+
+<Tabs items={['ru_ru', 'en_us']}>
+    <Tab value="ru_ru"><include>../../../../../../files/minecraft/localizations/ru_ru.yml#spam</include></Tab>
+    <Tab value="en_us"><include>../../../../../../files/minecraft/localizations/en_us.yml#spam</include></Tab>
+</Tabs>
+
+### `format_restrict`
+
+Сообщение, если игрок слишком часто спамил
+
+<br></br>
+
+# <include>../../../../../../parts/words.mdx#setting</include>  
+<include>../../../../../../parts/words.mdx#path</include> `message.yml → format.moderation.spam`  
+
+<include>../../../../../../files/minecraft/message.yml#spam</include>
+
+<include>../../../../../../parts/enable.mdx</include>  
+
+### `same_message`
+
+Считать ли спамом только одинаковые сообщения. Если `false`, то спамом будет считаться любое сообщение, отправленное слишком часто
+
+### `violation_limit`
+
+Сколько раз подряд игрок должен спамить, чтобы получить ограничение на чат
+
+### `violation_reset_time`
+
+Сколько времени будет действительно каждое нарушение в тиках (20 тиков = 1 секунда)
+
+### `interval`
+
+Минимальное время между сообщениями в тиках (20 тиков = 1 секунда). Если игрок отправит сообщение быстрее, то это будет нарушением
+
+<br></br>
+
+# <include>../../../../../../parts/words.mdx#permission</include>   
+<include>../../../../../../parts/words.mdx#path</include> `permission.yml → message.format.moderation.spam`
+ 
+<include>../../../../../../files/minecraft/permission.yml#spam</include>
+
+<include>../../../../../../parts/permission/permissionTier3.mdx</include>  
+
+### `bypass`
+
+Право на обход данного форматирования

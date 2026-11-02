@@ -31,10 +31,6 @@ export function Authors({ ids }: { ids: string[] }) {
               src={`https://github.com/${username}.png?size=64`}
               alt={username}
               className="h-8 w-8 rounded-full border border-border transition-colors"
-              onError={(e) => {
-                ;(e.currentTarget as HTMLImageElement).src =
-                  `https://ui-avatars.com/api/?name=${username}&background=random`
-              }}
             />
             <span className="text-sm text-foreground transition-colors group-hover:text-muted-foreground">
               {username}

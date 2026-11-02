@@ -189,7 +189,7 @@ command:
         name: "flectonepulse.module.command.chatsetting.message_join"
         type: "TRUE"
       MESSAGE_QUIT:
-        name: "flectonepulse.module.command.chatsetting.nessage_quit"
+        name: "flectonepulse.module.command.chatsetting.message_quit"
         type: "TRUE"
       SLEEP:
         name: "flectonepulse.module.command.chatsetting.sleep"
@@ -1074,6 +1074,14 @@ message:
           name: "flectonepulse.module.message.format.moderation.flood.bypass"
           type: "OP"
 #endregion flood
+#region spam
+      spam:
+        name: "flectonepulse.module.message.format.moderation.spam"
+        type: "TRUE"
+        bypass:
+          name: "flectonepulse.module.message.format.moderation.spam.bypass"
+          type: "OP"
+#endregion spam
 #region swear
       swear:
         name: "flectonepulse.module.message.format.moderation.swear"
@@ -1271,6 +1279,11 @@ message:
       name: "flectonepulse.module.message.join.sound"
       type: "TRUE"
 #endregion join
+#region nameplate
+  nameplate:
+    name: "flectonepulse.module.message.nameplate"
+    type: "TRUE"
+#endregion nameplate
 #region quit
   quit:
     name: "flectonepulse.module.message.quit"

@@ -36,33 +36,13 @@ Format of the message above the head
 
 <include>../../../../parts/enable.en.mdx</include>
 
-### `visible_to_self`
-
-<Callout type="error" title="Attention">
-    Not supported in Hytale
-</Callout>
-
 ### `disallowed_input`
 
 A [regular expression](https://javarush.com/groups/posts/regulyarnye-vyrazheniya-v-java) to prevent showing messages. For example, `disallowed_input: "^!.*"` will block messages that start with the `!` character
 
-### `max_count`
-
-Maximum number of overhead messages simultaneously
-
 ### `max_length`
 
 Maximum length of a single overhead message. If the text is longer, it will be split into several
-
-### `elevation`
-
-How high above the head the message will be
-
-### `distance`
-
-<Callout type="error" title="Attention">
-    Not supported in Hytale
-</Callout>
 
 ### `read_speed`
 
@@ -70,7 +50,7 @@ Reading speed in words per minute
 
 ### `handicap_chars`
 
-Extra time for short messages
+Additional time for short messages
 
 ### `hint_buffer_length`
 
@@ -78,31 +58,13 @@ Buffer length that determines how many characters to check before and after the 
 
 ### `word_break_hint`
 
-A hint symbol placed when a word is broken into two lines
-
-### `interaction`
-
-Allows changing the distance between messages from each other
-
-<Accordions>
-    <Accordion title="Setting">
-        ##### `enable`
-
-        Enables functionality
-
-        ##### `height`
-
-        The distance between each message from one another
-    </Accordion>
-</Accordions>
-
-### `modern`
-
-<Callout type="error" title="Внимание">
-    Не поддерживается в Hytale
+<Callout type="warn" title="Warning">
+  Overhead messages only work with `type: "HEAD_TEXT"`. If `life_time: 0`, the message duration is calculated using the formula above, and the number of overhead messages at the same time is set via `max_count`
 </Callout>
 
-<include>../../../../parts/ticker.en.mdx</include>
+A hint symbol placed when a word is broken into two lines
+
+<include>../../../../parts/hytale/destination.en.mdx</include>
 
 <br></br>
 
