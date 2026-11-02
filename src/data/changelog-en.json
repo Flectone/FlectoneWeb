@@ -1,7 +1,7 @@
 [
   {
     "version": "1.15.0",
-    "date": "2026-10-29",
+    "date": "2026-11-02",
     "authors": ["TheFaser"],
     "warning": "Java 21 or higher is now required on every platform",
     "features": [
