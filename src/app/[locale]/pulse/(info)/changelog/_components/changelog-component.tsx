@@ -182,8 +182,6 @@ export function Version({
     }
   }
 
-
-
   return (
     <section
       className={`${className} group rounded-tl-md border-l-2 pb-8 transition hover:border-l-primary`}
@@ -271,10 +269,6 @@ export function Version({
                   src={`https://github.com/${username}.png?size=40`}
                   alt={username}
                   className="rounded-full"
-                  onError={(e) => {
-                    ;(e.currentTarget as HTMLImageElement).src =
-                      `https://ui-avatars.com/api/?name=${encodeURIComponent(username)}&background=random`
-                  }}
                 />
                 <span>{username}</span>
               </a>
