@@ -12,24 +12,26 @@ export default async function Layout({
 }) {
   const { locale } = await params
   return (
-    <DocsLayout
-      tree={source.getPageTree(locale)}
-      {...baseOptions(locale)}
-      sidebar={{
-        tabs: {
-          transform: (option, node) => ({
-            ...option,
-            title: <span className="text-fd-foreground">{node.name}</span>,
-            icon: (
-              <div className="text-fd-primary [&_svg]:size-full">
-                {node.icon}
-              </div>
-            ),
-          }),
-        },
-      }}
-    >
-      {children}
-    </DocsLayout>
+    <div className="**:data-sidebar-placeholder:z-0!">
+      <DocsLayout
+        tree={source.getPageTree(locale)}
+        {...baseOptions(locale)}
+        sidebar={{
+          tabs: {
+            transform: (option, node) => ({
+              ...option,
+              title: <span className="text-fd-foreground">{node.name}</span>,
+              icon: (
+                <div className="text-fd-primary [&_svg]:size-full">
+                  {node.icon}
+                </div>
+              ),
+            }),
+          },
+        }}
+      >
+        {children}
+      </DocsLayout>
+    </div>
   )
 }
