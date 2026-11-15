@@ -1,0 +1,53 @@
+---
+title: Унификация
+description: Модуль, который перехватывает текст от сервера и форматирует его как сообщения FlectonePulse
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+
+<Callout type="info" title="Информация">
+    Модуль перехватывает текст, который сервер отправляет клиенту, и прогоняет его через форматирование FlectonePulse. Это любой текст из Minecraft: чат, action bar, title, boss bar, ТАБ, скорборд, имена сущностей, достижения и названия инвентарей. Включай только те типы, которые действительно нужно форматировать, иначе это может повлиять на другие сообщения и элементы интерфейса
+</Callout>
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#setting</include>
+<span><include>../../../../../parts/words.mdx#path</include> `message.yml → format.uniform`</span>
+
+<include>../../../../../files/minecraft/message.yml#uniform</include>
+
+<include>../../../../../parts/enable.mdx</include>
+
+### `types`
+
+Список типов текста, которые FlectonePulse будет дополнительно форматировать. Выключенный тип остаётся в том виде, в котором его отправил сервер или другой плагин
+
+| Тип                | Что форматирует                                    |
+|--------------------|----------------------------------------------------|
+| `action_bar`       | Сообщения над хотбаром                             |
+| `advancement`      | Названия и описания достижений                     |
+| `boss_bar`         | Название полосы босса                              |
+| `entity_name`      | Имена сущностей                                    |
+| `inventory_title`  | Название открытого инвентаря                       |
+| `player_chat`      | Сообщения чата                                     |
+| `playerlistname`   | Имена игроков в списке                             |
+| `scoreboard`       | Названия и значения скорборда                      |
+| `system_chat`      | Системные сообщения                                |
+| `tab_footer`       | Низ списка игроков                                 |
+| `tab_header`       | Верх списка игроков                                |
+| `team`             | Название, префикс и суффикс команды                |
+| `title`            | Заголовок и подзаголовок                           |
+
+<Callout type="idea" title="Примечание">
+    Сообщения, которые уже отформатировал FlectonePulse, повторно не обрабатываются, поэтому свои сообщения не будут затронуты
+</Callout>
+
+<br></br>
+
+# <include>../../../../../parts/words.mdx#permission</include>
+<span><include>../../../../../parts/words.mdx#path</include> `permission.yml → message.format.uniform`</span>
+
+<include>../../../../../files/minecraft/permission.yml#uniform</include>
+
+<include>../../../../../parts/permission/permissionTier3.mdx</include>

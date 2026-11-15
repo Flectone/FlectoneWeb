@@ -10,7 +10,7 @@
 #
 #region version
 server: "00000000-0000-0000-0000-000000000000"
-version: "1.15.0"
+version: "1.15.1"
 #endregion version
 #region language
 language:
@@ -116,6 +116,12 @@ cache:
       duration: 1
       time_unit: "MINUTES"
       size: 100000
+    ARGUMENT:
+      invalidate_on_reload: true
+      expire_after_write: false
+      duration: 10
+      time_unit: "MINUTES"
+      size: 4096
     COOLDOWN:
       invalidate_on_reload: false
       expire_after_write: false
@@ -138,6 +144,12 @@ cache:
       invalidate_on_reload: true
       expire_after_write: true
       duration: 1
+      time_unit: "SECONDS"
+      size: 10000
+    UNIFORM_MESSAGE:
+      invalidate_on_reload: true
+      expire_after_write: true
+      duration: 10
       time_unit: "SECONDS"
       size: 10000
     MODERATION:

@@ -40,6 +40,10 @@ The message displayed after the name above the head
 
 <include>../../../../../parts/enable.en.mdx</include>
 
+### `refresh`
+
+Internal cache reset interval in ticks. FlectonePulse caches the scoreboard data already sent so it does not rebuild it every tick. When the cache resets, the data is rebuilt and sent to players if it changed. The default is `600` ticks (30 seconds), a value of `0` or a negative value (for example `-1`) disables forced cache resets
+
 ### `name_visible`
 
 Enables the display of the name above the player

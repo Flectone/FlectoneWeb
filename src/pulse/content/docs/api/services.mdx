@@ -276,6 +276,7 @@ taskScheduler.runAsyncTimer(() -> updateStatistics(), 600L);
 | `runAsyncTimer(SchedulerRunnable, long period)` | Выполняет асинхронно по расписанию |
 | `runSync(SchedulerRunnable)` | Выполняет задачу синхронно |
 | `runSyncLater(SchedulerRunnable, long delay)` | Выполняет синхронно с задержкой |
+| `getCurrentTick()` | Отдаёт текущий тик сервера |
 | `getExecutorService()` | Отдаёт пул потоков планировщика |
 
 Все методы отдают `CompletableFuture<Void>`. У повторяющихся задач он никогда не завершается сам, поэтому отменяй его, когда задача больше не нужна

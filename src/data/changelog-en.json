@@ -1,5 +1,51 @@
 [
   {
+    "version": "1.15.1",
+    "date": "2026-11-15",
+    "authors": ["TheFaser"],
+    "features": [
+      "Added the `uniform` module, which intercepts text sent by the server to the client and formats it like FlectonePulse messages. Each type can be enabled separately",
+      "Added the `MessageFormattedEvent` to the API, it fires after a message has been rendered and lets you replace the ready component or cancel the display",
+      "Added the `refresh` option to the nameplate, scoreboard, serverlink and tab.playerlistname modules. It sets the internal cache reset interval for sent data. The cache prevents rebuilding and resending the same data every tick, and resetting it lets FlectonePulse pick up changes from other plugins",
+      "Added the `max_length` option to the padding module, it limits the final padding length",
+      "Added the `hasTag(String)` method to `MessageContext` in the API, and a `build(EventMetadata, MessageContext)` overload to `MessagePipeline`"
+    ],
+    "refactors": [
+      "Reworked the message parser: instead of MiniMessage, a custom implementation inspired by QuickMiniMessage is now used. Compared to 1.15.0, in a test with 30 bots and 20 messages/sec, CPU load is now ~50% lower, memory allocation is ~80% lower, and message formatting load is ~90% lower",
+      "Moved the message UUID from `MessageContext` to `EventMetadata`",
+      "`MessageFormattingEvent` now carries `EventMetadata`",
+      "Message modules are split into public interfaces and implementations, which makes them easier to use from the API",
+      "Added caching for tag arguments and simplified the lazy resolvers, so repeated arguments are no longer parsed again",
+      "Player quit now clears nameplate, serverlink, sidebar and scoreboard value data",
+      "Added offline UUID resolution for players in Hytale",
+      "The player skin is now updated once, and the profile and head properties are brought to the current format"
+    ],
+    "fixes": [
+      "Fixed `player_head` on different Minecraft versions, the head properties are now resolved through reflection",
+      "Fixed the bounds when reading the display name and constant indexes",
+      "Fixed placeholder handling in replacement, values are now rendered through tag resolvers",
+      "Replacement now keeps the original text when a replacement fails",
+      "Fixed the padding length cap",
+      "Fixed sidebar removal when a player quits",
+      "Fixed scoreboard objective removal when a player quits",
+      "Fixed the scoreboard value name",
+      "In moderation, duplicate bans and mutes now return early, and ids and pages are parsed through `NumberUtils`",
+      "Fixed the receivers and action shown in spy messages",
+      "The Hytale tick task is now cancelled on disable",
+      "Fixed Fabric placeholder parsing for PlaceholderAPI",
+      "Fixed the head text visibility rule",
+      "Fixed the permission names of the `sprite` command and `auto.announcement`, they used to point to `spy` and `auto.sound`"
+    ],
+    "dependencies": [
+      "Gradle updated to v9.9.1",
+      "Fabric Loom updated to v1.19.4",
+      "Jackson Dataformat YAML updated to v3.3.0",
+      "Jackson Annotations updated to v2.23",
+      "Netty Buffer updated to v4.2.20.Final",
+      "DeepL updated to v1.18.0"
+    ]
+  },
+  {
     "version": "1.15.0",
     "date": "2026-11-02",
     "authors": ["TheFaser"],

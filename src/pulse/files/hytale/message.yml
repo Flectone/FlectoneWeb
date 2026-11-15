@@ -317,6 +317,7 @@ format:
 #region padding
   padding:
     enable: true
+    max_length: 512
     values:
       example_left_5:
         type: "LEFT"
@@ -372,6 +373,24 @@ format:
   translate:
     enable: true
 #endregion translate
+#region uniform
+  uniform:
+    enable: false
+    types:
+      action_bar: false
+      advancement: false
+      boss_bar: false
+      entity_name: false
+      inventory_title: false
+      player_chat: false
+      playerlistname: false
+      scoreboard: false
+      system_chat: false
+      tab_footer: false
+      tab_header: false
+      team: false
+      title: false
+#endregion uniform
 #region world
   world:
     enable: true
@@ -405,6 +424,7 @@ join:
 #region nameplate
 nameplate:
   enable: true
+  refresh: 100
   destination:
     type: "HEAD_TEXT"
     visible_to_self: true
@@ -460,6 +480,7 @@ rightclick:
 #region scoreboard
 scoreboard:
   enable: true
+  refresh: 600
   name_visible: false
   name_distance: -1.0
   player_collisions: true
@@ -490,6 +511,7 @@ scoreboard:
 #region serverlink
 serverlink:
   enable: false
+  refresh: 600
   values:
     example1: "https://flectone.net/pulse"
     example2: "https://boosty.to/thefaser"
@@ -573,6 +595,7 @@ tab:
 #region playerlistname
   playerlistname:
     enable: false
+    refresh: 600
     hide_invisible: false
     hide_spectator: false
     spectator_list_order: false

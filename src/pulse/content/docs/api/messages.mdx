@@ -69,7 +69,7 @@ MessageDispatcher messageDispatcher = flectonePulse.get(MessageDispatcher.class)
 
 # EventMetadata
 
-Описывает, как доставить сообщение. Кому, куда на экране, на какое расстояние, с каким звуком и надо ли дублировать его в Discord или на другие серверы
+Описывает, как доставить сообщение. Кому, куда на экране, на какое расстояние, с каким звуком и надо ли дублировать его в Discord или на другие серверы. Ещё у него есть общий `uuid`, который объединяет все копии одного сообщения
 
 ```java
 import net.flectone.pulse.constant.ModuleName;
@@ -104,6 +104,7 @@ messageDispatcher.dispatch(EventMetadata.builder()
 | Метод | Что задаёт |
 |-------|------------|
 | `messageContext(Function<FPlayer, MessageContext>)` | Строит контекст сообщения для каждого получателя, обязателен |
+| `uuid(UUID)` | Идентификатор, общий для всех копий сообщения. По умолчанию случайный |
 | `filter(FPlayer)` | Отправку только одному игроку |
 | `filter(Collection<FPlayer>)` | Отправку перечисленным игрокам |
 | `filter(Predicate<FPlayer>)` | Произвольное условие |
@@ -275,6 +276,9 @@ public void announce(FPlayer sender, String text) {
     </Step>
     <Step>
         Текст проходит `MessagePipeline` и становится `Component`
+    </Step>
+    <Step>
+        Срабатывает `MessageFormattedEvent`, здесь можно заменить готовый компонент или отменить сообщение
     </Step>
     <Step>
         Срабатывает `MessageSendEvent`, после чего сообщение уходит игроку

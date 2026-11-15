@@ -187,10 +187,10 @@ public Event onProxyMessage(ProxyMessageEvent event) throws IOException {
 
         // pass the message on to the local players
         messageDispatcher.dispatch(EventMetadata.builder()
+                .uuid(event.uuid()) // keep the shared identifier
                 .range(Range.get(Range.Type.SERVER))
                 .messageContext(receiver -> MessageContext.builder()
                         .module(coinModule.name())
-                        .uuid(event.uuid())   // keep the shared identifier
                         .sender(event.sender())
                         .receiver(receiver)
                         .message(coinModule.replaceResult(receiver, percent))
