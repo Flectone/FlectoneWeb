@@ -21,6 +21,10 @@ tag: "minecraft"
 
 ### `types`
 
+<Callout type="warn" title="Important">
+  Enable the `types` options carefully. FlectonePulse formats this text as a message sent by the server, so it applies tags and formatting that are not meant for players. If the selected type can contain player text (for example `player_chat` or `entity_name`), it is better not to enable that option, otherwise a player can influence the formatting
+</Callout>
+
 The list of text types that FlectonePulse will additionally format. A disabled type stays exactly as the server or another plugin sent it
 
 | Type               | What it formats                                     |
