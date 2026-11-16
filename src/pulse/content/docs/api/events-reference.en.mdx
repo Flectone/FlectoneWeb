@@ -48,9 +48,34 @@ Fires while the text turns into a component. The main spot for your own MiniMess
 
 | Field | Type | What it holds |
 |-------|------|---------------|
+| `eventMetadata` | `EventMetadata` | The message metadata, when there was any |
 | `context` | `MessageContext` | Sender, receiver, text, flags and tags |
 
 Details live on the [formatting](/pulse/docs/api/formatting/) page
+
+### `MessageFormattedEvent`
+
+Fires after the text has already become a component. Use it when you need to look at the ready result or replace it without touching the raw text
+
+| Field | Type | What it holds |
+|-------|------|---------------|
+| `eventMetadata` | `EventMetadata` | The message metadata, when there was any |
+| `context` | `MessageContext` | The context the message was rendered with |
+| `component` | `Component` | The ready component |
+
+```java
+@Pulse
+public Event onFormatted(MessageFormattedEvent event) {
+    // replace the ready component, for example add a marker
+    return event.withComponent(event.component().append(Component.text(" [API]")));
+}
+```
+
+<Callout type="warn" title="Warning">
+
+    Cancelling this event replaces the message with an empty component. The event also fires when a ready message is taken from the cache
+
+</Callout>
 
 ### `MessageSendEvent`
 

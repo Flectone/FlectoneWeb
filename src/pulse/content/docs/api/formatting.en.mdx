@@ -6,6 +6,10 @@ icon: Palette
 ---
 `MessageContext` is one message on its way to one player. Inside sit the raw text, the sender, the receiver, a set of MiniMessage tags and the flags that switch formatting stages on and off
 
+<Callout type="info" title="Information">
+    FlectonePulse parses MiniMessage with its own parser inspired by QuickMiniMessage. The tag syntax is unchanged, but if the parser meets something it does not support, the standard MiniMessage processes the message instead
+</Callout>
+
 <span>Package `net.flectone.pulse.model.event.message.context`</span>
 
 | Method | Returns | What it gives |
@@ -13,10 +17,10 @@ icon: Palette
 | `message()` | `String` | The raw text, not rendered yet |
 | `sender()` | `FEntity` | The one who sent the message |
 | `receiver()` | `FPlayer` | The one who will read it |
-| `uuid()` | `UUID` | The shared identifier of every copy of the message |
 | `tagResolver()` | `TagResolver` | Every tag available while rendering |
 | `flags()` | `Map<MessageFlag, Boolean>` | The formatting flags |
 | `isFlag(MessageFlag)` | `boolean` | The flag state with its default value in mind |
+| `hasTag(String)` | `boolean` | Checks whether the raw text uses the given tag |
 | `base()` | `MessageContext` | The base context, when the current one works as a wrapper |
 
 <br></br>
@@ -40,7 +44,6 @@ The context is immutable, so the `with*` and `add*` methods give a copy
 | `withMessage(String)` | Gives a copy with other text |
 | `withSender(FEntity)` | Gives a copy with another sender |
 | `withReceiver(FPlayer)` | Gives a copy with another receiver |
-| `withUuid(UUID)` | Gives a copy with another identifier |
 | `addFlag(MessageFlag, boolean)` | Gives a copy with a changed flag |
 | `addFlags(MessageFlag[], boolean[])` | Gives a copy with several changed flags |
 | `addTagResolver(TagResolver)` | Gives a copy with one more tag on top of the rest |
@@ -155,6 +158,7 @@ It turns the raw text into what the client sees
 | Method | Returns | What it does |
 |--------|---------|--------------|
 | `build(MessageContext)` | `Component` | Renders a component |
+| `build(EventMetadata, MessageContext)` | `Component` | Renders a component and passes the metadata to the formatting events |
 | `parse(MessageContext)` | `String` | Runs a message through the formatting modules and gives back the text they produced, without turning it into a component |
 | `buildStandard(MessageContext)` | `String` | Renders back into MiniMessage text |
 | `buildPlain(MessageContext)` | `String` | Renders text with formatting stripped |
@@ -173,6 +177,18 @@ Component component = messagePipeline.build(MessageContext.builder()
 
 messageSender.sendMessage(receiver, component, false);
 ```
+
+### The rendering result
+
+`MessageFormattedEvent` fires after the text has already become a component. Unlike `MessageFormattingEvent`, it does not let you change the raw text, but it hands you the ready `Component` and lets you replace it or cancel the message entirely
+
+| Field | Type | What it holds |
+|-------|------|---------------|
+| `eventMetadata` | `EventMetadata` | The message metadata, when there was any |
+| `context` | `MessageContext` | The context the message was rendered with |
+| `component` | `Component` | The ready component |
+
+Returning the event with `withCancelled(true)` makes the message empty. Replacing `component` sends the new component further, and for a new message it is also stored in the cache
 
 ### Tags of the built in modules
 

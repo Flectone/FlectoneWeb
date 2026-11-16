@@ -60,6 +60,10 @@ A list of links and their messages that will be displayed. If no localization is
 
 <include>../../../../parts/enable.en.mdx</include>
 
+### `refresh`
+
+Internal cache reset interval in ticks. FlectonePulse caches the links already sent so it does not send them every tick. When the cache resets, the links are rebuilt and sent to the player if they changed. The default is `600` ticks (30 seconds), a value of `0` or a negative value (for example `-1`) disables forced cache resets
+
 ### `values`
 
 A list of link names and their values. The value must be a valid link, otherwise it will not be displayed

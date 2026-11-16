@@ -1,0 +1,57 @@
+---
+title: Uniform
+description: Module that intercepts text sent by the server and formats it like FlectonePulse messages
+authors:
+  - TheFaser
+tag: "minecraft"
+---
+
+<Callout type="info" title="Information">
+    The module intercepts text that the server sends to the client and runs it through FlectonePulse formatting. This is all Minecraft text messages: chat, action bar, title, boss bar, TAB, scoreboard, entity names, advancements and inventory titles. Enable only the types that actually need formatting, otherwise this may affect other messages and interface elements
+</Callout>
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#setting</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `message.yml → format.uniform`</span>
+
+<include>../../../../../files/minecraft/message.yml#uniform</include>
+
+<include>../../../../../parts/enable.en.mdx</include>
+
+### `types`
+
+<Callout type="warn" title="Important">
+  Enable the `types` options carefully. FlectonePulse formats this text as a message sent by the server, so it applies tags and formatting that are not meant for players. If the selected type can contain player text (for example `player_chat` or `entity_name`), it is better not to enable that option, otherwise a player can influence the formatting
+</Callout>
+
+The list of text types that FlectonePulse will additionally format. A disabled type stays exactly as the server or another plugin sent it
+
+| Type               | What it formats                                     |
+|--------------------|-----------------------------------------------------|
+| `action_bar`       | Messages above the hotbar                           |
+| `advancement`      | Advancement titles and descriptions                 |
+| `boss_bar`         | The boss bar title                                  |
+| `entity_name`      | Entity names                                        |
+| `inventory_title`  | The title of an opened inventory                    |
+| `player_chat`      | Chat messages                                       |
+| `playerlistname`   | Player names in the list                            |
+| `scoreboard`       | Scoreboard titles and values                        |
+| `system_chat`      | System messages                                     |
+| `tab_footer`       | The bottom of the player list                       |
+| `tab_header`       | The top of the player list                          |
+| `team`             | Team name, prefix and suffix                        |
+| `title`            | Title and subtitle                                  |
+
+<Callout type="idea" title="Note">
+    Messages that FlectonePulse has already formatted are not processed again, so its own messages are left untouched
+</Callout>
+
+<br></br>
+
+# <include>../../../../../parts/words.en.mdx#permission</include>
+<span><include>../../../../../parts/words.en.mdx#path</include> `permission.yml → message.format.uniform`</span>
+
+<include>../../../../../files/minecraft/permission.yml#uniform</include>
+
+<include>../../../../../parts/permission/permissionTier3.en.mdx</include>

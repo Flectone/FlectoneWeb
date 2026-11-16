@@ -1,6 +1,7 @@
 "use client"
 import React, { useEffect, useRef } from "react"
 import { Renderer, Program, Mesh, Triangle } from "ogl"
+import { canUseWebGL } from "@/lib/webgl"
 
 export type GradientWavesDetail = "low" | "medium" | "high"
 
@@ -188,20 +189,56 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const enableMouseRef = useRef<boolean>(mouseInteraction)
+  const fallbackRef = useRef({
+    horizonColor,
+    waveColor,
+    crestColor,
+    opacity,
+  })
+
+  useEffect(() => {
+    fallbackRef.current = { horizonColor, waveColor, crestColor, opacity }
+  }, [horizonColor, waveColor, crestColor, opacity])
 
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
 
-    const renderer = new Renderer({
-      webgl: 2,
-      alpha: true,
-      premultipliedAlpha: true,
-      antialias: false,
-      dpr: Math.min(window.devicePixelRatio || 1, 2),
-    })
+    container.style.background = ""
+    container.style.opacity = ""
+
+    const showFallback = () => {
+      const fallback = fallbackRef.current
+
+      container.style.background = `radial-gradient(120% 100% at 50% 110%, ${fallback.crestColor} 0%, ${fallback.waveColor} 35%, ${fallback.horizonColor} 70%, transparent 100%)`
+      container.style.opacity = `${Math.min(1, Math.max(0.2, fallback.opacity * 0.7))}`
+    }
+
+    if (!canUseWebGL()) {
+      showFallback()
+      return
+    }
+
+    let renderer: InstanceType<typeof Renderer>
+    try {
+      renderer = new Renderer({
+        webgl: 2,
+        alpha: true,
+        premultipliedAlpha: true,
+        antialias: false,
+        dpr: Math.min(window.devicePixelRatio || 1, 2),
+      })
+    } catch {
+      showFallback()
+      return
+    }
 
     const gl = renderer.gl
+    if (!gl) {
+      showFallback()
+      return
+    }
+
     gl.clearColor(0, 0, 0, 0)
     const canvas = gl.canvas as HTMLCanvasElement
     canvas.style.width = "100%"
@@ -243,16 +280,25 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
     const mesh = new Mesh(gl, { geometry, program })
     ctxMap.set(container, { renderer, program, mesh })
 
+    let broken = false
+
     const setSize = () => {
-      const rect = container.getBoundingClientRect()
-      const w = Math.max(1, Math.floor(rect.width))
-      const h = Math.max(1, Math.floor(rect.height))
-      renderer.setSize(w, h)
-      const res = (program.uniforms.iResolution as { value: Float32Array })
-        .value
-      res[0] = gl.drawingBufferWidth
-      res[1] = gl.drawingBufferHeight
-      renderer.render({ scene: mesh })
+      if (broken) return
+
+      try {
+        const rect = container.getBoundingClientRect()
+        const w = Math.max(1, Math.floor(rect.width))
+        const h = Math.max(1, Math.floor(rect.height))
+        renderer.setSize(w, h)
+        const res = (program.uniforms.iResolution as { value: Float32Array })
+          .value
+        res[0] = gl.drawingBufferWidth
+        res[1] = gl.drawingBufferHeight
+        renderer.render({ scene: mesh })
+      } catch {
+        broken = true
+        showFallback()
+      }
     }
 
     const ro = new ResizeObserver(setSize)
@@ -280,15 +326,24 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
     const t0 = performance.now()
 
     const loop = (t: number) => {
-      ;(program.uniforms.iTime as { value: number }).value = (t - t0) * 0.001
-      const tx = enableMouseRef.current ? targetMouse[0] : 0.5
-      const ty = enableMouseRef.current ? targetMouse[1] : 0.5
-      currentMouse[0] += 0.05 * (tx - currentMouse[0])
-      currentMouse[1] += 0.05 * (ty - currentMouse[1])
-      const m = (program.uniforms.uMouse as { value: Float32Array }).value
-      m[0] = currentMouse[0]
-      m[1] = currentMouse[1]
-      renderer.render({ scene: mesh })
+      if (broken) return
+
+      try {
+        ;(program.uniforms.iTime as { value: number }).value = (t - t0) * 0.001
+        const tx = enableMouseRef.current ? targetMouse[0] : 0.5
+        const ty = enableMouseRef.current ? targetMouse[1] : 0.5
+        currentMouse[0] += 0.05 * (tx - currentMouse[0])
+        currentMouse[1] += 0.05 * (ty - currentMouse[1])
+        const m = (program.uniforms.uMouse as { value: Float32Array }).value
+        m[0] = currentMouse[0]
+        m[1] = currentMouse[1]
+        renderer.render({ scene: mesh })
+      } catch {
+        broken = true
+        showFallback()
+        return
+      }
+
       raf = requestAnimationFrame(loop)
     }
 
@@ -316,7 +371,12 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
       isPageVisible = !document.hidden
       isPageVisible ? tryStart() : tryStop()
     }
+    const onContextLost = () => {
+      broken = true
+      showFallback()
+    }
     document.addEventListener("visibilitychange", onVisibility)
+    canvas.addEventListener("webglcontextlost", onContextLost)
 
     tryStart()
 
@@ -325,6 +385,7 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
       ro.disconnect()
       io.disconnect()
       document.removeEventListener("visibilitychange", onVisibility)
+      canvas.removeEventListener("webglcontextlost", onContextLost)
       canvas.removeEventListener("pointermove", onPointerMove)
       canvas.removeEventListener("pointerleave", onPointerLeave)
       ctxMap.delete(container)
@@ -403,6 +464,7 @@ const GradientWaves: React.FC<GradientWavesProps> = ({
   return (
     <div
       ref={containerRef}
+      aria-hidden
       className={`relative h-full w-full overflow-hidden ${className}`.trim()}
     />
   )

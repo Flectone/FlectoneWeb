@@ -48,9 +48,34 @@ public Event onPrepare(MessagePrepareEvent event) {
 
 | Поле | Тип | Что хранит |
 |------|-----|------------|
+| `eventMetadata` | `EventMetadata` | Метаданные сообщения, если они были |
 | `context` | `MessageContext` | Отправитель, получатель, текст, флаги и теги |
 
 Подробности лежат на странице [форматирования](/pulse/docs/api/formatting/)
+
+### `MessageFormattedEvent`
+
+Срабатывает после того, как текст уже стал компонентом. Подходит, когда нужно посмотреть на готовый результат или заменить его, не трогая исходный текст
+
+| Поле | Тип | Что хранит |
+|------|-----|------------|
+| `eventMetadata` | `EventMetadata` | Метаданные сообщения, если они были |
+| `context` | `MessageContext` | Контекст, с которым отрисовали сообщение |
+| `component` | `Component` | Готовый компонент |
+
+```java
+@Pulse
+public Event onFormatted(MessageFormattedEvent event) {
+    // заменяем готовый компонент, например добавляем пометку
+    return event.withComponent(event.component().append(Component.text(" [API]")));
+}
+```
+
+<Callout type="warn" title="Предупреждение">
+
+    Отмена этого события заменяет сообщение на пустой компонент. Событие срабатывает и при взятии готового сообщения из кэша
+
+</Callout>
 
 ### `MessageSendEvent`
 

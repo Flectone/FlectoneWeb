@@ -1258,6 +1258,11 @@ message:
       name: "flectonepulse.module.message.format.translate"
       type: "TRUE"
 #endregion translate
+#region uniform
+    uniform:
+      name: "flectonepulse.module.message.format.uniform"
+      type: "TRUE"
+#endregion uniform
 #region world
     world:
       name: "flectonepulse.module.message.format.world"

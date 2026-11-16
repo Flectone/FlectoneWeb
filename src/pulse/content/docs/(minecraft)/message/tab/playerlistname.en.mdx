@@ -35,6 +35,10 @@ Message in the TAB list
 
 <include>../../../../../parts/enable.en.mdx</include>
 
+### `refresh`
+
+Internal cache reset interval in ticks. FlectonePulse caches the names already sent in the TAB so it does not rebuild them every tick. When the cache resets, the names are rebuilt and sent to players if they changed. The default is `600` ticks (30 seconds), a value of `0` or a negative value (for example `-1`) disables forced cache resets
+
 ### `hide_invisible`
 
 If enabled, invisible players will not be shown in the TAB

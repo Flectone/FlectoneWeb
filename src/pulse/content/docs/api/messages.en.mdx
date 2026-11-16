@@ -69,7 +69,7 @@ All methods return a set of players or an event with the players who received th
 
 # EventMetadata
 
-It describes how to deliver a message. To whom, where on the screen, how far it travels, with which sound and whether it has to be mirrored to Discord or to other servers
+It describes how to deliver a message. To whom, where on the screen, how far it travels, with which sound and whether it has to be mirrored to Discord or to other servers. It also carries a shared `uuid` that ties every copy of one message together
 
 ```java
 import net.flectone.pulse.constant.ModuleName;
@@ -104,6 +104,7 @@ messageDispatcher.dispatch(EventMetadata.builder()
 | Method | What it sets |
 |--------|--------------|
 | `messageContext(Function<FPlayer, MessageContext>)` | Builds the message context for each receiver, required |
+| `uuid(UUID)` | The identifier shared by every copy of the message. Random by default |
 | `filter(FPlayer)` | Delivery to one player only |
 | `filter(Collection<FPlayer>)` | Delivery to the listed players |
 | `filter(Predicate<FPlayer>)` | Any condition you like |
@@ -275,6 +276,9 @@ public void announce(FPlayer sender, String text) {
     </Step>
     <Step>
         The text goes through `MessagePipeline` and becomes a `Component`
+    </Step>
+    <Step>
+        `MessageFormattedEvent` fires, where you can replace the ready component or cancel the message
     </Step>
     <Step>
         `MessageSendEvent` fires and the message goes to the player

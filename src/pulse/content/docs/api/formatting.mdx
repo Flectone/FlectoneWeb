@@ -6,6 +6,10 @@ icon: Palette
 ---
 `MessageContext` это одно сообщение на пути к одному игроку. Внутри лежит исходный текст, отправитель, получатель, набор MiniMessage тегов и флаги, которые включают и выключают этапы форматирования
 
+<Callout type="info" title="Информация">
+    FlectonePulse разбирает MiniMessage собственным парсером, вдохновлённым QuickMiniMessage. Синтаксис тегов не изменился, но если парсер встретит неподдерживаемую конструкцию, сообщение автоматически обработает стандартный MiniMessage
+</Callout>
+
 <span>Пакет `net.flectone.pulse.model.event.message.context`</span>
 
 | Метод | Возвращает | Что отдаёт |
@@ -13,10 +17,10 @@ icon: Palette
 | `message()` | `String` | Исходный текст, ещё не отрисованный |
 | `sender()` | `FEntity` | Того, кто отправил сообщение |
 | `receiver()` | `FPlayer` | Того, кто его прочитает |
-| `uuid()` | `UUID` | Общий идентификатор всех копий сообщения |
 | `tagResolver()` | `TagResolver` | Все теги, доступные при отрисовке |
 | `flags()` | `Map<MessageFlag, Boolean>` | Флаги форматирования |
 | `isFlag(MessageFlag)` | `boolean` | Состояние флага с учётом значения по умолчанию |
+| `hasTag(String)` | `boolean` | Проверяет, есть ли в исходном тексте указанный тег |
 | `base()` | `MessageContext` | Базовый контекст, если текущий работает обёрткой |
 
 <br></br>
@@ -40,7 +44,6 @@ MessageContext context = MessageContext.builder()
 | `withMessage(String)` | Отдаёт копию с другим текстом |
 | `withSender(FEntity)` | Отдаёт копию с другим отправителем |
 | `withReceiver(FPlayer)` | Отдаёт копию с другим получателем |
-| `withUuid(UUID)` | Отдаёт копию с другим идентификатором |
 | `addFlag(MessageFlag, boolean)` | Отдаёт копию с изменённым флагом |
 | `addFlags(MessageFlag[], boolean[])` | Отдаёт копию с несколькими изменёнными флагами |
 | `addTagResolver(TagResolver)` | Отдаёт копию с добавленным тегом поверх остальных |
@@ -155,6 +158,7 @@ TagResolver aliases = messagePipeline.resolver(Set.of("money", "balance"), Compo
 | Метод | Возвращает | Что делает |
 |-------|------------|------------|
 | `build(MessageContext)` | `Component` | Отрисовывает компонент |
+| `build(EventMetadata, MessageContext)` | `Component` | Отрисовывает компонент и передаёт метаданные в события форматирования |
 | `parse(MessageContext)` | `String` | Прогоняет сообщение через модули форматирования и отдаёт получившийся текст, не превращая его в компонент |
 | `buildStandard(MessageContext)` | `String` | Отрисовывает обратно в MiniMessage текст |
 | `buildPlain(MessageContext)` | `String` | Отрисовывает текст без форматирования |
@@ -173,6 +177,18 @@ Component component = messagePipeline.build(MessageContext.builder()
 
 messageSender.sendMessage(receiver, component, false);
 ```
+
+### Результат отрисовки
+
+`MessageFormattedEvent` срабатывает после того, как текст уже стал компонентом. В отличие от `MessageFormattingEvent` он не даёт менять исходный текст, зато отдаёт готовый `Component` и позволяет заменить его или отменить сообщение целиком
+
+| Поле | Тип | Что хранит |
+|------|-----|------------|
+| `eventMetadata` | `EventMetadata` | Метаданные сообщения, если они были |
+| `context` | `MessageContext` | Контекст, с которым отрисовали сообщение |
+| `component` | `Component` | Готовый компонент |
+
+Если вернуть событие с `withCancelled(true)`, сообщение станет пустым. Если заменить `component`, новый компонент уйдёт дальше, а у нового сообщения ещё и сохранится в кэше
 
 ### Теги встроенных модулей
 

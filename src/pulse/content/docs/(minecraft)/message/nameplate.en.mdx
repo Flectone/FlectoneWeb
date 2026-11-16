@@ -38,6 +38,14 @@ Lines above the player's head, the first line will be the topmost
   The nameplate only works with `type: "HEAD_TEXT"`
 </Callout>
 
+<Callout type="warn" title="Warning">
+  It is recommended to set `distance` lower than the players' world render distance. If `distance` is greater than the render distance, the nameplate may disappear or "fall" down
+</Callout>
+
+### `refresh`
+
+Internal cache reset interval in ticks. FlectonePulse caches the lines already sent above the head so it does not rebuild them every tick. When the cache resets, the lines are rebuilt and sent to players if they changed. The default is `100` ticks (5 seconds), a value of `0` or a negative value (for example `-1`) disables forced cache resets
+
 <include>../../../../parts/destination.en.mdx</include>
 
 <include>../../../../parts/ticker.en.mdx</include>

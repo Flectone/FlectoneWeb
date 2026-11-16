@@ -276,6 +276,7 @@ taskScheduler.runAsyncTimer(() -> updateStatistics(), 600L);
 | `runAsyncTimer(SchedulerRunnable, long period)` | Runs async on a schedule |
 | `runSync(SchedulerRunnable)` | Runs a task sync |
 | `runSyncLater(SchedulerRunnable, long delay)` | Runs sync after a delay |
+| `getCurrentTick()` | Gives the current server tick |
 | `getExecutorService()` | Gives the thread pool of the scheduler |
 
 Every method gives a `CompletableFuture<Void>`. For repeating tasks it never completes on its own, so cancel it once the task is no longer needed
