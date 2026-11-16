@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils"
+import { canUseWebGL } from "@/lib/webgl"
 import { Effect, EffectComposer, EffectPass, RenderPass } from "postprocessing"
 import React, { useEffect, useRef } from "react"
 import * as THREE from "three"
@@ -419,6 +420,20 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
   useEffect(() => {
     const container = containerRef.current
     if (!container) return
+
+    container.style.background = ""
+    container.style.opacity = ""
+
+    const showFallback = () => {
+      container.style.background = `radial-gradient(circle at 70% 50%, ${color}, transparent 70%)`
+      container.style.opacity = "0.2"
+    }
+
+    if (!canUseWebGL()) {
+      showFallback()
+      return
+    }
+
     speedRef.current = speed
     const needsReinitKeys: (keyof ReinitConfig)[] = [
       "antialias",
@@ -450,12 +465,18 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
         threeRef.current = null
       }
       const canvas = document.createElement("canvas")
-      const renderer = new THREE.WebGLRenderer({
-        canvas,
-        antialias,
-        alpha: true,
-        powerPreference: "high-performance",
-      })
+      let renderer: THREE.WebGLRenderer
+      try {
+        renderer = new THREE.WebGLRenderer({
+          canvas,
+          antialias,
+          alpha: true,
+          powerPreference: "high-performance",
+        })
+      } catch {
+        showFallback()
+        return
+      }
       renderer.domElement.style.width = "100%"
       renderer.domElement.style.height = "100%"
       renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2))
@@ -500,19 +521,23 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
       scene.add(quad)
       const clock = new THREE.Clock()
       const setSize = () => {
-        const w = container.clientWidth || 1
-        const h = container.clientHeight || 1
-        renderer.setSize(w, h, false)
-        uniforms.uResolution.value.set(
-          renderer.domElement.width,
-          renderer.domElement.height
-        )
-        if (threeRef.current?.composer)
-          threeRef.current.composer.setSize(
+        try {
+          const w = container.clientWidth || 1
+          const h = container.clientHeight || 1
+          renderer.setSize(w, h, false)
+          uniforms.uResolution.value.set(
             renderer.domElement.width,
             renderer.domElement.height
           )
-        uniforms.uPixelSize.value = pixelSize * renderer.getPixelRatio()
+          if (threeRef.current?.composer)
+            threeRef.current.composer.setSize(
+              renderer.domElement.width,
+              renderer.domElement.height
+            )
+          uniforms.uPixelSize.value = pixelSize * renderer.getPixelRatio()
+        } catch {
+          showFallback()
+        }
       }
       setSize()
       const ro = new ResizeObserver(setSize)
@@ -602,35 +627,53 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
         passive: true,
       })
       let raf = 0
+      const onContextLost = () => {
+        showFallback()
+        if (raf !== 0) {
+          cancelAnimationFrame(raf)
+          raf = 0
+        }
+      }
+      renderer.domElement.addEventListener("webglcontextlost", onContextLost)
+
       const animate = () => {
         if (autoPauseOffscreen && !visibilityRef.current.visible) {
           raf = requestAnimationFrame(animate)
           return
         }
-        uniforms.uTime.value =
-          timeOffset + clock.getElapsedTime() * speedRef.current
-        if (liquidEffect) {
-          const liqEffect = liquidEffect as Effect & {
-            uniforms: Map<string, THREE.Uniform>
+
+        try {
+          uniforms.uTime.value =
+            timeOffset + clock.getElapsedTime() * speedRef.current
+          if (liquidEffect) {
+            const liqEffect = liquidEffect as Effect & {
+              uniforms: Map<string, THREE.Uniform>
+            }
+            const timeUniform = liqEffect.uniforms.get("uTime")
+            if (timeUniform) timeUniform.value = uniforms.uTime.value
           }
-          const timeUniform = liqEffect.uniforms.get("uTime")
-          if (timeUniform) timeUniform.value = uniforms.uTime.value
+          if (composer) {
+            if (touch) touch.update()
+            composer.passes.forEach((p) => {
+              const pass = p as {
+                effects?: Array<
+                  Effect & { uniforms: Map<string, THREE.Uniform> }
+                >
+              }
+              if (pass.effects) {
+                pass.effects.forEach((eff) => {
+                  const timeUniform = eff.uniforms?.get("uTime")
+                  if (timeUniform) timeUniform.value = uniforms.uTime.value
+                })
+              }
+            })
+            composer.render()
+          } else renderer.render(scene, camera)
+        } catch {
+          showFallback()
+          return
         }
-        if (composer) {
-          if (touch) touch.update()
-          composer.passes.forEach((p) => {
-            const pass = p as {
-              effects?: Array<Effect & { uniforms: Map<string, THREE.Uniform> }>
-            }
-            if (pass.effects) {
-              pass.effects.forEach((eff) => {
-                const timeUniform = eff.uniforms?.get("uTime")
-                if (timeUniform) timeUniform.value = uniforms.uTime.value
-              })
-            }
-          })
-          composer.render()
-        } else renderer.render(scene, camera)
+
         raf = requestAnimationFrame(animate)
       }
       raf = requestAnimationFrame(animate)
@@ -720,7 +763,7 @@ const PixelBlast: React.FC<PixelBlastProps> = ({
       ref={containerRef}
       className={cn("relative h-full w-full overflow-hidden", className)}
       style={style}
-      aria-label="PixelBlast interactive background"
+      aria-hidden
     />
   )
 }
