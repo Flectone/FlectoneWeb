@@ -184,6 +184,7 @@ Set<UUID> nearbyPlayers = nearbyService.getNearbyPlayers(fPlayer.uuid(), 30);
 | `getLocale(UUID)` | Язык клиента |
 | `getIp(UUID)` | Адрес подключения |
 | `getGamemode(UUID)` | Игровой режим |
+| `supportsCustomClick(UUID)` | Поддерживает ли клиент игрока кастомный клик |
 | `getCoordinates(UUID)` | Координаты |
 | `distance(UUID, UUID)` | Расстояние между игроками |
 | `getStatistics(UUID)` | Статистику игрока |
@@ -209,6 +210,7 @@ Set<UUID> nearbyPlayers = nearbyService.getNearbyPlayers(fPlayer.uuid(), 30);
 | `isPrimaryThread()` | Идёт ли код в основном потоке |
 | `hasProject(String)` | Стоит ли указанный плагин или мод |
 | `dispatchCommand(String)` | Выполняет команду от имени консоли |
+| `dispatchCommand(UUID, String)` | Выполняет команду от имени игрока |
 | `getMOTD()` | Данные для status ответа |
 | `getIcon()` | Иконку сервера |
 | `getItemName(Object)` | Имя предмета |

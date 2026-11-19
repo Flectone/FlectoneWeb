@@ -1,5 +1,17 @@
 [
   {
+    "version": "1.15.2",
+    "date": "2026-11-19",
+    "authors": ["TheFaser"],
+    "fixes": [
+      "Fixed the TAB update when a player changes game mode",
+      "Fixed unnecessary profile updates for the player themselves in the TAB",
+      "Fixed `StringMessageContext` handling in the `fading` and `translate` modules, the text is now read from the wrapped context",
+      "Click commands in Minecraft are now executed via a custom click event to skip confirmation window",
+      "Fixed component style being lost during message formatting"
+    ]
+  },
+  {
     "version": "1.15.1",
     "date": "2026-11-16",
     "authors": ["TheFaser"],

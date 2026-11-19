@@ -184,6 +184,7 @@ They give the same access to server and player data on every platform
 | `getLocale(UUID)` | The client language |
 | `getIp(UUID)` | The connection address |
 | `getGamemode(UUID)` | The gamemode |
+| `supportsCustomClick(UUID)` | Whether the player's client supports the custom click |
 | `getCoordinates(UUID)` | The coordinates |
 | `distance(UUID, UUID)` | The distance between players |
 | `getStatistics(UUID)` | The statistics of a player |
@@ -209,6 +210,7 @@ There are also state checks, `isOnline`, `isDead`, `isSneaking`, `isOperator`, `
 | `isPrimaryThread()` | Whether the code runs on the main thread |
 | `hasProject(String)` | Whether a named plugin or mod is installed |
 | `dispatchCommand(String)` | Runs a command as the console |
+| `dispatchCommand(UUID, String)` | Runs a command as a player |
 | `getMOTD()` | The data for a status response |
 | `getIcon()` | The server icon |
 | `getItemName(Object)` | The name of an item |
